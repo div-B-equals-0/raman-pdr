@@ -1,0 +1,8 @@
+* Absorption at 6634 \AA in Orion Nebula
+* Absorption at 6634 \AA in other regions
+** 30 Doradus
++ I see absolutely nothing
++ Files are at
+  + [[file:~/Work/Muse-Hii-Data/30Dor]]
+** Carina
++ The cube I got was in a stupid place - need to get a better one
