@@ -1,4 +1,5 @@
 * Absorption at 6634 \AA in Orion Nebula
++ [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
 * Absorption at 6634 \AA in other regions
 ** 30 Doradus
 + I see absolutely nothing
@@ -6,3 +7,79 @@
   + [[file:~/Work/Muse-Hii-Data/30Dor]]
 ** Carina
 + The cube I got was in a stupid place - need to get a better one
++ [2019-08-01 Thu] No it wasn't - *I see the line!!*
++ Much weaker than Orion, but it looks very similar
++ We are looking in an 8x8 arcsec box
++ A good place is centered on 84.642977 -69.10802
++ Minimum absorption is at observed wavelength of 6638.74 and 6637.49 - about halfway between them, so 6638.1 \AA
++ So is rest wavelength is 6633.9 then V = +190 km/s, whereas [N II] is at +250
+  + From below, we have a DIB with 6632.85, which would give 5.25 \AA or +240, which is much better
++ On the other hand, if we are seeing the same line in sky emission, then it is 6633.74, but the line still doesn't seem red enough
++ Absorption depth:
+  + Mean: (193.36 - 188.56)/193.36 = 0.0248
+  + Median: (186.45 - 181.59)/186.45 = 0.026
+  + So less than 3%, whereas in Orion S it is up to 8%
+** Other lines with different behavior
++ Si III 5740 is seen in emission and absorption (in some stars)
++ DIB 5781 is seen in absorption everywhere - constant absorption depth I think
++ He II 4686 broad emission line is seen everywhere
+  + Can be used to track scattered starlight from the WR stars (there are about 3 of them in the A field)
+  + Some stars have absorption in this line, but that doesn't seem to be imprinted on the nebula much
+  + There is an artefact at 4688 \to 4691 \AA in the top center of field A
+    + At first I thought there was some narrow absorption, but it is in bizarre horizontal stripes
+** Calculate 6634 absorption map for Carina
+
+#+begin_src python
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+
+  datadir = "/Users/will/Work/Muse-Hii-Data/30Dor"
+
+  hdu = fits.open(f"{datadir}/ADP.2016-07-14T14:17:17.826.fits")["DATA"]
+
+  slice_6634 = slice(1630, 1631)
+  slice_cont = slice(1634, 1638)
+
+  map_6634 = hdu.data[slice_6634, :, :].mean(axis=0)
+  map_cont = hdu.data[slice_cont, :, :].mean(axis=0)
+
+  ab_depth = 1.0 - map_6634/map_cont
+
+  wcs = WCS(hdu.header).celestial
+  for name, data in [
+          ["6634-abs-depth", ab_depth],
+          ["6634-line-map", map_6634],
+          ["6634-cont-map", map_cont],
+          ["6634-line-minus-cont-map", map_6634 - map_cont],
+  ]:
+      fits.PrimaryHDU(
+          header=wcs.to_header(),
+          data=data,
+      ).writeto(f"../data/30-Dor-A-{name}.fits", overwrite=True)
+#+end_src
+
+#+RESULTS:
+: None
+* Absorption line profile
++ Can we get a good handle on how broad it is
++ Make a mask that includes the best points (do this for each object)
++ Adjust the wavelengths according to the velocities maybe
+  + This would give better sampling of the profile
+  + But which line do we use? No guarantee that absorbing medium shares kinematics of the emitting gas, although in Carina this will probably be true
++ If width is not too small, could be DIB
+  + The 6614 \AA DIB (which we don't see) has a width of 50 km/s or 1.1 \AA, which we would not well resolve (see Krelowski:2018a, pronounced KreWoVski because it is a ł)
+  + In fact, Galazutdinov:2000a show a DIB at 6632.85, which might possibly be our feature
+    + It isn't listed as new, so it must be in previous papers too
+    + It is only seen in highly reddened stars, not in HD 23180
+* Explanations for absorption
+** Summary
+1. Really a gap between two weak emission line forests
+   - Not consistent with Orion, which shows smooth continuum
+2. Stellar absorption line that is scattered
+   - Late B stars have the N III 6633.9 line
+   - But they also have other lines
+     - E.g. O II 6641.031
+3. DIB
+   - I think this is the most likely
+   - Need to compare with 5782 and 6278 bands
