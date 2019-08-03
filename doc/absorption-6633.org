@@ -1,5 +1,11 @@
 * Absorption at 6633 \AA in Orion Nebula
 + [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
+
+** Relation with foreground extinction
++ Show that the 6633 feature is not correlated with reddening
++ But the other DIB features are
+*** Correlation between the different reddening measures 
+*** Correlation between reddening and DIB
 * Absorption at 6633 \AA in other regions
 ** 30 Doradus
 + I see absolutely nothing
@@ -20,7 +26,8 @@
   + So less than 3%, whereas in Orion S it is up to 8%
 ** Other lines with different behavior
 + Si III 5740 is seen in emission and absorption (in some stars)
-+ DIB 5781 is seen in absorption everywhere - constant absorption depth I think
++ DIB 5781 is seen in absorption everywhere - need to check if depth scales with reddening
++ 
 + He II 4686 broad emission line is seen everywhere
   + Can be used to track scattered starlight from the WR stars (there are about 3 of them in the A field)
   + Some stars have absorption in this line, but that doesn't seem to be imprinted on the nebula much
