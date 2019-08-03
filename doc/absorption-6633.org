@@ -1,6 +1,6 @@
-* Absorption at 6634 \AA in Orion Nebula
+* Absorption at 6633 \AA in Orion Nebula
 + [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
-* Absorption at 6634 \AA in other regions
+* Absorption at 6633 \AA in other regions
 ** 30 Doradus
 + I see absolutely nothing
 + Files are at
@@ -14,7 +14,6 @@
 + Minimum absorption is at observed wavelength of 6638.74 and 6637.49 - about halfway between them, so 6638.1 \AA
 + So is rest wavelength is 6633.9 then V = +190 km/s, whereas [N II] is at +250
   + From below, we have a DIB with 6632.85, which would give 5.25 \AA or +240, which is much better
-+ On the other hand, if we are seeing the same line in sky emission, then it is 6633.74, but the line still doesn't seem red enough
 + Absorption depth:
   + Mean: (193.36 - 188.56)/193.36 = 0.0248
   + Median: (186.45 - 181.59)/186.45 = 0.026
@@ -27,7 +26,7 @@
   + Some stars have absorption in this line, but that doesn't seem to be imprinted on the nebula much
   + There is an artefact at 4688 \to 4691 \AA in the top center of field A
     + At first I thought there was some narrow absorption, but it is in bizarre horizontal stripes
-** Calculate 6634 absorption map for Carina
+** Calculate 6633 absorption map for Carina
 
 #+begin_src python
   import numpy as np
@@ -83,3 +82,5 @@
 3. DIB
    - I think this is the most likely
    - Need to compare with 5782 and 6278 bands
+     - Those are correlated with reddening
+     - But 6633 is not
