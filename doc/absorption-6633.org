@@ -1,6 +1,24 @@
 * Absorption at 6633 \AA in Orion Nebula
 + [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
 
+** Relation to Raman-scattered wings of H\alpha
++ See Dopita:2016a
+  + These are pumped by continuum or O I 1025.76, which is very close to Ly \beta 1025.72
+  + Also, secondary component pumped by Si II 1023.70, which gives a peak at 6480.1
++ *This gives another possibility for the 6633 origin*
+  + Could be a stellar absorption line just redward of Ly \beta
+  + Raman scattering causes wavelength differences \Delta\lambda from Ly \beta center (1025.72 \AA) to be mapped to differences 6.4 \Delta\lambda from H\alpha line center
+    - This is (1 - 1/9) / (1/4 - 1/9) = 6.4
+    - So 6633 - 6563 = 70 \AA, so 10.94 \AA at Ly \beta => 1036.66 \AA (vacuum)
+  + There is O VI doublet at 1037.62, 1031.93 but this is a very strong P Cygni profile that absorbs everything up to and past the Ly \beta line
+    + See Fig 23 of Leitherer:2010a, which shows population synthesis spectra
+    + There is a lot of H_2 (and C II, O I) absorption between 1035 \to 1040, which makes this hard to see on the observed FUSE spectra, see Fig 20 of Pellerin:2002a
+    + Inside the nebula, things will be very different since some of these lines could be in emission instead of absorption
+      + [ ] *run Cloudy model* to see if we can get predicted spectrum in PDR
+        - See what we have got from the [[file:~/Dropbox/cloudy-dust-charging/cloudy-dust-charging.org][cloudy-dust-charging]] project
++ Look at variation of the raman wings, and correlations with 6633 absorption
+
+
 ** Relation with foreground extinction
 + Show that the 6633 feature is not correlated with reddening
 + But the other DIB features are
@@ -33,6 +51,7 @@
   + Some stars have absorption in this line, but that doesn't seem to be imprinted on the nebula much
   + There is an artefact at 4688 \to 4691 \AA in the top center of field A
     + At first I thought there was some narrow absorption, but it is in bizarre horizontal stripes
+    + Also around 6252 \AA in same region
 ** Calculate 6633 absorption map for Carina
 
 #+begin_src python
@@ -67,6 +86,24 @@
 
 #+RESULTS:
 : None
+* Looking at spectra of stars
++ Is it possible to see the DIB profiles in the stellar spectra?
+  + Specifically the 6632.85 feature?
+
+** Features seen in \theta^1 C (HD 37022)
++ Using UVES dataset ADP.2016-03-11T12:34:33.367 from ESO
+  + 6196
+    - I see something at 6196.95 but it is supposed to be at 6195.97
+    - And there is nothing at 6614, which should be stronger - so no
+  + 5780
+    - Broad absorption at 5781.649
+    - But wavelength not right, should be at 5780.37
+    - And we see nothing at 5797
+  + 6284
+    - Seen clearly
+    - I might have got my wavelength wrong before - was using 6278 which is way off
+    - Confusion with sky absorption
+
 * Absorption line profile
 + Can we get a good handle on how broad it is
 + Make a mask that includes the best points (do this for each object)
@@ -91,3 +128,9 @@
    - Need to compare with 5782 and 6278 bands
      - Those are correlated with reddening
      - But 6633 is not
+   - Note that DIBs are thought to be molecular, according to Krełowski:
+     #+begin_quote
+     The nearly constant positions and nearly unchanged profiles of DIBs, irrespective of the line of sight, point to free gas-phase molecules as the carriers of these bands. [...] 
+     #+end_quote
+     
+     

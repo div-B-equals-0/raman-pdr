@@ -1,0 +1,6 @@
+Users are encouraged to provide feedback regarding the data quality of the downloaded data products by contacting the ESO Archive Science Group via usd-help@eso.org, subject: Phase 3
+
+Below is an overview of the structure (dataset, archive file name, original file name, category, size) of  request 489336 "PHASE3" : 
+
+PHASE3+3832703+ADP.2016-03-11T12:34:33.610:
+	- ADP.2016-03-11T12:34:33.610.fits	UV_SFLX_1256631_2016-02-22T03:43:32.669_RED564d1_1x1_03.fits	SCIENCE.SPECTRUM	3859200
