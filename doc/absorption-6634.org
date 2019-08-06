@@ -1,30 +1,49 @@
-* Absorption at 6633 \AA in Orion Nebula
+* Absorption at 6634 \AA in Orion Nebula
 + [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
 
 ** Relation to Raman-scattered wings of H\alpha
 + See Dopita:2016a
   + These are pumped by continuum or O I 1025.76, which is very close to Ly \beta 1025.72
   + Also, secondary component pumped by Si II 1023.70, which gives a peak at 6480.1
-+ *This gives another possibility for the 6633 origin*
++ *This gives another possibility for the 6634 origin*
   + Could be a stellar absorption line just redward of Ly \beta
   + Raman scattering causes wavelength differences \Delta\lambda from Ly \beta center (1025.72 \AA) to be mapped to differences 6.4 \Delta\lambda from H\alpha line center
     - This is (1 - 1/9) / (1/4 - 1/9) = 6.4
-    - So 6633 - 6563 = 70 \AA, so 10.94 \AA at Ly \beta => 1036.66 \AA (vacuum)
+    - So 6634 - 6563 = 70 \AA, so 10.94 \AA at Ly \beta => 1036.66 \AA (vacuum)
   + There is O VI doublet at 1037.62, 1031.93 but this is a very strong P Cygni profile that absorbs everything up to and past the Ly \beta line
     + See Fig 23 of Leitherer:2010a, which shows population synthesis spectra
     + There is a lot of H_2 (and C II, O I) absorption between 1035 \to 1040, which makes this hard to see on the observed FUSE spectra, see Fig 20 of Pellerin:2002a
     + Inside the nebula, things will be very different since some of these lines could be in emission instead of absorption
       + [ ] *run Cloudy model* to see if we can get predicted spectrum in PDR
         - See what we have got from the [[file:~/Dropbox/cloudy-dust-charging/cloudy-dust-charging.org][cloudy-dust-charging]] project
-+ Look at variation of the raman wings, and correlations with 6633 absorption
+    + This is mentioned in Luridiana:2009a
++ Look at variation of the raman wings, and correlations with 6634 absorption
 
 
 ** Relation with foreground extinction
-+ Show that the 6633 feature is not correlated with reddening
-+ But the other DIB features are
++ Show that the 6634 feature is not correlated with reddening
++ But the other DIB features are - maybe
 *** Correlation between the different reddening measures 
 *** Correlation between reddening and DIB
-* Absorption at 6633 \AA in other regions
+** Stellar absorption lines
++ The low-mass stars have absorption lines too
+  + 6663 - Si III
+  + 6634 - N III - shows up in a few stars
+    + 219-355 - 5:35:21.8801 -5:23:54.789
+    + 159-350 - 5:35:15.8718 -5:23:48.515
+    + 210-349 - 5:35:21.0189 -5:23:48.808
+      + Narrow line at 6635
+      + Also, 6593, 6609.5, 6663.9, 6708.1
+    + 181-245 - 5:35:18.0745 -5:22:45.107
+    + 
+  + 6496 - shows up nearly everywhere
+    + Accompanied by weaker lines: 6483, 6463, 6451, 6440, 6421, 6402, etc
+** Look at other Orion datasets
++ Keck proplyd spectra
+  + Unfortunately, we have an inter-order gap from 6622 \to 6649 \AA, which our line falls right in the middle of
++ [ ] Adal spectra
++ Herbig's HIRES th1E spectra
+* Absorption at 6634 \AA in other regions
 ** 30 Doradus
 + I see absolutely nothing
 + Files are at
@@ -52,7 +71,7 @@
   + There is an artefact at 4688 \to 4691 \AA in the top center of field A
     + At first I thought there was some narrow absorption, but it is in bizarre horizontal stripes
     + Also around 6252 \AA in same region
-** Calculate 6633 absorption map for Carina
+** Calculate 6634 absorption map for Carina
 
 #+begin_src python
   import numpy as np
@@ -127,7 +146,7 @@
    - I think this is the most likely
    - Need to compare with 5782 and 6278 bands
      - Those are correlated with reddening
-     - But 6633 is not
+     - But 6634 is not
    - Note that DIBs are thought to be molecular, according to Krełowski:
      #+begin_quote
      The nearly constant positions and nearly unchanged profiles of DIBs, irrespective of the line of sight, point to free gas-phase molecules as the carriers of these bands. [...] 
