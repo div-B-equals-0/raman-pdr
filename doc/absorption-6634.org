@@ -4,12 +4,23 @@
 ** Relation to Raman-scattered wings of H\alpha
 + See Dopita:2016a
   + These are pumped by continuum or O I 1025.76, which is very close to Ly \beta 1025.72
+    + Wavelength in H\alpha frame: 6562.79 + (1025.76 - 1025.72) 40.96 = 6564.4284
+    + Redshifted by 3e5 (6564.4284 - 6562.79)/6562.79 = 75 km/s
   + Also, secondary component pumped by Si II 1023.70, which gives a peak at 6480.1
+    + Test my understanding of scale factor
+    + (1023.70 - 1025.72) 40.96 = -82.7392
+    + 6562.79 - 82.7392 = 6480.05 QED
 + *This gives another possibility for the 6634 origin*
   + Could be a stellar absorption line just redward of Ly \beta
-  + Raman scattering causes wavelength differences \Delta\lambda from Ly \beta center (1025.72 \AA) to be mapped to differences 6.4 \Delta\lambda from H\alpha line center
+  + Raman scattering causes wavelength differences \Delta\lambda/\lambda from Ly \beta center (1025.72 \AA) to be mapped to differences 6.4 \Delta\lambda/\lambda from H\alpha line center
     - This is (1 - 1/9) / (1/4 - 1/9) = 6.4
-    - So 6634 - 6563 = 70 \AA, so 10.94 \AA at Ly \beta => 1036.66 \AA (vacuum)
+    - This is factor for velocity shifts (\propto \Delta\lambda/\lambda), so for \Delta\lambda itself, the factor is squared: 40.96
+    - So 6634 - 6563 = 70 \AA, so 70/40.96 = 1.709 \AA at Ly \beta => 1027.43 \AA (vacuum)
+    - *I have solved the mystery!!!*
+      - It is the 1027.43051 and 1027.43125 components of the O I resonance line
+        - These are transitions from the J=1 level, which is 0.019622 eV above the ground (J=2) level, but it should be populated according to statistical weight so long as T > 0.019622 eV/k = 228 K
+        - There is also a 1028.15710 component from the J=0 level, which should give a line at 6562.79 + (1028.15710 - 1025.72) 40.96 = 6662.613616
+        - /Which is what I thought was Si III 6662.90 !!!/
   + There is O VI doublet at 1037.62, 1031.93 but this is a very strong P Cygni profile that absorbs everything up to and past the Ly \beta line
     + See Fig 23 of Leitherer:2010a, which shows population synthesis spectra
     + There is a lot of H_2 (and C II, O I) absorption between 1035 \to 1040, which makes this hard to see on the observed FUSE spectra, see Fig 20 of Pellerin:2002a
@@ -110,7 +121,7 @@
 + We see nothing there
 + But we do see a bulge at 6530 near the bar
 *** Other H lines
-+ H beta has te wings
++ H beta has the wings
 + Paschen line are too weak to see the wings, and too many other lines in the way
 
 
@@ -289,7 +300,18 @@
 * Antecedents for Raman scattering
 ** Theory
 + Hubeny & Mihalas book
++ 
 *** Wavelength mapping between Ly\beta and H\alpha domain
++ Let \nu_0 be pre-scattered and \nu_1 be post-scattered frequency
+  + \Delta\nu_1 = \Delta\nu_0 for Raman scattering
+  + \lambda_1 = c/\nu_1 => d\lambda_1/d\nu_1 = -c / \nu_1^2 = -\lambda_1^2 / c 
+  + \Delta\lambda_1 = d\lambda_1/d\nu_1 \Delta\nu_1 = -\lambda_1^2 \Delta\nu_1 / c
+  + \Delta\lambda_0 = -\lambda_0^2 \Delta\nu_0 / c
+  + \Delta\lambda_1 / \Delta\lambda_0 = (\lambda_1^2 / \lambda_0^2) (\Delta\nu_1 / \Delta\nu_0) = (\lambda_1 / \lambda_0)^2
++ So wavelength differences \Delta\lambda transform as \lambda^2
++ And velocity differences \Delta{}u = c \Delta\lambda / \lambda scale as \lambda
++ Velocity-scale factor between Ly\beta and H\alpha is \lambda_1 / \lambda_0 = (1 - 1/9) / (1/4 - 1/9) = 6.4
++ Wavelength-scale factor is 40.96 
 *** Column densities
 + Lee:2009a say that Raman optical depth 
 *** Red-blue asymmetry in wings
