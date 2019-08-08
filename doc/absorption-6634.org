@@ -109,6 +109,9 @@
 + Dopita sees this at 6470 \to 6480
 + We see nothing there
 + But we do see a bulge at 6530 near the bar
+*** Other H lines
++ H beta has te wings
++ Paschen line are too weak to see the wings, and too many other lines in the way
 
 
 *** Other weak lines in range
@@ -283,5 +286,61 @@
      #+begin_quote
      The nearly constant positions and nearly unchanged profiles of DIBs, irrespective of the line of sight, point to free gas-phase molecules as the carriers of these bands. [...] 
      #+end_quote
-     
-     
+* Antecedents for Raman scattering
+** Theory
++ Hubeny & Mihalas book
+*** Wavelength mapping between Ly\beta and H\alpha domain
+*** Column densities
++ Lee:2009a say that Raman optical depth 
+*** Red-blue asymmetry in wings
+*** Excitation from continuum versus lines
++ O VI 1032,38 \to 6827,7088 in symbiotic stars
++ 
+** Symbiotic stars
++ Lots of work
+  + Schmid:1989a
+    + O VI lines Raman scatter off Ly\beta to give 6830, 7088 \AA bands
+    + This is much further from resonance, so requires much larger column densities than for the H\alpha wings
+    + E.g, 6830 - 6563 = 267 \AA
+    + Whereas, our wings go out to 6700 - 6563 = 137 \AA
+    + So they have 4 times lower cross section for that
+    + Also, they have flux ratio 6830/6563 of about 0.05
+    + We have 3e4/1.5e9 = 2e-5
+      + 3e4 is measured around 6700 \AA, d\lambda = 137 \AA
+      + 2.2e5 at 6600 \AA gives Raman/Core of 1.5e-4 for d\lambda = 37 \AA
+      + So we would expect 14 times higher, whereas we observe 2.2e5/3e4 = 7.3 /probably the 6700 region is contaminated with weak lines/
+    + So, our prediction for 6830/6563 would be 1.5e-4 (37/267)**2 = 2.9e-6
+      + This is 6e-5 times what is observed in symbiotic stars
+      + So, if this were all down to column density, we would require a *1e4 times smaller column*
+      + Although there will also be a dependence on F(Ly\beta) / F(H\alpha), where Ly\beta is measured in the neutral slab
+** AGN
++ Nussbaumer:1989a
++ Chang:2015a
+  + [CHD+15] Seok-Jun Chang, Jeong-Eun Heo, Francesco Di Mille, Rodolfo Angeloni, Tali Palma, and Hee- Won Lee. Formation of Raman Scattering Wings around H alpha, H beta, and Pa alpha in Active Galactic Nuclei. ApJ, 814(2):98, Dec 2015.
+  + Theory but no observations
++ Chang:2017a
+  + [CLY17] Seok-Jun Chang, Hee-Won Lee, and Yujin Yang. Polarization of Rayleigh scattered Lyα in active galactic nuclei. MNRAS, 464(4):5018–5027, Feb 2017.
+  + This is /Rayleigh/ scattering rather than /Raman/ but presumably would be similar for Raman
+
+
+** H II regions
+Most of these I found from the intro of the Dopita:2016a paper
+*** NGC 2363
++ Giant H II region
++ Roy:1992a
+  + [RAMD92] Jean-Rene Roy, Martin Aube, Marshall L. McCall, and R. J. Dufour. The Origin of Broad Emission Lines in the Extragalactic Giant H II Region NGC 2363. ApJ, 386:498, Feb 1992.
+  + They see wings up to 40 \AA or 2400 km/s, but in H\alpha *and [O III]*
+  + This would tend to rule our Raman in this case
++ Binette:2009b
+  + [BDU+09] L. Binette, L. Drissen, L. Ubeda, A. C. Raga, C. Robert, and Y. Krongold. The broad Hα, [O III] line wings in stellar supercluster A of NGC 2363 and the turbulent mixing layer hypothesis. A&A, 500(2):817–826, Jun 2009.
+  + Ascribe to mixing layer
+
+*** NGC 5471
++ Giant H II region
++ Castaneda:1990a
+  + [CVC90] Hector O. Castaneda, J. M. Vilchez, and Marcus V. F. Copetti. A Remarkable Feature in the Giant Extragalactic H II Region NGC 5471. ApJ, 365:164, Dec 1990.
+  + Not as broad as in Orion
+  + Ascribed to SNR
+***  
+
+
