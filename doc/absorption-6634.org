@@ -18,8 +18,109 @@
         - See what we have got from the [[file:~/Dropbox/cloudy-dust-charging/cloudy-dust-charging.org][cloudy-dust-charging]] project
     + This is mentioned in Luridiana:2009a
 + Look at variation of the raman wings, and correlations with 6634 absorption
++ Given that Dopita has narrower line than us, it might absorb more than just the Raman pseudo-continuum
 
 
+
+*** Correlation between 6634 and Raman wings for Orion
++ Choose suitable ranges - use the 8x8 binned cube
++ Regions free of any strong lines:
+  + 6410 \to 6450 \AA = 31 \to 78 pix
+  + 6760 \to 6810 \AA = 442 \to 502 pix (some C II lines but super weak)
+  + [ ] Maybe we could divide each continuum range in two to give 4 sections, and take median of each
+    + This would be insensitive to absorption or emission lines as long as there are not too many of them
+    + Then fit quadratic through the 4 points
++ Regions for Red Raman wing
+  + 6600 \to 6629 \AA = 253 \to 289 pix (width 37)
+  + 6638 \to 6656 \AA = 290 \to 320 pix (width 29)
+  + First attempt, just sum these
+  + [ ] Fit a quadratic through these
++ Region for the 6634 \AA absorption line
+  + 6631 \to 6638 \AA = 290 \to 298 pix (width 9)
++ Blue Raman wing
+  + Weak OH Sky lines
+    + 6499
+    + 6505
+  + Real nebular lines
+    + [N II] 6527
+    + [Ni III] 6534
+
+
+**** Lines found in the wavsec3 cube
++ [Ni III] 6401.5
+  + HH 202 and 203 strong on blue flank
+  + Maybe a Ne I 6402.25 blend, but it doesn't really look like it
++ Perhaps something like [Fe II] at 6401, but exceedingly weak
++ High ionization line at 6457 - very weak
++ [C II] 6461.95 - nice and strong
+  + Shows the inner shell nicely on the red flank
++ [N II] 6527
++ [Ni III] 6533
+**** Remove continuum from cube
+
+#+begin_src python
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from numpy.polynomial import Chebyshev as T
+  import itertools
+
+  datadir = "/Users/will/Dropbox/OrionMuse/BigFiles"
+  outdir = "../data/orion-muse"
+
+  infile = "muse-hr-data-wavsec3-rebin16x16.fits"
+  hdu = fits.open(f"{datadir}/{infile}")["DATA"]
+
+  nwav, ny, nx = hdu.data.shape
+  wavpix = np.arange(nwav)
+
+  # Two pairs of adjacent sections for the true continuum
+  cont_slices = [
+      slice(30, 54), slice(54, 78), # to the blue
+      slice(441, 471), slice(471, 502), # to the red
+  ]
+
+  # Use median over each section to avoid weak lines
+  cont_maps = np.array([np.median(hdu.data[_, :, :], axis=0) for _ in cont_slices])
+  cont_wavpix = np.array([np.median(wavpix[_], axis=0) for _ in cont_slices])
+  # Inefficient but simple algprithm - loop over spaxels
+  bgdata = np.empty_like(hdu.data)
+  for j, i in itertools.product(range(ny), range(nx)):
+      # Fit polynomial to BG
+      p = T.fit(cont_wavpix, cont_maps[:, j, i], deg=2)
+      # and fill in the BG spectrum of this spaxel
+      bgdata[:, j, i] = p(wavpix)
+
+
+  for suffix, cube in [
+          ["cont", bgdata],
+          ["cont-sub", hdu.data - bgdata],
+          ["cont-div", hdu.data/bgdata],
+  ]:
+      outfile = infile.replace(".fits", f"-{suffix}.fits")
+      fits.PrimaryHDU(header=hdu.header, data=cube).writeto(
+          f"{outdir}/{outfile}", overwrite=True)
+#+end_src
+
+#+RESULTS:
+: None
+
+*** The supposed Si II fluoresced bump
++ Dopita sees this at 6470 \to 6480
++ We see nothing there
++ But we do see a bulge at 6530 near the bar
+
+
+*** Other weak lines in range
++ 6401 [Ni III] + Ne I
+  + Check if [Ni III] 6401/6534 tells us something
++ 6462 C II recomb
++ 6666 [Ni II]
++ Another notch at 6530, or a gap between two lines
+  + There is [N II] 6527 and [Ni III] 6534
+  + Those two lines are clearly seen in Dopita spectra
+  + And in MUSE spectra too
++ [ ] 6544.3 seen in SPM spectra - what is it?
 ** Relation with foreground extinction
 + Show that the 6634 feature is not correlated with reddening
 + But the other DIB features are - maybe
@@ -41,16 +142,40 @@
 ** Look at other Orion datasets
 + Keck proplyd spectra
   + Unfortunately, we have an inter-order gap from 6622 \to 6649 \AA, which our line falls right in the middle of
-+ [ ] Adal spectra
++ [X] Adal spectra
+  + /Resolution in red is not as good as I thought/
+    + Pixels are 0.83 \AA = 40 km/s at H\alpha, and resolution should be at best 2x this, so 80 km/s or R = 4000
+    + This is very similar to MUSE, but not quite as good I don't think
+  + We see it for POS 6 in Orion S - strangely not as deep as one might expect
+  + POS 4 near Trapezium
+  + POS 1 near Trapezium
+  + POS 2 crosses Bright Bar
+  + Blue spectra are all high resolution, but there are symmetrical ghosts around all the bright lines, which makes it impossible to see any possible wings on H beta for instance
++ [X] O'Dell & Harris
+  + The spectral resolution is not very good - we do see the absorption, but only just
++ [X] Manuel PPAK spectra
+  + Good example is [[file:~/Dropbox/RubinWFC3/Tsquared/manu-region-specplot-r-6600-6800-x-250-y-350-w0400-h0200.jpg][file:~/Dropbox/RubinWFC3/Tsquared/manu-region-specplot-r-6600-6800-x-250-y-350-w0400-h0200.jpg]]
++ [ ] STIS
+  + I don't seem to have the files any more
+  + Best bet would seem to be from Bally program GO8324
+  + There is a 6581 \to 6867 \AA spectrum in a slit from LV2 to LV6, same as for the NUV lines
+  + See [[file:~/Dropbox/STIS-LV/stis-lv.org][file:~/Dropbox/STIS-LV/stis-lv.org]]
 + Herbig's HIRES th1E spectra
+  + Has same problem as other Keck data
 * Absorption at 6634 \AA in other regions
-** 30 Doradus
+** TODO RCW 49
++ Illuminated by the massive cluster Westerlund 2, supposedly second most massive in Milky Way
++ Zeidler:2018a
++ They seem to have a lot of MUSE data - including deep fields
+  + Now downloading to [[file:~/Work/Muse-Hii-Data/RCW49/][file:~/Work/Muse-Hii-Data/RCW49/]]
++ We see the 6614 absorption line, but that seems to be scattered stellar
+  + Or DIB - see below
++ [2019-08-06 Tue 22:10] I don't see any evidence of the Raman scattering or the 6634 line in what I have looked at so far
+** 30 Doradus: Tarantula
 + I see absolutely nothing
 + Files are at
   + [[file:~/Work/Muse-Hii-Data/30Dor]]
-** Carina
-+ The cube I got was in a stupid place - need to get a better one
-+ [2019-08-01 Thu] No it wasn't - *I see the line!!*
++ [2019-08-01 Thu]  *I do see the line!!*
 + Much weaker than Orion, but it looks very similar
 + We are looking in an 8x8 arcsec box
 + A good place is centered on 84.642977 -69.10802
@@ -61,7 +186,7 @@
   + Mean: (193.36 - 188.56)/193.36 = 0.0248
   + Median: (186.45 - 181.59)/186.45 = 0.026
   + So less than 3%, whereas in Orion S it is up to 8%
-** Other lines with different behavior
+*** Other lines with different behavior
 + Si III 5740 is seen in emission and absorption (in some stars)
 + DIB 5781 is seen in absorption everywhere - need to check if depth scales with reddening
 + 
@@ -71,7 +196,7 @@
   + There is an artefact at 4688 \to 4691 \AA in the top center of field A
     + At first I thought there was some narrow absorption, but it is in bizarre horizontal stripes
     + Also around 6252 \AA in same region
-** Calculate 6634 absorption map for Carina
+*** Calculate 6634 absorption map for Tarantula
 
 #+begin_src python
   import numpy as np
@@ -105,6 +230,13 @@
 
 #+RESULTS:
 : None
+** Carina
++ The cube I got was in a stupid place - need to get a better one
+** TODO Other LMC regions
++ N44 and N180
+  + See McLeod:2019a
+  + Neither of these are the same as the Dopita ones
+
 * Looking at spectra of stars
 + Is it possible to see the DIB profiles in the stellar spectra?
   + Specifically the 6632.85 feature?
