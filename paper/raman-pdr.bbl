@@ -1,0 +1,9 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Dopita} {et~al.}(2016){Dopita}, {Nicholls}, {Sutherland }, {Kewley},
+  \& {Groves}}]{Dopita:2016a}
+{Dopita}, M.~A., {Nicholls}, D.~C., {Sutherland }, R.~S., {Kewley}, L.~J., \&
+  {Groves}, B.~A. 2016, \apjl, 824, L13
+
+\end{thebibliography}

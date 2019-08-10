@@ -1,1 +1,9 @@
 data/orion-muse/*.fits
+*Notes.bib
+*.aux
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+/paper/auto/raman-pdr.el
+/paper/raman-pdr.out

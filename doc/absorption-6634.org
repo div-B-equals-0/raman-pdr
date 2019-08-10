@@ -21,6 +21,61 @@
         - These are transitions from the J=1 level, which is 0.019622 eV above the ground (J=2) level, but it should be populated according to statistical weight so long as T > 0.019622 eV/k = 228 K
         - There is also a 1028.15710 component from the J=0 level, which should give a line at 6562.79 + (1028.15710 - 1025.72) 40.96 = 6662.613616
         - /Which is what I thought was Si III 6662.90 !!!/
+        - All lines of multiplet
+          #+begin_example
+            -LAB-WAVL-ANG-VAC-|-DLAM--|SPC-|TT|----------CONFIGURATION----------|-TERM--|J_i-J_k|--A_ki--|-TPF-|--LEVEL-ENERGY--EV--|-REF---|
+               1025.76161      9.4E-05  O I E1          2s2.2p4-2s2.2p3.(4So).3d  3P-3Do  2 - 3  7.40E+07    15 0.000000 - 12.087037 ASD
+               1025.76256      9.4E-05  O I E1          2s2.2p4-2s2.2p3.(4So).3d  3P-3Do  2 - 2  1.84E+07    15 0.000000 - 12.087026 ASD
+               1025.76330      9.4E-05  O I E1          2s2.2p4-2s2.2p3.(4So).3d  3P-3Do  2 - 1  2.05E+06    15 0.000000 - 12.087017 ASD
+               1027.43051      9.4E-05  O I E1          2s2.2p4-2s2.2p3.(4So).3d  3P-3Do  1 - 2  5.52E+07    15 0.019622 - 12.087026 ASD
+               1027.43125      9.4E-05  O I E1          2s2.2p4-2s2.2p3.(4So).3d  3P-3Do  1 - 1  3.06E+07    15 0.019622 - 12.087017 ASD
+               1028.15710      9.4E-05  O I E1          2s2.2p4-2s2.2p3.(4So).3d  3P-3Do  0 - 1  4.08E+07    15 0.028142 - 12.087017 ASD
+          #+end_example
+      - What is the observed width of the O I lines, and what do they correspond to in the FUV domain?
+        - FWHM is about 4.5 pix or 3.8 \AA, as opposed to 3 pix = 2.5 \AA for the emission lines
+          - FWZI is 9.5 as opposed to 6 pixels
+        - This is 174 km/s as opposed to 114 km/s, so this gives a instrument-corrected width of 130 km/s \to 20 km/s in FUV
+        - This is very broad and can't be thermal or even non-thermal kinematic
+        - Must be due to line-center \tau \gg 1, so could use a curve of growth on the EW
+        - Also, this means that residual emission at line center is giving us the line-center source function!
+  + Possible lines in blue wing:
+    + /I don't actually believe any of these/
+      + More plausible that they are gaps between emission lines
+    + 6494.75 \to 1025.72 + (6494.75 - 6562.79)/40.96 = 1024.06
+      + There is S I at 1023.91, which should give 6562.79 + (1023.91 - 1025.72) 40.96 = 6488.65
+        + But that is not close enough
+      + Si II at 1020.6989 and 1023.7001
+        + 6357.13, 6480.05
+        + The 6480.05 line /might/ be detected, but the absorption looks to be centered on 6481.15, which would be 0.01 \AA redder in FUV, whereas claimed wavelength accuracy is 0.0007 \AA
+      + Fe II] intercombination line at 1024.14514 (no A-value given) \to 6498.3 \AA
+        + Does correspond to a weak but consistent dip
+        + Although we can't rule out weak optical emission lines
+    + If the dips are just gaps between emission lines, then the lines are
+      + 6521.1 weak/broad
+      + 6516 very weak
+      + 6510.9 mainly ionized (maybe O II)
+      + 6505.8 also mainly ionized
+      + 6501.55 (maybe O II)
+      + 6498.15 SKY definitely
+      + 6470.1 SKY
+      + 6465 SKY - not to be confused with strong 6462 C II
+  + One more in the red wing
+    + 6708.5 \to 1025.72 + (6708.5 - 6562.79)/40.96 = 1029.28 \AA
+    + Strong in Orion S on side near Trapezium
+    + Weak in Bar region
+    + Could be Cl I 1029.34325
+    + But this should also give 1028.17391 \to 6663.3 \AA, which is almost on top of the red component of the O I multiplet so would be hidden
+    + Variation with position might be due to Cl II being dominant in Bar (density effect on Cl^+/Cl^0 ratio)
+  + The near wings - are they real?
+    + I am not sure
+    + There is a flat bit in the spectrum from 6569 \to 6574
+      + \Delta\lambda = +6 \to +11 \AA or V = +275 \to +500 km/s
+    + And again from 6554 \to 6557
+      + \Delta\lambda = -9 \to -6 or V = -275 \to -410 km/s
+    + There seems to be a slight change with position, at the Bar at least
+      + Smaller \Delta\lambda comes from more ionized regions
+      + This is what we expect because the larger cross section closer to line center implies \tau = 1 comes from a smaller column
+      + \Delta\lambda = 10 \AA @ H\alpha means 
   + There is O VI doublet at 1037.62, 1031.93 but this is a very strong P Cygni profile that absorbs everything up to and past the Ly \beta line
     + See Fig 23 of Leitherer:2010a, which shows population synthesis spectra
     + There is a lot of H_2 (and C II, O I) absorption between 1035 \to 1040, which makes this hard to see on the observed FUSE spectra, see Fig 20 of Pellerin:2002a
@@ -28,9 +83,59 @@
       + [ ] *run Cloudy model* to see if we can get predicted spectrum in PDR
         - See what we have got from the [[file:~/Dropbox/cloudy-dust-charging/cloudy-dust-charging.org][cloudy-dust-charging]] project
     + This is mentioned in Luridiana:2009a
+    + But note that the difference between O VI and Ly\beta is 1031.93 - 1025.72 = 6.21 \AA, which corresponds to 1800 km/s, whereas velocity of thC wind is only 1200 km/s
+      + So it doesn't get all the way to H\beta - the blue edge will be at 1031.93 (1 - 1200/3e5) = 1027.8 \AA
+      + In the H\alpha domain this is 6562.79 + (1027.8 - 1025.72) 40.96 = 6648 \AA
 + Look at variation of the raman wings, and correlations with 6634 absorption
 + Given that Dopita has narrower line than us, it might absorb more than just the Raman pseudo-continuum
 
+
+
+*** Look at the spectrum from existing Cloudy models
+#+name: make-sed
+#+header: :var PREFIX="dustrad-n00-MS40"
+#+BEGIN_SRC python :return pltfile :results file
+  import sys
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+  from astropy.table import Table
+  from astropy import units as u
+  from astropy.constants import k_B
+  CLOUDYDIR = "/Users/will/Dropbox/cloudy-dust-charging"
+  sys.path.append(CLOUDYDIR) 
+  from cloudytab import CloudyModel
+
+  pltfile = f'cloudy-fuv-spectrum-{PREFIX}.pdf'
+  m = CloudyModel(f'{CLOUDYDIR}/models/{PREFIX}')
+
+  fig, ax = plt.subplots()
+
+  nu = m.data['cont']['Cont  nu']
+  wav = 912.0/nu
+  nuFnu_inc = m.data['cont']['incident'] / wav 
+  nuFnu_trans = m.data['cont']['trans'] / wav
+  nuFnu_tot = m.data['cont']['total'] / wav
+  vmax = nuFnu_inc.max()
+  ax.plot(wav, nuFnu_inc)
+  ax.plot(wav, nuFnu_tot, lw=0.6)
+  ax.plot(wav, nuFnu_trans, lw=0.3)
+
+  ax.set(
+      xlim=[900.0, 1300.0],
+      ylim=[1e-6*vmax, 2.*vmax],
+      yscale='log',
+      xscale='log',
+      xlabel='Wavelength, Angstrom',
+      ylabel=r'$F_{\lambda}$',
+  )
+
+  fig.savefig(pltfile)
+
+#+END_SRC
+
+#+RESULTS: make-sed
+[[file:]]
 
 
 *** Correlation between 6634 and Raman wings for Orion
@@ -111,6 +216,36 @@
       outfile = infile.replace(".fits", f"-{suffix}.fits")
       fits.PrimaryHDU(header=hdu.header, data=cube).writeto(
           f"{outdir}/{outfile}", overwrite=True)
+#+end_src
+
+#+RESULTS:
+: None
+**** Plot (\Delta\lambda)^2 F_\lambda
++ This should give a flat spectrum for Lorentzian wings
++ Should be able to spot any red-blue asymmetries better
++ And also see where the [N II] lines start to become important
++ For central wavelength, we can use the cluster velocity of 25 km/s heliocentric
+  + Wave pixels are 0.85 \AA = 39 km/s @ H\alpha
+  + The heliocentric correction is -16.2 km/s, but do we add or subtract?
+
+#+begin_src python
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  datadir = "../data/orion-muse"
+  infile = "muse-hr-data-wavsec3-rebin16x16-cont-sub.fits"
+  hdu = fits.open(f"{datadir}/{infile}")["DATA"]
+
+
+  wcs = WCS(hdu.header)
+
+  nwav, ny, nx = hdu.data.shape
+  wavpix = np.arange(nwav)
+  _, _, waves = wcs.pixel_to_world_values([0]*nwav, [0]*nwav, wavpix)
+  dlam = 1e10*waves - 6562.79*(1 + (25.0 - 16.2)/3e5)
+  hdu.data *= dlam[:, None, None]**2
+  outfile = infile.replace(".fits", "-Flam-dlam2.fits")
+  hdu.writeto(f"{datadir}/{outfile}", overwrite=True)
 #+end_src
 
 #+RESULTS:
@@ -313,8 +448,26 @@
 + Velocity-scale factor between Ly\beta and H\alpha is \lambda_1 / \lambda_0 = (1 - 1/9) / (1/4 - 1/9) = 6.4
 + Wavelength-scale factor is 40.96 
 *** Column densities
-+ Lee:2009a say that Raman optical depth 
++ Lee:2009a say that Raman optical depth
+*** Absorption profile of Ly\beta
++ \lambda_0 = 1025.7222 \AA \pm 0.0005 according to Atomic Line List
+  + Rest frequency = c/\lambda_0 = 2.92274514484e15 Hz
+  + Fine structure has 2 components, both 3p \to 1s
+    + 1025.721824823 2P3/2 \to 2S1/2
+    + 1025.722965425 2P1/2 \to 2S1/2
+    + Difference = 1.140602e-3 \AA = 0.33 km/s, so negligible
++ Natural width \Gamma
+  + A_3\to1 = 5.58E+07 Hz
+  + But also need to include H\alpha with A = 4.41E+07 Hz
+  + So \Gamma = 1e8 Hz almost exactly
+  + So c \Gamma/\nu_0 = \lambda_0 \Gamma = 0.01 km/s, so also negligible even when converted to H\alpha domain
+  + Width at H\alpha is 0.64 km/s = 0.014 \AA
+  + If Doppler width is 10 km/s,
+    + then a = \Gamma / 4\pi \Delta\nu_D 
+    + where \Delta\nu_D = v \nu_0/c = 9.75e10 Hz
+    + a = 8e-5
 *** Red-blue asymmetry in wings
++ Variation of Balmer conversion ratio
 *** Excitation from continuum versus lines
 + O VI 1032,38 \to 6827,7088 in symbiotic stars
 + 
