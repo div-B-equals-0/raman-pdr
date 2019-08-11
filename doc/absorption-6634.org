@@ -251,6 +251,9 @@
 + [Ni III] 6533
 **** Remove continuum from cube
 
+#+name: subtract-cont
+#+header: :var DATADIR="/Users/will/Dropbox/OrionMuse/BigFiles"
+#+header: :var INFILE="muse-hr-data-wavsec3-rebin16x16.fits"
 #+begin_src python
   import numpy as np
   from astropy.io import fits
@@ -258,11 +261,9 @@
   from numpy.polynomial import Chebyshev as T
   import itertools
 
-  datadir = "/Users/will/Dropbox/OrionMuse/BigFiles"
   outdir = "../data/orion-muse"
 
-  infile = "muse-hr-data-wavsec3-rebin16x16.fits"
-  hdu = fits.open(f"{datadir}/{infile}")["DATA"]
+  hdu = fits.open(f"{DATADIR}/{INFILE}")["DATA"]
 
   nwav, ny, nx = hdu.data.shape
   wavpix = np.arange(nwav)
@@ -290,13 +291,21 @@
           ["cont-sub", hdu.data - bgdata],
           ["cont-div", hdu.data/bgdata],
   ]:
-      outfile = infile.replace(".fits", f"-{suffix}.fits")
+      outfile = INFILE.replace(".fits", f"-{suffix}.fits")
       fits.PrimaryHDU(header=hdu.header, data=cube).writeto(
           f"{outdir}/{outfile}", overwrite=True)
 #+end_src
 
+#+RESULTS: subtract-cont
+: None
+
+Now do same for 5x5 cube
+
+#+call: subtract-cont(DATADIR="/Users/will/Dropbox/OrionMuse", INFILE="muse-hr-data-wavsec3-rebin05x05.fits")
+
 #+RESULTS:
 : None
+
 **** Make a cube of (\Delta\lambda)^2 F_\lambda
 + This should give a flat spectrum for Lorentzian wings
 + Should be able to spot any red-blue asymmetries better
@@ -330,12 +339,15 @@
 **** Make maps of the different Raman bands
 + This is an intermediate step to doing proper multi-line fitting
 + Bands are defined in [[id:B644E1CC-212F-4A30-9924-04DB7BAADF00][Column densities]]
+
+#+name: extract-raman-bands
+#+header: :var REBIN="rebin16x16"
 #+begin_src python
   import numpy as np
   from astropy.io import fits
   from astropy.wcs import WCS
   datadir = "../data/orion-muse"
-  infile = "muse-hr-data-wavsec3-rebin16x16-cont-sub.fits"
+  infile = f"muse-hr-data-wavsec3-{REBIN}-cont-sub.fits"
   hdu = fits.open(f"{datadir}/{infile}")["DATA"]
 
   bands = {
@@ -366,6 +378,13 @@
       fits.PrimaryHDU(data=image, header=imhdr).writeto(
           f"{datadir}/{outfile}", overwrite=True)
 #+end_src
+
+#+RESULTS: extract-raman-bands
+: None
+
+And extract the bands for the 5x5 cube
+
+#+call: extract-raman-bands("rebin05x05")
 
 #+RESULTS:
 : None
