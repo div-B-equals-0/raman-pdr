@@ -92,7 +92,7 @@
 
 
 *** Look at the spectrum from existing Cloudy models
-#+name: make-sed
+#+name: make-cloudy-fuv-spectrum
 #+header: :var PREFIX="dustrad-n00-MS40"
 #+BEGIN_SRC python :return pltfile :results file
   import sys
@@ -113,19 +113,17 @@
 
   nu = m.data['cont']['Cont  nu']
   wav = 912.0/nu
-  nuFnu_inc = m.data['cont']['incident'] / wav 
-  nuFnu_trans = m.data['cont']['trans'] / wav
-  nuFnu_tot = m.data['cont']['total'] / wav
+  nuFnu_inc = m.data['cont']['incident'] / wav  # Col 2
+  nuFnu_trans = m.data['cont']['trans'] / wav   # Col 3
+  nuFnu_tot = m.data['cont']['total'] / wav     # Col 7
   vmax = nuFnu_inc.max()
   ax.plot(wav, nuFnu_inc)
   ax.plot(wav, nuFnu_tot, lw=0.6)
   ax.plot(wav, nuFnu_trans, lw=0.3)
 
   ax.set(
-      xlim=[900.0, 1300.0],
-      ylim=[1e-6*vmax, 2.*vmax],
-      yscale='log',
-      xscale='log',
+      xlim=[800.0, 1500.0],
+      ylim=[0, 1.3*vmax],
       xlabel='Wavelength, Angstrom',
       ylabel=r'$F_{\lambda}$',
   )
@@ -135,7 +133,86 @@
 #+END_SRC
 
 #+RESULTS: make-sed
-[[file:]]
+[[file:cloudy-fuv-spectrum-dustrad-n00-MS40.pdf]]
+
+**** Conclusions based on Cloudy model spectra
++ The ~dustrad~ models all stop at 4000 K, so just on neutral side of i-front
++ There are a variety of column densities, depending on the ionization parameter (proportional to (Q n)^{1/3})
++ Lines are not properly resolved in the output - look like triangles
++ Ly\alpha is seen in emission in the ~total~ spectrum, which is transmitted plus reflected
++ Ly\beta is in absorption in all spectra
+  + Absorption depth seems slightly less in transmitted and total spectra
+  + 1025.72 \AA = 0.889 Ryd
+  + The reddest O I component is at 1028.16 = 0.887 Ryd
+  + The Cloudy continuum mesh points are at [..., 0.8850, 0.8880, 0.8909, ...]
+    + [..., 1024, 1027, 1030, ...] in \AA
+  + This corresponds to resolving power R = 1025/(2 3) = 171 so clearly insufficient to see details in spectrum
+  + We need to use the ~Save fine continuum [range, merge]~ command to see it better
+    + Fine continuum has R = 1.737e+05, or 1.7 km/s, which would be 10.9 km/s at H\alpha, which is plenty fine enough
++ Continuum across Ly\beta rises to red, but only 10% in 50\AA
++ Stellar emission line at about 1045 \AA = 0.87 Ryd
++ Important caveat from Hazy
+  : In general the treatment of scattering is very geometry dependent. The output produced by the save continuum commands does not include the pumped part of the line contribution. This is correct if the continuum source is included in the beam, but is not if only the gas is observed.
+  + This is because absorption and emission cancel out when integrated over the line profile
+  + So I think it is OK in our case, since the spectrum as seen by the neutral gas /does/ include the transmitted stellar continuum
++ 
+
+
+**** TODO [#A] Run more cloudy models
++ Save fine continuum (see above)
++ Stop at various depths
++ Dig out atmosphere models for Trapezium
+**** Further spectra for different models
+#+call: make-cloudy-fuv-spectrum("dustrad-n02-MS40")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-dustrad-n02-MS40.pdf]]
+
+#+call: make-cloudy-fuv-spectrum("dustrad-n03-MS40")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-dustrad-n03-MS40.pdf]]
+
+#+call: make-cloudy-fuv-spectrum("dustrad-n04-MS40")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-dustrad-n04-MS40.pdf]]
+
+
+#+call: make-cloudy-fuv-spectrum("dustrad-n02-MS20")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-dustrad-n02-MS20.pdf]]
+
+#+call: make-cloudy-fuv-spectrum("dustrad-n04-MS20")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-dustrad-n04-MS20.pdf]]
+
+#+call: make-cloudy-fuv-spectrum("dustrad-n02-MS10")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-dustrad-n02-MS10.pdf]]
+
+#+call: make-cloudy-fuv-spectrum("dustrad-n04-MS10")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-dustrad-n04-MS10.pdf]]
+
+#+call: make-cloudy-fuv-spectrum("dustrad-n04-BSG")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-dustrad-n04-BSG.pdf]]
+
+#+call: make-cloudy-fuv-spectrum("shell-R001-n27-LP_Ori20Bz5")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-shell-R001-n27-LP_Ori20Bz5.pdf]]
+
+#+call: make-cloudy-fuv-spectrum("shell-R003-n47-th1D-L25-triple-AV5")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-shell-R003-n47-th1D-L25-triple-AV5.pdf]]
 
 
 *** Correlation between 6634 and Raman wings for Orion
@@ -220,7 +297,7 @@
 
 #+RESULTS:
 : None
-**** Plot (\Delta\lambda)^2 F_\lambda
+**** Make a cube of (\Delta\lambda)^2 F_\lambda
 + This should give a flat spectrum for Lorentzian wings
 + Should be able to spot any red-blue asymmetries better
 + And also see where the [N II] lines start to become important
@@ -246,6 +323,48 @@
   hdu.data *= dlam[:, None, None]**2
   outfile = infile.replace(".fits", "-Flam-dlam2.fits")
   hdu.writeto(f"{datadir}/{outfile}", overwrite=True)
+#+end_src
+
+#+RESULTS:
+: None
+**** Make maps of the different Raman bands
++ This is an intermediate step to doing proper multi-line fitting
++ Bands are defined in [[id:B644E1CC-212F-4A30-9924-04DB7BAADF00][Column densities]]
+#+begin_src python
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  datadir = "../data/orion-muse"
+  infile = "muse-hr-data-wavsec3-rebin16x16-cont-sub.fits"
+  hdu = fits.open(f"{datadir}/{infile}")["DATA"]
+
+  bands = {
+      "R007": [6568.7, 6571.25],
+      "R011": [6572.1, 6574.65],
+      "R040": [6594.2, 6611.2],
+      "R057": [6612.05, 6628.2],
+      "R087": [6638.4, 6660.5],
+      "R136": [6688.55, 6708.95],
+      "B006": [6555.95, 6557.65],
+      "B009": [6552.55, 6555.1],
+      "B033": [6518.55, 6540.65],
+      "B054": [6499.85, 6517.7],
+      "B080": [6469.25, 6496.45],
+  }
+
+  wcs = WCS(hdu.header)
+  imhdr = wcs.celestial.to_header()
+
+  nwav, ny, nx = hdu.data.shape
+  wavpix = np.arange(nwav)
+
+  for band, waves in bands.items():
+      waves = np.array(waves)/1e10
+      [i1, i2], _, _ = wcs.world_to_array_index_values([0, 0], [0, 0], waves)
+      image = hdu.data[i1:i2+1, :, :].mean(axis=0)
+      outfile = infile.replace("wavsec3", f"ha-raman-{band}")
+      fits.PrimaryHDU(data=image, header=imhdr).writeto(
+          f"{datadir}/{outfile}", overwrite=True)
 #+end_src
 
 #+RESULTS:
@@ -448,7 +567,38 @@
 + Velocity-scale factor between Ly\beta and H\alpha is \lambda_1 / \lambda_0 = (1 - 1/9) / (1/4 - 1/9) = 6.4
 + Wavelength-scale factor is 40.96 
 *** Column densities
-+ Lee:2009a say that Raman optical depth
+:PROPERTIES:
+:ID:       B644E1CC-212F-4A30-9924-04DB7BAADF00
+:END:
++ Lee:2009a say that Raman optical depth /is what?/
++ Nussbaumer:1989a have cross sections
+  + \sigma = 2e-25 at 1000 \AA and at 1050 \AA, so d\lambda_0 = 25 \AA
+  + So at d\lambda_0 = 1 \AA, \sigma = 1.25e-22
+  + d\lambda_1 = 40.96 d\lambda_0 => \sigma = 1.25e-22 40.96**2 = 2.1e-19 at d\lambda_1 = 1 \AA
+  + Clean regions
+    - R007 \Delta\lambda_1 = +(6 \to 8) : \lambda_1 = [6568.7, 6571.25]
+    - R011 \Delta\lambda_1 = +(9 \to 12) : \lambda_1 = [6572.1, 6574.65]
+    - R040 \Delta\lambda_1 = +(31 \to 48) : \lambda_1 = [6594.2, 6611.2]
+    - R057 \Delta\lambda_1 = +(49 \to 65) : \lambda_1 = [6612.05, 6628.2]
+    - R087 \Delta\lambda_1 = +(76 \to 98) : \lambda_1 = [6638.4, 6660.5]
+    - B006 \Delta\lambda_1 = -(5 \to 7) : \lambda_1 = [6555.95, 6557.65]
+    - B009 \Delta\lambda_1 = -(8 \to 10) : \lambda_1 = [6552.55, 6555.1]
+  + Regions that need lines removing
+    - R136 \Delta\lambda_1 = +(126 \to 146) : \lambda_1 = [6688.55, 6708.95]
+      - Moderate contamination
+    - B033 \Delta\lambda_1 = -(22 \to 44) : \lambda_1 = [6518.55, 6540.65]
+      - Light contamination
+    - B054 \Delta\lambda_1 = -(45 \to 63) : \lambda_1 = [6499.85, 6517.7]
+      - Light contamination
+    - B080 \Delta\lambda_1 = -(66 \to 94) : \lambda_1 = [6469.25, 6496.45]
+      - Heavy contamination
+  + Mapping variations in \sigma onto typical column densities (assume \tau=1)
+    + 10 \AA => \sigma = 2.1e-21 cm^2 => N(H_0) = 5e20 /cm^2
+      + Can't really say much about A_V here since dust will be in ionized gas too
+    + 100 \AA => \sigma = 2.1e-23 cm^2 => N(H_0) = 5e22 /cm^2
+      + => A_V = 24 if \sigma_d = 5e-22 cm^2/H but could be less if dust-gas ratio is low
+    + But the total H_0 column a PDR will be limited since the H turns molecular eventually
+
 *** Absorption profile of Ly\beta
 + \lambda_0 = 1025.7222 \AA \pm 0.0005 according to Atomic Line List
   + Rest frequency = c/\lambda_0 = 2.92274514484e15 Hz
