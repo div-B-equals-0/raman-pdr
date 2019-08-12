@@ -1,0 +1,11 @@
+Nightlog information for file HAWKI.2008-11-09T06:45:51.899
+OB grade: X)Uncertain/Not Applicable
+Comment: 
+
+                  Requested    Fulfilled?
+Seeing:           2.00          N/A
+Airmass:          5.00          N/A
+Moon Distance:    30          N/A
+Sky Transparency: 1PHO          N/A
+Strehl Ratio:     0.000          N/A
+

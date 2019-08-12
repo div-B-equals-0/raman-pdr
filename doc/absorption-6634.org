@@ -314,12 +314,14 @@ Now do same for 5x5 cube
   + Wave pixels are 0.85 \AA = 39 km/s @ H\alpha
   + The heliocentric correction is -16.2 km/s, but do we add or subtract?
 
+#+name: dlam2-cube
+#+header: :var REBIN="rebin16x16"
 #+begin_src python
   import numpy as np
   from astropy.io import fits
   from astropy.wcs import WCS
   datadir = "../data/orion-muse"
-  infile = "muse-hr-data-wavsec3-rebin16x16-cont-sub.fits"
+  infile = f"muse-hr-data-wavsec3-{REBIN}-cont-sub.fits"
   hdu = fits.open(f"{datadir}/{infile}")["DATA"]
 
 
@@ -336,6 +338,80 @@ Now do same for 5x5 cube
 
 #+RESULTS:
 : None
+
+#+call: dlam2-cube("rebin05x05")
+
+#+RESULTS:
+: None
+
+**** Calculate EW of 6634
+#+name: ew-6634
+#+header: :var REBIN="rebin16x16"
+#+begin_src python
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from numpy.polynomial import Chebyshev as T
+  import itertools
+  datadir = "../data/orion-muse"
+  infile = f"muse-hr-data-wavsec3-{REBIN}-cont-sub-Flam-dlam2.fits"
+  hdu = fits.open(f"{datadir}/{infile}")["DATA"]
+
+
+  wcs = WCS(hdu.header)
+  ANGSTROM = 1e-10                # convert to SI lengths for WCS
+  nwav, ny, nx = hdu.data.shape
+  _, _, waves = wcs.pixel_to_world_values([0]*nwav, [0]*nwav, np.arange(nwav))
+  contwavs = np.array([6594.2, 6660.5])*ANGSTROM
+  linewavs = np.array([6628.2, 6638.4])*ANGSTROM
+  [ic1, ic2], _, _ = wcs.world_to_array_index_values([0, 0], [0, 0], contwavs)
+  [il1, il2], _, _ = wcs.world_to_array_index_values([0, 0], [0, 0], linewavs)
+
+  # slices for blue and red continuum sections 
+  bslice = slice(ic1, il1)
+  rslice = slice(il2, ic2)
+  # slices for line section and full section
+  lslice = slice(il1, il2)
+  fslice = slice(ic1, ic2)
+
+  # Wavelength arrays for continuum, line, and full
+  cwaves = np.concatenate([waves[bslice], waves[rslice]])
+  lwaves = waves[lslice]
+  fwaves = waves[fslice]
+
+  # Corresponding intensity cubes
+  cdata = np.concatenate([hdu.data[bslice, :, :], hdu.data[rslice, :, :]], axis=0)
+  ldata = hdu.data[lslice, :, :]
+  fdata = hdu.data[fslice, :, :]
+  # Cube to put rectified spectrum
+  rdata = np.empty_like(fdata)
+
+  for j, i in itertools.product(range(ny), range(nx)):
+      # Fit polynomial to continuum
+      p = T.fit(cwaves, cdata[:, j, i], deg=2)
+      # Divide full section by fit to give rectified spectrum of residual intensity
+      rdata[:, j, i] = fdata[:, j, i] / p(fwaves)
+
+  # Absorption depth is 1 - residual intensity
+  adata = 1.0 - rdata
+  # Adjust line slice for the new wavelength window (fwaves)
+  lslice = slice(il1-ic1, il2-ic1)
+  # integrate absorption depth over line wavelengths to get equivalent width
+  ewmap = np.trapz(adata[lslice, :, :], x=fwaves[lslice], axis=0)/ANGSTROM
+
+  outfile = f"muse-ew6634-{REBIN}.fits"
+  fits.PrimaryHDU(header=wcs.celestial.to_header(), data=ewmap).writeto(
+      f"{datadir}/{outfile}", overwrite=True)
+#+end_src
+
+#+RESULTS: ew-6634
+: None
+
+#+call: ew-6634("rebin05x05")
+
+#+RESULTS:
+: None
+
 **** Make maps of the different Raman bands
 + This is an intermediate step to doing proper multi-line fitting
 + Bands are defined in [[id:B644E1CC-212F-4A30-9924-04DB7BAADF00][Column densities]]
@@ -411,6 +487,10 @@ And extract the bands for the 5x5 cube
 ** Relation with foreground extinction
 + Show that the 6634 feature is not correlated with reddening
 + But the other DIB features are - maybe
+*** TODO [#A] Extinction at the Bright Bar
++ Compare 6563/4681 with 7136/7751 and 9229/6563
++ Strange dip in Raman brightness at the bar
+  + Is this caused by dust in ionized gas (will cause big drop in source function)
 *** Correlation between the different reddening measures 
 *** Correlation between reddening and DIB
 ** Stellar absorption lines
@@ -571,7 +651,7 @@ And extract the bands for the 5x5 cube
      The nearly constant positions and nearly unchanged profiles of DIBs, irrespective of the line of sight, point to free gas-phase molecules as the carriers of these bands. [...] 
      #+end_quote
 * Antecedents for Raman scattering
-** Theory
+** Raman scatterin theory
 + Hubeny & Mihalas book
 + 
 *** Wavelength mapping between Ly\beta and H\alpha domain
@@ -617,6 +697,7 @@ And extract the bands for the 5x5 cube
     + 100 \AA => \sigma = 2.1e-23 cm^2 => N(H_0) = 5e22 /cm^2
       + => A_V = 24 if \sigma_d = 5e-22 cm^2/H but could be less if dust-gas ratio is low
     + But the total H_0 column a PDR will be limited since the H turns molecular eventually
+**** Transition from optically thick to thin
 
 *** Absorption profile of Ly\beta
 + \lambda_0 = 1025.7222 \AA \pm 0.0005 according to Atomic Line List
