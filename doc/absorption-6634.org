@@ -21,6 +21,9 @@
         - These are transitions from the J=1 level, which is 0.019622 eV above the ground (J=2) level, but it should be populated according to statistical weight so long as T > 0.019622 eV/k = 228 K
         - There is also a 1028.15710 component from the J=0 level, which should give a line at 6562.79 + (1028.15710 - 1025.72) 40.96 = 6662.613616
         - /Which is what I thought was Si III 6662.90 !!!/
+        - Velocities in Ly\beta domain are +500 and +712 km/s 
+          - And the J_1=2 triplet is [+12.2, +12.4, +12.7] km/s
+          - Or around +80 km/s
         - All lines of multiplet
           #+begin_example
             -LAB-WAVL-ANG-VAC-|-DLAM--|SPC-|TT|----------CONFIGURATION----------|-TERM--|J_i-J_k|--A_ki--|-TPF-|--LEVEL-ENERGY--EV--|-REF---|
@@ -484,6 +487,8 @@ And extract the bands for the 5x5 cube
   + Those two lines are clearly seen in Dopita spectra
   + And in MUSE spectra too
 + [ ] 6544.3 seen in SPM spectra - what is it?
+** The [C I] line
+T
 ** Relation with foreground extinction
 + Show that the 6634 feature is not correlated with reddening
 + But the other DIB features are - maybe
@@ -622,6 +627,11 @@ And extract the bands for the 5x5 cube
     - I might have got my wavelength wrong before - was using 6278 which is way off
     - Confusion with sky absorption
 
+* Characteristics of Orion PDRs
++ Bright Bar
+  + Edge on
++ Orion S
+
 * Absorption line profile
 + Can we get a good handle on how broad it is
 + Make a mask that includes the best points (do this for each object)
@@ -651,7 +661,7 @@ And extract the bands for the 5x5 cube
      The nearly constant positions and nearly unchanged profiles of DIBs, irrespective of the line of sight, point to free gas-phase molecules as the carriers of these bands. [...] 
      #+end_quote
 * Antecedents for Raman scattering
-** Raman scatterin theory
+** Raman scattering theory
 + Hubeny & Mihalas book
 + 
 *** Wavelength mapping between Ly\beta and H\alpha domain
@@ -697,6 +707,17 @@ And extract the bands for the 5x5 cube
     + 100 \AA => \sigma = 2.1e-23 cm^2 => N(H_0) = 5e22 /cm^2
       + => A_V = 24 if \sigma_d = 5e-22 cm^2/H but could be less if dust-gas ratio is low
     + But the total H_0 column a PDR will be limited since the H turns molecular eventually
+  + /Most recent Raman cross sections/
+    + Chang:2015a
+    + Define \Delta V_1 as velocity scale around Ly\beta (and \Delta V_2 around Ly\gamma)
+    + Total cross section = 1e-22 @ \Delta V_1 = [-1264, +930] km/s
+      + Wavs at Ha are 6563 (1 + 6.4 [-1264, +930]/3e5) = [6386, 6693]
+        + \Delta\lambda = [-177, +130] \AA
+      + More values in Tab 2, but they don't go to higher cross sections (smaller columns)
+    + H\alpha branching ratio is 0.2 \to 0.3 in this range
+    + 1027.43 \AA (6634 \AA) corresponds to V_1 = +500 km/s, so \sigma = 3.4596e-22 cm^2
+  + Dust extinction should be an important limiting factor
+    + Source function, S = j/k 
 **** Transition from optically thick to thin
 
 *** Absorption profile of Ly\beta

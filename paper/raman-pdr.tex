@@ -1,44 +1,88 @@
 \RequirePackage{amsmath}
-\documentclass[iop, apj]{emulateapj}
-\usepackage[varg]{newtxmath}
-\usepackage{newtxtext}
+\documentclass[twocolumn, times]{aastex63}
 \usepackage[spanish,es-minimal,english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{natbib}
-\usepackage{microtype}
+%\usepackage{microtype}
 \usepackage{hyperref}
+\usepackage{savesym}
+\savesymbol{tablenum}
 \usepackage{siunitx}
-\bibliographystyle{apj}
+\restoresymbol{SIX}{tablenum}
+\usepackage[varg]{newtxmath}
+\usepackage{newtxtext}
+
+
+
+\bibliographystyle{aasjournal}
+
+\newcommand\ION[2]{#1\,\scalebox{0.9}[0.8]{\uppercase{#2}}}
+\newcounter{ionstage}
+\renewcommand{\ion}[2]{\setcounter{ionstage}{#2}% 
+  \ensuremath{\mathrm{#1\,\scriptstyle\Roman{ionstage}}}}
+\newcommand\hii{\ion{H}{2}}
+\newcommand\Raman{\ensuremath{_{\text{Raman}}}}
+\def\th#1#2{\(\theta^{#1}\)\,Ori~#2}
+
 
 \begin{document}
-\title{Raman mapping of PDRs}
+\title{Raman mapping of atomic hydrogen in the Orion Bar and Orion South}
+\shorttitle{Raman mapping of atomic hydrogen in Orion}
 \author{William J. Henney}
-\affil{%
+\affiliation{%
   \foreignlanguage{spanish}{Instituto de Radioastronomía y
     Astrofísica, Universidad Nacional Autónoma de México, Apartado
-    Postal 3-72, 58090 Morelia, Michaoacán, Mexico};
-  w.henney@crya.unam.mx}
+    Postal 3-72, 58090 Morelia, Michaoacán, Mexico}}
+\email{w.henney@irya.unam.mx}
 
 \begin{abstract}
   I show that the broad Raman-scattered wings of H\(\alpha\) can be used to
   map neutral gas illuminated by high-mass stars in star forming
   regions. The near wings (\(\Delta\lambda \approx \pm \SI{10}{\angstrom}\)) trace neutral columns Absorption features in the pseudo-continuum at 6634 and
   6663~\AA{} correspond to neutral oxygen far-ultraviolet absorption
-  lines at 1027.43 and 1028.16~\AA{}.
+  lines at \SIlist{1027.43;1028.16}{\angstrom}.
 \end{abstract}
 
+\keywords{Atomic physics; Radiative transfer; Photodissociation regions}
+\facilities{VLT:Yepun (MUSE); OANSPM:2.1m (Mezcal)}
+\object{M42}
 \section{Introduction}
 \label{sec:introduction}
 
 \citet{Dopita:2016a} were the first to identify Raman scattering in the Orion Nebula.
 
+\citet{Dopita:2016a} propose that the Raman wings form at the
+transition zone near the ionization fronts in \hii{} regions.
+However, the total neutral hydrogen column through the ionization
+front can be no more than about \(10 / \sigma_0\), where
+\(\sigma_0 \approx \SI{6.3e-18}{cm^2}\).  The Raman scattering cross section at
+wavelengths responsible for the observed wings is much lower than
+this: \(\sigma\Raman \sim \SI{1e-22}{cm^2}\) \citep{Chang:2015a}, meaning that
+the Raman scattering optical depth through the ionization front is
+only of order \(0.0001\).  A vastly larger column density of neutral
+hydrogen is available in the photodissociation region outside the
+ionization front, so it is more likely that Raman scattering will
+occur there instead, so long as there is sufficient far ultraviolet
+radiative flux in the vicinity of the Lyman~\(\beta\) line
+(\SI{1025}{\angstrom}).
+
 \section{Observations}
 \label{sec:observations}
+
+MUSE \citep{Bacon:2010a} observations of the Orion Nebula \citep{Weilbacher:2015a, Mc-Leod:2015b}.
 
 \section{Discussion}
 \label{sec:discussion}
 
-The effective resolving power of the optical spectrograph is multiplied by 6.4 for the FUV domain. 
+The effective resolving power of the optical spectrograph is multiplied by 6.4 for the FUV domain.
+
+The \ion{O}{1} lines should be in absorption in the spectrum seen by the Raman scatterers. 
+
+\citet{Salgado:2016a} had found low dust cross-section in Orion Bar
+PDR, but there are loopholes. First, they assume plane-parallel
+geometry with exactly edge-on viewing angle, while in reality it is a
+roughly cylindrical filament.  Second, they ignore scattering, see
+\citet{Watson:1998a}.
 
 \bibliography{BibdeskLibrary}
 

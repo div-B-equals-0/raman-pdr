@@ -1,9 +1,56 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\href{#1}{#1}}
+\providecommand{\dodoi}[1]{doi:~\href{http://doi.org/#1}{\nolinkurl{#1}}}
+\providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
+\providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
+
+\bibitem[{{Bacon} {et~al.}(2010){Bacon}, {Accardo}, {Adjali}, {Anwand},
+  {Bauer}, {Biswas}, {Blaizot}, {Boudon}, {Brau-Nogue}, {Brinchmann},
+  {Caillier}, {Capoani}, {Carollo}, {Contini}, {Couderc}, {Daguisé},
+  {Deiries}, {Delabre}, {Dreizler}, {Dubois}, {Dupieux}, {Dupuy}, {Emsellem},
+  {Fechner}, {Fleischmann}, {Fran{\c{c}}ois}, {Gallou}, {Gharsa}, {Glindemann},
+  {Gojak}, {Guiderdoni}, {Hansali}, {Hahn}, {Jarno}, {Kelz}, {Koehler},
+  {Kosmalski}, {Laurent}, {Le Floch}, {Lilly}, {Lizon}, {Loupias}, {Manescau},
+  {Monstein}, {Nicklas}, {Olaya}, {Pares}, {Pasquini}, {Pécontal-Rousset},
+  {Pelló}, {Petit}, {Popow}, {Reiss}, {Remillieux}, {Renault}, {Roth},
+  {Rupprecht}, {Serre}, {Schaye}, {Soucail}, {Steinmetz}, {Streicher}, {Stuik},
+  {Valentin}, {Vernet}, {Weilbacher}, {Wisotzki}, \& {Yerle}}]{Bacon:2010a}
+{Bacon}, R., {Accardo}, M., {Adjali}, L., {et~al.} 2010, in Society of
+  Photo-Optical Instrumentation Engineers (SPIE) Conference Series, Vol. 7735,
+  \procspie, 773508, \dodoi{10.1117/12.856027}
+
+\bibitem[{{Chang} {et~al.}(2015){Chang}, {Heo}, {Di Mille}, {Angeloni},
+  {Palma}, \& {Lee}}]{Chang:2015a}
+{Chang}, S.-J., {Heo}, J.-E., {Di Mille}, F., {et~al.} 2015, \apj, 814, 98,
+  \dodoi{10.1088/0004-637X/814/2/98}
 
 \bibitem[{{Dopita} {et~al.}(2016){Dopita}, {Nicholls}, {Sutherland }, {Kewley},
   \& {Groves}}]{Dopita:2016a}
 {Dopita}, M.~A., {Nicholls}, D.~C., {Sutherland }, R.~S., {Kewley}, L.~J., \&
-  {Groves}, B.~A. 2016, \apjl, 824, L13
+  {Groves}, B.~A. 2016, \apjl, 824, L13, \dodoi{10.3847/2041-8205/824/1/L13}
+
+\bibitem[{{Mc Leod} {et~al.}(2015){Mc Leod}, {Weilbacher}, {Ginsburg}, {Dale},
+  {Ramsay}, \& {Testi}}]{Mc-Leod:2015b}
+{Mc Leod}, A.~F., {Weilbacher}, P.~M., {Ginsburg}, A., {et~al.} 2015, ArXiv
+  e-prints.
+\newblock \doarXiv{1511.01914}
+
+\bibitem[{{Salgado} {et~al.}(2016){Salgado}, {Berné}, {Adams}, {Herter},
+  {Keller}, \& {Tielens}}]{Salgado:2016a}
+{Salgado}, F., {Berné}, O., {Adams}, J.~D., {et~al.} 2016, \apj, 830, 118,
+  \dodoi{10.3847/0004-637X/830/2/118}
+
+\bibitem[{{Watson} {et~al.}(1998){Watson}, {Henney}, \&
+  {Escalante}}]{Watson:1998a}
+{Watson}, A.~M., {Henney}, W.~J., \& {Escalante}, V. 1998, in American
+  Astronomical Society Meeting Abstracts, Vol. 193, 16.03
+
+\bibitem[{{Weilbacher} {et~al.}(2015){Weilbacher}, {Monreal-Ibero},
+  {Kollatschny}, {Ginsburg}, {McLeod}, {Kamann}, {Sandin}, {Palsa}, {Wisotzki},
+  {Bacon}, {Selman}, {Brinchmann}, {Caruana}, {Kelz}, {Martinsson},
+  {Pécontal-Rousset}, {Richard}, \& {Wendt}}]{Weilbacher:2015a}
+{Weilbacher}, P.~M., {Monreal-Ibero}, A., {Kollatschny}, W., {et~al.} 2015,
+  \aap, 582, A114, \dodoi{10.1051/0004-6361/201526529}
 
 \end{thebibliography}
