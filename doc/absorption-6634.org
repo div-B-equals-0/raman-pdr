@@ -512,8 +512,27 @@ T
   + 6496 - shows up nearly everywhere
     + Accompanied by weaker lines: 6483, 6463, 6451, 6440, 6421, 6402, etc
 ** Look at other Orion datasets
-+ Keck proplyd spectra
++ [ ] Keck proplyd spectra
   + Unfortunately, we have an inter-order gap from 6622 \to 6649 \AA, which our line falls right in the middle of
+  + /However/ the 6662.6 absorption line should be visible
+    + Maybe see it on the following spectra
+      + In Keck2, jw73b, j71b, j70b, j69b, j68b, j67b, j66b, j65b - last is best
+        + C3 slit, which is 28 x 0.861 arcsec with R = 50,000
+        + Also p79-ff, which is in Keck1 (C2 slit)
+        + j65 and p79 are both from similar pointings called 150-353
+        + This is the base of the HH 529 jet
+      + Distance between 6666.8 and 6678.15 is
+        + 607 - 387 = 220 pix
+        + 6678.15 - 6666.8 = 11.35 \AA
+        + 0.0516 \AA per pix (= 2.32 km/s, sounds right)
+      + Absorption feature ranges between [308, 324], so [-79, -63] pix from 6666.8
+        + 6666.8 + [-79, -63] 0.0516 = [6662.7236, 6663.5492]
+        + We wanted 6662.6, so it is a bit to red
+        + Width is 0.8256 \AA = 37 km/s => 5.8 km/s
+        + If line center is 6663.1364, then redshifted by 0.5 \AA = 3.5 km/s with respect to [Ni II]
+          + That is, assuming that [Ni II] rest wavelength is accurate
+          + This might be showing velocity shifts between ionization front and PDR
+          + Including maybe back scattering, which gives double relative redshift
 + [X] Adal spectra
   + /Resolution in red is not as good as I thought/
     + Pixels are 0.83 \AA = 40 km/s at H\alpha, and resolution should be at best 2x this, so 80 km/s or R = 4000
