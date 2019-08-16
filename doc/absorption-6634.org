@@ -1,6 +1,22 @@
 * Absorption at 6634 \AA in Orion Nebula
 + [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
 
+** Things still to do for paper
+1. [ ] Finish theory of radiative transfer
+   - Calculate expected brightness
+   - Why is it so much higher in Orion S
+   - Also, compare O^0 absorption with H^0 Raman absorption 
+2. [ ] Analysis of absorption line profile
+   - How much can be done from MUSE data
+   - Sort out the Keck lines
+     - Find best spectra and co-add them
+     - Determine width, shift, etc
+3. [ ] Use tetrablok algorithm on images
+   - Make some nice figures
+4. [ ] Extract a small region around 244-440
+   - Do an analysis of this proplyd
+5. [ ] Remove continuum from [O I] line
+
 ** Relation to Raman-scattered wings of H\alpha
 + See Dopita:2016a
   + These are pumped by continuum or O I 1025.76, which is very close to Ly \beta 1025.72
@@ -487,8 +503,8 @@ And extract the bands for the 5x5 cube
   + Those two lines are clearly seen in Dopita spectra
   + And in MUSE spectra too
 + [ ] 6544.3 seen in SPM spectra - what is it?
-** The [C I] line
-T
+** TODO [#A] The [C I] line
+Fit the continuum and remove it
 ** Relation with foreground extinction
 + Show that the 6634 feature is not correlated with reddening
 + But the other DIB features are - maybe
@@ -662,6 +678,7 @@ T
   + In fact, Galazutdinov:2000a show a DIB at 6632.85, which might possibly be our feature
     + It isn't listed as new, so it must be in previous papers too
     + It is only seen in highly reddened stars, not in HD 23180
+** TODO [#A] Co-adding Keck spectra to get a less noisy profile
 * Explanations for absorption
 ** Summary
 1. Really a gap between two weak emission line forests
