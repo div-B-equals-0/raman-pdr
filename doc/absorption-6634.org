@@ -15,7 +15,15 @@
    - Make some nice figures
 4. [ ] Extract a small region around 244-440
    - Do an analysis of this proplyd
-5. [ ] Remove continuum from [O I] line
+5. [ ] Make image of different extinction measurements
+   - Scattered in green
+   - Optically thick in red
+   - Or maybe punt to another paper
+6. [ ] Remove continuum from [C I] line
+7. [ ] Look at Bally STIS spectra
+   - See [[id:2E94DD95-D60A-4C3E-A5C8-5356F63901B9][Bally GO8324 - mainly UV but also optical of LV knots and HST10]]
+   - Should have Ha spectra that include the wings
+   - Maybe 50 km/s velocity resolution
 
 ** Relation to Raman-scattered wings of H\alpha
 + See Dopita:2016a
@@ -679,6 +687,10 @@ Fit the continuum and remove it
     + It isn't listed as new, so it must be in previous papers too
     + It is only seen in highly reddened stars, not in HD 23180
 ** TODO [#A] Co-adding Keck spectra to get a less noisy profile
++ I could go through all the steps I did for the proplyd spectra
+  + This would give a nicely calibrated, rectified spectrum
+  + See [[id:46ACEA74-2E70-473B-9344-DF20000DB765][Extracting each line]] in Keck notes
+
 * Explanations for absorption
 ** Summary
 1. Really a gap between two weak emission line forests

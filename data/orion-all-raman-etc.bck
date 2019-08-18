@@ -68,7 +68,7 @@ colorbarrgb colorbar rgb 0.5 0.5 0.5 1 1 1 0
 colorbarrgb tag "{}"
 CreateNameNumberFrame Frame1 base
 global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMuse/BigFiles/muse-hr-data-wavsec6-rebin16x16.fits file,mode {} load,type mmapincr file,type fits]
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMuse/muse-hr-data-wavsec6-rebin05x05.fits file,mode {} load,type mmapincr file,type fits]
 if [BackupFindFile loadParam] {
   ProcessLoad
 }
@@ -86,7 +86,7 @@ Frame1 precision 8 7 4 3 8 7 5 3 8
 Frame1 bg color #808080
 Frame1 nan color #804020
 Frame1 cube axes 123
-Frame1 update fits slice 321
+Frame1 update fits slice 651
 CubeDialog
 Frame1 rgb channel red
 Frame1 rgb view 1 1 1
@@ -97,10 +97,10 @@ Frame1 bin filter {""}
 Frame1 bin buffer size 1024
 Frame1 bin about 0 0
 Frame1 bin function sum
-Frame1 colorscale sqrt
+Frame1 colorscale linear
 Frame1 colorscale log 10000
 Frame1 datasec 1
-Frame1 clip user 0 2e+07
+Frame1 clip user 0 100000
 Frame1 clip mode user
 Frame1 clip scope global
 Frame1 clip minmax mode scan
@@ -111,8 +111,8 @@ Frame1 clip zscale line 120
 Frame1 block to 1 1
 Frame1 wcs wcs icrs degrees
 Frame1 pan preserve 0
-Frame1 pan to physical 52.44235 14.890109
-Frame1 zoom to 4.7775 4.7775
+Frame1 pan to physical 211.24602 145.60689
+Frame1 zoom to 1.91527 1.91527
 Frame1 rotate to 0
 Frame1 orient none
 Frame1 wcs align 1
@@ -123,7 +123,8 @@ Frame1 3d highlite 1
 Frame1 3d border 1
 Frame1 3d background none
 Frame1 3d view point 0 0 0 0 0
-Frame1 crosshair physical 56 47
+Frame1 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame1/ds9.reg"}
+Frame1 crosshair physical 177 148
 Frame1 marker centroid radius 10
 Frame1 marker centroid iteration 30
 Frame1 mask transparency 0
@@ -133,7 +134,7 @@ Frame1 mask mark nonzero
 Frame1 mask range 0 0
 CreateNameNumberFrame Frame2 base
 global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMuse/BigFiles/muse-hr-data-wavsec0-rebin16x16.fits file,mode {} load,type mmapincr file,type fits]
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMuse/muse-hr-data-wavsec3-rebin05x05.fits file,mode {} load,type mmapincr file,type fits]
 if [BackupFindFile loadParam] {
   ProcessLoad
 }
@@ -151,7 +152,7 @@ Frame2 precision 8 7 4 3 8 7 5 3 8
 Frame2 bg color #808080
 Frame2 nan color #804020
 Frame2 cube axes 123
-Frame2 update fits slice 302
+Frame2 update fits slice 269
 CubeDialog
 Frame2 rgb channel red
 Frame2 rgb view 1 1 1
@@ -165,7 +166,7 @@ Frame2 bin function sum
 Frame2 colorscale linear
 Frame2 colorscale log 10000
 Frame2 datasec 1
-Frame2 clip user 0 4e+06
+Frame2 clip user 0 180000
 Frame2 clip mode user
 Frame2 clip scope global
 Frame2 clip minmax mode scan
@@ -176,8 +177,8 @@ Frame2 clip zscale line 120
 Frame2 block to 1 1
 Frame2 wcs wcs icrs sexagesimal
 Frame2 pan preserve 0
-Frame2 pan to physical 52.44235 14.890109
-Frame2 zoom to 4.7775 4.7775
+Frame2 pan to physical 211.24602 145.60689
+Frame2 zoom to 1.91527 1.91527
 Frame2 rotate to 0
 Frame2 orient none
 Frame2 wcs align 1
@@ -189,7 +190,7 @@ Frame2 3d border 1
 Frame2 3d background none
 Frame2 3d view point 0 0 0 0 0
 Frame2 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame2/ds9.reg"}
-Frame2 crosshair physical 56 47
+Frame2 crosshair physical 177 148
 Frame2 marker centroid radius 10
 Frame2 marker centroid iteration 30
 Frame2 mask transparency 0
@@ -199,7 +200,7 @@ Frame2 mask mark nonzero
 Frame2 mask range 0 0
 CreateNameNumberFrame Frame3 base
 global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMuse/BigFiles/muse-hr-data-wavsec4-rebin16x16.fits file,mode {} load,type mmapincr file,type fits]
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMuse/muse-hr-data-wavsec5-rebin05x05.fits file,mode {} load,type mmapincr file,type fits]
 if [BackupFindFile loadParam] {
   ProcessLoad
 }
@@ -217,7 +218,7 @@ Frame3 precision 8 7 4 3 8 7 5 3 8
 Frame3 bg color #808080
 Frame3 nan color #804020
 Frame3 cube axes 123
-Frame3 update fits slice 179
+Frame3 update fits slice 1
 CubeDialog
 Frame3 rgb channel red
 Frame3 rgb view 1 1 1
@@ -228,11 +229,11 @@ Frame3 bin filter {""}
 Frame3 bin buffer size 1024
 Frame3 bin about 0 0
 Frame3 bin function sum
-Frame3 colorscale sqrt
+Frame3 colorscale linear
 Frame3 colorscale log 10000
 Frame3 datasec 1
-Frame3 clip user 55314.1 7.96083e+06
-Frame3 clip mode 99.5
+Frame3 clip user 0 150000
+Frame3 clip mode user
 Frame3 clip scope local
 Frame3 clip minmax mode scan
 Frame3 clip minmax sample 25
@@ -242,8 +243,8 @@ Frame3 clip zscale line 120
 Frame3 block to 1 1
 Frame3 wcs wcs icrs sexagesimal
 Frame3 pan preserve 0
-Frame3 pan to physical 52.44235 14.890109
-Frame3 zoom to 4.7775 4.7775
+Frame3 pan to physical 211.24602 145.60689
+Frame3 zoom to 1.91527 1.91527
 Frame3 rotate to 0
 Frame3 orient none
 Frame3 wcs align 1
@@ -254,8 +255,7 @@ Frame3 3d highlite 1
 Frame3 3d border 1
 Frame3 3d background none
 Frame3 3d view point 0 0 0 0 0
-Frame3 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame3/ds9.reg"}
-Frame3 crosshair physical 56 47
+Frame3 crosshair physical 177 148
 Frame3 marker centroid radius 10
 Frame3 marker centroid iteration 30
 Frame3 mask transparency 0
@@ -308,8 +308,8 @@ Frame9 clip zscale line 120
 Frame9 block to 1 1
 Frame9 wcs wcs icrs degrees
 Frame9 pan preserve 0
-Frame9 pan to physical 52.44235 14.890109
-Frame9 zoom to 4.7775 4.7775
+Frame9 pan to physical 66.358131 45.845903
+Frame9 zoom to 6.12886 6.12886
 Frame9 rotate to 0
 Frame9 orient none
 Frame9 wcs align 1
@@ -349,7 +349,7 @@ Frame12 precision 8 7 4 3 8 7 5 3 8
 Frame12 bg color #808080
 Frame12 nan color #804020
 Frame12 cube axes 123
-Frame12 update fits slice 300
+Frame12 update fits slice 91
 CubeDialog
 Frame12 rgb channel red
 Frame12 rgb view 1 1 1
@@ -374,8 +374,8 @@ Frame12 clip zscale line 120
 Frame12 block to 1 1
 Frame12 wcs wcs icrs degrees
 Frame12 pan preserve 0
-Frame12 pan to physical 52.44235 14.890109
-Frame12 zoom to 4.7775 4.7775
+Frame12 pan to physical 66.358131 45.845903
+Frame12 zoom to 6.12886 6.12886
 Frame12 rotate to 0
 Frame12 orient none
 Frame12 wcs align 1
@@ -424,10 +424,10 @@ Frame13 bin filter {""}
 Frame13 bin buffer size 1024
 Frame13 bin about 0 0
 Frame13 bin function sum
-Frame13 colorscale linear
+Frame13 colorscale sqrt
 Frame13 colorscale log 10000
 Frame13 datasec 1
-Frame13 clip user 0 25734.7
+Frame13 clip user 0 37000
 Frame13 clip mode user
 Frame13 clip scope local
 Frame13 clip minmax mode scan
@@ -438,8 +438,8 @@ Frame13 clip zscale line 120
 Frame13 block to 1 1
 Frame13 wcs wcs icrs degrees
 Frame13 pan preserve 0
-Frame13 pan to physical 166.71552 46.54835
-Frame13 zoom to 1.49297 1.49297
+Frame13 pan to physical 211.24602 145.60689
+Frame13 zoom to 1.91527 1.91527
 Frame13 rotate to 0
 Frame13 orient none
 Frame13 wcs align 1
@@ -487,7 +487,7 @@ Frame14 bin filter {""}
 Frame14 bin buffer size 1024
 Frame14 bin about 0 0
 Frame14 bin function sum
-Frame14 colorscale linear
+Frame14 colorscale sqrt
 Frame14 colorscale log 10000
 Frame14 datasec 1
 Frame14 clip user 0 20000
@@ -501,8 +501,8 @@ Frame14 clip zscale line 120
 Frame14 block to 1 1
 Frame14 wcs wcs icrs degrees
 Frame14 pan preserve 0
-Frame14 pan to physical 166.71552 46.54835
-Frame14 zoom to 1.49297 1.49297
+Frame14 pan to physical 211.24602 145.60689
+Frame14 zoom to 1.91527 1.91527
 Frame14 rotate to 0
 Frame14 orient none
 Frame14 wcs align 1
@@ -550,7 +550,7 @@ Frame17 bin filter {""}
 Frame17 bin buffer size 1024
 Frame17 bin about 0 0
 Frame17 bin function sum
-Frame17 colorscale linear
+Frame17 colorscale sqrt
 Frame17 colorscale log 10000
 Frame17 datasec 1
 Frame17 clip user 0 8000
@@ -564,8 +564,8 @@ Frame17 clip zscale line 120
 Frame17 block to 1 1
 Frame17 wcs wcs icrs degrees
 Frame17 pan preserve 0
-Frame17 pan to physical 166.71552 46.54835
-Frame17 zoom to 1.49297 1.49297
+Frame17 pan to physical 211.24602 145.60689
+Frame17 zoom to 1.91527 1.91527
 Frame17 rotate to 0
 Frame17 orient none
 Frame17 wcs align 1
@@ -613,10 +613,10 @@ Frame27 bin filter {""}
 Frame27 bin buffer size 1024
 Frame27 bin about 0 0
 Frame27 bin function sum
-Frame27 colorscale linear
+Frame27 colorscale sqrt
 Frame27 colorscale log 10000
 Frame27 datasec 1
-Frame27 clip user 0 30000
+Frame27 clip user 0 35000
 Frame27 clip mode user
 Frame27 clip scope local
 Frame27 clip minmax mode scan
@@ -627,8 +627,8 @@ Frame27 clip zscale line 120
 Frame27 block to 1 1
 Frame27 wcs wcs icrs degrees
 Frame27 pan preserve 0
-Frame27 pan to physical 166.71552 46.54835
-Frame27 zoom to 1.49297 1.49297
+Frame27 pan to physical 211.24602 145.60689
+Frame27 zoom to 1.91527 1.91527
 Frame27 rotate to 0
 Frame27 orient none
 Frame27 wcs align 1
@@ -647,6 +647,7 @@ Frame27 mask system wcs
 Frame27 mask color red
 Frame27 mask mark nonzero
 Frame27 mask range 0 0
+Frame27 contour create green 2 0 smooth 5 7 sqrt 10000 user local 0 35000 {"5000 10000 20000 30000"}
 CreateNameNumberFrame Frame15 base
 global loadParam
 array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/muse-hr-data-ha-raman-R057-rebin05x05-cont-sub.fits file,mode {} load,type mmapincr file,type fits]
@@ -676,10 +677,10 @@ Frame15 bin filter {""}
 Frame15 bin buffer size 1024
 Frame15 bin about 0 0
 Frame15 bin function sum
-Frame15 colorscale linear
+Frame15 colorscale sqrt
 Frame15 colorscale log 10000
 Frame15 datasec 1
-Frame15 clip user 0 20000
+Frame15 clip user 0 28000
 Frame15 clip mode user
 Frame15 clip scope local
 Frame15 clip minmax mode scan
@@ -690,8 +691,8 @@ Frame15 clip zscale line 120
 Frame15 block to 1 1
 Frame15 wcs wcs icrs degrees
 Frame15 pan preserve 0
-Frame15 pan to physical 166.71552 46.54835
-Frame15 zoom to 1.49297 1.49297
+Frame15 pan to physical 211.24602 145.60689
+Frame15 zoom to 1.91527 1.91527
 Frame15 rotate to 0
 Frame15 orient none
 Frame15 wcs align 1
@@ -739,10 +740,10 @@ Frame16 bin filter {""}
 Frame16 bin buffer size 1024
 Frame16 bin about 0 0
 Frame16 bin function sum
-Frame16 colorscale linear
+Frame16 colorscale sqrt
 Frame16 colorscale log 10000
 Frame16 datasec 1
-Frame16 clip user 0 16000
+Frame16 clip user 0 18000
 Frame16 clip mode user
 Frame16 clip scope local
 Frame16 clip minmax mode scan
@@ -753,8 +754,8 @@ Frame16 clip zscale line 120
 Frame16 block to 1 1
 Frame16 wcs wcs icrs degrees
 Frame16 pan preserve 0
-Frame16 pan to physical 166.71552 46.54835
-Frame16 zoom to 1.49297 1.49297
+Frame16 pan to physical 211.24602 145.60689
+Frame16 zoom to 1.91527 1.91527
 Frame16 rotate to 0
 Frame16 orient none
 Frame16 wcs align 1
@@ -765,6 +766,7 @@ Frame16 3d highlite 1
 Frame16 3d border 1
 Frame16 3d background none
 Frame16 3d view point 0 0 0 0 0
+Frame16 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame16/ds9.reg"}
 Frame16 crosshair physical 177 148
 Frame16 marker centroid radius 10
 Frame16 marker centroid iteration 30
@@ -884,8 +886,8 @@ Frame18 block to 1 1
 Frame18 rgb channel blue
 Frame18 wcs wcs icrs degrees
 Frame18 pan preserve 0
-Frame18 pan to physical 52.44235 14.890109
-Frame18 zoom to 4.7775 4.7775
+Frame18 pan to physical 66.358131 45.845903
+Frame18 zoom to 6.12886 6.12886
 Frame18 rotate to 0
 Frame18 orient none
 Frame18 wcs align 1
@@ -946,10 +948,10 @@ Frame45 bin filter {""}
 Frame45 bin buffer size 1024
 Frame45 bin about 0 0
 Frame45 bin function sum
-Frame45 colorscale linear
+Frame45 colorscale sqrt
 Frame45 colorscale log 10000
 Frame45 datasec 1
-Frame45 clip user 12.2244 1263.74
+Frame45 clip user 200 1263.74
 Frame45 clip mode user
 Frame45 clip scope local
 Frame45 clip minmax mode scan
@@ -960,8 +962,8 @@ Frame45 clip zscale line 120
 Frame45 block to 1 1
 Frame45 wcs wcs icrs sexagesimal
 Frame45 pan preserve 0
-Frame45 pan to physical 1591.5823 3164.9487
-Frame45 zoom to 2.98597 2.98597
+Frame45 pan to physical 1613.8573 3214.4717
+Frame45 zoom to 3.83089 3.83089
 Frame45 rotate to 0
 Frame45 orient none
 Frame45 wcs align 1
@@ -1019,8 +1021,8 @@ Frame19 rgb channel green
 Frame19 cube axes 123
 Frame19 rgb channel blue
 Frame19 cube axes 123
-Frame19 rgb channel blue
-Frame19 rgb channel blue
+Frame19 rgb channel red
+Frame19 rgb channel red
 Frame19 rgb view 1 1 1
 Frame19 rgb system wcs
 Frame19 rgb channel red
@@ -1044,9 +1046,9 @@ Frame19 bin filter {""}
 Frame19 bin buffer size 1024
 Frame19 bin about 0 0
 Frame19 bin function sum
-Frame19 rgb channel blue
 Frame19 rgb channel red
-Frame19 colorscale linear
+Frame19 rgb channel red
+Frame19 colorscale sqrt
 Frame19 colorscale log 10000
 Frame19 datasec 1
 Frame19 clip user 0 50000
@@ -1058,7 +1060,7 @@ Frame19 clip zscale contrast 0.25
 Frame19 clip zscale sample 600
 Frame19 clip zscale line 120
 Frame19 rgb channel green
-Frame19 colorscale linear
+Frame19 colorscale sqrt
 Frame19 colorscale log 10000
 Frame19 datasec 1
 Frame19 clip user 0 150000
@@ -1070,7 +1072,7 @@ Frame19 clip zscale contrast 0.25
 Frame19 clip zscale sample 600
 Frame19 clip zscale line 120
 Frame19 rgb channel blue
-Frame19 colorscale linear
+Frame19 colorscale sqrt
 Frame19 colorscale log 10000
 Frame19 datasec 1
 Frame19 clip user 0 270000
@@ -1081,25 +1083,25 @@ Frame19 clip minmax sample 25
 Frame19 clip zscale contrast 0.25
 Frame19 clip zscale sample 600
 Frame19 clip zscale line 120
-Frame19 rgb channel blue
+Frame19 rgb channel red
 Frame19 rgb channel red
 Frame19 block to 1 1
 Frame19 rgb channel green
 Frame19 block to 1 1
 Frame19 rgb channel blue
 Frame19 block to 1 1
-Frame19 rgb channel blue
+Frame19 rgb channel red
 Frame19 wcs wcs icrs degrees
 Frame19 pan preserve 0
-Frame19 pan to physical 52.44235 14.890109
-Frame19 zoom to 4.7775 4.7775
+Frame19 pan to physical 66.358131 45.845903
+Frame19 zoom to 6.12886 6.12886
 Frame19 rotate to 0
 Frame19 orient none
 Frame19 wcs align 1
 Frame19 rgb channel red
 Frame19 rgb channel green
 Frame19 rgb channel blue
-Frame19 rgb channel blue
+Frame19 rgb channel red
 Frame19 3d view 0 0
 Frame19 3d scale 1
 Frame19 3d method mip
@@ -1119,11 +1121,11 @@ Frame19 mask range 0 0
 Frame19 rgb channel red
 Frame19 rgb channel green
 Frame19 rgb channel blue
-Frame19 rgb channel blue
+Frame19 rgb channel red
 Frame19 rgb channel red
 Frame19 rgb channel green
 Frame19 rgb channel blue
-Frame19 rgb channel blue
+Frame19 rgb channel red
 CreateNameNumberFrame Frame20 base
 global loadParam
 array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/muse-hr-data-wavsec3-rebin05x05-cont-sub.fits file,mode {} load,type mmapincr file,type fits]
@@ -1144,7 +1146,7 @@ Frame20 precision 8 7 4 3 8 7 5 3 8
 Frame20 bg color #808080
 Frame20 nan color #804020
 Frame20 cube axes 123
-Frame20 update fits slice 312
+Frame20 update fits slice 109
 CubeDialog
 Frame20 rgb channel red
 Frame20 rgb view 1 1 1
@@ -1167,10 +1169,10 @@ Frame20 clip zscale contrast 0.25
 Frame20 clip zscale sample 600
 Frame20 clip zscale line 120
 Frame20 block to 1 1
-Frame20 wcs wcs icrs degrees
+Frame20 wcs wcs icrs sexagesimal
 Frame20 pan preserve 0
-Frame20 pan to physical 166.71552 46.54835
-Frame20 zoom to 1.49297 1.49297
+Frame20 pan to physical 211.24602 145.60689
+Frame20 zoom to 1.91527 1.91527
 Frame20 rotate to 0
 Frame20 orient none
 Frame20 wcs align 1
@@ -1229,8 +1231,8 @@ Frame21 rgb channel green
 Frame21 cube axes 123
 Frame21 rgb channel blue
 Frame21 cube axes 123
-Frame21 rgb channel blue
-Frame21 rgb channel blue
+Frame21 rgb channel red
+Frame21 rgb channel red
 Frame21 rgb view 1 1 1
 Frame21 rgb system wcs
 Frame21 rgb channel red
@@ -1254,12 +1256,12 @@ Frame21 bin filter {""}
 Frame21 bin buffer size 1024
 Frame21 bin about 0 0
 Frame21 bin function sum
-Frame21 rgb channel blue
+Frame21 rgb channel red
 Frame21 rgb channel red
 Frame21 colorscale linear
 Frame21 colorscale log 10000
 Frame21 datasec 1
-Frame21 clip user 0 8000
+Frame21 clip user 0 10000
 Frame21 clip mode user
 Frame21 clip scope local
 Frame21 clip minmax mode scan
@@ -1291,25 +1293,25 @@ Frame21 clip minmax sample 25
 Frame21 clip zscale contrast 0.25
 Frame21 clip zscale sample 600
 Frame21 clip zscale line 120
-Frame21 rgb channel blue
+Frame21 rgb channel red
 Frame21 rgb channel red
 Frame21 block to 1 1
 Frame21 rgb channel green
 Frame21 block to 1 1
 Frame21 rgb channel blue
 Frame21 block to 1 1
-Frame21 rgb channel blue
+Frame21 rgb channel red
 Frame21 wcs wcs icrs degrees
 Frame21 pan preserve 0
-Frame21 pan to physical 166.71552 46.54835
-Frame21 zoom to 1.49297 1.49297
+Frame21 pan to physical 211.24602 145.60689
+Frame21 zoom to 1.91527 1.91527
 Frame21 rotate to 0
 Frame21 orient none
 Frame21 wcs align 1
 Frame21 rgb channel red
 Frame21 rgb channel green
 Frame21 rgb channel blue
-Frame21 rgb channel blue
+Frame21 rgb channel red
 Frame21 3d view 0 0
 Frame21 3d scale 1
 Frame21 3d method mip
@@ -1327,157 +1329,16 @@ Frame21 mask color red
 Frame21 mask mark nonzero
 Frame21 mask range 0 0
 Frame21 rgb channel red
+Frame21 smooth gaussian 3 3 1.5 1.5 0
 Frame21 rgb channel green
+Frame21 smooth gaussian 3 3 1.5 1.5 0
 Frame21 rgb channel blue
-Frame21 rgb channel blue
+Frame21 smooth gaussian 3 3 1.5 1.5 0
+Frame21 rgb channel red
 Frame21 rgb channel red
 Frame21 rgb channel green
 Frame21 rgb channel blue
-Frame21 rgb channel blue
-CreateNameNumberFrame Frame22 rgb
-Frame22 rgb channel red
-global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/muse-hr-data-ha-raman-R087-rebin05x05-cont-sub.fits file,mode {} load,type mmapincr file,type fits]
-if [BackupFindFile loadParam] {
-  ProcessLoad
-}
-Frame22 rgb channel green
-global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/muse-hr-data-ha-raman-R057-rebin05x05-cont-sub.fits file,mode {} load,type mmapincr file,type fits]
-if [BackupFindFile loadParam] {
-  ProcessLoad
-}
-Frame22 rgb channel blue
-global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/muse-hr-data-ha-raman-R040-rebin05x05-cont-sub.fits file,mode {} load,type mmapincr file,type fits]
-if [BackupFindFile loadParam] {
-  ProcessLoad
-}
-RGBDialog
-Frame22 magnifier graphics 1
-Frame22 magnifier cursor 1
-Frame22 magnifier zoom 4
-Frame22 magnifier color #ff8000
-Frame22 colorbar tag "{}"
-colorbar tag "{}"
-set sav [colorbarrgb get colorbar]
-colorbarrgb colorbar rgb 0.500000 0.500000 0.500000 1.000000 1.000000 1.000000 0 
-Frame22 colormap [colorbarrgb get colormap]
-colorbarrgb colorbar $sav
-Frame22 precision 8 7 4 3 8 7 5 3 8
-Frame22 bg color #808080
-Frame22 nan color #804020
-Frame22 rgb channel red
-Frame22 cube axes 123
-Frame22 rgb channel green
-Frame22 cube axes 123
-Frame22 rgb channel blue
-Frame22 cube axes 123
-Frame22 rgb channel red
-Frame22 rgb channel red
-Frame22 rgb view 1 1 1
-Frame22 rgb system wcs
-Frame22 rgb channel red
-Frame22 bin factor to 1 1
-Frame22 bin depth 1
-Frame22 bin filter {""}
-Frame22 bin buffer size 1024
-Frame22 bin about 0 0
-Frame22 bin function sum
-Frame22 rgb channel green
-Frame22 bin factor to 1 1
-Frame22 bin depth 1
-Frame22 bin filter {""}
-Frame22 bin buffer size 1024
-Frame22 bin about 0 0
-Frame22 bin function sum
-Frame22 rgb channel blue
-Frame22 bin factor to 1 1
-Frame22 bin depth 1
-Frame22 bin filter {""}
-Frame22 bin buffer size 1024
-Frame22 bin about 0 0
-Frame22 bin function sum
-Frame22 rgb channel red
-Frame22 rgb channel red
-Frame22 colorscale linear
-Frame22 colorscale log 10000
-Frame22 datasec 1
-Frame22 clip user 0 15000
-Frame22 clip mode user
-Frame22 clip scope local
-Frame22 clip minmax mode scan
-Frame22 clip minmax sample 25
-Frame22 clip zscale contrast 0.25
-Frame22 clip zscale sample 600
-Frame22 clip zscale line 120
-Frame22 rgb channel green
-Frame22 colorscale linear
-Frame22 colorscale log 10000
-Frame22 datasec 1
-Frame22 clip user 0 30000
-Frame22 clip mode user
-Frame22 clip scope local
-Frame22 clip minmax mode scan
-Frame22 clip minmax sample 25
-Frame22 clip zscale contrast 0.25
-Frame22 clip zscale sample 600
-Frame22 clip zscale line 120
-Frame22 rgb channel blue
-Frame22 colorscale linear
-Frame22 colorscale log 10000
-Frame22 datasec 1
-Frame22 clip user 0 30000
-Frame22 clip mode user
-Frame22 clip scope local
-Frame22 clip minmax mode scan
-Frame22 clip minmax sample 25
-Frame22 clip zscale contrast 0.25
-Frame22 clip zscale sample 600
-Frame22 clip zscale line 120
-Frame22 rgb channel red
-Frame22 rgb channel red
-Frame22 block to 1 1
-Frame22 rgb channel green
-Frame22 block to 1 1
-Frame22 rgb channel blue
-Frame22 block to 1 1
-Frame22 rgb channel red
-Frame22 wcs wcs icrs degrees
-Frame22 pan preserve 0
-Frame22 pan to physical 166.71552 46.54835
-Frame22 zoom to 1.49297 1.49297
-Frame22 rotate to 0
-Frame22 orient none
-Frame22 wcs align 1
-Frame22 rgb channel red
-Frame22 rgb channel green
-Frame22 rgb channel blue
-Frame22 rgb channel red
-Frame22 3d view 0 0
-Frame22 3d scale 1
-Frame22 3d method mip
-Frame22 3d highlite 1
-Frame22 3d border 1
-Frame22 3d background none
-Frame22 3d view point 0 0 0 0 0
-Frame22 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame22/ds9.reg"}
-Frame22 crosshair physical 177 148
-Frame22 marker centroid radius 10
-Frame22 marker centroid iteration 30
-Frame22 mask transparency 0
-Frame22 mask system physical
-Frame22 mask color red
-Frame22 mask mark nonzero
-Frame22 mask range 0 0
-Frame22 rgb channel red
-Frame22 rgb channel green
-Frame22 rgb channel blue
-Frame22 rgb channel red
-Frame22 rgb channel red
-Frame22 rgb channel green
-Frame22 rgb channel blue
-Frame22 rgb channel red
+Frame21 rgb channel red
 CreateNameNumberFrame Frame31 base
 global loadParam
 array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic/40044081.40044081-89-short.IRAC.1.mosaic.fits file,mode {} load,type mmapincr file,type fits]
@@ -1521,8 +1382,8 @@ Frame31 clip zscale line 120
 Frame31 block to 1 1
 Frame31 wcs wcs icrs degrees
 Frame31 pan preserve 0
-Frame31 pan to physical 1988.0079 1008.9597
-Frame31 zoom to 0.895789 0.895789
+Frame31 pan to physical 2062.2294 1174.0533
+Frame31 zoom to 1.14919 1.14919
 Frame31 rotate to 0
 Frame31 orient none
 Frame31 wcs align 1
@@ -1541,293 +1402,6 @@ Frame31 mask system wcs
 Frame31 mask color red
 Frame31 mask mark nonzero
 Frame31 mask range 0 0
-CreateNameNumberFrame Frame32 rgb
-Frame32 rgb channel red
-global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic/40044081.40044081-89-short.IRAC.4.mosaic.fits file,mode {} load,type mmapincr file,type fits]
-if [BackupFindFile loadParam] {
-  ProcessLoad
-}
-Frame32 rgb channel green
-global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic/40044081.40044081-89-short.IRAC.3.mosaic.fits file,mode {} load,type mmapincr file,type fits]
-if [BackupFindFile loadParam] {
-  ProcessLoad
-}
-Frame32 rgb channel blue
-global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic/40044081.40044081-89-short.IRAC.1.mosaic.fits file,mode {} load,type mmapincr file,type fits]
-if [BackupFindFile loadParam] {
-  ProcessLoad
-}
-RGBDialog
-Frame32 magnifier graphics 1
-Frame32 magnifier cursor 1
-Frame32 magnifier zoom 4
-Frame32 magnifier color #ff8000
-Frame32 colorbar tag "{}"
-colorbar tag "{}"
-set sav [colorbarrgb get colorbar]
-colorbarrgb colorbar rgb 0.500000 0.500000 0.500000 1.000000 1.000000 1.000000 0 
-Frame32 colormap [colorbarrgb get colormap]
-colorbarrgb colorbar $sav
-Frame32 precision 8 7 4 3 8 7 5 3 8
-Frame32 bg color #808080
-Frame32 nan color #804020
-Frame32 rgb channel red
-Frame32 cube axes 123
-Frame32 rgb channel green
-Frame32 cube axes 123
-Frame32 rgb channel blue
-Frame32 cube axes 123
-Frame32 rgb channel blue
-Frame32 rgb channel blue
-Frame32 rgb view 1 1 1
-Frame32 rgb system wcs
-Frame32 rgb channel red
-Frame32 bin factor to 1 1
-Frame32 bin depth 1
-Frame32 bin filter {""}
-Frame32 bin buffer size 1024
-Frame32 bin about 0 0
-Frame32 bin function sum
-Frame32 rgb channel green
-Frame32 bin factor to 1 1
-Frame32 bin depth 1
-Frame32 bin filter {""}
-Frame32 bin buffer size 1024
-Frame32 bin about 0 0
-Frame32 bin function sum
-Frame32 rgb channel blue
-Frame32 bin factor to 1 1
-Frame32 bin depth 1
-Frame32 bin filter {""}
-Frame32 bin buffer size 1024
-Frame32 bin about 0 0
-Frame32 bin function sum
-Frame32 rgb channel blue
-Frame32 rgb channel red
-Frame32 colorscale linear
-Frame32 colorscale log 10000
-Frame32 datasec 1
-Frame32 clip user 400 8131.97
-Frame32 clip mode user
-Frame32 clip scope local
-Frame32 clip minmax mode scan
-Frame32 clip minmax sample 25
-Frame32 clip zscale contrast 0.25
-Frame32 clip zscale sample 600
-Frame32 clip zscale line 120
-Frame32 rgb channel green
-Frame32 colorscale linear
-Frame32 colorscale log 10000
-Frame32 datasec 1
-Frame32 clip user 300 4539.67
-Frame32 clip mode user
-Frame32 clip scope local
-Frame32 clip minmax mode scan
-Frame32 clip minmax sample 25
-Frame32 clip zscale contrast 0.25
-Frame32 clip zscale sample 600
-Frame32 clip zscale line 120
-Frame32 rgb channel blue
-Frame32 colorscale linear
-Frame32 colorscale log 10000
-Frame32 datasec 1
-Frame32 clip user 100 667.104
-Frame32 clip mode user
-Frame32 clip scope local
-Frame32 clip minmax mode scan
-Frame32 clip minmax sample 25
-Frame32 clip zscale contrast 0.25
-Frame32 clip zscale sample 600
-Frame32 clip zscale line 120
-Frame32 rgb channel blue
-Frame32 rgb channel red
-Frame32 block to 1 1
-Frame32 rgb channel green
-Frame32 block to 1 1
-Frame32 rgb channel blue
-Frame32 block to 1 1
-Frame32 rgb channel blue
-Frame32 wcs wcs icrs sexagesimal
-Frame32 pan preserve 0
-Frame32 pan to physical 1988.0079 1008.9597
-Frame32 zoom to 0.895789 0.895789
-Frame32 rotate to 0
-Frame32 orient none
-Frame32 wcs align 1
-Frame32 rgb channel red
-Frame32 rgb channel green
-Frame32 rgb channel blue
-Frame32 rgb channel blue
-Frame32 3d view 0 0
-Frame32 3d scale 1
-Frame32 3d method mip
-Frame32 3d highlite 1
-Frame32 3d border 1
-Frame32 3d background none
-Frame32 3d view point 0 0 0 0 0
-Frame32 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame32/ds9.reg"}
-Frame32 crosshair physical 2137 2151
-Frame32 marker centroid radius 10
-Frame32 marker centroid iteration 30
-Frame32 mask transparency 0
-Frame32 mask system physical
-Frame32 mask color red
-Frame32 mask mark nonzero
-Frame32 mask range 0 0
-Frame32 rgb channel red
-Frame32 rgb channel green
-Frame32 rgb channel blue
-Frame32 rgb channel blue
-Frame32 rgb channel red
-Frame32 rgb channel green
-Frame32 rgb channel blue
-Frame32 rgb channel blue
-CreateNameNumberFrame Frame48 rgb
-Frame48 rgb channel red
-global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_c18o_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
-if [BackupFindFile loadParam] {
-  ProcessLoad
-}
-Frame48 rgb channel green
-global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_13co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
-if [BackupFindFile loadParam] {
-  ProcessLoad
-}
-Frame48 rgb channel blue
-global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_12co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
-if [BackupFindFile loadParam] {
-  ProcessLoad
-}
-RGBDialog
-Frame48 magnifier graphics 1
-Frame48 magnifier cursor 1
-Frame48 magnifier zoom 4
-Frame48 magnifier color #ff8000
-Frame48 colorbar tag "{}"
-colorbar tag "{}"
-set sav [colorbarrgb get colorbar]
-colorbarrgb colorbar rgb 0.500000 0.500000 0.500000 1.000000 1.000000 1.000000 0 
-Frame48 colormap [colorbarrgb get colormap]
-colorbarrgb colorbar $sav
-Frame48 precision 8 7 4 3 8 7 5 3 8
-Frame48 bg color #808080
-Frame48 nan color #804020
-Frame48 rgb channel red
-Frame48 cube axes 123
-Frame48 rgb channel green
-Frame48 cube axes 123
-Frame48 rgb channel blue
-Frame48 cube axes 123
-Frame48 rgb channel blue
-Frame48 rgb channel blue
-Frame48 rgb view 1 1 1
-Frame48 rgb system wcs
-Frame48 rgb channel red
-Frame48 bin factor to 1 1
-Frame48 bin depth 1
-Frame48 bin filter {""}
-Frame48 bin buffer size 1024
-Frame48 bin about 0 0
-Frame48 bin function sum
-Frame48 rgb channel green
-Frame48 bin factor to 1 1
-Frame48 bin depth 1
-Frame48 bin filter {""}
-Frame48 bin buffer size 1024
-Frame48 bin about 0 0
-Frame48 bin function sum
-Frame48 rgb channel blue
-Frame48 bin factor to 1 1
-Frame48 bin depth 1
-Frame48 bin filter {""}
-Frame48 bin buffer size 1024
-Frame48 bin about 0 0
-Frame48 bin function sum
-Frame48 rgb channel blue
-Frame48 rgb channel red
-Frame48 colorscale linear
-Frame48 colorscale log 10000
-Frame48 datasec 1
-Frame48 clip user -1 35
-Frame48 clip mode user
-Frame48 clip scope local
-Frame48 clip minmax mode scan
-Frame48 clip minmax sample 25
-Frame48 clip zscale contrast 0.25
-Frame48 clip zscale sample 600
-Frame48 clip zscale line 120
-Frame48 rgb channel green
-Frame48 colorscale linear
-Frame48 colorscale log 10000
-Frame48 datasec 1
-Frame48 clip user -1 227
-Frame48 clip mode user
-Frame48 clip scope local
-Frame48 clip minmax mode scan
-Frame48 clip minmax sample 25
-Frame48 clip zscale contrast 0.25
-Frame48 clip zscale sample 600
-Frame48 clip zscale line 120
-Frame48 rgb channel blue
-Frame48 colorscale linear
-Frame48 colorscale log 10000
-Frame48 datasec 1
-Frame48 clip user 12.2244 1263.74
-Frame48 clip mode user
-Frame48 clip scope local
-Frame48 clip minmax mode scan
-Frame48 clip minmax sample 25
-Frame48 clip zscale contrast 0.25
-Frame48 clip zscale sample 600
-Frame48 clip zscale line 120
-Frame48 rgb channel blue
-Frame48 rgb channel red
-Frame48 block to 1 1
-Frame48 rgb channel green
-Frame48 block to 1 1
-Frame48 rgb channel blue
-Frame48 block to 1 1
-Frame48 rgb channel blue
-Frame48 wcs wcs icrs sexagesimal
-Frame48 pan preserve 0
-Frame48 pan to physical 1591.5822 3164.9486
-Frame48 zoom to 2.98598 2.98598
-Frame48 rotate to 0
-Frame48 orient none
-Frame48 wcs align 1
-Frame48 rgb channel red
-Frame48 rgb channel green
-Frame48 rgb channel blue
-Frame48 rgb channel blue
-Frame48 3d view 0 0
-Frame48 3d scale 1
-Frame48 3d method mip
-Frame48 3d highlite 1
-Frame48 3d border 1
-Frame48 3d background none
-Frame48 3d view point 0 0 0 0 0
-Frame48 crosshair physical 1278.2433 2137.9022
-Frame48 marker centroid radius 10
-Frame48 marker centroid iteration 30
-Frame48 mask transparency 0
-Frame48 mask system physical
-Frame48 mask color red
-Frame48 mask mark nonzero
-Frame48 mask range 0 0
-Frame48 rgb channel red
-Frame48 rgb channel green
-Frame48 rgb channel blue
-Frame48 rgb channel blue
-Frame48 rgb channel red
-Frame48 rgb channel green
-Frame48 rgb channel blue
-Frame48 rgb channel blue
 CreateNameNumberFrame Frame44 rgb
 Frame44 rgb channel red
 global loadParam
@@ -1939,8 +1513,8 @@ Frame44 block to 1 1
 Frame44 rgb channel blue
 Frame44 wcs wcs icrs sexagesimal
 Frame44 pan preserve 0
-Frame44 pan to physical 1822.265 529.2666
-Frame44 zoom to 0.158897 0.158897
+Frame44 pan to physical 2240.2298 1460.2018
+Frame44 zoom to 0.203842 0.203842
 Frame44 rotate to 0
 Frame44 orient none
 Frame44 wcs align 1
@@ -1971,70 +1545,149 @@ Frame44 rgb channel red
 Frame44 rgb channel green
 Frame44 rgb channel blue
 Frame44 rgb channel blue
-CreateNameNumberFrame Frame26 base
+CreateNameNumberFrame Frame48 rgb
+Frame48 rgb channel red
 global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/linesum-O_I-8446-bin001.fits file,mode {} load,type mmapincr file,type fits]
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_c18o_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
 if [BackupFindFile loadParam] {
   ProcessLoad
 }
-Frame26 magnifier graphics 1
-Frame26 magnifier cursor 1
-Frame26 magnifier zoom 4
-Frame26 magnifier color #ff8000
-Frame26 colorbar tag "{}"
+Frame48 rgb channel green
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_13co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame48 rgb channel blue
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_12co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+RGBDialog
+Frame48 magnifier graphics 1
+Frame48 magnifier cursor 1
+Frame48 magnifier zoom 4
+Frame48 magnifier color #ff8000
+Frame48 colorbar tag "{}"
 colorbar tag "{}"
-set sav [colorbar get colorbar]
-colorbar colorbar 1 0.5 1 0
-Frame26 colormap [colorbar get colormap]
-colorbar colorbar $sav
-Frame26 precision 8 7 4 3 8 7 5 3 8
-Frame26 bg color #808080
-Frame26 nan color #804020
-Frame26 cube axes 123
-Frame26 rgb channel red
-Frame26 rgb view 1 1 1
-Frame26 rgb system image
-Frame26 bin factor to 1 1
-Frame26 bin depth 1
-Frame26 bin filter {""}
-Frame26 bin buffer size 1024
-Frame26 bin about 0 0
-Frame26 bin function sum
-Frame26 colorscale sqrt
-Frame26 colorscale log 10000
-Frame26 datasec 1
-Frame26 clip user 0 300000
-Frame26 clip mode user
-Frame26 clip scope global
-Frame26 clip minmax mode scan
-Frame26 clip minmax sample 25
-Frame26 clip zscale contrast 0.25
-Frame26 clip zscale sample 600
-Frame26 clip zscale line 120
-Frame26 block to 1 1
-Frame26 wcs wcs icrs degrees
-Frame26 pan preserve 0
-Frame26 pan to physical 831.57759 230.74175
-Frame26 zoom to 0.298594 0.298594
-Frame26 rotate to 0
-Frame26 orient none
-Frame26 wcs align 1
-Frame26 3d view 0 0
-Frame26 3d scale 1
-Frame26 3d method mip
-Frame26 3d highlite 1
-Frame26 3d border 1
-Frame26 3d background none
-Frame26 3d view point 0 0 0 0 0
-Frame26 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame26/ds9.reg"}
-Frame26 crosshair physical 897 769
-Frame26 marker centroid radius 10
-Frame26 marker centroid iteration 30
-Frame26 mask transparency 0
-Frame26 mask system wcs
-Frame26 mask color red
-Frame26 mask mark nonzero
-Frame26 mask range 0 0
+set sav [colorbarrgb get colorbar]
+colorbarrgb colorbar rgb 0.500000 0.500000 0.500000 1.000000 1.000000 1.000000 0 
+Frame48 colormap [colorbarrgb get colormap]
+colorbarrgb colorbar $sav
+Frame48 precision 8 7 4 3 8 7 5 3 8
+Frame48 bg color #808080
+Frame48 nan color #804020
+Frame48 rgb channel red
+Frame48 cube axes 123
+Frame48 rgb channel green
+Frame48 cube axes 123
+Frame48 rgb channel blue
+Frame48 cube axes 123
+Frame48 rgb channel red
+Frame48 rgb channel red
+Frame48 rgb view 1 1 1
+Frame48 rgb system wcs
+Frame48 rgb channel red
+Frame48 bin factor to 1 1
+Frame48 bin depth 1
+Frame48 bin filter {""}
+Frame48 bin buffer size 1024
+Frame48 bin about 0 0
+Frame48 bin function sum
+Frame48 rgb channel green
+Frame48 bin factor to 1 1
+Frame48 bin depth 1
+Frame48 bin filter {""}
+Frame48 bin buffer size 1024
+Frame48 bin about 0 0
+Frame48 bin function sum
+Frame48 rgb channel blue
+Frame48 bin factor to 1 1
+Frame48 bin depth 1
+Frame48 bin filter {""}
+Frame48 bin buffer size 1024
+Frame48 bin about 0 0
+Frame48 bin function sum
+Frame48 rgb channel red
+Frame48 rgb channel red
+Frame48 colorscale sqrt
+Frame48 colorscale log 10000
+Frame48 datasec 1
+Frame48 clip user 2 35
+Frame48 clip mode user
+Frame48 clip scope local
+Frame48 clip minmax mode scan
+Frame48 clip minmax sample 25
+Frame48 clip zscale contrast 0.25
+Frame48 clip zscale sample 600
+Frame48 clip zscale line 120
+Frame48 rgb channel green
+Frame48 colorscale sqrt
+Frame48 colorscale log 10000
+Frame48 datasec 1
+Frame48 clip user 20 227
+Frame48 clip mode user
+Frame48 clip scope local
+Frame48 clip minmax mode scan
+Frame48 clip minmax sample 25
+Frame48 clip zscale contrast 0.25
+Frame48 clip zscale sample 600
+Frame48 clip zscale line 120
+Frame48 rgb channel blue
+Frame48 colorscale sqrt
+Frame48 colorscale log 10000
+Frame48 datasec 1
+Frame48 clip user 200 1263.74
+Frame48 clip mode user
+Frame48 clip scope local
+Frame48 clip minmax mode scan
+Frame48 clip minmax sample 25
+Frame48 clip zscale contrast 0.25
+Frame48 clip zscale sample 600
+Frame48 clip zscale line 120
+Frame48 rgb channel red
+Frame48 rgb channel red
+Frame48 block to 1 1
+Frame48 rgb channel green
+Frame48 block to 1 1
+Frame48 rgb channel blue
+Frame48 block to 1 1
+Frame48 rgb channel red
+Frame48 wcs wcs icrs sexagesimal
+Frame48 pan preserve 0
+Frame48 pan to physical 1192.5658 2614.5875
+Frame48 zoom to 3.83072 3.83072
+Frame48 rotate to 0
+Frame48 orient none
+Frame48 wcs align 1
+Frame48 rgb channel red
+Frame48 rgb channel green
+Frame48 rgb channel blue
+Frame48 rgb channel red
+Frame48 3d view 0 0
+Frame48 3d scale 1
+Frame48 3d method mip
+Frame48 3d highlite 1
+Frame48 3d border 1
+Frame48 3d background none
+Frame48 3d view point 0 0 0 0 0
+Frame48 crosshair physical 857 1538
+Frame48 marker centroid radius 10
+Frame48 marker centroid iteration 30
+Frame48 mask transparency 0
+Frame48 mask system physical
+Frame48 mask color red
+Frame48 mask mark nonzero
+Frame48 mask range 0 0
+Frame48 rgb channel red
+Frame48 rgb channel green
+Frame48 rgb channel blue
+Frame48 rgb channel red
+Frame48 rgb channel red
+Frame48 rgb channel green
+Frame48 rgb channel blue
+Frame48 rgb channel red
 CreateNameNumberFrame Frame33 base
 global loadParam
 array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/linesum-O_I-6300-bin001.fits file,mode {} load,type mmapincr file,type fits]
@@ -2078,8 +1731,8 @@ Frame33 clip zscale line 120
 Frame33 block to 1 1
 Frame33 wcs wcs icrs degrees
 Frame33 pan preserve 0
-Frame33 pan to physical 831.57759 230.74175
-Frame33 zoom to 0.298594 0.298594
+Frame33 pan to physical 1054.2301 726.03445
+Frame33 zoom to 0.383053 0.383053
 Frame33 rotate to 0
 Frame33 orient none
 Frame33 wcs align 1
@@ -2098,6 +1751,321 @@ Frame33 mask system wcs
 Frame33 mask color red
 Frame33 mask mark nonzero
 Frame33 mask range 0 0
+CreateNameNumberFrame Frame49 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/linesum-H_I-9229-bin001.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame49 magnifier graphics 1
+Frame49 magnifier cursor 1
+Frame49 magnifier zoom 4
+Frame49 magnifier color #ff8000
+Frame49 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame49 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame49 precision 8 7 4 3 8 7 5 3 8
+Frame49 bg color #808080
+Frame49 nan color #804020
+Frame49 cube axes 123
+Frame49 rgb channel red
+Frame49 rgb view 1 1 1
+Frame49 rgb system image
+Frame49 bin factor to 1 1
+Frame49 bin depth 1
+Frame49 bin filter {""}
+Frame49 bin buffer size 1024
+Frame49 bin about 0 0
+Frame49 bin function sum
+Frame49 colorscale linear
+Frame49 colorscale log 10000
+Frame49 datasec 1
+Frame49 clip user -4578.65 288390
+Frame49 clip mode 99.5
+Frame49 clip scope global
+Frame49 clip minmax mode scan
+Frame49 clip minmax sample 25
+Frame49 clip zscale contrast 0.25
+Frame49 clip zscale sample 600
+Frame49 clip zscale line 120
+Frame49 block to 1 1
+Frame49 wcs wcs icrs degrees
+Frame49 pan preserve 0
+Frame49 pan to physical 1054.2301 726.03445
+Frame49 zoom to 0.383053 0.383053
+Frame49 rotate to 0
+Frame49 orient none
+Frame49 wcs align 1
+Frame49 3d view 0 0
+Frame49 3d scale 1
+Frame49 3d method mip
+Frame49 3d highlite 1
+Frame49 3d border 1
+Frame49 3d background none
+Frame49 3d view point 0 0 0 0 0
+Frame49 crosshair physical 897 769
+Frame49 marker centroid radius 10
+Frame49 marker centroid iteration 30
+Frame49 mask transparency 0
+Frame49 mask system wcs
+Frame49 mask color red
+Frame49 mask mark nonzero
+Frame49 mask range 0 0
+CreateNameNumberFrame Frame50 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/linesum-He_I-6678-bin001.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame50 magnifier graphics 1
+Frame50 magnifier cursor 1
+Frame50 magnifier zoom 4
+Frame50 magnifier color #ff8000
+Frame50 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame50 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame50 precision 8 7 4 3 8 7 5 3 8
+Frame50 bg color #808080
+Frame50 nan color #804020
+Frame50 cube axes 123
+Frame50 rgb channel red
+Frame50 rgb view 1 1 1
+Frame50 rgb system image
+Frame50 bin factor to 1 1
+Frame50 bin depth 1
+Frame50 bin filter {""}
+Frame50 bin buffer size 1024
+Frame50 bin about 0 0
+Frame50 bin function sum
+Frame50 colorscale linear
+Frame50 colorscale log 10000
+Frame50 datasec 1
+Frame50 clip user -2238.68 286225
+Frame50 clip mode 99.5
+Frame50 clip scope global
+Frame50 clip minmax mode scan
+Frame50 clip minmax sample 25
+Frame50 clip zscale contrast 0.25
+Frame50 clip zscale sample 600
+Frame50 clip zscale line 120
+Frame50 block to 1 1
+Frame50 wcs wcs icrs degrees
+Frame50 pan preserve 0
+Frame50 pan to physical 1054.2301 726.03445
+Frame50 zoom to 0.383053 0.383053
+Frame50 rotate to 0
+Frame50 orient none
+Frame50 wcs align 1
+Frame50 3d view 0 0
+Frame50 3d scale 1
+Frame50 3d method mip
+Frame50 3d highlite 1
+Frame50 3d border 1
+Frame50 3d background none
+Frame50 3d view point 0 0 0 0 0
+Frame50 crosshair physical 897 769
+Frame50 marker centroid radius 10
+Frame50 marker centroid iteration 30
+Frame50 mask transparency 0
+Frame50 mask system wcs
+Frame50 mask color red
+Frame50 mask mark nonzero
+Frame50 mask range 0 0
+CreateNameNumberFrame Frame51 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/linesum-S_III-9069-bin001.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame51 magnifier graphics 1
+Frame51 magnifier cursor 1
+Frame51 magnifier zoom 4
+Frame51 magnifier color #ff8000
+Frame51 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame51 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame51 precision 8 7 4 3 8 7 5 3 8
+Frame51 bg color #808080
+Frame51 nan color #804020
+Frame51 cube axes 123
+Frame51 rgb channel red
+Frame51 rgb view 1 1 1
+Frame51 rgb system image
+Frame51 bin factor to 1 1
+Frame51 bin depth 1
+Frame51 bin filter {""}
+Frame51 bin buffer size 1024
+Frame51 bin about 0 0
+Frame51 bin function sum
+Frame51 colorscale linear
+Frame51 colorscale log 10000
+Frame51 datasec 1
+Frame51 clip user -3646.69 4.29172e+06
+Frame51 clip mode 99.5
+Frame51 clip scope global
+Frame51 clip minmax mode scan
+Frame51 clip minmax sample 25
+Frame51 clip zscale contrast 0.25
+Frame51 clip zscale sample 600
+Frame51 clip zscale line 120
+Frame51 block to 1 1
+Frame51 wcs wcs icrs degrees
+Frame51 pan preserve 0
+Frame51 pan to physical 1054.2301 726.03445
+Frame51 zoom to 0.383053 0.383053
+Frame51 rotate to 0
+Frame51 orient none
+Frame51 wcs align 1
+Frame51 3d view 0 0
+Frame51 3d scale 1
+Frame51 3d method mip
+Frame51 3d highlite 1
+Frame51 3d border 1
+Frame51 3d background none
+Frame51 3d view point 0 0 0 0 0
+Frame51 crosshair physical 897 769
+Frame51 marker centroid radius 10
+Frame51 marker centroid iteration 30
+Frame51 mask transparency 0
+Frame51 mask system wcs
+Frame51 mask color red
+Frame51 mask mark nonzero
+Frame51 mask range 0 0
+CreateNameNumberFrame Frame53 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/linesum-Ar_III-7136-bin001.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame53 magnifier graphics 1
+Frame53 magnifier cursor 1
+Frame53 magnifier zoom 4
+Frame53 magnifier color #ff8000
+Frame53 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame53 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame53 precision 8 7 4 3 8 7 5 3 8
+Frame53 bg color #808080
+Frame53 nan color #804020
+Frame53 cube axes 123
+Frame53 rgb channel red
+Frame53 rgb view 1 1 1
+Frame53 rgb system image
+Frame53 bin factor to 1 1
+Frame53 bin depth 1
+Frame53 bin filter {""}
+Frame53 bin buffer size 1024
+Frame53 bin about 0 0
+Frame53 bin function sum
+Frame53 colorscale linear
+Frame53 colorscale log 10000
+Frame53 datasec 1
+Frame53 clip user -846.083 1.34207e+06
+Frame53 clip mode 99.5
+Frame53 clip scope global
+Frame53 clip minmax mode scan
+Frame53 clip minmax sample 25
+Frame53 clip zscale contrast 0.25
+Frame53 clip zscale sample 600
+Frame53 clip zscale line 120
+Frame53 block to 1 1
+Frame53 wcs wcs icrs degrees
+Frame53 pan preserve 0
+Frame53 pan to physical 1054.2301 726.03445
+Frame53 zoom to 0.383053 0.383053
+Frame53 rotate to 0
+Frame53 orient none
+Frame53 wcs align 1
+Frame53 3d view 0 0
+Frame53 3d scale 1
+Frame53 3d method mip
+Frame53 3d highlite 1
+Frame53 3d border 1
+Frame53 3d background none
+Frame53 3d view point 0 0 0 0 0
+Frame53 crosshair physical 897 769
+Frame53 marker centroid radius 10
+Frame53 marker centroid iteration 30
+Frame53 mask transparency 0
+Frame53 mask system wcs
+Frame53 mask color red
+Frame53 mask mark nonzero
+Frame53 mask range 0 0
+CreateNameNumberFrame Frame52 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/linesum-O_II-7318-bin001.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame52 magnifier graphics 1
+Frame52 magnifier cursor 1
+Frame52 magnifier zoom 4
+Frame52 magnifier color #ff8000
+Frame52 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame52 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame52 precision 8 7 4 3 8 7 5 3 8
+Frame52 bg color #808080
+Frame52 nan color #804020
+Frame52 cube axes 123
+Frame52 rgb channel red
+Frame52 rgb view 1 1 1
+Frame52 rgb system image
+Frame52 bin factor to 1 1
+Frame52 bin depth 1
+Frame52 bin filter {""}
+Frame52 bin buffer size 1024
+Frame52 bin about 0 0
+Frame52 bin function sum
+Frame52 colorscale linear
+Frame52 colorscale log 10000
+Frame52 datasec 1
+Frame52 clip user -890.205 928695
+Frame52 clip mode 99.5
+Frame52 clip scope global
+Frame52 clip minmax mode scan
+Frame52 clip minmax sample 25
+Frame52 clip zscale contrast 0.25
+Frame52 clip zscale sample 600
+Frame52 clip zscale line 120
+Frame52 block to 1 1
+Frame52 wcs wcs icrs degrees
+Frame52 pan preserve 0
+Frame52 pan to physical 1054.2301 726.03445
+Frame52 zoom to 0.383053 0.383053
+Frame52 rotate to 0
+Frame52 orient none
+Frame52 wcs align 1
+Frame52 3d view 0 0
+Frame52 3d scale 1
+Frame52 3d method mip
+Frame52 3d highlite 1
+Frame52 3d border 1
+Frame52 3d background none
+Frame52 3d view point 0 0 0 0 0
+Frame52 crosshair physical 897 769
+Frame52 marker centroid radius 10
+Frame52 marker centroid iteration 30
+Frame52 mask transparency 0
+Frame52 mask system wcs
+Frame52 mask color red
+Frame52 mask mark nonzero
+Frame52 mask range 0 0
 CreateNameNumberFrame Frame24 base
 global loadParam
 array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/C_H_beta-bin001.fits file,mode {} load,type mmapincr file,type fits]
@@ -2141,8 +2109,8 @@ Frame24 clip zscale line 120
 Frame24 block to 1 1
 Frame24 wcs wcs icrs degrees
 Frame24 pan preserve 0
-Frame24 pan to physical 831.57759 230.74175
-Frame24 zoom to 0.298594 0.298594
+Frame24 pan to physical 1054.2301 726.03445
+Frame24 zoom to 0.383053 0.383053
 Frame24 rotate to 0
 Frame24 orient none
 Frame24 wcs align 1
@@ -2204,8 +2172,8 @@ Frame23 clip zscale line 120
 Frame23 block to 1 1
 Frame23 wcs wcs icrs degrees
 Frame23 pan preserve 0
-Frame23 pan to physical 831.57759 230.74175
-Frame23 zoom to 0.298594 0.298594
+Frame23 pan to physical 1054.2301 726.03445
+Frame23 zoom to 0.383053 0.383053
 Frame23 rotate to 0
 Frame23 orient none
 Frame23 wcs align 1
@@ -2224,69 +2192,6 @@ Frame23 mask system wcs
 Frame23 mask color red
 Frame23 mask mark nonzero
 Frame23 mask range 0 0
-CreateNameNumberFrame Frame25 base
-global loadParam
-array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/C_H_beta_9229-bin004.fits file,mode {} load,type mmapincr file,type fits]
-if [BackupFindFile loadParam] {
-  ProcessLoad
-}
-Frame25 magnifier graphics 1
-Frame25 magnifier cursor 1
-Frame25 magnifier zoom 4
-Frame25 magnifier color #ff8000
-Frame25 colorbar tag "{}"
-colorbar tag "{}"
-set sav [colorbar get colorbar]
-colorbar colorbar 1 0.5 1 1
-Frame25 colormap [colorbar get colormap]
-colorbar colorbar $sav
-Frame25 precision 8 7 4 3 8 7 5 3 8
-Frame25 bg color #808080
-Frame25 nan color #804020
-Frame25 cube axes 123
-Frame25 rgb channel red
-Frame25 rgb view 1 1 1
-Frame25 rgb system image
-Frame25 bin factor to 1 1
-Frame25 bin depth 1
-Frame25 bin filter {""}
-Frame25 bin buffer size 1024
-Frame25 bin about 0 0
-Frame25 bin function sum
-Frame25 colorscale linear
-Frame25 colorscale log 10000
-Frame25 datasec 1
-Frame25 clip user 0 1.5
-Frame25 clip mode user
-Frame25 clip scope local
-Frame25 clip minmax mode scan
-Frame25 clip minmax sample 25
-Frame25 clip zscale contrast 0.25
-Frame25 clip zscale sample 600
-Frame25 clip zscale line 120
-Frame25 block to 1 1
-Frame25 wcs wcs icrs degrees
-Frame25 pan preserve 0
-Frame25 pan to physical 831.57759 230.74175
-Frame25 zoom to 0.298594 0.298594
-Frame25 rotate to 0
-Frame25 orient none
-Frame25 wcs align 1
-Frame25 3d view 0 0
-Frame25 3d scale 1
-Frame25 3d method mip
-Frame25 3d highlite 1
-Frame25 3d border 1
-Frame25 3d background none
-Frame25 3d view point 0 0 0 0 0
-Frame25 crosshair physical 897 769
-Frame25 marker centroid radius 10
-Frame25 marker centroid iteration 30
-Frame25 mask transparency 0
-Frame25 mask system wcs
-Frame25 mask color red
-Frame25 mask mark nonzero
-Frame25 mask range 0 0
 CreateNameNumberFrame Frame30 base
 global loadParam
 array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/muse-ew6634-rebin16x16.fits file,mode {} load,type mmapincr file,type fits]
@@ -2330,8 +2235,8 @@ Frame30 clip zscale line 120
 Frame30 block to 1 1
 Frame30 wcs wcs icrs degrees
 Frame30 pan preserve 0
-Frame30 pan to physical 52.44235 14.890109
-Frame30 zoom to 4.7775 4.7775
+Frame30 pan to physical 66.358131 45.845903
+Frame30 zoom to 6.12886 6.12886
 Frame30 rotate to 0
 Frame30 orient none
 Frame30 wcs align 1
@@ -2393,8 +2298,8 @@ Frame29 clip zscale line 120
 Frame29 block to 1 1
 Frame29 wcs wcs icrs degrees
 Frame29 pan preserve 0
-Frame29 pan to physical 166.71552 46.54835
-Frame29 zoom to 1.49297 1.49297
+Frame29 pan to physical 211.24602 145.60689
+Frame29 zoom to 1.91527 1.91527
 Frame29 rotate to 0
 Frame29 orient none
 Frame29 wcs align 1
@@ -2456,8 +2361,8 @@ Frame35 clip zscale line 120
 Frame35 block to 1 1
 Frame35 wcs wcs icrs sexagesimal
 Frame35 pan preserve 0
-Frame35 pan to physical 1822.2645 529.26622
-Frame35 zoom to 0.158897 0.158897
+Frame35 pan to physical 2240.2294 1460.2014
+Frame35 zoom to 0.203842 0.203842
 Frame35 rotate to 0
 Frame35 orient none
 Frame35 wcs align 1
@@ -2519,8 +2424,8 @@ Frame39 clip zscale line 120
 Frame39 block to 1 1
 Frame39 wcs wcs icrs sexagesimal
 Frame39 pan preserve 0
-Frame39 pan to physical 1822.265 529.2666
-Frame39 zoom to 0.158897 0.158897
+Frame39 pan to physical 2240.2298 1460.2018
+Frame39 zoom to 0.203842 0.203842
 Frame39 rotate to 0
 Frame39 orient none
 Frame39 wcs align 1
@@ -2582,8 +2487,8 @@ Frame40 clip zscale line 120
 Frame40 block to 1 1
 Frame40 wcs wcs icrs sexagesimal
 Frame40 pan preserve 0
-Frame40 pan to physical 1955.7643 1389.9409
-Frame40 zoom to 0.158897 0.158897
+Frame40 pan to physical 2374.7098 2320.4348
+Frame40 zoom to 0.203842 0.203842
 Frame40 rotate to 0
 Frame40 orient none
 Frame40 wcs align 1
@@ -2645,8 +2550,8 @@ Frame36 clip zscale line 120
 Frame36 block to 1 1
 Frame36 wcs wcs icrs sexagesimal
 Frame36 pan preserve 0
-Frame36 pan to physical -381.94368 527.54353
-Frame36 zoom to 0.158897 0.158897
+Frame36 pan to physical 38.132348 1457.528
+Frame36 zoom to 0.203842 0.203842
 Frame36 rotate to 0
 Frame36 orient none
 Frame36 wcs align 1
@@ -2708,8 +2613,8 @@ Frame46 clip zscale line 120
 Frame46 block to 1 1
 Frame46 wcs wcs icrs sexagesimal
 Frame46 pan preserve 0
-Frame46 pan to physical 1592.9181 3166.9631
-Frame46 zoom to 2.98597 2.98597
+Frame46 pan to physical 1615.1948 3216.4852
+Frame46 zoom to 3.83091 3.83091
 Frame46 rotate to 0
 Frame46 orient none
 Frame46 wcs align 1
@@ -2771,8 +2676,8 @@ Frame47 clip zscale line 120
 Frame47 block to 1 1
 Frame47 wcs wcs icrs sexagesimal
 Frame47 pan preserve 0
-Frame47 pan to physical 1170.2929 2565.063
-Frame47 zoom to 2.98598 2.98598
+Frame47 pan to physical 1192.5658 2614.5875
+Frame47 zoom to 3.83072 3.83072
 Frame47 rotate to 0
 Frame47 orient none
 Frame47 wcs align 1
@@ -2791,10 +2696,1497 @@ Frame47 mask system wcs
 Frame47 mask color red
 Frame47 mask mark nonzero
 Frame47 mask range 0 0
+CreateNameNumberFrame Frame54 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/linesum-Cl_IV-7531-bin004.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame54 magnifier graphics 1
+Frame54 magnifier cursor 1
+Frame54 magnifier zoom 4
+Frame54 magnifier color #ff8000
+Frame54 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame54 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame54 precision 8 7 4 3 8 7 5 3 8
+Frame54 bg color #808080
+Frame54 nan color #804020
+Frame54 cube axes 123
+Frame54 rgb channel red
+Frame54 rgb view 1 1 1
+Frame54 rgb system image
+Frame54 bin factor to 1 1
+Frame54 bin depth 1
+Frame54 bin filter {""}
+Frame54 bin buffer size 1024
+Frame54 bin about 0 0
+Frame54 bin function sum
+Frame54 colorscale linear
+Frame54 colorscale log 10000
+Frame54 datasec 1
+Frame54 clip user -3044.74 3959.51
+Frame54 clip mode 99.5
+Frame54 clip scope global
+Frame54 clip minmax mode scan
+Frame54 clip minmax sample 25
+Frame54 clip zscale contrast 0.25
+Frame54 clip zscale sample 600
+Frame54 clip zscale line 120
+Frame54 block to 1 1
+Frame54 wcs wcs icrs degrees
+Frame54 pan preserve 0
+Frame54 pan to physical 1054.2301 726.03445
+Frame54 zoom to 0.383053 0.383053
+Frame54 rotate to 0
+Frame54 orient none
+Frame54 wcs align 1
+Frame54 3d view 0 0
+Frame54 3d scale 1
+Frame54 3d method mip
+Frame54 3d highlite 1
+Frame54 3d border 1
+Frame54 3d background none
+Frame54 3d view point 0 0 0 0 0
+Frame54 crosshair physical 897 769
+Frame54 marker centroid radius 10
+Frame54 marker centroid iteration 30
+Frame54 mask transparency 0
+Frame54 mask system wcs
+Frame54 mask color red
+Frame54 mask mark nonzero
+Frame54 mask range 0 0
+CreateNameNumberFrame Frame55 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/linesum-C_I-8727-bin001.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame55 magnifier graphics 1
+Frame55 magnifier cursor 1
+Frame55 magnifier zoom 4
+Frame55 magnifier color #ff8000
+Frame55 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame55 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame55 precision 8 7 4 3 8 7 5 3 8
+Frame55 bg color #808080
+Frame55 nan color #804020
+Frame55 cube axes 123
+Frame55 rgb channel red
+Frame55 rgb view 1 1 1
+Frame55 rgb system image
+Frame55 bin factor to 1 1
+Frame55 bin depth 1
+Frame55 bin filter {""}
+Frame55 bin buffer size 1024
+Frame55 bin about 0 0
+Frame55 bin function sum
+Frame55 colorscale linear
+Frame55 colorscale log 10000
+Frame55 datasec 1
+Frame55 clip user -13357.1 14651.2
+Frame55 clip mode 99.5
+Frame55 clip scope global
+Frame55 clip minmax mode scan
+Frame55 clip minmax sample 25
+Frame55 clip zscale contrast 0.25
+Frame55 clip zscale sample 600
+Frame55 clip zscale line 120
+Frame55 block to 1 1
+Frame55 wcs wcs icrs degrees
+Frame55 pan preserve 0
+Frame55 pan to physical 1054.2301 726.03445
+Frame55 zoom to 0.383053 0.383053
+Frame55 rotate to 0
+Frame55 orient none
+Frame55 wcs align 1
+Frame55 3d view 0 0
+Frame55 3d scale 1
+Frame55 3d method mip
+Frame55 3d highlite 1
+Frame55 3d border 1
+Frame55 3d background none
+Frame55 3d view point 0 0 0 0 0
+Frame55 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame55/ds9.reg"}
+Frame55 crosshair physical 897 769
+Frame55 marker centroid radius 10
+Frame55 marker centroid iteration 30
+Frame55 mask transparency 0
+Frame55 mask system wcs
+Frame55 mask color red
+Frame55 mask mark nonzero
+Frame55 mask range 0 0
+CreateNameNumberFrame Frame58 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/tex12.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame58 magnifier graphics 1
+Frame58 magnifier cursor 1
+Frame58 magnifier zoom 4
+Frame58 magnifier color #ff8000
+Frame58 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame58 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame58 precision 8 7 4 3 8 7 5 3 8
+Frame58 bg color #808080
+Frame58 nan color #804020
+Frame58 cube axes 123
+Frame58 rgb channel red
+Frame58 rgb view 1 1 1
+Frame58 rgb system image
+Frame58 bin factor to 1 1
+Frame58 bin depth 1
+Frame58 bin filter {""}
+Frame58 bin buffer size 1024
+Frame58 bin about 0 0
+Frame58 bin function sum
+Frame58 colorscale linear
+Frame58 colorscale log 10000
+Frame58 datasec 1
+Frame58 clip user 50 219.473
+Frame58 clip mode user
+Frame58 clip scope local
+Frame58 clip minmax mode scan
+Frame58 clip minmax sample 25
+Frame58 clip zscale contrast 0.25
+Frame58 clip zscale sample 600
+Frame58 clip zscale line 120
+Frame58 block to 1 1
+Frame58 wcs wcs icrs sexagesimal
+Frame58 pan preserve 0
+Frame58 pan to physical 1615.1948 3216.4852
+Frame58 zoom to 3.83091 3.83091
+Frame58 rotate to 0
+Frame58 orient none
+Frame58 wcs align 1
+Frame58 3d view 0 0
+Frame58 3d scale 1
+Frame58 3d method mip
+Frame58 3d highlite 1
+Frame58 3d border 1
+Frame58 3d background none
+Frame58 3d view point 0 0 0 0 0
+Frame58 crosshair physical 1220 2131
+Frame58 marker centroid radius 10
+Frame58 marker centroid iteration 30
+Frame58 mask transparency 0
+Frame58 mask system wcs
+Frame58 mask color red
+Frame58 mask mark nonzero
+Frame58 mask range 0 0
+CreateNameNumberFrame Frame59 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/coldens13_tauinte.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame59 magnifier graphics 1
+Frame59 magnifier cursor 1
+Frame59 magnifier zoom 4
+Frame59 magnifier color #ff8000
+Frame59 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame59 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame59 precision 8 7 4 3 8 7 5 3 8
+Frame59 bg color #808080
+Frame59 nan color #804020
+Frame59 cube axes 123
+Frame59 rgb channel red
+Frame59 rgb view 1 1 1
+Frame59 rgb system image
+Frame59 bin factor to 1 1
+Frame59 bin depth 1
+Frame59 bin filter {""}
+Frame59 bin buffer size 1024
+Frame59 bin about 0 0
+Frame59 bin function sum
+Frame59 colorscale linear
+Frame59 colorscale log 10000
+Frame59 datasec 1
+Frame59 clip user 0 3.22018e+18
+Frame59 clip mode minmax
+Frame59 clip scope local
+Frame59 clip minmax mode scan
+Frame59 clip minmax sample 25
+Frame59 clip zscale contrast 0.25
+Frame59 clip zscale sample 600
+Frame59 clip zscale line 120
+Frame59 block to 1 1
+Frame59 wcs wcs icrs sexagesimal
+Frame59 pan preserve 0
+Frame59 pan to physical 1615.1948 3216.4852
+Frame59 zoom to 3.83091 3.83091
+Frame59 rotate to 0
+Frame59 orient none
+Frame59 wcs align 1
+Frame59 3d view 0 0
+Frame59 3d scale 1
+Frame59 3d method mip
+Frame59 3d highlite 1
+Frame59 3d border 1
+Frame59 3d background none
+Frame59 3d view point 0 0 0 0 0
+Frame59 crosshair physical 1220 2131
+Frame59 marker centroid radius 10
+Frame59 marker centroid iteration 30
+Frame59 mask transparency 0
+Frame59 mask system wcs
+Frame59 mask color red
+Frame59 mask mark nonzero
+Frame59 mask range 0 0
+CreateNameNumberFrame Frame60 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom1_12co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame60 magnifier graphics 1
+Frame60 magnifier cursor 1
+Frame60 magnifier zoom 4
+Frame60 magnifier color #ff8000
+Frame60 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 20 0.5 1 0
+Frame60 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame60 precision 8 7 4 3 8 7 5 3 8
+Frame60 bg color #808080
+Frame60 nan color #804020
+Frame60 cube axes 123
+Frame60 rgb channel red
+Frame60 rgb view 1 1 1
+Frame60 rgb system image
+Frame60 bin factor to 1 1
+Frame60 bin depth 1
+Frame60 bin filter {""}
+Frame60 bin buffer size 1024
+Frame60 bin about 0 0
+Frame60 bin function sum
+Frame60 colorscale linear
+Frame60 colorscale log 10000
+Frame60 datasec 1
+Frame60 clip user 6 11
+Frame60 clip mode user
+Frame60 clip scope local
+Frame60 clip minmax mode scan
+Frame60 clip minmax sample 25
+Frame60 clip zscale contrast 0.25
+Frame60 clip zscale sample 600
+Frame60 clip zscale line 120
+Frame60 block to 1 1
+Frame60 wcs wcs icrs sexagesimal
+Frame60 pan preserve 0
+Frame60 pan to physical 1613.8573 3214.4717
+Frame60 zoom to 3.83089 3.83089
+Frame60 rotate to 0
+Frame60 orient none
+Frame60 wcs align 1
+Frame60 3d view 0 0
+Frame60 3d scale 1
+Frame60 3d method mip
+Frame60 3d highlite 1
+Frame60 3d border 1
+Frame60 3d background none
+Frame60 3d view point 0 0 0 0 0
+Frame60 crosshair physical 1279 2137
+Frame60 marker centroid radius 10
+Frame60 marker centroid iteration 30
+Frame60 mask transparency 0
+Frame60 mask system wcs
+Frame60 mask color red
+Frame60 mask mark nonzero
+Frame60 mask range 0 0
+CreateNameNumberFrame Frame62 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_28_37_12co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame62 magnifier graphics 1
+Frame62 magnifier cursor 1
+Frame62 magnifier zoom 4
+Frame62 magnifier color #ff8000
+Frame62 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame62 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame62 precision 8 7 4 3 8 7 5 3 8
+Frame62 bg color #808080
+Frame62 nan color #804020
+Frame62 cube axes 123
+Frame62 rgb channel red
+Frame62 rgb view 1 1 1
+Frame62 rgb system image
+Frame62 bin factor to 1 1
+Frame62 bin depth 1
+Frame62 bin filter {""}
+Frame62 bin buffer size 1024
+Frame62 bin about 0 0
+Frame62 bin function sum
+Frame62 colorscale linear
+Frame62 colorscale log 10000
+Frame62 datasec 1
+Frame62 clip user 1.67172 380.167
+Frame62 clip mode user
+Frame62 clip scope local
+Frame62 clip minmax mode scan
+Frame62 clip minmax sample 25
+Frame62 clip zscale contrast 0.25
+Frame62 clip zscale sample 600
+Frame62 clip zscale line 120
+Frame62 block to 1 1
+Frame62 wcs wcs icrs sexagesimal
+Frame62 pan preserve 0
+Frame62 pan to physical 1613.8573 3214.4717
+Frame62 zoom to 3.83089 3.83089
+Frame62 rotate to 0
+Frame62 orient none
+Frame62 wcs align 1
+Frame62 3d view 0 0
+Frame62 3d scale 1
+Frame62 3d method mip
+Frame62 3d highlite 1
+Frame62 3d border 1
+Frame62 3d background none
+Frame62 3d view point 0 0 0 0 0
+Frame62 crosshair physical 1279 2137
+Frame62 marker centroid radius 10
+Frame62 marker centroid iteration 30
+Frame62 mask transparency 0
+Frame62 mask system wcs
+Frame62 mask color red
+Frame62 mask mark nonzero
+Frame62 mask range 0 0
+Frame62 contour create #22d 2 0 smooth 5 1 linear 10000 user local 1.67172 380.167 {"275 300 325 350 375 400 425 450 475"}
+CreateNameNumberFrame Frame61 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_38_47_12co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame61 magnifier graphics 1
+Frame61 magnifier cursor 1
+Frame61 magnifier zoom 4
+Frame61 magnifier color #ff8000
+Frame61 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame61 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame61 precision 8 7 4 3 8 7 5 3 8
+Frame61 bg color #808080
+Frame61 nan color #804020
+Frame61 cube axes 123
+Frame61 rgb channel red
+Frame61 rgb view 1 1 1
+Frame61 rgb system image
+Frame61 bin factor to 1 1
+Frame61 bin depth 1
+Frame61 bin filter {""}
+Frame61 bin buffer size 1024
+Frame61 bin about 0 0
+Frame61 bin function sum
+Frame61 colorscale squared
+Frame61 colorscale log 10000
+Frame61 datasec 1
+Frame61 clip user 40 485.805
+Frame61 clip mode user
+Frame61 clip scope local
+Frame61 clip minmax mode scan
+Frame61 clip minmax sample 25
+Frame61 clip zscale contrast 0.25
+Frame61 clip zscale sample 600
+Frame61 clip zscale line 120
+Frame61 block to 1 1
+Frame61 wcs wcs icrs sexagesimal
+Frame61 pan preserve 0
+Frame61 pan to physical 1613.8573 3214.4717
+Frame61 zoom to 3.83089 3.83089
+Frame61 rotate to 0
+Frame61 orient none
+Frame61 wcs align 1
+Frame61 3d view 0 0
+Frame61 3d scale 1
+Frame61 3d method mip
+Frame61 3d highlite 1
+Frame61 3d border 1
+Frame61 3d background none
+Frame61 3d view point 0 0 0 0 0
+Frame61 crosshair physical 1279 2137
+Frame61 marker centroid radius 10
+Frame61 marker centroid iteration 30
+Frame61 mask transparency 0
+Frame61 mask system wcs
+Frame61 mask color red
+Frame61 mask mark nonzero
+Frame61 mask range 0 0
+Frame61 contour create #22d 2 0 smooth 5 1 squared 10000 user local 40 485.805 {"230 300 350 400 450 475"}
+CreateNameNumberFrame Frame63 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_48_57_12co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame63 magnifier graphics 1
+Frame63 magnifier cursor 1
+Frame63 magnifier zoom 4
+Frame63 magnifier color #ff8000
+Frame63 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 0
+Frame63 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame63 precision 8 7 4 3 8 7 5 3 8
+Frame63 bg color #808080
+Frame63 nan color #804020
+Frame63 cube axes 123
+Frame63 rgb channel red
+Frame63 rgb view 1 1 1
+Frame63 rgb system image
+Frame63 bin factor to 1 1
+Frame63 bin depth 1
+Frame63 bin filter {""}
+Frame63 bin buffer size 1024
+Frame63 bin about 0 0
+Frame63 bin function sum
+Frame63 colorscale squared
+Frame63 colorscale log 10000
+Frame63 datasec 1
+Frame63 clip user 40 450
+Frame63 clip mode user
+Frame63 clip scope local
+Frame63 clip minmax mode scan
+Frame63 clip minmax sample 25
+Frame63 clip zscale contrast 0.25
+Frame63 clip zscale sample 600
+Frame63 clip zscale line 120
+Frame63 block to 1 1
+Frame63 wcs wcs icrs sexagesimal
+Frame63 pan preserve 0
+Frame63 pan to physical 1613.8573 3214.4717
+Frame63 zoom to 3.83089 3.83089
+Frame63 rotate to 0
+Frame63 orient none
+Frame63 wcs align 1
+Frame63 3d view 0 0
+Frame63 3d scale 1
+Frame63 3d method mip
+Frame63 3d highlite 1
+Frame63 3d border 1
+Frame63 3d background none
+Frame63 3d view point 0 0 0 0 0
+Frame63 crosshair physical 1279 2137
+Frame63 marker centroid radius 10
+Frame63 marker centroid iteration 30
+Frame63 mask transparency 0
+Frame63 mask system wcs
+Frame63 mask color red
+Frame63 mask mark nonzero
+Frame63 mask range 0 0
+Frame63 contour create #c00 2 0 smooth 5 1 squared 10000 user local 40 450 {"230 300 350 400 450 475"}
+CreateNameNumberFrame Frame64 rgb
+Frame64 rgb channel red
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_87_109_13co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame64 rgb channel green
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_65_86_13co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame64 rgb channel blue
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_42_64_13co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+RGBDialog
+Frame64 magnifier graphics 1
+Frame64 magnifier cursor 1
+Frame64 magnifier zoom 4
+Frame64 magnifier color #ff8000
+Frame64 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbarrgb get colorbar]
+colorbarrgb colorbar rgb 0.500000 0.500000 0.500000 1.000000 1.000000 1.000000 0 
+Frame64 colormap [colorbarrgb get colormap]
+colorbarrgb colorbar $sav
+Frame64 precision 8 7 4 3 8 7 5 3 8
+Frame64 bg color #808080
+Frame64 nan color #804020
+Frame64 rgb channel red
+Frame64 cube axes 123
+Frame64 rgb channel green
+Frame64 cube axes 123
+Frame64 rgb channel blue
+Frame64 cube axes 123
+Frame64 rgb channel blue
+Frame64 rgb channel blue
+Frame64 rgb view 1 1 1
+Frame64 rgb system wcs
+Frame64 rgb channel red
+Frame64 bin factor to 1 1
+Frame64 bin depth 1
+Frame64 bin filter {""}
+Frame64 bin buffer size 1024
+Frame64 bin about 0 0
+Frame64 bin function sum
+Frame64 rgb channel green
+Frame64 bin factor to 1 1
+Frame64 bin depth 1
+Frame64 bin filter {""}
+Frame64 bin buffer size 1024
+Frame64 bin about 0 0
+Frame64 bin function sum
+Frame64 rgb channel blue
+Frame64 bin factor to 1 1
+Frame64 bin depth 1
+Frame64 bin filter {""}
+Frame64 bin buffer size 1024
+Frame64 bin about 0 0
+Frame64 bin function sum
+Frame64 rgb channel blue
+Frame64 rgb channel red
+Frame64 colorscale linear
+Frame64 colorscale log 10000
+Frame64 datasec 1
+Frame64 clip user -10.6558 108.358
+Frame64 clip mode minmax
+Frame64 clip scope local
+Frame64 clip minmax mode scan
+Frame64 clip minmax sample 25
+Frame64 clip zscale contrast 0.25
+Frame64 clip zscale sample 600
+Frame64 clip zscale line 120
+Frame64 rgb channel green
+Frame64 colorscale linear
+Frame64 colorscale log 10000
+Frame64 datasec 1
+Frame64 clip user -8.48743 133.566
+Frame64 clip mode minmax
+Frame64 clip scope local
+Frame64 clip minmax mode scan
+Frame64 clip minmax sample 25
+Frame64 clip zscale contrast 0.25
+Frame64 clip zscale sample 600
+Frame64 clip zscale line 120
+Frame64 rgb channel blue
+Frame64 colorscale linear
+Frame64 colorscale log 10000
+Frame64 datasec 1
+Frame64 clip user -9.82913 102.191
+Frame64 clip mode minmax
+Frame64 clip scope local
+Frame64 clip minmax mode scan
+Frame64 clip minmax sample 25
+Frame64 clip zscale contrast 0.25
+Frame64 clip zscale sample 600
+Frame64 clip zscale line 120
+Frame64 rgb channel blue
+Frame64 rgb channel red
+Frame64 block to 1 1
+Frame64 rgb channel green
+Frame64 block to 1 1
+Frame64 rgb channel blue
+Frame64 block to 1 1
+Frame64 rgb channel blue
+Frame64 wcs wcs icrs degrees
+Frame64 pan preserve 0
+Frame64 pan to physical 1615.1948 3216.4852
+Frame64 zoom to 3.83091 3.83091
+Frame64 rotate to 0
+Frame64 orient none
+Frame64 wcs align 1
+Frame64 rgb channel red
+Frame64 rgb channel green
+Frame64 rgb channel blue
+Frame64 rgb channel blue
+Frame64 3d view 0 0
+Frame64 3d scale 1
+Frame64 3d method mip
+Frame64 3d highlite 1
+Frame64 3d border 1
+Frame64 3d background none
+Frame64 3d view point 0 0 0 0 0
+Frame64 crosshair physical 1220 2131
+Frame64 marker centroid radius 10
+Frame64 marker centroid iteration 30
+Frame64 mask transparency 0
+Frame64 mask system physical
+Frame64 mask color red
+Frame64 mask mark nonzero
+Frame64 mask range 0 0
+Frame64 rgb channel red
+Frame64 rgb channel green
+Frame64 rgb channel blue
+Frame64 rgb channel blue
+Frame64 rgb channel red
+Frame64 contour create #c00 2 0 smooth 5 1 linear 10000 minmax local -10.6558 108.358 {"35 70"}
+Frame64 rgb channel green
+Frame64 contour create #c00 2 0 smooth 5 1 linear 10000 minmax local -8.48743 133.566 {"60 90"}
+Frame64 rgb channel blue
+Frame64 contour create #c00 2 0 smooth 5 1 linear 10000 minmax local -9.82913 102.191 {"45 90"}
+Frame64 rgb channel blue
+CreateNameNumberFrame Frame25 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/C_H_beta_9229-bin004.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame25 magnifier graphics 1
+Frame25 magnifier cursor 1
+Frame25 magnifier zoom 4
+Frame25 magnifier color #ff8000
+Frame25 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 1
+Frame25 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame25 precision 8 7 4 3 8 7 5 3 8
+Frame25 bg color #808080
+Frame25 nan color #804020
+Frame25 cube axes 123
+Frame25 rgb channel red
+Frame25 rgb view 1 1 1
+Frame25 rgb system image
+Frame25 bin factor to 1 1
+Frame25 bin depth 1
+Frame25 bin filter {""}
+Frame25 bin buffer size 1024
+Frame25 bin about 0 0
+Frame25 bin function sum
+Frame25 colorscale linear
+Frame25 colorscale log 10000
+Frame25 datasec 1
+Frame25 clip user 0 1.5
+Frame25 clip mode user
+Frame25 clip scope local
+Frame25 clip minmax mode scan
+Frame25 clip minmax sample 25
+Frame25 clip zscale contrast 0.25
+Frame25 clip zscale sample 600
+Frame25 clip zscale line 120
+Frame25 block to 1 1
+Frame25 wcs wcs icrs degrees
+Frame25 pan preserve 0
+Frame25 pan to physical 1054.2301 726.03445
+Frame25 zoom to 0.383053 0.383053
+Frame25 rotate to 0
+Frame25 orient none
+Frame25 wcs align 1
+Frame25 3d view 0 0
+Frame25 3d scale 1
+Frame25 3d method mip
+Frame25 3d highlite 1
+Frame25 3d border 1
+Frame25 3d background none
+Frame25 3d view point 0 0 0 0 0
+Frame25 crosshair physical 897 769
+Frame25 marker centroid radius 10
+Frame25 marker centroid iteration 30
+Frame25 mask transparency 0
+Frame25 mask system wcs
+Frame25 mask color red
+Frame25 mask mark nonzero
+Frame25 mask range 0 0
+CreateNameNumberFrame Frame22 rgb
+Frame22 rgb channel red
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/muse-hr-data-ha-raman-R087-rebin05x05-cont-sub.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame22 rgb channel green
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/muse-hr-data-ha-raman-R057-rebin05x05-cont-sub.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame22 rgb channel blue
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/muse-hr-data-ha-raman-R040-rebin05x05-cont-sub.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+RGBDialog
+Frame22 magnifier graphics 1
+Frame22 magnifier cursor 1
+Frame22 magnifier zoom 4
+Frame22 magnifier color #ff8000
+Frame22 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbarrgb get colorbar]
+colorbarrgb colorbar rgb 0.500000 0.500000 0.500000 1.000000 1.000000 1.000000 0 
+Frame22 colormap [colorbarrgb get colormap]
+colorbarrgb colorbar $sav
+Frame22 precision 8 7 4 3 8 7 5 3 8
+Frame22 bg color #808080
+Frame22 nan color #804020
+Frame22 rgb channel red
+Frame22 cube axes 123
+Frame22 rgb channel green
+Frame22 cube axes 123
+Frame22 rgb channel blue
+Frame22 cube axes 123
+Frame22 rgb channel red
+Frame22 rgb channel red
+Frame22 rgb view 1 1 1
+Frame22 rgb system wcs
+Frame22 rgb channel red
+Frame22 bin factor to 1 1
+Frame22 bin depth 1
+Frame22 bin filter {""}
+Frame22 bin buffer size 1024
+Frame22 bin about 0 0
+Frame22 bin function sum
+Frame22 rgb channel green
+Frame22 bin factor to 1 1
+Frame22 bin depth 1
+Frame22 bin filter {""}
+Frame22 bin buffer size 1024
+Frame22 bin about 0 0
+Frame22 bin function sum
+Frame22 rgb channel blue
+Frame22 bin factor to 1 1
+Frame22 bin depth 1
+Frame22 bin filter {""}
+Frame22 bin buffer size 1024
+Frame22 bin about 0 0
+Frame22 bin function sum
+Frame22 rgb channel red
+Frame22 rgb channel red
+Frame22 colorscale linear
+Frame22 colorscale log 10000
+Frame22 datasec 1
+Frame22 clip user 0 10000
+Frame22 clip mode user
+Frame22 clip scope local
+Frame22 clip minmax mode scan
+Frame22 clip minmax sample 25
+Frame22 clip zscale contrast 0.25
+Frame22 clip zscale sample 600
+Frame22 clip zscale line 120
+Frame22 rgb channel green
+Frame22 colorscale linear
+Frame22 colorscale log 10000
+Frame22 datasec 1
+Frame22 clip user 0 20000
+Frame22 clip mode user
+Frame22 clip scope local
+Frame22 clip minmax mode scan
+Frame22 clip minmax sample 25
+Frame22 clip zscale contrast 0.25
+Frame22 clip zscale sample 600
+Frame22 clip zscale line 120
+Frame22 rgb channel blue
+Frame22 colorscale linear
+Frame22 colorscale log 10000
+Frame22 datasec 1
+Frame22 clip user 0 30000
+Frame22 clip mode user
+Frame22 clip scope local
+Frame22 clip minmax mode scan
+Frame22 clip minmax sample 25
+Frame22 clip zscale contrast 0.25
+Frame22 clip zscale sample 600
+Frame22 clip zscale line 120
+Frame22 rgb channel red
+Frame22 rgb channel red
+Frame22 block to 1 1
+Frame22 rgb channel green
+Frame22 block to 1 1
+Frame22 rgb channel blue
+Frame22 block to 1 1
+Frame22 rgb channel red
+Frame22 wcs wcs icrs degrees
+Frame22 pan preserve 0
+Frame22 pan to physical 211.24602 145.60689
+Frame22 zoom to 1.91527 1.91527
+Frame22 rotate to 0
+Frame22 orient none
+Frame22 wcs align 1
+Frame22 rgb channel red
+Frame22 rgb channel green
+Frame22 rgb channel blue
+Frame22 rgb channel red
+Frame22 3d view 0 0
+Frame22 3d scale 1
+Frame22 3d method mip
+Frame22 3d highlite 1
+Frame22 3d border 1
+Frame22 3d background none
+Frame22 3d view point 0 0 0 0 0
+Frame22 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame22/ds9.reg"}
+Frame22 crosshair physical 177 148
+Frame22 marker centroid radius 10
+Frame22 marker centroid iteration 30
+Frame22 mask transparency 0
+Frame22 mask system physical
+Frame22 mask color red
+Frame22 mask mark nonzero
+Frame22 mask range 0 0
+Frame22 rgb channel red
+Frame22 smooth gaussian 3 3 1.5 1.5 0
+Frame22 rgb channel green
+Frame22 smooth gaussian 3 3 1.5 1.5 0
+Frame22 rgb channel blue
+Frame22 smooth gaussian 3 3 1.5 1.5 0
+Frame22 rgb channel red
+Frame22 rgb channel red
+Frame22 rgb channel green
+Frame22 rgb channel blue
+Frame22 rgb channel red
+CreateNameNumberFrame Frame68 rgb
+Frame68 rgb channel red
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMotions/DarkArc/chbeta-radec.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame68 rgb channel green
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/C_H_beta_9229-bin004.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame68 rgb channel blue
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/C_H_beta-bin004.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+RGBDialog
+Frame68 magnifier graphics 1
+Frame68 magnifier cursor 1
+Frame68 magnifier zoom 4
+Frame68 magnifier color #ff8000
+Frame68 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbarrgb get colorbar]
+colorbarrgb colorbar rgb 0.500000 0.500000 0.500000 1.000000 1.000000 1.000000 0 
+Frame68 colormap [colorbarrgb get colormap]
+colorbarrgb colorbar $sav
+Frame68 precision 8 7 4 3 8 7 5 3 8
+Frame68 bg color #808080
+Frame68 nan color #804020
+Frame68 rgb channel red
+Frame68 cube axes 123
+Frame68 rgb channel green
+Frame68 cube axes 123
+Frame68 rgb channel blue
+Frame68 cube axes 123
+Frame68 rgb channel blue
+Frame68 rgb channel blue
+Frame68 rgb view 1 1 1
+Frame68 rgb system wcs
+Frame68 rgb channel red
+Frame68 bin factor to 1 1
+Frame68 bin depth 1
+Frame68 bin filter {""}
+Frame68 bin buffer size 1024
+Frame68 bin about 0 0
+Frame68 bin function sum
+Frame68 rgb channel green
+Frame68 bin factor to 1 1
+Frame68 bin depth 1
+Frame68 bin filter {""}
+Frame68 bin buffer size 1024
+Frame68 bin about 0 0
+Frame68 bin function sum
+Frame68 rgb channel blue
+Frame68 bin factor to 1 1
+Frame68 bin depth 1
+Frame68 bin filter {""}
+Frame68 bin buffer size 1024
+Frame68 bin about 0 0
+Frame68 bin function sum
+Frame68 rgb channel blue
+Frame68 rgb channel red
+Frame68 colorscale linear
+Frame68 colorscale log 10000
+Frame68 datasec 1
+Frame68 clip user 0 1.4
+Frame68 clip mode user
+Frame68 clip scope local
+Frame68 clip minmax mode scan
+Frame68 clip minmax sample 25
+Frame68 clip zscale contrast 0.25
+Frame68 clip zscale sample 600
+Frame68 clip zscale line 120
+Frame68 rgb channel green
+Frame68 colorscale linear
+Frame68 colorscale log 10000
+Frame68 datasec 1
+Frame68 clip user 0 1.4
+Frame68 clip mode user
+Frame68 clip scope local
+Frame68 clip minmax mode scan
+Frame68 clip minmax sample 25
+Frame68 clip zscale contrast 0.25
+Frame68 clip zscale sample 600
+Frame68 clip zscale line 120
+Frame68 rgb channel blue
+Frame68 colorscale linear
+Frame68 colorscale log 10000
+Frame68 datasec 1
+Frame68 clip user 0 1.4
+Frame68 clip mode user
+Frame68 clip scope local
+Frame68 clip minmax mode scan
+Frame68 clip minmax sample 25
+Frame68 clip zscale contrast 0.25
+Frame68 clip zscale sample 600
+Frame68 clip zscale line 120
+Frame68 rgb channel blue
+Frame68 rgb channel red
+Frame68 block to 1 1
+Frame68 rgb channel green
+Frame68 block to 1 1
+Frame68 rgb channel blue
+Frame68 block to 1 1
+Frame68 rgb channel blue
+Frame68 wcs wcs icrs degrees
+Frame68 pan preserve 0
+Frame68 pan to physical 1054.2301 726.03445
+Frame68 zoom to 0.9546 0.9546
+Frame68 rotate to 0
+Frame68 orient none
+Frame68 wcs align 1
+Frame68 rgb channel red
+Frame68 rgb channel green
+Frame68 rgb channel blue
+Frame68 rgb channel blue
+Frame68 3d view 0 0
+Frame68 3d scale 1
+Frame68 3d method mip
+Frame68 3d highlite 1
+Frame68 3d border 1
+Frame68 3d background none
+Frame68 3d view point 0 0 0 0 0
+Frame68 crosshair physical 1203.759 901.39063
+Frame68 marker centroid radius 10
+Frame68 marker centroid iteration 30
+Frame68 mask transparency 0
+Frame68 mask system physical
+Frame68 mask color red
+Frame68 mask mark nonzero
+Frame68 mask range 0 0
+Frame68 rgb channel red
+Frame68 rgb channel green
+Frame68 smooth gaussian 10 3 5 1.5 0
+Frame68 rgb channel blue
+Frame68 smooth gaussian 10 3 5 1.5 0
+Frame68 rgb channel blue
+Frame68 rgb channel red
+Frame68 rgb channel green
+Frame68 rgb channel blue
+Frame68 rgb channel blue
+CreateNameNumberFrame Frame32 rgb
+Frame32 rgb channel red
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic/40044081.40044081-89-short.IRAC.4.mosaic.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame32 rgb channel green
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic/40044081.40044081-89-short.IRAC.3.mosaic.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame32 rgb channel blue
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic/40044081.40044081-89-short.IRAC.1.mosaic.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+RGBDialog
+Frame32 magnifier graphics 1
+Frame32 magnifier cursor 1
+Frame32 magnifier zoom 4
+Frame32 magnifier color #ff8000
+Frame32 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbarrgb get colorbar]
+colorbarrgb colorbar rgb 0.500000 0.500000 0.500000 1.000000 1.000000 1.000000 0 
+Frame32 colormap [colorbarrgb get colormap]
+colorbarrgb colorbar $sav
+Frame32 precision 8 7 4 3 8 7 5 3 8
+Frame32 bg color #808080
+Frame32 nan color #804020
+Frame32 rgb channel red
+Frame32 cube axes 123
+Frame32 rgb channel green
+Frame32 cube axes 123
+Frame32 rgb channel blue
+Frame32 cube axes 123
+Frame32 rgb channel blue
+Frame32 rgb channel blue
+Frame32 rgb view 1 1 1
+Frame32 rgb system wcs
+Frame32 rgb channel red
+Frame32 bin factor to 1 1
+Frame32 bin depth 1
+Frame32 bin filter {""}
+Frame32 bin buffer size 1024
+Frame32 bin about 0 0
+Frame32 bin function sum
+Frame32 rgb channel green
+Frame32 bin factor to 1 1
+Frame32 bin depth 1
+Frame32 bin filter {""}
+Frame32 bin buffer size 1024
+Frame32 bin about 0 0
+Frame32 bin function sum
+Frame32 rgb channel blue
+Frame32 bin factor to 1 1
+Frame32 bin depth 1
+Frame32 bin filter {""}
+Frame32 bin buffer size 1024
+Frame32 bin about 0 0
+Frame32 bin function sum
+Frame32 rgb channel blue
+Frame32 rgb channel red
+Frame32 colorscale linear
+Frame32 colorscale log 10000
+Frame32 datasec 1
+Frame32 clip user 400 8131.97
+Frame32 clip mode user
+Frame32 clip scope local
+Frame32 clip minmax mode scan
+Frame32 clip minmax sample 25
+Frame32 clip zscale contrast 0.25
+Frame32 clip zscale sample 600
+Frame32 clip zscale line 120
+Frame32 rgb channel green
+Frame32 colorscale linear
+Frame32 colorscale log 10000
+Frame32 datasec 1
+Frame32 clip user 300 4539.67
+Frame32 clip mode user
+Frame32 clip scope local
+Frame32 clip minmax mode scan
+Frame32 clip minmax sample 25
+Frame32 clip zscale contrast 0.25
+Frame32 clip zscale sample 600
+Frame32 clip zscale line 120
+Frame32 rgb channel blue
+Frame32 colorscale linear
+Frame32 colorscale log 10000
+Frame32 datasec 1
+Frame32 clip user 100 1e+08
+Frame32 clip mode user
+Frame32 clip scope local
+Frame32 clip minmax mode scan
+Frame32 clip minmax sample 25
+Frame32 clip zscale contrast 0.25
+Frame32 clip zscale sample 600
+Frame32 clip zscale line 120
+Frame32 rgb channel blue
+Frame32 rgb channel red
+Frame32 block to 1 1
+Frame32 rgb channel green
+Frame32 block to 1 1
+Frame32 rgb channel blue
+Frame32 block to 1 1
+Frame32 rgb channel blue
+Frame32 wcs wcs icrs sexagesimal
+Frame32 pan preserve 0
+Frame32 pan to physical 2062.2294 1174.0533
+Frame32 zoom to 1.14919 1.14919
+Frame32 rotate to 0
+Frame32 orient none
+Frame32 wcs align 1
+Frame32 rgb channel red
+Frame32 rgb channel green
+Frame32 rgb channel blue
+Frame32 rgb channel blue
+Frame32 3d view 0 0
+Frame32 3d scale 1
+Frame32 3d method mip
+Frame32 3d highlite 1
+Frame32 3d border 1
+Frame32 3d background none
+Frame32 3d view point 0 0 0 0 0
+Frame32 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame32/ds9.reg"}
+Frame32 crosshair physical 2137 2151
+Frame32 marker centroid radius 10
+Frame32 marker centroid iteration 30
+Frame32 mask transparency 0
+Frame32 mask system physical
+Frame32 mask color red
+Frame32 mask mark nonzero
+Frame32 mask range 0 0
+Frame32 rgb channel red
+Frame32 rgb channel green
+Frame32 rgb channel blue
+Frame32 rgb channel blue
+Frame32 rgb channel red
+Frame32 rgb channel green
+Frame32 rgb channel blue
+Frame32 rgb channel blue
+CreateNameNumberFrame Frame26 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/dib-scatter-hii/data/orion-muse/linesum-O_I-8446-bin001.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame26 magnifier graphics 1
+Frame26 magnifier cursor 1
+Frame26 magnifier zoom 4
+Frame26 magnifier color #ff8000
+Frame26 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 1
+Frame26 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame26 precision 8 7 4 3 8 7 5 3 8
+Frame26 bg color #808080
+Frame26 nan color #804020
+Frame26 cube axes 123
+Frame26 rgb channel red
+Frame26 rgb view 1 1 1
+Frame26 rgb system image
+Frame26 bin factor to 1 1
+Frame26 bin depth 1
+Frame26 bin filter {""}
+Frame26 bin buffer size 1024
+Frame26 bin about 0 0
+Frame26 bin function sum
+Frame26 colorscale sqrt
+Frame26 colorscale log 10000
+Frame26 datasec 1
+Frame26 clip user 0 300000
+Frame26 clip mode user
+Frame26 clip scope global
+Frame26 clip minmax mode scan
+Frame26 clip minmax sample 25
+Frame26 clip zscale contrast 0.25
+Frame26 clip zscale sample 600
+Frame26 clip zscale line 120
+Frame26 block to 1 1
+Frame26 wcs wcs icrs sexagesimal
+Frame26 pan preserve 0
+Frame26 pan to physical 1054.2301 726.03445
+Frame26 zoom to 0.383053 0.383053
+Frame26 rotate to 0
+Frame26 orient none
+Frame26 wcs align 1
+Frame26 3d view 0 0
+Frame26 3d scale 1
+Frame26 3d method mip
+Frame26 3d highlite 1
+Frame26 3d border 1
+Frame26 3d background none
+Frame26 3d view point 0 0 0 0 0
+Frame26 marker load ds9 {"./orion-all-raman-etc.bck.dir/Frame26/ds9.reg"}
+Frame26 crosshair physical 897 769
+Frame26 marker centroid radius 10
+Frame26 marker centroid iteration 30
+Frame26 mask transparency 0
+Frame26 mask system wcs
+Frame26 mask color red
+Frame26 mask mark nonzero
+Frame26 mask range 0 0
+Frame26 contour load {"./orion-all-raman-etc.bck.dir/Frame26/aux.ctr"}
+CreateNameNumberFrame Frame65 rgb
+Frame65 rgb channel red
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_48_57_12co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame65 rgb channel green
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_38_47_12co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame65 rgb channel blue
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMolecular/Carma-NRO-CO/dataverse_files/mom0_28_37_12co_pix_2_Tmb.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+RGBDialog
+Frame65 magnifier graphics 1
+Frame65 magnifier cursor 1
+Frame65 magnifier zoom 4
+Frame65 magnifier color #ff8000
+Frame65 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbarrgb get colorbar]
+colorbarrgb colorbar rgb 0.500000 0.500000 0.500000 1.000000 1.000000 1.000000 0 
+Frame65 colormap [colorbarrgb get colormap]
+colorbarrgb colorbar $sav
+Frame65 precision 8 7 4 3 8 7 5 3 8
+Frame65 bg color #808080
+Frame65 nan color #804020
+Frame65 rgb channel red
+Frame65 cube axes 123
+Frame65 rgb channel green
+Frame65 cube axes 123
+Frame65 rgb channel blue
+Frame65 cube axes 123
+Frame65 rgb channel blue
+Frame65 rgb channel blue
+Frame65 rgb view 1 1 1
+Frame65 rgb system image
+Frame65 rgb channel red
+Frame65 bin factor to 1 1
+Frame65 bin depth 1
+Frame65 bin filter {""}
+Frame65 bin buffer size 1024
+Frame65 bin about 0 0
+Frame65 bin function sum
+Frame65 rgb channel green
+Frame65 bin factor to 1 1
+Frame65 bin depth 1
+Frame65 bin filter {""}
+Frame65 bin buffer size 1024
+Frame65 bin about 0 0
+Frame65 bin function sum
+Frame65 rgb channel blue
+Frame65 bin factor to 1 1
+Frame65 bin depth 1
+Frame65 bin filter {""}
+Frame65 bin buffer size 1024
+Frame65 bin about 0 0
+Frame65 bin function sum
+Frame65 rgb channel blue
+Frame65 rgb channel red
+Frame65 colorscale linear
+Frame65 colorscale log 10000
+Frame65 datasec 1
+Frame65 clip user -20.7711 451.706
+Frame65 clip mode minmax
+Frame65 clip scope local
+Frame65 clip minmax mode scan
+Frame65 clip minmax sample 25
+Frame65 clip zscale contrast 0.25
+Frame65 clip zscale sample 600
+Frame65 clip zscale line 120
+Frame65 rgb channel green
+Frame65 colorscale linear
+Frame65 colorscale log 10000
+Frame65 datasec 1
+Frame65 clip user -7.29844 485.805
+Frame65 clip mode minmax
+Frame65 clip scope local
+Frame65 clip minmax mode scan
+Frame65 clip minmax sample 25
+Frame65 clip zscale contrast 0.25
+Frame65 clip zscale sample 600
+Frame65 clip zscale line 120
+Frame65 rgb channel blue
+Frame65 colorscale linear
+Frame65 colorscale log 10000
+Frame65 datasec 1
+Frame65 clip user -15.8462 377.572
+Frame65 clip mode minmax
+Frame65 clip scope local
+Frame65 clip minmax mode scan
+Frame65 clip minmax sample 25
+Frame65 clip zscale contrast 0.25
+Frame65 clip zscale sample 600
+Frame65 clip zscale line 120
+Frame65 rgb channel blue
+Frame65 rgb channel red
+Frame65 block to 1 1
+Frame65 rgb channel green
+Frame65 block to 1 1
+Frame65 rgb channel blue
+Frame65 block to 1 1
+Frame65 rgb channel blue
+Frame65 wcs wcs icrs sexagesimal
+Frame65 pan preserve 0
+Frame65 pan to physical 1613.8573 3214.4717
+Frame65 zoom to 3.83089 3.83089
+Frame65 rotate to 0
+Frame65 orient none
+Frame65 wcs align 1
+Frame65 rgb channel red
+Frame65 rgb channel green
+Frame65 rgb channel blue
+Frame65 rgb channel blue
+Frame65 3d view 0 0
+Frame65 3d scale 1
+Frame65 3d method mip
+Frame65 3d highlite 1
+Frame65 3d border 1
+Frame65 3d background none
+Frame65 3d view point 0 0 0 0 0
+Frame65 crosshair physical 1279 2137
+Frame65 marker centroid radius 10
+Frame65 marker centroid iteration 30
+Frame65 mask transparency 0
+Frame65 mask system physical
+Frame65 mask color red
+Frame65 mask mark nonzero
+Frame65 mask range 0 0
+Frame65 rgb channel red
+Frame65 rgb channel green
+Frame65 rgb channel blue
+Frame65 rgb channel blue
+Frame65 rgb channel red
+Frame65 rgb channel green
+Frame65 rgb channel blue
+Frame65 rgb channel blue
+CreateNameNumberFrame Frame66 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMotions/DarkArc/radiotau-radec.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame66 magnifier graphics 1
+Frame66 magnifier cursor 1
+Frame66 magnifier zoom 4
+Frame66 magnifier color #ff8000
+Frame66 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 1
+Frame66 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame66 precision 8 7 4 3 8 7 5 3 8
+Frame66 bg color #808080
+Frame66 nan color #804020
+Frame66 cube axes 123
+Frame66 rgb channel red
+Frame66 rgb view 1 1 1
+Frame66 rgb system image
+Frame66 bin factor to 1 1
+Frame66 bin depth 1
+Frame66 bin filter {""}
+Frame66 bin buffer size 1024
+Frame66 bin about 0 0
+Frame66 bin function sum
+Frame66 colorscale linear
+Frame66 colorscale log 10000
+Frame66 datasec 1
+Frame66 clip user -0.0181295 1.14462
+Frame66 clip mode minmax
+Frame66 clip scope local
+Frame66 clip minmax mode scan
+Frame66 clip minmax sample 25
+Frame66 clip zscale contrast 0.25
+Frame66 clip zscale sample 600
+Frame66 clip zscale line 120
+Frame66 block to 1 1
+Frame66 wcs wcs icrs degrees
+Frame66 pan preserve 0
+Frame66 pan to physical 575.74145 339.95962
+Frame66 zoom to 0.9546 0.9546
+Frame66 rotate to 0
+Frame66 orient none
+Frame66 wcs align 1
+Frame66 3d view 0 0
+Frame66 3d scale 1
+Frame66 3d method mip
+Frame66 3d highlite 1
+Frame66 3d border 1
+Frame66 3d background none
+Frame66 3d view point 0 0 0 0 0
+Frame66 crosshair physical 636.06256 409.66432
+Frame66 marker centroid radius 10
+Frame66 marker centroid iteration 30
+Frame66 mask transparency 0
+Frame66 mask system wcs
+Frame66 mask color red
+Frame66 mask mark nonzero
+Frame66 mask range 0 0
+CreateNameNumberFrame Frame67 base
+global loadParam
+array set loadParam [list load,layer {} file,name /Users/will/Dropbox/OrionMotions/DarkArc/chbeta-radec.fits file,mode {} load,type mmapincr file,type fits]
+if [BackupFindFile loadParam] {
+  ProcessLoad
+}
+Frame67 magnifier graphics 1
+Frame67 magnifier cursor 1
+Frame67 magnifier zoom 4
+Frame67 magnifier color #ff8000
+Frame67 colorbar tag "{}"
+colorbar tag "{}"
+set sav [colorbar get colorbar]
+colorbar colorbar 1 0.5 1 1
+Frame67 colormap [colorbar get colormap]
+colorbar colorbar $sav
+Frame67 precision 8 7 4 3 8 7 5 3 8
+Frame67 bg color #808080
+Frame67 nan color #804020
+Frame67 cube axes 123
+Frame67 rgb channel red
+Frame67 rgb view 1 1 1
+Frame67 rgb system image
+Frame67 bin factor to 1 1
+Frame67 bin depth 1
+Frame67 bin filter {""}
+Frame67 bin buffer size 1024
+Frame67 bin about 0 0
+Frame67 bin function sum
+Frame67 colorscale linear
+Frame67 colorscale log 10000
+Frame67 datasec 1
+Frame67 clip user -0.1 2.2
+Frame67 clip mode user
+Frame67 clip scope local
+Frame67 clip minmax mode scan
+Frame67 clip minmax sample 25
+Frame67 clip zscale contrast 0.25
+Frame67 clip zscale sample 600
+Frame67 clip zscale line 120
+Frame67 block to 1 1
+Frame67 wcs wcs icrs degrees
+Frame67 pan preserve 0
+Frame67 pan to physical 575.74145 339.95962
+Frame67 zoom to 0.9546 0.9546
+Frame67 rotate to 0
+Frame67 orient none
+Frame67 wcs align 1
+Frame67 3d view 0 0
+Frame67 3d scale 1
+Frame67 3d method mip
+Frame67 3d highlite 1
+Frame67 3d border 1
+Frame67 3d background none
+Frame67 3d view point 0 0 0 0 0
+Frame67 crosshair physical 636.06256 409.66432
+Frame67 marker centroid radius 10
+Frame67 marker centroid iteration 30
+Frame67 mask transparency 0
+Frame67 mask system wcs
+Frame67 mask color red
+Frame67 mask mark nonzero
+Frame67 mask range 0 0
 global pds9
 array set pds9 { nan,msg #332244 dialog native text,font courier samp 1 prec,linear 8 font,msg Helvetica iraf 1 prec,len,arcsec 3 threads 12 font,weight normal automarker 1 bg,msg Black language locale text,font,weight normal dialog,all 0 nan #804020 prec,angle 8 font,slant roman confirm 1 prec,deg 7 backup 0 language,dir {} font helvetica language,name {} bg #808080 prec,len,deg 7 xpa 1 prec,dms 3 text,font,msg Courier theme native tcl 0 prec,len,arcmin 5 prec,len,linear 8 dialog,center 0 prec,hms 4 font,size 13 text,font,slant roman text,font,size 11 }
 global current
-array set current { colorbar colorbarrgb orient none zoom {4.7775 4.7775} mode region ext {} display single cursor {} align 1 rotate 0 rgb blue frame Frame18 }
+array set current { colorbar colorbarrgb orient none zoom {0.9546 0.9546} mode region ext {} display single cursor {} align 1 rotate 0 rgb blue frame Frame68 }
 global pcurrent
 array set pcurrent { orient none zoom { 1 1 } mode none display single align 0 rotate 0 }
 global view
@@ -2802,7 +4194,7 @@ array set view { info,wcss 0 info,wcsc 0 info,wcst 0 info,wcsd 0 graph,horz 0 in
 global pview
 array set pview { info,wcss 0 info,wcsc 0 info,wcst 0 info,wcsd 0 graph,horz 0 info,wcsu 0 info,wcse 0 info,bunit 0 info,lowhigh 0 magnifier 1 info,wcsf 0 info,wcsv 0 info,frame 1 info,image 1 colorbar 1 info 1 info,wcsg 0 info,wcsw 0 info,keyword 0 info,wcs 1 info,wcsh 0 info,wcsx 0 info,physical 1 info,keyvalue {} info,wcsi 0 info,wcsy 0 info,object 1 buttons 1 info,wcsj 0 info,wcsz 0 info,wcsk 0 info,filename 1 info,wcsl 0 info,amplifier 0 info,minmax 0 info,wcsm 0 info,detector 0 info,wcsn 0 panner 1 info,wcso 0 info,wcsp 0 layout horizontal info,wcsa 0 info,wcsq 0 graph,vert 0 info,wcsb 0 info,wcsr 0 }
 global canvas
-array set canvas { gap 4 width 673 gap,bottom 14 height 599 }
+array set canvas { gap 4 width 1001 gap,bottom 14 height 599 }
 global phttp
 array set phttp { auth,passwd {} proxy,host {} auth,user {} auth 0 proxy 0 proxy,port {} }
 global pbuttons
@@ -2822,7 +4214,7 @@ array set ps { scale 100 orient portrait height 11 size letter resolution 150 fi
 global pps
 array set pps { scale 100 orient portrait height 11 size letter resolution 150 filename,txt ds9.txt dest printer level 2 width 8.5 filename ds9.ps cmd lp color rgb }
 global rgb
-array set rgb { lock,block 0 blue 1 lock,wcs 0 frame Frame18 red 1 lock,slice 0 lock,axes 0 lock,scalelimits 0 green 1 lock,crop 0 lock,colorbar 0 system wcs lock,scale 0 lock,bin 0 lock,smooth 0 }
+array set rgb { lock,block 0 blue 1 lock,wcs 0 frame Frame68 red 1 lock,slice 0 lock,axes 0 lock,scalelimits 0 green 1 lock,crop 0 lock,colorbar 0 system wcs lock,scale 0 lock,bin 0 lock,smooth 0 }
 global threed
 array set threed { scale 1 lock 0 method mip highlite,color cyan border,color blue compass,color green az 0 highlite 1 border 1 compass 0 background none el 0 border,color,msg Blue highlite,color,msg Cyan }
 global blink
@@ -2834,9 +4226,9 @@ array set tile { grid,col 10 grid,dir x mode grid grid,gap 4 grid,row 10 grid,mo
 global ptile
 array set ptile { grid,col 10 mode grid grid,dir x grid,row 10 grid,gap 4 grid,mode automatic }
 global crosshair
-array set crosshair { skyformat sexagesimal system wcs lock none sky icrs }
+array set crosshair { skyformat degrees system wcs lock none sky icrs }
 global cube
-array set cube { axes 123 system wcs lock none lock,axes 0 frame Frame18 sky fk5 }
+array set cube { axes 123 system wcs lock none lock,axes 0 frame Frame68 sky fk5 }
 global bin
 array set bin { wheel,factor 1.2 wheel 0 buffersize 1024 depth 1 lock 0 function sum factor {1 1} }
 global pbin
@@ -2846,9 +4238,9 @@ array set panzoom { wheel,factor 1.2 skyformat degrees preserve 0 mode click whe
 global ppanzoom
 array set ppanzoom { wheel,factor 1.2 preserve 0 wheel 1 mode click }
 global crop
-array set crop { skyformat sexagesimal rcoord wcs dformat degrees system wcs lock none dcoord wcs sky icrs }
+array set crop { skyformat degrees rcoord wcs dformat degrees system wcs lock none dcoord wcs sky icrs }
 global scale
-array set scale { lock 0 type linear scope local log 10000 min -1 bins 512 xaxis full mode user datasec 1 max 227 yaxis log lock,limits 0 }
+array set scale { lock 0 type linear scope local log 10000 min 0 bins 512 xaxis full mode user datasec 1 max 1.4 yaxis log lock,limits 0 }
 global pscale
 array set pscale { datasec 1 mode minmax scope global log 1000 type linear }
 global minmax
@@ -2860,13 +4252,13 @@ array set zscale { line 120 sample 600 contrast .25 }
 global pzscale
 array set pzscale { line 120 contrast .25 sample 600 }
 global marker
-array set marker { panda,ang2 360 shape box show 1 bpanda,ang1 0 bpanda,ang2 360 boxannulus,annuli 1 delete 1 centroid,radius 10 tag {} load,format ds9 dformat degrees annulus,inner 15 panda,angnum 4 show,text 1 centroid,iteration 30 epanda,angnum 4 plot2d 0 font,size 10 move 1 rotate 1 fixed 0 skyformat sexagesimal load,system physical ellipseannulus,radius1 40 ellipseannulus,radius2 20 ellipseannulus,radius3 60 epanda,radius1 40 plot3d 0 epanda,radius2 20 panda,annuli 1 panda,outer 30 epanda,radius3 60 segment,length 20 source 1 epsilon 3 strip 0 bpanda,radius1 80 epanda,annuli 1 bpanda,radius2 40 bpanda,radius3 120 color green stats 0 sky icrs annulus,outer 30 format ds9 font,weight normal load,sky fk5 polygon,width 20 font,slant roman edit 1 font helvetica bpanda,angnum 4 dash 0 boxannulus,radius1 80 projection,thick 0 dashlist {8 3} boxannulus,radius2 40 polygon,height 20 system wcs box,radius1 80 boxannulus,radius3 120 box,radius2 40 annulus,annuli 1 point,size 11 compass,radius 40 copy Frame21 epanda,ang1 0 include 1 copy,system wcs epanda,ang2 360 centroid,auto 0 circle,radius 20 width 1 load current bpanda,annuli 1 ellipse,radius1 40 ellipse,radius2 20 panda,inner 15 preserve 1 maxdialog 48 ellipseannulus,annuli 1 panda,ang1 0 }
+array set marker { panda,ang2 360 shape box show 1 bpanda,ang1 0 bpanda,ang2 360 boxannulus,annuli 1 delete 1 centroid,radius 10 tag {} load,format ds9 dformat degrees annulus,inner 15 panda,angnum 4 show,text 1 centroid,iteration 30 epanda,angnum 4 plot2d 0 font,size 10 move 1 rotate 1 fixed 0 skyformat degrees load,system physical ellipseannulus,radius1 40 ellipseannulus,radius2 20 ellipseannulus,radius3 60 epanda,radius1 40 plot3d 0 epanda,radius2 20 panda,annuli 1 panda,outer 30 epanda,radius3 60 segment,length 20 source 1 epsilon 3 strip 0 bpanda,radius1 80 epanda,annuli 1 bpanda,radius2 40 bpanda,radius3 120 color green stats 0 sky icrs annulus,outer 30 format ds9 font,weight normal load,sky fk5 polygon,width 20 font,slant roman edit 1 font helvetica bpanda,angnum 4 dash 0 boxannulus,radius1 80 projection,thick 0 dashlist {8 3} boxannulus,radius2 40 polygon,height 20 system wcs box,radius1 80 boxannulus,radius3 120 box,radius2 40 annulus,annuli 1 point,size 11 compass,radius 40 copy Frame16 epanda,ang1 0 include 1 copy,system wcs epanda,ang2 360 centroid,auto 0 circle,radius 20 width 1 load current bpanda,annuli 1 ellipse,radius1 40 ellipse,radius2 20 panda,inner 15 preserve 1 maxdialog 48 ellipseannulus,annuli 1 panda,ang1 0 }
 global pmarker
 array set pmarker { panda,ang2 360 bpanda,ang1 0 shape circle show 1 bpanda,ang2 360 boxannulus,annuli 1 delete 1 centroid,radius 10 dformat degrees annulus,inner 15 panda,angnum 4 show,text 1 epanda,angnum 4 centroid,iteration 30 plot2d 0 font,size 10 rotate 1 move 1 fixed 0 ellipseannulus,radius1 40 ellipseannulus,radius2 20 ellipseannulus,radius3 60 plot3d 0 epanda,radius1 40 panda,outer 30 panda,annuli 1 epanda,radius2 20 epanda,radius3 60 segment,length 20 source 1 epsilon 3 bpanda,radius1 80 bpanda,radius2 40 epanda,annuli 1 bpanda,radius3 120 stats 0 color green format ds9 annulus,outer 30 font,weight normal polygon,width 20 font,slant roman edit 1 font helvetica bpanda,angnum 4 dash 0 projection,thick 0 boxannulus,radius1 80 dashlist {8 3} polygon,height 20 boxannulus,radius2 40 boxannulus,radius3 120 box,radius1 80 box,radius2 40 point,size 11 annulus,annuli 1 compass,radius 40 epanda,ang1 0 include 1 epanda,ang2 360 centroid,auto 0 circle,radius 20 width 1 bpanda,annuli 1 ellipse,radius1 40 preserve 0 panda,inner 15 ellipse,radius2 20 panda,ang1 0 ellipseannulus,annuli 1 }
 global centroid
 array set centroid {  }
 global wcs
-array set wcs { load,fn {} load,sock {} skyformat degrees system wcs frame Frame18 sky icrs }
+array set wcs { load,fn {} load,sock {} skyformat degrees system wcs frame Frame68 sky icrs }
 global pwcs
 array set pwcs { skyformat sexagesimal load,sock {} load,fn {} system wcs sky fk5 }
 global graph
@@ -2884,7 +4276,7 @@ array set mask { high 0 system physical low 0 transparency 0 mark nonzero color 
 global pmask
 array set pmask { high 0 system physical transparency 0 low 0 color red mark 1 }
 global contour
-array set contour { init,scale 0 numlevel 5 scale linear method block init,scope 0 scope local view 0 copy {} width 1 dash 0 color,msg Green init,limits 0 smooth 4 log 10000 min 0 init,mode 0 mode user max 270000 color green }
+array set contour { init,scale 0 numlevel 5 scale linear method smooth init,scope 0 scope local view 0 copy Frame64 width 2 dash 0 color,msg Green init,limits 0 smooth 1 log 10000 min 0 init,mode 0 mode user max 1.4 color #c00 }
 global pcontour
 array set pcontour { numlevel 5 dash 0 width 1 method block color,msg Green smooth 4 color green view 0 }
 global grid
@@ -2896,7 +4288,7 @@ array set block { lock 0 factor {1 1} }
 global pblock
 array set pblock { lock 0 factor { 1 1 } }
 global smooth
-array set smooth { radius 3 sigma 1.5 radius,minor 3 lock 0 sigma,minor 1.5 function gaussian angle 0 view 0 }
+array set smooth { radius 10 sigma 5 radius,minor 3 lock 0 sigma,minor 1.5 function gaussian angle 0 view 1 }
 global psmooth
 array set psmooth { radius 3 lock 0 radius,minor 3 sigma 1.5 function gaussian sigma,minor 1.5 view 0 angle 0 }
 global pnres
@@ -2928,4 +4320,4 @@ array set pap { legend,position right axis,x,flip 0 show 1 textlabSlant roman qu
 global panalysis
 array set panalysis { user2 {} autoload 1 user3 {} log 0 user4 {} user {} }
 global active
-array set active { Frame32 1 Frame14 1 Frame33 1 Frame15 1 Frame16 1 Frame35 1 Frame17 1 Frame36 1 Frame9 1 Frame18 1 Frame20 1 Frame19 1 Frame21 1 Frame40 1 Frame39 1 Frame22 1 Frame23 1 Frame24 1 Frame25 1 Frame44 1 Frame26 1 Frame45 1 Frame27 1 Frame1 1 Frame46 1 Frame2 1 Frame47 1 Frame30 1 Frame29 1 Frame3 1 Frame12 1 Frame48 1 Frame31 1 Frame13 1 }
+array set active { Frame32 1 Frame33 1 Frame35 1 Frame36 1 Frame39 1 Frame40 1 Frame44 1 Frame45 1 Frame46 1 Frame47 1 Frame48 1 Frame49 1 Frame50 1 Frame51 1 Frame52 1 Frame53 1 Frame54 1 Frame55 1 Frame58 1 Frame59 1 Frame60 1 Frame61 1 Frame62 1 Frame1 1 Frame63 1 Frame2 1 Frame64 1 Frame65 1 Frame3 1 Frame66 1 Frame67 1 Frame68 1 Frame9 1 Frame12 1 Frame13 1 Frame14 1 Frame15 1 Frame16 1 Frame17 1 Frame18 1 Frame19 1 Frame20 1 Frame21 1 Frame22 1 Frame23 1 Frame24 1 Frame25 1 Frame26 1 Frame27 1 Frame29 1 Frame30 1 Frame31 1 }
