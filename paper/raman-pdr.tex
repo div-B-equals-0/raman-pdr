@@ -12,7 +12,9 @@
 \usepackage[varg]{newtxmath}
 \usepackage{newtxtext}
 \usepackage{booktabs}
-
+\usepackage{array}   % for \newcolumntype macro
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
+\newcolumntype{R}{>{$}r<{$}} % math-mode version of "r" column type
 
 \bibliographystyle{aasjournal}
 
@@ -24,6 +26,8 @@
 \newcommand\Raman{\ensuremath{_{\text{Raman}}}}
 \def\th#1#2{\(\theta^{#1}\)\,Ori~#2}
 
+% Chemical formulae
+\newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
 
 \begin{document}
 \title{Raman mapping of atomic hydrogen in the Orion Bar and Orion South}
@@ -100,6 +104,35 @@ become apparent.
   \caption{Spatial distribution of Raman-scattered wings in H\(\alpha\)}
   \label{fig:raman-maps}
 \end{figure}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=\linewidth]{figs/order51-absorption-by-group}
+  \caption{Keck HIRES spectra of Raman-scattered \ion{O}{1} absorption
+    line for five regions in Orion~South.  Wavelengths are given on an
+    air scale and in the rest-frame of the Orion Molecular Cloud, as
+    defined by the peak velocity of \chem{^{13}CO}. }
+  \label{fig:raman-keck}
+\end{figure*}
+
+
+\begin{table*}
+  \caption{FUV/optical wavelength equivalencies for Raman scattering}
+  \begin{tabular}{l R R R R R}\toprule
+    % Transition & {UV wav, \AA{}} & {Freq, cm\textsuperscript{-1}} & {d Freq} & {Opt wav} & {Air wav}\\
+    \text{Transition} & \text{A} & \text{B} & \text{C} & \text{D} & \text{E} \\
+    \midrule
+    H I \{1,2\}s \(\to\) 3p & 1025.72220 & 97492.283 & 0.000 & 6564.553248 & 6562.7406\\
+    O I J = 0 \(\to\) 1 & 1028.15729 & 97261.383 & -230.900 & 6665.5868 & 6663.7469\\
+    O I J = 1 \(\to\) 1 & 1027.43139 & 97330.100 & -162.183 & 6635.1951 & 6633.3630\\
+    O I J = 1 \(\to\) 2 & 1027.43077 & 97330.159 & -162.124 & 6635.1691 & 6633.3370\\
+    O I J = 2 \(\to\) 1 & 1025.76339 & 97488.369 & -3.914 & 6566.2400 & 6564.4269\\
+    O I J = 2 \(\to\) 2 & 1025.76276 & 97488.429 & -3.854 & 6566.2141 & 6564.4010\\
+    O I J = 2 \(\to\) 3 & 1025.76170 & 97488.530 & -3.753 & 6566.1706 & 6564.3575\\
+    \bottomrule
+  \end{tabular}
+
+\end{table*}
 
 \section{Discussion}
 \label{sec:discussion}

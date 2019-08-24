@@ -35,6 +35,11 @@
 {Dopita}, M.~A., {Nicholls}, D.~C., {Sutherland }, R.~S., {Kewley}, L.~J., \&
   {Groves}, B.~A. 2016, \apjl, 824, L13, \dodoi{10.3847/2041-8205/824/1/L13}
 
+\bibitem[{{Henney} {et~al.}(2005){Henney}, {Arthur}, {Williams}, \&
+  {Ferland}}]{Henney:2005b}
+{Henney}, W.~J., {Arthur}, S.~J., {Williams}, R.~J.~R., \& {Ferland}, G.~J.
+  2005, \apj, 621, 328, \dodoi{10.1086/427491}
+
 \bibitem[{{Henney} \& {O'Dell}(1999)}]{Henney:1999a}
 {Henney}, W.~J., \& {O'Dell}, C.~R. 1999, \aj, 118, 2350,
   \dodoi{10.1086/301087}
@@ -44,6 +49,10 @@
 {Mc Leod}, A.~F., {Weilbacher}, P.~M., {Ginsburg}, A., {et~al.} 2015, ArXiv
   e-prints.
 \newblock \doarXiv{1511.01914}
+
+\bibitem[{{O'Dell} \& {Yusef-Zadeh}(2000)}]{ODell:2000a}
+{O'Dell}, C.~R., \& {Yusef-Zadeh}, F. 2000, \aj, 120, 382,
+  \dodoi{10.1086/301429}
 
 \bibitem[{{Osterbrock} \& {Ferland}(2006)}]{Osterbrock:2006a}
 {Osterbrock}, D.~E., \& {Ferland}, G.~J. 2006, {Astrophysics of gaseous nebulae
