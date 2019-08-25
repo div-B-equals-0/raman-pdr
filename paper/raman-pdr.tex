@@ -13,8 +13,9 @@
 \usepackage{newtxtext}
 \usepackage{booktabs}
 \usepackage{array}   % for \newcolumntype macro
-\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
-\newcolumntype{R}{>{$}r<{$}} % math-mode version of "r" column type
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of lrc column types
+\newcolumntype{R}{>{$}r<{$}} 
+\newcolumntype{C}{>{$}c<{$}} 
 
 \bibliographystyle{aasjournal}
 
@@ -25,12 +26,16 @@
 \newcommand\hii{\ion{H}{2}}
 \newcommand\Raman{\ensuremath{_{\text{Raman}}}}
 \def\th#1#2{\(\theta^{#1}\)\,Ori~#2}
+\newcommand\wn{\ensuremath{\tilde{\nu}}}
 
 % Chemical formulae
 \newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+\newcommand\ha{\ensuremath{\text{H}\alpha}}
+\newcommand\lya{\ensuremath{\text{Ly}\alpha}}
+\newcommand\lyb{\ensuremath{\text{Ly}\beta}}
 
 \begin{document}
-\title{Raman mapping of atomic hydrogen in the Orion Bar and Orion South}
+\title{Raman mapping of atomic hydrogen and oxygen in the Orion Bar and Orion South}
 \shorttitle{Raman mapping of atomic hydrogen in Orion}
 \author{William J. Henney}
 \affiliation{%
@@ -42,14 +47,18 @@
 \begin{abstract}
   I show that the broad Raman-scattered wings of H\(\alpha\) can be used to
   map neutral gas illuminated by high-mass stars in star forming
-  regions. The near wings (\(\Delta\lambda \approx \pm \SI{10}{\angstrom}\)) trace neutral columns Absorption features in the pseudo-continuum at 6634 and
-  6663~\AA{} correspond to neutral oxygen far-ultraviolet absorption
-  lines at \SIlist{1027.43;1028.16}{\angstrom}.
+  regions. The near wings
+  (\(\Delta\lambda \approx \pm \SI{10}{\angstrom}\)) trace neutral hydrogen columns of
+  about \SI{5e20}{cm^{-2}}, while the farther wings
+  (\(|\Delta\lambda| > \SI{30}{\angstrom}\)) trace columns of about
+  \SI{5e21}{cm^{-2}}. Absorption features in the pseudo-continuum at
+  6633 and 6664~\AA{} correspond to neutral oxygen far-ultraviolet
+  absorption lines at \SIlist{1027.43;1028.16}{\angstrom}.
 \end{abstract}
 
 \keywords{Atomic physics; Radiative transfer; Photodissociation regions}
-\facilities{VLT:Yepun (MUSE); OANSPM:2.1m (Mezcal)}
-\object{M42}
+\facilities{VLT:Yepun (MUSE); OANSPM:2.1m (Mezcal); Keck (HIRES)}
+%\object{M42}
 \section{Introduction}
 \label{sec:introduction}
 
@@ -77,10 +86,75 @@ front, so it is more likely that Raman scattering will occur there
 instead, so long as there is sufficient far ultraviolet radiative flux
 in the vicinity of the Lyman~\(\beta\) line (\SI{1025}{\angstrom}).
 
-\section{Observations}
-\label{sec:observations}
+\section{Spectral mapping of Raman wings}
+\label{sec:muse-spectr-mapp}
 
 MUSE \citep{Bacon:2010a} observations of the Orion Nebula \citep{Weilbacher:2015a, Mc-Leod:2015b}.
+
+
+
+\section{Raman scattering of spectral lines}
+\label{sec:raman-scatt-spectr}
+
+
+When a photon is Raman-scattered from the vicinity of \lyb{} (UV
+domain) to the vicinity of \ha{} (optical domain) its wavelength is
+transformed from \(\lambda_1\) to \(\lambda_2\).  Intervals in frequency
+(\(\nu = c/\lambda\)) or wavenumber (\(\wn = 1 / \lambda\)) space are conserved
+between the two domains. For example the wavenumber displacement from
+the \ion{H}{1} line center can be written in two ways:
+\begin{equation}
+  \label{eq:delta-wavnum}
+  \Delta\wn = \wn_1 - \wn(\lyb) = \wn_2 - \wn(\ha) \ ,
+\end{equation}
+from which it follows that
+\begin{equation}
+  \label{eq:wav-transform}
+  \lambda_2 = \left( \frac1{\lambda(\ha)} +\frac1{\lambda_1} - \frac1{\lambda(\lyb)}\right)^{-1} \ .
+\end{equation}
+All wavelengths are on the vacuum scale unless otherwise noted.  An
+example is given in Table~\ref{tab:line-fits} for the rest wavelengths
+of transitions between the ground \(2s^22p^4\ ^3\!P\) configuration of
+neutral \chem{^{16}O} and the excited \(2s^22p^33d\ ^3\!D\)
+configuration. The \ion{O}{1} data is obtained from highly accurate
+laser metrology \citep{Ivanov:2008a, Marinov:2017a}, with a precision
+of \SI{0.08}{cm^{-1}} or better.  The fine structure splitting of the
+excited state (\(\sim \SI{0.1}{cm^{-1}}\)) is much smaller than of the
+ground state (\(\sim \SI{100}{cm^{-2}}\)), so that the 6 transitions fall
+into 3 well-separated groups.  The three transitions from the lowest
+energy \(J_i=2\) level are very close to \lyb{}
+(\(\Delta\wn \approx \SI{4}{cm^{-1}}\)), whereas the two transitions from
+\(J_i=1\) (\(\Delta\wn \approx \SI{162}{cm^{-1}}\)) and the single transition
+from \(J_i=0\) (\(\Delta\wn \approx \SI{231}{cm^{-1}}\)) lie increasingly to the
+red.  The corresponding wavelengths in the optical domain,
+\(\lambda_2\), are therefore on the red side of \ha{}.  The final column of
+the table uses STP refractive indices \citep{Greisen:2006a} to convert
+\(\lambda_2\) to air wavelengths, \(\lambda_{\text{air}}\), for ease of comparison
+with ground-based optical spectroscopy.  The resultant wavelength is
+\SI{6663.747}{\angstrom} for the \(J_i = 0\) line, with an uncertainty
+of about \SI{0.004}{\angstrom}, which is much smaller than typical
+observational precision (for instance, \SI{0.07}{\angstrom} for a very
+high resolution spectrograph with resolving power of
+\(R = \num{e5}\)). The two \(J_i = 1\) lines, with a separation of
+\SI{0.028}{\angstrom}, will always be blended in observations, giving
+a mean wavelength of \SI{6633.347}{\angstrom} (assuming the upper
+levels are distributed according to statistical weight \(2 J_k + 1\)).
+Similarly, the three \(J_i = 2\) lines have a mean wavelength of
+\SI{6564.386}{\angstrom}, but this is so close to \ha{}
+(corresponding to a Doppler shift of \SI{+75}{km.s^{-1}}) that it
+would be very difficult to observe.
+
+The \SI{6633}{\angstrom} and \SI{6664}{\angstrom} lines are clearly
+detected in the MUSE spectra as absorption features against the
+pseudo-continuum of the broad \ha{} wings (see Fig~XX), although the
+latter is blended with a \ion{Ni}{2} emission line at
+\SI{6666.8}{\angstrom}.  This is further proof of the Raman scattering
+nature of the wings.
+
+
+\section{High-resolution spectroscopy of Raman-scattered \ion{O}{1} \SI{1028}{\angstrom}}
+\label{sec:keck-observations}
+
 
 Keck HIRES spectra described in \citet{Henney:1999a} and
 \citet{Bally:2000a}. The spectrum I use is of HH~529 base region in
@@ -118,21 +192,38 @@ become apparent.
 
 \begin{table*}
   \caption{FUV/optical wavelength equivalencies for Raman scattering}
-  \begin{tabular}{l R R R R R}\toprule
+  ~\\[-\baselineskip]
+  \begin{tabular}{L L L C C R C C C}\toprule
     % Transition & {UV wav, \AA{}} & {Freq, cm\textsuperscript{-1}} & {d Freq} & {Opt wav} & {Air wav}\\
-    \text{Transition} & \text{A} & \text{B} & \text{C} & \text{D} & \text{E} \\
+    \text{Ion} & \text{Transition} & J_i \to J_k & \lambda_1,\ \si{\angstrom} & \wn_1,\ \si{cm^{-1}} & \Delta\wn,\  \si{cm^{-1}}& \wn_2,\ \si{cm^{-1}} & \lambda_2,\ \si{\angstrom} & \lambda_{\text{air}},\ \si{\angstrom} \\
     \midrule
-    H I \{1,2\}s \(\to\) 3p & 1025.72220 & 97492.283 & 0.000 & 6564.553248 & 6562.7406\\
-    O I J = 0 \(\to\) 1 & 1028.15729 & 97261.383 & -230.900 & 6665.5868 & 6663.7469\\
-    O I J = 1 \(\to\) 1 & 1027.43139 & 97330.100 & -162.183 & 6635.1951 & 6633.3630\\
-    O I J = 1 \(\to\) 2 & 1027.43077 & 97330.159 & -162.124 & 6635.1691 & 6633.3370\\
-    O I J = 2 \(\to\) 1 & 1025.76339 & 97488.369 & -3.914 & 6566.2400 & 6564.4269\\
-    O I J = 2 \(\to\) 2 & 1025.76276 & 97488.429 & -3.854 & 6566.2141 & 6564.4010\\
-    O I J = 2 \(\to\) 3 & 1025.76170 & 97488.530 & -3.753 & 6566.1706 & 6564.3575\\
+    & & & \multicolumn{2}{c}{\dotfill\(\quad \lyb,\ n = 1 \quad\)\dotfill} & & \multicolumn{3}{c}{\dotfill\(\quad \ha,\ n = 2 \quad\)\dotfill} \\
+    \addlinespace[2pt]
+    \ion{H}{1} & ns\ ^2\!S \to 3p\ ^2\!P & \tfrac12 \to \tfrac12,\tfrac32 & 1025.72220 & 97492.283 & 0.000 & 15233.329 & 6564.553 & 6562.740\\
+    \addlinespace
+    \ion{O}{1} & 2s^22p^4\ ^3\!P  \to 2s^22p^3(^4\!S)3d\  ^3\!D & 0 \to 1 & 1028.15729 & 97261.383 & -230.900 & 15002.429 & 6665.587 & 6663.747\\
+     & & 1 \to 1 & 1027.43139 & 97330.100 & -162.183 & 15071.146 & 6635.196 & 6633.364\\
+     & & 1 \to 2 & 1027.43077 & 97330.159 & -162.124 & 15071.205 & 6635.170 & 6633.338\\
+     & & 2 \to 1 & 1025.76339 & 97488.369 & -3.914 & 15229.415 & 6566.240 & 6564.427\\
+     & & 2 \to 2 & 1025.76276 & 97488.429 & -3.854 & 15229.475 & 6566.215 & 6564.401\\
+     & & 2 \to 3 & 1025.76170 & 97488.530 & -3.753 & 15229.576 & 6566.171 & 6564.358\\
     \bottomrule
   \end{tabular}
-
 \end{table*}
+
+\begin{table}
+  \caption{Fit parameters from Gaussian line fits}
+  \label{tab:line-fits}
+  \begin{tabular}{l RRR RRR}\toprule
+     & \multicolumn{3}{c}{\ion{O}{1}} & \multicolumn{3}{c}{\ion{Ni}{2}} \\
+    Region & A & V & \sigma & A & V & \sigma \\ \midrule
+    A & & & & & & \\
+    B & & & & & &  \\
+    C & & & & & &  \\
+    D & & & & & &  \\
+    E & & & & & &  \\ \bottomrule
+  \end{tabular}
+\end{table}
 
 \section{Discussion}
 \label{sec:discussion}
@@ -153,6 +244,11 @@ diverging cylindrical geometry is necessary to explain the sharp peak
 in the [\ion{N}{2}] emissivity seen at the ionization front.  It has
 been apparent since \citet{ODell:2000a} that the nebula contains many
 bar-like features.
+
+Even for high PDR optical depth, no multiple Raman scattering will
+occur since the population of \(2s\) is very small and the
+post-scattered photons have insufficient energy to excite any
+transitions from \(1s\).
 
 \bibliography{BibdeskLibrary}
 

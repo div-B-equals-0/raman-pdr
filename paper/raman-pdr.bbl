@@ -35,6 +35,11 @@
 {Dopita}, M.~A., {Nicholls}, D.~C., {Sutherland }, R.~S., {Kewley}, L.~J., \&
   {Groves}, B.~A. 2016, \apjl, 824, L13, \dodoi{10.3847/2041-8205/824/1/L13}
 
+\bibitem[{{Greisen} {et~al.}(2006){Greisen}, {Calabretta}, {Valdes}, \&
+  {Allen}}]{Greisen:2006a}
+{Greisen}, E.~W., {Calabretta}, M.~R., {Valdes}, F.~G., \& {Allen}, S.~L. 2006,
+  \aap, 446, 747, \dodoi{10.1051/0004-6361:20053818}
+
 \bibitem[{{Henney} {et~al.}(2005){Henney}, {Arthur}, {Williams}, \&
   {Ferland}}]{Henney:2005b}
 {Henney}, W.~J., {Arthur}, S.~J., {Williams}, R.~J.~R., \& {Ferland}, G.~J.
@@ -43,6 +48,17 @@
 \bibitem[{{Henney} \& {O'Dell}(1999)}]{Henney:1999a}
 {Henney}, W.~J., \& {O'Dell}, C.~R. 1999, \aj, 118, 2350,
   \dodoi{10.1086/301087}
+
+\bibitem[{{Ivanov} {et~al.}(2008){Ivanov}, {Salumbides}, {Vieitez}, {Cacciani},
+  {de Lange}, \& {Ubachs}}]{Ivanov:2008a}
+{Ivanov}, T.~I., {Salumbides}, E.~J., {Vieitez}, M.~O., {et~al.} 2008, \mnras,
+  389, L4, \dodoi{10.1111/j.1745-3933.2008.00507.x}
+
+\bibitem[{{Marinov} {et~al.}(2017){Marinov}, {Booth}, {Drag}, \&
+  {Blondel}}]{Marinov:2017a}
+{Marinov}, D., {Booth}, J.~P., {Drag}, C., \& {Blondel}, C. 2017, Journal of
+  Physics B Atomic Molecular Physics, 50, 065003,
+  \dodoi{10.1088/1361-6455/aa5a88}
 
 \bibitem[{{Mc Leod} {et~al.}(2015){Mc Leod}, {Weilbacher}, {Ginsburg}, {Dale},
   {Ramsay}, \& {Testi}}]{Mc-Leod:2015b}

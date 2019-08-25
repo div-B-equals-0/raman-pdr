@@ -673,24 +673,6 @@ Fit the continuum and remove it
   + See McLeod:2019a
   + Neither of these are the same as the Dopita ones
 
-* Looking at spectra of stars
-+ Is it possible to see the DIB profiles in the stellar spectra?
-  + Specifically the 6632.85 feature?
-
-** Features seen in \theta^1 C (HD 37022)
-+ Using UVES dataset ADP.2016-03-11T12:34:33.367 from ESO
-  + 6196
-    - I see something at 6196.95 but it is supposed to be at 6195.97
-    - And there is nothing at 6614, which should be stronger - so no
-  + 5780
-    - Broad absorption at 5781.649
-    - But wavelength not right, should be at 5780.37
-    - And we see nothing at 5797
-  + 6284
-    - Seen clearly
-    - I might have got my wavelength wrong before - was using 6278 which is way off
-    - Confusion with sky absorption
-
 * Characteristics of Orion PDRs
 + Bright Bar
   + Edge on
@@ -707,7 +689,8 @@ Fit the continuum and remove it
   + In fact, Galazutdinov:2000a show a DIB at 6632.85, which might possibly be our feature
     + It isn't listed as new, so it must be in previous papers too
     + It is only seen in highly reddened stars, not in HD 23180
-** TODO [#A] Co-adding Keck spectra to get a less noisy profile
+** DONE [#A] Co-adding Keck spectra to get a less noisy profile
+CLOSED: [2019-08-24 Sat 22:09]
 + I could go through all the steps I did for the proplyd spectra
   + This would give a nicely calibrated, rectified spectrum
   + See [[id:46ACEA74-2E70-473B-9344-DF20000DB765][Extracting each line]] in Keck notes
@@ -715,23 +698,6 @@ Fit the continuum and remove it
 
 
 
-* Explanations for absorption
-** Summary
-1. Really a gap between two weak emission line forests
-   - Not consistent with Orion, which shows smooth continuum
-2. Stellar absorption line that is scattered
-   - Late B stars have the N III 6633.9 line
-   - But they also have other lines
-     - E.g. O II 6641.031
-3. DIB
-   - I think this is the most likely
-   - Need to compare with 5782 and 6278 bands
-     - Those are correlated with reddening
-     - But 6634 is not
-   - Note that DIBs are thought to be molecular, according to Krełowski:
-     #+begin_quote
-     The nearly constant positions and nearly unchanged profiles of DIBs, irrespective of the line of sight, point to free gas-phase molecules as the carriers of these bands. [...] 
-     #+end_quote
 * Antecedents for Raman scattering
 ** Raman scattering theory
 + Hubeny & Mihalas book
@@ -749,7 +715,8 @@ Fit the continuum and remove it
 + Wavelength-scale factor is 40.96
 *** Redo everything in vacuum wavenumbers
 + This is the only way that makes sense
-**** Application to the O I lines
+**** DONE Application to the O I lines
+CLOSED: [2019-08-24 Sat 22:12]
 
 Compare O I lines with Ly \beta (average of doublet)
 | Line                                  |     Wav, \AA | Freq, cm^-1 |   d freq |
@@ -804,26 +771,46 @@ Now convert back to air wavelengths
 | O I 3P_2 \to  3D_3 | 6566.1710 +/- 0.0034 | 1.00027623 +/- 3.5419462e-12 | 6564.3577 +/- 0.0034 |
 #+TBLFM: $3=1 + 8.06051e-5 + (2.480990e-2 / (132.274 - (1e4/$2)**2)) + (1.74557e-4 / (39.32957 - (1e4/$2)**2)) ;f8::$4=$2/$3;f4
 
-Accuracy in wavelength corresponds to:
+Accuracy in wavelength (0.003 to 0.004 \AA) corresponds to:
 + 0.16 km/s in H\alpha domain
-+ 1 km/s in Raman domain
++ 0.025 km/s in Raman domain !
+
+Mean wavelengths of blended components
+|       wav | J_k | g_k |
+|-----------+----+----|
+| 6633.3636 |  1 |  3 |
+| 6633.3376 |  2 |  5 |
+|-----------+----+----|
+| 6633.3474 |    |  1 |
+#+TBLFM: $3=2 $2 + 1::@4$1=(@2$1 @2$3 + @3$1 @3$3)/(@2$3 + @3$3)
+
+|       wav | J_k | g_k |
+|-----------+----+----|
+| 6564.4271 |  1 |  3 |
+| 6564.4012 |  2 |  5 |
+| 6564.3577 |  3 |  7 |
+|-----------+----+----|
+| 6564.3861 |    |  1 |
+#+TBLFM: $3=2 $2 + 1::@5$1=(@2$1 @2$3 + @3$1 @3$3 + @4$1 @4$3)/(@2$3 + @3$3 + @4$3)
+
 
 Final table
-| Transition      |      \lambda_1, \AA |  \nu_1, cm^-1 |      d \nu |        \nu_2 |        \lambda_2 |      \lambda_air |
-|-----------------+------------+-----------+----------+-----------+-----------+-----------|
-| H I {1,2}s \to 3p | 1025.72220 | 97492.283 |    0.000 | 15233.329 | 6564.5532 | 6562.7404 |
-| O I J = 0 \to 1   | 1028.15729 | 97261.383 | -230.900 | 15002.429 | 6665.5873 | 6663.7473 |
-| O I J = 1 \to 1   | 1027.43139 | 97330.100 | -162.183 | 15071.146 | 6635.1955 | 6633.3636 |
-| O I J = 1 \to 2   | 1027.43077 | 97330.159 | -162.124 | 15071.205 | 6635.1695 | 6633.3376 |
-| O I J = 2 \to 1   | 1025.76339 | 97488.369 |   -3.914 | 15229.415 | 6566.2404 | 6564.4271 |
-| O I J = 2 \to 2   | 1025.76276 | 97488.429 |   -3.854 | 15229.475 | 6566.2145 | 6564.4012 |
-| O I J = 2 \to 3   | 1025.76170 | 97488.530 |   -3.753 | 15229.576 | 6566.1710 | 6564.3577 |
+| Transition      |         \lambda_1 |  \nu_1, cm^-1 |      d \nu |        \nu_2 |       \lambda_2 |     \lambda_air |
+|-----------------+------------+-----------+----------+-----------+----------+----------|
+| H I {1,2}s \to 3p | 1025.72220 | 97492.283 |    0.000 | 15233.329 | 6564.553 | 6562.740 |
+| O I J = 0 \to 1   | 1028.15729 | 97261.383 | -230.900 | 15002.429 | 6665.587 | 6663.747 |
+| O I J = 1 \to 1   | 1027.43139 | 97330.100 | -162.183 | 15071.146 | 6635.196 | 6633.364 |
+| O I J = 1 \to 2   | 1027.43077 | 97330.159 | -162.124 | 15071.205 | 6635.170 | 6633.338 |
+| O I J = 2 \to 1   | 1025.76339 | 97488.369 |   -3.914 | 15229.415 | 6566.240 | 6564.427 |
+| O I J = 2 \to 2   | 1025.76276 | 97488.429 |   -3.854 | 15229.475 | 6566.215 | 6564.401 |
+| O I J = 2 \to 3   | 1025.76170 | 97488.530 |   -3.753 | 15229.576 | 6566.171 | 6564.358 |
 
 Scale factors:
 + \nu_1/\nu_2 = 97492.283/15233.329 = 6.3999329 +/- 0.0000004
 + (\nu_1/\nu_2)^2 = 40.959141 +/- 0.000005
 
-**** Data from Peter's Atomic Line List with energies in wave numbers
+**** DONE Data from Peter's Atomic Line List with energies in wave numbers
+CLOSED: [2019-08-24 Sat 22:12]
 Ly \beta (vacuum)
 : -LAB-WAVL-ANG-VAC-|-DLAM--|SPC-|TT|CONF-|-TERM--|-J_i-J_k-|--A_ki--|-TPF-|-LVL-EN--CM-1--|-REF---|
 :    1025.721824823  1.0E-08  H I E1 1s-3p  2S-2Po 1/2 - 3/2 1.67E+08    28 0.00 - 97492.32 007
@@ -1016,6 +1003,42 @@ Most of these I found from the intro of the Dopita:2016a paper
   + [CVC90] Hector O. Castaneda, J. M. Vilchez, and Marcus V. F. Copetti. A Remarkable Feature in the Giant Extragalactic H II Region NGC 5471. ApJ, 365:164, Dec 1990.
   + Not as broad as in Orion
   + Ascribed to SNR
-***  
+
+* Older stuff which is now beside the point 
 
 
+** Looking at spectra of stars
++ Is it possible to see the DIB profiles in the stellar spectra?
+  + Specifically the 6632.85 feature?
+
+*** Features seen in \theta^1 C (HD 37022)
++ Using UVES dataset ADP.2016-03-11T12:34:33.367 from ESO
+  + 6196
+    - I see something at 6196.95 but it is supposed to be at 6195.97
+    - And there is nothing at 6614, which should be stronger - so no
+  + 5780
+    - Broad absorption at 5781.649
+    - But wavelength not right, should be at 5780.37
+    - And we see nothing at 5797
+  + 6284
+    - Seen clearly
+    - I might have got my wavelength wrong before - was using 6278 which is way off
+    - Confusion with sky absorption
+
+** Explanations for absorption
+*** Summary
+1. Really a gap between two weak emission line forests
+   - Not consistent with Orion, which shows smooth continuum
+2. Stellar absorption line that is scattered
+   - Late B stars have the N III 6633.9 line
+   - But they also have other lines
+     - E.g. O II 6641.031
+3. DIB
+   - I think this is the most likely
+   - Need to compare with 5782 and 6278 bands
+     - Those are correlated with reddening
+     - But 6634 is not
+   - Note that DIBs are thought to be molecular, according to Krełowski:
+     #+begin_quote
+     The nearly constant positions and nearly unchanged profiles of DIBs, irrespective of the line of sight, point to free gas-phase molecules as the carriers of these bands. [...] 
+     #+end_quote
