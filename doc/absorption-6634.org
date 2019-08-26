@@ -702,6 +702,10 @@ CLOSED: [2019-08-24 Sat 22:09]
 ** Raman scattering theory
 + Hubeny & Mihalas book
 + 
+*** Terminology
++ Term is n, S, L
++ Level is n, S, L, J
++ State is n, S, L, J, M_J
 *** Wavelength mapping between Ly\beta and H\alpha domain
 + Let \nu_0 be pre-scattered and \nu_1 be post-scattered frequency
   + \Delta\nu_1 = \Delta\nu_0 for Raman scattering
@@ -715,6 +719,53 @@ CLOSED: [2019-08-24 Sat 22:09]
 + Wavelength-scale factor is 40.96
 *** Redo everything in vacuum wavenumbers
 + This is the only way that makes sense
+**** Mean wavelengths of Ly\beta and H\alpha
+Ly\beta - calculating wavnum from wav since it has much higher precision than 0.01 cm^-1
+|  J_k |   g_k |            wav |     wavnum |
+|-----+------+----------------+------------|
+| 1.5 |   4. | 1025.721824823 | 97492.3196 |
+| 0.5 |   2. | 1025.722965425 | 97492.2112 |
+|-----+------+----------------+------------|
+|     | Mean | 1025.722205020 | 97492.2835 |
+#+TBLFM: $2=2 $1 + 1::$4=1e8/$3;f4::@4$2=Mean::@4$3=(@2 @2$2 + @3 @3$2) / (@2$2 + @3$2);f9::@4$4=(@2 @2$2 + @3 @3$2) / (@2$2 + @3$2);f4
+
+Average frequency and wavenumber of H\alpha (2s \to 3p)
+|                            |   |               | freq, cm^-1 | check freq |
+|----------------------------+---+---------------+------------+------------|
+| H I H\alpha 2s 2S_{1/2 }\to 3p 2P_{1/2} | 2 | 6564.58439369 |   15233.26 | 15233.2568 |
+| H I H\alpha 2s 2S_{1/2 }\to 3p 2P_{3/2} | 4 | 6564.53767551 |   15233.37 | 15233.3652 |
+|----------------------------+---+---------------+------------+------------|
+| H I H\alpha 2s \to 3p             | 6 | 6564.55324823 |   15233.33 | 15233.3291 |
+#+TBLFM: $5=1e8/$3 ; f4::@4$3=(2 @2  + 4 @3) / 6 ; f8::@4$4=(2 @2  + 4 @3) / 6 ; f2
+
+Comparison with Clegg:1999a
+
+Clegg reference wavelengths
+| Ly\alpha | 1215.6841 | vac |
+| Ly\beta | 1025.7335 |     |
+| H\alpha  | 6562.8812 | air |
+
+Fine-structure components are in his Tab 2a, but he has higher level first.  So for H\alpha fluoresced by Ly\beta, we want 3p \to 2s, which is indices 3 and 4. 
+
+These have \Delta\lambda = -0.110 and -0.157 \AA respectively with respect to the reference wavelength (Tab 3). 
+
+So, we have for H\alpha
+| Index |                     |     \Delta\lambda |        \lambda | g |
+|-------+---------------------+--------+----------+---|
+|     3 | 3p 2P_{1/2} \to 2s 2S_{1/2} | -0.110 | 6562.771 | 2 |
+|     4 | 3p 2P_{3/2} \to 2s 2S_{1/2} | -0.157 | 6562.724 | 4 |
+|-------+---------------------+--------+----------+---|
+|       |                     |        | 6562.740 |   |
+#+TBLFM: $4=6562.8812 + $3;f3::@4$4=(2 @2  + 4 @3) / 6 ; f3
+
+This is /exactly/ the same as the 6562.7404 that I derive below for the air wavelength. 
+
+
+Note that Clegg says:
+: We further assume that b_nlj = b_nl, with the values of b_nl being calculated as described above. This is equivalent to the assumption that the j-levels associated with a particular nl are populated according to their statistical weights (2j + 1).
+
+
+
 **** DONE Application to the O I lines
 CLOSED: [2019-08-24 Sat 22:12]
 
@@ -736,14 +787,6 @@ Compare O I lines with Ly \beta (average of doublet)
 
 
 
-Average frequency and wavenumber of H\alpha (2s \to 3p)
-|                            |   |               | freq, cm^-1 | check freq |
-|----------------------------+---+---------------+------------+------------|
-| H I H\alpha 2s 2S_{1/2 }\to 3p 2P_{1/2} | 2 | 6564.58439369 |   15233.26 |  15233.257 |
-| H I H\alpha 2s 2S_{1/2 }\to 3p 2P_{3/2} | 4 | 6564.53767551 |   15233.37 |  15233.365 |
-|----------------------------+---+---------------+------------+------------|
-| H I H\alpha 2s \to 3p             | 6 |   6564.553248 |   15233.33 |  15233.329 |
-#+TBLFM: $5=1e8/$3 ; f3::@4$3=(2 @2  + 4 @3) / 6 ; f6::@4$4=(2 @2  + 4 @3) / 6 ; f2
 
 O I Line transformed to H\alpha domain
 |   H\alpha freq | d freq             | O I freq            | O I wav              |
@@ -774,6 +817,10 @@ Now convert back to air wavelengths
 Accuracy in wavelength (0.003 to 0.004 \AA) corresponds to:
 + 0.16 km/s in H\alpha domain
 + 0.025 km/s in Raman domain !
+
+Note that H\alpha is -2.27 km/s shifted with respect to the recombination value, which includes the 3d-2p, 3s-2p transitions. 
+
+
 
 Mean wavelengths of blended components
 |       wav | J_k | g_k |
@@ -861,6 +908,8 @@ O I
     + \pm 0.00001 cm^-1
     + From IR spectroscopy, Zink:1991a
     + Transitions at 63.227 and 145.626 microns
++ H I lines
+  + 
 
 
 *** Column densities

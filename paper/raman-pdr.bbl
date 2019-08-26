@@ -30,6 +30,11 @@
 {Chang}, S.-J., {Heo}, J.-E., {Di Mille}, F., {et~al.} 2015, \apj, 814, 98,
   \dodoi{10.1088/0004-637X/814/2/98}
 
+\bibitem[{{Clegg} {et~al.}(1999){Clegg}, {Miller}, {Storey}, \&
+  {Kisielius}}]{Clegg:1999a}
+{Clegg}, R.~E.~S., {Miller}, S., {Storey}, P.~J., \& {Kisielius}, R. 1999,
+  \aaps, 135, 359, \dodoi{10.1051/aas:1999178}
+
 \bibitem[{{Dopita} {et~al.}(2016){Dopita}, {Nicholls}, {Sutherland }, {Kewley},
   \& {Groves}}]{Dopita:2016a}
 {Dopita}, M.~A., {Nicholls}, D.~C., {Sutherland }, R.~S., {Kewley}, L.~J., \&
@@ -66,6 +71,14 @@
   e-prints.
 \newblock \doarXiv{1511.01914}
 
+\bibitem[{Mohr {et~al.}(2008)Mohr, Taylor, \& Newell}]{Mohr:2008a}
+Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
+  \dodoi{10.1103/RevModPhys.80.633}
+
+\bibitem[{{Nussbaumer} {et~al.}(1989){Nussbaumer}, {Schmid}, \&
+  {Vogel}}]{Nussbaumer:1989a}
+{Nussbaumer}, H., {Schmid}, H.~M., \& {Vogel}, M. 1989, \aap, 211, L27
+
 \bibitem[{{O'Dell} \& {Yusef-Zadeh}(2000)}]{ODell:2000a}
 {O'Dell}, C.~R., \& {Yusef-Zadeh}, F. 2000, \aj, 120, 382,
   \dodoi{10.1086/301429}
@@ -79,6 +92,12 @@
   {Keller}, \& {Tielens}}]{Salgado:2016a}
 {Salgado}, F., {Berné}, O., {Adams}, J.~D., {et~al.} 2016, \apj, 830, 118,
   \dodoi{10.3847/0004-637X/830/2/118}
+
+\bibitem[{{Schmid}(1989)}]{Schmid:1989a}
+{Schmid}, H.~M. 1989, \aap, 211, L31
+
+\bibitem[{Van~Hoof(2018)}]{Van-Hoof:2018a}
+Van~Hoof, P. A.~M. 2018, Galaxies, 6, \dodoi{10.3390/galaxies6020063}
 
 \bibitem[{{Watson} {et~al.}(1998){Watson}, {Henney}, \&
   {Escalante}}]{Watson:1998a}
