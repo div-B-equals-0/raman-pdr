@@ -986,7 +986,7 @@ O I
 + \sigma_0 = 1/4 (g_2/g_1) \lambda_21^2 A_21
   + This is like the \sigma_jk above
   + It is larger by a factor of 2\pi - why?
-***** Application to our lines
+***** Application to our FUV lines
 
 |        Wav | J_i | J_k |      A_ki |        \sigma |
 |------------+----+----+----------+----------|
@@ -1003,8 +1003,222 @@ O I
   + 10**(8.5 - 12) = 3.16e-4
   + 10**(8.65 - 12) = 4.46e-4
 + Take 4e-4 as an average
-+ This means that \sigma per H atom is about 1.332e-17 cm^2/H^0, which is about the same as the H^0 photoionization cross section. 
++ This means that \sigma per H atom is about 1.332e-17 cm^2/H^0, which is about the same as the H^0 photoionization cross section.
+***** Summary of fluorescent O I spectrum
+1. All fluoresced excited levels considered are 2s2.2p3.(4So).nl 
+2. The nd 3D^o and ns 3S^o terms are pumped by resonant transitions from the ground 2s2.2p4 3P term
+   - Strict LS coupling E1 selection rules are \Delta S = 0, \Delta L = 0, \pm 1, \pi_f = -\pi_i
+     - So the np 3P terms are not pumped (same parity as ground)
+     - And the 5S, 5D terms require intermediate coupling (intercombination lines), which are weak
+   - Lowest pumped terms are 3s 3S^o via 1304 \AA (UV 2) and 4s 3S^o via 1041 \AA (UV 3)
+   - Then 3d 3D^o via 1026 \AA (our Raman line)
+   - Then 5s, 4d, 6s, 5d, 7s, 6d, etc
+   - Highest with observable consequence are 11s and 10d via 920 \AA (UV 21 and 22)
+     - Comparing A-values: 
+3. These then de-excite via a cascade of [nd 3D^o, ns 3S^o] \leftrightarrow n'p 3P transitions
+   - Most emit IR lines
+   - Most important transitions end in 3p 3P (86626 cm^-1 above ground, or 23211 cm^-1 = 4308 \AA below continuum)
+   - Tne nd \to 3p and ns \to 3p transitions give the optical lines 7254, 7002, 6046, ... 4972
+     - There are also the 3d \to 3p 1.128 micron and 4s \to 3p 1.316 micron lines, which accounting suggests represent half the total feeding of 3p
+   - The only way out from 3p 3P is 8446 \AA \to 3s 3S^o followed by 1304 \AA \to ground 3P
+4. There is an alternative route via 4p \to 3s, which gives the 4368 line, but this is 20 times weaker (in photons) than 3p \to 3s
+5. We see quintet lines but 100 times weaker
+***** TODO Do the accounting for the cascades
++ Add up all ns \to 3p and nd \to 3p
+  + (converted to photon units)
+  + Use Esteban values
++ Compare with the 3p \to 3s 8446 to see how important the unobserved 3d \to 3p and 4s \to 3p are. 
+***** What about the observed O I lines?
++ Strongest is 8446.36, 8444.25, 8444.7
 
+Data from Atomic Line List
+: -LAB-WAVL-ANG-AIR-|-DLAM--|SPC-|TT|----------CONFIGURATION----------|-TERM--|J_i-J_k|--A_ki--|-TPF-|LEVEL-ENERGY--CM^-1|-REF---|
+:    8446.247        6.4E-03  O I E1 2s2.2p3.(4So).3s-2s2.2p3.(4So).3p 3So-3P   1 - 0  3.18E+07    15 76794.98 - 88631.30 ASD
+:    8446.359        6.4E-03  O I E1 2s2.2p3.(4So).3s-2s2.2p3.(4So).3p 3So-3P   1 - 2  3.18E+07    15 76794.98 - 88631.15 ASD
+:    8446.758        6.4E-03  O I E1 2s2.2p3.(4So).3s-2s2.2p3.(4So).3p 3So-3P   1 - 1  3.18E+07    15 76794.98 - 88630.59 ASD
+
+So upper level is ~2s2.2p3.(4So).3p 3So-3P~ term as opposed to the ~3D~ term that our FUV lines excite. 
+****** Cascade from ~3d 3D~ term
++ There are some weak semi-forbidden intercombination transitions: 
+  + \to 2s2.2p4 1D and 1S in the ground configuration with A values around 1000 /s
+    + Excitation of 15867.86 and 33792.58 cm^-1 above ground, so 6300 and 2960 and 5577 forbidden lines will be pumped (presumably negligibly compared with collisions) 
+  + \to 3p 5P excited term, all with A < 1000 /s as well
++ Apart from that, the only transitions are to 3p 3P and back to the ground 3P
+  1. \to 3p 3P - \lambda = 1.129 \micro{}m - A = 2.8e7 from J=2, 2.8e7 from J=3, 2.8e7 from J=1
+  2. \to ground 3P - \lambda = 1026-1028 \AA - A = 7.4e7 from J=3,2, or 1
++ So branching ratios are 27.5% and 72.5%
++ So after 4 absorptions of 1025, most has been converted to longer wavelengths
++ Only 0.003% go the intercombination route
++ After that, the only route is 8448 \AA \to 3s 3S followed by 1305 \AA back to the ground
++ So that makes a nice cycle
+****** Other O I fluorescent lines
+:PROPERTIES:
+:ID:       6D6ABAF2-EFB7-4809-BE42-AB3B6AB5AAFD
+:END:
++ 7982.40, 7987.33
+  + Multiplet 19
+  + 3p 3P - 3s' 3D
+  + Very weak
++ 7771.94,74.17,75.39
+  + Multiplet 1
+  + 3s 5S - 3p 5P
+  + Sky contam, but real I think
+  + Only evidence of intercombination pumping - this is the equivalent of 8446 but for the quintets (100 times weaker)
+  + Should be pumped indirectly via
+    + Ground 3P \to 3d 5D^o (1026.476, 1028.145, 1028.870)
+    + Then, 3d 5D^o \to 3p 5P (multiplet 8, 9260 to 9266 \AA)
+      + *I seem to see this in MUSE spectra* although there may be some sky and also [Fe II] 9268
++ 7254.15,54.45,54.53
+  + Multiplet 20
+  + 3p 3P - 5s 3S
+  + Strong, but still much weaker than 8446
++ 7001.92,2.23
+  + Multiplet 21
+  + 3p 3P - 4d 3D
+  + A bit weaker than 7254
++ 6046.23,.44,.49
+  + Multiplet 22
+  + 3p 3P - 6s 3S
+  + Weaker still
++ 5958
+  + Multiplet 23
+  + 3p 3P - 5d 3D
+  + Blend with Si II
++ 5555.03
+  + Multiplet 24
+  + 3p 3P - 7s 3S
+  + Even weaker
++ 5512.60,.77
+  + Multiplet 25
+  + 3p 3P - 6d 3D
++ 5299
+  + Multiplet 26
+  + 3p 3P - 8s 3S
++ 5275
+  + Multiplet 27
+  + 3p 3P - 7d 3D
+  + Blended with [Fe III] 5270
++ 5147
+  + Multiplet 28
+  + 3p 3P - 9s 3S
++ 5131
+  + Multiplet 29
+  + 3p 3P - 8d 3D
++ 5038 and 5048
+  + Heavy blends with He I, [Fe II], Si II
++ 4980
+  + Multiplet ??
+  + 3p 3P - 11s 3S
+  + 
++ 4972
+  + 3p 3P - 10d 3D
+  + Marginally detected in wing of [O III] 4959
+****** Lines that aren't observed but might be useful
++ 4p (99680 - 99682) can decay to
+  + 3s 4368 \AA
+    + *but it is observed*
+    + Esteban:2004a give I = 0.073 on H\beta = 100 scale
+      + And Baldwin:2000a give I = 0.0147 on I/6678 scale, where Hb = 24.6 => 100 0.0147 / 24.6 = 0.06, so close enough
+    + Whereas Esteban give - 4980: 0.012, 5147: 0.040, 5275: 0.011,  5299: 0.031, 5513: 0.024, 5555: 0.030, 5958: 0.038, 6046: 0.089, 7002: 0.086, 7254: 0.106, 8446: 0.882
+      + And Baldwin (just the bright ones, and multiplying by 4 to put on same scale) - 7254: 0.094, 7002: 0.074, 6046: 0.074, 5958: 0.030, 5555: 0.024, 5513: 0.018,  5299: 0.025, 5275: 0.009, 5147: 0.028 (blend with Co I), 5131: 0.007 
+    + Other (Mult #) - 6156 (10): 0.005, 6257 (50.01, 3p' \to 4d' MORE LIKELY C II line): 0.016, 7772 (1): 0.016 (sky contam), 7775 (1): 0.006, 7983 (19): 0.002, 7988 (19): 0.004
+    + Bluer - 3511.10 (6p-7d? seems unlikely): 0.025, 4326.4 (also unlikely): 0.031, 4344.35 (intercomb? but very unlikely): 0.006
+  + 4s 2.89 micron
+  + 3d 4.56 micron
++ 4p can be decayed to from
+  + 4d 30.983 micron
+  + 5s 36.6 micron
+  + Up to 10d and 11s at 11 micron
++ 4s (96225.05) can decay to
+  + Ground 1041 \AA, A = 1.5e8
+  + 3p 1.316 micron, A = 1.9e7
++ 4s can be decayed to from
+  + 4p 28.9 micron
+  + 5p 13.1 micron
+  + 6p 10.3 micron
+****** References for energy levels and IR lines
+******* Civis:2018a has lines from 7700 \AA to 12.5 micron
+Gives best estimate of energy levels.
+
+******* Moore:1973a is a nice compendium
+:PROPERTIES:
+:ID:       AC2BBA8F-4C85-408E-B6B0-F08DFAFB3718
+:END:
++ Multiplet Nos
+  + UV 4 :: 2p4 3P \to 3d 3D
+    + 1025-1028 \AA
+    + Raman-scattered absorption
+  + UV 2 ::  2p4 3P \to 3s 3S
+    + 1302-1306 \AA
+    + Final step back to ground after emission of 8448
+  + UV 3.01 :: 2p4 3P \to 3d 5D
+    + 1026-1029 \AA
+    + Overlaps with UV 4 but presumably much weaker
+    + Yes, A = 300 to 400 s^{-1} according to Peter
+      + This is 1e5 times weaker than UV 4, which means that \sigma = 1e-22 cm^2/H instead of 1e-17, so A_V = 10
+      + So would be optically thin in the PDR
+  + 4 :: 3s 3S \to 3p 3P
+    + 8446 \AA air
+    + Our strongest fluorescent line
+  + 18.02 :: 3p 3P \to 3d 3D
+    + 1.1287 micron air
+    + Feeds upper level of 8446 after absorption of 1025
+  + 18.01 :: 3p 3P \to 4s 3S
+    + 1.316 micron air
+    + Also feeds upper level of 8446 after absorption of 1041
+  + Other multiplets :: 3p 3P \to ns 3S and nd 3D
+    + Optical lines from 4972 to 7254 \AA
+    + See [[id:6D6ABAF2-EFB7-4809-BE42-AB3B6AB5AAFD][Other O I fluorescent lines]] above
+    + These are fed by resonant lines from the ground 3P term
+
+      
+****** Original data on downward transitions from 3d, 3p, 3s
+
+******* From 2s2.2p3.(4So).3d 3D
+|    WAV VAC | SPC  | CONFIGURATION    | TERM   | J_i-J_k |      A_ki | LEVEL ENERGY  CM^-1  |
+|------------+------+------------------+--------+-------+----------+---------------------|
+| 1025.76161 | O I  | 2s2.2p4          | 3P-3Do | 2 - 3 | 7.40E+07 | 0.00 - 97488.54     |
+| 1025.76256 | O I  | 2s2.2p4          | 3P-3Do | 2 - 2 | 1.84E+07 | 0.00 - 97488.45     |
+| 1025.76330 | O I  | 2s2.2p4          | 3P-3Do | 2 - 1 | 2.05E+06 | 0.00 - 97488.38     |
+| 1027.43051 | O I  | 2s2.2p4          | 3P-3Do | 1 - 2 | 5.52E+07 | 158.26 - 97488.45   |
+| 1027.43125 | O I  | 2s2.2p4          | 3P-3Do | 1 - 1 | 3.06E+07 | 158.26 - 97488.38   |
+| 1028.15710 | O I  | 2s2.2p4          | 3P-3Do | 0 - 1 | 4.08E+07 | 226.98 - 97488.38   |
+| 1225.17976 | O I] | 2s2.2p4          | 1D-3Do | 2 - 3 | 1.64E+03 | 15867.86 - 97488.54 |
+| 1225.18111 | O I] | 2s2.2p4          | 1D-3Do | 2 - 2 | 4.10E+02 | 15867.86 - 97488.45 |
+| 1225.18216 | O I] | 2s2.2p4          | 1D-3Do | 2 - 1 | 4.55E+01 | 15867.86 - 97488.38 |
+| 1569.96235 | O I] | 2s2.2p4          | 1S-3Do | 0 - 1 | 3.80E+02 | 33792.58 - 97488.38 |
+|   9205.822 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 1 - 2 | 1.33E+01 | 86625.76 - 97488.45 |
+|   9205.881 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 1 - 1 | 1.02E+02 | 86625.76 - 97488.38 |
+|   9207.459 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 2 - 3 | 9.48E+02 | 86627.78 - 97488.54 |
+|   9207.535 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 2 - 2 | 1.26E+01 | 86627.78 - 97488.45 |
+|   9207.594 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 2 - 1 | 7.39E+01 | 86627.78 - 97488.38 |
+|   9210.576 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 3 - 3 | 2.78E-01 | 86631.45 - 97488.54 |
+|   9210.653 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 3 - 2 | 3.95E+01 | 86631.45 - 97488.45 |
+|  11289.407 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 1 - 2 | 2.12E+07 | 88630.59 - 97488.45 |
+|  11289.496 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 1 - 1 | 1.18E+07 | 88630.59 - 97488.38 |
+|  11290.005 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 2 - 3 | 2.82E+07 | 88631.15 - 97488.54 |
+|  11290.120 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 2 - 2 | 7.05E+06 | 88631.15 - 97488.45 |
+|  11290.209 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 2 - 1 | 7.83E+05 | 88631.15 - 97488.38 |
+|  11290.409 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 0 - 1 | 1.57E+07 | 88631.30 - 97488.38 |
+
+
+******* From 2s2.2p3.(4So).3p 3P
+|  WAV VAC | SPC   | CONFIGURATION    | TERM   | J_i-J_k |      A_ki | LEVEL ENERGY  CM^-1  |
+|----------+-------+------------------+--------+-------+----------+---------------------|
+| 6728.141 | O  I] | 2s2.2p3.(4So).3s | 5So-3P | 2 - 2 | 1.04E+03 | 73768.20 - 88631.15 |
+| 6728.394 | O  I] | 2s2.2p3.(4So).3s | 5So-3P | 2 - 1 | 4.99E+02 | 73768.20 - 88630.59 |
+| 8448.568 | O  I  | 2s2.2p3.(4So).3s | 3So-3P | 1 - 0 | 3.18E+07 | 76794.98 - 88631.30 |
+| 8448.680 | O  I  | 2s2.2p3.(4So).3s | 3So-3P | 1 - 2 | 3.18E+07 | 76794.98 - 88631.15 |
+| 8449.079 | O I   | 2s2.2p3.(4So).3s | 3So-3P | 1 - 1 | 3.18E+07 | 76794.98 - 88630.59 |
+
+******* From 2s2.2p3.(4So).3s 3S
+|    WAV VAC | SPC  | CONFIGURATION | TERM   | J_i-J_k |      A_ki | LEVEL ENERGY  CM^-1 |
+|------------+------+---------------+--------+-------+----------+--------------------|
+| 1302.16848 | O I  | 2s2.2p4       | 3P-3So |   2-1 | 3.15E+08 |      0.00-76794.98 |
+| 1304.85763 | O I  | 2s2.2p4       | 3P-3So |   1-1 | 1.87E+08 |    158.26-76794.98 |
+| 1306.02861 | O I  | 2s2.2p4       | 3P-3So |   0-1 | 6.23E+07 |    226.98-76794.98 |
+| 1641.30533 | O I] | 2s2.2p4       | 1D-3So |   2-1 | 1.75E+03 |  15867.86-76794.98 |
+|  2325.4519 | O I] | 2s2.2p4       | 1S-3So |   0-1 | 6.54E-02 |  33792.58-76794.98 |
 
 *** Absorption profile of Ly\beta
 + \lambda_0 = 1025.7222 \AA \pm 0.0005 according to Atomic Line List
