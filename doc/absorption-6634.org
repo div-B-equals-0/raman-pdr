@@ -533,12 +533,22 @@ And for the 1x1 full-resolution cube
   datadir = "../data/orion-muse"
   hdus = {}
   for band in bands:
-      infile = f"muse-hr-data-ha-raman-{band}-cont-sub.fits"
+      infile = f"muse-hr-data-ha-raman-{band}-cont-sub-multibin.fits"
       hdus[band] = fits.open(f"{datadir}/{infile}")[0]
 
 
   data = np.sum([hdus[band].data for band in bands], axis=0)
-  outfile = "muse-hr-data-ha-raman-TOTAL.fits"
+  outfile = "muse-hr-data-ha-raman-TOTAL-multibin.fits"
+  fits.PrimaryHDU(
+      data=data,
+      header=hdus["R040"].header,
+  ).writeto(
+      f"{datadir}/{outfile}",
+      overwrite=True,
+  )
+
+  data = np.sum([hdus[band].data for band in ["R040", "R057", "B033", "B054"]], axis=0)
+  outfile = "muse-hr-data-ha-raman-TOTAL-SHORT-multibin.fits"
   fits.PrimaryHDU(
       data=data,
       header=hdus["R040"].header,
@@ -555,7 +565,7 @@ And for the 1x1 full-resolution cube
       [hdus[band].data for band in ["B033", "B054", "B080"]],
       axis=0
   )
-  outfile = "muse-hr-data-ha-raman-RED-BLUE.fits"
+  outfile = "muse-hr-data-ha-raman-RED-BLUE-multibin.fits"
   fits.PrimaryHDU(
       data=data,
       header=hdus["R040"].header,
@@ -573,7 +583,7 @@ And for the 1x1 full-resolution cube
       [hdus[band].data for band in ["R040", "R057", "B033", "B080"]],
       axis=0
   )
-  outfile = "muse-hr-data-ha-raman-FAR-NEAR.fits"
+  outfile = "muse-hr-data-ha-raman-FAR-NEAR-multibin.fits"
   fits.PrimaryHDU(
       data=data,
       header=hdus["R040"].header,
@@ -717,7 +727,7 @@ Saving muse-hr-data-ha-raman-R136-cont-sub-bin256.fits
       return a[::n, ::n]
 
 
-  ELEMENT = square(3)
+  ELEMENT = square(5)
   def cleanup_mask(mask, n):
       """Eliminate small islands in the mask"""
       m = minify(mask, n).astype(np.uint8)
@@ -737,7 +747,7 @@ Saving muse-hr-data-ha-raman-R136-cont-sub-bin256.fits
       minw_coarse = None
 
   nlist = [1, 2, 4, 8, 16, 32, 64]
-  minweights = [0.5, 1.0, 2.0, 4.0, 8.0, 8.0, 8.0]
+  minweights = [2.0, 2.0, 2.0, 4.0, 8.0, 8.0, 8.0]
   if minw_coarse is not None:
       minweights[-1] = minw_coarse
   outim = np.zeros((1536, 1792))
@@ -750,27 +760,214 @@ Saving muse-hr-data-ha-raman-R136-cont-sub-bin256.fits
       m = cleanup_mask(w*im >= minw*minw_scale, n)
       m = m & np.isfinite(w) & (w > 0.0) & np.isfinite(im) & (im > 0.0)
       outim[m] = im[m]
-  fits.PrimaryHDU(header=hdr, data=outim).writeto(prefix + '-multibin.fits', overwrite=True)
+  fits.PrimaryHDU(header=hdr, data=outim).writeto(
+      f"{prefix}-multibin-{int(minw_scale)}.fits", overwrite=True)
 #+END_SRC
 
 #+RESULTS:
 
+Original runs were with ~MINIMUM_WEIGHT=5000~.  But we are going to try some higher resolution but noisier ones. 
+
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R040-cont-sub 5000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R040-cont-sub 2000 0.0
 #+end_src
 
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R057-cont-sub 5000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R057-cont-sub 2000 0.0
 #+end_src
 
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R087-cont-sub 5000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R087-cont-sub 2000 0.0
 #+end_src
 
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B033-cont-sub 5000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R136-cont-sub 2000 0.0
 #+end_src
 
+#+begin_src sh :results silent :dir ..
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B033-cont-sub 2000 0.0
+#+end_src
+
+#+begin_src sh :results silent :dir ..
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B054-cont-sub 2000 0.0
+#+end_src
+
+#+begin_src sh :results silent :dir ..
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B080-cont-sub 2000 0.0
+#+end_src
+
+
+**** Make figures of maps
++ Try out the Lupton:2014a method, although I am a bit skeptical
+  + It seems to lose the whites completely
+  + And RGB is not perceptually uniform
+    + So blue areas look darker
+  + For instance, on this test image (with random number), all the bright spots are green
+#+begin_src python :results file :return figfile
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.visualization import make_lupton_rgb
+  image_r = np.random.random((100,100))
+  image_g = np.random.random((100,100))
+  image_b = np.random.random((100,100))
+  image = make_lupton_rgb(image_r, image_g, image_b, stretch=0.5)
+
+  figfile = "lupton-rgb-test.pdf"
+  fig, ax = plt.subplots()
+  ax.imshow(image)
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS:
+[[file:lupton-rgb-test.pdf]]
+
+#+name: rgb-lupton-raman
+#+header: :var TAB=rgb-limits-ifront SUFFIX="ifront" DATADIR="../data/orion-muse"
+#+header: :var STRETCH=0.3 Q=4
+#+begin_src python :results file :return figfile
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.visualization import make_lupton_rgb
+  from astropy.io import fits
+  from astropy.wcs import WCS
+
+  # Unpack the channel info from the table
+  [rf, r1, r2], [gf, g1, g2], [bf, b1, b2] = TAB
+
+  def load_and_scale_image(fn, v1, v2, ihdu='SCALED'):
+      data = fits.open(f"{DATADIR}/{fn}")[ihdu].data
+      return (data - v1) / (v2 - v1)
+
+
+  w = WCS(fits.open(f"{DATADIR}/{rf}")["SCALED"].header)
+
+  image_r = load_and_scale_image(rf, r1, r2)
+  image_g = load_and_scale_image(gf, g1, g2)
+  image_b = load_and_scale_image(bf, b1, b2)
+  image = make_lupton_rgb(image_r, image_g, image_b, stretch=STRETCH, Q=Q)
+
+  figfile = f"rgb-lupton-raman-{SUFFIX}.jpg"
+  fig, ax = plt.subplots(subplot_kw=dict(projection=w))
+  ax.imshow(image)
+  ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")
+  # fig.tight_layout()
+  fig.savefig(figfile, dpi=200)
+#+end_src
+
+#+RESULTS: rgb-lupton-raman
+[[file:rgb-lupton-raman-ifront.jpg]]
+
+
+I have decreased ~vmax~ for 6300 to bring out the yellow and cyan better 
+#+name: rgb-limits-ifront
+| linesum-O_I-8446-bin001.fits  |  3000 |  200000 |
+| linesum-O_I-6300-bin001.fits  |  8000 |  150000 |
+| linesum-O_II-7318-bin001.fits | 20000 | 1000000 |
+
+These are the original limits I used in DS9
+#+name: rgb-limits-ifront-ds9
+| linesum-O_I-8446-bin001.fits |  3000 |  200000 |
+| linesum-O_I-6300-bin001.fits  |  8000 |  200000 |
+| linesum-O_II-7318-bin001.fits | 20000 | 1000000 |
+
+Now, the Raman bands
+
+#+name: rgb-limits-raman-R
+| muse-hr-data-ha-raman-R087-cont-sub-multibin.fits | 20 |  450 |
+| muse-hr-data-ha-raman-R057-cont-sub-multibin.fits | 20 | 1000 |
+| muse-hr-data-ha-raman-R040-cont-sub-multibin.fits | 20 | 2000 |
+
+#+call: rgb-lupton-raman(TAB=rgb-limits-raman-R, SUFFIX="raman-R", STRETCH=0.4, Q=8)
+
+#+RESULTS:
+[[file:rgb-lupton-raman-raman-R.jpg]]
+
+I don't like that so much - it looks very brown. 
+
+Here is a version that does a natural RGB image
+
+#+name: rgb-natural-raman
+#+header: :var TAB=rgb-limits-raman-R SUFFIX="raman-R" DATADIR="../data/orion-muse"
+#+header: :var SCALE="sqrt"
+#+begin_src python :results file :return figfile
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.visualization import make_lupton_rgb
+  from astropy.visualization.lupton_rgb import LinearMapping
+  from astropy.io import fits
+  from astropy.wcs import WCS
+
+  # Unpack the channel info from the table
+  [rf, r1, r2], [gf, g1, g2], [bf, b1, b2] = TAB
+
+  def load_and_scale_image(fn, v1, v2, ihdu='SCALED'):
+      data = fits.open(f"{DATADIR}/{fn}")[ihdu].data
+      return (data - v1) / (v2 - v1)
+
+
+  w = WCS(fits.open(f"{DATADIR}/{rf}")["SCALED"].header)
+
+  image_r = load_and_scale_image(rf, r1, r2)
+  image_g = load_and_scale_image(gf, g1, g2)
+  image_b = load_and_scale_image(bf, b1, b2)
+  if SCALE == "sqrt":
+      image_r = np.sqrt(image_r)
+      image_g = np.sqrt(image_g)
+      image_b = np.sqrt(image_b)
+    
+  image = LinearMapping(0.0, 1.0).make_rgb_image(image_r, image_g, image_b)
+
+  figfile = f"rgb-natural-raman-{SUFFIX}.jpg"
+  fig, ax = plt.subplots(subplot_kw=dict(projection=w))
+  ax.imshow(image)
+  ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")
+  # fig.tight_layout()
+  fig.savefig(figfile, dpi=200)
+#+end_src
+
+#+RESULTS: rgb-natural-raman
+[[file:rgb-natural-raman-raman-R.jpg]]
+
+That looks a lot better - goes to white in the bright parts.
+
+Now for the blue wing
+
+#+name: rgb-limits-raman-B
+| muse-hr-data-ha-raman-B080-cont-sub-multibin.fits | 15 |  300 |
+| muse-hr-data-ha-raman-B054-cont-sub-multibin.fits | 20 | 1000 |
+| muse-hr-data-ha-raman-B033-cont-sub-multibin.fits | 20 | 2000 |
+
+
+#+call: rgb-natural-raman(TAB=rgb-limits-raman-B, SUFFIX="raman-B")
+
+#+RESULTS:
+[[file:rgb-natural-raman-raman-B.jpg]]
+
+
+Now try a higher resolution ones
+
+#+name: rgb-limits-raman-R-hires
+| muse-hr-data-ha-raman-R087-cont-sub-multibin-2000.fits | 35 |  550 |
+| muse-hr-data-ha-raman-R057-cont-sub-multibin-2000.fits | 35 | 1200 |
+| muse-hr-data-ha-raman-R040-cont-sub-multibin-2000.fits | 35 | 1600 |
+
+#+call: rgb-natural-raman(TAB=rgb-limits-raman-R-hires, SUFFIX="raman-R-hires", SCALE="sqrt")
+
+#+RESULTS:
+[[file:rgb-natural-raman-raman-R-hires.jpg]]
+
+#+name: rgb-limits-raman-B-hires
+| muse-hr-data-ha-raman-B080-cont-sub-multibin-2000.fits | 25 |  300 |
+| muse-hr-data-ha-raman-B054-cont-sub-multibin-2000.fits | 30 | 1000 |
+| muse-hr-data-ha-raman-B033-cont-sub-multibin-2000.fits | 30 | 2000 |
+
+
+#+call: rgb-natural-raman(TAB=rgb-limits-raman-B-hires, SUFFIX="raman-B-hires")
+
+#+RESULTS:
+[[file:rgb-natural-raman-raman-B-hires.jpg]]
+
+**** Do the profile cuts of Bar and Orion S
 
 
 *** The supposed Si II fluoresced bump

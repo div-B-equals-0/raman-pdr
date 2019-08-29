@@ -11,7 +11,7 @@ def minify(a, n):
     return a[::n, ::n]
 
 
-ELEMENT = square(3)
+ELEMENT = square(5)
 def cleanup_mask(mask, n):
     """Eliminate small islands in the mask"""
     m = minify(mask, n).astype(np.uint8)
@@ -31,7 +31,7 @@ except IndexError:
     minw_coarse = None
 
 nlist = [1, 2, 4, 8, 16, 32, 64]
-minweights = [0.5, 1.0, 2.0, 4.0, 8.0, 8.0, 8.0]
+minweights = [2.0, 2.0, 2.0, 4.0, 8.0, 8.0, 8.0]
 if minw_coarse is not None:
     minweights[-1] = minw_coarse
 outim = np.zeros((1536, 1792))
@@ -44,4 +44,5 @@ for n, minw in reversed(list(zip(nlist, minweights))):
     m = cleanup_mask(w*im >= minw*minw_scale, n)
     m = m & np.isfinite(w) & (w > 0.0) & np.isfinite(im) & (im > 0.0)
     outim[m] = im[m]
-fits.PrimaryHDU(header=hdr, data=outim).writeto(prefix + '-multibin.fits', overwrite=True)
+fits.PrimaryHDU(header=hdr, data=outim).writeto(
+    f"{prefix}-multibin-{int(minw_scale)}.fits", overwrite=True)

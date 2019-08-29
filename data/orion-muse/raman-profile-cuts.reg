@@ -1,0 +1,5 @@
+# Region file format: DS9 version 4.1
+global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
+fk5
+# projection(5:35:21.6876,-5:23:19.231,5:35:25.9535,-5:24:37.859,87.020") text={Bar}
+# projection(5:35:18.3629,-5:23:23.797,5:35:13.2715,-5:24:34.645,49.788") text={Orion S}
