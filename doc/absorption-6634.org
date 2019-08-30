@@ -519,7 +519,7 @@ And for the 1x1 full-resolution cube
   import numpy as np
   from astropy.io import fits
   from astropy.wcs import WCS
-
+  suffix = "-multibin-2000"
   bands = {
       "R040": [6594.2, 6611.2],
       "R057": [6612.05, 6628.2],
@@ -533,12 +533,12 @@ And for the 1x1 full-resolution cube
   datadir = "../data/orion-muse"
   hdus = {}
   for band in bands:
-      infile = f"muse-hr-data-ha-raman-{band}-cont-sub-multibin.fits"
+      infile = f"muse-hr-data-ha-raman-{band}-cont-sub{suffix}.fits"
       hdus[band] = fits.open(f"{datadir}/{infile}")[0]
 
 
   data = np.sum([hdus[band].data for band in bands], axis=0)
-  outfile = "muse-hr-data-ha-raman-TOTAL-multibin.fits"
+  outfile = f"muse-hr-data-ha-raman-TOTAL{suffix}.fits"
   fits.PrimaryHDU(
       data=data,
       header=hdus["R040"].header,
@@ -548,7 +548,7 @@ And for the 1x1 full-resolution cube
   )
 
   data = np.sum([hdus[band].data for band in ["R040", "R057", "B033", "B054"]], axis=0)
-  outfile = "muse-hr-data-ha-raman-TOTAL-SHORT-multibin.fits"
+  outfile = f"muse-hr-data-ha-raman-TOTAL-SHORT{suffix}.fits"
   fits.PrimaryHDU(
       data=data,
       header=hdus["R040"].header,
@@ -565,7 +565,7 @@ And for the 1x1 full-resolution cube
       [hdus[band].data for band in ["B033", "B054", "B080"]],
       axis=0
   )
-  outfile = "muse-hr-data-ha-raman-RED-BLUE-multibin.fits"
+  outfile = f"muse-hr-data-ha-raman-RED-BLUE{suffix}.fits"
   fits.PrimaryHDU(
       data=data,
       header=hdus["R040"].header,
@@ -583,7 +583,7 @@ And for the 1x1 full-resolution cube
       [hdus[band].data for band in ["R040", "R057", "B033", "B080"]],
       axis=0
   )
-  outfile = "muse-hr-data-ha-raman-FAR-NEAR-multibin.fits"
+  outfile = f"muse-hr-data-ha-raman-FAR-NEAR{suffix}.fits"
   fits.PrimaryHDU(
       data=data,
       header=hdus["R040"].header,
@@ -823,7 +823,7 @@ python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B080-
 
 #+name: rgb-lupton-raman
 #+header: :var TAB=rgb-limits-ifront SUFFIX="ifront" DATADIR="../data/orion-muse"
-#+header: :var STRETCH=0.3 Q=4
+#+header: :var STRETCH=0.3 Q=4 STARS=star-coords
 #+begin_src python :results file :return figfile
   import numpy as np
   import matplotlib.pyplot as plt
@@ -847,10 +847,12 @@ python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B080-
   image = make_lupton_rgb(image_r, image_g, image_b, stretch=STRETCH, Q=Q)
 
   figfile = f"rgb-lupton-raman-{SUFFIX}.jpg"
-  fig, ax = plt.subplots(subplot_kw=dict(projection=w))
+  fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
   ax.imshow(image)
+  for _, ra, dec, size in STARS:
+      ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="yellow", fc="none")
   ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")
-  # fig.tight_layout()
+  fig.tight_layout(rect=[0.08, 0.07, 1.0, 1.0])
   fig.savefig(figfile, dpi=200)
 #+end_src
 
@@ -884,11 +886,50 @@ Now, the Raman bands
 
 I don't like that so much - it looks very brown. 
 
+Coordinates of stars. 
+#+begin_src python :return table
+  from astropy.coordinates import SkyCoord
+
+  stars = [
+      "tet01 Ori A",
+      "tet01 Ori B",
+      "tet01 Ori C",
+      "tet01 Ori D",
+      "tet02 Ori A",
+      "tet02 Ori B",
+  ]
+
+  table = []
+  for star in stars:
+      c = SkyCoord.from_name(star)
+      table.append([star, c.ra.value, c.dec.value])
+    
+#+end_src
+
+#+RESULTS:
+| tet01 Ori A |  83.8159384 |  -5.3873146 |
+| tet01 Ori B | 83.81713333 | -5.38524722 |
+| tet01 Ori C | 83.81859898 | -5.38968015 |
+| tet01 Ori D | 83.82163535 | -5.38765726 |
+| tet02 Ori A | 83.84542605 | -5.41606033 |
+| tet02 Ori B | 83.86000176 | -5.41688682 |
+
+Make a version of above table with sizes for circles. 
+
+#+name: star-coords
+| tet01 Ori A |  83.8159384 |  -5.3873146 |  50 |
+| tet01 Ori B | 83.81713333 | -5.38524722 |  30 |
+| tet01 Ori C | 83.81859898 | -5.38968015 | 100 |
+| tet01 Ori D | 83.82163535 | -5.38765726 |  50 |
+| tet02 Ori A | 83.84542605 | -5.41606033 | 100 |
+| tet02 Ori B | 83.86000176 | -5.41688682 |  70 |
+
+
 Here is a version that does a natural RGB image
 
 #+name: rgb-natural-raman
 #+header: :var TAB=rgb-limits-raman-R SUFFIX="raman-R" DATADIR="../data/orion-muse"
-#+header: :var SCALE="sqrt"
+#+header: :var SCALE="sqrt" STARS=star-coords
 #+begin_src python :results file :return figfile
   import numpy as np
   import matplotlib.pyplot as plt
@@ -896,6 +937,7 @@ Here is a version that does a natural RGB image
   from astropy.visualization.lupton_rgb import LinearMapping
   from astropy.io import fits
   from astropy.wcs import WCS
+  from astropy.coordinates import SkyCoord
 
   # Unpack the channel info from the table
   [rf, r1, r2], [gf, g1, g2], [bf, b1, b2] = TAB
@@ -914,14 +956,17 @@ Here is a version that does a natural RGB image
       image_r = np.sqrt(image_r)
       image_g = np.sqrt(image_g)
       image_b = np.sqrt(image_b)
-    
+
   image = LinearMapping(0.0, 1.0).make_rgb_image(image_r, image_g, image_b)
 
   figfile = f"rgb-natural-raman-{SUFFIX}.jpg"
-  fig, ax = plt.subplots(subplot_kw=dict(projection=w))
+  fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
   ax.imshow(image)
+  for _, ra, dec, size in STARS:
+      ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="yellow", fc="none")
+    
   ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")
-  # fig.tight_layout()
+  fig.tight_layout(rect=[0.08, 0.07, 1.0, 1.0])
   fig.savefig(figfile, dpi=200)
 #+end_src
 
@@ -966,6 +1011,66 @@ Now try a higher resolution ones
 
 #+RESULTS:
 [[file:rgb-natural-raman-raman-B-hires.jpg]]
+
+
+**** Figure to compare Raman, [O I], and CO
+
+#+name: compare-oi-co-raman
+#+header: :var STARS=star-coords
+#+begin_src python :return figfile :results file
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from astropy.convolution import convolve_fft, Gaussian2DKernel
+
+  figfile = "raman-with-co-oi-contours.jpg"
+  datapath = "../data/orion-muse"
+  hdu = fits.open(f"{datapath}/muse-hr-data-ha-raman-TOTAL-multibin-2000.fits")["SCALED"]
+  w = WCS(hdu.header)
+
+  COpath = "../../OrionMolecular/Carma-NRO-CO/dataverse_files"
+  hdu_redCO = fits.open(f"{COpath}/mom0_48_57_12co_pix_2_Tmb.fits")[0]
+  hdu_greenCO = fits.open(f"{COpath}/mom0_38_47_12co_pix_2_Tmb.fits")[0]
+  hdu_blueCO = fits.open(f"{COpath}/mom0_28_37_12co_pix_2_Tmb.fits")[0]
+  w_CO = WCS(hdu_greenCO).celestial
+  levels_CO = [300, 350, 400, 450]
+  hdu_OI = fits.open(f"{datapath}/linesum-O_I-6300-bin001.fits")["SCALED"]
+  smooth_OI = convolve_fft(hdu_OI.data, Gaussian2DKernel(stddev=5))
+  w_OI = WCS(hdu_OI)
+  levels_OI = [5e4, 1e5]
+
+  fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
+  ax.imshow(hdu.data, vmin=700, vmax=5000, origin="lower", cmap="viridis")
+  ax.contour(hdu_redCO.data[0, :, :],
+             levels=levels_CO, linewidths=[0.5, 1.0, 1.5, 2.0],
+             transform=ax.get_transform(w_CO),
+             colors="red")
+  ax.contour(hdu_greenCO.data[0, :, :],
+             levels=levels_CO, linewidths=[0.3, 0.6, 0.9, 1.2],
+             transform=ax.get_transform(w_CO),
+             colors="magenta")
+  ax.contour(hdu_blueCO.data[0, :, :],
+             levels=[250] + levels_CO[:-1], linewidths=[0.3, 0.6, 0.9, 1.2],
+             transform=ax.get_transform(w_CO),
+             colors="cyan")
+  ax.contour(smooth_OI,
+             levels=levels_OI,  linewidths=[0.5, 1.0],
+  #           transform=ax.get_transform(w_OI),
+             colors="orange")
+  for _, ra, dec, size in STARS:
+      ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="white", fc="none")
+  ny, nx = hdu.data.shape
+  ax.set(xlim=[0, nx+1], ylim=[0, ny+1], xlabel="RA (J2000)", ylabel="Dec (J2000)")
+  fig.tight_layout(rect=[0.08, 0.07, 1.0, 1.0])
+  fig.savefig(figfile, dpi=200)
+#+end_src
+
+#+RESULTS: compare-oi-co-raman
+[[file:raman-with-co-oi-contours.jpg]]
+
+#+RESULTS:
+[[file:]]
 
 **** Do the profile cuts of Bar and Orion S
 
