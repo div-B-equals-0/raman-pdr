@@ -30,6 +30,11 @@
 
 % Chemical formulae
 \newcommand*\chem[1]{\ensuremath{\mathrm{#1}}}
+% Atomic term symbols
+\newcommand\Config[1]{\ensuremath{\mathrm{#1}}}
+\newcommand\Term[3]{\ensuremath{\mathrm{#1\ ^{#2}#3}}}
+\newcommand\Level[4]{\ensuremath{\mathrm{#1\ ^{#2}#3_{#4}}}}
+
 \newcommand\ha{\ensuremath{\text{H}\alpha}}
 \newcommand\lya{\ensuremath{\text{Ly}\alpha}}
 \newcommand\lyb{\ensuremath{\text{Ly}\beta}}
@@ -107,28 +112,61 @@ broad H\(\alpha\) wings to be spatially mapped in unprecedented detail and
 compared with other tracers of ionized and neutral zones in the
 nebula.  In \S~\ref{sec:raman-scatt-spectr} I calculate the
 Raman-transformed wavelengths of the \ion{O}{1} UV resonance
-transition \(^3\!P \to ^3\!D\) and show that two components of the
-multiplet are clearly detected as absorption features at \num{6633}
-and \SI{6664}{\angstrom} against the \ha{} Raman wings.  In
-\S~\ref{sec:keck-observations} I present archival Keck-HIRES slit
-spectroscopy, which shows the profile of the \SI{6664}{\angstrom}
-absorption line with an effective velocity resolution of
-\SI{1}{km.s^{-1}}.  In \S~\ref{sec:discussion} I discuss the
-implications of these results for the structure and dynamics of the
-PDRs in Orion, together with the prospects for using Raman spectral
-mapping as a diagnostic tool in the study of other high-mass star
-formation regions.
+transition \(\Term{2p^4}{3}{P} \to \Term{3d}{3}{D^o}\) and show that two
+components of the multiplet are clearly detected as absorption
+features at \num{6633} and \SI{6664}{\angstrom} against the \ha{}
+Raman wings.  In \S~\ref{sec:keck-observations} I present archival
+Keck-HIRES slit spectroscopy, which shows the profile of the
+\SI{6664}{\angstrom} absorption line with an effective velocity
+resolution of \SI{1}{km.s^{-1}}.  In \S~\ref{sec:discussion} I discuss
+the implications of these results for the structure and dynamics of
+the PDRs in Orion, together with the prospects for using Raman
+spectral mapping as a diagnostic tool in the study of other high-mass
+star formation regions.
 
 \section{Spectral mapping of Raman wings}
 \label{sec:muse-spectr-mapp}
 
+\begin{table}
+  \caption{Wavelength bands used for extracting Raman-scattered light}
+  \label{tab:wav-bands}
+  ~\\[-\baselineskip]
+  \begin{tabular}{l R C C l}\toprule
+    Band & \langle\Delta\lambda\rangle & \lambda_{\text{min}} & \lambda_{\text{max}} & Contamination \\  \midrule
+    B080 & -79.5 & 6469.25& 6496.45& Sky 6471, 6478\\
+    B054 & -53.6 & 6499.85& 6517.70& \ion{O}{2}? 6502, 6510, Sky 6507\\
+    B033 & -32.8 & 6518.55& 6540.65& [\ion{N}{2}] 6527.24, [\ion{Ni}{3}] 6533.76\\
+    R040 & 40.3 &  6594.20& 6611.20& Sky 6603\\
+    R058 & 57.7 &  6612.05& 6628.20&\\
+    R087 & 87.1 &  6638.40& 6660.50& [\ion{Cr}{4}]? 6641\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/raman-orion-muse-1d-spectra}
+  \caption{MUSE spectra centered on the H\(\alpha\) line, showing the broad
+    Raman-scattered wings.}
+  \label{fig:raman-spectra-1d}
+\end{figure*}
+
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/raman-rgb-4-panel}
+  \caption{Spatial distribution of Raman-scattered wings in H\(\alpha\)}
+  \label{fig:raman-maps}
+\end{figure*}
+
 MUSE \citep{Bacon:2010a} observations of the Orion Nebula \citep{Weilbacher:2015a, Mc-Leod:2015b}.
 
+
+The bands are chosen to avoid the stronger sky lines (e.g.,
+\SI{6498}{\angstrom}) and nebula lines (e.g., ), but some weak line
+contamination remains, as listed in the last column of
+Table~\ref{tab:wav-bands}.
 
 
 \section{Raman scattering of spectral lines}
 \label{sec:raman-scatt-spectr}
-
 
 When a photon is Raman-scattered from the vicinity of \lyb{} (UV
 domain) to the vicinity of \ha{} (optical domain) its wavelength is
@@ -148,22 +186,22 @@ from which it follows that
 The wavelengths \(\lambda(\lyb)\) and \(\lambda(\ha)\), together with their
 corresponding wavenumbers, are given in Table~\ref{tab:line-fits} (all
 wavelengths are on the vacuum scale unless otherwise noted).  For both
-lines, a weighted average over the \(3p \ ^2\!P_{1/2}\) and
-\(3p \ ^2\!P_{3/2}\) upper levels is used, assumed to be populated
+lines, a weighted average over the \Level{3p}{2}{P}{1/2} and
+\Level{3p}{2}{P}{3/2} upper levels is used, assumed to be populated
 according to their statistical weights, with individual component
 wavelengths obtained from Tab.~XXVIII of \citet{Mohr:2008a}. Note that
-the electric dipole selection rules mean that only \(3p \to 2s\)
+the electric dipole selection rules mean that only \Config{3p \to 2s}
 transitions contribute to \ha{} in the Raman scattering context.  The
 wavelength is therefore slightly shorter than the value obtained for
 the \ha{} recombination line, which includes additional contributions
-from \(3s \to 2p\) and \(3d \to 2p\). The shift is of order
+from \Config{3s \to 2p} and \Config{3d \to 2p}. The shift is of order
 \SI{-0.05}{\angstrom} or \SI{-2}{km.s^{-1}} with respect to the Case~B
 results reported in Tab.~6a of \citet{Clegg:1999a}.
 
 Also listed in Table~\ref{tab:line-fits} are the Raman transformations
 \(\lambda_1 \to \lambda_2\) for the rest wavelengths of transitions between the
-ground \(2s^22p^4\ ^3\!P\) term of neutral \chem{^{16}O} and the
-excited \(2s^22p^33d\ ^3\!D\) term. The \ion{O}{1} data is obtained
+ground \Term{2s^2 2p^4}{3}{P} term of neutral \chem{^{16}O} and the
+excited \Term{2s^2 2p^3 3d}{3}{D^o} term. The \ion{O}{1} data is obtained
 from highly accurate laser metrology \citep{Ivanov:2008a,
   Marinov:2017a}, with a precision of \SI{0.08}{cm^{-1}} or better.
 The fine structure splitting between the \(J_k\) levels of the excited
@@ -211,26 +249,6 @@ strong nebular lines, but here I use a small section of the spectrum
 in the range \SIrange{6660}{6670}{\angstrom} for reasons which will
 become apparent.
 
-\begin{table}
-  \caption{Wavelength bands used for extracting Raman-scattered light}
-  \label{tab:wav-bands}
-  \begin{tabular}{l R C C l}\toprule
-    Band & \langle\Delta\lambda\rangle & \lambda_{\text{min}} & \lambda_{\text{max}} & Note \\  \midrule
-    B080 & -79.5 & 6469.25& 6496.45&\\
-    B054 & -53.6 & 6499.85& 6517.70&\\
-    B033 & -32.8 & 6518.55& 6540.65&\\
-    R040 & 40.3 &  6594.20& 6611.20&\\
-    R058 & 57.7 &  6612.05& 6628.20&\\
-    R087 & 87.1 &  6638.40& 6660.50&\\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\begin{figure*}
-  \includegraphics[width=\linewidth]{figs/raman-rgb-4-panel}
-  \caption{Spatial distribution of Raman-scattered wings in H\(\alpha\)}
-  \label{fig:raman-maps}
-\end{figure*}
 
 \begin{figure*}
   \centering
@@ -252,9 +270,9 @@ become apparent.
     \midrule
     & & & \multicolumn{2}{c}{\dotfill\(\quad \lyb,\ n = 1 \quad\)\dotfill} & & \multicolumn{3}{c}{\dotfill\(\quad \ha,\ n = 2 \quad\)\dotfill} \\
     \addlinespace[2pt]
-    \ion{H}{1} & ns\ ^2\!S \to 3p\ ^2\!P & \tfrac12 \to \tfrac12,\tfrac32 & 1025.72220 & 97492.283 & 0.000 & 15233.329 & 6564.553 & 6562.740\\
+    \ion{H}{1} & n\Term{s}{2}{S} \to \Term{3p}{2}{P} & \tfrac12 \to \tfrac12,\tfrac32 & 1025.72220 & 97492.283 & 0.000 & 15233.329 & 6564.553 & 6562.740\\
     \addlinespace
-    \ion{O}{1} & 2s^22p^4\ ^3\!P  \to 2s^22p^3(^4\!S)3d\  ^3\!D & 0 \to 1 & 1028.15729 & 97261.383 & -230.900 & 15002.429 & 6665.587 & 6663.747\\
+    \ion{O}{1} & \Term{2s^2 2p^4}{3}{P}  \to \Term{2s^2 2p^3 (^4S) 3d}{3}{D^o} & 0 \to 1 & 1028.15729 & 97261.383 & -230.900 & 15002.429 & 6665.587 & 6663.747\\
      & & 1 \to 1 & 1027.43139 & 97330.100 & -162.183 & 15071.146 & 6635.196 & 6633.364\\
      & & 1 \to 2 & 1027.43077 & 97330.159 & -162.124 & 15071.205 & 6635.170 & 6633.338\\
      & & 2 \to 1 & 1025.76339 & 97488.369 & -3.914 & 15229.415 & 6566.240 & 6564.427\\
@@ -290,6 +308,10 @@ PDR, but there are loopholes. First, they assume plane-parallel
 geometry with exactly edge-on viewing angle, while in reality it is a
 roughly cylindrical filament.  Second, they ignore scattering, see
 \citet{Watson:1998a}.
+
+Non-equilibrium PDRs \citep{Stoerzer:1998a, Bertoldi:1996a}.  Recent models from \citet{Bron:2018a}. 
+
+\ion{C}{1} emission from non-steady PDRs \citep{Stoerzer:1997a} (fine structure lines, but maybe optical lines would be similar).  \citet{Escalante:1991a} model the far-red [\ion{C}{1}] line as recombination of \chem{C^+}.
 
 
 Geometry of bar: in \citet{Henney:2005b} I pointed out that a

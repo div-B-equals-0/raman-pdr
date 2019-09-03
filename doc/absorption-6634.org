@@ -83,12 +83,14 @@
         + Does correspond to a weak but consistent dip
         + Although we can't rule out weak optical emission lines
     + If the dips are just gaps between emission lines, then the lines are
+      + 6533 - [Ni III] 6533.76 
+      + 6527.9 - [N II] 6527.24
       + 6521.1 weak/broad
       + 6516 very weak
       + 6510.9 mainly ionized (maybe O II)
       + 6505.8 also mainly ionized
       + 6501.55 (maybe O II)
-      + 6498.15 SKY definitely
+      + 6498.15 SKY definitely - this is what makes it look like 
       + 6470.1 SKY
       + 6465 SKY - not to be confused with strong 6462 C II
   + One more in the red wing
@@ -281,54 +283,128 @@
   + Shows the inner shell nicely on the red flank
 + [N II] 6527
 + [Ni III] 6533
-**** Remove continuum from cube
+**** TODO Concatenate wavsec 2 and wavsec 3
++ [2019-09-01 Sun] It turns out that the region I had used for continuum was not good
+  + On the blue side of the line, the 6400 to 6450 range is still in the Raman wings according to the Dopita spectrum
++ So we need to go out to the 6050 to 6150 range to get a good continuum
+  + And this is in wavsec 4
++ I can just use the WCS from wavsec 2
 
-#+name: subtract-cont
+#+begin_src python :tangle ../src/concat-wavsecs.py
+  import sys
+  import numpy as np
+  from astropy.io import fits
+
+  try:
+      DATADIR = sys.argv[1]
+      SUFFIX = sys.argv[2]
+      OUTDIR = sys.argv[3]
+  except IndexError:
+      sys.exit(f"Usage: {sys.argv[0]} DATADIR SUFFIX OUTDIR")
+
+
+  hdu2 = fits.open(f"{DATADIR}/muse-hr-data-wavsec2{SUFFIX}.fits")["DATA"]
+  hdu3 = fits.open(f"{DATADIR}/muse-hr-data-wavsec3{SUFFIX}.fits")["DATA"]
+
+  hdu2.data = np.concatenate([hdu2.data, hdu3.data], axis=0)
+
+  hdu2.writeto(f"{OUTDIR}/muse-hr-data-wavsec23{SUFFIX}.fits")
+
+
+#+end_src
+
+#+name: concat-wavsecs
 #+header: :var DATADIR="/Users/will/Dropbox/OrionMuse/BigFiles"
-#+header: :var INFILE="muse-hr-data-wavsec3-rebin16x16.fits"
+#+header: :var SUFFIX="-rebin16x16"
 #+header: :var OUTDIR="../data/orion-muse"
-#+begin_src python
+#+begin_src sh
+python ../src/concat-wavsecs.py $DATADIR $SUFFIX $OUTDIR
+#+end_src
+
+#+RESULTS: concat-wavsecs
+***** TODO Now we need to do this on the server for the full res cubes
+
+**** Remove continuum from cube
++ [2019-09-01 Sun] This is revisited to use a broader range - see above
++ Also, write scripts to python files and use shell commands to run them
++ Take opportunity to use wavelengths instead of array indices
+
+
+
+#+begin_src python :tangle ../src/subtract-continuum.py :eval no
+  import sys
   import numpy as np
   from astropy.io import fits
   from astropy.wcs import WCS
   from numpy.polynomial import Chebyshev as T
   import itertools
 
-  hdu = fits.open(f"{DATADIR}/{INFILE}")["DATA"]
+  try:
+      DATADIR = sys.argv[1]
+      SUFFIX = sys.argv[2]
+      OUTDIR = sys.argv[3]
+  except IndexError:
+      sys.exit(f"Usage: {sys.argv[0]} DATADIR SUFFIX OUTDIR")
 
+  infile = f"muse-hr-data-wavsec23{SUFFIX}.fits"
+  hdu = fits.open(f"{DATADIR}/{infile}")["DATA"]
+  w = WCS(hdu)
   nwav, ny, nx = hdu.data.shape
   wavpix = np.arange(nwav)
 
   # Two pairs of adjacent sections for the true continuum
-  cont_slices = [
-      slice(30, 54), slice(54, 78), # to the blue
-      slice(441, 471), slice(471, 502), # to the red
+
+  # Wavelength sections of clean continuum
+  clean_sections = [
+      [6070.0, 6140.0], [6170.0, 6225.0], # to the blue
+      [6760.0, 6790.0], [6790.0, 6820.0], # to the red
   ]
+
+  cont_slices = []
+  for wavs in clean_sections:
+      wavs = 1e-10*np.array(wavs)
+      _, _, wpix = w.world_to_pixel_values([0, 0], [0, 0], wavs)
+      cont_slices.append(slice(*wpix.astype(int)))
+
 
   # Use median over each section to avoid weak lines
   cont_maps = np.array([np.median(hdu.data[_, :, :], axis=0) for _ in cont_slices])
   cont_wavpix = np.array([np.median(wavpix[_], axis=0) for _ in cont_slices])
-  # Inefficient but simple algprithm - loop over spaxels
+  # Inefficient but simple algorithm - loop over spaxels
   bgdata = np.empty_like(hdu.data)
   for j, i in itertools.product(range(ny), range(nx)):
       # Fit polynomial to BG
-      p = T.fit(cont_wavpix, cont_maps[:, j, i], deg=2)
-      # and fill in the BG spectrum of this spaxel
-      bgdata[:, j, i] = p(wavpix)
+      try:
+          p = T.fit(cont_wavpix, cont_maps[:, j, i], deg=2)
+          # and fill in the BG spectrum of this spaxel
+          bgdata[:, j, i] = p(wavpix)
+      except:
+          bgdata[:, j, i] = np.nan
+
 
 
   for suffix, cube in [
           ["cont", bgdata],
           ["cont-sub", hdu.data - bgdata],
-          ["cont-div", hdu.data/bgdata],
+          # ["cont-div", hdu.data/bgdata],
   ]:
-      outfile = INFILE.replace(".fits", f"-{suffix}.fits")
+      outfile = infile.replace(".fits", f"-{suffix}.fits")
       fits.PrimaryHDU(header=hdu.header, data=cube).writeto(
           f"{OUTDIR}/{outfile}", overwrite=True)
+      print(f"Written {outfile}")
+#+end_src
+
+#+name: subtract-cont
+#+header: :var DATADIR="../data/orion-muse"
+#+header: :var SUFFIX="-rebin16x16"
+#+header: :var OUTDIR="../data/orion-muse"
+#+begin_src sh :results verbatim
+python ../src/subtract-continuum.py $DATADIR $SUFFIX $OUTDIR
 #+end_src
 
 #+RESULTS: subtract-cont
-: None
+: Written muse-hr-data-wavsec23-rebin16x16-cont.fits
+: Written muse-hr-data-wavsec23-rebin16x16-cont-sub.fits
 
 Now do same for 5x5 cube
 
@@ -345,6 +421,226 @@ And for the unbinned cube, which we are keeping out of Dropbox
 : None
 
 That was a mistake to run in emacs - took 90 minutes!
+**** Send scripts to linux server and run them there
+#+begin_src sh :results verbatim
+rsync -avzP ../src/*.py nil:/fs/nil/other0/will/orion-muse
+#+end_src
+
+#+RESULTS:
+: sending incremental file list
+: extract-raman-bands.py
+:           1,199 100%    0.00kB/s    0:00:00            1,199 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=2/4)
+: 
+: sent 578 bytes  received 46 bytes  249.60 bytes/sec
+: total size is 4,875  speedup is 7.81
+
+Had to install python 3.7 since old one was on 3.3!
+
+#+begin_src sh :eval no
+time python concat-wavsecs.py . "" .
+#+end_src
+
+This took 90 sec
+
+#+begin_src sh :eval no
+time python subtract-continuum.py . "" .
+#+end_src
+
+That took 25 min. And I had to trap exceptions in the polynomial fit. 
+
+Now to do the band maps. Still do it on the server, since I don't want a 22GB file here. 
+
+#+begin_src sh :eval no
+time python extract-raman-bands.py . "" .
+#+end_src
+
+Copy files back here:
+#+begin_src sh :dir ../data/orion-muse :results verbatim
+rsync -avzP nil:/fs/nil/other0/will/orion-muse/muse-hr-data-ha-raman-*.fits .
+#+end_src
+
+#+RESULTS:
+: receiving incremental file list
+: 
+: sent 11 bytes  received 361 bytes  148.80 bytes/sec
+: total size is 125,176,320  speedup is 336,495.48
+
+
+
+**** Plot the spectrum of different regions
++ When did we last use astropy.regions?
+  + Turns out to be for sigma Ori
+  + Need to use ~mask = skyregion.to_pixel(WCS).to_mask().to_image(SHAPE)~
++ Use the 5x5 image to make it faster
++ Save the cont-subtracted and cont spectra to a json file
+#+begin_src python :return jsonfile :results file
+  import json
+  import numpy as np
+  import astropy.coordinates as coord
+  from astropy.wcs import WCS
+  from astropy.io import fits
+  import regions as rg
+
+  regions = rg.read_ds9("../data/raman-extract-boxes.reg")
+
+  hdu = fits.open("../data/orion-muse/muse-hr-data-wavsec23-rebin16x16-cont-sub.fits")["DATA"]
+  chdu = fits.open("../data/orion-muse/muse-hr-data-wavsec23-rebin16x16-cont.fits")["DATA"]
+
+  spec = {}
+  nz, ny, nx = hdu.data.shape
+  w = WCS(hdu.header)
+  _, _, waves = w.pixel_to_world_values([0], [0], np.arange(nz))
+  for region in regions:
+      mask = region.to_pixel(w.celestial).to_mask().to_image((ny, nx))
+      label = region.meta["label"]
+      spec[label] = {
+          "wavelength": (1e10*waves).tolist(),
+          "raman": np.sum(hdu.data*mask[None, :, :], axis=(1, 2)).tolist(),
+          "continuum": np.sum(chdu.data*mask[None, :, :], axis=(1, 2)).tolist(),
+          }
+
+  jsonfile = "raman-orion-muse-1d-spectra.json"
+
+  with open(jsonfile, "w") as f:
+      json.dump(spec, f, indent=3)
+#+end_src
+
+#+RESULTS:
+[[file:raman-orion-muse-1d-spectra.json]]
+
+
+#+begin_src python :return figfile :results file
+  import numpy as np
+  import json
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+
+  jsonfile = "raman-orion-muse-1d-spectra.json"
+  data = json.load(open(jsonfile))
+  figfile = jsonfile.replace(".json", ".pdf")
+
+  # Heliocentric correction
+  V_HEL = -16.217273731
+  # Heliocentric velocity of molecular cloud
+  V_OMC = +9.0 + 19.1
+
+  region_order = [
+      "SW minibar",
+      "Orion S",
+      "E-W Bar",
+      "Trap W",
+      "Trap SW",
+      "Bar",
+  ]
+
+  bands = {
+      "B133": [6414.85, 6445.45],
+      "B080": [6469.25, 6496.45],
+      "B054": [6499.85, 6517.7],
+      "B033": [6518.55, 6540.65],
+      "R040": [6594.2, 6611.2],
+      "R058": [6612.05, 6628.2],
+      "R087": [6638.4, 6660.5],
+      "R136": [6688.55, 6708.95],
+  }
+
+  strong_lines = {
+      6562.79: r"H$\alpha$",
+      6548.05: "[N II]",
+      6583.45: "[N II]",
+  }
+  medium_lines = {
+      6578.05: "C II",
+      6678.15: "He I",
+      6716.44: "[S II]",
+      6730.816: "[S II]",
+  }
+  weak_lines = {
+      6401.5: "[Ni III]",
+      6501.4: "O II",
+      6461.95: "C II",
+      6527.24: "[N II]",
+      6533.8: "[Ni III]",
+      # 6544.3: "?",
+      6641: "[Cr IV]",
+      6666.80: "[Ni II]",
+  }
+  sky_lines = [6465, 6471, 6478, 6498.15, 6507, 6603]
+  absorption_lines = {
+      6633.347: "O I",
+      6663.747: "O I",
+  }
+
+  fig, ax = plt.subplots(figsize=(10, 6))
+
+  wavmin, wavmax = 6200, 6820
+  offset = 0.75
+  fc = 0.7
+  for region in region_order:
+      spec = data[region]
+      waves = np.array(spec["wavelength"]) 
+      # Put in OMC frame
+      waves *= (1.0 - (V_OMC + V_HEL)/3e5)
+      imin = np.sum(waves < wavmin)
+      imax = np.sum(waves < wavmax)
+      cont = np.array(spec["continuum"])
+      total = cont + np.array(spec["raman"])
+      waves = waves[imin:imax]
+      cont = cont[imin:imax]
+      total = total[imin:imax]
+      norm = cont[0]
+      cont /= norm
+      total /= norm
+      ax.fill_between(waves, cont + offset, total + offset, color=(fc, fc, fc))
+      ax.plot(waves, cont + offset, color="k", lw=0.5, zorder=-100)
+      ax.plot(waves, total + offset, color="k", lw=0.7)
+      ax.annotate(region, (wavmax, cont[-1] + offset),
+                  xytext=(5, 0), textcoords="offset points", ha="left", va="center")
+      offset -= 0.15
+      fc += 0.04
+
+  # bandcolors = iter(sns.color_palette("coolwarm", len(bands)))
+  # bandcolors = iter(sns.diverging_palette(220, 20, sep=1, n=len(bands), center="dark"))
+  alphas = iter([0.2, 0.4, 0.4, 0.6, 0.6, 0.4, 0.4, 0.2])
+  bandcolors = iter(["c", "c", "b", "b", "m", "m", "r", "r"])
+  for band, [wav1, wav2] in bands.items():
+      ax.axvspan(wav1, wav2, 0.2, 0.95, facecolor=next(bandcolors), alpha=next(alphas), zorder=-10)
+      ax.text((wav1 + wav2)/2, 2.2, band, ha="center", fontsize="xx-small")
+
+  for wave, label in strong_lines.items():
+      ax.axvline(wave, 0.12, 0.8, color="k", lw=2, zorder=-5)
+      ax.text(wave, 0.7, label, ha="center", va="top", rotation="vertical", fontsize="small")
+  for wave, label in medium_lines.items():
+      ax.axvline(wave, 0.15, 0.8, color="k", lw=1, zorder=-5)
+      ax.text(wave, 0.8, label, ha="center", va="top", rotation="vertical", fontsize="x-small")
+  for wave, label in weak_lines.items():
+      ax.axvline(wave, 0.15, 0.85, color="k", lw=0.5, zorder=-5)
+      ax.text(wave, 2.03, label, ha="center", va="bottom", rotation="vertical", fontsize="xx-small")
+
+  for wave, label in absorption_lines.items():
+      ax.axvline(wave, 0.08, 0.8, color="k", ls="--", lw=1, zorder=-5)
+      ax.text(wave, 0.6, label, ha="center", rotation="vertical", fontsize="xx-small")
+
+  for wave in sky_lines:
+      # Sky line wavelengths need correcting from topocentric to OMC farme
+      wave *= (1.0 - (V_OMC + V_HEL)/3e5)
+      ax.axvline(wave, 0.15, 0.82, color="k", lw=1, ls=":", zorder=-5)
+      ax.text(wave, 0.7, "sky", ha="center", rotation="vertical", fontsize="xx-small")
+
+
+  ax.set(
+      xlabel="STP Wavelength, Å (OMC frame)",
+      ylabel="Relative Flux, $F_{\lambda} / F_{6400}$ + offset",
+      # xlim=[wavmin, wavmax],
+      ylim=[0.55, 2.25],
+  )
+  ax.minorticks_on()
+  sns.despine(fig)
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS:
+[[file:raman-orion-muse-1d-spectra.pdf]]
 
 **** Make a cube of (\Delta\lambda)^2 F_\lambda
 + This should give a flat spectrum for Lorentzian wings
@@ -361,7 +657,7 @@ That was a mistake to run in emacs - took 90 minutes!
   from astropy.io import fits
   from astropy.wcs import WCS
   datadir = "../data/orion-muse"
-  infile = f"muse-hr-data-wavsec3-{REBIN}-cont-sub.fits"
+  infile = f"muse-hr-data-wavsec23-{REBIN}-cont-sub.fits"
   hdu = fits.open(f"{datadir}/{infile}")["DATA"]
 
 
@@ -375,6 +671,9 @@ That was a mistake to run in emacs - took 90 minutes!
   outfile = infile.replace(".fits", "-Flam-dlam2.fits")
   hdu.writeto(f"{datadir}/{outfile}", overwrite=True)
 #+end_src
+
+#+RESULTS: dlam2-cube
+: None
 
 #+RESULTS:
 : None
@@ -456,22 +755,27 @@ That was a mistake to run in emacs - took 90 minutes!
 + This is an intermediate step to doing proper multi-line fitting
 + Bands are defined in [[id:B644E1CC-212F-4A30-9924-04DB7BAADF00][Column densities]]
 
-#+name: extract-raman-bands
-#+header: :var REBIN="-rebin16x16"
-#+header: :var INDIR="../data/orion-muse"
-#+header: :var OUTDIR="../data/orion-muse"
-#+begin_src python
+#+begin_src python :tangle ../src/extract-raman-bands.py :eval no
+  import sys
   import numpy as np
   from astropy.io import fits
   from astropy.wcs import WCS
-  infile = f"muse-hr-data-wavsec3{REBIN}-cont-sub.fits"
+
+  try:
+      INDIR = sys.argv[1]
+      REBIN = sys.argv[2]
+      OUTDIR = sys.argv[3]
+  except IndexError:
+      sys.exit(f"Usage: {sys.argv[0]} INDIR REBIN OUTDIR")
+
+  infile = f"muse-hr-data-wavsec23{REBIN}-cont-sub.fits"
   hdu = fits.open(f"{INDIR}/{infile}")["DATA"]
 
   bands = {
       "R007": [6568.7, 6571.25],
       "R011": [6572.1, 6574.65],
       "R040": [6594.2, 6611.2],
-      "R057": [6612.05, 6628.2],
+      "R058": [6612.05, 6628.2],
       "R087": [6638.4, 6660.5],
       "R136": [6688.55, 6708.95],
       "B006": [6555.95, 6557.65],
@@ -479,6 +783,7 @@ That was a mistake to run in emacs - took 90 minutes!
       "B033": [6518.55, 6540.65],
       "B054": [6499.85, 6517.7],
       "B080": [6469.25, 6496.45],
+      "B133": [6414.85, 6445.45],
   }
 
   wcs = WCS(hdu.header)
@@ -491,9 +796,17 @@ That was a mistake to run in emacs - took 90 minutes!
       waves = np.array(waves)/1e10
       [i1, i2], _, _ = wcs.world_to_array_index_values([0, 0], [0, 0], waves)
       image = hdu.data[i1:i2+1, :, :].mean(axis=0)
-      outfile = infile.replace("wavsec3", f"ha-raman-{band}")
+      outfile = infile.replace("wavsec23", f"ha-raman-{band}")
       fits.PrimaryHDU(data=image, header=imhdr).writeto(
           f"{OUTDIR}/{outfile}", overwrite=True)
+#+end_src
+
+#+name: extract-raman-bands
+#+header: :var REBIN="-rebin16x16"
+#+header: :var INDIR="../data/orion-muse"
+#+header: :var OUTDIR="../data/orion-muse"
+#+begin_src sh
+python ../src/extract-raman-bands.py $REBIN $INDIR $OUTDIR
 #+end_src
 
 #+RESULTS: extract-raman-bands
@@ -519,15 +832,16 @@ And for the 1x1 full-resolution cube
   import numpy as np
   from astropy.io import fits
   from astropy.wcs import WCS
-  suffix = "-multibin-2000"
+  suffix = "-multibin-1000"
   bands = {
       "R040": [6594.2, 6611.2],
-      "R057": [6612.05, 6628.2],
+      "R058": [6612.05, 6628.2],
       "R087": [6638.4, 6660.5],
       "R136": [6688.55, 6708.95],
       "B033": [6518.55, 6540.65],
       "B054": [6499.85, 6517.7],
       "B080": [6469.25, 6496.45],
+      "B133": [6414.85, 6445.45],
   }
 
   datadir = "../data/orion-muse"
@@ -547,8 +861,18 @@ And for the 1x1 full-resolution cube
       overwrite=True,
   )
 
-  data = np.sum([hdus[band].data for band in ["R040", "R057", "B033", "B054"]], axis=0)
-  outfile = f"muse-hr-data-ha-raman-TOTAL-SHORT{suffix}.fits"
+  data = np.sum([hdus[band].data for band in ["R040", "R058", "B033", "B054"]], axis=0)
+  outfile = f"muse-hr-data-ha-raman-TOTAL-NEAR{suffix}.fits"
+  fits.PrimaryHDU(
+      data=data,
+      header=hdus["R040"].header,
+  ).writeto(
+      f"{datadir}/{outfile}",
+      overwrite=True,
+  )
+
+  data = np.sum([hdus[band].data for band in ["R087", "R136", "B080", "B133"]], axis=0)
+  outfile = f"muse-hr-data-ha-raman-TOTAL-FAR{suffix}.fits"
   fits.PrimaryHDU(
       data=data,
       header=hdus["R040"].header,
@@ -558,11 +882,11 @@ And for the 1x1 full-resolution cube
   )
 
   data = np.sum(
-      [hdus[band].data for band in ["R040", "R057", "R087", "R136"]],
+      [hdus[band].data for band in ["R040", "R058", "R087", "R136"]],
       axis=0
   )
   data /= np.sum(
-      [hdus[band].data for band in ["B033", "B054", "B080"]],
+      [hdus[band].data for band in ["B033", "B054", "B080", "B133"]],
       axis=0
   )
   outfile = f"muse-hr-data-ha-raman-RED-BLUE{suffix}.fits"
@@ -576,11 +900,11 @@ And for the 1x1 full-resolution cube
 
 
   data = np.sum(
-      [hdus[band].data for band in ["R087", "R136", "B080"]],
+      [hdus[band].data for band in ["R087", "R136", "B080", "B133"]],
       axis=0
-  )
+      )
   data /= np.sum(
-      [hdus[band].data for band in ["R040", "R057", "B033", "B080"]],
+      [hdus[band].data for band in ["R040", "R058", "B033", "B080"]],
       axis=0
   )
   outfile = f"muse-hr-data-ha-raman-FAR-NEAR{suffix}.fits"
@@ -656,6 +980,15 @@ Saving muse-hr-data-ha-raman-B080-cont-sub-bin032.fits
 Saving muse-hr-data-ha-raman-B080-cont-sub-bin064.fits
 Saving muse-hr-data-ha-raman-B080-cont-sub-bin128.fits
 Saving muse-hr-data-ha-raman-B080-cont-sub-bin256.fits
+Saving muse-hr-data-ha-raman-B133-cont-sub-bin001.fits
+Saving muse-hr-data-ha-raman-B133-cont-sub-bin002.fits
+Saving muse-hr-data-ha-raman-B133-cont-sub-bin004.fits
+Saving muse-hr-data-ha-raman-B133-cont-sub-bin008.fits
+Saving muse-hr-data-ha-raman-B133-cont-sub-bin016.fits
+Saving muse-hr-data-ha-raman-B133-cont-sub-bin032.fits
+Saving muse-hr-data-ha-raman-B133-cont-sub-bin064.fits
+Saving muse-hr-data-ha-raman-B133-cont-sub-bin128.fits
+Saving muse-hr-data-ha-raman-B133-cont-sub-bin256.fits
 Saving muse-hr-data-ha-raman-R007-cont-sub-bin001.fits
 Saving muse-hr-data-ha-raman-R007-cont-sub-bin002.fits
 Saving muse-hr-data-ha-raman-R007-cont-sub-bin004.fits
@@ -683,15 +1016,15 @@ Saving muse-hr-data-ha-raman-R040-cont-sub-bin032.fits
 Saving muse-hr-data-ha-raman-R040-cont-sub-bin064.fits
 Saving muse-hr-data-ha-raman-R040-cont-sub-bin128.fits
 Saving muse-hr-data-ha-raman-R040-cont-sub-bin256.fits
-Saving muse-hr-data-ha-raman-R057-cont-sub-bin001.fits
-Saving muse-hr-data-ha-raman-R057-cont-sub-bin002.fits
-Saving muse-hr-data-ha-raman-R057-cont-sub-bin004.fits
-Saving muse-hr-data-ha-raman-R057-cont-sub-bin008.fits
-Saving muse-hr-data-ha-raman-R057-cont-sub-bin016.fits
-Saving muse-hr-data-ha-raman-R057-cont-sub-bin032.fits
-Saving muse-hr-data-ha-raman-R057-cont-sub-bin064.fits
-Saving muse-hr-data-ha-raman-R057-cont-sub-bin128.fits
-Saving muse-hr-data-ha-raman-R057-cont-sub-bin256.fits
+Saving muse-hr-data-ha-raman-R058-cont-sub-bin001.fits
+Saving muse-hr-data-ha-raman-R058-cont-sub-bin002.fits
+Saving muse-hr-data-ha-raman-R058-cont-sub-bin004.fits
+Saving muse-hr-data-ha-raman-R058-cont-sub-bin008.fits
+Saving muse-hr-data-ha-raman-R058-cont-sub-bin016.fits
+Saving muse-hr-data-ha-raman-R058-cont-sub-bin032.fits
+Saving muse-hr-data-ha-raman-R058-cont-sub-bin064.fits
+Saving muse-hr-data-ha-raman-R058-cont-sub-bin128.fits
+Saving muse-hr-data-ha-raman-R058-cont-sub-bin256.fits
 Saving muse-hr-data-ha-raman-R087-cont-sub-bin001.fits
 Saving muse-hr-data-ha-raman-R087-cont-sub-bin002.fits
 Saving muse-hr-data-ha-raman-R087-cont-sub-bin004.fits
@@ -769,31 +1102,35 @@ Saving muse-hr-data-ha-raman-R136-cont-sub-bin256.fits
 Original runs were with ~MINIMUM_WEIGHT=5000~.  But we are going to try some higher resolution but noisier ones. 
 
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R040-cont-sub 2000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R040-cont-sub 1000 0.0
 #+end_src
 
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R057-cont-sub 2000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R058-cont-sub 1000 0.0
 #+end_src
 
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R087-cont-sub 2000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R087-cont-sub 1000 0.0
 #+end_src
 
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R136-cont-sub 2000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R136-cont-sub 1000 0.0
 #+end_src
 
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B033-cont-sub 2000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B033-cont-sub 1000 0.0
 #+end_src
 
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B054-cont-sub 2000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B054-cont-sub 1000 0.0
 #+end_src
 
 #+begin_src sh :results silent :dir ..
-python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B080-cont-sub 2000 0.0
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B080-cont-sub 1000 0.0
+#+end_src
+
+#+begin_src sh :results silent :dir ..
+python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B133-cont-sub 1000 0.0
 #+end_src
 
 
@@ -992,9 +1329,9 @@ Now for the blue wing
 Now try a higher resolution ones
 
 #+name: rgb-limits-raman-R-hires
-| muse-hr-data-ha-raman-R087-cont-sub-multibin-2000.fits | 35 |  550 |
-| muse-hr-data-ha-raman-R057-cont-sub-multibin-2000.fits | 35 | 1200 |
-| muse-hr-data-ha-raman-R040-cont-sub-multibin-2000.fits | 35 | 1600 |
+| muse-hr-data-ha-raman-R087-cont-sub-multibin-1000.fits | 20 | 700  |
+| muse-hr-data-ha-raman-R058-cont-sub-multibin-1000.fits | 30 | 1200 |
+| muse-hr-data-ha-raman-R040-cont-sub-multibin-1000.fits | 40 | 2400 |
 
 #+call: rgb-natural-raman(TAB=rgb-limits-raman-R-hires, SUFFIX="raman-R-hires", SCALE="sqrt")
 
@@ -1002,15 +1339,30 @@ Now try a higher resolution ones
 [[file:rgb-natural-raman-raman-R-hires.jpg]]
 
 #+name: rgb-limits-raman-B-hires
-| muse-hr-data-ha-raman-B080-cont-sub-multibin-2000.fits | 25 |  300 |
-| muse-hr-data-ha-raman-B054-cont-sub-multibin-2000.fits | 30 | 1000 |
-| muse-hr-data-ha-raman-B033-cont-sub-multibin-2000.fits | 30 | 2000 |
+| muse-hr-data-ha-raman-B080-cont-sub-multibin-1000.fits | 20 |  700 |
+| muse-hr-data-ha-raman-B054-cont-sub-multibin-1000.fits | 30 | 1200 |
+| muse-hr-data-ha-raman-B033-cont-sub-multibin-1000.fits | 40 | 2400 |
 
 
 #+call: rgb-natural-raman(TAB=rgb-limits-raman-B-hires, SUFFIX="raman-B-hires")
 
 #+RESULTS:
 [[file:rgb-natural-raman-raman-B-hires.jpg]]
+
+And try Lupton with hi-res images...
+
+#+call: rgb-lupton-raman(TAB=rgb-limits-raman-R-hires, SUFFIX="raman-R-hires", STRETCH=0.5, Q=3)
+
+#+RESULTS:
+[[file:rgb-lupton-raman-raman-R-hires.jpg]]
+
+#+call: rgb-lupton-raman(TAB=rgb-limits-raman-B-hires, SUFFIX="raman-B-hires", STRETCH=0.5, Q=3)
+
+#+RESULTS:
+[[file:rgb-lupton-raman-raman-B-hires.jpg]]
+
+
+...nah, still ugly.  But maybe I should use them, since they are higher contrast
 
 
 **** Figure to compare Raman, [O I], and CO
@@ -1026,7 +1378,7 @@ Now try a higher resolution ones
 
   figfile = "raman-with-co-oi-contours.jpg"
   datapath = "../data/orion-muse"
-  hdu = fits.open(f"{datapath}/muse-hr-data-ha-raman-TOTAL-multibin-2000.fits")["SCALED"]
+  hdu = fits.open(f"{datapath}/muse-hr-data-ha-raman-TOTAL-multibin-1000.fits")["SCALED"]
   w = WCS(hdu.header)
 
   COpath = "../../OrionMolecular/Carma-NRO-CO/dataverse_files"
@@ -1041,7 +1393,7 @@ Now try a higher resolution ones
   levels_OI = [5e4, 1e5]
 
   fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
-  ax.imshow(hdu.data, vmin=700, vmax=5000, origin="lower", cmap="viridis")
+  ax.imshow(hdu.data, vmin=1200, vmax=5000, origin="lower", cmap="viridis")
   ax.contour(hdu_redCO.data[0, :, :],
              levels=levels_CO, linewidths=[0.5, 1.0, 1.5, 2.0],
              transform=ax.get_transform(w_CO),
@@ -1073,7 +1425,142 @@ Now try a higher resolution ones
 [[file:]]
 
 **** Do the profile cuts of Bar and Orion S
++ This will be fun
+  + We can make a "Sky Offset" frame, centered about a point in the bar and with a rotation so that ~lon~ is along the bar and ~lat~ is perpendicular
+#+name: bar-profile
+#+header: :var INFILE="linesum-O_I-6300-bin001.fits"
+#+header: :var DATAPATH="../data/orion-muse"
+#+begin_src python :return figfile :results file
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from astropy.coordinates import SkyCoord
+  import astropy.units as u
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+  import statsmodels.api as sm
 
+  # Origin of Bar offset frame
+  c0 = SkyCoord(83.8418691, -5.4113246, unit=(u.deg, u.deg))
+  # Position angle perp to Bar (away from Trapezium)
+  PA = 141.5*u.deg
+  bar_frame = c0.skyoffset_frame(rotation=PA)
+
+  hdu = fits.open(f"{DATAPATH}/{INFILE}")["SCALED"]
+  w = WCS(hdu)
+
+  # Find coordinates of all pixels in image
+  ny, nx = hdu.data.shape
+  xpix, ypix = np.meshgrid(np.arange(nx), np.arange(ny))
+  c = w.pixel_to_world(xpix, ypix)
+
+  # Transform to the Bar offset frame (lon is along bar, lat is perpendicular)
+  cb = c.transform_to(bar_frame)
+
+  # Take a 2 arcmin section of bar
+  mask = np.abs(cb.lon) < 1.0*u.arcmin
+  # And +/- 1 arcmin in perp direction too
+  mask = mask & (np.abs(cb.lat) < 1.0*u.arcmin)
+
+  # offset in arcseconds perp to bar
+  x = cb[mask].lat.to(u.arcsec).value
+  # and parallel
+  y = cb[mask].lon.to(u.arcsec).value
+  # brightness
+  s = hdu.data[mask]
+
+  # Sort them all by x
+  indices = np.argsort(x)
+  x = x[indices]
+  y = y[indices]
+  s = s[indices]
+
+  # scale by median
+  s /= np.median(s)
+
+  # Calculate blockwise medians
+  nblock = 500
+  # Discard any extra points off the end
+  n = nblock*(len(x) // nblock)
+  xm = np.median(x[:n].reshape((-1, nblock)), axis=-1)
+  sm = np.median(s[:n].reshape((-1, nblock)), axis=-1)
+
+  # Plot s(x)
+  figfile = INFILE.replace(".fits", "-bar-profile.jpg")
+  fig, ax = plt.subplots()
+  ax.scatter(x, s, s=3.0, c=y,
+             alpha=0.3, marker=".", edgecolors="none", cmap="cool",
+  )
+  ax.plot(xm, sm, '-', color="k")
+  ax.set(
+      xlabel="Offset, arcsec",
+      yscale="linear",
+      ylim=[0.0, 2.0*sm.max()],
+  )
+  ax.set_xscale("symlog", linthreshx=10, linscalex=0.5, subsx=[2, 3, 4, 5, 6, 7, 8, 9])
+  sns.despine()
+  fig.savefig(figfile, dpi=600)
+
+
+#+end_src
+
+#+RESULTS: bar-profile
+[[file:linesum-O_I-6300-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="linesum-O_I-8446-bin001.fits")
+
+#+RESULTS:
+[[file:linesum-O_I-8446-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="linesum-O_II-7318-bin001.fits")
+
+#+RESULTS:
+[[file:linesum-O_II-7318-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="linesum-O_III-5007-bin001.fits")
+
+#+RESULTS:
+[[file:linesum-O_III-5007-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-TOTAL-multibin-1000.fits")
+
+#+RESULTS:
+[[file:muse-hr-data-ha-raman-TOTAL-multibin-1000-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R040-cont-sub-multibin-1000.fits")
+
+#+RESULTS:
+[[file:muse-hr-data-ha-raman-R040-cont-sub-multibin-1000-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R058-cont-sub-multibin-1000.fits")
+
+#+RESULTS:
+[[file:muse-hr-data-ha-raman-R058-cont-sub-multibin-1000-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R087-cont-sub-multibin-1000.fits")
+
+#+RESULTS:
+[[file:muse-hr-data-ha-raman-R087-cont-sub-multibin-1000-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R136-cont-sub-multibin-1000.fits")
+
+#+RESULTS:
+[[file:muse-hr-data-ha-raman-R136-cont-sub-multibin-1000-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-B033-cont-sub-multibin-1000.fits")
+
+#+RESULTS:
+[[file:muse-hr-data-ha-raman-B033-cont-sub-multibin-1000-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-B054-cont-sub-multibin-1000.fits")
+
+#+RESULTS:
+[[file:muse-hr-data-ha-raman-B054-cont-sub-multibin-1000-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-B080-cont-sub-multibin-1000.fits")
+
+#+RESULTS:
+[[file:muse-hr-data-ha-raman-B080-cont-sub-multibin-1000-bar-profile.jpg]]
 
 *** The supposed Si II fluoresced bump
 + Dopita sees this at 6470 \to 6480
@@ -1282,6 +1769,7 @@ CLOSED: [2019-08-24 Sat 22:09]
 + Hubeny & Mihalas book
 + 
 *** Terminology
++ Configuration is n, l for each electron
 + Term is n, S, L
 + Level is n, S, L, J
 + State is n, S, L, J, M_J
@@ -1436,6 +1924,15 @@ Scale factors:
 + \nu_1/\nu_2 = 97492.283/15233.329 = 6.3999329 +/- 0.0000004
 + (\nu_1/\nu_2)^2 = 40.959141 +/- 0.000005
 
+
+***** Lines in the blue wing
++ Possibility at air wavelength of
+  + 6494.75
+
+| Air             | n                            | Vac              | FUV                |
+|-----------------+------------------------------+------------------+--------------------|
+| 6494.75 +/- 0.5 | 1.00027632 +/- 5.3868098e-10 | 6496.54 +/- 0.50 | 1024.047 +/- 0.012 |
+#+TBLFM: $2=1 + 8.06051e-5 + (2.480990e-2 / (132.274 - (1e4/$1)**2)) + (1.74557e-4 / (39.32957 - (1e4/$1)**2)) ;f8::$3=$1 $2;f2::$4=1/(1/$3 - 1/6564.553 + 1/1025.72220);f3
 **** DONE Data from Peter's Atomic Line List with energies in wave numbers
 CLOSED: [2019-08-24 Sat 22:12]
 Ly \beta (vacuum)
@@ -1643,8 +2140,11 @@ Most of these I found from the intro of the Dopita:2016a paper
   + Ascribed to SNR
 
 
+** PNe
 
-
+*** Ring Nebula
++ I had high hopes, but I found nothing
++ [[file:~/Dropbox/dib-scatter-hii/data/ring-nebula/]]
 * Column densities of O I lines
 ** Relation between Einstein-A and cross section
 + \sigma_ik = (h\nu/4\pi) B_ik
