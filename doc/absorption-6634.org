@@ -1421,16 +1421,15 @@ And try Lupton with hi-res images...
 #+RESULTS: compare-oi-co-raman
 [[file:raman-with-co-oi-contours.jpg]]
 
-#+RESULTS:
-[[file:]]
 
 **** Do the profile cuts of Bar and Orion S
 + This will be fun
   + We can make a "Sky Offset" frame, centered about a point in the bar and with a rotation so that ~lon~ is along the bar and ~lat~ is perpendicular
-#+name: bar-profile
-#+header: :var INFILE="linesum-O_I-6300-bin001.fits"
-#+header: :var DATAPATH="../data/orion-muse"
-#+begin_src python :return figfile :results file
+
+
+#+begin_src python :eval no :tangle ../src/bar-profile.py
+  import json
+  import sys
   import numpy as np
   from astropy.io import fits
   from astropy.wcs import WCS
@@ -1440,14 +1439,29 @@ And try Lupton with hi-res images...
   import seaborn as sns
   import statsmodels.api as sm
 
+  try:
+      INFILE, DATAPATH = sys.argv[1], sys.argv[2]
+      HDU, NBLOCK, NORM = sys.argv[3], int(sys.argv[4]), sys.argv[5]
+  except:
+      sys.exit(f"Usage: {sys.argv[0]} INFILE DATAPATH HDU NBLOCK NORM (not {sys.argv[1:]})")
+
+  try:
+      HDU = int(HDU)
+  except:
+      pass
+
   # Origin of Bar offset frame
   c0 = SkyCoord(83.8418691, -5.4113246, unit=(u.deg, u.deg))
   # Position angle perp to Bar (away from Trapezium)
   PA = 141.5*u.deg
   bar_frame = c0.skyoffset_frame(rotation=PA)
 
-  hdu = fits.open(f"{DATAPATH}/{INFILE}")["SCALED"]
-  w = WCS(hdu)
+  hdu = fits.open(f"{DATAPATH}/{INFILE}")[HDU]
+  w = WCS(hdu).celestial
+
+  # Make sure we have 2d image, not 3d cube
+  if len(hdu.data.shape) == 3:
+      hdu.data = hdu.data[0, :, :]
 
   # Find coordinates of all pixels in image
   ny, nx = hdu.data.shape
@@ -1457,9 +1471,9 @@ And try Lupton with hi-res images...
   # Transform to the Bar offset frame (lon is along bar, lat is perpendicular)
   cb = c.transform_to(bar_frame)
 
-  # Take a 2 arcmin section of bar
-  mask = np.abs(cb.lon) < 1.0*u.arcmin
-  # And +/- 1 arcmin in perp direction too
+  # Take a 75 arcsec section of bar
+  mask = np.abs(cb.lon) < (75.0/2.0)*u.arcsec
+  # And +/- 1 arcmin in perp direction
   mask = mask & (np.abs(cb.lat) < 1.0*u.arcmin)
 
   # offset in arcseconds perp to bar
@@ -1475,15 +1489,22 @@ And try Lupton with hi-res images...
   y = y[indices]
   s = s[indices]
 
-  # scale by median
-  s /= np.median(s)
+  # scale by median by default
+  if "median" in NORM.lower():
+      s /= np.nanmedian(s)
 
   # Calculate blockwise medians
-  nblock = 500
+  nblock = NBLOCK
   # Discard any extra points off the end
   n = nblock*(len(x) // nblock)
-  xm = np.median(x[:n].reshape((-1, nblock)), axis=-1)
-  sm = np.median(s[:n].reshape((-1, nblock)), axis=-1)
+  xm = np.nanmedian(x[:n].reshape((-1, nblock)), axis=-1)
+  sm = np.nanmedian(s[:n].reshape((-1, nblock)), axis=-1)
+
+  jsonfile = INFILE.replace(".fits", "-bar-profile.json")
+  with open(jsonfile, "w") as f:
+      json.dump(
+          {"offset": list(xm.astype(float)), "brightness": list(sm.astype(float))},
+          f, indent=3)
 
   # Plot s(x)
   figfile = INFILE.replace(".fits", "-bar-profile.jpg")
@@ -1495,13 +1516,21 @@ And try Lupton with hi-res images...
   ax.set(
       xlabel="Offset, arcsec",
       yscale="linear",
-      ylim=[0.0, 2.0*sm.max()],
+      ylim=[0.0, 2.0*np.nanmax(sm)],
   )
   ax.set_xscale("symlog", linthreshx=10, linscalex=0.5, subsx=[2, 3, 4, 5, 6, 7, 8, 9])
   sns.despine()
   fig.savefig(figfile, dpi=600)
 
+  print(figfile, end="")
 
+#+end_src
+
+#+name: bar-profile
+#+header: :var INFILE="linesum-O_I-6300-bin001.fits"
+#+header: :var DATAPATH="../data/orion-muse" HDU="SCALED" NBLOCK=500 NORM="median"
+#+begin_src sh :results file
+python ../src/bar-profile.py $INFILE $DATAPATH $HDU $NBLOCK $NORM
 #+end_src
 
 #+RESULTS: bar-profile
@@ -1527,40 +1556,249 @@ And try Lupton with hi-res images...
 #+RESULTS:
 [[file:muse-hr-data-ha-raman-TOTAL-multibin-1000-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R040-cont-sub-multibin-1000.fits")
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R040-cont-sub-multibin-1000.fits", NORM="no")
 
 #+RESULTS:
 [[file:muse-hr-data-ha-raman-R040-cont-sub-multibin-1000-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R058-cont-sub-multibin-1000.fits")
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R058-cont-sub-multibin-1000.fits", NORM="no")
 
 #+RESULTS:
 [[file:muse-hr-data-ha-raman-R058-cont-sub-multibin-1000-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R087-cont-sub-multibin-1000.fits")
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R087-cont-sub-multibin-1000.fits", NORM="no")
 
 #+RESULTS:
 [[file:muse-hr-data-ha-raman-R087-cont-sub-multibin-1000-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R136-cont-sub-multibin-1000.fits")
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-R136-cont-sub-multibin-1000.fits", NORM="no")
 
 #+RESULTS:
 [[file:muse-hr-data-ha-raman-R136-cont-sub-multibin-1000-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="muse-hr-data-ha-raman-B033-cont-sub-multibin-1000.fits")
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-B033-cont-sub-multibin-1000.fits", NORM="no")
 
 #+RESULTS:
 [[file:muse-hr-data-ha-raman-B033-cont-sub-multibin-1000-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="muse-hr-data-ha-raman-B054-cont-sub-multibin-1000.fits")
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-B054-cont-sub-multibin-1000.fits", NORM="no")
 
 #+RESULTS:
 [[file:muse-hr-data-ha-raman-B054-cont-sub-multibin-1000-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="muse-hr-data-ha-raman-B080-cont-sub-multibin-1000.fits")
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-B080-cont-sub-multibin-1000.fits", NORM="no")
 
 #+RESULTS:
 [[file:muse-hr-data-ha-raman-B080-cont-sub-multibin-1000-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-hr-data-ha-raman-B133-cont-sub-multibin-1000.fits", NORM="no")
+
+#+RESULTS:
+[[file:muse-hr-data-ha-raman-B133-cont-sub-multibin-1000-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="continuum-N_III-6634-bin001.fits")
+
+#+RESULTS:
+[[file:continuum-N_III-6634-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="linesum-H_I-9229-bin001.fits")
+
+#+RESULTS:
+[[file:linesum-H_I-9229-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="linesum-He_I-6678-bin001.fits")
+
+#+RESULTS:
+[[file:linesum-He_I-6678-bin001-bar-profile.jpg]]
+
+
+#+call: bar-profile(INFILE="linesum-Ar_III-7136-bin001.fits")
+
+#+RESULTS:
+[[file:linesum-Ar_III-7136-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="linesum-S_III-9069-bin001.fits")
+
+#+RESULTS:
+[[file:linesum-S_III-9069-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(DATAPATH="../../OrionMolecular/Carma-NRO-CO/dataverse_files", INFILE="mom0_48_57_12co_pix_2_Tmb.fits", HDU=0, NBLOCK=30)
+
+#+RESULTS:
+[[file:mom0_48_57_12co_pix_2_Tmb-bar-profile.jpg]]
+
+#+call: bar-profile(DATAPATH="../../dust-wave-case-studies/data/LP-Ori-Spitzer/atlas/irsa.ipac.caltech.edu/data/SPITZER/Enhanced/SEIP/images/4/0044/40044081/2/40044081-82", INFILE="40044081.40044081-82-short.IRAC.1.mosaic.fits", HDU=0, NBLOCK=10, NORM="no")
+
+#+RESULTS:
+[[file:40044081.40044081-82-short.IRAC.1.mosaic-bar-profile.jpg]]
+
+#+call: bar-profile(DATAPATH="../../dust-wave-case-studies/data/LP-Ori-Spitzer/atlas/irsa.ipac.caltech.edu/data/SPITZER/Enhanced/SEIP/images/4/0044/40044081/2/40044081-82", INFILE="40044081.40044081-82-short.IRAC.4.mosaic.fits", HDU=0, NBLOCK=100, NORM="no")
+
+#+RESULTS:
+[[file:40044081.40044081-82-short.IRAC.4.mosaic-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-derived-Ne-multibin-SN0003.fits", NORM="no")
+
+#+RESULTS:
+[[file:muse-derived-Ne-multibin-SN0003-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-derived-Ne-iii-multibin-SN0003.fits", NORM="no")
+
+#+RESULTS:
+[[file:muse-derived-Ne-iii-multibin-SN0003-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-derived-Te-multibin-SN0003.fits", NORM="no")
+
+#+RESULTS:
+[[file:muse-derived-Te-multibin-SN0003-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-derived-Te-iii-multibin-SN0003.fits", NORM="no")
+
+#+RESULTS:
+[[file:muse-derived-Te-iii-multibin-SN0003-bar-profile.jpg]]
+
+**** Combined plot of all the Bar profiles
+
+#+begin_src python :return figfile :results file
+  import json
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+
+  PC_PER_ARCSEC = 2e-3
+
+  def load_data(jsonfile):
+      "Returns offset(mpc) and brightness"
+      data = json.load(open(jsonfile))
+      return 1000*np.array(data["offset"])*PC_PER_ARCSEC, np.array(data["brightness"])
+
+
+  def xmap(x, scale_pc=0.1):
+      """Map parsecs to scaled asinh"""
+      return np.arcsinh(x/scale_pc)
+
+  figfile = "raman-bar-multi-profile.pdf"
+  fig, [ax2, ax] = plt.subplots(2, 1, sharex=True)
+
+  emlines = [
+      ["O_III-5007", 8, "[O III]"], 
+      # ["He_I-6678",  7.0, "He I"], 
+      # ["H_I-9229",   5.0, "H I"], 
+      ["O_II-7318",  3.5, "[O II]"], 
+      ["O_I-6300",   1.0, "[O I]"], 
+      ["O_I-8446",   0.0, "O I"], 
+  ]
+
+  raman_bands = [
+      ["B033", "R040", 0.6, "b", "m"],
+      ["B054", "R058", 0.4, "b", "m"],
+      ["B080", "R087", 0.4, "c", "r"],
+      ["B133", "R136", 0.2, "c", "r"],
+  ]
+
+  molecules = [
+      ["mom0_48_57_12co_pix_2_Tmb", 3.0, "$^12$CO"],
+      #["40044081.40044081-82-short.IRAC.4.mosaic", 1.0, "MIR $5.8 \mu$m"],
+  ]
+
+  for lineid, offset, label in emlines:
+      x, y = load_data(f"linesum-{lineid}-bin001-bar-profile.json")
+      m = x < 30
+      ax.plot(x[m], y[m] + offset, color="k", lw=0.5)
+
+  for lineid, scale, label in molecules:
+      x, y = load_data(f"{lineid}-bar-profile.json")
+      m = x > 15
+      ax.plot(x[m], y[m]*scale, color="k", lw=2, alpha=0.3)
+
+
+  raman_fmt = "muse-hr-data-ha-raman-{}-cont-sub-multibin-1000-bar-profile.json"
+  for blue, red, alpha, cb, cr in raman_bands:
+      x, y = load_data(raman_fmt.format(blue)) 
+      ax2.plot(x, y, color=cb, alpha=alpha, lw=2)
+      x, y = load_data(raman_fmt.format(red)) 
+      ax2.plot(x, y, color=cr, alpha=alpha, lw=2)
+
+  ax.axvline(ls=":")
+  ax2.axvline(ls=":")
+  ax.set(
+      xlim=[-95, 95],
+      ylim=[0, None],
+      #yscale="log",
+      xlabel="Offset, $10^{-3}$ pc",
+  )
+  ax.minorticks_on()
+  ax2.set(
+      ylim=[0, None],
+  )
+  sns.despine()
+  fig.tight_layout(h_pad=0.01)
+  fig.savefig(figfile)
+
+
+  # 40044081.40044081-82-short.IRAC.1.mosaic-bar-profile.json
+  # 40044081.40044081-82-short.IRAC.4.mosaic-bar-profile.json
+  # continuum-N_III-6634-bin001-bar-profile.json
+  # linesum-Ar_III-7136-bin001-bar-profile.json
+  # linesum-S_III-9069-bin001-bar-profile.json
+  # mom0_48_57_12co_pix_2_Tmb-bar-profile.json
+  # muse-derived-Ne-iii-multibin-SN0003-bar-profile.json
+  # muse-derived-Ne-multibin-SN0003-bar-profile.json
+  # muse-derived-Te-iii-multibin-SN0003-bar-profile.json
+  # muse-derived-Te-multibin-SN0003-bar-profile.json
+  # muse-hr-data-ha-raman-B033-cont-sub-multibin-1000-bar-profile.json
+  # muse-hr-data-ha-raman-B054-cont-sub-multibin-1000-bar-profile.json
+  # muse-hr-data-ha-raman-B080-cont-sub-multibin-1000-bar-profile.json
+  # muse-hr-data-ha-raman-B133-cont-sub-multibin-1000-bar-profile.json
+  # muse-hr-data-ha-raman-R040-cont-sub-multibin-1000-bar-profile.json
+  # muse-hr-data-ha-raman-R058-cont-sub-multibin-1000-bar-profile.json
+  # muse-hr-data-ha-raman-R087-cont-sub-multibin-1000-bar-profile.json
+  # muse-hr-data-ha-raman-R136-cont-sub-multibin-1000-bar-profile.json
+  # muse-hr-data-ha-raman-TOTAL-multibin-1000-bar-profile.json
+
+#+end_src
+
+#+RESULTS:
+[[file:raman-bar-multi-profile.pdf]]
+
+
+**** Secondary profiles
+
+#+call: bar-profile(INFILE="linesum-C_I-8727-bin016.fits")
+
+#+RESULTS:
+[[file:linesum-C_I-8727-bin016-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="linesum-Cl_IV-7531-bin016.fits")
+
+#+RESULTS:
+[[file:linesum-Cl_IV-7531-bin016-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="muse-hr-image-wfc3-f547m.fits", HDU="DATA")
+
+#+RESULTS:
+[[file:muse-hr-image-wfc3-f547m-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="continuum-N_III-6634-bin001.fits")
+
+#+RESULTS:
+[[file:continuum-N_III-6634-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="continuum-DIB-5781-bin001.fits")
+
+#+RESULTS:
+[[file:continuum-DIB-5781-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="C_H_beta-bin001.fits")
+
+#+RESULTS:
+[[file:C_H_beta-bin001-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="C_H_beta_9229-bin001.fits")
+
+#+RESULTS:
+[[file:C_H_beta_9229-bin001-bar-profile.jpg]]
+
 
 *** The supposed Si II fluoresced bump
 + Dopita sees this at 6470 \to 6480
