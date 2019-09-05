@@ -11,7 +11,7 @@
    - Sort out the Keck lines
      - Find best spectra and co-add them
      - Determine width, shift, etc
-3. [ ] Use tetrablok algorithm on images
+3. [X] Use tetrablok algorithm on images
    - Make some nice figures
 4. [ ] Make a figure of the O I fluorescence transitions (and maybe one showing Raman scattering too)
 5. [ ] Extract a small region around 244-440
@@ -283,7 +283,8 @@
   + Shows the inner shell nicely on the red flank
 + [N II] 6527
 + [Ni III] 6533
-**** TODO Concatenate wavsec 2 and wavsec 3
+**** DONE Concatenate wavsec 2 and wavsec 3
+CLOSED: [2019-09-04 Wed 12:24]
 + [2019-09-01 Sun] It turns out that the region I had used for continuum was not good
   + On the blue side of the line, the 6400 to 6450 range is still in the Raman wings according to the Dopita spectrum
 + So we need to go out to the 6050 to 6150 range to get a good continuum
@@ -322,14 +323,13 @@ python ../src/concat-wavsecs.py $DATADIR $SUFFIX $OUTDIR
 #+end_src
 
 #+RESULTS: concat-wavsecs
-***** TODO Now we need to do this on the server for the full res cubes
+***** DONE Now we need to do this on the server for the full res cubes
+CLOSED: [2019-09-04 Wed 12:24]
 
 **** Remove continuum from cube
 + [2019-09-01 Sun] This is revisited to use a broader range - see above
 + Also, write scripts to python files and use shell commands to run them
 + Take opportunity to use wavelengths instead of array indices
-
-
 
 #+begin_src python :tangle ../src/subtract-continuum.py :eval no
   import sys
@@ -428,11 +428,11 @@ rsync -avzP ../src/*.py nil:/fs/nil/other0/will/orion-muse
 
 #+RESULTS:
 : sending incremental file list
-: extract-raman-bands.py
-:           1,199 100%    0.00kB/s    0:00:00            1,199 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=2/4)
+: extract-ci-8727.py
+:             519 100%    0.00kB/s    0:00:00              519 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=4/7)
 : 
-: sent 578 bytes  received 46 bytes  249.60 bytes/sec
-: total size is 4,875  speedup is 7.81
+: sent 581 bytes  received 40 bytes  177.43 bytes/sec
+: total size is 8,542  speedup is 13.76
 
 Had to install python 3.7 since old one was on 3.3!
 
@@ -465,6 +465,116 @@ rsync -avzP nil:/fs/nil/other0/will/orion-muse/muse-hr-data-ha-raman-*.fits .
 : sent 11 bytes  received 361 bytes  148.80 bytes/sec
 : total size is 125,176,320  speedup is 336,495.48
 
+[2019-09-04 Wed] Do the [C I] line stuff on the full resolution cube. 
+
+#+begin_src sh :eval no
+time python subtract-continuum.py-8700.py . "" .
+#+end_src
+
+#+begin_src sh :eval no
+time python extract-ci-8727.py . "" .
+#+end_src
+
+#+begin_src sh :dir ../data/orion-muse :results verbatim
+rsync -avzP nil:/fs/nil/other0/will/orion-muse/linesum-blue-C_I-8727*.fits .
+#+end_src
+
+#+RESULTS:
+: receiving incremental file list
+: linesum-blue-C_I-8727.fits
+:               0   0%    0.00kB/s    0:00:00       10,434,240 100%  207.31MB/s    0:00:00 (xfr#1, to-chk=0/1)
+: 
+: sent 19,452 bytes  received 884 bytes  5,810.29 bytes/sec
+: total size is 10,434,240  speedup is 513.09
+
+
+**** Remove continuum from wavsec6 for the [C I] 8727.13 line
++ Minima in spectra where we can estimate the continuum
+  + 606, 8689.45
+  + 618, 8699.65
+  + 646, 8723.45
+  + 670, 8743.85
+  + FITS pixel convention, so subtract 1 for python
++ Take the average of these 4, since not much to be gained from a linear fit
+#+begin_src python :tangle ../src/subtract-continuum-8700.py :eval no
+  import sys
+  import numpy as np
+  from astropy.io import fits
+
+  try:
+      DATADIR = sys.argv[1]
+      SUFFIX = sys.argv[2]
+      OUTDIR = sys.argv[3]
+  except IndexError:
+      sys.exit(f"Usage: {sys.argv[0]} DATADIR SUFFIX OUTDIR")
+
+  infile = f"muse-hr-data-wavsec6{SUFFIX}.fits"
+  hdu = fits.open(f"{DATADIR}/{infile}")["DATA"]
+
+  # wave indices for estimating continuum
+  kcont = [605, 617, 645, 669]
+
+  cont = np.nanmean(hdu.data[kcont, :, :], axis=0, keepdims=True)
+  hdu.data -= cont
+
+  outfile = infile.replace(".fits", "-cont-sub.fits")
+  hdu.writeto(f"{OUTDIR}/{outfile}", overwrite=True)
+
+  print(f"Written {outfile}")
+#+end_src
+
+#+name: subtract-cont-8700
+#+header: :var DATADIR="../../OrionMuse/Bigfiles"
+#+header: :var SUFFIX="-rebin16x16"
+#+header: :var OUTDIR="../data/orion-muse"
+#+begin_src sh :results verbatim
+python ../src/subtract-continuum-8700.py $DATADIR $SUFFIX $OUTDIR
+#+end_src
+
+#+RESULTS: subtract-cont-8700
+: Written muse-hr-data-wavsec6-rebin16x16-cont-sub.fits
+
+#+call: subtract-cont-8700(DATADIR="../../OrionMuse", SUFFIX="-rebin05x05")
+
+#+RESULTS:
+: Written muse-hr-data-wavsec6-rebin05x05-cont-sub.fits
+
+Extract the blue half of the [C I] 8727.13 line.  The red half is contaminated by [Fe III] 8728.90 and N I 8728.90.  Eduardo has them at about 20% of the [C I] intensity. Use pixels 649, 650, 651, 652 (8726.0 \to 8728.55 \AA) since in 653 you start to see N I and [Fe III]
+
+#+begin_src python :tangle ../src/extract-ci-8727.py :eval no
+  import sys
+  import numpy as np
+  from astropy.io import fits
+
+  try:
+      DATADIR = sys.argv[1]
+      SUFFIX = sys.argv[2]
+      OUTDIR = sys.argv[3]
+  except IndexError:
+      sys.exit(f"Usage: {sys.argv[0]} DATADIR SUFFIX OUTDIR")
+
+  infile = f"muse-hr-data-wavsec6{SUFFIX}-cont-sub.fits"
+  hdu = fits.open(f"{DATADIR}/{infile}")["DATA"]
+
+  line = np.nanmean(hdu.data[648:652, :, :], axis=0)
+  hdu.data = line
+
+  outfile = f"linesum-blue-C_I-8727{SUFFIX}.fits"
+  hdu.writeto(f"{OUTDIR}/{outfile}", overwrite=True)
+
+  print(f"Written {outfile}")
+#+end_src
+
+#+name: extract-ci-8727
+#+header: :var DATADIR="../data/orion-muse"
+#+header: :var SUFFIX="-rebin05x05"
+#+header: :var OUTDIR="../data/orion-muse"
+#+begin_src sh :results verbatim
+python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
+#+end_src
+
+#+RESULTS: extract-ci-8727
+: Written linesum-blue-C_I-8727-rebin05x05.fits
 
 
 **** Plot the spectrum of different regions
@@ -1045,6 +1155,27 @@ Saving muse-hr-data-ha-raman-R136-cont-sub-bin128.fits
 Saving muse-hr-data-ha-raman-R136-cont-sub-bin256.fits
 #+end_example
 
+#+begin_src sh :results verbatim
+  MULTIBIN=/Users/will/Dropbox/multibin-maps/multibin-map.py
+  cd ../data/orion-muse
+  python $MULTIBIN linesum-blue-C_I-8727.fits
+#+end_src
+
+#+RESULTS:
+: Saving linesum-blue-C_I-8727-bin001.fits
+: Saving linesum-blue-C_I-8727-bin002.fits
+: Saving linesum-blue-C_I-8727-bin004.fits
+: Saving linesum-blue-C_I-8727-bin008.fits
+: Saving linesum-blue-C_I-8727-bin016.fits
+: Saving linesum-blue-C_I-8727-bin032.fits
+: Saving linesum-blue-C_I-8727-bin064.fits
+: Saving linesum-blue-C_I-8727-bin128.fits
+: Saving linesum-blue-C_I-8727-bin256.fits
+
+
+
+
+
 **** Combine multibin maps
 #+BEGIN_SRC python :tangle ../src/raman-multibin-combine.py
   import sys
@@ -1100,6 +1231,10 @@ Saving muse-hr-data-ha-raman-R136-cont-sub-bin256.fits
 #+RESULTS:
 
 Original runs were with ~MINIMUM_WEIGHT=5000~.  But we are going to try some higher resolution but noisier ones. 
+#+begin_src sh :results silent :dir ..
+python src/raman-multibin-combine.py data/orion-muse/linesum-blue-C_I-8727 500 0.0
+#+end_src
+
 
 #+begin_src sh :results silent :dir ..
 python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-R040-cont-sub 1000 0.0
@@ -1536,6 +1671,18 @@ python ../src/bar-profile.py $INFILE $DATAPATH $HDU $NBLOCK $NORM
 #+RESULTS: bar-profile
 [[file:linesum-O_I-6300-bin001-bar-profile.jpg]]
 
+#+call: bar-profile(INFILE="linesum-blue-C_I-8727-multibin-500.fits", NBLOCK=1000)
+
+#+RESULTS:
+[[file:linesum-blue-C_I-8727-multibin-500-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="linesum-blue-C_I-8727-bin008.fits")
+
+#+RESULTS:
+[[file:linesum-blue-C_I-8727-bin008-bar-profile.jpg]]
+
+
+
 #+call: bar-profile(INFILE="linesum-O_I-8446-bin001.fits")
 
 #+RESULTS:
@@ -1627,15 +1774,33 @@ python ../src/bar-profile.py $INFILE $DATAPATH $HDU $NBLOCK $NORM
 #+RESULTS:
 [[file:mom0_48_57_12co_pix_2_Tmb-bar-profile.jpg]]
 
-#+call: bar-profile(DATAPATH="../../dust-wave-case-studies/data/LP-Ori-Spitzer/atlas/irsa.ipac.caltech.edu/data/SPITZER/Enhanced/SEIP/images/4/0044/40044081/2/40044081-82", INFILE="40044081.40044081-82-short.IRAC.1.mosaic.fits", HDU=0, NBLOCK=10, NORM="no")
+#+call: bar-profile(DATAPATH="../../OrionMolecular/Carma-NRO-CO/dataverse_files", INFILE="mom0_87_109_13co_pix_2_Tmb.fits", HDU=0, NBLOCK=30)
 
 #+RESULTS:
-[[file:40044081.40044081-82-short.IRAC.1.mosaic-bar-profile.jpg]]
+[[file:mom0_87_109_13co_pix_2_Tmb-bar-profile.jpg]]
 
-#+call: bar-profile(DATAPATH="../../dust-wave-case-studies/data/LP-Ori-Spitzer/atlas/irsa.ipac.caltech.edu/data/SPITZER/Enhanced/SEIP/images/4/0044/40044081/2/40044081-82", INFILE="40044081.40044081-82-short.IRAC.4.mosaic.fits", HDU=0, NBLOCK=100, NORM="no")
+What is wrong with these IRAC images that we get so many NaNs in the profiles? /Answer:/ they were the wrong files - sorted now.
+
+#+call: bar-profile(DATAPATH="../../dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic", INFILE="40044081.40044081-89-short.IRAC.1.mosaic.fits", HDU=0, NBLOCK=100, NORM="no")
 
 #+RESULTS:
-[[file:40044081.40044081-82-short.IRAC.4.mosaic-bar-profile.jpg]]
+[[file:40044081.40044081-89-short.IRAC.1.mosaic-bar-profile.jpg]]
+
+#+call: bar-profile(DATAPATH="../../dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic", INFILE="40044081.40044081-89-short.IRAC.4.mosaic.fits", HDU=0, NBLOCK=100, NORM="no")
+
+#+RESULTS:
+[[file:40044081.40044081-89-short.IRAC.4.mosaic-bar-profile.jpg]]
+
+#+call: bar-profile(DATAPATH="../../dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic", INFILE="40044081.40044081-89-short.IRAC.2.mosaic.fits", HDU=0, NBLOCK=100, NORM="no")
+
+#+RESULTS:
+[[file:40044081.40044081-89-short.IRAC.2.mosaic-bar-profile.jpg]]
+
+#+call: bar-profile(DATAPATH="../../dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic", INFILE="40044081.40044081-89-short.IRAC.3.mosaic.fits", HDU=0, NBLOCK=100, NORM="no")
+
+#+RESULTS:
+[[file:40044081.40044081-89-short.IRAC.3.mosaic-bar-profile.jpg]]
+
 
 #+call: bar-profile(INFILE="muse-derived-Ne-multibin-SN0003.fits", NORM="no")
 
@@ -1665,6 +1830,8 @@ python ../src/bar-profile.py $INFILE $DATAPATH $HDU $NBLOCK $NORM
   from matplotlib import pyplot as plt
   import seaborn as sns
 
+  sns.set_color_codes("bright")
+
   PC_PER_ARCSEC = 2e-3
 
   def load_data(jsonfile):
@@ -1678,46 +1845,92 @@ python ../src/bar-profile.py $INFILE $DATAPATH $HDU $NBLOCK $NORM
       return np.arcsinh(x/scale_pc)
 
   figfile = "raman-bar-multi-profile.pdf"
-  fig, [ax2, ax] = plt.subplots(2, 1, sharex=True)
+  fig, [ax2, ax] = plt.subplots(2, 1, figsize=(8, 6), sharex=True)
 
   emlines = [
-      ["O_III-5007", 8, "[O III]"], 
+      ["O_III-5007", 7, 2.2, 0.5, r"[O III] $\lambda 5007$"], 
       # ["He_I-6678",  7.0, "He I"], 
       # ["H_I-9229",   5.0, "H I"], 
-      ["O_II-7318",  3.5, "[O II]"], 
-      ["O_I-6300",   1.0, "[O I]"], 
-      ["O_I-8446",   0.0, "O I"], 
+      ["O_II-7318",  2.5, 1.25, 0.7, r"[O II] $\lambda 7318$"], 
+      ["O_I-6300",   1.0, 1.0, 0.9, r"[O I] $\lambda 6300$"], 
+      ["O_I-8446",   0.0, 1.0, 1.1, r"O I $\lambda 8446$"], 
   ]
 
   raman_bands = [
-      ["B033", "R040", 0.6, "b", "m"],
-      ["B054", "R058", 0.4, "b", "m"],
-      ["B080", "R087", 0.4, "c", "r"],
-      ["B133", "R136", 0.2, "c", "r"],
+      ["B033", "R040", 0.6, "b", "m", 36],
+      ["B054", "R058", 0.4, "b", "m", 56],
+      ["B080", "R087", 0.4, "c", "r", 83],
+      ["B133", "R136", 0.2, "c", "r", 134],
   ]
 
   molecules = [
-      ["mom0_48_57_12co_pix_2_Tmb", 3.0, "$^12$CO"],
+      ["mom0_87_109_13co_pix_2_Tmb", 4.0, 1, "$^{13}$CO (1-0)"],
+      ["mom0_48_57_12co_pix_2_Tmb", 3.0, 2, "$^{12}$CO (1-0)"],
+      ["linesum-blue-C_I-8727-multibin-500", 2.7, 3, r"[C I] $\lambda 8727$"],
       #["40044081.40044081-82-short.IRAC.4.mosaic", 1.0, "MIR $5.8 \mu$m"],
   ]
 
-  for lineid, offset, label in emlines:
+  infrared = [
+      ["IRAC.1", 0.038, "$3.6\, \mu$m"],
+      ["IRAC.3", 0.0044, "$5.8\, \mu$m"],
+      ["IRAC.4", 0.001, "$8.0\, \mu$m"],
+  ]
+
+  whitebox = dict(facecolor="white", edgecolor="none", boxstyle="round,pad=0.2")
+  for lineid, offset, scale, lw, label in emlines:
       x, y = load_data(f"linesum-{lineid}-bin001-bar-profile.json")
       m = x < 30
-      ax.plot(x[m], y[m] + offset, color="k", lw=0.5)
+      ax.plot(x[m], scale*y[m] + offset, color="k", lw=lw)
+      x0 = -40 - 5*offset
+      i0 = np.sum(x < x0)
+      y0 = y[i0]
+      ax.text(x0, scale*y0 + offset,
+              f"{offset:.1f} + {label}",
+              bbox=whitebox, ha="center", va="center", fontsize="small")
+  ax.text(-50.0, 8.0, "Optical emission lines", ha="center", fontsize="small")
 
-  for lineid, scale, label in molecules:
+  for bandid, scale, label in infrared:
+      x, y = load_data(f"40044081.40044081-89-short.{bandid}.mosaic-bar-profile.json")
+      m = x > -10
+      ax.fill_between(x[m], y[m]*scale, color="k", alpha=0.07, zorder=-100)
+      x0 = 3
+      i0 = np.sum(x < x0)
+      y0 = y[i0]
+      ax.text(x0+2, 0.97*scale*y0,
+              f"{label}",
+              bbox=whitebox, ha="left", va="top", fontsize="small")
+  ax.text(10, 15.0, "IR continuum", ha="center", bbox=whitebox, fontsize="small")
+
+  for lineid, scale, lw, label in molecules:
       x, y = load_data(f"{lineid}-bar-profile.json")
-      m = x > 15
-      ax.plot(x[m], y[m]*scale, color="k", lw=2, alpha=0.3)
+      m = x > 10
+      ax.plot(x[m], y[m]*scale, color="k", lw=lw, alpha=0.3)
+      x0 = 75
+      i0 = np.sum(x < x0)
+      y0 = y[i0]
+      ax.text(x0, scale*y0,
+              f"{label}",
+              bbox=whitebox, ha="center", va="center", fontsize="small")
+  ax.text(75, 11.0, "PDR emission lines", ha="center", fontsize="small")
 
 
   raman_fmt = "muse-hr-data-ha-raman-{}-cont-sub-multibin-1000-bar-profile.json"
-  for blue, red, alpha, cb, cr in raman_bands:
-      x, y = load_data(raman_fmt.format(blue)) 
-      ax2.plot(x, y, color=cb, alpha=alpha, lw=2)
-      x, y = load_data(raman_fmt.format(red)) 
-      ax2.plot(x, y, color=cr, alpha=alpha, lw=2)
+  for blue, red, alpha, cb, cr, wav in raman_bands:
+      xb, yb = load_data(raman_fmt.format(blue)) 
+      xr, yr = load_data(raman_fmt.format(red))
+      ax2.plot(xb, yb, color=cb, alpha=alpha, lw=2)
+      ax2.plot(xr, yr, color=cr, alpha=alpha, lw=2)
+      x0 = -40
+      i0 = np.sum(xb < x0)
+      y0 = (yb[i0] + yr[i0])/2
+      ax2.text(x0, y0,
+               fr"$\Delta\lambda \approx \pm{wav}$ Å",
+               bbox=whitebox, ha="center", va="center", fontsize="small")
+  ax2.text(-40.0, 350, "Raman wings", ha="center", fontsize="small")
+
+  ax.text(-50, 16.5, "IONIZED", ha="center")
+  ax.text(15, 16.5, "NEUTRAL", ha="center")
+  ax.text(50, 16.5, "MOLECULAR", ha="center")
 
   ax.axvline(ls=":")
   ax2.axvline(ls=":")
@@ -1725,14 +1938,15 @@ python ../src/bar-profile.py $INFILE $DATAPATH $HDU $NBLOCK $NORM
       xlim=[-95, 95],
       ylim=[0, None],
       #yscale="log",
-      xlabel="Offset, $10^{-3}$ pc",
+      xlabel="Position relative to Bar, $10^{-3}$ pc",
+      ylabel="Constant + Intensity (arbitrary units)",
   )
   ax.minorticks_on()
   ax2.set(
       ylim=[0, None],
   )
   sns.despine()
-  fig.tight_layout(h_pad=0.01)
+  fig.tight_layout(h_pad=0.0)
   fig.savefig(figfile)
 
 
@@ -1902,6 +2116,15 @@ Fit the continuum and remove it
   + See [[file:~/Dropbox/STIS-LV/stis-lv.org][file:~/Dropbox/STIS-LV/stis-lv.org]]
 + Herbig's HIRES th1E spectra
   + Has same problem as other Keck data
+** [1/4] Brightness profiles of PDR emission
++ [X] I have the CO from the Kong:2018a data
++ [ ] I can get H_2 from HAWKI
++ [ ] I can get dust/PAH from IRAC
+  + Currently there is a problem with NaNs in the median profile
++ [ ] I can get [C I] from MUSE
+  + Requires better continuum subtraction on the wavsec6 cube but should be doable
+  + There is no good continuum range
+  + But the single wavelength at 8723.45 (pixel 646) is a local minimum, so as good as any
 * Absorption at 6634 \AA in other regions
 ** TODO RCW 49
 + Illuminated by the massive cluster Westerlund 2, supposedly second most massive in Milky Way

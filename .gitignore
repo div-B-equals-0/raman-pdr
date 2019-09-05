@@ -1,6 +1,6 @@
 data/orion-muse/*.fits
-data/orion-hawk/*.fits
-data/orion-hawk/*.fits.Z
+data/orion-hawki/*.fits
+data/orion-hawki/*.fits.Z
 *Notes.bib
 *.aux
 *.blg
