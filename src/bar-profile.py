@@ -43,8 +43,14 @@ cb = c.transform_to(bar_frame)
 
 # Take a 75 arcsec section of bar
 mask = np.abs(cb.lon) < (75.0/2.0)*u.arcsec
+
+# For the PDR lines, we restrict to the SW end
+if "H2-" in INFILE or "C_I" in INFILE:
+    mask = (cb.lon > 7*u.arcsec) & (cb.lon < 60*u.arcsec)
+
 # And +/- 1 arcmin in perp direction
 mask = mask & (np.abs(cb.lat) < 1.0*u.arcmin)
+
 
 # offset in arcseconds perp to bar
 x = cb[mask].lat.to(u.arcsec).value

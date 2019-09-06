@@ -1,3 +1,12 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+
 * Absorption at 6634 \AA in Orion Nebula
 + [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
 
@@ -1295,7 +1304,7 @@ python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B133-
 
 #+name: rgb-lupton-raman
 #+header: :var TAB=rgb-limits-ifront SUFFIX="ifront" DATADIR="../data/orion-muse"
-#+header: :var STRETCH=0.3 Q=4 STARS=star-coords
+#+header: :var STRETCH=0.3 Q=4 STARS=star-coords HDU="SCALED"
 #+begin_src python :results file :return figfile
   import numpy as np
   import matplotlib.pyplot as plt
@@ -1306,12 +1315,12 @@ python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B133-
   # Unpack the channel info from the table
   [rf, r1, r2], [gf, g1, g2], [bf, b1, b2] = TAB
 
-  def load_and_scale_image(fn, v1, v2, ihdu='SCALED'):
+  def load_and_scale_image(fn, v1, v2, ihdu=HDU):
       data = fits.open(f"{DATADIR}/{fn}")[ihdu].data
       return (data - v1) / (v2 - v1)
 
 
-  w = WCS(fits.open(f"{DATADIR}/{rf}")["SCALED"].header)
+  w = WCS(fits.open(f"{DATADIR}/{rf}")[HDU].header)
 
   image_r = load_and_scale_image(rf, r1, r2)
   image_g = load_and_scale_image(gf, g1, g2)
@@ -1401,7 +1410,7 @@ Here is a version that does a natural RGB image
 
 #+name: rgb-natural-raman
 #+header: :var TAB=rgb-limits-raman-R SUFFIX="raman-R" DATADIR="../data/orion-muse"
-#+header: :var SCALE="sqrt" STARS=star-coords
+#+header: :var SCALE="sqrt" STARS=star-coords HDU="SCALED"
 #+begin_src python :results file :return figfile
   import numpy as np
   import matplotlib.pyplot as plt
@@ -1419,7 +1428,7 @@ Here is a version that does a natural RGB image
       return (data - v1) / (v2 - v1)
 
 
-  w = WCS(fits.open(f"{DATADIR}/{rf}")["SCALED"].header)
+  w = WCS(fits.open(f"{DATADIR}/{rf}")[HDU].header)
 
   image_r = load_and_scale_image(rf, r1, r2)
   image_g = load_and_scale_image(gf, g1, g2)
@@ -1499,6 +1508,235 @@ And try Lupton with hi-res images...
 
 ...nah, still ugly.  But maybe I should use them, since they are higher contrast
 
+
+**** Some more color figures
+
+***** Velocity maps of H
+#+name: rgb-lupton-velchannels
+#+header: :var TAB=rgb-limits-hi-line-center SUFFIX="hi-line-center" DATADIR="../data/orion-muse"
+#+header: :var STRETCH=0.3 Q=4 STARS=star-coords HDU="DATA"
+#+begin_src python :results file :return figfile
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.visualization import make_lupton_rgb
+  from astropy.io import fits
+  from astropy.wcs import WCS
+
+  # Unpack the channel info from the table
+  [rf, r1, r2], [gf, g1, g2], [bf, b1, b2] = TAB
+
+  def load_and_scale_image(fn, v1, v2, ihdu=HDU):
+      data = fits.open(f"{DATADIR}/{fn}")[ihdu].data
+      return (data - v1) / (v2 - v1)
+
+
+  w = WCS(fits.open(f"{DATADIR}/{rf}")[HDU]).celestial
+
+  image_r = load_and_scale_image(rf, r1, r2)
+  image_g = load_and_scale_image(gf, g1, g2)
+  image_b = load_and_scale_image(bf, b1, b2)
+  image = make_lupton_rgb(image_r, image_g, image_b, stretch=STRETCH, Q=Q)
+
+  figfile = f"rgb-lupton-velchannels-{SUFFIX}.jpg"
+  fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
+  ax.imshow(image)
+  for _, ra, dec, size in STARS:
+      ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="yellow", fc="none")
+  ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")
+  fig.tight_layout(rect=[0.08, 0.07, 1.0, 1.0])
+  fig.savefig(figfile, dpi=200)
+#+end_src
+
+#+RESULTS: rgb-lupton-velchannels
+[[file:rgb-lupton-velchannels-hi-line-center.jpg]]
+
+#+name: rgb-limits-hi-line-center
+| hi-05x05-8751_50.fits | 0 | 1100000 |
+| hi-05x05-8750_65.fits | 0 | 1100000 |
+| hi-05x05-8749_80.fits | 0 | 800000  |
+
+#+name: rgb-limits-hi-near-red
+| hi-05x05-8752_35.fits | 0 | 400000  |
+| hi-05x05-8751_50.fits | 0 | 800000  |
+| hi-05x05-8750_65.fits | 0 | 1100000 |
+#+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-near-red, SUFFIX="hi-near-red", STRETCH=0.5, Q=3, HDU="DATA") 
+
+#+RESULTS:
+[[file:rgb-lupton-velchannels-hi-near-red.jpg]]
+
+
+#+name: rgb-limits-hi-mid-red
+| hi-05x05-8753_20.fits | 0 | 110000  |
+| hi-05x05-8752_35.fits | 0 | 400000  |
+| hi-05x05-8751_50.fits | 0 | 800000  |
+#+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-mid-red, SUFFIX="hi-mid-red", STRETCH=0.5, Q=3, HDU="DATA") 
+
+#+RESULTS:
+[[file:rgb-lupton-velchannels-hi-mid-red.jpg]]
+
+#+name: rgb-limits-hi-far-red
+| hi-05x05-8754_05.fits | 0 | 25000   |
+| hi-05x05-8753_20.fits | 0 | 180000  |
+| hi-05x05-8752_35.fits | 0 | 600000  |
+#+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-far-red, SUFFIX="hi-far-red", STRETCH=0.5, Q=3, HDU="DATA") 
+
+#+RESULTS:
+[[file:rgb-lupton-velchannels-hi-far-red.jpg]]
+
+
+#+name: rgb-limits-hi-near-blue
+| hi-05x05-8750_65.fits | 0 | 1100000 |
+| hi-05x05-8749_80.fits | 0 | 800000  |
+| hi-05x05-8748_95.fits | 0 | 300000  |
+
+#+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-near-blue, SUFFIX="hi-near-blue", STRETCH=0.5, Q=3, HDU="DATA") 
+
+#+RESULTS:
+[[file:rgb-lupton-velchannels-hi-near-blue.jpg]]
+
+#+name: rgb-limits-hi-mid-blue
+| hi-05x05-8749_80.fits | 0 | 800000  |
+| hi-05x05-8748_95.fits | 0 | 300000  |
+| hi-05x05-8748_10.fits | 0 | 100000  |
+
+#+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-mid-blue, SUFFIX="hi-mid-blue", STRETCH=0.5, Q=3, HDU="DATA") 
+
+#+RESULTS:
+[[file:rgb-lupton-velchannels-hi-mid-blue.jpg]]
+
+#+name: rgb-limits-hi-far-blue
+| hi-05x05-8748_95.fits | 0 | 300000  |
+| hi-05x05-8748_10.fits | 0 | 100000  |
+| hi-05x05-8747_25.fits | 0 | 30000   |
+
+#+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-far-blue, SUFFIX="hi-far-blue", STRETCH=0.5, Q=3, HDU="DATA") 
+
+#+RESULTS:
+[[file:rgb-lupton-velchannels-hi-far-blue.jpg]]
+
+***** TODO [Fe II] 8617 
++ This line is sat on top of the second order H\beta line
++ [ ] But we can use a linear interpolation of the 8612.1 and 8621.45 channels to remove this
++ Leave it for another day
+#+name: rgb-limits-feii-center
+| feii-05x05-8618_05.fits | 0 | 200000  |
+| feii-05x05-8617_20.fits | 0 | 200000  |
+| feii-05x05-8616_35.fits | 0 | 100000  |
+
+#+call: rgb-lupton-velchannels(TAB=rgb-limits-feii-center, SUFFIX="feii-center", STRETCH=0.5, Q=3, HDU="DATA") 
+
+#+RESULTS:
+[[file:rgb-lupton-velchannels-feii-center.jpg]]
+
+#+name: rgb-limits-feii-near-blue
+| feii-05x05-8617_20.fits | 0 | 200000  |
+| feii-05x05-8616_35.fits | 0 | 100000  |
+| feii-05x05-8615_50.fits | 0 | 60000   |
+
+#+call: rgb-lupton-velchannels(TAB=rgb-limits-feii-near-blue, SUFFIX="feii-near-blue", STRETCH=0.5, Q=3, HDU="DATA") 
+
+#+RESULTS:
+[[file:rgb-lupton-velchannels-feii-near-blue.jpg]]
+
+***** TODO Other lines to look at 
++ He II 6827 shows the inner arc nicely to red side but there must be better He II lines
++ N II 5941 and 5831 show nicely the Big Arc, but very weak
++ Unknown line at 5988 \AA
+  + Take 5984.75 and 5990.7 as the base level
+  + Add up from 5985.6 \to 5989.85 
+***** Maps of different extinction estimates
+First of all, we would need to put the radio tau map on the same WCS as the others
+#+begin_src python :results silent
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import wcs
+  from reproject import reproject_interp
+
+  datadir = "../data/orion-muse"
+  radiodir = "../../OrionDust"
+  hdu1 = fits.open(f"{datadir}/C_H_beta-bin004.fits")["SCALED"]
+  hdu2 = fits.open(f"{radiodir}/chbeta-radec.fits")[0]
+
+  newdata, _ = reproject_interp(hdu2, hdu1.header)
+
+  fits.PrimaryHDU(header=hdu1.header, data=newdata).writeto(
+      f"{datadir}/C_H_beta_Radio.fits",
+      overwrite=True,
+  )
+#+end_src
+
+While we are at it, we can make difference maps
+
+#+begin_src python :dir ../data/orion-muse :results silent
+  from astropy.io import fits
+
+  hdu_V = fits.open("C_H_beta-bin004.fits")["SCALED"]
+  hdu_I = fits.open("C_H_beta_9229-bin004.fits")["SCALED"]
+  hdu_R = fits.open("C_H_beta_Radio.fits")[0]
+
+  fits.PrimaryHDU(
+      header=hdu_V.header,
+      data=hdu_I.data - hdu_V.data
+  ).writeto("Delta_CHB_I-V.fits", overwrite=True)
+  fits.PrimaryHDU(
+      header=hdu_V.header,
+      data=hdu_R.data - hdu_V.data
+  ).writeto("Delta_CHB_R-V.fits", overwrite=True)
+  fits.PrimaryHDU(
+      header=hdu_V.header,
+      data=hdu_R.data - hdu_I.data
+  ).writeto("Delta_CHB_R-I.fits", overwrite=True)
+#+end_src
+
+Now, we can make a color image
+
+#+name: rgb-limits-extinction
+| Delta_CHB_R-I.fits   | -0.3 | 1.5 | sqrt   |
+| C_H_beta-bin001.fits |    0 | 1.7 | linear |
+| Delta_CHB_I-V.fits   | -0.1 | 0.8 | sqrt   |
+
+
+#+name: rgb-lupton-extinction
+#+header: :var TAB=rgb-limits-extinction  DATADIR="../data/orion-muse"
+#+header: :var STARS=star-coords HDU="SCALED"
+#+begin_src python :results file :return figfile
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.visualization import make_lupton_rgb
+  from astropy.visualization.lupton_rgb import LinearMapping
+  from astropy.io import fits
+  from astropy.wcs import WCS
+
+  # Unpack the channel info from the table
+  [rf, r1, r2, rscale], [gf, g1, g2, gscale], [bf, b1, b2, bscale] = TAB
+
+  def load_and_scale_image(fn, v1, v2, scale, ihdu=HDU):
+      data = fits.open(f"{DATADIR}/{fn}")[ihdu].data
+      im = (data - v1) / (v2 - v1)
+      if "sqrt" in scale.lower():
+          im = np.sqrt(im)
+      return im
+
+
+  w = WCS(fits.open(f"{DATADIR}/{rf}")[HDU]).celestial
+
+  image_r = load_and_scale_image(rf, r1, r2, rscale)
+  image_g = load_and_scale_image(gf, g1, g2, gscale)
+  image_b = load_and_scale_image(bf, b1, b2, bscale)
+  image = LinearMapping(0.0, 1.0).make_rgb_image(image_r, image_g, image_b)
+
+  figfile = f"rgb-lupton-extinction.jpg"
+  fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
+  ax.imshow(image)
+  for _, ra, dec, size in STARS:
+      ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="yellow", fc="none")
+  ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")
+  fig.tight_layout(rect=[0.08, 0.07, 1.0, 1.0])
+  fig.savefig(figfile, dpi=200)
+#+end_src
+
+#+RESULTS: rgb-lupton-extinction
+[[file:rgb-lupton-extinction.jpg]]
 
 **** Figure to compare Raman, [O I], and CO
 
@@ -1608,8 +1846,14 @@ And try Lupton with hi-res images...
 
   # Take a 75 arcsec section of bar
   mask = np.abs(cb.lon) < (75.0/2.0)*u.arcsec
+
+  # For the PDR lines, we restrict to the SW end
+  if "H2-" in INFILE or "C_I" in INFILE:
+      mask = (cb.lon > 7*u.arcsec) & (cb.lon < 60*u.arcsec)
+
   # And +/- 1 arcmin in perp direction
   mask = mask & (np.abs(cb.lat) < 1.0*u.arcmin)
+
 
   # offset in arcseconds perp to bar
   x = cb[mask].lat.to(u.arcsec).value
@@ -1671,7 +1915,7 @@ python ../src/bar-profile.py $INFILE $DATAPATH $HDU $NBLOCK $NORM
 #+RESULTS: bar-profile
 [[file:linesum-O_I-6300-bin001-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="linesum-blue-C_I-8727-multibin-500.fits", NBLOCK=1000)
+#+call: bar-profile(INFILE="linesum-blue-C_I-8727-multibin-500.fits", NBLOCK=200)
 
 #+RESULTS:
 [[file:linesum-blue-C_I-8727-multibin-500-bar-profile.jpg]]
@@ -1781,6 +2025,11 @@ python ../src/bar-profile.py $INFILE $DATAPATH $HDU $NBLOCK $NORM
 
 What is wrong with these IRAC images that we get so many NaNs in the profiles? /Answer:/ they were the wrong files - sorted now.
 
+#+call: bar-profile(DATAPATH="../data/orion-hawki", INFILE="Orion-Bar-H2-minus-060-Brg.fits", HDU=1, NBLOCK=1000)
+
+#+RESULTS:
+[[file:Orion-Bar-H2-minus-060-Brg-bar-profile.jpg]]
+
 #+call: bar-profile(DATAPATH="../../dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic", INFILE="40044081.40044081-89-short.IRAC.1.mosaic.fits", HDU=0, NBLOCK=100, NORM="no")
 
 #+RESULTS:
@@ -1849,8 +2098,6 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 
   emlines = [
       ["O_III-5007", 7, 2.2, 0.5, r"[O III] $\lambda 5007$"], 
-      # ["He_I-6678",  7.0, "He I"], 
-      # ["H_I-9229",   5.0, "H I"], 
       ["O_II-7318",  2.5, 1.25, 0.7, r"[O II] $\lambda 7318$"], 
       ["O_I-6300",   1.0, 1.0, 0.9, r"[O I] $\lambda 6300$"], 
       ["O_I-8446",   0.0, 1.0, 1.1, r"O I $\lambda 8446$"], 
@@ -1864,10 +2111,10 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   ]
 
   molecules = [
-      ["mom0_87_109_13co_pix_2_Tmb", 4.0, 1, "$^{13}$CO (1-0)"],
-      ["mom0_48_57_12co_pix_2_Tmb", 3.0, 2, "$^{12}$CO (1-0)"],
-      ["linesum-blue-C_I-8727-multibin-500", 2.7, 3, r"[C I] $\lambda 8727$"],
-      #["40044081.40044081-82-short.IRAC.4.mosaic", 1.0, "MIR $5.8 \mu$m"],
+      ["mom0_87_109_13co_pix_2_Tmb", 0.0, 5.5, 1.0, "$^{13}$CO (1-0)"],
+      ["mom0_48_57_12co_pix_2_Tmb", 0.0, 4.0, 1.5, "$^{12}$CO (1-0)"],
+      ["linesum-blue-C_I-8727-multibin-500", 0.0, 4.0, 2, r"[C I] $\lambda 8727$"],
+      ["Orion-Bar-H2-minus-060-Brg", -13.0, 13.0, 2.5, r"H$_{2}$ 2.21$\,\mu$m"],
   ]
 
   infrared = [
@@ -1901,17 +2148,17 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
               bbox=whitebox, ha="left", va="top", fontsize="small")
   ax.text(10, 15.0, "IR continuum", ha="center", bbox=whitebox, fontsize="small")
 
-  for lineid, scale, lw, label in molecules:
+  for lineid, offset, scale, lw, label in molecules:
       x, y = load_data(f"{lineid}-bar-profile.json")
       m = x > 10
-      ax.plot(x[m], y[m]*scale, color="k", lw=lw, alpha=0.3)
+      ax.plot(x[m], y[m]*scale + offset, color="k", lw=lw, alpha=0.3)
       x0 = 75
       i0 = np.sum(x < x0)
       y0 = y[i0]
-      ax.text(x0, scale*y0,
+      ax.text(x0, scale*y0 + offset,
               f"{label}",
               bbox=whitebox, ha="center", va="center", fontsize="small")
-  ax.text(75, 11.0, "PDR emission lines", ha="center", fontsize="small")
+  ax.text(75, 11.0, "PDR emission lines", bbox=whitebox, ha="center", fontsize="small")
 
 
   raman_fmt = "muse-hr-data-ha-raman-{}-cont-sub-multibin-1000-bar-profile.json"
@@ -1948,28 +2195,6 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   sns.despine()
   fig.tight_layout(h_pad=0.0)
   fig.savefig(figfile)
-
-
-  # 40044081.40044081-82-short.IRAC.1.mosaic-bar-profile.json
-  # 40044081.40044081-82-short.IRAC.4.mosaic-bar-profile.json
-  # continuum-N_III-6634-bin001-bar-profile.json
-  # linesum-Ar_III-7136-bin001-bar-profile.json
-  # linesum-S_III-9069-bin001-bar-profile.json
-  # mom0_48_57_12co_pix_2_Tmb-bar-profile.json
-  # muse-derived-Ne-iii-multibin-SN0003-bar-profile.json
-  # muse-derived-Ne-multibin-SN0003-bar-profile.json
-  # muse-derived-Te-iii-multibin-SN0003-bar-profile.json
-  # muse-derived-Te-multibin-SN0003-bar-profile.json
-  # muse-hr-data-ha-raman-B033-cont-sub-multibin-1000-bar-profile.json
-  # muse-hr-data-ha-raman-B054-cont-sub-multibin-1000-bar-profile.json
-  # muse-hr-data-ha-raman-B080-cont-sub-multibin-1000-bar-profile.json
-  # muse-hr-data-ha-raman-B133-cont-sub-multibin-1000-bar-profile.json
-  # muse-hr-data-ha-raman-R040-cont-sub-multibin-1000-bar-profile.json
-  # muse-hr-data-ha-raman-R058-cont-sub-multibin-1000-bar-profile.json
-  # muse-hr-data-ha-raman-R087-cont-sub-multibin-1000-bar-profile.json
-  # muse-hr-data-ha-raman-R136-cont-sub-multibin-1000-bar-profile.json
-  # muse-hr-data-ha-raman-TOTAL-multibin-1000-bar-profile.json
-
 #+end_src
 
 #+RESULTS:
@@ -2013,6 +2238,49 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 #+RESULTS:
 [[file:C_H_beta_9229-bin001-bar-profile.jpg]]
 
+
+**** Isolating the H_2 emission
++ Easiest way is to subtract Br\gamma from H_2 filter
++ That will eliminate the continuum hopefully, but will have negative values where there is ionized emission
++ We could do something cleverer using the broad K band as well
++ Files are
+  + H_2 - ~HAWKI.2007-12-02T06_20_16.351.fits~
+  + Br\gamma - ~HAWKI.2007-12-02T06:40:00.862.fits~
+  + Ks - ~HAWKI.2008-11-09T06:42:26.928.fits~
+
+#+begin_src python :results output verbatim
+  import numpy as np
+  from astropy.io import fits
+
+  datadir = "../data/orion-hawki/"
+
+  hdu_h2 = fits.open(f"{datadir}/HAWKI.2007-12-02T06_20_16.351.fits")["CHIP1.INT1"]
+  hdu_br = fits.open(f"{datadir}/HAWKI.2007-12-02T06:40:00.862.fits")["CHIP1.INT1"]
+
+  hdu_h2.data -= 0.45*hdu_br.data
+  hdu_h2.writeto(f"{datadir}/Orion-Bar-H2-minus-045-Brg.fits",
+                 output_verify="fix",
+                 overwrite=True,
+  )
+#+end_src
+
+#+begin_src python :results output verbatim
+  import numpy as np
+  from astropy.io import fits
+
+  datadir = "../data/orion-hawki/"
+
+  hdu_h2 = fits.open(f"{datadir}/HAWKI.2007-12-02T06_20_16.351.fits")["CHIP4.INT1"]
+  hdu_br = fits.open(f"{datadir}/HAWKI.2007-12-02T06:40:00.862.fits")["CHIP4.INT1"]
+
+  hdu_h2.data -= 0.45*hdu_br.data
+  hdu_h2.writeto(f"{datadir}/Orion-CHIP4-H2-minus-045-Brg.fits",
+                 output_verify="fix",
+                 overwrite=True,
+  )
+#+end_src
+
+#+RESULTS:
 
 *** The supposed Si II fluoresced bump
 + Dopita sees this at 6470 \to 6480
