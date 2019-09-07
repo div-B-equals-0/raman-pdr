@@ -1737,6 +1737,181 @@ Now, we can make a color image
 
 #+RESULTS: rgb-lupton-extinction
 [[file:rgb-lupton-extinction.jpg]]
+***** Spatial binning of the extinction anomalies
+This is a bit daft since some of them are already binned, but never mind
+
+#+begin_src sh :results verbatim
+  MULTIBIN=/Users/will/Dropbox/multibin-maps/multibin-map.py
+  cd ../data/orion-muse
+  for map in Delta_CHB_*.fits C_H_beta_Radio.fits; do
+      python $MULTIBIN $map
+  done
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Saving Delta_CHB_I-V-bin001.fits
+Saving Delta_CHB_I-V-bin002.fits
+Saving Delta_CHB_I-V-bin004.fits
+Saving Delta_CHB_I-V-bin008.fits
+Saving Delta_CHB_I-V-bin016.fits
+Saving Delta_CHB_I-V-bin032.fits
+Saving Delta_CHB_I-V-bin064.fits
+Saving Delta_CHB_I-V-bin128.fits
+Saving Delta_CHB_I-V-bin256.fits
+Saving Delta_CHB_R-I-bin001.fits
+Saving Delta_CHB_R-I-bin002.fits
+Saving Delta_CHB_R-I-bin004.fits
+Saving Delta_CHB_R-I-bin008.fits
+Saving Delta_CHB_R-I-bin016.fits
+Saving Delta_CHB_R-I-bin032.fits
+Saving Delta_CHB_R-I-bin064.fits
+Saving Delta_CHB_R-I-bin128.fits
+Saving Delta_CHB_R-I-bin256.fits
+Saving Delta_CHB_R-V-bin001.fits
+Saving Delta_CHB_R-V-bin002.fits
+Saving Delta_CHB_R-V-bin004.fits
+Saving Delta_CHB_R-V-bin008.fits
+Saving Delta_CHB_R-V-bin016.fits
+Saving Delta_CHB_R-V-bin032.fits
+Saving Delta_CHB_R-V-bin064.fits
+Saving Delta_CHB_R-V-bin128.fits
+Saving Delta_CHB_R-V-bin256.fits
+Saving C_H_beta_Radio-bin001.fits
+Saving C_H_beta_Radio-bin002.fits
+Saving C_H_beta_Radio-bin004.fits
+Saving C_H_beta_Radio-bin008.fits
+Saving C_H_beta_Radio-bin016.fits
+Saving C_H_beta_Radio-bin032.fits
+Saving C_H_beta_Radio-bin064.fits
+Saving C_H_beta_Radio-bin128.fits
+Saving C_H_beta_Radio-bin256.fits
+#+end_example
+
+***** Histograms of extinction anomalies
++ Compare Radio-infrared with Infrared-optical
++ These look like they need some spatial binning
+
+#+name: extinct-anom-hist
+#+header: :var SUFF="-bin001"
+#+begin_src python :return figfile :results file
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+  from astropy.io import fits
+
+
+  datadir = "../data/orion-muse"
+
+  R_I = fits.open(f"{datadir}/Delta_CHB_R-I{SUFF}.fits")["SCALED"].data
+  I_V = fits.open(f"{datadir}/Delta_CHB_I-V{SUFF}.fits")["SCALED"].data
+  CHB = fits.open(f"{datadir}/C_H_beta_Radio{SUFF}.fits")["SCALED"].data
+
+  xmin, xmax = -0.5, 1.
+  ymin, ymax = -0.5, 1.
+
+  m = np.isfinite(R_I*I_V*CHB) & (R_I > xmin) & (R_I < xmax) & (I_V > ymin) & (I_V < ymax) 
+  m = m & ~(R_I*I_V*CHB == 0.0)
+  x, y, w = R_I[m], I_V[m], CHB[m] - CHB[m].min()
+
+  H, xedges, yedges = np.histogram2d(x, y, 31,
+                                     [[xmin, xmax], [ymin, ymax]],
+                                     weights=w**2, density=True)
+
+  figfile = f"orion-extinction-anomalies-histogram{SUFF}.pdf"
+  gamma = 1.5
+  fig, ax = plt.subplots(figsize=(6, 6))
+  ax.imshow(H.T**(1.0/gamma), extent=[xmin, xmax, ymin, ymax],
+            interpolation="nearest", aspect="auto",
+            origin="lower", cmap="viridis",
+  )
+  ax.set(
+      xlim=[xmin, xmax],
+      ylim=[ymin, ymax],
+      xlabel="Radio-infrared",
+      ylabel="Infrared-optical",
+  )
+  ax.set_aspect("equal")
+
+  fig.tight_layout()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS: extinct-anom-hist
+[[file:orion-extinction-anomalies-histogram-bin001.pdf]]
+
+#+call: extinct-anom-hist("-bin008")
+
+#+RESULTS:
+[[file:orion-extinction-anomalies-histogram-bin008.pdf]]
+
+#+call: extinct-anom-hist("-bin016")
+
+#+RESULTS:
+[[file:orion-extinction-anomalies-histogram-bin016.pdf]]
+
+#+call: extinct-anom-hist("-bin032")
+
+#+RESULTS:
+[[file:orion-extinction-anomalies-histogram-bin032.pdf]]
+
+***** Scatter version of the same
++ These are better than the histograms
++ bin032 is the best
++ Color and point size map to Radio-Ha C(H\beta)
+#+name: extinct-anom-scat
+#+header: :var SUFF="-bin032"
+#+begin_src python :return figfile :results file
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+  from astropy.io import fits
+
+
+  datadir = "../data/orion-muse"
+
+  R_I = fits.open(f"{datadir}/Delta_CHB_R-I{SUFF}.fits")["SCALED"].data
+  I_V = fits.open(f"{datadir}/Delta_CHB_I-V{SUFF}.fits")["SCALED"].data
+  CHB = fits.open(f"{datadir}/C_H_beta_Radio{SUFF}.fits")["SCALED"].data
+
+  xmin, xmax = -0.4, 1.0
+  ymin, ymax = -0.4, 0.6
+
+  m = np.isfinite(R_I*I_V*CHB) & (R_I > xmin) & (R_I < xmax) & (I_V > ymin) & (I_V < ymax) 
+  m = m & ~(R_I*I_V*CHB == 0.0)
+  x, y, w = R_I[m], I_V[m], CHB[m] - CHB[m].min()
+
+  # Get rid of repeated values
+  x, y, w = np.unique(np.stack((x, y, w)), axis=-1)
+
+  figfile = f"orion-extinction-anomalies-scatter{SUFF}.pdf"
+  gamma = 1.5
+  fig, ax = plt.subplots(figsize=(7, 5))
+  ax.scatter(x, y, s=10*(0.5 + w**2), c=w**1.5, alpha=0.6, edgecolor="none", cmap="magma_r")
+  ax.set(
+      xlim=[xmin, xmax],
+      ylim=[ymin, ymax],
+      xlabel="Radio-infrared",
+      ylabel="Infrared-optical",
+  )
+  ax.set_aspect("equal")
+
+  fig.tight_layout()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS: extinct-anom-scat
+[[file:orion-extinction-anomalies-scatter-bin032.pdf]]
+
+#+call: extinct-anom-scat("-bin016")
+
+#+RESULTS:
+[[file:orion-extinction-anomalies-scatter-bin016.jpg]]
+
+#+call: extinct-anom-scat("-bin064")
+
+#+RESULTS:
+[[file:orion-extinction-anomalies-scatter-bin064.jpg]]
 
 **** Figure to compare Raman, [O I], and CO
 
