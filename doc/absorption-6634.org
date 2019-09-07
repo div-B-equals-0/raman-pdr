@@ -1512,6 +1512,9 @@ And try Lupton with hi-res images...
 **** Some more color figures
 
 ***** Velocity maps of H
+:PROPERTIES:
+:ID:       6104B4AF-6D51-4BA2-8F60-FCC6F92D762F
+:END:
 #+name: rgb-lupton-velchannels
 #+header: :var TAB=rgb-limits-hi-line-center SUFFIX="hi-line-center" DATADIR="../data/orion-muse"
 #+header: :var STRETCH=0.3 Q=4 STARS=star-coords HDU="DATA"
@@ -1615,6 +1618,9 @@ And try Lupton with hi-res images...
 [[file:rgb-lupton-velchannels-hi-far-blue.jpg]]
 
 ***** TODO [Fe II] 8617 
+:PROPERTIES:
+:ID:       97441E8F-68B9-4716-A4BE-8A4FA7028176
+:END:
 + This line is sat on top of the second order H\beta line
 + [ ] But we can use a linear interpolation of the 8612.1 and 8621.45 channels to remove this
 + Leave it for another day
@@ -1644,7 +1650,8 @@ And try Lupton with hi-res images...
 + Unknown line at 5988 \AA
   + Take 5984.75 and 5990.7 as the base level
   + Add up from 5985.6 \to 5989.85 
-***** Maps of different extinction estimates
+***** DONE Maps of different extinction estimates
+CLOSED: [2019-09-07 Sat 09:02]
 First of all, we would need to put the radio tau map on the same WCS as the others
 #+begin_src python :results silent
   import numpy as np
@@ -1737,7 +1744,8 @@ Now, we can make a color image
 
 #+RESULTS: rgb-lupton-extinction
 [[file:rgb-lupton-extinction.jpg]]
-***** Spatial binning of the extinction anomalies
+***** DONE Spatial binning of the extinction anomalies
+CLOSED: [2019-09-07 Sat 09:02]
 This is a bit daft since some of them are already binned, but never mind
 
 #+begin_src sh :results verbatim
@@ -1788,7 +1796,8 @@ Saving C_H_beta_Radio-bin128.fits
 Saving C_H_beta_Radio-bin256.fits
 #+end_example
 
-***** Histograms of extinction anomalies
+***** DONE Histograms of extinction anomalies
+CLOSED: [2019-09-07 Sat 09:02]
 + Compare Radio-infrared with Infrared-optical
 + These look like they need some spatial binning
 
@@ -1855,7 +1864,8 @@ Saving C_H_beta_Radio-bin256.fits
 #+RESULTS:
 [[file:orion-extinction-anomalies-histogram-bin032.pdf]]
 
-***** Scatter version of the same
+***** DONE Scatter version of the same
+CLOSED: [2019-09-07 Sat 09:03]
 + These are better than the histograms
 + bin032 is the best
 + Color and point size map to Radio-Ha C(H\beta)
@@ -2476,6 +2486,14 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   + Those two lines are clearly seen in Dopita spectra
   + And in MUSE spectra too
 + [ ] 6544.3 seen in SPM spectra - what is it?
++ 6700 + 6706 in R136 band
+  + He I 6699.394473 - could be
+  + There are some N I lines around 6706 and also 6722, but the upper level is at just over one Ryd so it can't be
+  + There are some Fe II lines that might be it 6704.88, 6706.25 - one of the same multiplet is at 6534.314, which is same wavelength as [Ni III] 6533.80
++ B133 band
+  + Lots of stellar absorption lines at 6450 and below
+  + Possibly a weak line at 6440.35
+  + But these are negligible contribution
 *** What H\alpha rest wavelength to use
 + The Raman scattering has to be 1s \to 3p \to 2s by E1 selection rule (\Delta\ell = \pm1)
 + 
