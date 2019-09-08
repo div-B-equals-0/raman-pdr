@@ -127,23 +127,25 @@ star formation regions.
 \section{Spectral mapping of Raman wings}
 \label{sec:muse-spectr-mapp}
 
-\begin{table}
-  \caption{Wavelength bands used for extracting Raman-scattered light}
+\begin{table*}
+  \caption{Wavelength bands used for Raman wing extraction}
   \label{tab:wav-bands}
   ~\\[-\baselineskip]
-  \begin{tabular}{l R C C l}\toprule
-    Band & \langle\Delta\lambda\rangle & \lambda_{\text{min}} & \lambda_{\text{max}} & Contamination \\  \midrule
-    B133 & -132.8 & 6414.85& 6445.45 & \\
-    B080 & -79.5 & 6469.25& 6496.45& Sky 6471, 6478\\
-    B054 & -53.6 & 6499.85& 6517.70& \ion{O}{2}? 6502, 6510, Sky 6507\\
-    B033 & -32.8 & 6518.55& 6540.65& [\ion{N}{2}] 6527.24, [\ion{Ni}{3}] 6533.76\\
-    R040 & 40.3 &  6594.20& 6611.20& Sky 6603\\
-    R058 & 57.7 &  6612.05& 6628.20&\\
-    R087 & 87.1 &  6638.40& 6660.50& [\ion{Cr}{4}]? 6641\\
-    R136 & 135.7 & 6688.55& 6708.95& \ion{He}{1} 6699\\
+  \begin{tabular}{l l R C C C C l}\toprule
+    & Band & \langle\Delta\lambda\rangle, \si{\angstrom}   & \lambda_{\text{min}}, \si{\angstrom} & \lambda_{\text{max}}, \si{\angstrom} & f_{\mathrm{H\alpha}} & \langle\sigma_\lambda\rangle, \SI{e-21}{cm^2} & Contamination \\
+    \midrule
+    Blue wing & B133 & -132.8& 6414.85& 6445.45 & 0.180 & 0.144 & \\
+    & B080 & -79.5 & 6469.25& 6496.45 & 0.196 & 0.378 & Sky 6471, 6478\\
+    & B054 & -53.6 & 6499.85& 6517.70 & 0.205 & 0.802 & \ion{O}{2}? 6502, 6510, Sky 6507\\
+    & B033 & -32.8 & 6518.55& 6540.65 & 0.212 & 2.069 & [\ion{N}{2}] 6527.24, [\ion{Ni}{3}] 6533.76\\
+    \addlinespace[2pt]
+    Red wing & R040 & 40.3 &  6594.20& 6611.20 & 0.238 & 1.451 & Sky 6603\\
+    & R058 & 57.7 &  6612.05& 6628.20 & 0.244 & 0.695 & \\
+    & R087 & 87.1 &  6638.40& 6660.50 & 0.255 & 0.299 & [\ion{Cr}{4}]? 6641\\
+    & R136 & 135.7 & 6688.55& 6708.95 & 0.274 & 0.119 & \ion{He}{1} 6699\\
     \bottomrule
   \end{tabular}
-\end{table}
+\end{table*}
 
 \begin{figure*}
   \includegraphics[width=\linewidth]{figs/raman-orion-muse-1d-spectra}
@@ -309,6 +311,14 @@ become apparent.
 
 \section{Discussion}
 \label{sec:discussion}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=\linewidth]{figs/raman-muse-spectra-times-lambda-squared}
+  \caption{Same as Fig.~\ref{fig:raman-spectra-1d} but with \(F_\lambda\) multiplied by \((\Delta\lambda_2)^2\) and zoomed in on the Raman wing wavelengths.}
+  \label{fig:raman-compensated}
+\end{figure*}
+
 
 The effective resolving power of the optical spectrograph is multiplied by 6.4 for the FUV domain.
 
