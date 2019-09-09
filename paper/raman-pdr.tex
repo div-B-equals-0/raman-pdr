@@ -40,8 +40,9 @@
 \newcommand\lyb{\ensuremath{\text{Ly}\beta}}
 
 \begin{document}
-\title{Raman mapping of atomic hydrogen and oxygen in the Orion Bar and Orion South PDRs}
-\shorttitle{Raman mapping of atomic gas in Orion}
+%\title{Raman mapping of atomic hydrogen and oxygen in the Orion Bar and Orion South PDRs}
+\title{Raman mapping of photodissociation regions in Orion}
+\shorttitle{Raman mapping of Orion PDRs}
 \author{William J. Henney}
 \affiliation{%
   \foreignlanguage{spanish}{Instituto de Radioastronomía y
@@ -98,31 +99,177 @@ front can be no more than about
 photoionization cross section at threshold \citep{Osterbrock:2006a}.
 The Raman scattering cross section at wavelengths responsible for the
 observed wings is much lower than this:
-\(\sigma\Raman \sim \SI{e-22}{cm^2}\) \citep{Chang:2015a}, meaning that the
+\(\sigma\Raman \sim \SI{e-21}{cm^2}\) \citep{Chang:2015a}, meaning that the
 Raman scattering optical depth through the ionization front is only of
-order \(0.0001\).  A vastly larger column density of neutral hydrogen
+order \(0.001\).  A vastly larger column density of neutral hydrogen
 (\(\approx \SI{e21}{cm^{-2}}\)) is available in the photodissociation region
 (PDR) outside the ionization front, so it is more likely that Raman
 scattering will occur there instead, so long as there is sufficient
 far ultraviolet radiative flux.
 
-In this paper I present archival VLT-MUSE integral field spectroscopy
-of the Orion Nebula in \S~\ref{sec:muse-spectr-mapp}, which allows the
+This paper is organized as follows. \S~\ref{sec:raman-theory}
+recapitulates the basic theory of Raman scattering, concentrating on
+the wavelength transformation from the FUV domain around \lyb{} to
+optical domain around \ha{}.  In addition, polynomial fits are
+provided to the wavelength dependence of the total (Rayleigh plus
+Raman) scattering cross section and the Raman \ha{} branching
+ratio. \S~\ref{sec:muse-spectr-mapp} then presents archival VLT-MUSE
+integral field spectroscopy of the Orion Nebula, which allows the
 broad H\(\alpha\) wings to be spatially mapped in unprecedented detail and
 compared with other tracers of ionized and neutral zones in the
-nebula.  In \S~\ref{sec:raman-scatt-spectr} I calculate the
-Raman-transformed wavelengths of the \ion{O}{1} UV resonance
-transition \(\Term{2p^4}{3}{P} \to \Term{3d}{3}{D^o}\) and show that two
-components of the multiplet are clearly detected as absorption
+nebula.  Two components of the \ion{O}{1} UV resonance multiplet
+\(\Term{2p^4}{3}{P} \to \Term{3d}{3}{D^o}\) are detected as absorption
 features at \num{6633} and \SI{6664}{\angstrom} against the \ha{}
-Raman wings.  In \S~\ref{sec:keck-observations} I present archival
+Raman wings.  \S~\ref{sec:keck-observations} presents archival
 Keck-HIRES slit spectroscopy, which shows the profile of the
 \SI{6664}{\angstrom} absorption line with an effective velocity
-resolution of \SI{1}{km.s^{-1}}.  In \S~\ref{sec:discussion} I discuss
+resolution of \SI{1}{km.s^{-1}}.  \S~\ref{sec:discussion} discusses
 the implications of these results for the structure and dynamics of
 the PDRs in Orion, together with the prospects for using Raman
 spectral mapping as a diagnostic tool in the study of other high-mass
 star formation regions.
+
+\section{Raman scattering theory}
+\label{sec:raman-theory}
+
+\begin{table*}
+  \caption{FUV/optical wavelength equivalencies for Raman scattering}
+  \label{tab:raman-wavelengths}
+  ~\\[-\baselineskip]
+  \begin{tabular}{L L L C C R C C C}\toprule
+    % Transition & {UV wav, \AA{}} & {Freq, cm\textsuperscript{-1}} & {d Freq} & {Opt wav} & {Air wav}\\
+    \text{Ion} & \text{Transition} & J_i \to J_k & \lambda_1,\ \si{\angstrom} & \wn_1,\ \si{cm^{-1}} & \Delta\wn,\  \si{cm^{-1}}& \wn_2,\ \si{cm^{-1}} & \lambda_2,\ \si{\angstrom} & \lambda_{\text{air}},\ \si{\angstrom} \\
+    \midrule
+    & & & \multicolumn{2}{c}{\dotfill\(\quad \lyb,\ n = 1 \quad\)\dotfill} & & \multicolumn{3}{c}{\dotfill\(\quad \ha,\ n = 2 \quad\)\dotfill} \\
+    \addlinespace[2pt]
+    \ion{H}{1} & n\Term{s}{2}{S} \to \Term{3p}{2}{P} & \tfrac12 \to \tfrac12,\tfrac32 & 1025.72220 & 97492.283 & 0.000 & 15233.329 & 6564.553 & 6562.740\\
+    \addlinespace
+    \ion{O}{1} & \Term{2s^2 2p^4}{3}{P}  \to \Term{2s^2 2p^3 (^4S) 3d}{3}{D^o} & 0 \to 1 & 1028.15729 & 97261.383 & -230.900 & 15002.429 & 6665.587 & 6663.747\\
+     & & 1 \to 1 & 1027.43139 & 97330.100 & -162.183 & 15071.146 & 6635.196 & 6633.364\\
+     & & 1 \to 2 & 1027.43077 & 97330.159 & -162.124 & 15071.205 & 6635.170 & 6633.338\\
+     & & 2 \to 1 & 1025.76339 & 97488.369 & -3.914 & 15229.415 & 6566.240 & 6564.427\\
+     & & 2 \to 2 & 1025.76276 & 97488.429 & -3.854 & 15229.475 & 6566.215 & 6564.401\\
+     & & 2 \to 3 & 1025.76170 & 97488.530 & -3.753 & 15229.576 & 6566.171 & 6564.358\\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
+When a photon is Raman-scattered from the vicinity of \lyb{} (UV
+domain) to the vicinity of \ha{} (optical domain) its wavelength is
+transformed from \(\lambda_1\) to \(\lambda_2\).  Intervals in frequency
+(\(\nu = c/\lambda\)) or wavenumber (\(\wn = 1 / \lambda\)) space are conserved
+between the two domains. For example the wavenumber displacement from
+the \ion{H}{1} line center can be written in two ways:
+\begin{equation}
+  \label{eq:delta-wavnum}
+  \Delta\wn = \wn_1 - \wn(\lyb) = \wn_2 - \wn(\ha) \ ,
+\end{equation}
+from which it follows that
+\begin{equation}
+  \label{eq:wav-transform}
+  \lambda_2 = \left( \frac1{\lambda(\ha)} +\frac1{\lambda_1} - \frac1{\lambda(\lyb)}\right)^{-1} \ .
+\end{equation}
+The wavelengths \(\lambda(\lyb)\) and \(\lambda(\ha)\), together with their
+corresponding wavenumbers, are given in
+Table~\ref{tab:raman-wavelengths} (all wavelengths are on the vacuum
+scale unless otherwise noted).  For both lines, a weighted average
+over the \Level{3p}{2}{P}{1/2} and \Level{3p}{2}{P}{3/2} upper levels
+is used, assumed to be populated according to their statistical
+weights, with individual component wavelengths obtained from
+Tab.~XXVIII of \citet{Mohr:2008a}. Note that the electric dipole
+selection rules mean that only \Config{3p \to 2s} transitions contribute
+to \ha{} in the Raman scattering context.  The wavelength is therefore
+slightly shorter than the value obtained for the \ha{} recombination
+line, which includes additional contributions from \Config{3s \to 2p}
+and \Config{3d \to 2p}. The shift is of order \SI{-0.05}{\angstrom} or
+\SI{-2}{km.s^{-1}} with respect to the Case~B results reported in
+Tab.~6a of \citet{Clegg:1999a}.
+
+Also listed in Table~\ref{tab:raman-wavelengths} are the Raman
+transformations \(\lambda_1 \to \lambda_2\) for the rest wavelengths of transitions
+between the ground \Term{2s^2 2p^4}{3}{P} term of neutral
+\chem{^{16}O} and the excited \Term{2s^2 2p^3 3d}{3}{D^o} term. The
+\ion{O}{1} data is obtained from highly accurate laser metrology
+\citep{Ivanov:2008a, Marinov:2017a}, with a precision of
+\SI{0.08}{cm^{-1}} or better.  The fine structure splitting between
+the \(J_k\) levels of the excited term (\(\sim \SI{0.1}{cm^{-1}}\)) is
+much smaller than that between the \(J_i\) levels of the ground term
+(\(\sim \SI{100}{cm^{-2}}\)), so that the 6 transitions fall into 3
+well-separated groups.  The three transitions from the lowest energy
+\(J_i=2\) level are very close to \lyb{}
+(\(\Delta\wn \approx \SI{4}{cm^{-1}}\)), whereas the two transitions from
+\(J_i=1\) (\(\Delta\wn \approx \SI{162}{cm^{-1}}\)) and the single transition
+from \(J_i=0\) (\(\Delta\wn \approx \SI{231}{cm^{-1}}\)) lie increasingly to the
+red.  The corresponding wavelengths in the optical domain,
+\(\lambda_2\), are therefore on the red side of \ha{}.  The final column of
+the table uses STP refractive indices \citep{Greisen:2006a} to convert
+\(\lambda_2\) to air wavelengths, \(\lambda_{\text{air}}\), for ease of comparison
+with ground-based optical spectroscopy.  The resultant wavelength is
+\SI{6663.747}{\angstrom} for the line from \(J_i = 0\), with an
+uncertainty of about \SI{0.004}{\angstrom}, which is much smaller than
+typical observational precision (for instance, \SI{0.07}{\angstrom}
+for a very high resolution spectrograph with resolving power of
+\(R = \num{e5}\)). The two lines from \(J_i = 1\), with a separation
+of \SI{0.028}{\angstrom}, will always be blended in observations,
+giving a mean wavelength of \SI{6633.347}{\angstrom} (assuming the
+upper levels are distributed according to statistical weight
+\(2 J_k + 1\)).  Similarly, the three lines from \(J_i = 2\) have a
+mean wavelength of \SI{6564.386}{\angstrom}, but this is so close to
+\ha{} (corresponding to a Doppler shift of \SI{+75}{km.s^{-1}}) that
+it would be very difficult to observe.
+
+The total cross-section for the off-resonance \Config{1s \to 3p}
+transition in \chem{H^0} is calculated in \S~2 of \citet{Chang:2015a}
+from second order time-dependent perturbation theory. Results are
+presented in the upper panel of Figure~1 of that paper in terms of a
+Doppler velocity factor \(\Delta V_1\), which in the notation of the
+current paper is
+\begin{equation}
+  \label{eq:chang-DeltaV1}
+  \Delta V_1 = c \left( \frac{\lambda_1}{\lambda(\lyb)} - 1 \right) \ .
+\end{equation}
+The observed Raman-scattered wings of \ha{} that are analyzed below
+are typically within \(\Delta\lambda_2 \sim \pm \SI{100}{\angstrom}\) of the line
+core.  It is therefore convenient to define a dimensionless wavelength
+in the optical domain as
+\begin{equation}
+  \label{eq:x-optical-def}
+  x = \frac{\lambda_2 - \lambda(\ha)}{\SI{100}{\angstrom}} \ ,
+\end{equation}
+which corresponds to \(x \approx \Delta V_1 / \SI{714}{km.s^{-1}}\) in the FUV
+domain.  The total cross section in the range \(0.4 < |x| < 2.3\) can
+then be fit as follows:
+\begin{equation}
+  \label{eq:total-cross-section-fit}
+  \frac{\sigma}{\SI{e-21}{cm^2}} =  
+  \begin{cases}
+    0.2186 x^{-2} - 0.0344 x^{-1} - 0.0054 & \text{if \(x < 0\)} \\
+    0.2367 x^{-2} - 0.0187 x^{-1} + 0.0041 & \text{if \(x > 0\)} 
+  \end{cases}
+\end{equation}
+Note that separate fits are given for the blue (\(x < 0\)) and red
+(\(x > 0\)) wings of \ha{} since the cross section, although
+approximately Lorentzian, is not exactly symmetric, being stronger on
+the blue side (by about 10\% for \(x = \pm 1\)).
+
+The fraction of all \Config{1s \to 3p} excitations that result in Raman
+scattering to an optical photon is given by the branching ratio,
+\(f_{\ha}\), with the remaining fraction, \(1 - f_{\ha}\), resulting
+in elastic Rayleigh scattering in which the photon remains in the FUV
+domain.  The results for \(f_{\ha}\) are also shown in Figure~1 of
+\citet{Chang:2015a} and can be fit as follows in the range
+\(|x| < 5\):
+\begin{equation}
+  \label{eq:fha-fit}
+  f_{\ha} = 0.2238 + 0.0363 x + 0.0024 x^2 \ .
+\end{equation}
+The relative accuracy of all these fits is better than 1\% within the
+stated range (corresponding to
+\(\sigma \approx \text{\SIrange{e-22}{e-21}{cm^2}}\)), which is perfectly
+adequate for the purposes of this paper.  Note that the branching
+ratio increases with \(x\), which means that the product
+\(\sigma f_{\ha} \) is stronger on the red side of \ha{}.
 
 \section{Spectral mapping of Raman wings}
 \label{sec:muse-spectr-mapp}
@@ -160,6 +307,16 @@ star formation regions.
   \label{fig:raman-maps}
 \end{figure*}
 
+The \SI{6633}{\angstrom} and \SI{6664}{\angstrom} lines are clearly
+detected in the MUSE spectra as absorption features against the
+pseudo-continuum of the broad \ha{} wings (see Fig~XX), although the
+latter is blended with a \ion{Ni}{2} emission line at
+\SI{6666.8}{\angstrom}.  This is further proof of the Raman scattering
+nature of the wings.
+
+
+
+
 \begin{figure*}
   \includegraphics[width=\linewidth]{figs/raman-bar-multi-profile}
   \caption{Spatial cut of Raman-scattered H\(\alpha\) wing intensity across
@@ -177,78 +334,6 @@ The bands are chosen to avoid the stronger sky lines (e.g.,
 contamination remains, as listed in the last column of
 Table~\ref{tab:wav-bands}.
 
-
-\section{Raman scattering of spectral lines}
-\label{sec:raman-scatt-spectr}
-
-When a photon is Raman-scattered from the vicinity of \lyb{} (UV
-domain) to the vicinity of \ha{} (optical domain) its wavelength is
-transformed from \(\lambda_1\) to \(\lambda_2\).  Intervals in frequency
-(\(\nu = c/\lambda\)) or wavenumber (\(\wn = 1 / \lambda\)) space are conserved
-between the two domains. For example the wavenumber displacement from
-the \ion{H}{1} line center can be written in two ways:
-\begin{equation}
-  \label{eq:delta-wavnum}
-  \Delta\wn = \wn_1 - \wn(\lyb) = \wn_2 - \wn(\ha) \ ,
-\end{equation}
-from which it follows that
-\begin{equation}
-  \label{eq:wav-transform}
-  \lambda_2 = \left( \frac1{\lambda(\ha)} +\frac1{\lambda_1} - \frac1{\lambda(\lyb)}\right)^{-1} \ .
-\end{equation}
-The wavelengths \(\lambda(\lyb)\) and \(\lambda(\ha)\), together with their
-corresponding wavenumbers, are given in Table~\ref{tab:line-fits} (all
-wavelengths are on the vacuum scale unless otherwise noted).  For both
-lines, a weighted average over the \Level{3p}{2}{P}{1/2} and
-\Level{3p}{2}{P}{3/2} upper levels is used, assumed to be populated
-according to their statistical weights, with individual component
-wavelengths obtained from Tab.~XXVIII of \citet{Mohr:2008a}. Note that
-the electric dipole selection rules mean that only \Config{3p \to 2s}
-transitions contribute to \ha{} in the Raman scattering context.  The
-wavelength is therefore slightly shorter than the value obtained for
-the \ha{} recombination line, which includes additional contributions
-from \Config{3s \to 2p} and \Config{3d \to 2p}. The shift is of order
-\SI{-0.05}{\angstrom} or \SI{-2}{km.s^{-1}} with respect to the Case~B
-results reported in Tab.~6a of \citet{Clegg:1999a}.
-
-Also listed in Table~\ref{tab:line-fits} are the Raman transformations
-\(\lambda_1 \to \lambda_2\) for the rest wavelengths of transitions between the
-ground \Term{2s^2 2p^4}{3}{P} term of neutral \chem{^{16}O} and the
-excited \Term{2s^2 2p^3 3d}{3}{D^o} term. The \ion{O}{1} data is obtained
-from highly accurate laser metrology \citep{Ivanov:2008a,
-  Marinov:2017a}, with a precision of \SI{0.08}{cm^{-1}} or better.
-The fine structure splitting between the \(J_k\) levels of the excited
-term (\(\sim \SI{0.1}{cm^{-1}}\)) is much smaller than that between the
-\(J_i\) levels of the ground term (\(\sim \SI{100}{cm^{-2}}\)), so that
-the 6 transitions fall into 3 well-separated groups.  The three
-transitions from the lowest energy \(J_i=2\) level are very close to
-\lyb{} (\(\Delta\wn \approx \SI{4}{cm^{-1}}\)), whereas the two transitions from
-\(J_i=1\) (\(\Delta\wn \approx \SI{162}{cm^{-1}}\)) and the single transition
-from \(J_i=0\) (\(\Delta\wn \approx \SI{231}{cm^{-1}}\)) lie increasingly to the
-red.  The corresponding wavelengths in the optical domain,
-\(\lambda_2\), are therefore on the red side of \ha{}.  The final column of
-the table uses STP refractive indices \citep{Greisen:2006a} to convert
-\(\lambda_2\) to air wavelengths, \(\lambda_{\text{air}}\), for ease of comparison
-with ground-based optical spectroscopy.  The resultant wavelength is
-\SI{6663.747}{\angstrom} for the line from \(J_i = 0\), with an
-uncertainty of about \SI{0.004}{\angstrom}, which is much smaller than
-typical observational precision (for instance, \SI{0.07}{\angstrom}
-for a very high resolution spectrograph with resolving power of
-\(R = \num{e5}\)). The two lines from \(J_i = 1\), with a separation
-of \SI{0.028}{\angstrom}, will always be blended in observations,
-giving a mean wavelength of \SI{6633.347}{\angstrom} (assuming the
-upper levels are distributed according to statistical weight
-\(2 J_k + 1\)).  Similarly, the three lines from \(J_i = 2\) have a
-mean wavelength of \SI{6564.386}{\angstrom}, but this is so close to
-\ha{} (corresponding to a Doppler shift of \SI{+75}{km.s^{-1}}) that
-it would be very difficult to observe.
-
-The \SI{6633}{\angstrom} and \SI{6664}{\angstrom} lines are clearly
-detected in the MUSE spectra as absorption features against the
-pseudo-continuum of the broad \ha{} wings (see Fig~XX), although the
-latter is blended with a \ion{Ni}{2} emission line at
-\SI{6666.8}{\angstrom}.  This is further proof of the Raman scattering
-nature of the wings.
 
 
 \section{High-resolution spectroscopy of Raman-scattered \ion{O}{1} \SI{1028}{\angstrom}}
@@ -274,26 +359,6 @@ become apparent.
 \end{figure*}
 
 
-\begin{table*}
-  \caption{FUV/optical wavelength equivalencies for Raman scattering}
-  ~\\[-\baselineskip]
-  \begin{tabular}{L L L C C R C C C}\toprule
-    % Transition & {UV wav, \AA{}} & {Freq, cm\textsuperscript{-1}} & {d Freq} & {Opt wav} & {Air wav}\\
-    \text{Ion} & \text{Transition} & J_i \to J_k & \lambda_1,\ \si{\angstrom} & \wn_1,\ \si{cm^{-1}} & \Delta\wn,\  \si{cm^{-1}}& \wn_2,\ \si{cm^{-1}} & \lambda_2,\ \si{\angstrom} & \lambda_{\text{air}},\ \si{\angstrom} \\
-    \midrule
-    & & & \multicolumn{2}{c}{\dotfill\(\quad \lyb,\ n = 1 \quad\)\dotfill} & & \multicolumn{3}{c}{\dotfill\(\quad \ha,\ n = 2 \quad\)\dotfill} \\
-    \addlinespace[2pt]
-    \ion{H}{1} & n\Term{s}{2}{S} \to \Term{3p}{2}{P} & \tfrac12 \to \tfrac12,\tfrac32 & 1025.72220 & 97492.283 & 0.000 & 15233.329 & 6564.553 & 6562.740\\
-    \addlinespace
-    \ion{O}{1} & \Term{2s^2 2p^4}{3}{P}  \to \Term{2s^2 2p^3 (^4S) 3d}{3}{D^o} & 0 \to 1 & 1028.15729 & 97261.383 & -230.900 & 15002.429 & 6665.587 & 6663.747\\
-     & & 1 \to 1 & 1027.43139 & 97330.100 & -162.183 & 15071.146 & 6635.196 & 6633.364\\
-     & & 1 \to 2 & 1027.43077 & 97330.159 & -162.124 & 15071.205 & 6635.170 & 6633.338\\
-     & & 2 \to 1 & 1025.76339 & 97488.369 & -3.914 & 15229.415 & 6566.240 & 6564.427\\
-     & & 2 \to 2 & 1025.76276 & 97488.429 & -3.854 & 15229.475 & 6566.215 & 6564.401\\
-     & & 2 \to 3 & 1025.76170 & 97488.530 & -3.753 & 15229.576 & 6566.171 & 6564.358\\
-    \bottomrule
-  \end{tabular}
-\end{table*}
 
 \begin{table}
   \caption{Fit parameters from Gaussian line fits}
@@ -315,7 +380,14 @@ become apparent.
 \begin{figure*}
   \centering
   \includegraphics[width=\linewidth]{figs/raman-muse-spectra-times-lambda-squared}
-  \caption{Same as Fig.~\ref{fig:raman-spectra-1d} but with \(F_\lambda\) multiplied by \((\Delta\lambda_2)^2\) and zoomed in on the Raman wing wavelengths.}
+  \caption{Same as Fig.~\ref{fig:raman-spectra-1d} but with
+    \(F_\lambda\) multiplied by \((\Delta\lambda_2)^2\) and zoomed in on the Raman wing
+    wavelengths.  The spectrum is normalized by the average flux in
+    the R087 band and each region is offset vertically by a constant
+    value, as indicated at right.  In this presentation, optically
+    thin Raman scattering of a flat FUV spectrum should give a
+    constant value, which for the Orion data is only seen in the R087
+    and R136 bands.}
   \label{fig:raman-compensated}
 \end{figure*}
 
@@ -334,6 +406,10 @@ Non-equilibrium PDRs \citep{Stoerzer:1998a, Bertoldi:1996a}.  Recent models from
 
 \ion{C}{1} emission from non-steady PDRs \citep{Stoerzer:1997a} (fine structure lines, but maybe optical lines would be similar).  \citet{Escalante:1991a} model the far-red [\ion{C}{1}] line as recombination of \chem{C^+}.
 
+
+\ion{O}{6} 1037.62, 1031.93 absorption line in wind. No evidence for
+a blue absorption edge at \(V = \SI{1200}{km.s^{-1}}\), which would be at
+\(\lambda_2 = \SI{6649}{\angstrom}\), right in middle of R087 band.
 
 Geometry of bar: in \citet{Henney:2005b} I pointed out that a
 diverging cylindrical geometry is necessary to explain the sharp peak
