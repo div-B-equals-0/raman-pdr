@@ -1674,7 +1674,103 @@ And try Lupton with hi-res images...
 ...nah, still ugly.  But maybe I should use them, since they are higher contrast
 
 
+
+**** Finding charts for Raman extraction regions
++ One of [O I], [O II], [O III]
++ One of 13CO, IRAC1, Radio
+
+#+name: rgb-limits-oi-oii-oiii
+| linesum-O_I-6300-bin001.fits   |   8000 |   150000 |
+| linesum-O_II-7318-bin001.fits  |  20000 |  1000000 |
+| linesum-O_III-5007-bin001.fits | 200000 | 23000000 |
+
+#+name: rgb-lupton-regions
+#+header: :var TAB=rgb-limits-oi-oii-oiii SUFFIX="oi-oii-oiii" DATADIR="../data/orion-muse"
+#+header: :var STRETCH=0.3 Q=4 STARS=star-coords HDU="SCALED"
+#+begin_src python :results file :return figfile
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.visualization import make_lupton_rgb
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  import regions as rg
+
+  regions = rg.read_ds9("../data/raman-extract-boxes.reg")
+
+  # Unpack the channel info from the table
+  [rf, r1, r2], [gf, g1, g2], [bf, b1, b2] = TAB
+
+  def load_and_scale_image(fn, v1, v2, ihdu=HDU):
+      data = fits.open(f"{DATADIR}/{fn}")[ihdu].data
+      return (data - v1) / (v2 - v1)
+
+
+  w = WCS(fits.open(f"{DATADIR}/{rf}")[HDU].header)
+
+  image_r = load_and_scale_image(rf, r1, r2)
+  image_g = load_and_scale_image(gf, g1, g2)
+  image_b = load_and_scale_image(bf, b1, b2)
+  image = make_lupton_rgb(image_r, image_g, image_b, stretch=STRETCH, Q=Q)
+  figfile = f"rgb-lupton-regions-{SUFFIX}.jpg"
+  fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
+  ax.imshow(image)
+  for skyregion in regions:
+      pixelregion = skyregion.to_pixel(w)
+      pixelregion.plot(ax=ax, color="w")
+
+  for _, ra, dec, size in STARS:
+      ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="yellow", fc="none")
+  ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")
+  fig.tight_layout(rect=[0.08, 0.07, 1.0, 1.0])
+  fig.savefig(figfile, dpi=200)
+#+end_src
+
+#+RESULTS: rgb-lupton-regions
+[[file:rgb-lupton-regions-oi-oii-oiii.jpg]]
+
+Re-project the CO, etc all together
+
+#+begin_src python :results silent
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from reproject import reproject_interp
+
+  datadir = "../data/orion-muse"
+
+  hdu1 = fits.open("../../OrionMotions/DarkArc/radiotau-radec.fits")[0]
+  hdu2 = fits.open("../../dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic/40044081.40044081-89-short.IRAC.1.mosaic.fits")[0]
+  hdu3 = fits.open("../../OrionMolecular/Carma-NRO-CO/dataverse_files/coldens13_tauinte.fits")[0]
+  hdu3.data = hdu3.data[0, :, :]/1e17
+  hdu3.header = WCS(hdu3.header).celestial.to_header()
+
+  hdu1.writeto(f"{datadir}/radiotau-radec.fits", overwrite=True)
+
+  newdata, _ = reproject_interp(hdu2, hdu1.header)
+  fits.PrimaryHDU(header=hdu1.header, data=newdata).writeto(
+      f"{datadir}/orion-irac-1.fits",
+      overwrite=True
+  )
+
+  newdata, _ = reproject_interp(hdu3, hdu1.header)
+  fits.PrimaryHDU(header=hdu1.header, data=newdata).writeto(
+      f"{datadir}/orion-13co.fits",
+      overwrite=True
+  )
+#+end_src
+
+#+name: rgb-limits-co-irac1-radio
+| orion-13co.fits     | 0 |   30 |
+| orion-irac-1.fits   | 0 | 1000 |
+| radiotau-radec.fits | 0 |  1.2 |
+
+#+call: rgb-lupton-regions(TAB=rgb-limits-co-irac1-radio, SUFFIX="co-irac1-radio", HDU=0, STRETCH=0.5, Q=8)
+
+#+RESULTS:
+[[file:rgb-lupton-regions-co-irac1-radio.jpg]]
+
 **** Some more color figures
+
 
 ***** Velocity maps of H
 :PROPERTIES:
