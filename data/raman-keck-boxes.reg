@@ -1,0 +1,8 @@
+# Region file format: DS9 version 4.1
+global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
+icrs
+box(5:35:16.3070,-5:23:56.163,11.799",4.047",10.793177) # color=red text={E}
+box(5:35:13.7052,-5:23:53.179,11.472",7.536",10.793177) # color=red text={D}
+box(5:35:15.0136,-5:23:55.280,11.376",2.714",10.793177) # color=red text={C}
+box(5:35:15.0044,-5:23:51.729,11.021",3.636",10.793177) # color=red text={B}
+box(5:35:15.0069,-5:23:53.067,1.202",13.701",10.793177) # color=red text={A}

@@ -1695,7 +1695,6 @@ And try Lupton with hi-res images...
   from astropy.wcs import WCS
   import regions as rg
 
-  regions = rg.read_ds9("../data/raman-extract-boxes.reg")
 
   # Unpack the channel info from the table
   [rf, r1, r2], [gf, g1, g2], [bf, b1, b2] = TAB
@@ -1714,10 +1713,26 @@ And try Lupton with hi-res images...
   figfile = f"rgb-lupton-regions-{SUFFIX}.jpg"
   fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
   ax.imshow(image)
+
+  # Regions for estracting Raman profile
+  regions = rg.read_ds9("../data/raman-extract-boxes.reg")
   for skyregion in regions:
       pixelregion = skyregion.to_pixel(w)
-      pixelregion.plot(ax=ax, color="w")
+      pixelregion.plot(ax=ax, color="w", lw=1)
 
+  # Regions for Dopita paper
+  regions = rg.read_ds9("../data/raman-dopita-box.reg")
+  for skyregion in regions:
+      pixelregion = skyregion.to_pixel(w)
+      pixelregion.plot(ax=ax, color="w", lw=0.8, ls="--")
+
+  # Regions for Keck extraction
+  regions = rg.read_ds9("../data/raman-keck-boxes.reg")
+  for skyregion in regions:
+      pixelregion = skyregion.to_pixel(w)
+      pixelregion.plot(ax=ax, color="r", lw=0.7)
+
+    
   for _, ra, dec, size in STARS:
       ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="yellow", fc="none")
   ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")
@@ -1759,15 +1774,177 @@ Re-project the CO, etc all together
   )
 #+end_src
 
-#+name: rgb-limits-co-irac1-radio
-| orion-13co.fits     | 0 |   30 |
-| orion-irac-1.fits   | 0 | 1000 |
-| radiotau-radec.fits | 0 |  1.2 |
+Do the same, but use the Robberto WFI image instead of radio, and reproject onto IRAC
 
-#+call: rgb-lupton-regions(TAB=rgb-limits-co-irac1-radio, SUFFIX="co-irac1-radio", HDU=0, STRETCH=0.5, Q=8)
+#+begin_src python :results silent
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from reproject import reproject_interp
+
+  datadir = "../data/orion-muse"
+
+  hdu1 = fits.open("../../dust-wave-case-studies/data/Orion-Spitzer-SuperMosaic/40044081.40044081-89-short.IRAC.1.mosaic.fits")[0]
+  hdu2 = fits.open("../data/orion-muse/Orion_H_A_shallow.fits")[0]
+  hdu3 = fits.open("../../OrionMolecular/Carma-NRO-CO/dataverse_files/coldens13_tauinte.fits")[0]
+  hdu3.data = hdu3.data[0, :, :]/1e17
+  hdu3.header = WCS(hdu3.header).celestial.to_header()
+
+  hdu1.writeto(f"{datadir}/orion-spitzer-irac1-full.fits", overwrite=True)
+
+  newdata, _ = reproject_interp(hdu2, hdu1.header)
+  fits.PrimaryHDU(header=hdu1.header, data=newdata).writeto(
+      f"{datadir}/orion-wfi-ha-reproject-irac1-full.fits",
+      overwrite=True
+  )
+
+  newdata, _ = reproject_interp(hdu3, hdu1.header)
+  fits.PrimaryHDU(header=hdu1.header, data=newdata).writeto(
+      f"{datadir}/orion-13co-reproject-irac1-full.fits",
+      overwrite=True
+  )
+#+end_src
+
+#+name: rgb-limits-co-irac1-ha
+| orion-13co-reproject-irac1-full.fits   | 0 |   30 |
+| orion-spitzer-irac1-full.fits          | 0 | 1000 |
+| orion-wfi-ha-reproject-irac1-full.fits | 0 |  500 |
+
+#+name: rgb-lupton-large
+#+header: :var TAB=rgb-limits-co-irac1-ha SUFFIX="co-irac1-ha" DATADIR="../data/orion-muse"
+#+header: :var STRETCH=0.08 Q=10 HDU=0
+#+begin_src python :results file :return figfile
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.visualization import make_lupton_rgb
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  import regions as rg
+
+  regions = rg.read_ds9("../data/muse-fov.reg")
+
+  # Unpack the channel info from the table
+  [rf, r1, r2], [gf, g1, g2], [bf, b1, b2] = TAB
+
+  def load_and_scale_image(fn, v1, v2, ihdu=HDU):
+      data = fits.open(f"{DATADIR}/{fn}")[ihdu].data
+      return (data - v1) / (v2 - v1)
+
+
+  w = WCS(fits.open(f"{DATADIR}/{rf}")[HDU].header)
+
+  image_r = load_and_scale_image(rf, r1, r2)
+  image_g = load_and_scale_image(gf, g1, g2)
+  image_b = load_and_scale_image(bf, b1, b2)
+  image = make_lupton_rgb(image_r, image_g, image_b, stretch=STRETCH, Q=Q)
+  figfile = f"rgb-lupton-large-{SUFFIX}.jpg"
+  fig, ax = plt.subplots(figsize=(7, 5), subplot_kw=dict(projection=w))
+  ax.imshow(image)
+  for skyregion in regions:
+      pixelregion = skyregion.to_pixel(w)
+      pixelregion.plot(ax=ax, color="w", lw=1)
+
+  # for _, ra, dec, size in STARS:
+  #     ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="yellow", fc="none")
+
+  # Window for plotting defined in large-fiv.reg
+  x0, y0, dx, dy = 2322, 1401, 3404, 2344
+
+  ax.set(
+      xlabel="RA (J2000)",
+      ylabel="Dec (J2000)",
+      xlim=[x0-dx/2, x0+dx/2],
+      ylim=[y0-dy/2, y0+dy/2],
+  )
+  #fig.tight_layout()
+  fig.savefig(figfile, dpi=400)
+#+end_src
+
+#+RESULTS: rgb-lupton-large
+[[file:rgb-lupton-large-co-irac1-ha.jpg]]
+
+#+name: rgb-limits-oi-sii-nii
+| final631-radec.fits |  15 |  250 |
+| final673-radec.fits |  50 |  500 |
+| final658-radec.fits | 100 | 1800 |
+
+#+name: rgb-lupton-zoom
+#+header: :var TAB=rgb-limits-oi-sii-nii SUFFIX="oi-sii-nii" DATADIR="../../../Work/BobPC/2002"
+#+header: :var STRETCH=0.5 Q=2.5 HDU=0 STARS=star-coords
+#+begin_src python :results file :return figfile
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.visualization import make_lupton_rgb
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from astropy.convolution import convolve_fft, Gaussian2DKernel
+  import regions as rg
+
+
+  # Unpack the channel info from the table
+  [rf, r1, r2], [gf, g1, g2], [bf, b1, b2] = TAB
+
+  def load_and_scale_image(fn, v1, v2, ihdu=HDU):
+      data = fits.open(f"{DATADIR}/{fn}")[ihdu].data
+      return (data - v1) / (v2 - v1)
+
+
+  w = WCS(fits.open(f"{DATADIR}/{rf}")[HDU].header)
+
+  image_r = load_and_scale_image(rf, r1, r2)
+  image_g = load_and_scale_image(gf, g1, g2)
+  image_b = load_and_scale_image(bf, b1, b2)
+  image = make_lupton_rgb(image_r, image_g, image_b, stretch=STRETCH, Q=Q)
+  figfile = f"rgb-lupton-zoom-{SUFFIX}.jpg"
+  fig, ax = plt.subplots(figsize=(7, 5), subplot_kw=dict(projection=w))
+  ax.imshow(image)
+
+  # Add contours of the Raman TOTAL image
+  rhdu = fits.open("../data/orion-muse/muse-hr-data-ha-raman-TOTAL-multibin-1000.fits")["SCALED"]
+  w2 = WCS(rhdu)
+  # Mask out stars and smooth to 1 arcsec
+  mask = rhdu.data > 10000
+  rhdu.data[mask] = np.nan
+  smooth_raman = convolve_fft(rhdu.data, Gaussian2DKernel(stddev=3))
+  ax.contour(smooth_raman,
+             transform=ax.get_transform(w2),
+             levels=[4000, 5500], linewidths=[0.4, 1.0],
+             colors="w",
+  )
+
+  regions = rg.read_ds9("../data/raman-keck-boxes.reg")
+  for skyregion in regions:
+      pixelregion = skyregion.to_pixel(w)
+      pixelregion.plot(ax=ax, color="r", lw=1, zorder=100)
+
+  # for _, ra, dec, size in STARS:
+  #     ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="yellow", fc="none")
+
+  # Window for plotting defined in zoom-fov.reg
+  x0, y0, dx, dy = 1677, 1482, 1469, 1111
+
+  ax.set(
+      xlabel="RA (J2000)",
+      ylabel="Dec (J2000)",
+      xlim=[x0-dx/2, x0+dx/2],
+      ylim=[y0-dy/2, y0+dy/2],
+  )
+  #fig.tight_layout()
+  fig.savefig(figfile, dpi=400)
+#+end_src
+
+#+RESULTS: rgb-lupton-zoom
+[[file:rgb-lupton-zoom-oi-sii-nii.jpg]]
+
+#+name: rgb-limits-nii-ha-oiii
+| final658-radec.fits | 100 | 1800 |
+| final656-radec.fits | 100 | 3000 |
+| final502-radec.fits | 100 | 1000 |
+
+#+call: rgb-lupton-zoom(TAB=rgb-limits-nii-ha-oiii, SUFFIX="nii-ha-oiii")
 
 #+RESULTS:
-[[file:rgb-lupton-regions-co-irac1-radio.jpg]]
+[[file:rgb-lupton-zoom-nii-ha-oiii.jpg]]
 
 **** Some more color figures
 
