@@ -2389,7 +2389,8 @@ CLOSED: [2019-09-07 Sat 09:03]
   levels_OI = [5e4, 1e5]
 
   fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
-  ax.imshow(hdu.data, vmin=1200, vmax=5000, origin="lower", cmap="viridis")
+  # ax.imshow(hdu.data, vmin=1200, vmax=5000, origin="lower", cmap="viridis")
+  ax.imshow(hdu.data, vmin=0, vmax=8000, origin="lower", cmap="viridis")
   ax.contour(hdu_redCO.data[0, :, :],
              levels=levels_CO, linewidths=[0.5, 1.0, 1.5, 2.0],
              transform=ax.get_transform(w_CO),
@@ -3654,6 +3655,211 @@ Most of these I found from the intro of the Dopita:2016a paper
 *** Ring Nebula
 + I had high hopes, but I found nothing
 + [[file:~/Dropbox/dib-scatter-hii/data/ring-nebula/]]
+
+
+
+
+* Distance to Orion
++ Bob uses 383 +/- 3 pc from Kounkel:2017a
+  + They actually give 388 +/- 5 for ONC and Trapezium
++ GAIA distances to ONC are larger than this:
+  + 407 pc Grossschedl:2018a
+  + 403 pc Kuhn:2018a
+  + (399 \pm 2) pc Stutz:2018b
+  + Difference between these is that Stutz includes the zero point correction, while Grossschedl:2018a does not
++ Kounkel:2018a give 389 +/- 3 for the ONC
+  + (from parallax of 2.540 +/- 0.001, which naively give 393.70 +/- 0.15)
+  + So looks like systematic shift is -5 pc
+  + But that is with a very broad definition of ONC
+  + Looks like onc-6 is the one around the Huygens region, with parallax of 2.5079 +/- 0.186902 = 398.7 +/- 29.8
++ ONC is at a sharp local maximum in D, and is 20 pc behind other nearby regions of the Orion molecular filament, which are about 10 pc nearer to us
++ *Conclusion* I should use 390 pc
+
+* Location of H^0 that does the Raman scattering
++ Bar
+  + Separation is 112 arcsec = 0.21 pc
+  + TOTAL brightness jump of 800 (1200 \to 2000)
++ Orion S
+  + SW minibar is at 31.77 arcsec = 0.06 pc
+  + 3.5 times smaller distance than Bar (if same inclination)
+  + So 12.43 times larger flux
+  + TOTAL brightness jump of 3000 (3000 \to 6000)
++ General OMC
++ Veil
+  + This is probably too far away to worry about
+    + III(B) from Abel:2019a notation is the nearest H^0 along the line of sight
+    + This is 2pc in front of Trapezium
+    + So FUV intensity is 100 times smaller than at the Bar
+  + Foreground layers are summarized in Abel:2019a
+  + Has N(H^0) = 1.6e21 and 3.2e21 cm^-2 in Comp A and B
+  + A_V/N_H = 3.3e-22 mag.cm^2
+  + So A_V = 1.584
+  + N(H_2) = 1e15 - very small!
+  + N(C_I) = 3e13 in Comp B, so 1e-8 H^0, which means most C is C^+
+
+
+
+
+** Geometry of the Bright Bar
+
+*** Model for 21 cm continuum and line 
++ Summary
+  + Absorption component M shows bar is convex
+  + Emission feature shows that most free free beyond bar is foreground (theta 2 A nebula?)
+**** The issue of Galactic background H I emission
++ vdW includes this in eq (1), but at the velocities we are interested in (10 to 15 km/s LSR) this is not important
++ Green:1993a Fig 6b shows that T_b = 48 K at Orion A (l=209 on the curved line)
+  + Also Green:1991a Fig 
++ But most of this is from Orion A itself and so at least partly FG
++ The general diffuse emission is about 16 K
++ Given that T_b of H I emission from Bar is at around 250 K, the Galactic emission is mostly negligible
+**** Naive versus corrected \tau estimations
++ vdW uses T_b = -T_c (1 - e^-\tau)
+  + This assumes that T_s is negligible compared with T_b, which is OK for Veil, since T_s < 160 K and vdw limits absorption calculations to T_c > 450 K
+  + *And* it assumes that all the continuum comes from behind the H^0
++ For small \tau, this is \tau = -T_b / T_c
++ Remember that T_b is *after* subtracting continuum, sp -T_b / T_c is the absorption depth.
++ The true \tau should be given by T_b = (T_s - f_BG T_c) (1 - e^-\tau)
+*** Measurement of H I 21 cm component M 
++ From Van-der-Werf:2013a
++ This is at 8 \to 11 km/s is absorption by H^0 in the Bar of ionized emission behind
++ Gives important clue to Bar geometry
+  + If these are inside i-front, then implies convex geometry
+  + If these are outside i-front, then implies concave geometry
++ Results are in - the absorption is /outside/ the ionization front
++ Optical depths can be also found from vdw fig 9 (channel maps) and fig 8 (average spectrum)
+  + /But these are naive optical depth, assuming all continuum is behind HI and T_s = 0/
+    + The real depths with be higher
+  + Fig 8 shows that peak is about \tau = 0.03 at about 11 km/s, which is just the right velocity
+    + This is over a 27 x 27 arcsec box
+    + It includes knots M-II and M-III but they have a low covering fraction since they are much smaller - probably about 10-20%, which is consistent with M-II being about \tau = 0.2
+  + Scale: blue=0.1, cyan=0.2, green=0.3, yellow=0.5, orange=0.7, red=0.8
+  + M-I has \tau = 0.3 (green) at 9.7 km/s or even 0.7 (red) at 8.4 km/s (but that is a long way from Bar velocity and we are probably affected by wing of component A)
+    + It does seem to peak at slightly bluer velocity than the others, so may not be bar-related
+  + M-II, M-III, M-V, M-VI have \tau = 0.2
+  + M-IV has \tau = 0.1
++ We can work backwards to get the cont-subtracted brightness temperatures
++ We need to measure the T_c too, which is given by contours of I_c (50, 100, 200, 300 400 mJy/beam) in vdw fig 9, together with conversion factor of 14.9 K / (mJy/beam)
++ Equation is T_b = -T_c (1 - e^-\tau)
+  | Comp  | Naive \tau | I_c |   T_c |   T_b |
+  |-------+---------+-----+-------+-------|
+  | M-I   |     0.3 | 100 | 1490. | -386. |
+  | M-II  |     0.2 | 150 | 2235. | -405. |
+  | M-III |     0.2 | 150 | 2235. | -405. |
+  | M-IV  |     0.1 | 150 | 2235. | -213. |
+  | M-V   |     0.2 |  90 | 1341. | -243. |
+  | M-VI  |     0.2 |  60 |  894. | -162. |
+  #+TBLFM: $4=14.9 $3::$5=-$4 (1 - exp(-$2));f0
++ Then we can make different assumptions about f_BG
+  + Just use M-II and M-III since they are at the bright part of bar
+    + T_c = 2235
+    + T_b = -405
+  + We assume far foreground is constant at T_c = 600 K
+    + So T_c = 2235 - 600 = 1635 K from Bar itself
+  + Consider two orientation cases
+    1. Side-illuminated Bar, so f_BG = 0.5 1635 / 2235 = 0.366
+    2. Back-illuminated Bar, so f_BG = 1635 / 2235 = 0.732
+    3. Mid-back illuminated bar, f_BG = 0.75 1635 / 2235 = 0.548
+  + Consider two spin temperature cases
+    1. T_s = 1000 K
+    2. T_s = 500 K
++ Equation is (1 - e^-\tau) = T_b / (T_s - f_BG T_c)
+  |           |  f_BG |  T_s | 1 - e^-\tau |               |
+  |-----------+-------+------+----------+---------------|
+  | Side/cool | 0.366 |  500 |     1.27 | (1.31, -3.14) |
+  | Mid/cool  | 0.548 |  500 |     0.56 |          0.82 |
+  | Back/cool | 0.732 |  500 |     0.36 |          0.45 |
+  | Side/warm | 0.366 | 1000 |    -2.23 |         -1.17 |
+  | Mid/warm  | 0.548 | 1000 |     1.80 | (0.22, -3.14) |
+  | Back/warm | 0.732 | 1000 |     0.64 |          1.02 |
+  | Min/warm  | 0.629 | 1000 |     1.00 |     -ln(0.00) |
+  | Min/cool  | 0.405 |  500 |     1.00 |     -ln(0.00) |
+  #+TBLFM: $4=-405 / ($3 - $2 2235);f2::$5=-ln(1 - $-1);f2
+  + Only the real positive values in the last column make any sense
++ It might make more sense to assume \tau \to \infty and then find relation between T_s and f_Bg
+  + So we actually have T_b \ge T_s - f_BG T_c
+    + Where equality holds when \tau is large
+    + The reason it is \ge not \le is that the RHS is negative
+  + So if T_s = 0 then T_b = -f_BG T_c, which would give f_BG = 0.18 in our case
+  + Or in general f_BG \ge (T_s - T_b) / T_c where T_b is negative
+    + So if T_s > 500 K, as seems a reasonable lower limit, then f_BG \ge (500 + 405) / 2235 = 0.405
+    + And if T_s = 1000 K, then f_BG \ge (1000 + 405) / 2235 = 0.629
+  + So this puts a tight restriction on f_BG, that it must be in range [0.629 .. 0.732] if T_s = 1000 K at the position of M-II and M-III
+  + This also implies that \tau > 1.02
++ Rather than use f_BG T_c, we could instead us T_c - T_FG
+  + This would make more sense in the case of constant T_FG = 600 K
+  + Then we could still have an f that is the fraction of the /Bar/ emission that is behind the H I
+  + So that f_BG T_c \to f (T_c - T_fg)
+  + Now we have -405 = (T_s - f (2235 - 600)) (1 - e^-\tau)
+  + T_s = f 1635  - 405 / (1 - e^-\tau)
+  + So upper limit to T_s if we but f = 1 and \tau \to \infty: T_s < 1635 - 405 = 1230 K
+  + If we put \tau < 1, then T_s < 994 K
+  + Also, we can write it as f = (T_s + 405 / (1 - e^-\tau)) / 1635
+  + So if T_s > 500, then f > (500 + 405)/1635 = 0.55
+  + And if T_s > 500 /and/ \tau < 1, then f > (500 + 405/(1 - 1/e))/1635 = 0.70
+**** Sub-component positions
+|       |       x |       y | RA           | Dec          |
+|-------+---------+---------+--------------+--------------|
+| M-I   | 139.294 | 321.595 | 5@ 35' 25.8" | -5@ 23' 57." |
+| M-II  | 155.294 | 335.595 | 5@ 35' 23.7" | -5@ 24' 24." |
+| M-III | 169.294 | 346.595 | 5@ 35' 21.9" | -5@ 24' 46." |
+| M-IV  | 198.294 | 363.595 | 5@ 35' 18.1" | -5@ 25' 19." |
+| M-Va  | 206.294 | 373.595 | 5@ 35' 17.1" | -5@ 25' 39." |
+| M-Vb  | 220.294 | 375.595 | 5@ 35' 15.2" | -5@ 25' 43." |
+| M-VI  | 234.294 | 375.595 | 5@ 35' 13.4" | -5@ 25' 43." |
+#+TBLFM: $4=hms(5 + 35/60 + (20 + 10 (183.766 - $2)/76.5)/3600);f1::$5=hms(-5 - (23 + ($3 - 292.519)/30.6)/60);f0
+
++ Regions for DS9 are in [[file:~/Dropbox/dib-scatter-hii/data/van-der-Werf-HI-component-M.reg]]
+**** Graph calibration done in Graphic.app
++ [[file:~/Dropbox/dib-scatter-hii/misc/vdW13-Fig9-measurements.idraw]]
++ Summary, (x, y) measured in pix
+  + Dec = -5:(23 + (y - 292.519)/30.6)
+  + RA = 5:35:(20 + 10 (183.766 - x)/76.5)
++ Declination axis
+  | Dec, arcmin |  y, pix |
+  |-------------+---------|
+  |          23 | 292.519 |
+  |          24 |  323.11 |
+  |          25 |  354.11 |
+  |-------------+---------|
+  |             |    30.6 |
+  #+TBLFM: @5$2=@3 - @2;f1
++ RA axis
+  | RA, sec |  x, pix |
+  |---------+---------|
+  |      20 | 183.766 |
+  |      22 | 168.294 |
+  |      24 | 152.294 |
+  |      26 | 137.294 |
+  |      28 | 122.294 |
+  |      30 | 107.294 |
+  |---------+---------|
+  |         |    76.5 |
+  #+TBLFM: @8$2=@2-@7;f1
+*** Measurements of Bar 21 cm emission component
++ This is in Fig 18 (spectrum), Fig 6 and 4 (PV diagram), Fig 3 (image with box), and Fig 2 (12.3 and 13.6 km/s channel images)
+  + Fig 2 has continuum contours of 50 and 200 mJy/pix, or 745 and 2980 K
+    + The H I emission seems to extend a far as the 200 contour, but only at N end of bar
+    + Generally, there is a gap but it is hard to see exactly
+  + Fig 3 has continuum contours at 15, 40, 70, 100, 150, 200, and 300 mJy/beam
+    + [223.5, 596., 1043., 1490., 2235., 2980., 4470.] K
+      + Where the Bar peak is around 3000 K (200 contour)
+    + The H I emission definitely extends up to the 100 (1490 K) contour
+    + But hard to see, since the grayscale is saturated
+  + So it does seem to start immediately after the absorption
+    + Say switch from abs-to-em is at the 100 (1500 K) contour
+      + This is highest black contour in Fig 1, whereas M-II and M-III absorption components are at 150 (2235 K), which is the lowest white contour
+      + From Fig 19 this should be at 0.5 x maximum of continuum profile, which coincides with the PAH peak (orgin of x-axis in Fig 19)
+    + Then this should have T_b = 0
+    + So T_s = f_BG T_c, which gives f_BG = T_s / 1500
+    + Again, we assume constant BG of 600 and take the back-illuminated bar case, so that f_BG = (T_c - 600)/T_c = 0.6 at the crossover
+      + This is consistent with Fig 19, which shows continuum bottoming out at 0.2 times peak
+    + So this means bracket term is T_s - T_c + 600
+    + So at crossover, T_s = T_c - 600 = 900 K - *yes! direct measure of spin T*
+      + Uncertainties: +/- 200 K from variation in FG brightness
+      + Possibility that some of Bar emission is also FG. For instance, using the f > 0.70 from the absorption zone, then T_s > 630 K
+  + Peak of emission is at T_c = 0.25 x peak = 750 K
+    + T_b = +200 K, but averaged over 36 arcsec (actual peak may be higher)
 * Column densities of O I lines
 ** Relation between Einstein-A and cross section
 + \sigma_ik = (h\nu/4\pi) B_ik

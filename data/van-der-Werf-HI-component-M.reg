@@ -1,0 +1,9 @@
+# Region file format: DS9 version 4.1
+global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
+icrs
+circle(5:35:25.8000,-5:23:57.000,4.0") # text={vdW-2013 M-I}
+circle(5:35:23.7000,-5:24:24.000,4.0") # text={vdW-2013 M-II}
+circle(5:35:21.9000,-5:24:46.000,4.0") # text={vdW-2013 M-III}
+circle(5:35:18.1000,-5:25:19.000,4.0") # text={vdW-2013 M-IV}
+circle(5:35:13.4000,-5:25:43.000,4.0") # text={vdW-2013 M-VI}
+line(5:35:17.1000,-5:25:38.000,5:35:15.2000,-5:25:43.000) # line=0 0 text={vdW-2013 M-V}
