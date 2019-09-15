@@ -3705,7 +3705,58 @@ Most of these I found from the intro of the Dopita:2016a paper
 *** Model for 21 cm continuum and line 
 + Summary
   + Absorption component M shows bar is convex
+    + Absorption clumps are seen outside the i-front
   + Emission feature shows that most free free beyond bar is foreground (theta 2 A nebula?)
+    + T_b >= T_s, which would give absorption if it were behind
+  + The null point between emission/absorption allows us to determine the spin temperature there
+    + 
+**** Final model for the T_b variation
++ Use T_fg = 600 K, f = 0.8 and \tau = 0.8 everywhere 
++ T_b = (1 - e^-\tau) (T_s - f (T_c - T_fg))
++ => T_s = 0.7 (T_c - 600) + 1.58 T_b
+  |           | vdW, '' | pos, mpc |  T_c |  T_b | T_c/peak |   \tau |   f |  T_s |
+  |-----------+---------+----------+------+------+----------+-----+-----+------|
+  | H II peak |     -12 |      -18 | 3000 |    0 |        1 |   0 | 0.0 |  0/0 |
+  | I-front   |      -3 |        0 | 2400 |    0 |     0.80 |   0 | 0.0 |  0/0 |
+  | Comp M    |       0 |        6 | 2235 | -405 |     0.75 | 0.8 | 0.8 | 573. |
+  | Crossover |       3 |       12 | 1500 |    0 |     0.50 | 0.8 | 0.8 | 720. |
+  | H I peak  |      11 |       28 |  750 | +230 |     0.25 | 0.8 | 0.8 | 538. |
+  | Mol peak  |      20 |       46 |  600 | +170 |     0.20 | 0.8 | 0.8 | 309. |
+  #+TBLFM: $3=2 ($-1 + 3)::$6=$4/3000;f2::$9=$8 ($4 - 600) + $5 / (1 - exp(-$7)) ;f0
++ Alternatively, we can specify T_s and calculate T_b
+  + \tau = 1, f = 0.8 (with new interpolated points)
+    |           | vdW, '' | pos, mpc |  T_c | T_c/peak |   \tau |   f |  T_s |   T_b |
+    |-----------+---------+----------+------+----------+-----+-----+------+-------|
+    | H II peak |     -12 |      -18 | 3000 |        1 |   0 | 0.7 |    0 |   0e0 |
+    | I-front   |      -3 |        0 | 2400 |     0.80 |   0 | 0.7 |    0 |   0e0 |
+    | Comp M    |       0 |        6 | 2235 |     0.75 |   1 | 0.8 | 1000 | -195. |
+    | Crossover |       3 |       12 | 1500 |     0.50 |   1 | 0.8 |  700 |  -13. |
+    |           |       5 |       16 | 1250 |     0.42 |   1 | 0.8 |  650 |   82. |
+    |           |       8 |       22 | 1000 |     0.33 |   1 | 0.8 |  600 |  177. |
+    | H I peak  |      11 |       28 |  750 |     0.25 |   1 | 0.8 |  540 |  265. |
+    | Mol peak  |      20 |       46 |  600 |     0.20 | 0.3 | 0.8 |  540 |  140. |
+    #+TBLFM: $3=2 ($-1 + 3)::$5=$4/3000;f2::$9=(1 - exp(-$6)) ($8 - $7 ($4 - 600));f0
+  + \tau = 1, f = 0.5 - has no absorption
+    |           | vdW, '' | pos, mpc |  T_c | T_c/peak |   \tau |   f |  T_s |  T_b |
+    |-----------+---------+----------+------+----------+-----+-----+------+------|
+    | H II peak |     -12 |      -18 | 3000 |        1 |   0 | 0.7 |    0 |  0e0 |
+    | I-front   |      -3 |        0 | 2400 |     0.80 |   0 | 0.7 |    0 |  0e0 |
+    | Comp M    |       0 |        6 | 2235 |     0.75 |   1 | 0.5 | 1000 | 115. |
+    | Crossover |       3 |       12 | 1500 |     0.50 |   1 | 0.5 |  700 | 158. |
+    | H I peak  |      11 |       28 |  750 |     0.25 |   1 | 0.5 |  540 | 294. |
+    | Mol peak  |      20 |       46 |  600 |     0.20 | 0.3 | 0.5 |  540 | 140. |
+    #+TBLFM: $3=2 ($-1 + 3)::$5=$4/3000;f2::$9=(1 - exp(-$6)) ($8 - $7 ($4 - 600));f0
+  + \tau = 1, f = 0.5, cooler T_s - does have absorption
+    |           | vdW, '' | pos, mpc |  T_c | T_c/peak |   \tau |   f | T_s |   T_b |
+    |-----------+---------+----------+------+----------+-----+-----+-----+-------|
+    | H II peak |     -12 |      -18 | 3000 |        1 |   0 | 0.7 |   0 |   0e0 |
+    | I-front   |      -3 |        0 | 2400 |     0.80 |   0 | 0.7 |   0 |   0e0 |
+    | Comp M    |       0 |        6 | 2235 |     0.75 |   1 | 0.5 | 540 | -175. |
+    | Crossover |       3 |       12 | 1500 |     0.50 |   1 | 0.5 | 540 |   57. |
+    | H I peak  |      11 |       28 |  750 |     0.25 |   1 | 0.5 | 540 |  294. |
+    | Mol peak  |      20 |       46 |  600 |     0.20 | 0.3 | 0.5 | 540 |  140. |
+    #+TBLFM: $3=2 ($-1 + 3)::$5=$4/3000;f2::$9=(1 - exp(-$6)) ($8 - $7 ($4 - 600));f0
+
 **** The issue of Galactic background H I emission
 + vdW includes this in eq (1), but at the velocities we are interested in (10 to 15 km/s LSR) this is not important
 + Green:1993a Fig 6b shows that T_b = 48 K at Orion A (l=209 on the curved line)
@@ -3859,7 +3910,20 @@ Most of these I found from the intro of the Dopita:2016a paper
       + Uncertainties: +/- 200 K from variation in FG brightness
       + Possibility that some of Bar emission is also FG. For instance, using the f > 0.70 from the absorption zone, then T_s > 630 K
   + Peak of emission is at T_c = 0.25 x peak = 750 K
-    + T_b = +200 K, but averaged over 36 arcsec (actual peak may be higher)
+    + T_b = +230 K, but averaged over 36 arcsec (actual peak may be higher)
+    + T_b = (1 - e^-\tau) (T_s - f (T_c - T_fg))
+      + 230 = (1 - e^-\tau) (T_s - f 150)
+    + So, taking f = 1 and \tau \to \infty gives T_s = 230 + 150 = 380 K
+    + Taking T_s = T_kin = 540 km/s from vdw sec 6.1
+      + (1 - e^-\tau) = 230 / (540 - 150 f) = {0.59, 0.53} for f = {1, 0.7}
+      + => \tau = 0.89, 0.76
+      + These are a bit higher than the \tau = 0.6 that vdW found, since they neglected the background f (T_c - T_fg) term
+      + So, the BG absorption is not so important at the emission peak, whereas it dominates at the crossover point and the absorption peak
+    + On the molecular side of the H I emission peak, it must be reduction in \tau and T_s that causes T_b to fall.  Mainly \tau falling as all the H becomes H_2.
+      + Note that for \tau < 1 and negligible BG continuum, we have T_b \approx \tau T_s, which is independent of T_s since \tau \propto N(H^0) / T_s due to the stimulated emission correction
+      + 1 - e^-h\nu/kT_s \approx h c / \lambda k T_s = 0.06816 K / T_s (\lambda = 21.10612 cm).
+      + Since N(H_tot) \approx constant between the DF and the 18CO peak, this means that T_b \propto f(H^0) and /the fall in 21 cm T_b on the molecular side should be determined by the fall in the neutral H fraction/
+    + But on the illuminated side, it is mainly the change in T_bg that drives the fall, since T_bg is increasing faster than T_s 
 * Column densities of O I lines
 ** Relation between Einstein-A and cross section
 + \sigma_ik = (h\nu/4\pi) B_ik

@@ -5,6 +5,11 @@
 \providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
 \providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
 
+\bibitem[{{Abel} {et~al.}(2006){Abel}, {Ferland}, {O'Dell}, {Shaw}, \&
+  {Troland}}]{Abel:2006a}
+{Abel}, N.~P., {Ferland}, G.~J., {O'Dell}, C.~R., {Shaw}, G., \& {Troland},
+  T.~H. 2006, \apj, 644, 344, \dodoi{10.1086/500819}
+
 \bibitem[{{Bacon} {et~al.}(2010){Bacon}, {Accardo}, {Adjali}, {Anwand},
   {Bauer}, {Biswas}, {Blaizot}, {Boudon}, {Brau-Nogue}, {Brinchmann},
   {Caillier}, {Capoani}, {Carollo}, {Contini}, {Couderc}, {Daguisé},
@@ -44,6 +49,12 @@
 {Clegg}, R.~E.~S., {Miller}, S., {Storey}, P.~J., \& {Kisielius}, R. 1999,
   \aaps, 135, 359, \dodoi{10.1051/aas:1999178}
 
+\bibitem[{{Dicker} {et~al.}(2009){Dicker}, {Mason}, {Korngut}, {Cotton},
+  {Compiègne}, {Devlin}, {Martin}, {Ade}, {Benford}, {Irwin}, {Maddalena},
+  {McMullin}, {Shepherd}, {Sievers}, {Staguhn}, \& {Tucker}}]{Dicker:2009a}
+{Dicker}, S.~R., {Mason}, B.~S., {Korngut}, P.~M., {et~al.} 2009, \apj, 705,
+  226, \dodoi{10.1088/0004-637X/705/1/226}
+
 \bibitem[{{Dopita} {et~al.}(2016){Dopita}, {Nicholls}, {Sutherland }, {Kewley},
   \& {Groves}}]{Dopita:2016a}
 {Dopita}, M.~A., {Nicholls}, D.~C., {Sutherland }, R.~S., {Kewley}, L.~J., \&
@@ -53,6 +64,13 @@
   {Dalgarno}}]{Escalante:1991a}
 {Escalante}, V., {Sternberg}, A., \& {Dalgarno}, A. 1991, \apj, 375, 630,
   \dodoi{10.1086/170225}
+
+\bibitem[{{Green}(1991)}]{Green:1991a}
+{Green}, D.~A. 1991, \mnras, 253, 350, \dodoi{10.1093/mnras/253.2.350}
+
+\bibitem[{{Green} \& {Padman}(1993)}]{Green:1993a}
+{Green}, D.~A., \& {Padman}, R. 1993, \mnras, 263, 535,
+  \dodoi{10.1093/mnras/263.2.535}
 
 \bibitem[{{Greisen} {et~al.}(2006){Greisen}, {Calabretta}, {Valdes}, \&
   {Allen}}]{Greisen:2006a}
@@ -117,6 +135,11 @@ Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
 \bibitem[{{Stoerzer} {et~al.}(1997){Stoerzer}, {Stutzki}, \&
   {Sternberg}}]{Stoerzer:1997a}
 {Stoerzer}, H., {Stutzki}, J., \& {Sternberg}, A. 1997, \aap, 323, L13
+
+\bibitem[{{van der Werf} {et~al.}(2013){van der Werf}, {Goss}, \&
+  {O'Dell}}]{van-der-Werf:2013a}
+{van der Werf}, P.~P., {Goss}, W.~M., \& {O'Dell}, C.~R. 2013, \apj, 762, 101,
+  \dodoi{10.1088/0004-637X/762/2/101}
 
 \bibitem[{Van~Hoof(2018)}]{Van-Hoof:2018a}
 Van~Hoof, P. A.~M. 2018, Galaxies, 6, \dodoi{10.3390/galaxies6020063}
