@@ -1,3 +1,3 @@
 DIB-like absorption features in spatially extended continuum from H II regions
 
-See notes at [[file:doc/absorption-6633.org]]
+See notes at [[file:doc/absorption-6634.org]]

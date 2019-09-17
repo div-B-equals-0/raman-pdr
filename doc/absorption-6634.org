@@ -2697,6 +2697,14 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 
 **** Combined plot of all the Bar profiles
 
++ Raman wing brightness units
+  + Original MUSE data is in 10**(-20)*erg/s/cm**2/Angstrom
+    + This is presumably per pixel, which are 5.55555555555556E-05 rad = 0.2 arcsec
+  + So each pixel is 3.08641975309e-9 sr, so units are 3.24e-12 erg s^{-1} cm^{-2} \AA^{-1}
+  + In extract-raman-bands.py, we take the mean not the sum
+  + So these are still the units
+  + We can divide by 324 and have it in 1e-10 erg s^{-1} cm^{-2} sr^{-1} \AA^{-1}
+
 #+begin_src python :return figfile :results file
   import json
   import numpy as np
@@ -2769,7 +2777,7 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       y0 = y[i0]
       ax.text(x0+2, 0.97*scale*y0,
               f"{label}",
-              bbox=whitebox, ha="left", va="top", fontsize="small")
+              bbox=whitebox, ha="right", va="top", fontsize="small")
   ax.text(10, 15.0, "IR continuum", ha="center", bbox=whitebox, fontsize="small")
 
   for lineid, offset, scale, lw, label in molecules:
@@ -2789,6 +2797,9 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   for blue, red, alpha, cb, cr, wav in raman_bands:
       xb, yb = load_data(raman_fmt.format(blue)) 
       xr, yr = load_data(raman_fmt.format(red))
+      # Put in units of 1e-10 erg/s/cm2/sr/AA
+      yb /= 324
+      yr /= 324
       ax2.plot(xb, yb, color=cb, alpha=alpha, lw=2)
       ax2.plot(xr, yr, color=cr, alpha=alpha, lw=2)
       x0 = -40
@@ -2797,7 +2808,7 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       ax2.text(x0, y0,
                fr"$\Delta\lambda \approx \pm{wav}$ Å",
                bbox=whitebox, ha="center", va="center", fontsize="small")
-  ax2.text(-40.0, 350, "Raman wings", ha="center", fontsize="small")
+  ax2.text(-40.0, 1.1, "Raman wings", ha="center", fontsize="small")
 
   ax.text(-50, 16.5, "IONIZED", ha="center")
   ax.text(15, 16.5, "NEUTRAL", ha="center")
@@ -2806,15 +2817,16 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   ax.axvline(ls=":")
   ax2.axvline(ls=":")
   ax.set(
-      xlim=[-95, 95],
+      xlim=[95, -95],
       ylim=[0, None],
       #yscale="log",
-      xlabel="Position relative to Bar, $10^{-3}$ pc",
+      xlabel="Depth into Bar, $10^{-3}$ pc",
       ylabel="Constant + Intensity (arbitrary units)",
   )
   ax.minorticks_on()
   ax2.set(
       ylim=[0, None],
+      ylabel="Mean band intensity,\n$10^{-10}$ erg s$^{-1}$ cm$^{-2}$ sr$^{-1}$ Å$^{-1}$"
   )
   sns.despine()
   fig.tight_layout(h_pad=0.0)
@@ -2823,6 +2835,9 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 
 #+RESULTS:
 [[file:raman-bar-multi-profile.pdf]]
+
+
+**** Graph of structure of the Bar
 
 
 **** Secondary profiles
@@ -2852,16 +2867,20 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 #+RESULTS:
 [[file:continuum-DIB-5781-bin001-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="C_H_beta-bin001.fits")
+#+call: bar-profile(INFILE="C_H_beta-bin001.fits", NORM="no")
 
 #+RESULTS:
 [[file:C_H_beta-bin001-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="C_H_beta_9229-bin001.fits")
+#+call: bar-profile(INFILE="C_H_beta_9229-bin001.fits", NORM="no")
 
 #+RESULTS:
 [[file:C_H_beta_9229-bin001-bar-profile.jpg]]
 
+#+call: bar-profile(INFILE="C_H_beta_Radio-bin001.fits", NORM="no")
+
+#+RESULTS:
+[[file:C_H_beta_Radio-bin001-bar-profile.jpg]]
 
 **** Isolating the H_2 emission
 + Easiest way is to subtract Br\gamma from H_2 filter
@@ -2887,6 +2906,8 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
                  overwrite=True,
   )
 #+end_src
+
+#+RESULTS:
 
 #+begin_src python :results output verbatim
   import numpy as np
@@ -3698,10 +3719,97 @@ Most of these I found from the intro of the Dopita:2016a paper
   + N(C_I) = 3e13 in Comp B, so 1e-8 H^0, which means most C is C^+
 
 
+** Observed brightness of Raman wings
 
 
 ** Geometry of the Bright Bar
 
+*** Physical structure of the Bar
++ As deduced from [[id:1C0DF123-344F-47BD-88B1-B3CBA8BF4EFA][Emission profiles of the Bar]] and other observations and physical principles
++ If we assume that Bar is cylinder with center at peak of 13CO (+55 mpc), then R_c = 1.7e17 cm
+  * Thickness of mid-redshifted H\alpha and [O III] emission layer is 15 arcsec = 30 mpc
+    * This is about 0.5 R_c, whereas we would expect more like 0.2 R_c
+    * So perhaps R_c is larger - 100 mpc - squashed cylinder
+      * This is what we might get from RDI
+**** Ionization front
++ Sonic point occurs at x = 0.99 or so
++ Very similar to the HST10 proplyd model except scaled to lower densities
+  + Proplyd has peak n_e = 1e5 pcc, so if we assume 4000 pcc in Bar, then absorption lengths (1/n\sigma) are scaled by 25 and recombination layer thickness (F / n^2 \alpha_B) are scaled by 625. (Although that is really set by R_c)
++ Density:
+**** Neutral mantle
+**** Dissociation front
+**** Molecular core (maybe best not to call it that)
++ Small hydrocarbons, C_{2}H, C_{3}H, C_{4}H, etc
+  + Cuadrado:2015a
+  + T_k \ge 150 K, n(H_2) > 1e5 pcc required
+  + Abundance peak around A_V \approx 1.5
+  + Constant density and isobaric models
+  + Isobaric model has P = 1e8 K/cm^3 and \chi = 2e4 
+    + This should be twice the gas pressure ar ionization front, so fits well with n = 5000 pcc, T = 1e4 K
+  + A_V = 1.5 occurs at depth of about 3.2 arcsec = 6.5 mpc for the isobaric model
+    + This does not seem consistent with observed offsets
+  + For the constant density 4e4 pcc model, A_V = 1.5 is at 20 arcsec, or 40 mpc
+    + This is more consistent 
+
+*** Emission profiles of the Bar
+:PROPERTIES:
+:ID:       1C0DF123-344F-47BD-88B1-B3CBA8BF4EFA
+:END:
++ Remember: 1 arcsec \approx 2 mpc
+**** Our profile
++ [O III] peaks at -25 \to -50 mpc from i-front
+  + This is really various substructures
++ [O II] peaks at -7 mpc with width of 12 mpc,
+  + and then broader peak with width 20 mpc
++ [O I] peaks at -2 mpc with width of 10 mpc
++ O I peaks at 0 mpc with width of 6 mpc
++ IPAC 3.6, 5.8. 8 peak around +10 mpc with width around 25 mpc
++ H_2 2.12 micron peaks at +25 mpc
++ 12CO peaks at +40 mpc
++ 13CO peaks at +55 mpc
+**** HST 
++ From Henney:2005a
+  + This is a particularly sharp portion of the Bar
++ Shows that the i-front transition has width of about 0.5 arcsec = 1 mpc
+  + From width of [O I] peak
+  + This current paper shows a width of 10 mpc, but this is dominated by deviations of the i-front from a straight line over its 150 mpc length
+  + Either that, or that the HST cut is in a special case
++ Singly ionized emission ([N II] in this case) has peak with width of 10 mpc (although narrower peak is superimposed)
+
+**** Dust emission
++ Arab:2012a model the Herschel and Spitzer profiles
+  + Geometry is naive plane-parallel (fine)
+  + Power-law increase in density n = n_0 (z/z_0)^\alpha from 0 up to a depth z_0, then constant up to z_1, then symmetric fall on other side
+    + See Fig 8 of their paper, which has molecular on left
+    + Their origin is about 15 mpc to right of the 3.6 micron peak, which is about zero on my scale
+    + Note that density goes to zero at the i-front!  Although this might be OK for the PAHs
+  + Best-fit:
+    + n_0 = 1.5e5 cm^{-3}
+    + \alpha = 2
+    + z_0 = 52.5 mpc
+    + z_1 = 69.5 mpc
+  + But they recognize that a convex cylinder would make mean line-of-sight depth L lower for the surface regions, which would help their model to work
+**** H_2 emission zone
++ Kaplan:2017a have the most detailed H_2 observations (many vib-ro lines in near-infrared)
+  + 
+
+*** Figure showing hierarchy of models
++ Plane-parallel ::
+  + I :: Naive plane-parallel
+    + Good
+  + I' :: Finite plane slab
+    + Bad
+    + Andree-Labsch:2017a is a recent example of this
++ Curvature ::
+  + II :: Convex cylinder
+    + Good
+    + Walmsley:2000a
+  + II' :: Concave barrel
+    + Falsified
++ Nebular context ::
+  + III :: escarpment
+  + III' :: multiple components
+         
 *** Model for 21 cm continuum and line 
 + Summary
   + Absorption component M shows bar is convex
@@ -3710,6 +3818,8 @@ Most of these I found from the intro of the Dopita:2016a paper
     + T_b >= T_s, which would give absorption if it were behind
   + The null point between emission/absorption allows us to determine the spin temperature there
     + 
+
+
 **** Final model for the T_b variation
 + Use T_fg = 600 K, f = 0.8 and \tau = 0.8 everywhere 
 + T_b = (1 - e^-\tau) (T_s - f (T_c - T_fg))
