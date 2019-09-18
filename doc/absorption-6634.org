@@ -3737,8 +3737,32 @@ Most of these I found from the intro of the Dopita:2016a paper
   + Proplyd has peak n_e = 1e5 pcc, so if we assume 4000 pcc in Bar, then absorption lengths (1/n\sigma) are scaled by 25 and recombination layer thickness (F / n^2 \alpha_B) are scaled by 625. (Although that is really set by R_c)
 + Density:
 **** Neutral mantle
++ [O I] and [C II] far infrared lines
+  + Bernard-Salas:2012a
+  + Some [C II] comes from ionized gas (< 18%), but most comes from PDR
+  + All [O I] comes from PDR
+  + [C ii]158 μm/[O i]145 μm ratio gives n = 1e4 to 1e5
+  + Model has spatial peaks (offset from th1C):
+    + [N II] at 111.5 arcsec (I have ionization front at 112)
+    + [C II] and [O I] at 123.5 arcsec
+  + So that is 12 arcsec = 24 mpc difference
+    + This should be relative to my [O II] peak at -7 mpc
+    + So that makes it at +17 mpc, as opposed to H_2 peak at +25
+  + Needs depth of 0.35 pc
+    + This is 3 times higher than the apparent diameter
+  + 18% of [O I] and 38% of [C II] and [N II] has to come from a larger scale component (not the Bar)
+  + [O I] 63 micron dominates the line cooling budget (72%) but what about the dust?
 **** Dissociation front
++ mmCRLs (Carbon recombination lines) and far-IR [^{13}C II] lines
+  + Cuadrado:2019a
+  + Trace dissociation front
+  + Give T_e = 500 K (same as 21 cm lines!)
+  + And n_e = 60 \to 100 pcc
+  + Assuming electrons come from C+ gives P_th = 2 \to 4e8 cm^-3 K
 **** Molecular core (maybe best not to call it that)
++ Formaldehyde, para-H2CO
+  + T \approx 50 \to 100 K
+  + Seen more strongly in Orion S and BN/KL
 + Small hydrocarbons, C_{2}H, C_{3}H, C_{4}H, etc
   + Cuadrado:2015a
   + T_k \ge 150 K, n(H_2) > 1e5 pcc required
@@ -3750,7 +3774,7 @@ Most of these I found from the intro of the Dopita:2016a paper
     + This does not seem consistent with observed offsets
   + For the constant density 4e4 pcc model, A_V = 1.5 is at 20 arcsec, or 40 mpc
     + This is more consistent 
-
+**** Effects of gravity
 *** Emission profiles of the Bar
 :PROPERTIES:
 :ID:       1C0DF123-344F-47BD-88B1-B3CBA8BF4EFA

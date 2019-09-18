@@ -49,6 +49,11 @@
 {Clegg}, R.~E.~S., {Miller}, S., {Storey}, P.~J., \& {Kisielius}, R. 1999,
   \aaps, 135, 359, \dodoi{10.1051/aas:1999178}
 
+\bibitem[{{Da Rio} {et~al.}(2009){Da Rio}, {Robberto}, {Soderblom}, {Panagia},
+  {Hillenbrand}, {Palla}, \& {Stassun}}]{Da-Rio:2009a}
+{Da Rio}, N., {Robberto}, M., {Soderblom}, D.~R., {et~al.} 2009, \apjs, 183,
+  261, \dodoi{10.1088/0067-0049/183/2/261}
+
 \bibitem[{{Dicker} {et~al.}(2009){Dicker}, {Mason}, {Korngut}, {Cotton},
   {Compiègne}, {Devlin}, {Martin}, {Ade}, {Benford}, {Irwin}, {Maddalena},
   {McMullin}, {Shepherd}, {Sievers}, {Staguhn}, \& {Tucker}}]{Dicker:2009a}
@@ -91,6 +96,16 @@
 {Ivanov}, T.~I., {Salumbides}, E.~J., {Vieitez}, M.~O., {et~al.} 2008, \mnras,
   389, L4, \dodoi{10.1111/j.1745-3933.2008.00507.x}
 
+\bibitem[{{Kong} {et~al.}(2018){Kong}, {Arce}, {Feddersen}, {Carpenter},
+  {Nakamura}, {Shimajiri}, {Isella}, {Ossenkopf-Okada}, {Sargent},
+  {Sánchez-Monge}, {Suri}, {Kauffmann}, {Pillai}, {Pineda}, {Koda}, {Bally},
+  {Lis}, {Padoan}, {Klessen}, {Mairs}, {Goodman}, {Goldsmith}, {McGehee},
+  {Schilke}, {Teuben}, {José Maureira}, {Hara}, {Ginsburg}, {Burkhart},
+  {Smith}, {Schmiedeke}, {Pineda}, {Ishii}, {Sasaki}, {Kawabe}, {Urasawa},
+  {Oyamada}, \& {Tanabe}}]{Kong:2018a}
+{Kong}, S., {Arce}, H.~G., {Feddersen}, J.~R., {et~al.} 2018, \apjs, 236, 25,
+  \dodoi{10.3847/1538-4365/aabafc}
+
 \bibitem[{{Marinov} {et~al.}(2017){Marinov}, {Booth}, {Drag}, \&
   {Blondel}}]{Marinov:2017a}
 {Marinov}, D., {Booth}, J.~P., {Drag}, C., \& {Blondel}, C. 2017, Journal of
@@ -102,6 +117,12 @@
 {Mc Leod}, A.~F., {Weilbacher}, P.~M., {Ginsburg}, A., {et~al.} 2015, ArXiv
   e-prints.
 \newblock \doarXiv{1511.01914}
+
+\bibitem[{{Megeath} {et~al.}(2012){Megeath}, {Gutermuth}, {Muzerolle},
+  {Kryukova}, {Flaherty}, {Hora}, {Allen}, {Hartmann}, {Myers}, {Pipher},
+  {Stauffer}, {Young}, \& {Fazio}}]{Megeath:2012a}
+{Megeath}, S.~T., {Gutermuth}, R., {Muzerolle}, J., {et~al.} 2012, \aj, 144,
+  192, \dodoi{10.1088/0004-6256/144/6/192}
 
 \bibitem[{Mohr {et~al.}(2008)Mohr, Taylor, \& Newell}]{Mohr:2008a}
 Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
