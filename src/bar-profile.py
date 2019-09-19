@@ -45,6 +45,7 @@ cb = c.transform_to(bar_frame)
 mask = np.abs(cb.lon) < (75.0/2.0)*u.arcsec
 
 # For the PDR lines, we restrict to the SW end
+# if "H2-" in INFILE or "C_I" in INFILE or "CO137" in INFILE:
 if "H2-" in INFILE or "C_I" in INFILE:
     mask = (cb.lon > 7*u.arcsec) & (cb.lon < 60*u.arcsec)
 

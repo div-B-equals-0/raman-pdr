@@ -2472,6 +2472,7 @@ CLOSED: [2019-09-07 Sat 09:03]
   mask = np.abs(cb.lon) < (75.0/2.0)*u.arcsec
 
   # For the PDR lines, we restrict to the SW end
+  # if "H2-" in INFILE or "C_I" in INFILE or "CO137" in INFILE:
   if "H2-" in INFILE or "C_I" in INFILE:
       mask = (cb.lon > 7*u.arcsec) & (cb.lon < 60*u.arcsec)
 
@@ -2674,6 +2675,12 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 #+RESULTS:
 [[file:40044081.40044081-89-short.IRAC.3.mosaic-bar-profile.jpg]]
 
+#+call: bar-profile(DATAPATH="../../OrionMolecular/Parikka-HighJ-CO/fits", INFILE="map_CO137_pacsman.fits", HDU=0, NBLOCK=8)
+
+#+RESULTS:
+[[file:map_CO137_pacsman-bar-profile.jpg]]
+
+
 
 #+call: bar-profile(INFILE="muse-derived-Ne-multibin-SN0003.fits", NORM="no")
 
@@ -2746,7 +2753,8 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       ["mom0_87_109_13co_pix_2_Tmb", 0.0, 5.5, 1.0, "$^{13}$CO (1-0)"],
       ["mom0_48_57_12co_pix_2_Tmb", 0.0, 4.0, 1.5, "$^{12}$CO (1-0)"],
       ["linesum-blue-C_I-8727-multibin-500", 0.0, 4.0, 2, r"[C I] $\lambda 8727$"],
-      ["Orion-Bar-H2-minus-060-Brg", -13.0, 13.0, 2.5, r"H$_{2}$ 2.21$\,\mu$m"],
+      ["map_CO137_pacsman", 0.0, 0.65, 2.5, "$^{12}$CO (19-18)"],
+      ["Orion-Bar-H2-minus-060-Brg", -14.1, 13.0, 3.0, r"H$_{2}$ 2.21$\,\mu$m"],
   ]
 
   infrared = [
@@ -2760,13 +2768,14 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       x, y = load_data(f"linesum-{lineid}-bin001-bar-profile.json")
       m = x < 30
       ax.plot(x[m], scale*y[m] + offset, color="k", lw=lw)
-      x0 = -40 - 5*offset
+      # x0 = -40 - 5*offset
+      x0 = -60
       i0 = np.sum(x < x0)
       y0 = y[i0]
       ax.text(x0, scale*y0 + offset,
               f"{offset:.1f} + {label}",
               bbox=whitebox, ha="center", va="center", fontsize="small")
-  ax.text(-50.0, 8.0, "Optical emission lines", ha="center", fontsize="small")
+  ax.text(x0, 15.0, "Optical emission lines", ha="center", fontsize="small")
 
   for bandid, scale, label in infrared:
       x, y = load_data(f"40044081.40044081-89-short.{bandid}.mosaic-bar-profile.json")
@@ -2784,13 +2793,13 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       x, y = load_data(f"{lineid}-bar-profile.json")
       m = x > 10
       ax.plot(x[m], y[m]*scale + offset, color="k", lw=lw, alpha=0.3)
-      x0 = 75
+      x0 = 60
       i0 = np.sum(x < x0)
       y0 = y[i0]
       ax.text(x0, scale*y0 + offset,
               f"{label}",
               bbox=whitebox, ha="center", va="center", fontsize="small")
-  ax.text(75, 11.0, "PDR emission lines", bbox=whitebox, ha="center", fontsize="small")
+  ax.text(x0, 15.0, "PDR emission lines", bbox=whitebox, ha="center", fontsize="small")
 
 
   raman_fmt = "muse-hr-data-ha-raman-{}-cont-sub-multibin-1000-bar-profile.json"
@@ -3741,6 +3750,8 @@ Most of these I found from the intro of the Dopita:2016a paper
   + Bernard-Salas:2012a
   + Some [C II] comes from ionized gas (< 18%), but most comes from PDR
   + All [O I] comes from PDR
+    + /[O I] is interesting since it is transitions between levels in ground configuration, same ones that absorb the FUV lines/
+    + Supposedly [O I] 63/145 is diagnostic of opacity since 63 becomes optically thick at high column
   + [C ii]158 μm/[O i]145 μm ratio gives n = 1e4 to 1e5
   + Model has spatial peaks (offset from th1C):
     + [N II] at 111.5 arcsec (I have ionization front at 112)
@@ -3759,6 +3770,154 @@ Most of these I found from the intro of the Dopita:2016a paper
   + Give T_e = 500 K (same as 21 cm lines!)
   + And n_e = 60 \to 100 pcc
   + Assuming electrons come from C+ gives P_th = 2 \to 4e8 cm^-3 K
++ H_2 2.12 micron line
+  + Walmsley:2010a is what everyone uses, but this is a restricted region
+  + Very filamentary and morphology changes along bar
+    + Regions with curved arcs that look like knots or bow shocks
+    + Strangely, they all point away from th1C
++ High-J CO emission
+  + Parikka:2018a
+  + This is almost coincident with the [C I] 8727 and 9850 emission
+  + It is offset by 5 arcsec (10 mpc) deeper than the H_2 2.12 micron line
+  + There are bits where it is almost superimposed, but when you look in detail, the H_2 is always on the illuminated side of the CO clumps
++ Alma CO 3-2 and HCO+ observations
+  + Goicoechea:2016a in Nature
+    + 345.7960 GHz (CO J =3-2) 0.8669633 mm = 866.9633 micron
+    + 356.7342 GHz (HCO+ J =4-3) = 0.8403804 mm = 840.3805 micron
+  + Data now downloaded to [[file:~/Dropbox/OrionMolecular/Alma-OrionBar/]]
+    + HCO plus
+      + d\nu = -2.44156E+05 Hz = 0.00024 GHz => c d\nu/\nu = -0.20518 km/s
+      + CO bar peak is at 345.784 GHz = +10.40 km/s (chan 53)
+      + HCO+ is at 356.72 GHz = +11.9 km/s
+      + CO bluer filament is at 345.786 GHz = 8.67 km/s
+      + HCO+ bluer filament is at 356.723 GHz = 9.41 km/s 
+  + These also show a small offset between H_2 and the other molecules
+  + Measuring the channels where the Bar peaks
+    + CO : 50 \to 58 (peak 54)
+    + HCO+ : 50 \to 63 (various peaks)
+***** Extract Alma channels
+#+begin_src python :results silent
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  indir = "../../OrionMolecular/Alma-OrionBar/2012.1.00352.S/science_goal.uid___A002_X6dddc4_X68/group.uid___A002_X6dddc4_X69/member.uid___A002_X6dddc4_X6a/product"
+  outdir = "../data/orion-muse"
+
+  hdu = fits.open(indir + "/Orion_Bar.COnocont.Clean.image.fits")[0]
+  data = hdu.data[0, 49:58, :, :].sum(axis=0)
+  header = WCS(hdu).celestial.to_header()
+  fits.PrimaryHDU(header=header, data=data).writeto(
+      outdir + "/alma-co32-chan50-58.fits", overwrite=True,
+  )
+
+  hdu = fits.open(indir + "/HCOpcont.Clean.image.fits")[0]
+  data = hdu.data[0, 49:63, :, :].sum(axis=0)
+  header = WCS(hdu).celestial.to_header()
+  fits.PrimaryHDU(header=header, data=data).writeto(
+      outdir + "/alma-hcoplus-chan50-63.fits", overwrite=True,
+  )
+#+end_src
+***** Remove stars from H_2 image
+#+begin_src python :results silent
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from skimage.morphology import square, disk, dilation
+  from skimage.filters.rank import modal
+
+  indir = "../../dib-scatter-hii/data/orion-hawki/"
+  outdir = "../data/orion-muse"
+
+  hdu = fits.open(indir + "/Orion-Bar-H2-minus-045-Brg.fits")["CHIP1.INT1"]
+  mask = (hdu.data > 2100.0) | (hdu.data < 0.0)
+  # grow mask
+  mask = dilation(mask.astype(np.uint8), disk(2)).astype(bool)
+
+  hdu.data[mask] = np.nan
+  hdu.writeto(
+      outdir + "/Orion-Bar-H2-minus-045-Brg-nostars.fits", overwrite=True,
+  )
+#+end_src
+***** Reproject H_2 onto Alma
+#+begin_src python :results silent
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from reproject import reproject_interp
+  datadir = "../data/orion-muse"
+
+  hdu = fits.open(datadir + "/Orion-Bar-H2-minus-045-Brg-nostars.fits")["CHIP1.INT1"]
+  ahdu = fits.open(datadir + "/alma-co32-chan50-58.fits")[0]
+  newdata, _ = reproject_interp(hdu, ahdu.header)
+  # convert NaNs to zero while we are at it
+  mask = ~np.isfinite(newdata)
+  newdata[mask] = 0.0
+  fits.PrimaryHDU(header=ahdu.header, data=newdata).writeto(
+      datadir + "/Orion-Bar-H2-minus-045-Brg-reproject-alma.fits", overwrite=True,
+  )
+#+end_src
+***** Make an RGB image of the H_2, CO, HCO+
+
+#+name: rgb-natural-bar
+#+header: :var TAB=rgb-limits-ifront SUFFIX="ifront" DATADIR="../data/orion-muse"
+#+header: :var HDU=0
+#+begin_src python :results file :return figfile
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.visualization import make_lupton_rgb
+  from astropy.visualization.lupton_rgb import LinearMapping
+  from astropy.io import fits
+  from astropy.wcs import WCS
+
+  # Unpack the channel info from the table
+  [rf, r1, r2], [gf, g1, g2], [bf, b1, b2] = TAB
+
+
+  def load_and_scale_image(fn, v1, v2, ihdu=HDU):
+      data = fits.open(f"{DATADIR}/{fn}")[ihdu].data
+      # Truncate data to [v1, v2] and deal with NaNs
+      data[~np.isfinite(data) | (data < v1)] = v1
+      data[(data > v2)] = v2
+      return (data - v1) / (v2 - v1)
+
+
+  w = WCS(fits.open(f"{DATADIR}/{rf}")[HDU].header)
+
+  image_r = load_and_scale_image(rf, r1, r2)
+  image_g = load_and_scale_image(gf, g1, g2)
+  image_b = load_and_scale_image(bf, b1, b2)
+  image_r += 0.5*image_g
+  image_g += 0.5*image_b
+  image = LinearMapping(0.0, 1.0).make_rgb_image(image_r, image_g, image_b)
+
+  figfile = f"rgb-natural-bar-{SUFFIX}.jpg"
+  fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
+  ax.imshow(image)
+  ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")
+  fig.tight_layout(rect=[0.08, 0.07, 1.0, 1.0])
+  fig.savefig(figfile, dpi=200)
+#+end_src
+
+
+#+name: rgb-limits-alma-bar
+| Orion-Bar-H2-minus-045-Brg-reproject-alma.fits | 1300 | 2000 |
+| alma-hcoplus-chan50-63.fits                    | -0.2 |  8.5 |
+| alma-co32-chan50-58.fits                       | -0.6 |   13 |
+
+#+call: rgb-natural-bar(TAB=rgb-limits-alma-bar, SUFFIX="alma")
+
+#+RESULTS:
+[[file:rgb-natural-bar-alma.jpg]]
+
+#+name: rgb-limits-alma-bar-variant
+| alma-co32-chan50-58.fits                       | -0.6 |   15 |
+| alma-hcoplus-chan50-63.fits                    | -0.2 |    9 |
+| Orion-Bar-H2-minus-045-Brg-reproject-alma.fits | 1400 | 1750 |
+
+#+call: rgb-natural-bar(TAB=rgb-limits-alma-bar-variant, SUFFIX="alma-variant")
+
+#+RESULTS:
+[[file:rgb-natural-bar-alma-variant.jpg]]
+
 **** Molecular core (maybe best not to call it that)
 + Formaldehyde, para-H2CO
   + T \approx 50 \to 100 K
