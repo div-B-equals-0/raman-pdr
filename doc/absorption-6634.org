@@ -1514,7 +1514,7 @@ I have decreased ~vmax~ for 6300 to bring out the yellow and cyan better
 
 These are the original limits I used in DS9
 #+name: rgb-limits-ifront-ds9
-| linesum-O_I-8446-bin001.fits |  3000 |  200000 |
+| linesum-O_I-8446-bin001.fits  |  3000 |  200000 |
 | linesum-O_I-6300-bin001.fits  |  8000 |  200000 |
 | linesum-O_II-7318-bin001.fits | 20000 | 1000000 |
 
@@ -1638,7 +1638,7 @@ Now for the blue wing
 Now try a higher resolution ones
 
 #+name: rgb-limits-raman-R-hires
-| muse-hr-data-ha-raman-R087-cont-sub-multibin-1000.fits | 20 | 700  |
+| muse-hr-data-ha-raman-R087-cont-sub-multibin-1000.fits | 20 |  700 |
 | muse-hr-data-ha-raman-R058-cont-sub-multibin-1000.fits | 30 | 1200 |
 | muse-hr-data-ha-raman-R040-cont-sub-multibin-1000.fits | 40 | 2400 |
 
@@ -1994,11 +1994,11 @@ Do the same, but use the Robberto WFI image instead of radio, and reproject onto
 #+name: rgb-limits-hi-line-center
 | hi-05x05-8751_50.fits | 0 | 1100000 |
 | hi-05x05-8750_65.fits | 0 | 1100000 |
-| hi-05x05-8749_80.fits | 0 | 800000  |
+| hi-05x05-8749_80.fits | 0 |  800000 |
 
 #+name: rgb-limits-hi-near-red
-| hi-05x05-8752_35.fits | 0 | 400000  |
-| hi-05x05-8751_50.fits | 0 | 800000  |
+| hi-05x05-8752_35.fits | 0 |  400000 |
+| hi-05x05-8751_50.fits | 0 |  800000 |
 | hi-05x05-8750_65.fits | 0 | 1100000 |
 #+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-near-red, SUFFIX="hi-near-red", STRETCH=0.5, Q=3, HDU="DATA") 
 
@@ -2007,18 +2007,18 @@ Do the same, but use the Robberto WFI image instead of radio, and reproject onto
 
 
 #+name: rgb-limits-hi-mid-red
-| hi-05x05-8753_20.fits | 0 | 110000  |
-| hi-05x05-8752_35.fits | 0 | 400000  |
-| hi-05x05-8751_50.fits | 0 | 800000  |
+| hi-05x05-8753_20.fits | 0 | 110000 |
+| hi-05x05-8752_35.fits | 0 | 400000 |
+| hi-05x05-8751_50.fits | 0 | 800000 |
 #+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-mid-red, SUFFIX="hi-mid-red", STRETCH=0.5, Q=3, HDU="DATA") 
 
 #+RESULTS:
 [[file:rgb-lupton-velchannels-hi-mid-red.jpg]]
 
 #+name: rgb-limits-hi-far-red
-| hi-05x05-8754_05.fits | 0 | 25000   |
-| hi-05x05-8753_20.fits | 0 | 180000  |
-| hi-05x05-8752_35.fits | 0 | 600000  |
+| hi-05x05-8754_05.fits | 0 |  25000 |
+| hi-05x05-8753_20.fits | 0 | 180000 |
+| hi-05x05-8752_35.fits | 0 | 600000 |
 #+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-far-red, SUFFIX="hi-far-red", STRETCH=0.5, Q=3, HDU="DATA") 
 
 #+RESULTS:
@@ -2027,8 +2027,8 @@ Do the same, but use the Robberto WFI image instead of radio, and reproject onto
 
 #+name: rgb-limits-hi-near-blue
 | hi-05x05-8750_65.fits | 0 | 1100000 |
-| hi-05x05-8749_80.fits | 0 | 800000  |
-| hi-05x05-8748_95.fits | 0 | 300000  |
+| hi-05x05-8749_80.fits | 0 |  800000 |
+| hi-05x05-8748_95.fits | 0 |  300000 |
 
 #+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-near-blue, SUFFIX="hi-near-blue", STRETCH=0.5, Q=3, HDU="DATA") 
 
@@ -2036,9 +2036,9 @@ Do the same, but use the Robberto WFI image instead of radio, and reproject onto
 [[file:rgb-lupton-velchannels-hi-near-blue.jpg]]
 
 #+name: rgb-limits-hi-mid-blue
-| hi-05x05-8749_80.fits | 0 | 800000  |
-| hi-05x05-8748_95.fits | 0 | 300000  |
-| hi-05x05-8748_10.fits | 0 | 100000  |
+| hi-05x05-8749_80.fits | 0 | 800000 |
+| hi-05x05-8748_95.fits | 0 | 300000 |
+| hi-05x05-8748_10.fits | 0 | 100000 |
 
 #+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-mid-blue, SUFFIX="hi-mid-blue", STRETCH=0.5, Q=3, HDU="DATA") 
 
@@ -2046,9 +2046,9 @@ Do the same, but use the Robberto WFI image instead of radio, and reproject onto
 [[file:rgb-lupton-velchannels-hi-mid-blue.jpg]]
 
 #+name: rgb-limits-hi-far-blue
-| hi-05x05-8748_95.fits | 0 | 300000  |
-| hi-05x05-8748_10.fits | 0 | 100000  |
-| hi-05x05-8747_25.fits | 0 | 30000   |
+| hi-05x05-8748_95.fits | 0 | 300000 |
+| hi-05x05-8748_10.fits | 0 | 100000 |
+| hi-05x05-8747_25.fits | 0 |  30000 |
 
 #+call: rgb-lupton-velchannels(TAB=rgb-limits-hi-far-blue, SUFFIX="hi-far-blue", STRETCH=0.5, Q=3, HDU="DATA") 
 
@@ -2063,9 +2063,9 @@ Do the same, but use the Robberto WFI image instead of radio, and reproject onto
 + [ ] But we can use a linear interpolation of the 8612.1 and 8621.45 channels to remove this
 + Leave it for another day
 #+name: rgb-limits-feii-center
-| feii-05x05-8618_05.fits | 0 | 200000  |
-| feii-05x05-8617_20.fits | 0 | 200000  |
-| feii-05x05-8616_35.fits | 0 | 100000  |
+| feii-05x05-8618_05.fits | 0 | 200000 |
+| feii-05x05-8617_20.fits | 0 | 200000 |
+| feii-05x05-8616_35.fits | 0 | 100000 |
 
 #+call: rgb-lupton-velchannels(TAB=rgb-limits-feii-center, SUFFIX="feii-center", STRETCH=0.5, Q=3, HDU="DATA") 
 
@@ -2073,9 +2073,9 @@ Do the same, but use the Robberto WFI image instead of radio, and reproject onto
 [[file:rgb-lupton-velchannels-feii-center.jpg]]
 
 #+name: rgb-limits-feii-near-blue
-| feii-05x05-8617_20.fits | 0 | 200000  |
-| feii-05x05-8616_35.fits | 0 | 100000  |
-| feii-05x05-8615_50.fits | 0 | 60000   |
+| feii-05x05-8617_20.fits | 0 | 200000 |
+| feii-05x05-8616_35.fits | 0 | 100000 |
+| feii-05x05-8615_50.fits | 0 |  60000 |
 
 #+call: rgb-lupton-velchannels(TAB=rgb-limits-feii-near-blue, SUFFIX="feii-near-blue", STRETCH=0.5, Q=3, HDU="DATA") 
 
@@ -3181,7 +3181,7 @@ CLOSED: [2019-08-24 Sat 22:09]
 **** DONE Mean wavelengths of Ly\beta and H\alpha
 CLOSED: [2019-08-25 Sun 19:55]
 Ly\beta - calculating wavnum from wav since it has much higher precision than 0.01 cm^-1
-|  J_k |   g_k |            wav |     wavnum |
+| J_k |  g_k |            wav |     wavnum |
 |-----+------+----------------+------------|
 | 1.5 |   4. | 1025.721824823 | 97492.3196 |
 | 0.5 |   2. | 1025.722965425 | 97492.2112 |
@@ -3191,11 +3191,11 @@ Ly\beta - calculating wavnum from wav since it has much higher precision than 0.
 
 Average frequency and wavenumber of H\alpha (2s \to 3p)
 |                            |   |               | freq, cm^-1 | check freq |
-|----------------------------+---+---------------+------------+------------|
-| H I H\alpha 2s 2S_{1/2 }\to 3p 2P_{1/2} | 2 | 6564.58439369 |   15233.26 | 15233.2568 |
-| H I H\alpha 2s 2S_{1/2 }\to 3p 2P_{3/2} | 4 | 6564.53767551 |   15233.37 | 15233.3652 |
-|----------------------------+---+---------------+------------+------------|
-| H I H\alpha 2s \to 3p             | 6 | 6564.55324823 |   15233.33 | 15233.3291 |
+|----------------------------+---+---------------+-------------+------------|
+| H I H\alpha 2s 2S_{1/2 }\to 3p 2P_{1/2} | 2 | 6564.58439369 |    15233.26 | 15233.2568 |
+| H I H\alpha 2s 2S_{1/2 }\to 3p 2P_{3/2} | 4 | 6564.53767551 |    15233.37 | 15233.3652 |
+|----------------------------+---+---------------+-------------+------------|
+| H I H\alpha 2s \to 3p             | 6 | 6564.55324823 |    15233.33 | 15233.3291 |
 #+TBLFM: $5=1e8/$3 ; f4::@4$3=(2 @2  + 4 @3) / 6 ; f8::@4$4=(2 @2  + 4 @3) / 6 ; f2
 
 Comparison with Clegg:1999a
@@ -3230,19 +3230,19 @@ Note that Clegg says:
 CLOSED: [2019-08-24 Sat 22:12]
 
 Compare O I lines with Ly \beta (average of doublet)
-| Line                                  |     Wav, \AA | Freq, cm^-1 |   d freq |
-|---------------------------------------+------------+------------+----------|
-| H I Ly \beta  1s 2S_{1/2 }\to 3p 2P_{1/2,3/2}     | 1025.72220 |  97492.283 |    0.000 |
-|---------------------------------------+------------+------------+----------|
-| O I 2s^2 2p^4 3P_0 \to 2s^2 2p^3 (4S) 3d 3D_1 | 1028.15729 |  97261.383 | -230.900 |
-|---------------------------------------+------------+------------+----------|
-| O I 2s^2 2p^4 3P_1 \to 2s^2 2p^3 (4S) 3d 3D_1 | 1027.43139 |  97330.100 | -162.183 |
-| O I 2s^2 2p^4 3P_1 \to 2s^2 2p^3 (4S) 3d 3D_2 | 1027.43077 |  97330.159 | -162.124 |
-|---------------------------------------+------------+------------+----------|
-| O I 2s^2 2p^4 3P_2 \to 2s^2 2p^3 (4S) 3d 3D_1 | 1025.76339 |  97488.369 |   -3.914 |
-| O I 2s^2 2p^4 3P_2 \to 2s^2 2p^3 (4S) 3d 3D_2 | 1025.76276 |  97488.429 |   -3.854 |
-| O I 2s^2 2p^4 3P_2 \to 2s^2 2p^3 (4S) 3d 3D_3 | 1025.76170 |  97488.530 |   -3.753 |
-|---------------------------------------+------------+------------+----------|
+| Line                                        |     Wav, \AA | Freq, cm^-1 |   d freq |
+|---------------------------------------------+------------+-------------+----------|
+| H I Ly \beta  1s 2S_{1/2 }\to 3p 2P_{1/2,3/2}           | 1025.72220 |   97492.283 |    0.000 |
+|---------------------------------------------+------------+-------------+----------|
+| O I 2s^2 2p^4 3P_0 \to 2s^2 2p^3 (4S) 3d 3D_1 | 1028.15729 |   97261.383 | -230.900 |
+|---------------------------------------------+------------+-------------+----------|
+| O I 2s^2 2p^4 3P_1 \to 2s^2 2p^3 (4S) 3d 3D_1 | 1027.43139 |   97330.100 | -162.183 |
+| O I 2s^2 2p^4 3P_1 \to 2s^2 2p^3 (4S) 3d 3D_2 | 1027.43077 |   97330.159 | -162.124 |
+|---------------------------------------------+------------+-------------+----------|
+| O I 2s^2 2p^4 3P_2 \to 2s^2 2p^3 (4S) 3d 3D_1 | 1025.76339 |   97488.369 |   -3.914 |
+| O I 2s^2 2p^4 3P_2 \to 2s^2 2p^3 (4S) 3d 3D_2 | 1025.76276 |   97488.429 |   -3.854 |
+| O I 2s^2 2p^4 3P_2 \to 2s^2 2p^3 (4S) 3d 3D_3 | 1025.76170 |   97488.530 |   -3.753 |
+|---------------------------------------------+------------+-------------+----------|
 #+TBLFM: $4=$3 - @2$3;f3::
 
 
@@ -3263,9 +3263,9 @@ Now convert back to air wavelengths
 + vac/air = 1 + 8.06051e-5 + 2.480990e-2 / (132.274 - (1e4/wav)**2) + 1.74557e-4 / (39.32957 - (1e4/wav)**2)
 + That is from Morton:2003b who cite Peck & Reeder (1972)
 
-| Line           | vac                  | n                            | air                  |
-|----------------+----------------------+------------------------------+----------------------|
-| H\alpha 2s \to 3p     | 6564.553248          | 1.00027624                   | 6562.7404            |
+| Line             | vac                  | n                            | air                  |
+|------------------+----------------------+------------------------------+----------------------|
+| H\alpha 2s \to 3p       | 6564.553248          | 1.00027624                   | 6562.7404            |
 | O I 3P_0 \to  3D_1 | 6665.5873 +/- 0.0036 | 1.00027612 +/- 3.5811244e-12 | 6663.7473 +/- 0.0036 |
 | O I 3P_1 \to  3D_1 | 6635.1955 +/- 0.0035 | 1.00027616 +/- 3.5308534e-12 | 6633.3636 +/- 0.0035 |
 | O I 3P_1 \to  3D_2 | 6635.1695 +/- 0.0035 | 1.00027616 +/- 3.5308959e-12 | 6633.3376 +/- 0.0035 |
@@ -3284,33 +3284,33 @@ Note that H\alpha is -2.27 km/s shifted with respect to the recombination value,
 
 Mean wavelengths of blended components
 |       wav | J_k | g_k |
-|-----------+----+----|
-| 6633.3636 |  1 |  3 |
-| 6633.3376 |  2 |  5 |
-|-----------+----+----|
-| 6633.3474 |    |  1 |
+|-----------+-----+-----|
+| 6633.3636 |   1 |   3 |
+| 6633.3376 |   2 |   5 |
+|-----------+-----+-----|
+| 6633.3474 |     |   1 |
 #+TBLFM: $3=2 $2 + 1::@4$1=(@2$1 @2$3 + @3$1 @3$3)/(@2$3 + @3$3)
 
 |       wav | J_k | g_k |
-|-----------+----+----|
-| 6564.4271 |  1 |  3 |
-| 6564.4012 |  2 |  5 |
-| 6564.3577 |  3 |  7 |
-|-----------+----+----|
-| 6564.3861 |    |  1 |
+|-----------+-----+-----|
+| 6564.4271 |   1 |   3 |
+| 6564.4012 |   2 |   5 |
+| 6564.3577 |   3 |   7 |
+|-----------+-----+-----|
+| 6564.3861 |     |   1 |
 #+TBLFM: $3=2 $2 + 1::@5$1=(@2$1 @2$3 + @3$1 @3$3 + @4$1 @4$3)/(@2$3 + @3$3 + @4$3)
 
 
 Final table
-| Transition      |         \lambda_1 |  \nu_1, cm^-1 |      d \nu |        \nu_2 |       \lambda_2 |     \lambda_air |
-|-----------------+------------+-----------+----------+-----------+----------+----------|
-| H I {1,2}s \to 3p | 1025.72220 | 97492.283 |    0.000 | 15233.329 | 6564.553 | 6562.740 |
-| O I J = 0 \to 1   | 1028.15729 | 97261.383 | -230.900 | 15002.429 | 6665.587 | 6663.747 |
-| O I J = 1 \to 1   | 1027.43139 | 97330.100 | -162.183 | 15071.146 | 6635.196 | 6633.364 |
-| O I J = 1 \to 2   | 1027.43077 | 97330.159 | -162.124 | 15071.205 | 6635.170 | 6633.338 |
-| O I J = 2 \to 1   | 1025.76339 | 97488.369 |   -3.914 | 15229.415 | 6566.240 | 6564.427 |
-| O I J = 2 \to 2   | 1025.76276 | 97488.429 |   -3.854 | 15229.475 | 6566.215 | 6564.401 |
-| O I J = 2 \to 3   | 1025.76170 | 97488.530 |   -3.753 | 15229.576 | 6566.171 | 6564.358 |
+| Transition      |        \lambda_1 | \nu_1, cm^-1 |      d \nu |       \nu_2 |      \lambda_2 |    \lambda_air |
+|-----------------+------------+------------+----------+-----------+----------+----------|
+| H I {1,2}s \to 3p | 1025.72220 |  97492.283 |    0.000 | 15233.329 | 6564.553 | 6562.740 |
+| O I J = 0 \to 1   | 1028.15729 |  97261.383 | -230.900 | 15002.429 | 6665.587 | 6663.747 |
+| O I J = 1 \to 1   | 1027.43139 |  97330.100 | -162.183 | 15071.146 | 6635.196 | 6633.364 |
+| O I J = 1 \to 2   | 1027.43077 |  97330.159 | -162.124 | 15071.205 | 6635.170 | 6633.338 |
+| O I J = 2 \to 1   | 1025.76339 |  97488.369 |   -3.914 | 15229.415 | 6566.240 | 6564.427 |
+| O I J = 2 \to 2   | 1025.76276 |  97488.429 |   -3.854 | 15229.475 | 6566.215 | 6564.401 |
+| O I J = 2 \to 3   | 1025.76170 |  97488.530 |   -3.753 | 15229.576 | 6566.171 | 6564.358 |
 
 Scale factors:
 + \nu_1/\nu_2 = 97492.283/15233.329 = 6.3999329 +/- 0.0000004
@@ -3364,14 +3364,14 @@ O I
   + Cashman:2017a and Morton:2003b compilations of data
   + Ivanov:2008a actual measurements of the line wavelengths from UV laser metrology
     + These are the results for our lines of interest
-      | Initial \to Final   | Freq, cm^-1 | Wav, nm     |
-      |-------------------+------------+-------------|
-      | 3P_0 \to (4S) 3d 3D_1 | 97 261.383 | 102.815 729 |
-      | 3P_1 \to (4S) 3d 3D_1 | 97 330.100 | 102.743 139 |
-      | 3P_1 \to (4S) 3d 3D_2 | 97 330.159 | 102.743 077 |
-      | 3P_2 \to (4S) 3d 3D_1 | 97 488.369 | 102.576 339 |
-      | 3P_2 \to (4S) 3d 3D_2 | 97 488.429 | 102.576 276 |
-      | 3P_2 \to (4S) 3d 3D_3 | 97 488.530 | 102.576 170 |
+      | Initial \to Final     | Freq, cm^-1 | Wav, nm     |
+      |---------------------+-------------+-------------|
+      | 3P_0 \to (4S) 3d 3D_1 | 97 261.383  | 102.815 729 |
+      | 3P_1 \to (4S) 3d 3D_1 | 97 330.100  | 102.743 139 |
+      | 3P_1 \to (4S) 3d 3D_2 | 97 330.159  | 102.743 077 |
+      | 3P_2 \to (4S) 3d 3D_1 | 97 488.369  | 102.576 339 |
+      | 3P_2 \to (4S) 3d 3D_2 | 97 488.429  | 102.576 276 |
+      | 3P_2 \to (4S) 3d 3D_3 | 97 488.530  | 102.576 170 |
     + Strangely, the motivation seems to be measuring cosmic evolution of fine structure constant
     + They get accuracies of \pm 8e-6 nm or \pm 0.008 cm^-1 (relative accuracy better than 1 part in 1e7 or 0.03 km/s)
   + The relative splitting of the ground state 3P_0,1,2 is known even more accurately
@@ -3615,7 +3615,7 @@ O I
   + Which is slightly less
 + Or wav multiplier of 40.9365216921
 **** H\alpha multiplet results from Atomic Line List
-|     wav (air) |    dwav | lower      | upper      |      A_ki |
+|     wav (air) |    dwav | lower      | upper      |     A_ki |
 |---------------+---------+------------+------------+----------|
 | 6562.70969315 | 3.9E-08 | 2p 2Po 1/2 | 3d 2D  3/2 | 5.39E+07 |
 | 6562.72481820 | 5.7E-08 | 2s 2S  1/2 | 3p 2Po 3/2 | 2.24E+07 |
@@ -3790,12 +3790,24 @@ Most of these I found from the intro of the Dopita:2016a paper
       + CO bar peak is at 345.784 GHz = +10.40 km/s (chan 53)
       + HCO+ is at 356.72 GHz = +11.9 km/s
       + CO bluer filament is at 345.786 GHz = 8.67 km/s
-      + HCO+ bluer filament is at 356.723 GHz = 9.41 km/s 
+      + HCO+ bluer filament is at 356.723 GHz = 9.41 km/s
+    + Spatial filtering
+      + Baselines are from 12 m to 444 m
+      + Using 1.22 \lambda / D, these are equivalent to 17.9 arcsec to 0.48 arcsec
+        + Synthesized beam is 1 arcsec apparently
+      + Goicoechea:2016a combine these with IRAM-30m single dish observations to fill in the missing baselines.
+      + But in my maps I am missing emission on scales \ge 20 arcsec = 0.04 pc
   + These also show a small offset between H_2 and the other molecules
   + Measuring the channels where the Bar peaks
     + CO : 50 \to 58 (peak 54)
     + HCO+ : 50 \to 63 (various peaks)
 ***** Extract Alma channels
+1. CO 3-2
+2. HCO+
+3. SO from dense gas *new* [2019-09-19 Thu]
+   - This has a narrow velocity component that is extended (channels 8 to 13)
+   - And an unresolved faint but broad source (channels 5 to 15)
+     - Maybe a YSO?
 #+begin_src python :results silent
   from astropy.io import fits
   from astropy.wcs import WCS
@@ -3814,6 +3826,13 @@ Most of these I found from the intro of the Dopita:2016a paper
   header = WCS(hdu).celestial.to_header()
   fits.PrimaryHDU(header=header, data=data).writeto(
       outdir + "/alma-hcoplus-chan50-63.fits", overwrite=True,
+  )
+
+  hdu = fits.open(indir + "/SOcont.Clean.image.fits")[0]
+  data = hdu.data[0, 4:15, :, :].sum(axis=0)
+  header = WCS(hdu).celestial.to_header()
+  fits.PrimaryHDU(header=header, data=data).writeto(
+      outdir + "/alma-so-chan05-15.fits", overwrite=True,
   )
 #+end_src
 ***** Remove stars from H_2 image
@@ -3889,13 +3908,21 @@ Most of these I found from the intro of the Dopita:2016a paper
   image_g += 0.5*image_b
   image = LinearMapping(0.0, 1.0).make_rgb_image(image_r, image_g, image_b)
 
+  # Separately get the Alma field for contouring
+  almim = fits.open(f"{DATADIR}/{gf}")[HDU].data
+  # Set NaNs to large negative values so we can see the edge
+  almim[~np.isfinite(almim)] = -1000.0
+
   figfile = f"rgb-natural-bar-{SUFFIX}.jpg"
   fig, ax = plt.subplots(figsize=(6.2, 5), subplot_kw=dict(projection=w))
   ax.imshow(image)
+  ax.contour(almim, levels=[-999.0],
+             linestyles="dashed", linewidths=1.0, alpha=0.4, colors="w")
   ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")
   fig.tight_layout(rect=[0.08, 0.07, 1.0, 1.0])
   fig.savefig(figfile, dpi=200)
 #+end_src
+
 
 
 #+name: rgb-limits-alma-bar
@@ -3919,6 +3946,10 @@ Most of these I found from the intro of the Dopita:2016a paper
 [[file:rgb-natural-bar-alma-variant.jpg]]
 
 **** Molecular core (maybe best not to call it that)
++ Dense condensations
+  + Qiu:2018a
+  + 1mm continuum and line emission with SMA
+  + Resolution 5 x 4 arcsec
 + Formaldehyde, para-H2CO
   + T \approx 50 \to 100 K
   + Seen more strongly in Orion S and BN/KL
@@ -4238,14 +4269,14 @@ Most of these I found from the intro of the Dopita:2016a paper
   + It is larger by a factor of 2\pi - why?
 ** Application to our FUV lines
 
-|        Wav | J_i | J_k |      A_ki |        \sigma |
-|------------+----+----+----------+----------|
-| 1025.76161 |  2 |  3 | 7.40E+07 | 2.80e-14 |
-| 1025.76256 |  2 |  2 | 1.84E+07 | 4.96e-15 |
-| 1025.76330 |  2 |  1 | 2.05E+06 | 3.32e-16 |
-| 1027.43051 |  1 |  2 | 5.52E+07 | 2.49e-14 |
-| 1027.43125 |  1 |  1 | 3.06E+07 | 8.30e-15 |
-| 1028.15710 |  0 |  1 | 4.08E+07 | 3.33e-14 |
+|        Wav | J_i | J_k |     A_ki |        \sigma |
+|------------+-----+-----+----------+----------|
+| 1025.76161 |   2 |   3 | 7.40E+07 | 2.80e-14 |
+| 1025.76256 |   2 |   2 | 1.84E+07 | 4.96e-15 |
+| 1025.76330 |   2 |   1 | 2.05E+06 | 3.32e-16 |
+| 1027.43051 |   1 |   2 | 5.52E+07 | 2.49e-14 |
+| 1027.43125 |   1 |   1 | 3.06E+07 | 8.30e-15 |
+| 1028.15710 |   0 |   1 | 4.08E+07 | 3.33e-14 |
 #+TBLFM: $5=0.25 $4 ((2 $3 + 1) / (2 $2 + 1) ) ($1 $ang)**3 / 10 $km ;s3
 
 + So they are all about 3e-14 cm^2
@@ -4486,51 +4517,51 @@ Note that ionization energy from ground is 109837.02 cm^{-1}
 
 **** From 2s2.2p3.(4So).3d 3D
 Ionization limit: 12348.64 cm^-1 = 8098 \AA vac
-|    WAV VAC | SPC  | CONFIGURATION    | TERM   | J_i-J_k |      A_ki | LEVEL ENERGY  CM^-1  |
-|------------+------+------------------+--------+-------+----------+---------------------|
-| 1025.76161 | O I  | 2s2.2p4          | 3P-3Do | 2 - 3 | 7.40E+07 | 0.00 - 97488.54     |
-| 1025.76256 | O I  | 2s2.2p4          | 3P-3Do | 2 - 2 | 1.84E+07 | 0.00 - 97488.45     |
-| 1025.76330 | O I  | 2s2.2p4          | 3P-3Do | 2 - 1 | 2.05E+06 | 0.00 - 97488.38     |
-| 1027.43051 | O I  | 2s2.2p4          | 3P-3Do | 1 - 2 | 5.52E+07 | 158.26 - 97488.45   |
-| 1027.43125 | O I  | 2s2.2p4          | 3P-3Do | 1 - 1 | 3.06E+07 | 158.26 - 97488.38   |
-| 1028.15710 | O I  | 2s2.2p4          | 3P-3Do | 0 - 1 | 4.08E+07 | 226.98 - 97488.38   |
-| 1225.17976 | O I] | 2s2.2p4          | 1D-3Do | 2 - 3 | 1.64E+03 | 15867.86 - 97488.54 |
-| 1225.18111 | O I] | 2s2.2p4          | 1D-3Do | 2 - 2 | 4.10E+02 | 15867.86 - 97488.45 |
-| 1225.18216 | O I] | 2s2.2p4          | 1D-3Do | 2 - 1 | 4.55E+01 | 15867.86 - 97488.38 |
-| 1569.96235 | O I] | 2s2.2p4          | 1S-3Do | 0 - 1 | 3.80E+02 | 33792.58 - 97488.38 |
-|   9205.822 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 1 - 2 | 1.33E+01 | 86625.76 - 97488.45 |
-|   9205.881 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 1 - 1 | 1.02E+02 | 86625.76 - 97488.38 |
-|   9207.459 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 2 - 3 | 9.48E+02 | 86627.78 - 97488.54 |
-|   9207.535 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 2 - 2 | 1.26E+01 | 86627.78 - 97488.45 |
-|   9207.594 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 2 - 1 | 7.39E+01 | 86627.78 - 97488.38 |
-|   9210.576 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 3 - 3 | 2.78E-01 | 86631.45 - 97488.54 |
-|   9210.653 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 3 - 2 | 3.95E+01 | 86631.45 - 97488.45 |
-|  11289.407 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 1 - 2 | 2.12E+07 | 88630.59 - 97488.45 |
-|  11289.496 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 1 - 1 | 1.18E+07 | 88630.59 - 97488.38 |
-|  11290.005 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 2 - 3 | 2.82E+07 | 88631.15 - 97488.54 |
-|  11290.120 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 2 - 2 | 7.05E+06 | 88631.15 - 97488.45 |
-|  11290.209 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 2 - 1 | 7.83E+05 | 88631.15 - 97488.38 |
-|  11290.409 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 0 - 1 | 1.57E+07 | 88631.30 - 97488.38 |
+|    WAV VAC | SPC  | CONFIGURATION    | TERM   | J_i-J_k |     A_ki | LEVEL ENERGY  CM^-1 |
+|------------+------+------------------+--------+---------+----------+---------------------|
+| 1025.76161 | O I  | 2s2.2p4          | 3P-3Do | 2 - 3   | 7.40E+07 | 0.00 - 97488.54     |
+| 1025.76256 | O I  | 2s2.2p4          | 3P-3Do | 2 - 2   | 1.84E+07 | 0.00 - 97488.45     |
+| 1025.76330 | O I  | 2s2.2p4          | 3P-3Do | 2 - 1   | 2.05E+06 | 0.00 - 97488.38     |
+| 1027.43051 | O I  | 2s2.2p4          | 3P-3Do | 1 - 2   | 5.52E+07 | 158.26 - 97488.45   |
+| 1027.43125 | O I  | 2s2.2p4          | 3P-3Do | 1 - 1   | 3.06E+07 | 158.26 - 97488.38   |
+| 1028.15710 | O I  | 2s2.2p4          | 3P-3Do | 0 - 1   | 4.08E+07 | 226.98 - 97488.38   |
+| 1225.17976 | O I] | 2s2.2p4          | 1D-3Do | 2 - 3   | 1.64E+03 | 15867.86 - 97488.54 |
+| 1225.18111 | O I] | 2s2.2p4          | 1D-3Do | 2 - 2   | 4.10E+02 | 15867.86 - 97488.45 |
+| 1225.18216 | O I] | 2s2.2p4          | 1D-3Do | 2 - 1   | 4.55E+01 | 15867.86 - 97488.38 |
+| 1569.96235 | O I] | 2s2.2p4          | 1S-3Do | 0 - 1   | 3.80E+02 | 33792.58 - 97488.38 |
+|   9205.822 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 1 - 2   | 1.33E+01 | 86625.76 - 97488.45 |
+|   9205.881 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 1 - 1   | 1.02E+02 | 86625.76 - 97488.38 |
+|   9207.459 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 2 - 3   | 9.48E+02 | 86627.78 - 97488.54 |
+|   9207.535 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 2 - 2   | 1.26E+01 | 86627.78 - 97488.45 |
+|   9207.594 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 2 - 1   | 7.39E+01 | 86627.78 - 97488.38 |
+|   9210.576 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 3 - 3   | 2.78E-01 | 86631.45 - 97488.54 |
+|   9210.653 | O I] | 2s2.2p3.(4So).3p | 5P-3Do | 3 - 2   | 3.95E+01 | 86631.45 - 97488.45 |
+|  11289.407 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 1 - 2   | 2.12E+07 | 88630.59 - 97488.45 |
+|  11289.496 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 1 - 1   | 1.18E+07 | 88630.59 - 97488.38 |
+|  11290.005 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 2 - 3   | 2.82E+07 | 88631.15 - 97488.54 |
+|  11290.120 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 2 - 2   | 7.05E+06 | 88631.15 - 97488.45 |
+|  11290.209 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 2 - 1   | 7.83E+05 | 88631.15 - 97488.38 |
+|  11290.409 | O I  | 2s2.2p3.(4So).3p | 3P-3Do | 0 - 1   | 1.57E+07 | 88631.30 - 97488.38 |
 
 
 **** From 2s2.2p3.(4So).3p 3P
 Ionization limit: 21206.43 cm^-1 = 4715.55 \AA vac
-|  WAV VAC | SPC   | CONFIGURATION    | TERM   | J_i-J_k |      A_ki | LEVEL ENERGY  CM^-1  |
-|----------+-------+------------------+--------+-------+----------+---------------------|
-| 6728.141 | O  I] | 2s2.2p3.(4So).3s | 5So-3P | 2 - 2 | 1.04E+03 | 73768.20 - 88631.15 |
-| 6728.394 | O  I] | 2s2.2p3.(4So).3s | 5So-3P | 2 - 1 | 4.99E+02 | 73768.20 - 88630.59 |
-| 8448.568 | O  I  | 2s2.2p3.(4So).3s | 3So-3P | 1 - 0 | 3.18E+07 | 76794.98 - 88631.30 |
-| 8448.680 | O  I  | 2s2.2p3.(4So).3s | 3So-3P | 1 - 2 | 3.18E+07 | 76794.98 - 88631.15 |
-| 8449.079 | O I   | 2s2.2p3.(4So).3s | 3So-3P | 1 - 1 | 3.18E+07 | 76794.98 - 88630.59 |
+|  WAV VAC | SPC   | CONFIGURATION    | TERM   | J_i-J_k |     A_ki | LEVEL ENERGY  CM^-1 |
+|----------+-------+------------------+--------+---------+----------+---------------------|
+| 6728.141 | O  I] | 2s2.2p3.(4So).3s | 5So-3P | 2 - 2   | 1.04E+03 | 73768.20 - 88631.15 |
+| 6728.394 | O  I] | 2s2.2p3.(4So).3s | 5So-3P | 2 - 1   | 4.99E+02 | 73768.20 - 88630.59 |
+| 8448.568 | O  I  | 2s2.2p3.(4So).3s | 3So-3P | 1 - 0   | 3.18E+07 | 76794.98 - 88631.30 |
+| 8448.680 | O  I  | 2s2.2p3.(4So).3s | 3So-3P | 1 - 2   | 3.18E+07 | 76794.98 - 88631.15 |
+| 8449.079 | O I   | 2s2.2p3.(4So).3s | 3So-3P | 1 - 1   | 3.18E+07 | 76794.98 - 88630.59 |
 
 **** From 2s2.2p3.(4So).3s 3S
-|    WAV VAC | SPC  | CONFIGURATION | TERM   | J_i-J_k |      A_ki | LEVEL ENERGY  CM^-1 |
-|------------+------+---------------+--------+-------+----------+--------------------|
-| 1302.16848 | O I  | 2s2.2p4       | 3P-3So |   2-1 | 3.15E+08 |      0.00-76794.98 |
-| 1304.85763 | O I  | 2s2.2p4       | 3P-3So |   1-1 | 1.87E+08 |    158.26-76794.98 |
-| 1306.02861 | O I  | 2s2.2p4       | 3P-3So |   0-1 | 6.23E+07 |    226.98-76794.98 |
-| 1641.30533 | O I] | 2s2.2p4       | 1D-3So |   2-1 | 1.75E+03 |  15867.86-76794.98 |
-|  2325.4519 | O I] | 2s2.2p4       | 1S-3So |   0-1 | 6.54E-02 |  33792.58-76794.98 |
+|    WAV VAC | SPC  | CONFIGURATION | TERM   | J_i-J_k |     A_ki | LEVEL ENERGY  CM^-1 |
+|------------+------+---------------+--------+---------+----------+---------------------|
+| 1302.16848 | O I  | 2s2.2p4       | 3P-3So |     2-1 | 3.15E+08 |       0.00-76794.98 |
+| 1304.85763 | O I  | 2s2.2p4       | 3P-3So |     1-1 | 1.87E+08 |     158.26-76794.98 |
+| 1306.02861 | O I  | 2s2.2p4       | 3P-3So |     0-1 | 6.23E+07 |     226.98-76794.98 |
+| 1641.30533 | O I] | 2s2.2p4       | 1D-3So |     2-1 | 1.75E+03 |   15867.86-76794.98 |
+|  2325.4519 | O I] | 2s2.2p4       | 1S-3So |     0-1 | 6.54E-02 |   33792.58-76794.98 |
 
 
 

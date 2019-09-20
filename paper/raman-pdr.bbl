@@ -10,6 +10,11 @@
 {Abel}, N.~P., {Ferland}, G.~J., {O'Dell}, C.~R., {Shaw}, G., \& {Troland},
   T.~H. 2006, \apj, 644, 344, \dodoi{10.1086/500819}
 
+\bibitem[{{Andersen} {et~al.}(2013){Andersen}, {Steinacker}, {Thi}, {Pagani},
+  {Bacmann}, \& {Paladini}}]{Andersen:2013a}
+{Andersen}, M., {Steinacker}, J., {Thi}, W.-F., {et~al.} 2013, \aap, 559, A60,
+  \dodoi{10.1051/0004-6361/201322102}
+
 \bibitem[{{Bacon} {et~al.}(2010){Bacon}, {Accardo}, {Adjali}, {Anwand},
   {Bauer}, {Biswas}, {Blaizot}, {Boudon}, {Brau-Nogue}, {Brinchmann},
   {Caillier}, {Capoani}, {Carollo}, {Contini}, {Couderc}, {Daguisé},
@@ -70,6 +75,12 @@
 {Escalante}, V., {Sternberg}, A., \& {Dalgarno}, A. 1991, \apj, 375, 630,
   \dodoi{10.1086/170225}
 
+\bibitem[{{Goicoechea} {et~al.}(2016){Goicoechea}, {Pety}, {Cuadrado},
+  {Cernicharo}, {Chapillon}, {Fuente}, {Gerin}, {Joblin}, {Marcelino}, \&
+  {Pilleri}}]{Goicoechea:2016a}
+{Goicoechea}, J.~R., {Pety}, J., {Cuadrado}, S., {et~al.} 2016, \nat, 537, 207,
+  \dodoi{10.1038/nature18957}
+
 \bibitem[{{Green}(1991)}]{Green:1991a}
 {Green}, D.~A. 1991, \mnras, 253, 350, \dodoi{10.1093/mnras/253.2.350}
 
@@ -95,6 +106,14 @@
   {de Lange}, \& {Ubachs}}]{Ivanov:2008a}
 {Ivanov}, T.~I., {Salumbides}, E.~J., {Vieitez}, M.~O., {et~al.} 2008, \mnras,
   389, L4, \dodoi{10.1111/j.1745-3933.2008.00507.x}
+
+\bibitem[{{Kissler-Patig} {et~al.}(2008){Kissler-Patig}, {Pirard}, {Casali},
+  {Moorwood}, {Ageorges}, {Alves de Oliveira}, {Baksai}, {Bedin}, {Bendek},
+  {Biereichel}, {Delabre}, {Dorn}, {Esteves}, {Finger}, {Gojak}, {Huster},
+  {Jung}, {Kiekebush}, {Klein}, {Koch}, {Lizon}, {Mehrgan}, {Petr-Gotzens},
+  {Pritchard}, {Selman}, \& {Stegmeier}}]{Kissler-Patig:2008a}
+{Kissler-Patig}, M., {Pirard}, J.~F., {Casali}, M., {et~al.} 2008, \aap, 491,
+  941, \dodoi{10.1051/0004-6361:200809910}
 
 \bibitem[{{Kong} {et~al.}(2018){Kong}, {Arce}, {Feddersen}, {Carpenter},
   {Nakamura}, {Shimajiri}, {Isella}, {Ossenkopf-Okada}, {Sargent},
