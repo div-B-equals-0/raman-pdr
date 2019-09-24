@@ -20,16 +20,22 @@
 \bibliographystyle{aasjournal}
 
 \sisetup{
+  % explicit "+" is useful for velocities
   retain-explicit-plus = true,
+  % prefer 10^6 over 1 x 10^6
   retain-unity-mantissa = false,
 }
+
+% A better \ion command that works in more circumstances
 \newcommand\ION[2]{#1\,\scalebox{0.9}[0.8]{\uppercase{#2}}}
 \newcounter{ionstage}
 \renewcommand{\ion}[2]{\setcounter{ionstage}{#2}% 
   \ensuremath{\mathrm{#1\,\scriptstyle\Roman{ionstage}}}}
 \newcommand\hii{\ion{H}{2}}
-\newcommand\Raman{\ensuremath{_{\text{Raman}}}}
+
+% Stars in Orion, e.g., \th1C, \th2A
 \def\th#1#2{\(\theta^{#1}\)\,Ori~#2}
+% Wavenumbers
 \newcommand\wn{\ensuremath{\tilde{\nu}}}
 
 % Chemical formulae
@@ -39,9 +45,11 @@
 \newcommand\Term[3]{\ensuremath{\mathrm{#1\ ^{#2}#3}}}
 \newcommand\Level[4]{\ensuremath{\mathrm{#1\ ^{#2}#3_{#4}}}}
 
+% Emission lines
 \newcommand\ha{\ensuremath{\text{H}\alpha}}
 \newcommand\lya{\ensuremath{\text{Ly}\alpha}}
 \newcommand\lyb{\ensuremath{\text{Ly}\beta}}
+\newcommand\Raman{\ensuremath{_{\text{Raman}}}}
 
 \begin{document}
 %\title{Raman mapping of atomic hydrogen and oxygen in the Orion Bar and Orion South PDRs}
@@ -448,6 +456,11 @@ geometry with exactly edge-on viewing angle, while in reality it is a
 roughly cylindrical filament.  Second, they ignore scattering, see
 \citet{Watson:1998a}.  Also, density increase with depth
 
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/orion-bar-oi-hst-zoom}
+  \caption{Fine-scale structure of the ionization front at the Orion Bar.}
+  \label{fig:bar-oi-hst}
+\end{figure}
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figs/alma-co-hcop-h2-dissoc-front}

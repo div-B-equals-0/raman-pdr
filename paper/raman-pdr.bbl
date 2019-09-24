@@ -10,11 +10,6 @@
 {Abel}, N.~P., {Ferland}, G.~J., {O'Dell}, C.~R., {Shaw}, G., \& {Troland},
   T.~H. 2006, \apj, 644, 344, \dodoi{10.1086/500819}
 
-\bibitem[{{Andersen} {et~al.}(2013){Andersen}, {Steinacker}, {Thi}, {Pagani},
-  {Bacmann}, \& {Paladini}}]{Andersen:2013a}
-{Andersen}, M., {Steinacker}, J., {Thi}, W.-F., {et~al.} 2013, \aap, 559, A60,
-  \dodoi{10.1051/0004-6361/201322102}
-
 \bibitem[{{Bacon} {et~al.}(2010){Bacon}, {Accardo}, {Adjali}, {Anwand},
   {Bauer}, {Biswas}, {Blaizot}, {Boudon}, {Brau-Nogue}, {Brinchmann},
   {Caillier}, {Capoani}, {Carollo}, {Contini}, {Couderc}, {Daguisé},
@@ -74,6 +69,10 @@
   {Dalgarno}}]{Escalante:1991a}
 {Escalante}, V., {Sternberg}, A., \& {Dalgarno}, A. 1991, \apj, 375, 630,
   \dodoi{10.1086/170225}
+
+\bibitem[{{Foster} \& {Goodman}(2006)}]{Foster:2006a}
+{Foster}, J.~B., \& {Goodman}, A.~A. 2006, \apjl, 636, L105,
+  \dodoi{10.1086/500131}
 
 \bibitem[{{Goicoechea} {et~al.}(2016){Goicoechea}, {Pety}, {Cuadrado},
   {Cernicharo}, {Chapillon}, {Fuente}, {Gerin}, {Joblin}, {Marcelino}, \&
