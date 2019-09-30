@@ -4838,6 +4838,17 @@ CLOSED: [2019-08-27 Tue 12:53]
    - But very weak, about 26 times weaker than 7254 (Esteban:2004a)
    - A is of order 1e4, as opposed to 3e7 for the 8446 triplet line and 3e6 for the 7254 line
      - Ratio of A values: 300, so it must be more efficiently pumped than 5s 3S
+*** Ly\beta pumping
++ This is discussed in detail in Kastner:1995a
+  + Process is called PAR (photoexcitation by accidental resonance)
+  + They have a 13-level atom
+  + Only goes up to 4s
+  + But it does include quintet as well as triplet levels
++ Important in novas
++ Also in Herbig Ae/Be stars (Mathew:2018a)
++ Requires H\alpha to be optically thick
++ Not the case for Orion, where continuum pumping has long been known to be the dominant mechanism - Grandi:1975a
+  + See also Bautista:1999a
 ** TODO Do the accounting for the cascades
 + Add up all ns \to 3p and nd \to 3p
   + (converted to photon units)
