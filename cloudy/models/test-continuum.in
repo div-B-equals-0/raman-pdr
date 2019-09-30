@@ -1,0 +1,11 @@
+title Test of POWR O-star spectra with high resolution around Ly beta
+table SED "trapezium_powr_fine_fuv.sed"
+luminosity total 38.89
+cmb
+table ism
+hden 4.00
+radius 17.5
+stop zone 1
+iterate
+save overview last ".ovr"
+save continuum last ".cont"

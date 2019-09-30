@@ -1,0 +1,82 @@
+title Orion Bar to N(H0) = 10^22 (19% grain opacity)
+# Total trapezium SED from POWR OB models
+table SED "trapezium_powr_fine_fuv.sed"
+luminosity total 38.89
+# Add 1 L_sun of 1e6 K x-rays
+brems 6
+luminosity total 33.6
+# And general Milky Way backgrounds
+cmb
+table ism
+cosmic rays, background
+hden 3.60
+radius 18.11
+constant pressure
+magnetic field -5 gauss
+turbulence 5 km/s no pressure
+stop temperature off
+iterate
+init file="ism.ini"
+abundances hii region no grains
+grains orion 0.1
+grains PAH function 3.0
+stop H2 column density 22
+save overview last ".ovr"
+save continuum last ".cont"
+save pressure last ".pre"
+save cooling last ".cool"
+save heating last ".heat"
+save heat last ".heat"
+save physical conditions last ".phys"
+save hydrogen 21 cm last ".21cm"
+save hydrogen lya last ".lya" 
+save pdr last ".pdr"
+save fine continuum range 1000 1050 units Angstrom merge 1 last ".fcont" 
+save lines, emissivity last ".emis"
+BLND 8446
+BLND 11300
+O  1 6300.30
+O  2 7319.99
+O  2 7318.92
+O  3 5006.84
+H  1 6562.81
+Ca B 6562.81
+O  1 63.1679m
+C  2 157.636m
+H2 v 0
+CO   866.727m
+IRAC 3.60000m
+IRAC 4.50000m
+IRAC 5.80000m
+IRAC 8.00000m
+end of lines
+# UV pumping lines, mainly around Ly-b but see below for extras
+save lines optical depth some last ".linetau"
+H  1 1025.72A
+O  1 1025.76A
+O  1 1027.43A
+O  1 1028.16A
+S  2 1021.25A
+S  2 1021.55A
+S  3 1021.11A	
+S  3 1021.32A
+Si 2 1024.03A
+S  1 1024.64A
+O  1 1302.17A
+O  1 1304.86A
+O  1 1306.03A
+O  1 976.791A
+O  1 919.912A
+end of lines
+# Extra O I pumping lines
+# 1304 is from ground to 3s 3S
+# The next two are level 2 (not from stout) so less info
+# 976 is from ground to 5s 3S (pumps 7254 A)
+# 919 is from ground to 10d 3D (pumps 4972 A)
+save lines, array ".lina" last, units microns
+save continuum emissivity 1024 ".em1024" last, units angstrom 
+save continuum emissivity 1025 ".em1025" last, units angstrom 
+save continuum emissivity 1026 ".em1026" last, units angstrom 
+save continuum emissivity 1027 ".em1027" last, units angstrom 
+save continuum emissivity 1028 ".em1028" last, units angstrom 
+save continuum emissivity 1029 ".em1028" last, units angstrom

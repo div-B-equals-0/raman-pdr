@@ -212,6 +212,7 @@
 + Save fine continuum (see above)
 + Stop at various depths
 + Dig out atmosphere models for Trapezium
++ [2019-09-26 Thu] I am now doing this here: [[id:AFF44F5A-6868-4ACF-9018-D6B055BECD2F][Run cloudy models with this new SED]]
 **** Further spectra for different models
 #+call: make-cloudy-fuv-spectrum("dustrad-n02-MS40")
 
@@ -3779,8 +3780,14 @@ Most of these I found from the intro of the Dopita:2016a paper
 
 
 ** Thickness of different tracers in Bar
+:PROPERTIES:
+:ID:       BDB015A5-3CE6-4918-92C2-1AF56E4EC808
+:END:
 
 *** [O I] 6300
+:PROPERTIES:
+:ID:       5EFE2490-410C-4198-AC27-5EF41C787ABF
+:END:
 
 + HST image (final631-radec.fits) shows [O I] widths at the Bar of 3 to 4 pixels for the sharp narrow component (more diffuse components are probably continuum or [S III])
 + So this is about 0.35 arcsec
@@ -4089,6 +4096,7 @@ Most of these I found from the intro of the Dopita:2016a paper
   + From width of [O I] peak
   + This current paper shows a width of 10 mpc, but this is dominated by deviations of the i-front from a straight line over its 150 mpc length
   + Either that, or that the HST cut is in a special case
+  + /See also/ [[id:BDB015A5-3CE6-4918-92C2-1AF56E4EC808][Thickness of different tracers in Bar]] where we find a thickness of 0.35 arcsec, which gets corrected to 0.267 arcsec = 0.5 mpc 
 + Singly ionized emission ([N II] in this case) has peak with width of 10 mpc (although narrower peak is superimposed)
 
 **** Dust emission
@@ -4107,6 +4115,17 @@ Most of these I found from the intro of the Dopita:2016a paper
 **** H_2 emission zone
 + Kaplan:2017a have the most detailed H_2 observations (many vib-ro lines in near-infrared)
   + 
+*** Dynamic models of the Bar
++ Because static models do not seem to explain the coincidence of H_2 and CO dissociation fronts
+  + /But do they really?/ Check the implications of the separation that I measured
++ So there seems to be two kinds of non-steady models invoked:
+  1. Photoablation flow
+  2. Shock
++ Sometimes mentioned in the same breath, but they are distinct
++ Stages in globule photoevaporation
+  1. RDI
+  2. Max compression and bounce
+  3. ECC
 
 *** Figure showing hierarchy of models
 + Plane-parallel ::
@@ -5065,6 +5084,1152 @@ Ionization limit: 21206.43 cm^-1 = 4715.55 \AA vac
 |  2325.4519 | O I] | 2s2.2p4       | 1S-3So |     0-1 | 6.54E-02 |   33792.58-76794.98 |
 
 
+* Cloudy Models using high-resolution SEDs
++ There are several reasons for these models:
+  1. See the stellar spectrum around Ly\beta and how it varies with depth in PDR
+  2. Predict the O I flourescent line emissivity
+  3. Depth to dissociation front, maybe
++ Spectra to use
+  + POWR O star grid
+  + Label is XX-YY where XX is T in kK and Y.Y is log10 g
+
+** Trapezium stars
++ I have downloaded the following models
+  + th1C - 39-40 and 39-42 (should be halfway between)
+  + th1A - 30-40
+  + th1D - 32-42
+  + th1C2 - 25-38
++ I am not doing th1B since it has T=18000 and all the models have much smaller g
+  + They only go down to 25,000 K on MS (8 Msun)
++ I have downloaded two sets of spectra
+  + the coarse SEDs in [[file:../seds/powr-ob/coarse/]]
+    + first column is log10(wav/angstrom)
+  + fine spectra in FUV file:../seds/powr-ob/fine_fuv
+    + first column is linear wav/angstrom
+  + In both cases, second column is log10(F_\lambda) at a distance of 10 pc
+*** Plot SEDS and spectra
+
+Take average to get the 39-41 spectrum
+#+begin_src python :results silent
+  import numpy as np
+
+  for template in [
+          "../seds/powr-ob/coarse/ob-i_{}_sed.txt",
+          "../seds/powr-ob/fine_fuv/ob-i_{}_line_calib.txt",
+  ]:
+      sfile1 = template.format("39-40")
+      sfile2 = template.format("39-42")
+      wav1, flam1 = np.genfromtxt(sfile1, unpack=True)
+      wav2, flam2 = np.genfromtxt(sfile2, unpack=True)
+      if ~np.alltrue(wav1 == wav2):
+          flam1 = np.interp(wav2, wav1, flam1)
+      flam = 0.5*(flam1 + flam2)
+      sfile = sfile2.replace("39-42", "39-41")
+      np.savetxt(sfile, list(zip(wav2, flam)), fmt="%10.5f")
+
+#+end_src
+
+
+First SEDs
+
+#+name: plot-powr-trapezium-seds
+#+begin_src python :results file :return figfile
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+
+
+  models = [
+      "39-41",
+      "32-42",
+      "30-40",
+      "25-38",
+  ]
+
+  figfile = "powr-trapezium-seds.pdf"
+  fig, ax = plt.subplots()
+
+  sed0 = None
+  for model in models:
+      sfile = f"../seds/powr-ob/coarse/ob-i_{model}_sed.txt"
+      wav, flam = np.genfromtxt(sfile, unpack=True)
+      wav = 10**wav
+      flam = 10**flam
+      sed = wav*flam
+      if sed0 is None:
+          sed0 = sed
+      else:
+          sed0 += sed
+      ax.plot(wav, sed, label=model, lw=0.3)
+  ax.plot(wav, sed0, color="k", lw=0.5, label="TOTAL")
+  ax.legend()
+  ax.set(
+      xscale="log",
+      yscale="log",
+      xlabel="Wavelength, Å",
+      ylabel="SED $\lambda F_\lambda$ at 10 pc",
+      xlim=[1e2, 1e5],
+      ylim=[1e-5, 1.0],
+  )
+  sns.despine()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS: plot-powr-trapezium-seds
+[[file:powr-trapezium-seds.pdf]]
+
+
+
+Next fine FUV (/now using merged SEDs, see below/) 
+
+#+name: plot-powr-trapezium-fine-fuv
+#+header: :var WAVMIN=1000 WAVMAX=1050
+#+begin_src python :results file :return figfile
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+
+
+  models = [
+      ["39-41", r"$\theta^1\,$C"], 
+      ["32-42", r"$\theta^1\,$D"], 
+      ["30-40", r"$\theta^1\,$A"], 
+      ["25-38", r"$\theta^1\,$C$_2$"], 
+  ]
+
+  figfile = f"powr-trapezium-fine-fuv-{WAVMIN}-{WAVMAX}.pdf"
+  fig, ax = plt.subplots()
+  wavtot = None
+  flamtot = None
+  for model, label in models:
+      # sfile = f"../seds/powr-ob/coarse/ob-i_{model}_sed.txt"
+      # wav, flam = np.genfromtxt(sfile, unpack=True)
+      # wav = 10**wav
+      # flam = 10**flam
+
+      sfile2 = f"../seds/powr-ob/merge/ob-i_{model}_sed.txt"
+      wav2, flam2 = np.genfromtxt(sfile2, unpack=True)
+      wav2 = 10**wav2
+      flam2 = 1e4*10**flam2
+      ax.plot(wav2, flam2, label=model, lw=0.3)
+      # ax.plot(wav, flam, color="k", alpha=0.2, label="_nolabel_")
+      mask = (wav2 <= WAVMAX) & (wav2 >= WAVMAX-10)
+      ax.text(WAVMAX, np.median(flam2[mask]), label, fontsize="x-small")
+
+      if wavtot is None:
+          wavtot = wav2
+          flamtot = flam2
+      else:
+          flamtot += np.interp(wavtot, wav2, flam2)
+
+  ax.plot(wavtot, flamtot, color="k", lw=0.3)
+  mask = (wavtot <= WAVMAX) & (wavtot >= WAVMAX-10)
+  ax.text(WAVMAX, np.median(flamtot[mask]), "Total")
+
+  # ax.legend()
+  ax.set(
+      xlabel="Wavelength, Å",
+      ylabel="Flux $F_\lambda$ at 0.1 pc, erg s$^{-1}$ cm$^{-2}$ Å$^{-1}$",
+      xlim=[WAVMIN, WAVMAX],
+      ylim=[0.0, None],
+  )
+  sns.despine()
+  fig.tight_layout()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS: plot-powr-trapezium-fine-fuv
+[[file:powr-trapezium-fine-fuv-1000-1050.pdf]]
+
+There are various P IV lines that are quite deep. One of them coincides with our 1028.1 O I line
+
+
+Around Ly alpha (seems to be a wind line at 1245)
+#+call: plot-powr-trapezium-fine-fuv(1200, 1250)
+
+#+RESULTS:
+[[file:powr-trapezium-fine-fuv-1200-1250.pdf]]
+
+Around 1304 A that pumps O I 3s - seems relatively clean
+#+call: plot-powr-trapezium-fine-fuv(1280, 1330)
+
+#+RESULTS:
+[[file:powr-trapezium-fine-fuv-1280-1330.pdf]]
+
+Around 920 A, which is where the highest observed ns and nd pumping lines are.  Unfortunately, only goes as far as 920, so uses coarse SED below that.  Lots of Lyman lines.  The Lyman jump is not that large
+
+#+call: plot-powr-trapezium-fine-fuv(890, 940)
+
+#+RESULTS:
+[[file:powr-trapezium-fine-fuv-890-940.pdf]]
+
+*** Combine fine and coarse and make them suitable for Cloudy
+Combine fine and coarse:
+
+#+name: merge-fine-coarse
+#+begin_src python :var ID="39-41" :results silent
+  import numpy as np
+
+
+  f_coarse = f"../seds/powr-ob/coarse/ob-i_{ID}_sed.txt"
+  f_fine = f"../seds/powr-ob/fine_fuv/ob-i_{ID}_line_calib.txt"
+  f_merge = f_coarse.replace("/coarse/", "/merge/")
+
+  wav_coarse, flam_coarse = np.genfromtxt(f_coarse, unpack=True)
+  wav_fine, flam_fine = np.genfromtxt(f_fine, unpack=True)
+
+  # Fine was on a linear wavelength scale
+  wav_fine = np.log10(wav_fine)
+
+  # limits of fine wavelength coverage
+  wav1, wav2 = wav_fine.min(), wav_fine.max()
+
+  # coarse wavs ouside fine coverage (below and above)
+  mask1 = wav_coarse < wav1
+  mask2 = wav_coarse > wav2
+
+  # merge wavs and fluxes
+  wav_merge = np.concatenate([wav_coarse[mask1], wav_fine, wav_coarse[mask2]])
+  flam_merge = np.concatenate([flam_coarse[mask1], flam_fine, flam_coarse[mask2]])
+
+  np.savetxt(f_merge, list(zip(wav_merge, flam_merge)), fmt="%12.7f")
+
+#+end_src
+
+And do the remaining stars too
+#+call: merge-fine-coarse("25-38")
+#+call: merge-fine-coarse("30-40")
+#+call: merge-fine-coarse("32-42")
+
+Now add them all together to make a Trapezium SED
+
+#+begin_src python :results silent
+  import numpy as np
+  models = [
+      "39-41", 
+      "32-42", 
+      "30-40", 
+      "25-38",  
+  ]
+  wavtot = None
+  for model in models:
+      sfile = f"../seds/powr-ob/merge/ob-i_{model}_sed.txt"
+      wav, flam = np.loadtxt(sfile, unpack=True)
+      # Make sure to convert from log to linear before adding
+      if wavtot is None:
+          wavtot = wav
+          flamtot = 10**flam
+      else:
+          flamtot += 10**np.interp(wavtot, wav, flam)
+  # Back to log for consistency with other POWR SEDs
+  flamtot = np.log10(flamtot)
+  sfile = "../seds/powr-ob/merge/powr_trapezium_sed.txt"
+  np.savetxt(sfile, list(zip(wavtot, flamtot)), fmt="%12.7f")
+
+  # Make sure no repeated entries
+  wav_unique = np.sort(list(set(wavtot)))
+  flam_unique = np.interp(wav_unique, wavtot, flamtot)
+
+  # Finally, write out a version to be used with Cloudy's "table SED" command
+
+  # Energy in Rydbergs
+  e_ryd = 1e8/(1.09737315685e5 * 10**wav_unique)
+  # Use that Fnu = (lam/nu) Flam = (lam**2 / c) Flam and don't worry
+  # about the normalization
+  Fnu = 10**(flam_unique + 2*wav_unique)
+  sfile = "../cloudy/models/trapezium_powr_fine_fuv.sed"
+  header = f"{'E, Ryd':14s}{'F_nu':14s}"
+
+  data = list(zip(e_ryd[::-1], Fnu[::-1]))
+  np.savetxt(sfile, data, header=header, fmt="%14.7e")
+
+#+end_src
+
+*** Total luminosity of Trapezium
+| star  | log L/Lsun | L, erg/s |
+|-------+------------+----------|
+| th1C  |       5.31 |  7.80e38 |
+| th1A  |       4.45 |  1.08e38 |
+| th1D  |       4.47 |  1.13e38 |
+| th1B  |       3.25 |  6.79e36 |
+| th1C2 |        4.2 |  6.05e37 |
+|-------+------------+----------|
+|       |            |    38.89 |
+#+TBLFM: $3=$Lsun 10**$-1;s3::@7$3=log10(vsum(@I..@2));f2
+
++ Answer: 10^38.89 erg/s
+
+*** Run cloudy models with this new SED
+:PROPERTIES:
+:ID:       AFF44F5A-6868-4ACF-9018-D6B055BECD2F
+:END:
++ [X] Updated Cloudy to latest version
++ [X] Compiled Cloudy
+  + [2019-09-25 Wed] Had to use llvm version again this time
+  + ~Work/CLOUDY/cloudy/source/cloudy.exe~
++ [X] Test runs
+  + This took a long time - turns out that ~continuum_mesh.ini~ cannot have any blank lines
+  + Look at SED
+
+
+
+
+**** Changing default resolution
++ We need to edit ~continuum_mesh.ini~
+  + *No blank lines in this file* or bad things happen
++ [[file:~/Dropbox/dib-scatter-hii/cloudy/coninuum_mesh_lybeta.ini]]
++ This has R=300 over most of range (same as Cloudy default)
++ But R=50,000 from 1000 \to 1050 \AA
+  + \Delta\lambda_{1} = 0.02 \AA around Ly\beta
+  + Or \Delta\lambda_{2} \approx 1 \AA when Raman scattered to H\alpha
+  + This is comparable to the MUSE resolution
+  + [ ] But much less than Keck HIRES, so we might want to revisit this later and run it at even higher resolution
+
+#+begin_src sh
+  cp -fv ../cloudy/continuum_mesh_lybeta.ini ~/Work/CLOUDY/cloudy/data/continuum_mesh.ini
+#+end_src
+
+#+RESULTS:
+: ../cloudy/continuum_mesh_lybeta.ini -> /Users/will/Work/CLOUDY/cloudy/data/continuum_mesh.ini
+
+
+
+
+**** Simple models
++ Need to evaluate code in [[id:BFADB49A-57C0-4D0F-B78A-3017B7CAAA55][An Emacs mode for cloudy input files]] in [[file:~/Dropbox/cloudy-dust-charging/][cloudy-dust-charging]] project to define ~cloudy-input-mode~
+
+#+name: cloudy-trap-radiation
+#+begin_src cloudy-input
+  # Total trapezium SED from POWR OB models
+  table SED "trapezium_powr_fine_fuv.sed"
+  luminosity total 38.89
+  # Add 1 L_sun of 1e6 K x-rays
+  brems 6
+  luminosity total 33.6
+  # And general Milky Way backgrounds
+  cmb
+  table ism
+  cosmic rays, background
+#+end_src
+
+
++ Note we can't have ~H2   2.12125m~ since we don't have the big molecule
+  + So we have the simple versin ~H2 v 0~
++ CO 866.727m is J=3-2 I hope
++ ~save cooling each~ didn't work - caused code to crash
+#+name: cloudy-saves
+#+begin_src cloudy-input
+  save overview last ".ovr"
+  save continuum last ".cont"
+  save pressure last ".pre"
+  save cooling last ".cool"
+  save heating last ".heat"
+  save heat last ".heat"
+  save physical conditions last ".phys"
+  save hydrogen 21 cm last ".21cm"
+  save hydrogen lya last ".lya" 
+  save pdr last ".pdr"
+  save fine continuum range 1000 1050 units Angstrom merge 1 last ".fcont" 
+  save lines, emissivity last ".emis"
+  BLND 8446
+  BLND 11300
+  O  1 6300.30
+  O  2 7319.99
+  O  2 7318.92
+  O  3 5006.84
+  H  1 6562.81
+  Ca B 6562.81
+  O  1 63.1679m
+  C  2 157.636m
+  H2 v 0
+  CO   866.727m
+  IRAC 3.60000m
+  IRAC 4.50000m
+  IRAC 5.80000m
+  IRAC 8.00000m
+  end of lines
+  # UV pumping lines, mainly around Ly-b but see below for extras
+  save lines optical depth some last ".linetau"
+  H  1 1025.72A
+  O  1 1025.76A
+  O  1 1027.43A
+  O  1 1028.16A
+  S  2 1021.25A
+  S  2 1021.55A
+  S  3 1021.11A	
+  S  3 1021.32A
+  Si 2 1024.03A
+  S  1 1024.64A
+  O  1 1302.17A
+  O  1 1304.86A
+  O  1 1306.03A
+  O  1 976.791A
+  O  1 919.912A
+  end of lines
+  # Extra O I pumping lines
+  # 1304 is from ground to 3s 3S
+  # The next two are level 2 (not from stout) so less info
+  # 976 is from ground to 5s 3S (pumps 7254 A)
+  # 919 is from ground to 10d 3D (pumps 4972 A)
+  save lines, array ".lina" last, units microns
+#+end_src
+
+#+name: cloudy-trap-physical
+#+begin_src cloudy-input
+  hden 4.00
+  radius 17.5
+  constant pressure
+  magnetic field -5 gauss
+  turbulence 5 km/s
+  stop temperature off
+  iterate
+  init file="ism.ini"
+  abundances hii region no grains
+  grains orion no qheat
+  grains PAH function 3
+#+end_src
+
+
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-NH0-19.in
+  title Hi-res Ly-beta with N(H0) = 10^19
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-physical>>
+  stop neutral column density 19
+  <<cloudy-saves>>
+#+end_src
+
+And the same, but deeper: N(H_0) = 1e20 cm^-2
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-NH0-20.in
+  title Hi-res Ly-beta with N(H0) = 10^20
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-physical>>
+  stop neutral column density 20
+  <<cloudy-saves>>
+#+end_src
+
+And even deeper, N(H_0) = 1e21 cm^-2
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-NH0-21.in
+  title Hi-res Ly-beta with N(H0) = 10^21
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-physical>>
+  stop neutral column density 21
+  <<cloudy-saves>>
+#+end_src
+
+**** Also models for the Bar
++ This is a bit further away, 0.21 pc if in plane of sky
+  + But could be more, say 0.42 pc => 10**18.11 pc
++ And lower density (4000)
++ And reduce dust opacity
+  + But it turns out that if we reduce opacity by 10, then this also reduces the heating rate
+  + Try reducing by 3
+
+#+name: cloudy-trap-bar
+#+begin_src cloudy-input
+  hden 3.60
+  radius 18.11
+  constant pressure
+  magnetic field -5 gauss
+  turbulence 5 km/s no pressure
+  stop temperature off
+  iterate
+  init file="ism.ini"
+  abundances hii region no grains
+#+end_src
+
+Various options for grains.   
+
+What the orion models in the test suite have.  100% normal grains and 300% PAH in neutral gas.
+#+name: cloudy-grains-100-300
+#+begin_src cloudy-input
+  grains orion
+  grains PAH function 3.0
+#+end_src
+
+What Salgado suggest: 10% of normal grains (but we put the PAH 3x higher than ISM, as with the test suite)
+#+name: cloudy-grains-10-300
+#+begin_src cloudy-input
+  grains orion 0.1
+  grains PAH function 3.0
+#+end_src
+
+This is a compromise of 30% regular grains and 100% PAH (in neutral gas). 
+#+name: cloudy-grains-30-100
+#+begin_src cloudy-input
+  grains orion no qheat 0.3
+  grains PAH function 1.0
+#+end_src
+
+#+name: cloudy-em-saves
+#+begin_src cloudy-input
+save continuum emissivity 1024 ".em1024" last, units angstrom 
+save continuum emissivity 1025 ".em1025" last, units angstrom 
+save continuum emissivity 1026 ".em1026" last, units angstrom 
+save continuum emissivity 1027 ".em1027" last, units angstrom 
+save continuum emissivity 1028 ".em1028" last, units angstrom 
+save continuum emissivity 1029 ".em1028" last, units angstrom 
+#+end_src
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-19.in
+  title Orion Bar to N(H0) = 10^19
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-30-100>>
+  stop neutral column density 19
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-20.in
+  title Orion Bar to N(H0) = 10^20
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-30-100>>
+  stop neutral column density 20
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-21.in
+  title Orion Bar to N(H0) = 10^21
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-30-100>>
+  stop neutral column density 21
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-22.in
+  title Orion Bar to N(H0) = 10^22
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-30-100>>
+  stop neutral column density 22
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+Finally, a model that is guaranteed to go molecular
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH2-22.in
+  title Orion Bar to N(H0) = 10^22
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-30-100>>
+  stop H2 column density 22
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+And a model with more dust
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH2-22-full-dust.in
+  title Orion Bar to N(H0) = 10^22
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-100-300>>
+  stop H2 column density 22
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+And a model with only 10% dust, but still 3x PAH
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH2-22-low-dust.in
+  title Orion Bar to N(H0) = 10^22 (10% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-10-300>>
+  stop H2 column density 22
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+And fill in the lower column density models for the 10% and 100% dust
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-22-full-dust.in
+  title Orion Bar to N(H0) = 10^22 (100% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-100-300>>
+  stop neutral column density 22
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-21-full-dust.in
+  title Orion Bar to N(H0) = 10^21 (100% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-100-300>>
+  stop neutral column density 21
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-20-full-dust.in
+  title Orion Bar to N(H0) = 10^20 (100% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-100-300>>
+  stop neutral column density 20
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-19-full-dust.in
+  title Orion Bar to N(H0) = 10^19 (100% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-100-300>>
+  stop neutral column density 19
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-22-low-dust.in
+  title Orion Bar to N(H0) = 10^22 (10% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-10-300>>
+  stop neutral column density 22
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-21-low-dust.in
+  title Orion Bar to N(H0) = 10^21 (10% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-10-300>>
+  stop neutral column density 21
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-20-low-dust.in
+  title Orion Bar to N(H0) = 10^20 (10% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-10-300>>
+  stop neutral column density 20
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-19-low-dust.in
+  title Orion Bar to N(H0) = 10^19 (10% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-10-300>>
+  stop neutral column density 19
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+
+And do some intermediate columns: 20.5, 21.5
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-205-low-dust.in
+  title Orion Bar to N(H0) = 10^20.5 (10% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-10-300>>
+  stop neutral column density 20.5
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-215-low-dust.in
+  title Orion Bar to N(H0) = 10^21.5 (10% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-10-300>>
+  stop neutral column density 21.5
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-205-full-dust.in
+  title Orion Bar to N(H0) = 10^20.5 (100% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-100-300>>
+  stop neutral column density 20.5
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH0-215-full-dust.in
+  title Orion Bar to N(H0) = 10^21.5 (100% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-100-300>>
+  stop neutral column density 21.5
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+**** Plot the SED
+#+name: cloudy-fuv-spectrum-plot
+#+header: :var MODEL="trap-NH0-19"
+#+begin_src python :return figfile :results file
+  import sys
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+  sys.path.append("../../cloudy-dust-charging")
+  from cloudytab import CloudyModel
+
+  sns.set_color_codes()
+
+  figfile = f"cloudy-fuv-spectrum-{MODEL}.pdf"
+  prefix = f"../cloudy/models/{MODEL}"
+  m = CloudyModel(prefix)
+
+  Ryd = 1.09737315685e5
+  data = m.data["cont"]
+  wav = 1.e8/(data["Cont  nu"][::-1]*Ryd)
+  Flam_inc = data["incident"][::-1]/wav
+  Flam_trans = data["trans"][::-1]/wav
+  Flam_tot = data["total"][::-1]/wav
+  Flam_diffout = data["DiffOut"][::-1]/wav
+  Flam_reflc = data["reflc"][::-1]/wav
+
+  wavf = m.data["fcont"]["Energy/A"][::-1]
+  fine = m.data["fcont"]["Transmitted"][::-1]
+  fine *= np.interp(wavf, wav, Flam_inc)
+
+  wav1, wav2 = 1020, 1030
+  mask = (wav >= wav1) & (wav <= wav2)
+  norm = np.median(Flam_inc[mask])
+
+  fig, [ax1, ax2, ax3] = plt.subplots(3, 1, figsize=(10, 6), sharex=True)
+  ax1.plot(wav, Flam_inc/norm, c="k", lw=0.5)
+  ax1.fill_between(wavf, fine/norm, alpha=0.5, lw=0.5)
+
+  ax2.plot(wav, Flam_inc/norm, c="k", lw=0.5)
+  ax2.fill_between(wav, Flam_trans/norm, alpha=0.5, lw=0.5)
+  #ax.plot(wav, Flam_tot/norm, lw=0.5)
+
+  ax3.fill_between(wav, Flam_diffout/norm, alpha=0.7)
+  ax3.fill_between(wav, Flam_reflc/norm, alpha=0.7)
+
+  ax3.set(
+      xlim=[wav1, wav2],
+      ylim=[0, 3.5],
+      xlabel="Wavelength, Å",
+      ylabel=r"Flux, $F_\lambda$",
+  )
+  for ax in ax1, ax2:
+      ax.set(
+          ylim=[0, 1.5],
+          ylabel=r"Flux, $F_\lambda$",
+      )
+  sns.despine()
+  fig.tight_layout()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS: cloudy-fuv-spectrum-plot
+[[file:cloudy-fuv-spectrum-trap-NH0-19.pdf]]
+
+
+#+call: cloudy-fuv-spectrum-plot("trap-NH0-20")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-trap-NH0-20.pdf]]
+
+#+call: cloudy-fuv-spectrum-plot("trap-NH0-21")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-trap-NH0-21.pdf]]
+
+#+call: cloudy-fuv-spectrum-plot("trap-bar-NH0-21")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-trap-bar-NH0-21.pdf]]
+
+#+call: cloudy-fuv-spectrum-plot("trap-bar-NH0-22")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-trap-bar-NH0-22.pdf]]
+
+#+call: cloudy-fuv-spectrum-plot("trap-bar-NH2-22")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-trap-bar-NH2-22.pdf]]
+
+And another version where we plot spectrum on a log scale for a sequence of column densities
+
++ [ ] But we need to add in the Rayleigh/Raman scattering as well
+#+name: cloudy-fuv-spec-vs-colden-plot
+#+header: :var PREFIX="trap-bar" SUFFIX=""
+#+begin_src python :return figfile :results file
+  import sys
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+  sys.path.append("../../cloudy-dust-charging")
+  from cloudytab import CloudyModel
+
+  sns.set_color_codes("dark")
+
+  colden_list = [f"NH0-{_}" for _ in ["19", "20", "205", "21", "215", "22"]] + ["NH2-22"]
+
+  figfile = f"cloudy-fuv-spec-vs-colden-{PREFIX}{SUFFIX}.pdf"
+
+  Ryd = 1.09737315685e5
+  fig, ax = plt.subplots(1, 1, figsize=(10, 6), sharex=True)
+
+  wav1, wav2 = 1020, 1030
+  for i, colden_string in enumerate(colden_list):
+      prefix = f"../cloudy/models/{PREFIX}-{colden_string}{SUFFIX}"
+      m = CloudyModel(prefix)
+
+      data = m.data["cont"]
+      wav = 1.e8/(data["Cont  nu"][::-1]*Ryd)
+      Flam_inc = data["incident"][::-1]/wav
+      Flam_trans = data["trans"][::-1]/wav
+
+      mask = (wav >= wav1) & (wav <= wav2)
+      norm = np.median(Flam_inc[mask])
+      if i == 0:
+          ax.plot(wav, Flam_inc/norm, c="k", lw=1, label="Incident")
+      ax.fill_between(wav, Flam_trans/norm, fc="r", ec="none", alpha=0.3)
+
+  ax.set(
+      yscale="linear",
+      xlim=[wav1, wav2],
+      ylim=[0.0, 1.5],
+      xlabel="Wavelength, Å",
+      ylabel=r"Flux, $F_\lambda$",
+  )
+  sns.despine()
+  fig.tight_layout()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS: cloudy-fuv-spec-vs-colden-plot
+[[file:cloudy-fuv-spec-vs-colden-trap-bar.pdf]]
+
+#+call: cloudy-fuv-spec-vs-colden-plot("trap-bar", "-full-dust")
+
+#+RESULTS:
+[[file:cloudy-fuv-spec-vs-colden-trap-bar-full-dust.pdf]]
+
+#+call: cloudy-fuv-spec-vs-colden-plot("trap-bar", "-low-dust")
+
+#+RESULTS:
+[[file:cloudy-fuv-spec-vs-colden-trap-bar-low-dust.pdf]]
+
+**** Plot the emissivity structure
+#+name: cloudy-emiss-plot
+#+header: :var MODEL="trap-NH0-21"
+#+begin_src python :return figfile :results file
+  import sys
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+  sys.path.append("../../cloudy-dust-charging")
+  from cloudytab import CloudyModel
+
+  sns.set_color_codes()
+
+  figfile = f"cloudy-emiss-{MODEL}.pdf"
+  prefix = f"../cloudy/models/{MODEL}"
+  m = CloudyModel(prefix)
+  em = m.data["emis"]
+
+  fig, ax = plt.subplots(figsize=(6, 6))
+  depth = em["depth"]/(3.085677582e18/1000)
+  labels = [
+      "O  3 5006.84A", 
+      "O  2 7319.99A", 
+      "O  1 6300.30A", 
+      "BLND 8446.00A", 
+      # "BLND 1.13000m", 
+      # "O  2 7318.92A", 
+      # "H  1 6562.81A", 
+      # "Ca B 6562.81A", 
+      "O  1 63.1679m", 
+      "C  2 157.636m", 
+      "H2 v 0", 
+      "CO 866.727m", 
+      "IRAC 3.60000m", 
+      "IRAC 4.50000m", 
+      "IRAC 5.80000m", 
+      "IRAC 8.00000m", 
+  ]
+  offset = 0.0
+  i0 = np.argmax(em["BLND 8446.00A"])
+  x = depth - depth[i0]
+  x1, x2 = -x.max(), x.max()
+  for label in labels:
+      ax.axhline(offset, lw=0.2)
+      ax.fill_between(x, offset + em[label]/em[label].max(), offset)
+      ax.text(x1, offset, " " + label, va="center", fontsize="x-small")
+      offset += 1.5
+  #ax.legend(ncol=3, fontsize="x-small", loc="upper right")
+  ax.set(
+      yscale = "linear",
+      xlim = [x2, x1],
+      xlabel = "Depth, mpc",
+      ylabel = "Emissivity",
+  )
+  ax.set_yticks(np.arange(len(labels))*1.5)
+  ax.set_yticklabels([""]*len(labels))
+  sns.despine()
+  fig.tight_layout()
+  fig.savefig(figfile)
+
+#+end_src
+
+#+RESULTS: cloudy-emiss-plot
+[[file:cloudy-emiss-trap-NH0-21.pdf]]
+
+#+call: cloudy-emiss-plot("trap-bar-NH0-22")
+
+#+RESULTS:
+[[file:cloudy-emiss-trap-bar-NH0-22.pdf]]
+
+#+call: cloudy-emiss-plot("trap-bar-NH2-22")
+
+#+RESULTS:
+[[file:cloudy-emiss-trap-bar-NH2-22.pdf]]
+
+#+call: cloudy-emiss-plot("trap-bar-NH2-22-full-dust")
+
+#+RESULTS:
+[[file:cloudy-emiss-trap-bar-NH2-22-full-dust.pdf]]
+
+#+call: cloudy-emiss-plot("trap-bar-NH2-22-low-dust")
+
+#+RESULTS:
+[[file:cloudy-emiss-trap-bar-NH2-22-low-dust.pdf]]
+
+**** Plot the model structure
+#+name: cloudy-structure-plot
+#+header: :var MODEL="trap-NH0-21"
+#+begin_src python :return figfile :results file
+  import sys
+  import numpy as np
+  from matplotlib import pyplot as plt
+  from matplotlib.ticker import FixedLocator
+  import seaborn as sns
+  sys.path.append("../../cloudy-dust-charging")
+  from cloudytab import CloudyModel
+
+  sns.set_color_codes()
+
+  figfile = f"cloudy-structure-{MODEL}.pdf"
+  prefix = f"../cloudy/models/{MODEL}"
+  m = CloudyModel(prefix)
+  # Deal with case where some files are not the full length
+  # Truncate to the shortest
+  savefiles = "ovr", "21cm", "phys", "pdr", "pre", "lya", "linetau", "emis"
+  nzones = min([len(m.data[_]) for _ in savefiles])
+  for s in savefiles:
+      m.data[s] = m.data[s][:nzones]
+
+  depth = m.data["ovr"]["depth"]
+  T = m.data["ovr"]["Te"]
+  Ts = m.data["21cm"]["T(spin)"]
+  ne = m.data["phys"]["n(e)"]
+  nH0 = m.data["ovr"]["hden"]*m.data["ovr"]["HI"]
+  nH2 = m.data["ovr"]["hden"]*m.data["ovr"]["2H_2/H"]
+  NH0 = np.array([np.trapz(nH0[:i], depth[:i]) for i in range(nzones)])
+  NH2 = np.array([np.trapz(nH2[:i], depth[:i]) for i in range(nzones)])
+  NH =  m.data["pdr"]["H colden"]
+  kB = 1.3806503e-16
+  Pgas = m.data["pre"]["Pgas"]/kB
+  Pmag = m.data["pre"]["P(mag)"]/kB
+  Prad = m.data["pre"]["Pinteg"]/kB
+  Pline = m.data["pre"]["Prad(line)"]/kB
+
+  tauV = m.data["pdr"]["TauV(point)"]
+  tau21 = m.data["21cm"]["tau(21cm)"]
+  tauLya = m.data["lya"]["TauIn"]
+  tauLyb = m.data["linetau"]["H  1 1025.72A"]
+  tauOI = m.data["linetau"]["O  1 1028.16A"]
+
+  kappa1027 = m.data["em1027"]["kappa_abs"]
+  tau1027 = np.array([np.trapz(kappa1027[:i], depth[:i]) for i in range(nzones)])
+
+  def sigRaman(x):
+      if x > 0.0:
+          sigma = 0.2367/x**2 - 0.0187/x + 0.0041
+      else:
+          sigma = 0.2186/x**2 - 0.0344/x - 0.0054
+      return 1e-21*sigma
+
+  tauR087 = sigRaman(0.87)*NH0
+
+  varsets = {
+      ("Temperature, K", 5.0, 2e4, "log", (10.0, 100.0, 1e3, 1e4)): [
+          ["$T$",  T],
+          [r"$T_{\mathrm{spin}}$", Ts],
+      ],
+      ("Density, cm$^{-3}$", 5.0, 2e6, "log", (100.0, 1e4, 1e6)): [
+          ["$n_e$", ne],
+          [r"$n(\mathrm{H}^0)$", nH0],
+          [r"$2 \times n(\mathrm{H}_2)$", nH2],
+      ],
+      ("Column, cm$^{-2}$", 1e16, 1e23, "log", (1e18, 1e20, 1e22)): [
+          [r"$N(\mathrm{H})$", NH],
+          [r"$N(\mathrm{H}^0)$", NH0],
+          [r"$2 \times N(\mathrm{H}_2)$", NH2],
+      ],
+      ("Pressure, cm$^{-3}$ K", 3000, 0.8e9, "log", (1e4, 1e6, 1e8)): [
+          [r"$P_\mathrm{gas}/k$", Pgas],
+          [r"$P_\mathrm{mag}/k$", Pmag],
+          [r"$P_\mathrm{cont}/k$", Prad],
+          [r"$P_\mathrm{line}/k$", Pline],
+      ],
+      ("Optical depth", 0.002, 15, "log", (0.01, 0.1, 1, 10)): [
+          [r"$\tau_V$", tauV],
+          [r"$\tau_{\mathrm{21\,cm}}$", tau21],
+          [r"$\tau_{\mathrm{Ly\beta}} / 10^6$", tauLyb/1e6],
+          [r"$\tau_{\mathrm{O\,I\,\lambda1028}}$", tauOI],
+          [r"$\tau_{R087}$", tauR087],
+          [r"$\tau_{1027}$", tau1027],
+      ],
+  }
+
+  nvarsets = len(varsets)
+
+  i0 = np.argmax(m.data["emis"]["BLND 8446.00A"])
+  # Distance from max O I in mpc
+  x = (depth - depth[i0])/(3.085677582e18/1000)
+
+  fig, axes = plt.subplots(nvarsets, 1, figsize=(6, 6), sharex=True)
+  x1, x2 = -x.max(), x.max()
+  i1 = np.argmin(np.abs(x - x1))
+  for [(setlabel, y1, y2, yscale, yticks), varset], ax in zip(varsets.items(), axes):
+      for label, plotvar in varset:
+          ax.plot(x, plotvar)
+          if plotvar.max() > y2:
+              xtext = np.max(x[plotvar < y2])
+              ytext = 0.9*y2
+          elif y1 < plotvar[i1] < y2:
+              xtext, ytext = x1, plotvar[i1]
+          else:
+              try:
+                  xtext = np.min(x[plotvar > y1])
+                  ytext = 5*y1
+              except:
+                  xtext, ytext = None, None
+          if xtext:
+              ax.text(xtext, ytext, " " + label, va="center", fontsize="x-small")
+      ax.set(ylabel=setlabel, yscale=yscale, ylim=[y1, y2])
+      yaxis = ax.get_yaxis()
+      yaxis.set_major_locator(FixedLocator(list(yticks)))
+      yvals = list(yticks) + [y2]
+      for ya, yb in zip(yvals[::2], yvals[1::2]):
+          ax.axhspan(ya, yb, fc="k", ec="none", alpha=0.1)
+
+  axes[-1].set(
+      xlim = [x2, x1],
+      xlabel = "Depth, mpc",
+  )
+  sns.despine()
+  fig.tight_layout()
+  fig.savefig(figfile)
+
+#+end_src
+
+#+RESULTS: cloudy-structure-plot
+[[file:cloudy-structure-trap-NH0-21.pdf]]
+
+#+call: cloudy-structure-plot("trap-bar-NH2-22")
+
+#+RESULTS:
+[[file:cloudy-structure-trap-bar-NH2-22.pdf]]
+
+#+call: cloudy-structure-plot("trap-bar-NH2-22-full-dust")
+
+#+RESULTS:
+[[file:cloudy-structure-trap-bar-NH2-22-full-dust.pdf]]
+
+
+
+#+call: cloudy-structure-plot("trap-bar-NH2-22-low-dust")
+
+#+RESULTS:
+[[file:cloudy-structure-trap-bar-NH2-22-low-dust.pdf]]
+
+**** Plot the pumping line optical depths
+#+name: cloudy-linetau-plot
+#+header: :var MODEL="trap-bar-NH2-22-low-dust"
+#+begin_src python :return figfile :results file
+  import sys
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+  sys.path.append("../../cloudy-dust-charging")
+  from cloudytab import CloudyModel
+
+  sns.set_color_codes()
+
+  figfile = f"cloudy-linetau-{MODEL}.pdf"
+  prefix = f"../cloudy/models/{MODEL}"
+  m = CloudyModel(prefix)
+  tau = m.data["linetau"]
+
+  fig, ax = plt.subplots(figsize=(8, 4))
+  depth = tau["depth"]/(3.085677582e18/1000)
+
+  N_H = m.data["pdr"]["H colden"]
+  
+  labels = tau.colnames[1:]
+
+
+  for label in labels:
+      ax.plot(N_H, tau[label], label=label)
+
+  ax.legend(ncol=5, fontsize="x-small", loc="bottom")
+  ax.set(
+      xscale = "log",
+      yscale = "log",
+      xlim = [0.0, None],
+  )
+  sns.despine()
+  fig.tight_layout()
+  fig.savefig(figfile)
+
+#+end_src
+
+#+RESULTS: cloudy-linetau-plot
+[[file:cloudy-linetau-trap-bar-NH2-22-low-dust.pdf]]
+
+
+**** Lines whose emissivity we want to track
++ ~BLND 8446~ is the three components (which we don't resolve in MUSE, separation 4 to 8 km/s)
+  + "O  1" 8446.25
+  + "O  1" 8446.36
+  + "O  1" 8446.76
+
+#+name: cloudy-line-list
++ BLND 8446
++ BLND 11300
++ O  1 6300.30
++ O  2 7319.99
++ O  2 7318.92
++ O  3 5006.84
++ H  1 6562.81
++ Ca B 6562.81A
+
+#+header: :var LINELIST=cloudy-line-list
+#+begin_src python :return s
+  s = "save lines, emissivity last \".emis\"" + "\n"
+  for line in LINELIST:
+      s += line[0] + "\n"
+  s += "end of lines" + "\n"
+#+end_src
+
+#+RESULTS:
+#+begin_example
+save lines, emissivity last ".emis"
+BLND 8446
+BLND 11300
+O  1 6300.30
+O  2 7319.99
+O  2 7318.92
+O  3 5006.84
+H  1 6562.81
+Ca B 6562.81A
+end of lines
+#+end_example
 
 * Older stuff which is now beside the point 
 
