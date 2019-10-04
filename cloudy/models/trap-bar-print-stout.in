@@ -1,0 +1,26 @@
+title Orion Bar to N(H0) = 10^19
+# Total trapezium SED from POWR OB models
+table SED "trapezium_powr_fine_fuv.sed"
+luminosity total 38.89
+# Add 1 L_sun of 1e6 K x-rays
+brems 6
+luminosity total 33.6
+# And general Milky Way backgrounds
+cmb
+table ism
+cosmic rays, background
+hden 3.60
+radius 18.11
+constant pressure
+magnetic field -5 gauss
+turbulence 5 km/s no pressure
+stop temperature off
+iterate
+init file="ism.ini"
+abundances hii region no grains
+grains orion no qheat 0.3
+grains PAH function 1.0
+database stout "stout-extra-o1-si2.ini"
+stop zone 1
+database stout print
+save line labels ".linelabels"

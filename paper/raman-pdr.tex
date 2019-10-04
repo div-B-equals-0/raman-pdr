@@ -1,5 +1,5 @@
 \RequirePackage{amsmath}
-\documentclass[twocolumn, times]{aastex63}
+\documentclass[times]{aastex63}
 \usepackage[spanish,es-minimal,english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{natbib}
@@ -50,6 +50,7 @@
 \newcommand\lya{\ensuremath{\text{Ly}\alpha}}
 \newcommand\lyb{\ensuremath{\text{Ly}\beta}}
 \newcommand\Raman{\ensuremath{_{\text{Raman}}}}
+\newcommand\FUV{\ensuremath{_{\text{FUV}}}}
 
 \begin{document}
 %\title{Raman mapping of atomic hydrogen and oxygen in the Orion Bar and Orion South PDRs}
@@ -287,7 +288,8 @@ ratio increases with \(x\), which means that the product
 \label{sec:muse-spectr-mapp}
 
 \begin{figure}
-  \includegraphics[width=\linewidth]{figs/raman-fov-regions}
+  \centering
+  \includegraphics[width=0.7\linewidth]{figs/raman-fov-regions}
   \caption{(a)~Panoramic view of the Orion Nebula region on parsec
     scales.  Red channel of background image shows \chem{^{18}CO}
     emission from dense molecular gas \citetext{Carma-NRO Orion
@@ -444,6 +446,26 @@ Location of \chem{H^0}.  Neutral veil in front of nebula has column density of \
 \subsection{Structure of the Orion Bar}
 \label{sec:structure-orion-bar}
 
+
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/bar-geometry-options}
+  \caption{Different classes of geometrical models that have been
+    proposed for the Orion Bar.  The sequence of models I, II, III, IV
+    are of increasing complexity, but also increasing scope and
+    explanatory power.  Models I\('\), II\('\), III\('\), on the other
+    hand, are disfavored due to either underperformance or
+    falsification (see text for further details).  For all models,
+    dark blue shading represents molecular gas, green shading
+    represents neutral gas, and light orange shading represents
+    ionized gas.  An example emission layer of thickness \(h\) and
+    radius of curvature \(R\) is indicated by thick red lines.  The
+    line-of-sight depth of the emission layer is denoted by \(L\).
+    The direction of illumination and the line of sight are indicated
+    by thin dotted lines.  }
+  \label{fig:bar-geometry}
+\end{figure*}
+
+
 Geometry of bar: in \citet{Henney:2005b} I pointed out that a
 diverging cylindrical geometry is necessary to explain the sharp peak
 in the [\ion{N}{2}] emissivity seen at the ionization front.  It has
@@ -455,6 +477,38 @@ PDR, but there are loopholes. First, they assume plane-parallel
 geometry with exactly edge-on viewing angle, while in reality it is a
 roughly cylindrical filament.  Second, they ignore scattering, see
 \citet{Watson:1998a}.  Also, density increase with depth
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/cloudy-bar-optical-depths}
+  \caption{Optical depth of select processes as a function of total
+    hydrogen nucleon column density, calculated from static Cloudy
+    simulations of the Orion Bar.  All optical depths and columns are
+    measured with respect to the illuminating Trapezium stars, which
+    are situated to the left in this figure.  The two panels show two
+    models that differ only in the assumed dust opacity: low opacity
+    (\(\sigma\FUV \approx \SI{2e-22}{cm^2.H^{-1}}\)) in the upper panel and high
+    opacity (\(\sigma\FUV \approx \SI{5e-22}{cm^2.H^{-1}}\)) in the lower panel.}
+  \label{fig:cloudy-bar-optical-depths}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/stellar-spectrum-fuv}
+  \caption{(a) Predicted spectrum of Trapezium stars in vicinity of
+    \lyb{} from POWR OB atmosphere models (black line), together with
+    attenuation by Cloudy model of the Orion Bar (red filled shapes),
+    extracted at a series of values of the neutral hydrogen column
+    density, as marked. (b) Relative attenuation of the incident
+    spectrum by line opacity only (that is, neglecting dust continuum
+    opacity) in the Cloudy models, which shows the development of the
+    \lyb{} damping wings as the column density increases.  In this
+    panel, the \(x\) axis is labelled with \(\Delta\lambda_2\) in the optical
+    domain, allowing direct comparison with the observations presented
+    in Figure~\ref{fig:raman-compensated} (observed Raman bands are
+    indicated by colored boxes). Note that the scale is linear in
+    \(\lambda_1\), which is slightly non-linear in \(\Delta\lambda_2\).  }
+  \label{fig:stellar-spectrum-fuv}
+\end{figure}
+
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figs/orion-bar-oi-hst-zoom}

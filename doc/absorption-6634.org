@@ -3319,13 +3319,40 @@ Scale factors:
 
 
 ***** Lines in the blue wing
-+ Possibility at air wavelength of
-  + 6494.75
+****** Possibility at air wavelength of 6494.75
 
 | Air             | n                            | Vac              | FUV                |
 |-----------------+------------------------------+------------------+--------------------|
 | 6494.75 +/- 0.5 | 1.00027632 +/- 5.3868098e-10 | 6496.54 +/- 0.50 | 1024.047 +/- 0.012 |
 #+TBLFM: $2=1 + 8.06051e-5 + (2.480990e-2 / (132.274 - (1e4/$1)**2)) + (1.74557e-4 / (39.32957 - (1e4/$1)**2)) ;f8::$3=$1 $2;f2::$4=1/(1/$3 - 1/6564.553 + 1/1025.72220);f3
+
+This looks like it is the Si II line, *if* that is really at 1024.03, as Cloudy says
+****** Si II lines at 102X \AA
++ Peter has
+#+begin_example
+
+  Atomic Line List version: 2.05b21   Constructed: 2017-11-07 13:41 GMT
+  Wavelength range: 0 - inf   Unit: Angstrom   Type: Vacuum
+  Radial velocity: 0 km/s
+  Element/Spectrum: Si II
+
+  -LAB-WAVL-ANG-VAC-|-DLAM--|-SPC--|TT|CONFIGURATION|-TERM--|-J_i-J_k-|--A_ki--|--f_ik--|---S----|-TPF-|--LVL-EN--CM-1---|-REF---|
+     1020.6989       6.6E-04  Si II E1 3s2.3p-3s2.5s 2Po-2S  1/2 - 1/2 9.67E+07 1.51E-02 1.01E-01     3   0.00 - 97972.09 029,ASD
+     1023.7001       6.6E-04  Si II E1 3s2.3p-3s2.5s 2Po-2S  3/2 - 1/2 1.92E+08 1.51E-02 2.03E-01     3 287.23 - 97972.09 029,ASD
+
+  gk*Aki weighted average wavelength:    1022.6938      
+#+end_example
++ STOUT has wavenumber of "3s2.3p 2P*3/2" being 287.240 instead of 287.23
++ And 97972.090 for "3s2.5s 2S1/2"
++ This gives a wavelength of 1e8/(97972.090 - 287.240) = 1023.70019507
++ Observed wavelength is 1023.693
++ In ~LineLabels.txt~ there is 1024.03
+  + This corresponds to wavenumber of 97653.3890609
+  + In ~level2.dat~ there is 
+    : 14  2  6  2  9.04E-02 9.76534E+04   2.0
+  + This would give 1e8/9.76534E+04 = 1024.02988529 so this is clearly the same one
+  + The gf value of 9.04E-02 is consistent with 1.51E-02 (2 + 4) = 0.0906
+
 **** DONE Data from Peter's Atomic Line List with energies in wave numbers
 CLOSED: [2019-08-24 Sat 22:12]
 Ly \beta (vacuum)
@@ -3647,12 +3674,71 @@ O I
       + And the 3s, 3d levels have A = 0 since they cannot decay to 1s
   + But also need to include H\alpha with A = 4.41E+07 Hz
   + So \Gamma = 1e8 Hz almost exactly
+  + No, I think we should use the 1.672E+08 + 2.245e7 = 1.897e8
   + So c \Gamma/\nu_0 = \lambda_0 \Gamma = 0.01 km/s, so also negligible even when converted to H\alpha domain
   + Width at H\alpha is 0.64 km/s = 0.014 \AA
   + If Doppler width is 10 km/s,
     + then a = \Gamma / 4\pi \Delta\nu_D 
     + where \Delta\nu_D = v \nu_0/c = 9.75e10 Hz
     + a = 8e-5
+**** Compare broadening profiles with Rayleigh/Raman cross section
+***** Conclusions on Rayleigh vs Natural damping
++ Rayleigh/Raman scattering and natural broadening (radiation damping) seem to be the same thing seen in different limits (and so is Thomson scattering)
++ A treatment in the classical limit is in Hubeny:2015a leading up to eq (6.16)
++ \[ \sigma(\omega) = \frac{(8\pi e^{4} \omega^{4 }/ 3 m^{2} c^{4})} {(\omega^{2} - \omega_{0}^{2})^{2} + \gamma^{2} \omega^{2}} \]
++ Where we can make use
+  + Classical cross section: \(\sigma_{0} = \pi e^{2} / m c\)
+  + Classical damping constant: \(\gamma = 2 e^{2} \omega_{0}^{2} / 3 m c^{3}\)
++ So we can re-write the denominator in terms of \(\sigma_{0} \gamma\):
+  + \( (8\pi e^{4} \omega^{4}/ 3 m^{2} c^{4}) = 4 \sigma_{0} \gamma \omega^{4} / \omega_{0}^{2}\)
++ But we can also use the Thomson scattering cross section: \(\sigma_{T} = 8\pi e^{4} / 3 m^{2} c^{4}\)
+  + Which is found from setting \(\omega_{0} = 0\) and \(\gamma \to 0\)
+  + So \(\sigma_{T} = 4 \, \sigma_{0} \, \gamma / \omega_{0}^{2}\)
+  + Actually this looks weird since it is \gamma that depends on \(\omega_{0}\) not the other way round: \(\gamma = \omega_{0}^{2} \sigma_{T} / 4 \sigma_{0}\)
+  + Remember that \sigma_0 has units of cm^2 Hz so the units work out fine
+***** Workings
++ Classical cross section
+  + \sigma_0 = \pi e^2 / m c = 0.02654 cm^2 Hz
+  + So, this would give a peak cross section of 0.02654/9.75e10 = 2.72e-13 cm^2
+  + So with N(H_0) = 1e20, we would get \tau = 2.7e7
+  + In fact we have 3.77e6, suggesting f = 0.14
+    + Kramers value is (32/3 \pi 3^1/2) (1/1 - 1/9)^-3 (1/(1 27)) = 0.103, close enough
+  + So, using natural broadening only
++ Also, possibly, the pressure broadening
+  + Except that the densities might not be large enough
+  + Note that quasi-static broadening dominates in the wings
+    + And this has x**-1.5 dependence, so how come this doesn't beat Raman?
+    + This comes from H plus charged particle, so probably irrelevant in PDR
+  + More important may be resonance broadening (H with H), but that seems to give a Lorentzian profile
+    + From Hubeny+Mihalas, eq 8.54
+    + QM calculation gives line width \Gamma_3 = 4 n_1 e^2 f_1n / 3 m \nu_1n
+      + n_1 is density of level 1
+      + Note that velocity drops out for resonance broadening
+      + Check units:
+        + e^2 / m c is cm^2 Hz => e^2 / m \nu is cm^3 Hz
+      + e^2 / m = c \sigma_0 / \pi => \Gamma_3 = 4 n_1 \lambda_1n \sigma_0 f_1n / 3 \pi
+      + So, with n = 1e5 we have  \Gamma_3 = 4 1e5 1025 1e-8 0.02654 0.1 / 3 pi = 1.15455239851e-3 Hz
+      + Very small!!! I guess it would be bigger if n = 1e15
++ Doppler broadening
+  + In the neutral gas this will be dominated by the turbulent width of 5 km/s
+  + So \Delta\nu_D = (5 km/s) / (1025 \AA) = (5 1.0e5 / 1025 1e-8) = 4.878e10 Hz 
++ Natural broadening
+  + Taking \Gamma = 1.897e8, then a = \Gamma / 4\pi \Delta\nu_D = 3.1e-4
+  + Which means that wings start to become important when \tau > 1e4
+  + But we don't really need to use the Doppler width at all
++ Thomson cross section
+  + \sigma_T = 6.65e-25 cm^2
++ Simple form for Rayleigh scattering cross section
+  + \sigma_Ray = \sigma_T [ \sum_j f_1j \omega^2 / (\omega_1j^2 - \omega^2) ]^2
+  + This is what gives \propto \omega^4 for \omega \ll \omega_1j
+  + For the near-wing limit (\omega \approx \omega_1j) we can write
+    + \omega = \omega_1j (1 + x)
+    + [\omega_1j^2 - \omega^2]2 = [(\omega_1j - \omega) (\omega_1j + \omega)]^2 = 4 \omega_1j^4 x^2 (1 + x/2)^2
+    + \omega^4 = \omega_1j^4 (1 + x)^4
+    + [\omega^2 / (\omega_1j^2 - \omega^2)]^2 = 0.25 (1 + x)^4 / [x^2 (1 + x/2)^2] \approx 1 / 4 x^2
+  + This would give \sigma_Ray(x) \approx 0.025 \sigma_T x^-2 for Lyman-\beta
+  + For \Delta\lambda_2 = 100 \AA, we have \Delta\lambda_1 = 100/41  = 2.439 \AA => x = 2.38e-3 => \sigma_Ray = 4400 \sigma_T = 2.926e-21
+  + Strangely, this is 10 x higher than what we get from Chang:2015a 
 *** Fine structure of H\alpha
 + I have been using 6562.79 for wavelength, but should only use the 3p \to 2s components
   + (6562.72481820 4 + 6562.77152383 2) / (4 + 2) = 6562.74038675
@@ -4849,6 +4935,10 @@ CLOSED: [2019-08-27 Tue 12:53]
 + Requires H\alpha to be optically thick
 + Not the case for Orion, where continuum pumping has long been known to be the dominant mechanism - Grandi:1975a
   + See also Bautista:1999a
+  + When Ly\beta pumping operates, then it is 3d 3D that is populated (via 1026 \AA), and then emits 1.1287 micron as it decays to 3p 3P, followed by the 8446
+  + When it is continuum pumping that occurs, then in addition the 4s 3S is pumped by 1039,1041 and all the higher ns 3S and nd 3D levels are pumped by shorter wavelength lines down to 912
+  + The 4s 3S \to 3p 3P emits 1.3160 micron, which in Orion is slightly stronger than 1.1287 (Walmsley:2000a, Table 1), which proves it is continuum excitation
+  + Ad do all the other optical O I lines from ns (7254, 6046, 5555, etc) and nd (7002, 5958, 5513, etc)
 ** TODO Do the accounting for the cascades
 + Add up all ns \to 3p and nd \to 3p
   + (converted to photon units)
@@ -4915,6 +5005,7 @@ So upper level is ~2s2.2p3.(4So).3p 3So-3P~ term as opposed to the ~3D~ term tha
   + 3s 5S - 3p 5P
   + Sky contam, but real I think
   + Only evidence of intercombination pumping - this is the equivalent of 8446 but for the quintets (100 times weaker)
+  + Although it could also be recombination (this would have a different spatial distribution)
   + Should be pumped indirectly via
     + Ground 3P \to 3d 5D^o (1026.476, 1028.145, 1028.870)
     + Then, 3d 5D^o \to 3p 5P (multiplet 8, 9260 to 9266 \AA)
@@ -5118,6 +5209,24 @@ Ionization limit: 21206.43 cm^-1 = 4715.55 \AA vac
   + fine spectra in FUV file:../seds/powr-ob/fine_fuv
     + first column is linear wav/angstrom
   + In both cases, second column is log10(F_\lambda) at a distance of 10 pc
+*** Lines in the stellar spectra
+**** P IV lines
+#+begin_example
+  Atomic Line List version: 2.05b21   Constructed: 2017-11-07 13:41 GMT
+  Wavelength range: 0 - inf   Unit: Angstrom   Type: Vacuum
+  Radial velocity: 0 km/s
+  Element/Spectrum: P  IV
+
+  -LAB-WAVL-ANG-VAC-|-SPC-|TT|-TERM--|J_i-J_k|--A_ki--|-TPF-|LEVEL-ENERGY--KELVIN|-REF---|
+     1025.5615        P IV E1 3Po-3P   1 - 2  7.82E+08    17 98047.47 - 238338.92 ASD
+     1028.0941        P IV E1 3Po-3P   0 - 1  1.04E+09    17 97718.78 - 237664.64 ASD
+     1030.5145        P IV E1 3Po-3P   1 - 1  7.72E+08    17 98047.47 - 237664.64 ASD
+     1030.5149        P IV E1 3Po-3P   2 - 2  2.31E+09    17 98721.80 - 238338.92 ASD
+     1033.1116        P IV E1 3Po-3P   1 - 0  3.06E+09    17 98047.47 - 237313.65 ASD
+     1035.5159        P IV E1 3Po-3P   2 - 1  1.26E+09    17 98721.80 - 237664.64 ASD
+
+  gk*Aki weighted average wavelength:    1030.5150    
+#+end_example
 *** Plot SEDS and spectra
 
 Take average to get the 39-41 spectrum
@@ -5425,7 +5534,7 @@ Now add them all together to make a Trapezium SED
 
 
 + Note we can't have ~H2   2.12125m~ since we don't have the big molecule
-  + So we have the simple versin ~H2 v 0~
+  + So we have the simple version ~H2 v 0~
 + CO 866.727m is J=3-2 I hope
 + ~save cooling each~ didn't work - caused code to crash
 #+name: cloudy-saves
@@ -5565,6 +5674,18 @@ What Salgado suggest: 10% of normal grains (but we put the PAH 3x higher than IS
 #+begin_src cloudy-input
   grains orion 0.1
   grains PAH function 3.0
+#+end_src
+
+#+name: cloudy-grains-10-100
+#+begin_src cloudy-input
+  grains orion 0.1
+  grains PAH function 1.0
+#+end_src
+
+#+name: cloudy-grains-10-30
+#+begin_src cloudy-input
+  grains orion 0.1
+  grains PAH function 0.3
 #+end_src
 
 This is a compromise of 30% regular grains and 100% PAH (in neutral gas). 
@@ -5771,6 +5892,41 @@ And do some intermediate columns: 20.5, 21.5
   <<cloudy-em-saves>>
 #+end_src
 
+And one with 10% normal grains and PAH at 100% instead of 300
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH2-22-low-dust-PAH.in
+  title Orion Bar to N(H2) = 10^22 (10% grain opacity and only 100% PAH)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-10-100>>
+  stop H2 column density 22
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-NH2-22-low-dust-low-PAH.in
+  title Orion Bar to N(H2) = 10^22 (10% grain opacity and only 30% PAH)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-10-30>>
+  stop H2 column density 22
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+
+**** Testing the STOUT database
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-print-stout.in
+  title Orion Bar to N(H0) = 10^19
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar>>
+  <<cloudy-grains-30-100>>
+  database stout "stout-extra-o1-si2.ini"
+  stop zone 1
+  database stout print
+  save line labels ".linelabels"
+#+end_src
+
+
 **** Plot the SED
 #+name: cloudy-fuv-spectrum-plot
 #+header: :var MODEL="trap-NH0-19"
@@ -5861,11 +6017,39 @@ And do some intermediate columns: 20.5, 21.5
 #+RESULTS:
 [[file:cloudy-fuv-spectrum-trap-bar-NH2-22.pdf]]
 
+#+call: cloudy-fuv-spectrum-plot("trap-bar-NH2-22-low-dust")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-trap-bar-NH2-22-low-dust.pdf]]
+
+#+call: cloudy-fuv-spectrum-plot("trap-bar-NH2-22-low-dust-low-PAH")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-trap-bar-NH2-22-low-dust-low-PAH.pdf]]
+
+
+#+call: cloudy-fuv-spectrum-plot("trap-bar-NH0-21-low-dust")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-trap-bar-NH0-21-low-dust.pdf]]
+
+#+call: cloudy-fuv-spectrum-plot("trap-bar-NH0-215-low-dust")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-trap-bar-NH0-215-low-dust.pdf]]
+
+#+call: cloudy-fuv-spectrum-plot("trap-bar-NH0-22-low-dust")
+
+#+RESULTS:
+[[file:cloudy-fuv-spectrum-trap-bar-NH0-22-low-dust.pdf]]
+
+
 And another version where we plot spectrum on a log scale for a sequence of column densities
 
-+ [ ] But we need to add in the Rayleigh/Raman scattering as well
++ [X] But we need to add in the Rayleigh/Raman scattering as well
+  + *no* - this is already includes as the damping wings of Ly\beta
 #+name: cloudy-fuv-spec-vs-colden-plot
-#+header: :var PREFIX="trap-bar" SUFFIX=""
+#+header: :var PREFIX="trap-bar" SUFFIX="-full-dust"
 #+begin_src python :return figfile :results file
   import sys
   import numpy as np
@@ -5881,48 +6065,134 @@ And another version where we plot spectrum on a log scale for a sequence of colu
   figfile = f"cloudy-fuv-spec-vs-colden-{PREFIX}{SUFFIX}.pdf"
 
   Ryd = 1.09737315685e5
-  fig, ax = plt.subplots(1, 1, figsize=(10, 6), sharex=True)
+  fig, ax = plt.subplots(1, 1, figsize=(8, 4), sharex=True)
 
-  wav1, wav2 = 1020, 1030
+  wav1, wav2 = 1018, 1032
   for i, colden_string in enumerate(colden_list):
       prefix = f"../cloudy/models/{PREFIX}-{colden_string}{SUFFIX}"
       m = CloudyModel(prefix)
 
       data = m.data["cont"]
+      R0 = m.data["em1027"]["Radius"][0]
+      # Change from luminosity to flux units
+      dilution = 1/(4*np.pi*R0**2)
       wav = 1.e8/(data["Cont  nu"][::-1]*Ryd)
-      Flam_inc = data["incident"][::-1]/wav
-      Flam_trans = data["trans"][::-1]/wav
+      # Put in units of erg/s/cm2/AA
+      Flam_inc = dilution*data["incident"][::-1]/wav
+      Flam_trans = dilution*data["trans"][::-1]/wav
 
       mask = (wav >= wav1) & (wav <= wav2)
-      norm = np.median(Flam_inc[mask])
+      norm = np.nanmedian(Flam_inc[mask])
       if i == 0:
-          ax.plot(wav, Flam_inc/norm, c="k", lw=1, label="Incident")
-      ax.fill_between(wav, Flam_trans/norm, fc="r", ec="none", alpha=0.3)
+          ax.plot(wav[mask], Flam_inc[mask], c="k", lw=1, label="Incident")
+      ax.fill_between(wav[mask], Flam_trans[mask], fc="r", ec="none", alpha=0.15)
 
   ax.set(
       yscale="linear",
       xlim=[wav1, wav2],
-      ylim=[0.0, 1.5],
+      ylim=[0.0, None],
       xlabel="Wavelength, Å",
-      ylabel=r"Flux, $F_\lambda$",
+      ylabel=r"Flux: $F_\lambda$, erg s$^{-1}$ cm$^{-2}$ Å$^{-1}$",
   )
+  ax.minorticks_on()
   sns.despine()
   fig.tight_layout()
   fig.savefig(figfile)
 #+end_src
 
 #+RESULTS: cloudy-fuv-spec-vs-colden-plot
-[[file:cloudy-fuv-spec-vs-colden-trap-bar.pdf]]
-
-#+call: cloudy-fuv-spec-vs-colden-plot("trap-bar", "-full-dust")
-
-#+RESULTS:
 [[file:cloudy-fuv-spec-vs-colden-trap-bar-full-dust.pdf]]
 
 #+call: cloudy-fuv-spec-vs-colden-plot("trap-bar", "-low-dust")
 
 #+RESULTS:
 [[file:cloudy-fuv-spec-vs-colden-trap-bar-low-dust.pdf]]
+
+And finally another version that just does the fine continuum to show the relative effect of the lines only
+
+#+name: cloudy-fuv-fine-spec-vs-colden-plot
+#+header: :var PREFIX="trap-bar" SUFFIX="-low-dust"
+#+begin_src python :return figfile :results file
+  import sys
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+  sys.path.append("../../cloudy-dust-charging")
+  from cloudytab import CloudyModel
+
+  
+
+  colden_list = [f"NH0-{_}" for _ in ["19", "20", "205", "21", "215", "22"]] # + ["NH2-22"]
+
+  bands = {
+      "B133": [6414.85, 6445.45],
+      "B080": [6469.25, 6496.45],
+      "B054": [6499.85, 6517.7],
+      "B033": [6518.55, 6540.65],
+      "R040": [6594.2, 6611.2],
+      "R058": [6612.05, 6628.2],
+      "R087": [6638.4, 6660.5],
+      "R136": [6688.55, 6708.95],
+  }
+
+
+  figfile = f"cloudy-fuv-fine-spec-vs-colden-{PREFIX}{SUFFIX}.pdf"
+
+  Ryd = 1.09737315685e5
+  fig, ax = plt.subplots(1, 1, figsize=(8, 2.5))
+
+  #ax.axhline(1.0, color="k")
+
+  # Add new axes for Ha wavelengths
+
+  # But we have to be clever since the transformation is non-linear
+  lamHa = 6564.553
+  lamHa_air = 6562.74
+  lamLyb = 1025.7222
+  def lam1_from_lam2(lam2):
+      return 1.0/(1.0/lamLyb + 1.0/lam2 - 1.0/lamHa)
+
+  dlam2_ticks = np.array([-300.0, -250.0, -200.0, -150.0, -100.0, -50.0, 0.0, 50.0, 100.0, 150.0, 200.0, 250.0])
+  lam1_ticks = lam1_from_lam2(lamHa + dlam2_ticks)
+  dlam2_ticklabels = [f"${int(_):d}$" for _ in dlam2_ticks]
+
+  alphas = iter([0.2, 0.4, 0.4, 0.6, 0.6, 0.4, 0.4, 0.2])
+  bandcolors = iter(["c", "c", "b", "b", "m", "m", "r", "r"])
+  for band, [lam2_lo, lam2_hi] in bands.items():
+      lam1_lo = lam1_from_lam2(lam2_lo + lamHa - lamHa_air)
+      lam1_hi = lam1_from_lam2(lam2_hi + lamHa - lamHa_air)
+      ax.axvspan(lam1_lo, lam1_hi, 0.87, 1.0, facecolor=next(bandcolors), alpha=next(alphas), zorder=-10)
+      ax.text((lam1_lo + lam1_hi)/2, 1.1, band, ha="center", fontsize="xx-small")
+
+  wav1, wav2 = 1018, 1032
+  sns.set_color_codes("dark")
+  for i, colden_string in enumerate(colden_list):
+      prefix = f"../cloudy/models/{PREFIX}-{colden_string}{SUFFIX}"
+      m = CloudyModel(prefix)
+      wavf = m.data["fcont"]["Energy/A"][::-1]
+      fine = m.data["fcont"]["Transmitted"][::-1]
+
+      mask = (wavf >= wav1) & (wavf <= wav2)
+      ax.fill_between(wavf[mask], fine[mask], fc="r", ec="none", alpha=0.15)
+
+  ax.set(
+      yscale="linear",
+      xlim=[wav1, wav2],
+      xticks=lam1_ticks,
+      xticklabels=dlam2_ticklabels,
+      ylim=[0.0, 1.2],
+      xlabel=r"Wavelength shift from H$\alpha$ after Raman scattering: $\Delta\lambda_2$, Å",
+      ylabel=r"Relative flux: $F_\lambda / F_{\mathrm{cont}}$",
+  )
+  #ax.minorticks_on()
+  sns.despine()
+  fig.tight_layout()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS: cloudy-fuv-fine-spec-vs-colden-plot
+[[file:cloudy-fuv-fine-spec-vs-colden-trap-bar-low-dust.pdf]]
+
 
 **** Plot the emissivity structure
 #+name: cloudy-emiss-plot
@@ -6008,6 +6278,16 @@ And another version where we plot spectrum on a log scale for a sequence of colu
 
 #+RESULTS:
 [[file:cloudy-emiss-trap-bar-NH2-22-low-dust.pdf]]
+
+#+RESULTS:
+[[file:cloudy-emiss-trap-bar-NH2-22-low-dust-PAH.pdf]]
+
+#+call: cloudy-emiss-plot("trap-bar-NH2-22-low-dust-PAH")
+
+#+call: cloudy-emiss-plot("trap-bar-NH2-22-low-dust-low-PAH")
+
+#+RESULTS:
+[[file:cloudy-emiss-trap-bar-NH2-22-low-dust-low-PAH.pdf]]
 
 **** Plot the model structure
 #+name: cloudy-structure-plot
@@ -6159,6 +6439,17 @@ And another version where we plot spectrum on a log scale for a sequence of colu
 #+RESULTS:
 [[file:cloudy-structure-trap-bar-NH2-22-low-dust.pdf]]
 
+#+call: cloudy-structure-plot("trap-bar-NH2-22-low-dust-PAH")
+
+#+RESULTS:
+[[file:cloudy-structure-trap-bar-NH2-22-low-dust-PAH.pdf]]
+
+#+call: cloudy-structure-plot("trap-bar-NH2-22-low-dust-low-PAH")
+
+#+RESULTS:
+[[file:cloudy-structure-trap-bar-NH2-22-low-dust-low-PAH.pdf]]
+
+
 **** Plot the pumping line optical depths
 #+name: cloudy-linetau-plot
 #+header: :var MODEL="trap-bar-NH2-22-low-dust"
@@ -6170,29 +6461,76 @@ And another version where we plot spectrum on a log scale for a sequence of colu
   sys.path.append("../../cloudy-dust-charging")
   from cloudytab import CloudyModel
 
-  sns.set_color_codes()
+  sns.set_color_codes("bright")
 
   figfile = f"cloudy-linetau-{MODEL}.pdf"
   prefix = f"../cloudy/models/{MODEL}"
   m = CloudyModel(prefix)
   tau = m.data["linetau"]
+  nzones = len(tau)
+
+  # Find dust tau at 6563 from tauV using Blagrave:2007a Table 1
+  tau6650 = m.data["pdr"]["TauV(point)"]*(1 - 0.230)/(1 - 0.091)
 
   fig, ax = plt.subplots(figsize=(8, 4))
   depth = tau["depth"]/(3.085677582e18/1000)
+  kappa1026 = m.data["em1026"]["kappa_abs"]
+  kappa1027 = m.data["em1027"]["kappa_abs"]
+  kappa1028 = m.data["em1028"]["kappa_abs"]
+  tau1026 = np.array([np.trapz(kappa1026[:i], tau["depth"][:i]) for i in range(nzones)])
+  tau1027 = np.array([np.trapz(kappa1027[:i], tau["depth"][:i]) for i in range(nzones)])
+  tau1028 = np.array([np.trapz(kappa1028[:i], tau["depth"][:i]) for i in range(nzones)])
+  tau21 = m.data["21cm"]["tau(21cm)"]
 
   N_H = m.data["pdr"]["H colden"]
-  
-  labels = tau.colnames[1:]
+  nH0 = m.data["ovr"]["hden"]*m.data["ovr"]["HI"]
+  NH0 = np.array([np.trapz(nH0[:i], tau["depth"][:i]) for i in range(nzones)])
 
+  def sigRaman(x):
+      if x > 0.0:
+          sigma = 0.2367/x**2 - 0.0187/x + 0.0041
+      else:
+          sigma = 0.2186/x**2 - 0.0344/x - 0.0054
+      return 1e-21*sigma
+
+
+
+  labels = sorted(tau.colnames[1:])
+  # Just use selected lines
+  labels = [
+      s for s in labels
+      if s.startswith("O  1 102")
+      or s.startswith("Si 2")
+  ]
+  n = len(labels)
+  # colors = iter(sns.color_palette("hls", n))
+  colors = iter(sns.color_palette("GnBu_d", n+1)[1:])
 
   for label in labels:
-      ax.plot(N_H, tau[label], label=label)
+      ax.plot(N_H, tau[label], label=label, color=next(colors))
 
-  ax.legend(ncol=5, fontsize="x-small", loc="bottom")
+  for label, x, color, alpha in [
+          ["R040", 0.403, "m", 0.7],
+          ["R058", 0.577, "m", 0.4],
+          ["R087", 0.871, "r", 0.5],
+          ["R136", 1.357, "r", 0.3],
+  ]:
+          ax.plot(N_H, sigRaman(x)*NH0,
+                  color=color, alpha=alpha, lw=3,
+                  label=f"Raman {label}")
+
+  ax.plot(N_H, tau21, color="g", lw=1.5, ls=(0, (10, 3)), label="H I 21 cm")
+  ax.plot(N_H, tau6650, color="k", ls="--", label="6650 Å continuum")
+  ax.plot(N_H, tau1027, color="k", lw=1.5, label="1027 Å continuum")
+  ax.axhline(1.0, color="k", ls=":")
+  ax.legend(ncol=2, fontsize="x-small", loc="lower right")
   ax.set(
       xscale = "log",
       yscale = "log",
-      xlim = [0.0, None],
+      ylabel = r"Optical depth, $\tau$",
+      xlabel = r"Total H column, cm$^{-2}$",
+      ylim = [0.0003, 30.0],
+      xlim = [1e18, 5e22],
   )
   sns.despine()
   fig.tight_layout()
@@ -6203,6 +6541,20 @@ And another version where we plot spectrum on a log scale for a sequence of colu
 #+RESULTS: cloudy-linetau-plot
 [[file:cloudy-linetau-trap-bar-NH2-22-low-dust.pdf]]
 
+#+call: cloudy-linetau-plot("trap-bar-NH2-22-full-dust")
+
+#+RESULTS:
+[[file:cloudy-linetau-trap-bar-NH2-22-full-dust.pdf]]
+
+#+call: cloudy-linetau-plot("trap-bar-NH2-22-low-dust-PAH")
+
+#+RESULTS:
+[[file:cloudy-linetau-trap-bar-NH2-22-low-dust-PAH.pdf]]
+
+#+call: cloudy-linetau-plot("trap-bar-NH2-22-low-dust-low-PAH")
+
+#+RESULTS:
+[[file:cloudy-linetau-trap-bar-NH2-22-low-dust-low-PAH.pdf]]
 
 **** Lines whose emissivity we want to track
 + ~BLND 8446~ is the three components (which we don't resolve in MUSE, separation 4 to 8 km/s)
