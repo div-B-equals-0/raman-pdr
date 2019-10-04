@@ -5,11 +5,11 @@
                                                          Cloudy 13.06.01
                                                          www.nublado.org
 
-                                                  PRNG seed: 0x7824c1fdd11e6157
+                                                  PRNG seed: 0xc2da3c522513f63c
 
                        **************************************13Jun01**************************************
                        *                                                                                 *
-                       * title Orion Bar to N(H0) = 10^19                                                *
+                       * title Orion Bar single zone test of STOUT                                       *
                        * # Total trapezium SED from POWR OB models                                       *
                        * table SED "trapezium_powr_fine_fuv.sed"                                         *
                        * luminosity total 38.89                                                          *
@@ -38,6 +38,27 @@
                        * stop zone 1                                                                     *
                        * database stout print                                                            *
                        * save line labels ".linelabels"                                                  *
+                       * set blend 7254 quiet                                                            *
+                       * set blend 5299 quiet                                                            *
+                       * save overview last ".ovr"                                                       *
+                       * save continuum last ".cont"                                                     *
+                       * save pressure last ".pre"                                                       *
+                       * save cooling last ".cool"                                                       *
+                       * save heating last ".heat"                                                       *
+                       * save heat last ".heat"                                                          *
+                       * save physical conditions last ".phys"                                           *
+                       * save hydrogen 21 cm last ".21cm"                                                *
+                       * save hydrogen lya last ".lya"                                                   *
+                       * save pdr last ".pdr"                                                            *
+                       * save fine continuum range 1000 1050 units Angstrom merge 1 last ".fcont"        *
+                       * save lines, emissivity last ".emis"                                             *
+                       * # UV pumping lines, mainly around Ly-b but see below for extras                 *
+                       * save lines optical depth some last ".linetau"                                   *
+                       * # Extra O I pumping lines                                                       *
+                       * # 1304 is from ground to 3s 3S                                                  *
+                       * # 976 is from ground to 5s 3S (pumps 7254 A)                                    *
+                       * # 930 is from ground to 8s 3S (pumps 5299 A)                                    *
+                       * save lines, array ".lina" last, units microns                                   *
                        *                                                                                 *
                        ***********************************************************************************
 
@@ -354,7 +375,7 @@ Spectrum Mg 2 (species: Mg+) trimmed to 13 levels (original 15) to have positive
  Chlorine   0  1.88e-05 9.17e-02 9.06e-01 2.49e-03 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
  Argon      0  1.49e-05 3.00e-02 9.67e-01 2.74e-03 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
  Iron       0  1.30e-06 1.43e-02 5.86e-01 3.99e-01 1.48e-05 3.66e-07 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
-   Orion Bar to N(H0) = 10^19  
+   Orion Bar single zone test of STOUT  
    Calculation stopped because NZONE reached. Iteration 1 of 2
    The geometry is plane-parallel.
   !The code needs to be fixed - search for fixit().
@@ -372,7 +393,7 @@ Spectrum Mg 2 (species: Mg+) trimmed to 13 levels (original 15) to have positive
    The continuum occupation number fell below 1 at 7.601e+03 microns.
 
                        ********************************> Cloudy 13.06.01 <********************************
-                       * title Orion Bar to N(H0) = 10^19                                                *
+                       * title Orion Bar single zone test of STOUT                                       *
                        * # Total trapezium SED from POWR OB models                                       *
                        * table SED "trapezium_powr_fine_fuv.sed"                                         *
                        * luminosity total 38.89                                                          *
@@ -398,6 +419,71 @@ Spectrum Mg 2 (species: Mg+) trimmed to 13 levels (original 15) to have positive
                        * stop zone 1                                                                     *
                        * database stout print                                                            *
                        * save line labels ".linelabels"                                                  *
+                       * set blend 7254 quiet                                                            *
+                       * "O  1" 7254.15                                                                  *
+                       * "O  1" 7254.45                                                                  *
+                       * "O  1" 7254.53                                                                  *
+                       * end                                                                             *
+                       * set blend 5299 quiet                                                            *
+                       * "O  1" 5298.89                                                                  *
+                       * "O  1" 5299.04                                                                  *
+                       * "O  1" 5299.09                                                                  *
+                       * end                                                                             *
+                       * save overview last ".ovr"                                                       *
+                       * save continuum last ".cont"                                                     *
+                       * save pressure last ".pre"                                                       *
+                       * save cooling last ".cool"                                                       *
+                       * save heating last ".heat"                                                       *
+                       * save heat last ".heat"                                                          *
+                       * save physical conditions last ".phys"                                           *
+                       * save hydrogen 21 cm last ".21cm"                                                *
+                       * save hydrogen lya last ".lya"                                                   *
+                       * save pdr last ".pdr"                                                            *
+                       * save fine continuum range 1000 1050 units Angstrom merge 1 last ".fcont"        *
+                       * save lines, emissivity last ".emis"                                             *
+                       * BLND 8446                                                                       *
+                       * BLND 11300                                                                      *
+                       * BLND 7254                                                                       *
+                       * BLND 5299                                                                       *
+                       * O  1 6300.30                                                                    *
+                       * O  2 7319.99                                                                    *
+                       * O  2 7318.92                                                                    *
+                       * O  3 5006.84                                                                    *
+                       * H  1 6562.81                                                                    *
+                       * Ca B 6562.81                                                                    *
+                       * O  1 63.1679m                                                                   *
+                       * C  2 157.636m                                                                   *
+                       * H2 v 0                                                                          *
+                       * CO   866.727m                                                                   *
+                       * IRAC 3.60000m                                                                   *
+                       * IRAC 4.50000m                                                                   *
+                       * IRAC 5.80000m                                                                   *
+                       * IRAC 8.00000m                                                                   *
+                       * end of lines                                                                    *
+                       * # UV pumping lines, mainly around Ly-b but see below for extras                 *
+                       * save lines optical depth some last ".linetau"                                   *
+                       * H  1 1025.72A                                                                   *
+                       * O  1 1025.76A                                                                   *
+                       * O  1 1027.43A                                                                   *
+                       * O  1 1028.16A                                                                   *
+                       * S  2 1021.25A                                                                   *
+                       * S  2 1021.55A                                                                   *
+                       * S  3 1021.11A                                                                   *
+                       * S  3 1021.32A                                                                   *
+                       * Si 2 1023.70A                                                                   *
+                       * Si 2 1020.70A                                                                   *
+                       * S  1 1024.64A                                                                   *
+                       * O  1 1302.17A                                                                   *
+                       * O  1 1304.86A                                                                   *
+                       * O  1 1306.03A                                                                   *
+                       * O  1 976.448A                                                                   *
+                       * O  1 930.257A                                                                   *
+                       * end of lines                                                                    *
+                       * # Extra O I pumping lines                                                       *
+                       * # 1304 is from ground to 3s 3S                                                  *
+                       * # 976 is from ground to 5s 3S (pumps 7254 A)                                    *
+                       * # 930 is from ground to 8s 3S (pumps 5299 A)                                    *
+                       * save lines, array ".lina" last, units microns                                   *
                        *********************************> Log(U): -2.60 <*********************************
 
                      Emission Line Spectrum.  Constant  Pressure Model.    Open geometry.  Iteration 1 of 2.
@@ -1068,7 +1154,7 @@ Blnd      3530.44A   29.711    0.0037      Si 4      1402.77A   30.217    0.0117
 
 
 
- Orion Bar to N(H0) = 10^19  
+ Orion Bar single zone test of STOUT  
  Cooling:  HFBc            0 :0.177 O  2c           0 :0.126 O  3c           0 :0.282 S  3c           0 :0.128 HFFc            0 :0.075  
  Heating:  BFH1            0 :0.899 BFHe            0 :0.083  
 
@@ -1205,12 +1291,19 @@ Blnd      3530.44A   29.711    0.0037      Si 4      1402.77A   30.217    0.0117
  New He Is optical depths:    1 8.79e-05    2 9.30e-07    3 8.87e-07    4 8.57e-07    5 8.57e-07
           Old He Is Lines:  584 0.00e+00 3889 0.00e+00 5016 0.00e+00 5876 0.00e+00
           New He Is Lines:  584 4.48e-01 3889 2.85e-04 5016 2.23e-09 5876 2.53e-13
-Orion Bar to N(H0) = 10^19  
+Orion Bar single zone test of STOUT  
 
 
-          Start Iteration Number 2                                                  Orion Bar to N(H0) = 10^19  
+          Start Iteration Number 2                                         Orion Bar single zone test of STOUT  
 
 
+WARNING: multiple matching lines found in search for "O  1" 1025.76A
+WARNING: match 1 is "O  1      1025.76A [->]" (dwl=0.0032959A)
+WARNING: match 2 is "O  1      1025.76A [->]" (dwl=0.00256348A)
+WARNING: match 3 is "O  1      1025.76A [->]" (dwl=0.00158691A)
+WARNING: multiple matching lines found in search for "O  1" 1027.43A
+WARNING: match 1 is "O  1      1027.43A [->]" (dwl=0.0012207A)
+WARNING: match 2 is "O  1      1027.43A [->]" (dwl=0.000488281A)
  ####  1  Te:8.858E+03 Hden:3.980E+03 Ne:4.353E+03 R:1.288E+18 R-R0:1.232E+12 dR:2.464E+12 NTR: 10 Htot:4.277E-17 T912: 1.25e-04###
  Hydrogen      1.98e-03 9.98e-01 H+o/Hden 1.00e+00 1.13e-10 H-    H2 6.98e-15 1.02e-11 H2+ HeH+ 9.81e-11 Ho+ ColD 1.94e+13 9.79e+15
  Helium        8.83e-03 9.91e-01 6.04e-05 HeI 2s3S 3.61e-06 Comp H,C 2.38e-24 6.45e-25 Fill Fac 1.00e+00 Gam1/tot 1.00e+00
@@ -1259,7 +1352,7 @@ Orion Bar to N(H0) = 10^19
  Chlorine   0  1.88e-05 9.16e-02 9.06e-01 2.49e-03 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
  Argon      0  1.49e-05 3.00e-02 9.67e-01 2.74e-03 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
  Iron       0  1.30e-06 1.43e-02 5.86e-01 3.99e-01 1.48e-05 3.66e-07 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00 0.00e+00
-   Orion Bar to N(H0) = 10^19  
+   Orion Bar single zone test of STOUT  
    Calculation stopped because NZONE reached. Iteration 2 of 2
    The geometry is plane-parallel.
   !The code needs to be fixed - search for fixit().
@@ -1276,7 +1369,7 @@ Orion Bar to N(H0) = 10^19
    The continuum occupation number fell below 1 at 7.601e+03 microns.
 
                        ********************************> Cloudy 13.06.01 <********************************
-                       * title Orion Bar to N(H0) = 10^19                                                *
+                       * title Orion Bar single zone test of STOUT                                       *
                        * # Total trapezium SED from POWR OB models                                       *
                        * table SED "trapezium_powr_fine_fuv.sed"                                         *
                        * luminosity total 38.89                                                          *
@@ -1302,6 +1395,71 @@ Orion Bar to N(H0) = 10^19
                        * stop zone 1                                                                     *
                        * database stout print                                                            *
                        * save line labels ".linelabels"                                                  *
+                       * set blend 7254 quiet                                                            *
+                       * "O  1" 7254.15                                                                  *
+                       * "O  1" 7254.45                                                                  *
+                       * "O  1" 7254.53                                                                  *
+                       * end                                                                             *
+                       * set blend 5299 quiet                                                            *
+                       * "O  1" 5298.89                                                                  *
+                       * "O  1" 5299.04                                                                  *
+                       * "O  1" 5299.09                                                                  *
+                       * end                                                                             *
+                       * save overview last ".ovr"                                                       *
+                       * save continuum last ".cont"                                                     *
+                       * save pressure last ".pre"                                                       *
+                       * save cooling last ".cool"                                                       *
+                       * save heating last ".heat"                                                       *
+                       * save heat last ".heat"                                                          *
+                       * save physical conditions last ".phys"                                           *
+                       * save hydrogen 21 cm last ".21cm"                                                *
+                       * save hydrogen lya last ".lya"                                                   *
+                       * save pdr last ".pdr"                                                            *
+                       * save fine continuum range 1000 1050 units Angstrom merge 1 last ".fcont"        *
+                       * save lines, emissivity last ".emis"                                             *
+                       * BLND 8446                                                                       *
+                       * BLND 11300                                                                      *
+                       * BLND 7254                                                                       *
+                       * BLND 5299                                                                       *
+                       * O  1 6300.30                                                                    *
+                       * O  2 7319.99                                                                    *
+                       * O  2 7318.92                                                                    *
+                       * O  3 5006.84                                                                    *
+                       * H  1 6562.81                                                                    *
+                       * Ca B 6562.81                                                                    *
+                       * O  1 63.1679m                                                                   *
+                       * C  2 157.636m                                                                   *
+                       * H2 v 0                                                                          *
+                       * CO   866.727m                                                                   *
+                       * IRAC 3.60000m                                                                   *
+                       * IRAC 4.50000m                                                                   *
+                       * IRAC 5.80000m                                                                   *
+                       * IRAC 8.00000m                                                                   *
+                       * end of lines                                                                    *
+                       * # UV pumping lines, mainly around Ly-b but see below for extras                 *
+                       * save lines optical depth some last ".linetau"                                   *
+                       * H  1 1025.72A                                                                   *
+                       * O  1 1025.76A                                                                   *
+                       * O  1 1027.43A                                                                   *
+                       * O  1 1028.16A                                                                   *
+                       * S  2 1021.25A                                                                   *
+                       * S  2 1021.55A                                                                   *
+                       * S  3 1021.11A                                                                   *
+                       * S  3 1021.32A                                                                   *
+                       * Si 2 1023.70A                                                                   *
+                       * Si 2 1020.70A                                                                   *
+                       * S  1 1024.64A                                                                   *
+                       * O  1 1302.17A                                                                   *
+                       * O  1 1304.86A                                                                   *
+                       * O  1 1306.03A                                                                   *
+                       * O  1 976.448A                                                                   *
+                       * O  1 930.257A                                                                   *
+                       * end of lines                                                                    *
+                       * # Extra O I pumping lines                                                       *
+                       * # 1304 is from ground to 3s 3S                                                  *
+                       * # 976 is from ground to 5s 3S (pumps 7254 A)                                    *
+                       * # 930 is from ground to 8s 3S (pumps 5299 A)                                    *
+                       * save lines, array ".lina" last, units microns                                   *
                        *********************************> Log(U): -2.60 <*********************************
 
                      Emission Line Spectrum.  Constant  Pressure Model.    Open geometry.  Iteration 2 of 2.
@@ -1969,7 +2127,7 @@ He 1      3530.43A   29.456    0.0020      C  4      1550.78A   29.218    0.0011
 
 
 
- Orion Bar to N(H0) = 10^19  
+ Orion Bar single zone test of STOUT  
  Cooling:  HFBc            0 :0.177 O  2c           0 :0.126 O  3c           0 :0.282 S  3c           0 :0.128 HFFc            0 :0.075  
  Heating:  BFH1            0 :0.899 BFHe            0 :0.083  
 
@@ -2013,7 +2171,7 @@ He 1      3530.43A   29.456    0.0020      C  4      1550.78A   29.218    0.0011
    <a>:5.77E-06  erdeFe8.9E+30  Tcompt2.24E+07  Tthr3.74E+08  <Tden>: 8.86E+03  <dens>:9.26E-21  <MolWgt>6.40E-01
      Mean Jeans  l(cm)7.65E+19  M(sun)1.09E+06  smallest:     len(cm):7.65E+19  M(sun):1.09E+06  a_ox tran: -3.84
  Rion:1.288E+18  Dist:0.00E+00  Diam:0.000E+00
- Hatom level 70  HatomType: add  HInducImp  F  He tot level: 63  He2 level:   70  ExecTime    11.2
+ Hatom level 70  HatomType: add  HInducImp  F  He tot level: 63  He2 level:   70  ExecTime    11.3
  ConvrgError(%)  <eden>  0.002  MaxEden  0.002  <H-C>   0.00  Max(H-C)    0.00  <Press>   0.006  MaxPrs er  0.006
   Continuity(%)  chng Te   0.0  elec den   0.0  n(H2)    0.0  n(CO)        0.0
 
@@ -2221,7 +2379,7 @@ He 1      3530.43A   29.456    0.0020      C  4      1550.78A   29.218    0.0011
  Iron        3.947  3.947  3.947  3.947  3.947  3.947
 
                1      2      3      4      5      6      7      8      9     10     11     12     13     14     15     16     17
-Orion Bar to N(H0) = 10^19  
+Orion Bar single zone test of STOUT  
 
 ---------------Convergence statistics---------------
       1.58 mean iterations/state convergence
@@ -2231,5 +2389,5 @@ Orion Bar to N(H0) = 10^19
          1 mean step length searches/chemistry step
 ----------------------------------------------------
 
- Cloudy ends: 1 zone, 2 iterations. (single thread) ExecTime(s) 11.17
+ Cloudy ends: 1 zone, 2 iterations. (single thread) ExecTime(s) 11.33
  [Stop in cdMain at maincl.cpp:593, Cloudy exited OK]

@@ -3303,15 +3303,19 @@ Mean wavelengths of blended components
 
 
 Final table
-| Transition      |        \lambda_1 | \nu_1, cm^-1 |      d \nu |       \nu_2 |      \lambda_2 |    \lambda_air |
-|-----------------+------------+------------+----------+-----------+----------+----------|
-| H I {1,2}s \to 3p | 1025.72220 |  97492.283 |    0.000 | 15233.329 | 6564.553 | 6562.740 |
-| O I J = 0 \to 1   | 1028.15729 |  97261.383 | -230.900 | 15002.429 | 6665.587 | 6663.747 |
-| O I J = 1 \to 1   | 1027.43139 |  97330.100 | -162.183 | 15071.146 | 6635.196 | 6633.364 |
-| O I J = 1 \to 2   | 1027.43077 |  97330.159 | -162.124 | 15071.205 | 6635.170 | 6633.338 |
-| O I J = 2 \to 1   | 1025.76339 |  97488.369 |   -3.914 | 15229.415 | 6566.240 | 6564.427 |
-| O I J = 2 \to 2   | 1025.76276 |  97488.429 |   -3.854 | 15229.475 | 6566.215 | 6564.401 |
-| O I J = 2 \to 3   | 1025.76170 |  97488.530 |   -3.753 | 15229.576 | 6566.171 | 6564.358 |
+| Transition          |        \lambda_1 | \nu_1, cm^-1 |      d \nu |       \nu_2 |       \lambda_2 |     \lambda_air |
+|---------------------+------------+------------+----------+-----------+-----------+-----------|
+| H I {1,2}s \to 3p     | 1025.72220 |  97492.283 |    0.000 | 15233.329 |  6564.553 |  6562.740 |
+|---------------------+------------+------------+----------+-----------+-----------+-----------|
+| O I J = 0 \to 1       | 1028.15729 |  97261.383 | -230.900 | 15002.429 |  6665.587 |  6663.747 |
+| O I J = 1 \to 1       | 1027.43139 |  97330.100 | -162.183 | 15071.146 |  6635.196 |  6633.364 |
+| O I J = 1 \to 2       | 1027.43077 |  97330.159 | -162.124 | 15071.205 |  6635.170 |  6633.338 |
+| O I J = 2 \to 1       | 1025.76339 |  97488.369 |   -3.914 | 15229.415 |  6566.240 |  6564.427 |
+| O I J = 2 \to 2       | 1025.76276 |  97488.429 |   -3.854 | 15229.475 |  6566.215 |  6564.401 |
+| O I J = 2 \to 3       | 1025.76170 |  97488.530 |   -3.753 | 15229.576 |  6566.171 |  6564.358 |
+|---------------------+------------+------------+----------+-----------+-----------+-----------|
+| Si II J = 1/2 \to 1/2 |  1020.6989 |  97972.086 |  479.803 | 15713.132 | 6364.1036 | 6362.3446 |
+| Si II J = 1/2 \to 3/2 |  1023.7001 |  97684.859 |  192.576 | 15425.905 | 6482.6018 | 6480.8110 |
 
 Scale factors:
 + \nu_1/\nu_2 = 97492.283/15233.329 = 6.3999329 +/- 0.0000004
@@ -3352,6 +3356,13 @@ This looks like it is the Si II line, *if* that is really at 1024.03, as Cloudy 
     : 14  2  6  2  9.04E-02 9.76534E+04   2.0
   + This would give 1e8/9.76534E+04 = 1024.02988529 so this is clearly the same one
   + The gf value of 9.04E-02 is consistent with 1.51E-02 (2 + 4) = 0.0906
+  + *This was just a bad wavelength from Opacity Project* I have the line with STOUT now
+
+|       \lambda_1 |       \nu_1 |    \nu(Lyb) |     d \nu |     \nu(Ha) |       \nu_2 |       \lambda_2 |          n |    \lambda(air) |
+|-----------+-----------+-----------+---------+-----------+-----------+-----------+------------+-----------|
+| 1020.6989 | 97972.086 | 97492.283 | 479.803 | 15233.329 | 15713.132 | 6364.1036 | 1.00027647 | 6362.3446 |
+| 1023.7001 | 97684.859 | 97492.283 | 192.576 | 15233.329 | 15425.905 | 6482.6018 | 1.00027633 | 6480.8110 |
+#+TBLFM: $2=1e8/$-1::$4=$2 - $3::$6=$4 + $5::$7=1e8/$6::$8=1 + 8.06051e-5 + (2.480990e-2 / (132.274 - (1e4/$7)**2)) + (1.74557e-4 / (39.32957 - (1e4/$7)**2)) ;f8::$9=$7/$8;f4
 
 **** DONE Data from Peter's Atomic Line List with energies in wave numbers
 CLOSED: [2019-08-24 Sat 22:12]
@@ -5515,6 +5526,20 @@ Now add them all together to make a Trapezium SED
 
 
 
+
+**** Changing default set of lines
++ I needed to increase the number of Si II levels from the default of 15, since otherwise the 1023.70 line is taken from Opacity Project and is inaccurate wavelength (1024.03, which has no reliable provenance)
+  + This is in [[file:~/Dropbox/dib-scatter-hii/cloudy/models/stout-extra-o1-si2.ini]]
+  + I put it up to 50, which includes all the levels below the Lyman limit
+  + We might need to increase that still further in order to predict fluorescent lines in the fully ionized gas
++ Also tried to increase O I levels to include up to Lyman limit (160 levels in this case)
+  + But for some reason it trims it to 135
+    : Spectrum O  1 (species: O) trimmed to 135 levels (original 160) to have positive Aul.
+  + Which means we only go up to 8s 3S level, which gives the 5299 line
+  + So, we are still missing the blue O I fluorescent lines
+  + It seems to be because the ~o_1.tp~ has no entries for level 136 (10s 3S) and some others
+
+
 **** Simple models
 + Need to evaluate code in [[id:BFADB49A-57C0-4D0F-B78A-3017B7CAAA55][An Emacs mode for cloudy input files]] in [[file:~/Dropbox/cloudy-dust-charging/][cloudy-dust-charging]] project to define ~cloudy-input-mode~
 
@@ -5530,6 +5555,22 @@ Now add them all together to make a Trapezium SED
   cmb
   table ism
   cosmic rays, background
+#+end_src
+
+
+These are some fluorescent O I lines
+#+name: cloudy-blends
+#+begin_src cloudy-input
+set blend 7254 quiet
+"O  1" 7254.15
+"O  1" 7254.45
+"O  1" 7254.53
+end
+set blend 5299 quiet
+"O  1" 5298.89
+"O  1" 5299.04
+"O  1" 5299.09
+end
 #+end_src
 
 
@@ -5553,6 +5594,8 @@ Now add them all together to make a Trapezium SED
   save lines, emissivity last ".emis"
   BLND 8446
   BLND 11300
+  BLND 7254
+  BLND 5299
   O  1 6300.30
   O  2 7319.99
   O  2 7318.92
@@ -5578,19 +5621,19 @@ Now add them all together to make a Trapezium SED
   S  2 1021.55A
   S  3 1021.11A	
   S  3 1021.32A
-  Si 2 1024.03A
+  Si 2 1023.70A
+  Si 2 1020.70A
   S  1 1024.64A
   O  1 1302.17A
   O  1 1304.86A
   O  1 1306.03A
-  O  1 976.791A
-  O  1 919.912A
+  O  1 976.448A
+  O  1 930.257A
   end of lines
   # Extra O I pumping lines
   # 1304 is from ground to 3s 3S
-  # The next two are level 2 (not from stout) so less info
   # 976 is from ground to 5s 3S (pumps 7254 A)
-  # 919 is from ground to 10d 3D (pumps 4972 A)
+  # 930 is from ground to 8s 3S (pumps 5299 A)
   save lines, array ".lina" last, units microns
 #+end_src
 
@@ -5657,6 +5700,7 @@ And even deeper, N(H_0) = 1e21 cm^-2
   stop temperature off
   iterate
   init file="ism.ini"
+  database stout "stout-extra-o1-si2.ini"
   abundances hii region no grains
 #+end_src
 
@@ -5763,6 +5807,7 @@ And a model with more dust
   <<cloudy-trap-bar>>
   <<cloudy-grains-100-300>>
   stop H2 column density 22
+  <<cloudy-blends>>
   <<cloudy-saves>>
   <<cloudy-em-saves>>
 #+end_src
@@ -5774,6 +5819,7 @@ And a model with only 10% dust, but still 3x PAH
   <<cloudy-trap-bar>>
   <<cloudy-grains-10-300>>
   stop H2 column density 22
+  <<cloudy-blends>>
   <<cloudy-saves>>
   <<cloudy-em-saves>>
 #+end_src
@@ -5822,6 +5868,7 @@ And fill in the lower column density models for the 10% and 100% dust
   <<cloudy-trap-bar>>
   <<cloudy-grains-10-300>>
   stop neutral column density 22
+  <<cloudy-blends>>
   <<cloudy-saves>>
   <<cloudy-em-saves>>
 #+end_src
@@ -5831,6 +5878,7 @@ And fill in the lower column density models for the 10% and 100% dust
   <<cloudy-trap-bar>>
   <<cloudy-grains-10-300>>
   stop neutral column density 21
+  <<cloudy-blends>>
   <<cloudy-saves>>
   <<cloudy-em-saves>>
 #+end_src
@@ -5840,6 +5888,7 @@ And fill in the lower column density models for the 10% and 100% dust
   <<cloudy-trap-bar>>
   <<cloudy-grains-10-300>>
   stop neutral column density 20
+  <<cloudy-blends>>
   <<cloudy-saves>>
   <<cloudy-em-saves>>
 #+end_src
@@ -5849,6 +5898,7 @@ And fill in the lower column density models for the 10% and 100% dust
   <<cloudy-trap-bar>>
   <<cloudy-grains-10-300>>
   stop neutral column density 19
+  <<cloudy-blends>>
   <<cloudy-saves>>
   <<cloudy-em-saves>>
 #+end_src
@@ -5861,6 +5911,7 @@ And do some intermediate columns: 20.5, 21.5
   <<cloudy-trap-bar>>
   <<cloudy-grains-10-300>>
   stop neutral column density 20.5
+  <<cloudy-blends>>
   <<cloudy-saves>>
   <<cloudy-em-saves>>
 #+end_src
@@ -5870,6 +5921,7 @@ And do some intermediate columns: 20.5, 21.5
   <<cloudy-trap-bar>>
   <<cloudy-grains-10-300>>
   stop neutral column density 21.5
+  <<cloudy-blends>>
   <<cloudy-saves>>
   <<cloudy-em-saves>>
 #+end_src
@@ -5899,6 +5951,7 @@ And one with 10% normal grains and PAH at 100% instead of 300
   <<cloudy-trap-bar>>
   <<cloudy-grains-10-100>>
   stop H2 column density 22
+  <<cloudy-blends>>
   <<cloudy-saves>>
   <<cloudy-em-saves>>
 #+end_src
@@ -5909,6 +5962,7 @@ And one with 10% normal grains and PAH at 100% instead of 300
   <<cloudy-trap-bar>>
   <<cloudy-grains-10-30>>
   stop H2 column density 22
+  <<cloudy-blends>>
   <<cloudy-saves>>
   <<cloudy-em-saves>>
 #+end_src
@@ -5916,15 +5970,25 @@ And one with 10% normal grains and PAH at 100% instead of 300
 
 **** Testing the STOUT database
 #+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-print-stout.in
-  title Orion Bar to N(H0) = 10^19
+  title Orion Bar single zone test of STOUT
   <<cloudy-trap-radiation>>
   <<cloudy-trap-bar>>
   <<cloudy-grains-30-100>>
-  database stout "stout-extra-o1-si2.ini"
   stop zone 1
   database stout print
   save line labels ".linelabels"
+  <<cloudy-blends>>
+  <<cloudy-saves>>
 #+end_src
+
+
+**** Re-running the models
++ This is necessary now that I have fixed the Si II lines
++ I am running the ~low-dust~ models for all the columns
++ And for the "all-the-way-to-H_2" models I am running
+  + ~full-dust~
+  + ~low-dust-PAH~
+  + ~low-dust-low-PAH~
 
 
 **** Plot the SED

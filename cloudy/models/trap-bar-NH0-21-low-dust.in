@@ -17,10 +17,21 @@ turbulence 5 km/s no pressure
 stop temperature off
 iterate
 init file="ism.ini"
+database stout "stout-extra-o1-si2.ini"
 abundances hii region no grains
 grains orion 0.1
 grains PAH function 3.0
 stop neutral column density 21
+set blend 7254 quiet
+"O  1" 7254.15
+"O  1" 7254.45
+"O  1" 7254.53
+end
+set blend 5299 quiet
+"O  1" 5298.89
+"O  1" 5299.04
+"O  1" 5299.09
+end
 save overview last ".ovr"
 save continuum last ".cont"
 save pressure last ".pre"
@@ -35,6 +46,8 @@ save fine continuum range 1000 1050 units Angstrom merge 1 last ".fcont"
 save lines, emissivity last ".emis"
 BLND 8446
 BLND 11300
+BLND 7254
+BLND 5299
 O  1 6300.30
 O  2 7319.99
 O  2 7318.92
@@ -60,19 +73,19 @@ S  2 1021.25A
 S  2 1021.55A
 S  3 1021.11A	
 S  3 1021.32A
-Si 2 1024.03A
+Si 2 1023.70A
+Si 2 1020.70A
 S  1 1024.64A
 O  1 1302.17A
 O  1 1304.86A
 O  1 1306.03A
-O  1 976.791A
-O  1 919.912A
+O  1 976.448A
+O  1 930.257A
 end of lines
 # Extra O I pumping lines
 # 1304 is from ground to 3s 3S
-# The next two are level 2 (not from stout) so less info
 # 976 is from ground to 5s 3S (pumps 7254 A)
-# 919 is from ground to 10d 3D (pumps 4972 A)
+# 930 is from ground to 8s 3S (pumps 5299 A)
 save lines, array ".lina" last, units microns
 save continuum emissivity 1024 ".em1024" last, units angstrom 
 save continuum emissivity 1025 ".em1025" last, units angstrom 

@@ -1,4 +1,4 @@
-title Orion Bar to N(H0) = 10^19
+title Orion Bar single zone test of STOUT
 # Total trapezium SED from POWR OB models
 table SED "trapezium_powr_fine_fuv.sed"
 luminosity total 38.89
@@ -24,3 +24,68 @@ database stout "stout-extra-o1-si2.ini"
 stop zone 1
 database stout print
 save line labels ".linelabels"
+set blend 7254 quiet
+"O  1" 7254.15
+"O  1" 7254.45
+"O  1" 7254.53
+end
+set blend 5299 quiet
+"O  1" 5298.89
+"O  1" 5299.04
+"O  1" 5299.09
+end
+save overview last ".ovr"
+save continuum last ".cont"
+save pressure last ".pre"
+save cooling last ".cool"
+save heating last ".heat"
+save heat last ".heat"
+save physical conditions last ".phys"
+save hydrogen 21 cm last ".21cm"
+save hydrogen lya last ".lya" 
+save pdr last ".pdr"
+save fine continuum range 1000 1050 units Angstrom merge 1 last ".fcont" 
+save lines, emissivity last ".emis"
+BLND 8446
+BLND 11300
+BLND 7254
+BLND 5299
+O  1 6300.30
+O  2 7319.99
+O  2 7318.92
+O  3 5006.84
+H  1 6562.81
+Ca B 6562.81
+O  1 63.1679m
+C  2 157.636m
+H2 v 0
+CO   866.727m
+IRAC 3.60000m
+IRAC 4.50000m
+IRAC 5.80000m
+IRAC 8.00000m
+end of lines
+# UV pumping lines, mainly around Ly-b but see below for extras
+save lines optical depth some last ".linetau"
+H  1 1025.72A
+O  1 1025.76A
+O  1 1027.43A
+O  1 1028.16A
+S  2 1021.25A
+S  2 1021.55A
+S  3 1021.11A	
+S  3 1021.32A
+Si 2 1023.70A
+Si 2 1020.70A
+S  1 1024.64A
+O  1 1302.17A
+O  1 1304.86A
+O  1 1306.03A
+O  1 976.448A
+O  1 930.257A
+end of lines
+# Extra O I pumping lines
+# 1304 is from ground to 3s 3S
+# 976 is from ground to 5s 3S (pumps 7254 A)
+# 930 is from ground to 8s 3S (pumps 5299 A)
+save lines, array ".lina" last, units microns
