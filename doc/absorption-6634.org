@@ -6176,7 +6176,7 @@ And another version where we plot spectrum on a log scale for a sequence of colu
       yscale="linear",
       xlim=[wav1, wav2],
       ylim=[0.0, None],
-      xlabel="Wavelength, Å",
+      xlabel="Far ultraviolet wavelength: $\lambda_{1}$, Å",
       ylabel=r"Flux: $F_\lambda$, erg s$^{-1}$ cm$^{-2}$ Å$^{-1}$",
   )
   ax.minorticks_on()
@@ -6546,7 +6546,7 @@ And finally another version that just does the fine continuum to show the relati
   sys.path.append("../../cloudy-dust-charging")
   from cloudytab import CloudyModel
 
-  sns.set_color_codes("bright")
+  #sns.set_color_codes("bright")
 
   figfile = f"cloudy-linetau-{MODEL}.pdf"
   prefix = f"../cloudy/models/{MODEL}"
@@ -6614,7 +6614,7 @@ And finally another version that just does the fine continuum to show the relati
       yscale = "log",
       ylabel = r"Optical depth, $\tau$",
       xlabel = r"Total H column, cm$^{-2}$",
-      ylim = [0.0003, 30.0],
+      ylim = [0.0003, 50.0],
       xlim = [1e18, 5e22],
   )
   sns.despine()

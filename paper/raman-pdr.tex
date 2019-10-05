@@ -145,6 +145,14 @@ star formation regions.
 \section{Raman scattering theory}
 \label{sec:raman-theory}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{figs/raman-cartoon}
+  \caption{Schematic illustration of Raman scattering of photons from
+    the \lyb{} wings to the \ha{} wings.}
+  \label{fig:raman-cartoon}
+\end{figure}
+
 \begin{table*}
   \caption{FUV/optical wavelength equivalencies for Raman scattering}
   \label{tab:raman-wavelengths}
@@ -321,7 +329,7 @@ ratio increases with \(x\), which means that the product
   \label{tab:wav-bands}
   ~\\[-\baselineskip]
   \begin{tabular}{l l R C C C C l}\toprule
-    & Band & \langle\Delta\lambda\rangle, \si{\angstrom}   & \lambda_{\text{min}}, \si{\angstrom} & \lambda_{\text{max}}, \si{\angstrom} & f_{\mathrm{H\alpha}} & \langle\sigma_\lambda\rangle, \SI{e-21}{cm^2} & Contamination \\
+    & Band & \langle\Delta\lambda_2\rangle, \si{\angstrom}   & \lambda_{\text{min}}, \si{\angstrom} & \lambda_{\text{max}}, \si{\angstrom} & f_{\mathrm{H\alpha}} & \langle\sigma_\lambda\rangle, \SI{e-21}{cm^2} & Contamination \\
     \midrule
     Blue wing & B133 & -132.8& 6414.85& 6445.45 & 0.180 & 0.144 & \\
     & B080 & -79.5 & 6469.25& 6496.45 & 0.196 & 0.378 & Sky 6471, 6478\\
@@ -487,10 +495,17 @@ roughly cylindrical filament.  Second, they ignore scattering, see
     hydrogen nucleon column density, calculated from static Cloudy
     simulations of the Orion Bar.  All optical depths and columns are
     measured with respect to the illuminating Trapezium stars, which
-    are situated to the left in this figure.  The two panels show two
-    models that differ only in the assumed dust opacity: low opacity
-    (\(\sigma\FUV \approx \SI{2e-22}{cm^2.H^{-1}}\)) in the upper panel and high
-    opacity (\(\sigma\FUV \approx \SI{5e-22}{cm^2.H^{-1}}\)) in the lower panel.}
+    are situated to the left in this figure.  Separate panels show two
+    models that differ only in the assumed dust absorption opacity:
+    (a)~low opacity, \(\sigma\FUV \approx \SI{5e-23}{cm^2.H^{-1}}\), and (b)~high
+    opacity, \(\sigma\FUV \approx \SI{5e-22}{cm^2.H^{-1}}\). Optical depths of
+    \chem{O^0} and \chem{Si^+} absorption lines in the \lyb{} wings
+    are shown in blue. Continuum optical depths near \lyb{} (solid
+    line) and \ha{} (dashed line) are shown in black.  The \chem{H^0}
+    \SI{21}{cm} line optical depth is shown in green (long dashed
+    line).  Optical depths to Rayleigh/Raman scattering for 4 observed
+    bands in the red wing of \lyb{} (see Table~\ref{tab:wav-bands})
+    are shown in red.}
   \label{fig:cloudy-bar-optical-depths}
 \end{figure}
 
@@ -508,7 +523,9 @@ roughly cylindrical filament.  Second, they ignore scattering, see
     domain, allowing direct comparison with the observations presented
     in Figure~\ref{fig:raman-compensated} (observed Raman bands are
     indicated by colored boxes). Note that the scale is linear in
-    \(\lambda_1\), which is slightly non-linear in \(\Delta\lambda_2\).  }
+    \(\lambda_1\), which is slightly non-linear in
+    \(\Delta\lambda_2\).  Wavelengths of some of the more prominent stellar
+    photospheric lines and nebular absorption lines are marked. }
   \label{fig:stellar-spectrum-fuv}
 \end{figure}
 
