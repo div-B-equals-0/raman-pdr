@@ -677,12 +677,21 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       6583.45: "[N II]",
   }
   medium_lines = {
+      6300.30: "[O I]",
+      6312.06: "[S III]",
+      6347.11: "Si II",
+      6363.78: "[O I]",
+      6371.36: "Si II",
       6578.05: "C II",
       6678.15: "He I",
       6716.44: "[S II]",
       6730.816: "[S II]",
   }
   weak_lines = {
+      6257.18: "C II",
+      6259.56: " ", # no label to avoid overlap
+      6334.35: "N II",
+      6382.8: "N II",
       6401.5: "[Ni III]",
       6501.4: "O II",
       6510.9: "O II",
@@ -692,12 +701,21 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       # 6544.3: "?",
       6641: "[Cr IV]",
       6666.80: "[Ni II]",
-      6699.39: "He I"
+      6699.39: "He I",
+      6721.39: "O II",
+      6755.02: "He I",
+      6769.59: "N I",
+      6785.81: "O II",
+      6791.48: "[Ni II]",
+      6809.23: "N II",
+      6813.57: "[Ni II]",
   }
-  sky_lines = [6465, 6471, 6478, 6498.15, 6507, 6603]
+  sky_lines = [6278, 6465, 6471, 6478, 6498.15, 6507, 6603]
   absorption_lines = {
       6633.347: "O I",
       6663.747: "O I",
+      6362.3446: "Si II",
+      6480.8110: "Si II",
   }
 
   fig, ax = plt.subplots(figsize=(10, 6))
@@ -835,6 +853,8 @@ This is just like the previous figure, but with a restricted wavelength range an
   absorption_lines = {
       6633.347: "O I",
       6663.747: "O I",
+      6362.3446: "Si II",
+      6480.8110: "Si II",
   }
 
   fig, ax = plt.subplots(figsize=(10, 6))
@@ -5987,6 +6007,7 @@ And one with 10% normal grains and PAH at 100% instead of 300
 + I am running the ~low-dust~ models for all the columns
 + And for the "all-the-way-to-H_2" models I am running
   + ~full-dust~
+  + ~low-dust~
   + ~low-dust-PAH~
   + ~low-dust-low-PAH~
 
