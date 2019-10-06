@@ -140,6 +140,65 @@
 + Given that Dopita has narrower line than us, it might absorb more than just the Raman pseudo-continuum
 
 
+** Telluric absorption and sky emission
++ According to Weilbacher:2015a
+  + The average atmospheric extinction curve was applied (Patat:2011a)
+  + But no attempt was made to remove the sky background or telluric absorption
+  + They mention two tools for calculating telluric absorption
+    + SKYCORR - Noll:2014a but that is mainly sky emission lines
+    + MOLECFIT - Yes, this does the absorption.
+  + More details at http://www.eso.org/sci/software/pipelines/skytools/
++ Looks like best bet is the SkyCalc online tool
+  + I put in the coordinates and time (2014-02-16)
+  + And made a FITS file in air wavelengths on a linear scale of 0.1 \AA for the transmission and the emission spectrum
+  + Results are in [[file:~/Dropbox/dib-scatter-hii/data/skycalc/skytable.fits]]
+    + See code snippet below
+    + The important columns are
+      + ~trans_ma~ molecular absorption
+      + ~flux_ael~ airglow emission lines
+
+#+begin_src python :results output verbatim
+  from astropy.table import Table
+
+  tab = Table.read("../data/skycalc/skytable.fits")
+
+  print(tab)
+
+  print(tab.columns)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+ lam          flux        ...      trans_rs           trans_ms     
+------ ------------------ ... ------------------ ------------------
+ 450.0  2583.921817879798 ...  0.831446120992378 0.9569159803247606
+450.01  2585.223127493925 ... 0.8314601805229443 0.9569172726546972
+450.02 2586.5243099001295 ... 0.8314742386703544 0.9569185649180324
+450.03 2587.8253650815714 ... 0.8314882954347557  0.956919857114771
+450.04 2589.1262930214157 ... 0.8315023508162951  0.956921149244918
+450.05  2590.427093702826 ... 0.8315164048151203 0.9569224413084781
+450.06 2591.7277671089696 ... 0.8315304574313785 0.9569237333054563
+450.07 2593.0283132230006 ...  0.831544508665217 0.9569250252358574
+450.08 2594.3287320280997 ... 0.8315585585167833 0.9569263170996862
+450.09  2595.629023507423 ... 0.8315726069862245 0.9569276088969476
+   ...                ... ...                ...                ...
+ 949.9  854.2417481499106 ... 0.9911623498820592  0.984416111907422
+949.91  837.4836490922867 ... 0.9911627238954729 0.9844163365316104
+949.92  748.5286429705792 ...   0.99116309788922 0.9844165611502222
+949.93 497.34838083014597 ... 0.9911634718633018 0.9844167857632574
+949.94  643.1637823155027 ... 0.9911638458177194 0.9844170103707165
+949.95  726.2615012488163 ... 0.9911642197524744 0.9844172349725996
+949.96  562.9837516877566 ... 0.9911645936675675 0.9844174595689069
+949.97  251.6422067982511 ... 0.9911649675630004 0.9844176841596384
+949.98   516.368294301081 ...  0.991165341438774 0.9844179087447945
+949.99  727.1154231637446 ... 0.9911657152948898 0.9844181333243753
+ 950.0  772.4016890220621 ... 0.9911660891313488 0.9844183578983811
+Length = 50001 rows
+<TableColumns names=('lam','flux','dflux1','dflux2','trans','dtrans1','dtrans2','flux_sml','flux_ssl','flux_zl','flux_tie','flux_tme','flux_ael','flux_arc','trans_ma','trans_o3','trans_rs','trans_ms')>
+#+end_example
+
+
+
 
 *** Look at the spectrum from existing Cloudy models
 #+name: make-cloudy-fuv-spectrum
@@ -641,10 +700,14 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
   import json
   from matplotlib import pyplot as plt
   import seaborn as sns
+  from astropy.table import Table
+  from astropy.convolution import Gaussian1DKernel, convolve_fft
 
   jsonfile = "raman-orion-muse-1d-spectra.json"
   data = json.load(open(jsonfile))
   figfile = jsonfile.replace(".json", ".pdf")
+
+  sky = Table.read("../data/skycalc/skytable.fits")
 
   # Heliocentric correction
   V_HEL = -16.217273731
@@ -710,7 +773,7 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       6809.23: "N II",
       6813.57: "[Ni II]",
   }
-  sky_lines = [6278, 6465, 6471, 6478, 6498.15, 6507, 6603]
+  sky_lines = [6235.5, 6287.5, 6306.5, 6329, 6465, 6471, 6478, 6498.15, 6507, 6603]
   absorption_lines = {
       6633.347: "O I",
       6663.747: "O I",
@@ -741,7 +804,8 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       ax.fill_between(waves, cont + offset, total + offset, color=(fc, fc, fc))
       ax.plot(waves, cont + offset, color="k", lw=0.5, zorder=-100)
       ax.plot(waves, total + offset, color="k", lw=0.7)
-      ax.annotate(region, (wavmax, cont[-1] + offset),
+      ax.annotate(f"{np.round(np.abs(offset), 2):.2f} + {region}",
+                  (wavmax, cont[-1] + offset),
                   xytext=(5, 0), textcoords="offset points", ha="left", va="center")
       offset -= 0.15
       fc += 0.04
@@ -754,35 +818,60 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       ax.axvspan(wav1, wav2, 0.2, 0.95, facecolor=next(bandcolors), alpha=next(alphas), zorder=-10)
       ax.text((wav1 + wav2)/2, 2.2, band, ha="center", fontsize="xx-small")
 
+  sns.set_color_codes("dark")
   for wave, label in strong_lines.items():
-      ax.axvline(wave, 0.12, 0.8, color="k", lw=2, zorder=-5)
-      ax.text(wave, 0.7, label, ha="center", va="top", rotation="vertical", fontsize="small")
+      ax.axvline(wave, 0.22, 0.8, color="k", lw=2, zorder=-5)
+      ax.text(wave, 0.74, label, ha="center", va="top", rotation="vertical", fontsize="small")
   for wave, label in medium_lines.items():
-      ax.axvline(wave, 0.15, 0.8, color="k", lw=1, zorder=-5)
-      ax.text(wave, 0.8, label, ha="center", va="top", rotation="vertical", fontsize="x-small")
+      ax.axvline(wave, 0.25, 0.8, color="k", lw=1, zorder=-5)
+      ax.text(wave, 0.8, label, ha="center", va="top", rotation="vertical", fontsize="xx-small")
   for wave, label in weak_lines.items():
-      ax.axvline(wave, 0.15, 0.85, color="k", lw=0.5, zorder=-5)
+      ax.axvline(wave, 0.28, 0.88, color="k", lw=0.5, zorder=-5)
       ax.text(wave, 2.03, label, ha="center", va="bottom", rotation="vertical", fontsize="xx-small")
 
   for wave, label in absorption_lines.items():
-      ax.axvline(wave, 0.08, 0.8, color="k", ls="--", lw=1, zorder=-5)
-      ax.text(wave, 0.6, label, ha="center", rotation="vertical", fontsize="xx-small")
+      ax.axvline(wave, 0.18, 0.8, color="r", ls="--", lw=1, zorder=-5)
+      ax.text(wave, 0.65, label, ha="center", rotation="horizontal", fontsize="x-small", color="r", fontweight="bold")
 
   for wave in sky_lines:
       # Sky line wavelengths need correcting from topocentric to OMC farme
       wave *= (1.0 - (V_OMC + V_HEL)/3e5)
-      ax.axvline(wave, 0.15, 0.82, color="k", lw=1, ls=":", zorder=-5)
-      ax.text(wave, 0.7, "sky", ha="center", rotation="vertical", fontsize="xx-small")
+      ax.axvline(wave, 0.08, 0.82, color="g", lw=1, ls=":", zorder=-5)
+      #ax.text(wave, 0.7, "sky", ha="center", rotation="vertical", fontsize="xx-small")
 
+
+  # Add in sky transmission "trans_ma" and skyglow lines "flux_ael" from skycalc
+  skywavs =  10*sky["lam"]*(1.0 - (V_OMC + V_HEL)/3e5)
+  smask = (wavmin <= skywavs) & (skywavs <= wavmax) 
+  skywavs = skywavs[smask]
+  # pixels are 0.1 AA - convolve to give R = 2500 at 6500 AA
+  fwhm_pix = 6500.0/(0.1*2500.0)
+  gauss = Gaussian1DKernel(stddev=fwhm_pix/2.3)
+  skytrans = convolve_fft(sky["trans_ma"], gauss)[smask]
+  skyemis = convolve_fft(sky["flux_ael"], gauss)[smask]
+
+  sns.set_color_codes("dark")
+
+  offset = -0.55
+  ax.plot(skywavs, (1.2*skytrans - 0.2) + offset, lw=0.8, color="r")
+  ax.annotate(f"${np.round(offset, 2):.2f}$ + Telluric absorption",
+              (wavmax, 1 + offset), color="r",
+              xytext=(5, 0), textcoords="offset points", ha="left", va="center")
+  offset = 0.55
+  ax.plot(skywavs, offset + skyemis/skyemis.max(), lw=0.8, color="g") 
+  ax.annotate(f"{np.round(np.abs(offset), 2):.2f} + Airglow",
+              (wavmax, offset), color="g",
+              xytext=(5, 0), textcoords="offset points", ha="left", va="center")
 
   ax.set(
       xlabel="STP Wavelength, Å (OMC frame)",
       ylabel="Relative Flux, $F_{\lambda} / F_{6200}$ + offset",
       # xlim=[wavmin, wavmax],
-      ylim=[0.55, 2.25],
+      ylim=[0.35, 2.25],
   )
   ax.minorticks_on()
   sns.despine(fig)
+  fig.tight_layout()
   fig.savefig(figfile)
 #+end_src
 
