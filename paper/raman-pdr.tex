@@ -148,7 +148,7 @@ star formation regions.
 
 \begin{figure}
   \centering
-  \includegraphics[width=\linewidth]{figs/raman-cartoon}
+  \includegraphics[width=0.7\linewidth]{figs/raman-cartoon}
   \caption{Schematic illustration of Raman scattering of photons from
     the \lyb{} wings to the \ha{} wings.  The relevant energy levels
     of neutral hydrogen are shown at left.  Far ultraviolet photons
@@ -352,25 +352,31 @@ ratio increases with \(x\), which means that the product
   \label{fig:raman-fov-regions}
 \end{figure}
 
-\begin{table*}
-  \caption{Wavelength bands used for Raman wing extraction}
-  \label{tab:wav-bands}
-  ~\\[-\baselineskip]
-  \begin{tabular}{l l R C C C C l}\toprule
-    & Band & \langle\Delta\lambda_2\rangle, \si{\angstrom}   & \lambda_{\text{min}}, \si{\angstrom} & \lambda_{\text{max}}, \si{\angstrom} & f_{\mathrm{H\alpha}} & \langle\sigma_\lambda\rangle, \SI{e-21}{cm^2} & Contamination \\
-    \midrule
-    Blue wing & B133 & -132.8& 6414.85& 6445.45 & 0.180 & 0.144 & \\
-    & B080 & -79.5 & 6469.25& 6496.45 & 0.196 & 0.378 & Sky 6471, 6478, \chem{H_2 O}\\
-    & B054 & -53.6 & 6499.85& 6517.70 & 0.205 & 0.802 & \ion{O}{2}? 6502, 6510, Sky 6507, \chem{H_2 O}\\
-    & B033 & -32.8 & 6518.55& 6540.65 & 0.212 & 2.069 & [\ion{N}{2}] 6527.24, [\ion{Ni}{3}] 6533.76, \chem{H_2 O}\\
-    \addlinespace[2pt]
-    Red wing & R040 & 40.3 &  6594.20& 6611.20 & 0.238 & 1.451 & Sky 6603\\
-    & R058 & 57.7 &  6612.05& 6628.20 & 0.244 & 0.695 & \\
-    & R087 & 87.1 &  6638.40& 6660.50 & 0.255 & 0.299 & [\ion{Cr}{4}]? 6641\\
-    & R136 & 135.7 & 6688.55& 6708.95 & 0.274 & 0.119 & \ion{He}{1} 6699\\
-    \bottomrule
-  \end{tabular}
-\end{table*}
+
+
+
+The principal observational dataset used in this paper is the imaging
+spectroscopy mosaic of the inner Orion Nebula \citep{Weilbacher:2015a,
+  Mc-Leod:2015b} obtained with the MUSE spectrograph
+\citep{Bacon:2010a, Bacon:2014a} on the VLT.  The entire datacube
+covers the wavelength range \num{4595} to \SI{9366}{\angstrom} but we
+concentrate mainly on the range \num{6300} to \SI{6800}{\angstrom},
+where the spectral resolving power is \(R \approx 2500\), corresponding to
+an instrumental linewidth (FWHM) of
+\(\delta\lambda \approx \SI{2.4}{\angstrom}\), which is sampled at
+\SI{1.25}{\angstrom.pix^{-1}} and then resampled to
+\SI{0.85}{\angstrom.pix^{-1}} for the final calibrated cube
+\citetext{see \S~2 of \citealp{Weilbacher:2015a}}.  The observed field
+is shown by the white rectangle in
+Figure~\ref{fig:raman-fov-regions}(a) and includes the entire inner
+Huygens region of the nebula, which accounts for roughly half of the
+total radio continuum flux from the \hii{} region
+\citep{Subrahmanyan:2001a}.  The full datacube is a mosaic that
+combines observations from 30 separate pointings, with a pixel size of
+\(0.2 \times 0.2''\).
+
+\subsection{Raman scattered \ha{} wings}
+\label{sec:raman-scattered-ha}
 
 \begin{figure*}
   \includegraphics[width=\linewidth]{figs/raman-orion-muse-1d-spectra}
@@ -394,32 +400,6 @@ ratio increases with \(x\), which means that the product
   }
   \label{fig:raman-spectra-1d}
 \end{figure*}
-
-\begin{figure*}
-  \includegraphics[width=\linewidth]{figs/raman-rgb-4-panel}
-  \caption{Spatial distribution of Raman-scattered wings in H\(\alpha\)}
-  \label{fig:raman-maps}
-\end{figure*}
-
-The principal observational dataset used in this paper is the imaging
-spectroscopy mosaic of the inner Orion Nebula \citep{Weilbacher:2015a,
-  Mc-Leod:2015b} obtained with the MUSE spectrograph
-\citep{Bacon:2010a, Bacon:2014a} on the VLT.  The entire datacube
-covers the wavelength range \num{4595} to \SI{9366}{\angstrom} but we
-concentrate mainly on the range \num{6300} to \SI{6800}{\angstrom},
-where the spectral resolving power is \(R \approx 2500\), corresponding to
-an instrumental linewidth (FWHM) of
-\(\delta\lambda \approx \SI{2.4}{\angstrom}\), which is sampled at
-\SI{1.25}{\angstrom.pix^{-1}} and then resampled to
-\SI{0.85}{\angstrom.pix^{-1}} for the final calibrated cube
-\citetext{see \S~2 of \citealp{Weilbacher:2015a}}.  The observed field
-is shown by the white rectangle in
-Figure~\ref{fig:raman-fov-regions}(a) and includes the entire inner
-Huygens region of the nebula, which accounts for roughly half of the
-total radio continuum flux from the \hii{} region
-\citep{Subrahmanyan:2001a}.  The full datacube is a mosaic that
-combines observations from 30 separate pointings, with a pixel size of
-\(0.2 \times 0.2''\).
 
 Extended wings to the \ha{} line are detected over the entire map, but
 they are particularly prominent in the six regions marked as white
@@ -446,6 +426,9 @@ expected to be smooth on a \SI{100}{\angstrom} scale, but nonetheless
 the systematic uncertainties in the continuum interpolation is an
 important factor that limits the precision of the Raman wing
 measurements.
+
+\subsection{Raman scattered FUV absorption lines}
+\label{sec:raman-scattered-fuv}
 
 A prominent feature of all the spectra in
 Figure~\ref{fig:raman-spectra-1d} is a pair of absorption notches in
@@ -479,10 +462,45 @@ line at \SI{1024}{\angstrom}.  However, the blue wing is much less
 clean than the red wing, partly due to telluric absorption and airglow
 emission (see below), which makes the identification uncertain.
 
+
+\subsection{Definition of observational Raman bands in the red and blue wings}
+\label{sec:defin-observ-bands}
+
+\begin{table*}
+  \caption{Wavelength bands used for Raman wing extraction}
+  \label{tab:wav-bands}
+  ~\\[-\baselineskip]
+  \begin{tabular}{l l R C C C C l}\toprule
+    & Band & \langle\Delta\lambda_2\rangle, \si{\angstrom}   & \lambda_{\text{min}}, \si{\angstrom} & \lambda_{\text{max}}, \si{\angstrom} & f_{\mathrm{H\alpha}} & \langle\sigma_\lambda\rangle, \SI{e-21}{cm^2} & Contamination \\
+    \midrule
+    Blue wing & B133 & -132.8& 6414.85& 6445.45 & 0.180 & 0.144 & \\
+    & B080 & -79.5 & 6469.25& 6496.45 & 0.196 & 0.378 & Sky 6471, 6478, \chem{H_2 O}\\
+    & B054 & -53.6 & 6499.85& 6517.70 & 0.205 & 0.802 & \ion{O}{2}? 6502, 6510, Sky 6507, \chem{H_2 O}\\
+    & B033 & -32.8 & 6518.55& 6540.65 & 0.212 & 2.069 & [\ion{N}{2}] 6527.24, [\ion{Ni}{3}] 6533.76, \chem{H_2 O}\\
+    \addlinespace[2pt]
+    Red wing & R040 & 40.3 &  6594.20& 6611.20 & 0.238 & 1.451 & Sky 6603\\
+    & R058 & 57.7 &  6612.05& 6628.20 & 0.244 & 0.695 & \\
+    & R087 & 87.1 &  6638.40& 6660.50 & 0.255 & 0.299 & [\ion{Cr}{4}]? 6641\\
+    & R136 & 135.7 & 6688.55& 6708.95 & 0.274 & 0.119 & \ion{He}{1} 6699\\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
 In order to study the spatial distribution of the Raman-scattered
 wings, it is convenient to define a series of broad bands on the blue
 and red sides, which are listed in Table~\ref{tab:wav-bands} and shown
-as blue and red colored boxes in Figure~\ref{fig:raman-spectra-1d}.
+as blue and red shaded vertical stripes in
+Figure~\ref{fig:raman-spectra-1d}. Four bands are defined in each
+wing, spanning a range in \(|\Delta\lambda_2|\) from about \SI{30}{\angstrom} to
+\SI{150}{\angstrom}.  The lower limit of this range is determined by
+overlap with the strong nebular [\ion{N}{2}] emission lines, while the
+upper limit is due the [\ion{S}{2}] lines on the red side, combined
+with the Raman wings becoming too weak to measure.  The mean
+Rayleigh/Raman scattering cross section in each band is also given in
+the table, varying between about \SI{1e-22}{cm^2} and
+\SI{2e-21}{cm^2}.
+
 The bands are chosen so as to avoid the strongest contaminating lines
 wherever possible, but some small contamination is unavoidable, as
 listed in the rightmost column of the table.  The contamination comes
@@ -509,9 +527,19 @@ dominated by telluric lines of \chem{O_2} and \chem{H_2 O}
 absorption near \ha{} is the \chem{O_2} \(\gamma\) band at
 \SI{6280}{\angstrom}, which is clearly seen in all the spectra but
 lies well away from the Raman wings.  The blue Raman wing is affected
-by much weaker \chem{H_2 O} bands at \SIrange{6460}{6600}{\angstrom}.
-In summary, the nebular and telluric contamination introduces uncertainties of order 10\% in the fluxes 
+by weaker \chem{H_2 O} bands at \SIrange{6460}{6600}{\angstrom}.  In
+summary, the nebular and telluric contamination introduces
+uncertainties of order 10\% in the fluxes of the B033, B054, and B080
+bands, with other bands being affected to a much lesser degree.
 
+\subsection{Spatial mapping of the Raman bands}
+\label{sec:spat-mapp-raman}
+
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/raman-rgb-4-panel}
+  \caption{Spatial distribution of Raman-scattered wings in H\(\alpha\)}
+  \label{fig:raman-maps}
+\end{figure*}
 
 
 The \SI{6633}{\angstrom} and \SI{6664}{\angstrom} lines are clearly
