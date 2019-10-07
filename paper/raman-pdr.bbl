@@ -25,6 +25,16 @@
   Photo-Optical Instrumentation Engineers (SPIE) Conference Series, Vol. 7735,
   \procspie, 773508, \dodoi{10.1117/12.856027}
 
+\bibitem[{{Bacon} {et~al.}(2014){Bacon}, {Vernet}, {Borisova}, {Bouché},
+  {Brinchmann}, {Carollo}, {Carton}, {Caruana}, {Cerda}, {Contini}, {Franx},
+  {Girard}, {Guerou}, {Haddad}, {Hau}, {Herenz}, {Herrera}, {Husemann},
+  {Husser}, {Jarno}, {Kamann}, {Krajnovic}, {Lilly}, {Mainieri}, {Martinsson},
+  {Palsa}, {Patricio}, {Pécontal}, {Pello}, {Piqueras}, {Richard}, {Sandin},
+  {Schroetter}, {Selman}, {Shirazi}, {Smette}, {Soto}, {Streicher}, {Urrutia},
+  {Weilbacher}, {Wisotzki}, \& {Zins}}]{Bacon:2014a}
+{Bacon}, R., {Vernet}, J., {Borisova}, E., {et~al.} 2014, The Messenger, 157,
+  13
+
 \bibitem[{{Bally} {et~al.}(2000){Bally}, {O'Dell}, \&
   {McCaughrean}}]{Bally:2000a}
 {Bally}, J., {O'Dell}, C.~R., \& {McCaughrean}, M.~J. 2000, \aj, 119, 2919,
@@ -73,6 +83,10 @@
 \bibitem[{{Foster} \& {Goodman}(2006)}]{Foster:2006a}
 {Foster}, J.~B., \& {Goodman}, A.~A. 2006, \apjl, 636, L105,
   \dodoi{10.1086/500131}
+
+\bibitem[{{Garc{\'{\i}}a-D{\'{\i}}az} \& {Henney}(2007)}]{Garcia-Diaz:2007a}
+{Garc{\'{\i}}a-D{\'{\i}}az}, M.~T., \& {Henney}, W.~J. 2007, \aj, 133, 952,
+  \dodoi{10.1086/510621}
 
 \bibitem[{{Goicoechea} {et~al.}(2016){Goicoechea}, {Pety}, {Cuadrado},
   {Cernicharo}, {Chapillon}, {Fuente}, {Gerin}, {Joblin}, {Marcelino}, \&
@@ -130,6 +144,10 @@
   Physics B Atomic Molecular Physics, 50, 065003,
   \dodoi{10.1088/1361-6455/aa5a88}
 
+\bibitem[{{Martin} \& {Zalubas}(1983)}]{Martin:1983a}
+{Martin}, W.~C., \& {Zalubas}, R. 1983, Journal of Physical and Chemical
+  Reference Data, 12, 323, \dodoi{10.1063/1.555685}
+
 \bibitem[{{Mc Leod} {et~al.}(2015){Mc Leod}, {Weilbacher}, {Ginsburg}, {Dale},
   {Ramsay}, \& {Testi}}]{Mc-Leod:2015b}
 {Mc Leod}, A.~F., {Weilbacher}, P.~M., {Ginsburg}, A., {et~al.} 2015, ArXiv
@@ -142,9 +160,25 @@
 {Megeath}, S.~T., {Gutermuth}, R., {Muzerolle}, J., {et~al.} 2012, \aj, 144,
   192, \dodoi{10.1088/0004-6256/144/6/192}
 
+\bibitem[{{Moehler} {et~al.}(2014){Moehler}, {Modigliani}, {Freudling},
+  {Giammichele}, {Gianninas}, {Gonneau}, {Kausch}, {Lan{\c{c}}on}, {Noll},
+  {Rauch}, \& {Vinther}}]{Moehler:2014a}
+{Moehler}, S., {Modigliani}, A., {Freudling}, W., {et~al.} 2014, \aap, 568, A9,
+  \dodoi{10.1051/0004-6361/201423790}
+
 \bibitem[{Mohr {et~al.}(2008)Mohr, Taylor, \& Newell}]{Mohr:2008a}
 Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
   \dodoi{10.1103/RevModPhys.80.633}
+
+\bibitem[{{Noll} {et~al.}(2012){Noll}, {Kausch}, {Barden}, {Jones}, {Szyszka},
+  {Kimeswenger}, \& {Vinther}}]{Noll:2012a}
+{Noll}, S., {Kausch}, W., {Barden}, M., {et~al.} 2012, \aap, 543, A92,
+  \dodoi{10.1051/0004-6361/201219040}
+
+\bibitem[{{Noll} {et~al.}(2014){Noll}, {Kausch}, {Kimeswenger}, {Barden},
+  {Jones}, {Modigliani}, {Szyszka}, \& {Taylor}}]{Noll:2014a}
+{Noll}, S., {Kausch}, W., {Kimeswenger}, S., {et~al.} 2014, \aap, 567, A25,
+  \dodoi{10.1051/0004-6361/201423908}
 
 \bibitem[{{Nussbaumer} {et~al.}(1989){Nussbaumer}, {Schmid}, \&
   {Vogel}}]{Nussbaumer:1989a}
@@ -159,6 +193,11 @@ Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
   and active galactic nuclei}, 2nd edn. (Sausalito, CA: University Science
   Books)
 
+\bibitem[{{Osterbrock} {et~al.}(1996){Osterbrock}, {Fulbright}, {Martel},
+  {Keane}, {Trager}, \& {Basri}}]{Osterbrock:1996a}
+{Osterbrock}, D.~E., {Fulbright}, J.~P., {Martel}, A.~R., {et~al.} 1996, \pasp,
+  108, 277, \dodoi{10.1086/133722}
+
 \bibitem[{{Salgado} {et~al.}(2016){Salgado}, {Berné}, {Adams}, {Herter},
   {Keller}, \& {Tielens}}]{Salgado:2016a}
 {Salgado}, F., {Berné}, O., {Adams}, J.~D., {et~al.} 2016, \apj, 830, 118,
@@ -167,6 +206,12 @@ Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
 \bibitem[{{Schmid}(1989)}]{Schmid:1989a}
 {Schmid}, H.~M. 1989, \aap, 211, L31
 
+\bibitem[{{Smette} {et~al.}(2015){Smette}, {Sana}, {Noll}, {Horst}, {Kausch},
+  {Kimeswenger}, {Barden}, {Szyszka}, {Jones}, {Gallenne}, {Vinther},
+  {Ballester}, \& {Taylor}}]{Smette:2015a}
+{Smette}, A., {Sana}, H., {Noll}, S., {et~al.} 2015, \aap, 576, A77,
+  \dodoi{10.1051/0004-6361/201423932}
+
 \bibitem[{{Stoerzer} \& {Hollenbach}(1998)}]{Stoerzer:1998a}
 {Stoerzer}, H., \& {Hollenbach}, D. 1998, \apj, 495, 853,
   \dodoi{10.1086/305315}
@@ -174,6 +219,11 @@ Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
 \bibitem[{{Stoerzer} {et~al.}(1997){Stoerzer}, {Stutzki}, \&
   {Sternberg}}]{Stoerzer:1997a}
 {Stoerzer}, H., {Stutzki}, J., \& {Sternberg}, A. 1997, \aap, 323, L13
+
+\bibitem[{{Subrahmanyan} {et~al.}(2001){Subrahmanyan}, {Goss}, \&
+  {Malin}}]{Subrahmanyan:2001a}
+{Subrahmanyan}, R., {Goss}, W.~M., \& {Malin}, D.~F. 2001, \aj, 121, 399,
+  \dodoi{10.1086/318017}
 
 \bibitem[{{van der Werf} {et~al.}(2013){van der Werf}, {Goss}, \&
   {O'Dell}}]{van-der-Werf:2013a}

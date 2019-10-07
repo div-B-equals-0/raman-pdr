@@ -266,8 +266,10 @@ components is Raman-transformed to
 coincides with the collisionally excited [\ion{O}{1}] line at
 \SI{6363.78}{\angstrom}.  The longer component is transformed to
 \SI{6480.81}{\angstrom} in a region that is clear of any strong
-nebular lines, although several telluric emission and absorption
-features lie nearby, as pointed out by \citet{Dopita:2016a}.
+nebular lines.  Wavelengths for these lines are based on energy levels
+from \citet{Martin:1983a}, with an estimated precision of
+\SI{0.1}{cm^{-1}}, which gives an uncertainty in the optical
+wavelengths \(\lambda_2\) of \SI{0.04}{\angstrom}.
 
 The total cross-section for the off-resonance \Config{1s \to 3p}
 transition in \chem{H^0} is calculated in \S~2 of \citet{Chang:2015a}
@@ -358,9 +360,9 @@ ratio increases with \(x\), which means that the product
     & Band & \langle\Delta\lambda_2\rangle, \si{\angstrom}   & \lambda_{\text{min}}, \si{\angstrom} & \lambda_{\text{max}}, \si{\angstrom} & f_{\mathrm{H\alpha}} & \langle\sigma_\lambda\rangle, \SI{e-21}{cm^2} & Contamination \\
     \midrule
     Blue wing & B133 & -132.8& 6414.85& 6445.45 & 0.180 & 0.144 & \\
-    & B080 & -79.5 & 6469.25& 6496.45 & 0.196 & 0.378 & Sky 6471, 6478\\
-    & B054 & -53.6 & 6499.85& 6517.70 & 0.205 & 0.802 & \ion{O}{2}? 6502, 6510, Sky 6507\\
-    & B033 & -32.8 & 6518.55& 6540.65 & 0.212 & 2.069 & [\ion{N}{2}] 6527.24, [\ion{Ni}{3}] 6533.76\\
+    & B080 & -79.5 & 6469.25& 6496.45 & 0.196 & 0.378 & Sky 6471, 6478, \chem{H_2 O}\\
+    & B054 & -53.6 & 6499.85& 6517.70 & 0.205 & 0.802 & \ion{O}{2}? 6502, 6510, Sky 6507, \chem{H_2 O}\\
+    & B033 & -32.8 & 6518.55& 6540.65 & 0.212 & 2.069 & [\ion{N}{2}] 6527.24, [\ion{Ni}{3}] 6533.76, \chem{H_2 O}\\
     \addlinespace[2pt]
     Red wing & R040 & 40.3 &  6594.20& 6611.20 & 0.238 & 1.451 & Sky 6603\\
     & R058 & 57.7 &  6612.05& 6628.20 & 0.244 & 0.695 & \\
@@ -372,8 +374,24 @@ ratio increases with \(x\), which means that the product
 
 \begin{figure*}
   \includegraphics[width=\linewidth]{figs/raman-orion-muse-1d-spectra}
-  \caption{MUSE spectra centered on the H\(\alpha\) line, showing the broad
-    Raman-scattered wings.}
+  \caption{MUSE spectra of the Orion Nebula centered on the
+    H\(\alpha\) line, showing the broad Raman-scattered wings.  Spectra are
+    shown for the regions outlined by white boxes in
+    Figure~\ref{fig:raman-fov-regions} and were extracted from the
+    datacubes of \citet{Weilbacher:2015a}. All spectra are normalized
+    to the continuum at \SI{6200}{\AA} and are offset vertically as
+    labelled at right. Emission line identifications are shown by
+    solid vertical lines, labelled above for weak lines and below for
+    stronger lines.  Wavelengths of Raman-scattered \ion{O}{1} and
+    \ion{Si}{2} absorption lines from
+    Table~\ref{tab:raman-wavelengths} are shown by red dashed vertical
+    lines, labelled in bold font below.  Dotted lines show night sky
+    lines identified in the Dark Bay region of the nebula.  At the
+    bottom of the figure are shown the theoretical upper-atmosphere
+    airglow spectrum (green line) and telluric molecular absorption
+    spectrum (red line), as calculated from the Cerro Paranal Advanced
+    Sky Model \citep{Noll:2012a, Moehler:2014a}.
+  }
   \label{fig:raman-spectra-1d}
 \end{figure*}
 
@@ -382,6 +400,119 @@ ratio increases with \(x\), which means that the product
   \caption{Spatial distribution of Raman-scattered wings in H\(\alpha\)}
   \label{fig:raman-maps}
 \end{figure*}
+
+The principal observational dataset used in this paper is the imaging
+spectroscopy mosaic of the inner Orion Nebula \citep{Weilbacher:2015a,
+  Mc-Leod:2015b} obtained with the MUSE spectrograph
+\citep{Bacon:2010a, Bacon:2014a} on the VLT.  The entire datacube
+covers the wavelength range \num{4595} to \SI{9366}{\angstrom} but we
+concentrate mainly on the range \num{6300} to \SI{6800}{\angstrom},
+where the spectral resolving power is \(R \approx 2500\), corresponding to
+an instrumental linewidth (FWHM) of
+\(\delta\lambda \approx \SI{2.4}{\angstrom}\), which is sampled at
+\SI{1.25}{\angstrom.pix^{-1}} and then resampled to
+\SI{0.85}{\angstrom.pix^{-1}} for the final calibrated cube
+\citetext{see \S~2 of \citealp{Weilbacher:2015a}}.  The observed field
+is shown by the white rectangle in
+Figure~\ref{fig:raman-fov-regions}(a) and includes the entire inner
+Huygens region of the nebula, which accounts for roughly half of the
+total radio continuum flux from the \hii{} region
+\citep{Subrahmanyan:2001a}.  The full datacube is a mosaic that
+combines observations from 30 separate pointings, with a pixel size of
+\(0.2 \times 0.2''\).
+
+Extended wings to the \ha{} line are detected over the entire map, but
+they are particularly prominent in the six regions marked as white
+boxes in Figure~\ref{fig:raman-fov-regions}(b).  These are all
+bar-like features \citep{ODell:2000a, Garcia-Diaz:2007a}, which
+correspond to filamentary ionization fronts.  Extracted MUSE spectra
+around the \ha{} line for each of these regions are shown in
+Figure~\ref{fig:raman-spectra-1d}.  All regions show broad wings to
+the \ha{} line extending from \num{6300} to \SI{6700}{\angstrom},
+which are consistent with the higher spectral resolution
+(\(R = 7000\)) results of \citet{Dopita:2016a} for the region
+indicated by a dashed box in Figure~\ref{fig:raman-fov-regions}(b).
+The continuum is interpolated under the wings by fitting a
+second-order polynomial to clean regions of the spectra in the ranges
+\SIrange{6070}{6225}{\angstrom} and \SIrange{6760}{6820}{\angstrom},
+as shown by the lower edge of the gray shading for each spectrum.  The
+continuum is a combination of Paschen recombination emission from
+hydrogen, which increases to the red, and dust-scattered starlight and
+two-photon hydrogen emission, which both increase to the blue.  The
+combined \(F_\lambda\) is approximately flat for all regions except the
+Orion Bar, where dust scattering of the nearby star \th2A{} dominates,
+resulting in a blueward rise.  All of these continuum processes are
+expected to be smooth on a \SI{100}{\angstrom} scale, but nonetheless
+the systematic uncertainties in the continuum interpolation is an
+important factor that limits the precision of the Raman wing
+measurements.
+
+A prominent feature of all the spectra in
+Figure~\ref{fig:raman-spectra-1d} is a pair of absorption notches in
+the red wing at \SI{6633}{\angstrom} and \SI{6664}{\angstrom}, which
+closely correspond to the wavelengths expected for the Raman-scattered
+transformation of the \ion{O}{1} resonance lines at
+\SI{1027}{\angstrom} and \SI{1028}{\angstrom} listed in
+Table~\ref{tab:raman-wavelengths}.  After correcting for instrumental
+broadening, the FWHM of the \SI{6633}{\angstrom} feature is
+\(\approx \SI{2.5}{\angstrom}\), which would correspond to a velocity width
+of \SI{115}{km.s^{-1}} if it were an optical absorption line.
+However, taking into account the wavelength transformation during
+Raman scattering (eq.~[\ref{eq:wav-transform}]), the true velocity
+width of the FUV line is \SI{18}{km.s^{-1}}.  The absorption depth of
+the features is roughly 50\% with respect to the Raman-scattered wing
+at adjacent wavelengths, but is much lower with respect to the total
+continuum emission.  The same spectral features are also visible in
+the \citet{Dopita:2016a} spectra but are not commented on by those
+authors. The \SI{6664}{\angstrom} feature is partially blended with
+the [\ion{Ni}{2}] \SI{6666.8}{\angstrom} nebular emission line in the
+MUSE spectra, but these are better resolved in the higher resolution
+\citeauthor{Dopita:2016a} spectra.  Archival Keck HIRES observations
+of this feature at an even higher spectral resolution are presented
+below in \S~\ref{sec:keck-observations}.  The identification of these
+two FUV absorption lines in the optical spectrum is incontestable
+proof of a Raman scattering origin for the broad \ha{} wings.
+
+There is also evidence for a weak absorption feature in the blue wing
+at \SI{6481}{\angstrom}, corresponding to the \ion{Si}{2} absorption
+line at \SI{1024}{\angstrom}.  However, the blue wing is much less
+clean than the red wing, partly due to telluric absorption and airglow
+emission (see below), which makes the identification uncertain.
+
+In order to study the spatial distribution of the Raman-scattered
+wings, it is convenient to define a series of broad bands on the blue
+and red sides, which are listed in Table~\ref{tab:wav-bands} and shown
+as blue and red colored boxes in Figure~\ref{fig:raman-spectra-1d}.
+The bands are chosen so as to avoid the strongest contaminating lines
+wherever possible, but some small contamination is unavoidable, as
+listed in the rightmost column of the table.  The contamination comes
+from two sources: weak nebular emission lines (indicated by solid
+vertical lines in Figure~\ref{fig:raman-spectra-1d}) and additionally
+from the line absorption and emission of the Earth's atmosphere.  Two
+complementary methods were used to investigate this latter effect.
+First, the datacube was inspected to identify lines with roughly
+uniform brightness across the entire map.  In particular, any line
+that is as strong in the Dark Bay region as it is in Orion~S is
+unlikely to come from the nebula itself.  Such lines are indicated by
+vertical dotted lines in Figure~\ref{fig:raman-spectra-1d} and some
+are listed in Table~\ref{tab:wav-bands}.  Second, ESO's SkyCalc
+tool\footnote{\url{http://www.eso.org/sci/software/pipelines/skytools/skycalc}}
+was used to predict theoretical emission and absorption spectra for
+the atmosphere above the VLT at the time and airmass of the
+observations, convolved with the MUSE instrumental profile.  The
+emission spectrum is dominated by upper-atmosphere airglow lines of
+\chem{OH} \citep{Osterbrock:1996a, Noll:2012a, Noll:2014a}, shown in
+green in the figure, many of which can be seen to coincide with the
+empirically determined sky lines.  The absorption spectrum is
+dominated by telluric lines of \chem{O_2} and \chem{H_2 O}
+\citep{Moehler:2014a, Smette:2015a}.  The strongest predicted
+absorption near \ha{} is the \chem{O_2} \(\gamma\) band at
+\SI{6280}{\angstrom}, which is clearly seen in all the spectra but
+lies well away from the Raman wings.  The blue Raman wing is affected
+by much weaker \chem{H_2 O} bands at \SIrange{6460}{6600}{\angstrom}.
+In summary, the nebular and telluric contamination introduces uncertainties of order 10\% in the fluxes 
+
+
 
 The \SI{6633}{\angstrom} and \SI{6664}{\angstrom} lines are clearly
 detected in the MUSE spectra as absorption features against the
