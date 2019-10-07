@@ -779,6 +779,7 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       6663.747: "O I",
       6362.3446: "Si II",
       6480.8110: "Si II",
+      6494.0: "?",
   }
 
   fig, ax = plt.subplots(figsize=(10, 6))
@@ -830,8 +831,11 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       ax.text(wave, 2.03, label, ha="center", va="bottom", rotation="vertical", fontsize="xx-small")
 
   for wave, label in absorption_lines.items():
-      ax.axvline(wave, 0.18, 0.8, color="r", ls="--", lw=1, zorder=-5)
-      ax.text(wave, 0.65, label, ha="center", rotation="horizontal", fontsize="x-small", color="r", fontweight="bold")
+      lw = 0.5 if "?" in label else 1.0
+      miny = 0.19 if "?" in label else 0.18
+      ytext = 0.69 if "?" in label else 0.65
+      ax.axvline(wave, miny, 0.8, color="r", ls="--", lw=lw, zorder=-5)
+      ax.text(wave, ytext, label, ha="center", rotation="horizontal", fontsize="x-small", color="r", fontweight="bold")
 
   for wave in sky_lines:
       # Sky line wavelengths need correcting from topocentric to OMC farme
@@ -4837,8 +4841,18 @@ That is the best image to contour ~alma-iram-filament-n2hp-C-226-231.fits~
       ax.scatter(c.ra, c.dec,
                  transform=ax.get_transform("icrs"),
                  marker="+",
-                 s=30, ec="g", fc="none")
-    
+                 s=30, ec="g", fc="none", zorder=100)
+
+
+  # New source from Aina
+  ra = "5:35:14.1500"
+  dec = "-5:23:40.000"
+  c = SkyCoord(ra, dec, unit=(u.hourangle, u.deg))
+  ax.scatter(c.ra, c.dec,
+             transform=ax.get_transform("icrs"),
+             marker="+",
+             s=50, ec="c", fc="none", zorder=100)
+
   ny, nx = hdu.data.shape
   ax.set(
       xlim=[710, 1370], ylim=[500, 1100],
@@ -4887,6 +4901,41 @@ That is the best image to contour ~alma-iram-filament-n2hp-C-226-231.fits~
   - ^b :: n_1100 au is the density of H_2 molecules within 1100 au (diameter), obtained after measuring the flux density in a region of diameter 1100 au (~3"), and converting this into a mass, adopting the same assumptions as in Table 1. N_mm is the number of millimeter sources within 1100 au including both ALMA and VLA data. Lower limits correspond to the ALMA sources that are too faint to be detected with the 7 mm VLA observations.
   - ^c :: References for compact infrared emission (IR): Smith et al. (2004) and this work; X-ray emission: Rivilla et al. (2013); outflows: in case of outflow detection, we give the outflow tracer: CO (Zapata et al. 2005), SiO (Zapata et al. 2006), HH (Herbig-Haro object, Smith et al. 2004), OOS: region from which at least six HH objects originate, with coordinates (J2000): R.A. 05^h35^m14.s56, decl. -05:23:54, with a position error of +or-1."5, O'Dell & Doi 2003), mas: water masers from Zapata et al. (2007); hot molecular core (HMC): Zapata et al. (2007) and A. Palau et al., in preparation; 1.3 cm centimeter emission (cm): Zapata et al. (2004). The tentative class assigned to each core has been estimated from a global assessment of the previous properties (see Section 4).
   - ^d :: For the case of core WF2, we give the properties associated with the strongest millimeter source, WF2b, but note that WF2c is also associated with centimeter emission. The hot molecular core is associated with WF2c.
+
+
+***** TODO New source that Aina has found
++ First message
+  #+begin_example
+    He estado viendo el ruido en la zona sin emisión cercana a la posición y es de 2 mJy (más del doble del ruido en el centro de la imagen, tal como esperamos). Te adjunto una imagen donde se ve una fuente a 1.3 mm que está muy cerca de la cruz roja (posición que me has pasado), y esa fuente está a 11.1 mJy, con lo cual está a un S/N ~ 5.5 (los contornos en la figura corresponden a 6 y 9 mJy).
+   
+    Espero que esto te sirva :) Cualquier otra cosa en que pueda ayudar me dices…
+  #+end_example
++ Second message
+  #+begin_example
+    Sí, hay una fuente pero solo se detecta en la configuración compacta+extendida, y no en la extendida. Esto implica que la fuente NO es muy compacta. He revisado y con la config extendida, en la misma zona, tengo un ruido de 1 mJy. Por tanto, si esa fuente fuera muy compacta, la tendría que haber detectado con la configuración extendida con una S/N ~ 11, y no es el caso.
+
+    Tal como se dice en la Sección 2.1 del artículo, con la configuración extendida se cubrieron líneas de base de 33 a 1230 klambda. Esto implica que en esa configuración estamos filtrando estructuras con tamaños >~ 3''. En cambio, con la config compacta filtramos estructuras con tamaños >~ 6''. De ahí se puede decir que la fuente que detectamos con configuración compacta+extendida (y que no se detecta en extendida) ha de tener un tamaño de 3''-6'' aproximadamente (1200-2400 AU). Por tanto, uno podría descartar en principio la presencia de un disco. Suponiendo que la temperatura del polvo es de ~ 20 K, 11 mJy corresponden a una masa de gas y polvo de ~ 40 Mjup. Así que parece que es un objeto de muy baja masa y un poco extendido. En caso de tener un núcleo compacto éste ha de tener menos de 15 Mjup (4 veces el ruido con la config extendida). Como no sabemos si el objeto está gravitacionalmente ligado o no, no sabemos el futuro de este objeto... Si estuviera gravitacionalmente ligado, desde luego que sería super-interesante...
+  #+end_example
++ Position is roughly
+  + 5:35:14.1500 -5:23:40.000
+  + 141.5-340.0
++ Nearest sources in Bob's list is
+  + 140.4-338.3
+    + COUP 602, JW 431, MLLA 336, TCC 1, HC 247, HHH 431, LML 152
+  + 137.8-340.0
+    + MAX 46, MLLA 328, SB 1, LM 78, HC 242, LML 144, LR 32, PMF 35
+  + So it seems it is not a protostellar disk/envelope
+    + Taking radius of 2 arcsec = 1.2e16 cm
+    + Mass of 40 Mjup = 7.5944e31 g = 0.038 Msun
+    + Then \rho = M / (4 pi/3) R**3 = 1.05e-17 g/cm^3 = 3e6 H/cm^3
+  + Jeans mass
+    + 2 Msun (c_s/0.2 km/s)**3 / sqrt(n /1000) according to Wikipedia
+    + \rho c_s^2 = n k T => c_s = sqrt(k T / m) = 0.252 km/s
+    + T = 20 K, n = 5e6 => M_J = 0.07 Msun
++ My reply
+  #+begin_example
+    Muchas gracias por la explicación.  El pico que se ve en el mapa de Hacar también tiene diametro de 4", entonces seguramente están viendo la misma emisión. Todo parece indicar entonces que es solo una nubecita. Si la masa es de 40 Mjup = 0.038 Msun, entonces con un radio de 2" calculo una densidad de 3e6 pcc y una masa de Jeans de 0.07 Msun (si la temperatura es de 20 K), lo cual indica que probablemente no es autogravitante. De hecho, si realmente está asociado con el filamento con el frente de ionización entonces la temperatura podría ser mayor, lo cual va a reducir aun más la masa. 
+  #+end_example
 
 
 ***** Sources in OOS from ODell:2015a
