@@ -422,8 +422,12 @@ two-photon hydrogen emission, which both increase to the blue.  The
 combined \(F_\lambda\) is approximately flat for all regions except the
 Orion Bar, where dust scattering of the nearby star \th2A{} dominates,
 resulting in a blueward rise.  All of these continuum processes are
-expected to be smooth on a \SI{100}{\angstrom} scale, but nonetheless
-the systematic uncertainties in the continuum interpolation is an
+expected to be smooth on a \SI{100}{\angstrom} scale,\footnote{The
+  only exception is the dust-scattered \ha{} line from the stellar
+  photospheres and winds, but this is confined within
+  \(\pm \SI{20}{\AA}\) of the rest wavelength and so does not affect
+  the Raman wings, which are broader than that.}  but nonetheless the
+systematic uncertainties in the continuum interpolation is an
 important factor that limits the precision of the Raman wing
 measurements.
 
@@ -460,7 +464,10 @@ There is also evidence for a weak absorption feature in the blue wing
 at \SI{6481}{\angstrom}, corresponding to the \ion{Si}{2} absorption
 line at \SI{1024}{\angstrom}.  However, the blue wing is much less
 clean than the red wing, partly due to telluric absorption and airglow
-emission (see below), which makes the identification uncertain.
+emission (see below), which makes the identification uncertain.  The
+blue wing shows some other weak features that remain unidentified, the
+strongest of which is an apparent broad
+(\(\approx \SI{5}{\angstrom}\)) absorption feature at \SI{6495}{\AA}.
 
 
 \subsection{Definition of observational Raman bands in the red and blue wings}
@@ -497,9 +504,9 @@ wing, spanning a range in \(|\Delta\lambda_2|\) from about \SI{30}{\angstrom} to
 overlap with the strong nebular [\ion{N}{2}] emission lines, while the
 upper limit is due the [\ion{S}{2}] lines on the red side, combined
 with the Raman wings becoming too weak to measure.  The mean
-Rayleigh/Raman scattering cross section in each band is also given in
-the table, varying between about \SI{1e-22}{cm^2} and
-\SI{2e-21}{cm^2}.
+\chem{H^0} \lyb{} cross section corresponding to each band
+(eq.~[\ref{eq:total-cross-section-fit}]) is also given in the table,
+varying between about \SI{1e-22}{cm^2} and \SI{2e-21}{cm^2}.
 
 The bands are chosen so as to avoid the strongest contaminating lines
 wherever possible, but some small contamination is unavoidable, as
@@ -525,15 +532,20 @@ empirically determined sky lines.  The absorption spectrum is
 dominated by telluric lines of \chem{O_2} and \chem{H_2 O}
 \citep{Moehler:2014a, Smette:2015a}.  The strongest predicted
 absorption near \ha{} is the \chem{O_2} \(\gamma\) band at
-\SI{6280}{\angstrom}, which is clearly seen in all the spectra but
-lies well away from the Raman wings.  The blue Raman wing is affected
-by weaker \chem{H_2 O} bands at \SIrange{6460}{6600}{\angstrom}.  In
-summary, the nebular and telluric contamination introduces
+\SI{6280}{\angstrom}, which is clearly seen in all the spectra, with
+an absorption depth of order \num{0.1}, but lies well away from the
+Raman wings.  The blue Raman wing is affected by weaker \chem{H_2 O}
+bands at \SIrange{6460}{6600}{\angstrom} with absorption depth
+\(< 0.01\), as compared to the relative brightness of the Raman wings
+at those wavelengths, which is \numrange{0.05}{0.1}.
+
+In summary, the nebular and telluric contamination introduces
 uncertainties of order 10\% in the fluxes of the B033, B054, and B080
 bands, with other bands being affected to a much lesser degree.
 
 \subsection{Spatial mapping of the Raman bands}
 \label{sec:spat-mapp-raman}
+
 
 \begin{figure*}
   \includegraphics[width=\linewidth]{figs/raman-rgb-4-panel}

@@ -5330,7 +5330,7 @@ Ionization limit: 21206.43 cm^-1 = 4715.55 \AA vac
     + first column is linear wav/angstrom
   + In both cases, second column is log10(F_\lambda) at a distance of 10 pc
 *** Lines in the stellar spectra
-**** P IV lines
+**** P IV lines in FUV
 #+begin_example
   Atomic Line List version: 2.05b21   Constructed: 2017-11-07 13:41 GMT
   Wavelength range: 0 - inf   Unit: Angstrom   Type: Vacuum
@@ -5347,6 +5347,26 @@ Ionization limit: 21206.43 cm^-1 = 4715.55 \AA vac
 
   gk*Aki weighted average wavelength:    1030.5150    
 #+end_example
+**** Lines in optical around H\alpha
++ Can't find anything that might explain the 6495 \AA absorption
++ There is a Ca I line
+  #+begin_example
+    Atomic Line List version: 2.05b21   Constructed: 2017-11-07 13:41 GMT
+    Wavelength range: 0 - inf   Unit: Angstrom   Type: Air
+    Radial velocity: 0 km/s
+    Element/Spectrum: Ca I
+
+    -LAB-WAVL-ANG-AIR-|-SPC-|TT|-TERM--|J_i-J_k|--A_ki--|-TPF-|LEVEL-ENERGY--CM^-1|-REF---|
+       6439.075         Ca I E1  3D-3Fo  3 - 4  4.26E+07    17 20371.00 - 35896.89 ASD
+       6462.567         Ca I E1  3D-3Fo  2 - 3  3.75E+07    17 20349.26 - 35818.71 ASD
+       6471.662         Ca I E1  3D-3Fo  3 - 3  4.66E+06    17 20371.00 - 35818.71 ASD
+       6493.781         Ca I E1  3D-3Fo  1 - 2  2.85E+07    17 20335.36 - 35730.45 ASD
+       6499.650         Ca I E1  3D-3Fo  2 - 2  5.60E+06    17 20349.26 - 35730.45 ASD
+       6508.850         Ca I E1  3D-3Fo  3 - 2  1.23E+05    17 20371.00 - 35730.45 ASD
+
+    gk*Aki weighted average wavelength:    6458.822    
+  #+end_example
++ That might be visible in the T Tauri stars, but shouldn't affect the nebula
 *** Plot SEDS and spectra
 
 Take average to get the 39-41 spectrum
