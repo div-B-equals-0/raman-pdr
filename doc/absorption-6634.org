@@ -780,6 +780,8 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       6362.3446: "Si II",
       6480.8110: "Si II",
       6494.0: "?",
+      6708.0: "?",
+      6450.0: "?",
   }
 
   fig, ax = plt.subplots(figsize=(10, 6))
@@ -4930,12 +4932,20 @@ That is the best image to contour ~alma-iram-filament-n2hp-C-226-231.fits~
     + Then \rho = M / (4 pi/3) R**3 = 1.05e-17 g/cm^3 = 3e6 H/cm^3
   + Jeans mass
     + 2 Msun (c_s/0.2 km/s)**3 / sqrt(n /1000) according to Wikipedia
-    + \rho c_s^2 = n k T => c_s = sqrt(k T / m) = 0.252 km/s
-    + T = 20 K, n = 5e6 => M_J = 0.07 Msun
+    + \rho c_s^2 = n k T => c_s = sqrt(k T / m) = 0.268 km/s
+    + T = 20 K, n = 3e6 => M_J = 0.07 Msun
 + My reply
   #+begin_example
     Muchas gracias por la explicación.  El pico que se ve en el mapa de Hacar también tiene diametro de 4", entonces seguramente están viendo la misma emisión. Todo parece indicar entonces que es solo una nubecita. Si la masa es de 40 Mjup = 0.038 Msun, entonces con un radio de 2" calculo una densidad de 3e6 pcc y una masa de Jeans de 0.07 Msun (si la temperatura es de 20 K), lo cual indica que probablemente no es autogravitante. De hecho, si realmente está asociado con el filamento con el frente de ionización entonces la temperatura podría ser mayor, lo cual va a reducir aun más la masa. 
   #+end_example
++ Pressure comparison
+  + Ionization front pressure
+    + n = 2e4 pcc, T = 1e4 K
+    + P/k = 2 n T = 4e8 cm^-3 K
+  + Globule pressure
+    + n = 3e6, T = 20 K
+    + P/k = 0.6e8 cm^-3 K
+  + So thermal pressure of globule is 7 times less than H II region
 
 
 ***** Sources in OOS from ODell:2015a
