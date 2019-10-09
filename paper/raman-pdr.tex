@@ -148,7 +148,7 @@ star formation regions.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\linewidth]{figs/raman-cartoon}
+  \includegraphics[width=0.8\linewidth]{figs/raman-cartoon}
   \caption{Schematic illustration of Raman scattering of photons from
     the \lyb{} wings to the \ha{} wings.  The relevant energy levels
     of neutral hydrogen are shown at left.  Far ultraviolet photons
@@ -217,7 +217,7 @@ over the \Level{3p}{2}{P}{1/2} and \Level{3p}{2}{P}{3/2} upper levels
 is used, assumed to be populated according to their statistical
 weights, with individual component wavelengths obtained from
 Tab.~XXVIII of \citet{Mohr:2008a}. Note that the electric dipole
-selection rules mean that only \Config{3p \to 2s} transitions contribute
+selection rules mean that only \Config{3p \to 2s} transitions contributer
 to \ha{} in the Raman scattering context.  The wavelength is therefore
 slightly shorter than the value obtained for the \ha{} recombination
 line, which includes additional contributions from \Config{3s \to 2p}
@@ -325,10 +325,9 @@ ratio increases with \(x\), which means that the product
 
 \section{Spectral mapping of Raman wings}
 \label{sec:muse-spectr-mapp}
-
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\linewidth]{figs/raman-fov-regions}
+  \includegraphics[width=0.75\linewidth]{figs/raman-fov-regions}
   \caption{(a)~Panoramic view of the Orion Nebula region on parsec
     scales.  Red channel of background image shows \chem{^{18}CO}
     emission from dense molecular gas \citetext{Carma-NRO Orion
@@ -351,10 +350,6 @@ ratio increases with \(x\), which means that the product
     of the nebula. }
   \label{fig:raman-fov-regions}
 \end{figure}
-
-
-
-
 The principal observational dataset used in this paper is the imaging
 spectroscopy mosaic of the inner Orion Nebula \citep{Weilbacher:2015a,
   Mc-Leod:2015b} obtained with the MUSE spectrograph
@@ -433,7 +428,6 @@ measurements.
 
 \subsection{Raman scattered FUV absorption lines}
 \label{sec:raman-scattered-fuv}
-
 A prominent feature of all the spectra in
 Figure~\ref{fig:raman-spectra-1d} is a pair of absorption notches in
 the red wing at \SI{6633}{\angstrom} and \SI{6664}{\angstrom}, which
@@ -548,30 +542,31 @@ In summary, the nebular and telluric contamination introduces
 uncertainties of order 10\% in the fluxes of the B033, B054, and B080
 bands, with other bands being affected to a much lesser degree.
 
-\subsection{Spatial mapping of the Raman bands}
+\subsection{Spatial distribution of Raman band emission}
 \label{sec:spat-mapp-raman}
-
-
 \begin{figure*}
   \includegraphics[width=\linewidth]{figs/raman-rgb-4-panel}
   \caption{Spatial distribution of Raman-scattered wings of
     H\(\alpha\). (a)~Three-color RGB image of bands in the blue wing: B080
-    (red), B054 (green), B033 (blue).  All bands are
+    (red channel), B054 (green), B033 (blue).  All bands are
     continuum-subtracted and are multibinned at constant
-    signal-to-noise (see text).  The brightest stars are masked out
-    and marked with yellow circles.  Lower-mass stars are not masked
-    and most appear as yellow/red dots. (b)~Same as (a) but for bands
-    in the red wing: R087 (red), R057 (green), R040
-    (blue). (c)~Three-color RGB image of collisional and fluorescent
-    oxygen emission lines that bracket the ionization front:
-    \ion{O}{1} \(\lambda8446\) (red), [\ion{O}{1}] \(\lambda6300\) (green),
-    [\ion{O}{2}] \(\lambda7318\) (blue).  Various features of the nebula are
-    marked, including Herbig-Haro objects driven by jets from young
-    stars.  (d)~Comparison of the total Raman wing intensity
-    (blue-to-yellow false color image) with the [\ion{O}{1}] emission
-    that traces the ionization front (orange contours) and
-    \chem{^{12}CO} emission that traces molecular gas (red, purple,
-    and blue contours).}
+    signal-to-noise (see text).  Maximum brightness in the (red,
+    green, blue) channels is
+    \((2.27, 3.89, 7.78) \times
+    \SI{1e-9}{erg.s^{-1}.cm^{-2}.sr^{-1}.\angstrom^{-1}}\). The
+    brightest stars are masked out and marked with yellow circles.
+    Lower-mass stars are not masked and most appear as yellow/red
+    dots. (b)~Same as (a) but for bands in the red wing: R087 (red),
+    R057 (green), R040 (blue). (c)~Three-color RGB image of
+    collisional and fluorescent oxygen emission lines that bracket the
+    ionization front: \ion{O}{1} \(\lambda8446\) (red), [\ion{O}{1}]
+    \(\lambda6300\) (green), [\ion{O}{2}] \(\lambda7318\) (blue).  Various
+    features of the nebula are marked, including Herbig-Haro objects
+    driven by jets from young stars.  (d)~Comparison of the total
+    Raman wing intensity (blue-to-yellow false color image) with the
+    [\ion{O}{1}] emission that traces the ionization front (orange
+    contours) and \chem{^{12}CO} emission that traces molecular gas
+    (red, purple, and blue contours).}
   \label{fig:raman-maps}
 \end{figure*}
 
@@ -579,16 +574,58 @@ Figure~\ref{fig:raman-maps} shows maps of the six innermost Raman
 bands as two RGB images: the blue wing in panel~a and the red wing in
 panel~b.  In each case, the channel sequence R, G, B is an inward
 progression towards line center, from the farther wings to the nearer
-wings.
+wings.  The maps are adaptively smoothed following the binary grid
+algorithm outlined in \citet{Garcia-Diaz:2018a}, which reduces the
+noise in the fainter regions at the cost of a reduced spatial
+resolution.  The two maps are strikingly similar, indicating that the
+contamination of the blue wing (see previous section) is indeed a
+minor effect when integrated over an entire band.
+
+To aid in the interpretation of the Raman wing maps,
+Figure~\ref{fig:raman-maps}c shows a combined view of
+mid-to-low-ionization oxygen emission lines, derived from the MUSE
+data cube.  In blue is shown the [\ion{O}{2}]
+\(7318.39, \SI{7319.99}{\angstrom}\) doublet, which traces the outer
+10\% of the fully ionized emission.  In green is shown the
+[\ion{O}{1}] \SI{6300.30}{\angstrom} line, which principally traces
+partially ionized gas at the ionization front, but also shocks in
+neutral gas. In red is shown the fluorescent \ion{O}{1}
+\SI{8446.36}{\angstrom} line, which traces fully neutral gas that is
+very close behind the ionization front.  This image clearly
+illustrates that the neutral/molecular gas is organized in filaments,
+with bright ionization fronts on the side facing the high-mass
+Trapezium stars. This is most clearly seen in the Orion Bar, the
+linear emission feature to the south-east of the map, but analogous
+filaments are seen in all directions from the Trapezium (see also
+Figure~\ref{fig:raman-fov-regions}b).  A particularly complex region,
+with several partially overlapping filaments, lies between the
+Trapezium and the Orion~S star formation region.  This region shows
+the brightest Raman wing emission, suggesting that it contains the
+neutral gas with the highest incident FUV flux, presumably because it
+lies physically closest to the illuminating high-mass stars.
+
+The spatial relation of the Raman-scattered wings to other emission
+lines is shown in Figure~\ref{fig:raman-maps}d, which compares the
+summed wing intensity over all 8 bands as a false color scale. This is
+compared with contours that show the ionization front, as traced by
+the collisionally excited [\ion{O}{1}] line, and molecular gas, as
+traced by the optically thick \chem{^12CO} (1--0) line
+\citep{Kong:2018a}.  In the Bar region, the Raman emission is clearly
+seen to be sandwiched between the ionization front and the molecular
+gas, conclusive evidence that it arises in the neutral zone of the
+PDR.\@ In the Orion~S region and around the Trapezium, there is not
+such a clear stratification between ionized, neutral, and molecular
+emission.  This is due to two factors: first, the densities are
+higher, which shortens all length scales, and second, the geometry is
+not so edge-on, leading to a greater degree of superposition along the
+line of sight, as witnessed by the overlap of the [\ion{O}{1}] and
+\chem{^{12}CO} contours.  Nonetheless, even here there is evidence
+that the Raman emission tends to lie farther from \th1C{} than the
+ionization front, particularly in the ``SW minibar'' region.
 
 
-The \SI{6633}{\angstrom} and \SI{6664}{\angstrom} lines are clearly
-detected in the MUSE spectra as absorption features against the
-pseudo-continuum of the broad \ha{} wings (see Fig~XX), although the
-latter is blended with a \ion{Ni}{2} emission line at
-\SI{6666.8}{\angstrom}.  This is further proof of the Raman scattering
-nature of the wings.
-
+\section{Emission profiles across the Orion Bar}
+\label{sec:emiss-prof-across}
 
 
 

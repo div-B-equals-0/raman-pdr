@@ -1560,6 +1560,9 @@ python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B133-
 
 
 **** Make figures of maps
+:PROPERTIES:
+:ID:       9B0BB7D0-1CFB-4129-A918-B4A7CB085941
+:END:
 + Try out the Lupton:2014a method, although I am a bit skeptical
   + It seems to lose the whites completely
   + And RGB is not perceptually uniform
@@ -2823,11 +2826,14 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 + Raman wing brightness units
   + Original MUSE data is in 10**(-20)*erg/s/cm**2/Angstrom
     + This is presumably per pixel, which are 5.55555555555556E-05 rad = 0.2 arcsec
-  + So each pixel is 3.08641975309e-9 sr, so units are 3.24e-12 erg s^{-1} cm^{-2} \AA^{-1}
+  + So each pixel is 3.08641975309e-9 sr, so units are 3.24e-12 erg s^{-1} cm^{-2} sr^{-1} \AA^{-1}
   + In extract-raman-bands.py, we take the mean not the sum
   + So these are still the units
   + We can divide by 324 and have it in 1e-10 erg s^{-1} cm^{-2} sr^{-1} \AA^{-1}
-
++ We can apply the same to the brightness in the maps
+  + Done in [[id:9B0BB7D0-1CFB-4129-A918-B4A7CB085941][Make figures of maps]] (the high resolution ones)
+  + The max values are 700, 1200, 2400
+  + [2.268e-9, 3.888e-9, 7.776e-9] erg s^{-1} cm^{-2} sr^{-1} \AA^{-1}
 #+begin_src python :return figfile :results file
   import json
   import numpy as np
