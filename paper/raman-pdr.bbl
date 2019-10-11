@@ -100,6 +100,11 @@
 {Goicoechea}, J.~R., {Pety}, J., {Cuadrado}, S., {et~al.} 2016, \nat, 537, 207,
   \dodoi{10.1038/nature18957}
 
+\bibitem[{{Goicoechea} {et~al.}(2017){Goicoechea}, {Cuadrado}, {Pety}, {Bron},
+  {Black}, {Cernicharo}, {Chapillon}, {Fuente}, \& {Gerin}}]{Goicoechea:2017a}
+{Goicoechea}, J.~R., {Cuadrado}, S., {Pety}, J., {et~al.} 2017, \aap, 601, L9,
+  \dodoi{10.1051/0004-6361/201730716}
+
 \bibitem[{{Green}(1991)}]{Green:1991a}
 {Green}, D.~A. 1991, \mnras, 253, 350, \dodoi{10.1093/mnras/253.2.350}
 
@@ -144,6 +149,12 @@
 {Kong}, S., {Arce}, H.~G., {Feddersen}, J.~R., {et~al.} 2018, \apjs, 236, 25,
   \dodoi{10.3847/1538-4365/aabafc}
 
+\bibitem[{{Kounkel} {et~al.}(2017){Kounkel}, {Hartmann}, {Loinard},
+  {Ortiz-León}, {Mioduszewski}, {Rodr{\'{\i}}guez}, {Dzib}, {Torres}, {Pech},
+  {Galli}, {Rivera}, {Boden}, {Evans}, {Briceño}, \& {Tobin}}]{Kounkel:2017a}
+{Kounkel}, M., {Hartmann}, L., {Loinard}, L., {et~al.} 2017, \apj, 834, 142,
+  \dodoi{10.3847/1538-4357/834/2/142}
+
 \bibitem[{{Marinov} {et~al.}(2017){Marinov}, {Booth}, {Drag}, \&
   {Blondel}}]{Marinov:2017a}
 {Marinov}, D., {Booth}, J.~P., {Drag}, C., \& {Blondel}, C. 2017, Journal of
@@ -159,6 +170,10 @@
 {Mc Leod}, A.~F., {Weilbacher}, P.~M., {Ginsburg}, A., {et~al.} 2015, ArXiv
   e-prints.
 \newblock \doarXiv{1511.01914}
+
+\bibitem[{{Mc Leod} {et~al.}(2016){Mc Leod}, {Weilbacher}, {Ginsburg}, {Dale},
+  {Ramsay}, \& {Testi}}]{Mc-Leod:2016a}
+---. 2016, \mnras, 455, 4057, \dodoi{10.1093/mnras/stv2617}
 
 \bibitem[{{Megeath} {et~al.}(2012){Megeath}, {Gutermuth}, {Muzerolle},
   {Kryukova}, {Flaherty}, {Hora}, {Allen}, {Hartmann}, {Myers}, {Pipher},
@@ -190,6 +205,11 @@ Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
   {Vogel}}]{Nussbaumer:1989a}
 {Nussbaumer}, H., {Schmid}, H.~M., \& {Vogel}, M. 1989, \aap, 211, L27
 
+\bibitem[{{O'Dell} {et~al.}(2017){O'Dell}, {Ferland}, \&
+  {Peimbert}}]{ODell:2017b}
+{O'Dell}, C.~R., {Ferland}, G.~J., \& {Peimbert}, M. 2017, \mnras, 464, 4835,
+  \dodoi{10.1093/mnras/stw2713}
+
 \bibitem[{{O'Dell} \& {Yusef-Zadeh}(2000)}]{ODell:2000a}
 {O'Dell}, C.~R., \& {Yusef-Zadeh}, F. 2000, \aj, 120, 382,
   \dodoi{10.1086/301429}
@@ -204,6 +224,11 @@ Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
 {Osterbrock}, D.~E., {Fulbright}, J.~P., {Martel}, A.~R., {et~al.} 1996, \pasp,
   108, 277, \dodoi{10.1086/133722}
 
+\bibitem[{{Parikka} {et~al.}(2018){Parikka}, {Habart}, {Bernard-Salas},
+  {Köhler}, \& {Abergel}}]{Parikka:2018a}
+{Parikka}, A., {Habart}, E., {Bernard-Salas}, J., {Köhler}, M., \& {Abergel},
+  A. 2018, \aap, 617, A77, \dodoi{10.1051/0004-6361/201731975}
+
 \bibitem[{{Salgado} {et~al.}(2016){Salgado}, {Berné}, {Adams}, {Herter},
   {Keller}, \& {Tielens}}]{Salgado:2016a}
 {Salgado}, F., {Berné}, O., {Adams}, J.~D., {et~al.} 2016, \apj, 830, 118,
@@ -211,6 +236,11 @@ Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
 
 \bibitem[{{Schmid}(1989)}]{Schmid:1989a}
 {Schmid}, H.~M. 1989, \aap, 211, L31
+
+\bibitem[{{Simón-D{\'{\i}}az} {et~al.}(2006){Simón-D{\'{\i}}az}, {Herrero},
+  {Esteban}, \& {Najarro}}]{Simon-Diaz:2006b}
+{Simón-D{\'{\i}}az}, S., {Herrero}, A., {Esteban}, C., \& {Najarro}, F. 2006,
+  \aap, 448, 351, \dodoi{10.1051/0004-6361:20053066}
 
 \bibitem[{{Smette} {et~al.}(2015){Smette}, {Sana}, {Noll}, {Horst}, {Kausch},
   {Kimeswenger}, {Barden}, {Szyszka}, {Jones}, {Gallenne}, {Vinther},
@@ -236,8 +266,18 @@ Mohr, P.~J., Taylor, B.~N., \& Newell, D.~B. 2008, Rev. Mod. Phys., 80, 633,
 {van der Werf}, P.~P., {Goss}, W.~M., \& {O'Dell}, C.~R. 2013, \apj, 762, 101,
   \dodoi{10.1088/0004-637X/762/2/101}
 
+\bibitem[{{van der Werf} {et~al.}(1996){van der Werf}, {Stutzki}, {Sternberg},
+  \& {Krabbe}}]{van-der-Werf:1996a}
+{van der Werf}, P.~P., {Stutzki}, J., {Sternberg}, A., \& {Krabbe}, A. 1996,
+  \aap, 313, 633
+
 \bibitem[{Van~Hoof(2018)}]{Van-Hoof:2018a}
 Van~Hoof, P. A.~M. 2018, Galaxies, 6, \dodoi{10.3390/galaxies6020063}
+
+\bibitem[{{Walmsley} {et~al.}(2000){Walmsley}, {Natta}, {Oliva}, \&
+  {Testi}}]{Walmsley:2000a}
+{Walmsley}, C.~M., {Natta}, A., {Oliva}, E., \& {Testi}, L. 2000, \aap, 364,
+  301
 
 \bibitem[{{Watson} {et~al.}(1998){Watson}, {Henney}, \&
   {Escalante}}]{Watson:1998a}

@@ -24,6 +24,8 @@
   retain-explicit-plus = true,
   % prefer 10^6 over 1 x 10^6
   retain-unity-mantissa = false,
+  % Use x +/- e instead of x(e)  
+  separate-uncertainty = true,
 }
 
 % A better \ion command that works in more circumstances
@@ -380,19 +382,20 @@ combines observations from 30 separate pointings, with a pixel size of
     shown for the regions outlined by white boxes in
     Figure~\ref{fig:raman-fov-regions} and were extracted from the
     datacubes of \citet{Weilbacher:2015a}. All spectra are normalized
-    to the continuum at \SI{6200}{\angstrom} and are offset vertically as
-    labelled at right. Emission line identifications are shown by
+    to the continuum at \SI{6200}{\angstrom} and are offset vertically
+    as labelled at right. Emission line identifications are shown by
     solid vertical lines, labelled above for weak lines and below for
     stronger lines.  Wavelengths of Raman-scattered \ion{O}{1} and
     \ion{Si}{2} absorption lines from
     Table~\ref{tab:raman-wavelengths} are shown by red dashed vertical
-    lines, labelled in bold font below.  Dotted lines show night sky
-    lines identified in the Dark Bay region of the nebula.  At the
-    bottom of the figure are shown the theoretical upper-atmosphere
-    airglow spectrum (green line) and telluric molecular absorption
-    spectrum (red line), as calculated from the Cerro Paranal Advanced
-    Sky Model \citep{Noll:2012a, Moehler:2014a}.
-  }
+    lines, labelled in bold font below, together with unidentified
+    candidate absorption features marked with ``?''.  Dotted lines
+    show night sky lines identified in the Dark Bay region of the
+    nebula.  At the bottom of the figure are shown the theoretical
+    upper-atmosphere airglow spectrum (green line) and telluric
+    molecular absorption spectrum (red line), as calculated from the
+    Cerro Paranal Advanced Sky Model \citep{Noll:2012a,
+      Moehler:2014a}.  }
   \label{fig:raman-spectra-1d}
 \end{figure*}
 
@@ -420,11 +423,11 @@ resulting in a blueward rise.  All of these continuum processes are
 expected to be smooth on a \SI{100}{\angstrom} scale,\footnote{The
   only exception is the dust-scattered \ha{} line from the stellar
   photospheres and winds, but this is confined within
-  \(\pm \SI{20}{\angstrom}\) of the rest wavelength and so does not affect
-  the Raman wings, which are broader than that.}  but nonetheless the
-systematic uncertainties in the continuum interpolation is an
-important factor that limits the precision of the Raman wing
-measurements.
+  \(\pm \SI{30}{\angstrom}\) of the rest wavelength (see Fig.~2 of
+  \citealp{Simon-Diaz:2006b}) and so does not affect the Raman wings,
+  which are broader than that.}  but nonetheless the systematic
+uncertainties in the continuum interpolation is an important factor
+that limits the precision of the Raman wing measurements.
 
 \subsection{Raman scattered FUV absorption lines}
 \label{sec:raman-scattered-fuv}
@@ -566,7 +569,8 @@ bands, with other bands being affected to a much lesser degree.
     Raman wing intensity (blue-to-yellow false color image) with the
     [\ion{O}{1}] emission that traces the ionization front (orange
     contours) and \chem{^{12}CO} emission that traces molecular gas
-    (red, purple, and blue contours).}
+    (red, purple, and blue contours for different LSR velocities as
+    marked).}
   \label{fig:raman-maps}
 \end{figure*}
 
@@ -605,11 +609,11 @@ neutral gas with the highest incident FUV flux, presumably because it
 lies physically closest to the illuminating high-mass stars.
 
 The spatial relation of the Raman-scattered wings to other emission
-lines is shown in Figure~\ref{fig:raman-maps}d, which compares the
+lines is illustarted in Figure~\ref{fig:raman-maps}d, which shows the
 summed wing intensity over all 8 bands as a false color scale. This is
 compared with contours that show the ionization front, as traced by
 the collisionally excited [\ion{O}{1}] line, and molecular gas, as
-traced by the optically thick \chem{^12CO} (1--0) line
+traced by the optically thick \chem{^{12}CO} (1--0) line
 \citep{Kong:2018a}.  In the Bar region, the Raman emission is clearly
 seen to be sandwiched between the ionization front and the molecular
 gas, conclusive evidence that it arises in the neutral zone of the
@@ -624,21 +628,64 @@ that the Raman emission tends to lie farther from \th1C{} than the
 ionization front, particularly in the ``SW minibar'' region.
 
 
-\section{Emission profiles across the Orion Bar}
+\subsection{Emission profiles across the Orion Bar}
 \label{sec:emiss-prof-across}
-
-
 
 \begin{figure*}
   \includegraphics[width=\linewidth]{figs/raman-bar-multi-profile}
-  \caption{Spatial cut of Raman-scattered H\(\alpha\) wing intensity across
-    the Orion Bar (top panel). Matched red and blue wing bands are
-    shown with color scheme matching
-    Fig.~\ref{fig:raman-spectra-1d}. )}
+  \caption{Spatial cut of continuum-subtracted Raman-scattered
+    H\(\alpha\) wing intensity across the Orion Bar (top panel). Matched
+    red and blue wing bands are shown with the same color scheme as in
+    Fig.~\ref{fig:raman-spectra-1d}. Bottom panel shows comparison
+    with a variety of different tracers of molecular, neutral, and
+    ionized material.  Optical lines are from VLT MUSE
+    \citep{Weilbacher:2015a}, infrared continuum bands are from
+    Spitzer IRAC \citep{Megeath:2012a}, CO lines are from Carma-NRO
+    \citep{Kong:2018a} and Herschel PACS \citep{Parikka:2018a},
+    \chem{H_2} near-infrared line is from VLT HAWK-I
+    \citep{Kissler-Patig:2008a}.  Ultraviolet photons are incident
+    from the right hand side and the vertical dotted line indicates
+    the ionization front, defined as the peak of the fluorescent
+    \ion{O}{1} emission. The profiles are the median values over a
+    slit width of \(75''\), centered on the ICRS equatorial
+    coordinates \(\alpha = \ang{83.8419}\), \(\delta = \ang{-5.4113}\) and
+    oriented at a position angle of \ang{141.5}.  Distances from the
+    ionization front are given in \si{mpc} where
+    \(1'' \approx \SI{1.9}{mpc}\) for an assumed distance of \SI{388 \pm
+      5}{pc} \citep{Kounkel:2017a}.}
   \label{fig:raman-bar-profile}
 \end{figure*}
 
-MUSE \citep{Bacon:2010a} observations of the Orion Nebula \citep{Weilbacher:2015a, Mc-Leod:2015b}.
+% 5:35:22.0486,-5:24:40.769
+Figure~\ref{fig:raman-bar-profile} shows spatial profiles across the
+Orion Bar of the Raman-scattered bands (upper panel), together with
+other emission lines and bands (lower panel). In keeping with the
+dominant tradition in the literature \citetext{e.g., Fig.~9 of
+  \citealp{van-der-Werf:1996a}, Fig.~2 of \citealp{Goicoechea:2017a}},
+the molecular regions are shown on the left and the ionized regions on
+the right.  The ionization stratification at the edge of the
+\ion{H}{2} region is clearly seen in the distribution of the
+[\ion{O}{3}], [\ion{O}{2}], [\ion{O}{1}], and \ion{O}{1} lines.  The
+peak in [\ion{O}{1}] emissivity (excited by collisions between
+electrons and neutral oxygen atoms) is expected to occur at a hydrogen
+ionization fraction of 50\% \citep{Henney:2005b}, which can be seen to
+be displaced by \(x \approx \SI{-1}{mpc}\) from the peak of the \ion{O}{1}
+fluorescent line.  This latter should correspond to an absorption
+optical depth of approximately unity in the FUV pumping lines, such as
+those listed in Table~\ref{tab:raman-wavelengths} \citetext{see \S~5
+  of \citealp{Walmsley:2000a}}, corresponding to a neutral hydrogen
+column density of \(N(\chem{H^0}) \approx \SI{1e19}{cm^{-2}}\) and therefore
+an average volume density of
+\(n(\chem{H^0}) = N(\chem{H^0}) / |x| \approx \SI{3000}{cm^{-3}}\).  This
+value is very similar to the peak electron density on the fully
+ionized side of the ionization front:
+\(n_e \approx \SI{3000}{cm^{-3}}\), measured from the [\ion{S}{2}]
+\(6717/6731\) ratio \citep[e.g.][]{ODell:2017b}, which occurs at the
+same position, \(x \approx \SI{-7}{mpc}\), as the peak in the [\ion{O}{2}]
+emission.  so that the \emph{total} hydrogen density in the ionization
+front remains roughly constant over this thin layer.
+
+MUSE \citep{Bacon:2010a} observations of the Orion Nebula \citep{Weilbacher:2015a, Mc-Leod:2016a}.
 
 
 The bands are chosen to avoid the stronger sky lines (e.g.,
@@ -823,6 +870,11 @@ roughly cylindrical filament.  Second, they ignore scattering, see
     front. }
   \label{fig:alma-dissoc-front}
 \end{figure}
+
+\subsection{Rival explanations for the 6633, 6664 lines}
+\label{sec:rival-expl-6633}
+
+No stellar absorption lines there \citep{Simon-Diaz:2006b}.  Too broad to be atomic or ionic absorption line.  So strong it would have to be a resonance line.  Could be solid-state feature, such as DIBs, but at that wavelength there are only weak features that are seen at very high extinction columns.  Would have to be imprinted during back-scattering so as not to be seen in the stellar spectra. 
 
 \subsection{Miscellany}
 \label{sec:miscellany}
