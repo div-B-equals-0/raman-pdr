@@ -2656,6 +2656,12 @@ CLOSED: [2019-09-07 Sat 09:03]
 python ../src/bar-profile.py $INFILE $DATAPATH $HDU $NBLOCK $NORM
 #+end_src
 
+
+#+call: bar-profile(INFILE="linesum-O_I-6300-bin001.fits", NORM="no")
+
+#+RESULTS:
+[[file:linesum-O_I-6300-bin001-bar-profile.jpg]]
+
 #+RESULTS: bar-profile
 [[file:linesum-O_I-6300-bin001-bar-profile.jpg]]
 
@@ -2671,17 +2677,17 @@ python ../src/bar-profile.py $INFILE $DATAPATH $HDU $NBLOCK $NORM
 
 
 
-#+call: bar-profile(INFILE="linesum-O_I-8446-bin001.fits")
+#+call: bar-profile(INFILE="linesum-O_I-8446-bin001.fits", NORM="NO")
 
 #+RESULTS:
 [[file:linesum-O_I-8446-bin001-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="linesum-O_II-7318-bin001.fits")
+#+call: bar-profile(INFILE="linesum-O_II-7318-bin001.fits", NORM="no")
 
 #+RESULTS:
 [[file:linesum-O_II-7318-bin001-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="linesum-O_III-5007-bin001.fits")
+#+call: bar-profile(INFILE="linesum-O_III-5007-bin001.fits", NORM="no")
 
 #+RESULTS:
 [[file:linesum-O_III-5007-bin001-bar-profile.jpg]]
@@ -2980,6 +2986,20 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 
 **** Fit Gaussians to all the profiles
 + Use a linear baseline plus a single gaussian to have a uniform methodology
++ Units of brightness profiles
+  + MUSE lines.
+    + The ones with ~linesum~ in the name were summed over a window (with BG subtraction)
+    + Original units are 10**(-20)*erg/s/cm**2/Angstrom per 0.2 arcsec spaxel
+    + => 3.24e-12 erg s^{-1} cm^{-2} sr^{-1} \AA^{-1}
+    + \int F_\lambda d\lambda = (\sum F_i) \delta\lambda where \delta\lambda = 0.85 \AA
+    + So units of ~linesum~ maps are 2.754e-12 erg s^{-1} cm^{-2} sr^{-1}
+    + We write the table in units of 1e-6 erg s^{-1} cm^{-2} sr^{-1}
+  + Raman wings
+    + These are just 3.24e-12 erg s^{-1} cm^{-2} sr^{-1} \AA^{-1}
+    + We write the table in units of 1e-9 erg s^{-1} cm^{-2} sr^{-1} \AA^{-1}
+  + IRAC bands
+    + Images are in MJy/sr
+    + Divide by 1e3 to put in GJy/sr
 
 #+begin_src python :return results
   import json
@@ -3038,13 +3058,20 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   class Results:
       """Table of gaussian fit parameters for each line or band"""
       def __init__(self):
-          self.table = [["Label", "Peak", "x", "FWHM", "Base"], None]
+          self.table = [["Label", "x", "FWHM", "Peak", "Base", "Slope"], None]
       def update(self, label, g):
+          x = g.mean_0.value
+          w = 2.3*g.stddev_0.value
+          Apeak = g.amplitude_0.value
+          a, b = g.intercept_1, g.slope_1
+          Abase = a + b*x
+          Asigma = abs(a + b*(x + w) - Abase)
           self.table.append([label,
-                             np.round(g.amplitude_0, 3),
-                             np.round(g.mean_0, 1),
-                             np.round(2.3*g.stddev_0, 0),
-                             np.round(g.intercept_1, 3),
+                             f"{x:0.1f}",
+                             f"{w:0.0f}",
+                             f"{Apeak:0.3f}",
+                             f"{Abase:0.3f}",
+                             f"{Asigma:0.3f}",
           ])
       def hline(self):
           self.table.append(None)
@@ -3055,6 +3082,8 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   results = Results()
   for lineid, offset, scale, lw, label in emlines:
       x, y = load_data(f"linesum-{lineid}-bin001-bar-profile.json")
+      # Put in units of 1e-6 erg/s/cm^2/sr
+      y *= 2.754e-12 / 1e-6
       m = (x < 30) & (x > -100)
       g = fit_gaussian(x[m], y[m])
       results.update(label, g)
@@ -3077,6 +3106,7 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 
   for bandid, scale, label in infrared:
       x, y = load_data(f"40044081.40044081-89-short.{bandid}.mosaic-bar-profile.json")
+      y /= 1e3
       m = (x > -10) & (x < 100)
       g = fit_gaussian(x[m], y[m])
       results.update(label, g)
@@ -3089,7 +3119,7 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
           m = (x > 10) & (x < 100)
       else:
           m = (x > -10) & (x < 100)
-
+      y /= np.median(y[m])
       g = fit_gaussian(x[m], y[m])
       results.update(label, g)
   results.hline()
@@ -3111,37 +3141,37 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 #+end_src
 
 #+RESULTS:
-| Label            |     Peak |     x | FWHM |     Base |
-|------------------+----------+-------+------+----------|
-| [O III] $\lambda 5007$ |    1.355 | -32.1 | 45.0 |    0.791 |
-| [O II] $\lambda 7318$  |    3.689 |  -9.4 | 25.0 |     0.93 |
-| [O I] $\lambda 6300$   |    4.237 |  -1.7 |  9.0 |    1.251 |
-| O I $\lambda 8446$     |     3.91 |   0.0 |  8.0 |    1.231 |
-|------------------+----------+-------+------+----------|
-| B033             |    0.455 |   0.8 | 20.0 |    0.858 |
-| R040             |     0.48 |   1.8 | 18.0 |    0.813 |
-| B054             |    0.233 |   5.0 |  9.0 |    0.636 |
-| R058             |    0.285 |   5.5 | 11.0 |    0.582 |
-| B080             |    0.136 |   7.1 | 11.0 |    0.429 |
-| R087             |    0.178 |   7.1 | 15.0 |    0.385 |
-| B133             |    0.128 |   6.7 | 10.0 |    0.299 |
-| R136             |    0.072 |   3.1 | 27.0 |    0.197 |
-|------------------+----------+-------+------+----------|
-| $3.6\, \mu$m       |  200.014 |  11.6 | 21.0 |  192.254 |
-| $5.8\, \mu$m       | 1701.579 |  12.8 | 23.0 |  1007.22 |
-| $8.0\, \mu$m       | 4865.801 |  13.9 | 24.0 | 2689.414 |
-|------------------+----------+-------+------+----------|
-| H$_{2}$ 2.21$\,\mu$m  |    0.191 |  23.6 | 19.0 |    1.132 |
-| $^{12}$CO (19-18)   |    7.525 |  33.8 | 32.0 |    0.762 |
-| [C I] $\lambda 8727$   |    0.532 |  37.7 | 30.0 |    1.081 |
-| $^{12}$CO (1-0)     |    0.755 |  41.1 | 44.0 |    0.934 |
-| $^{13}$CO (1-0)     |    1.335 |  49.8 | 33.0 |    0.979 |
-|------------------+----------+-------+------+----------|
-| Ne               | 1426.813 |  -8.8 | 27.0 | 1600.395 |
-| Ne-iii           | 1990.752 | -15.0 | 26.0 | 3032.843 |
-| Te               |  377.649 |  -2.2 | 15.0 | 8866.384 |
-| Te-iii           |  642.275 |  -6.6 | 25.0 | 7967.247 |
-|------------------+----------+-------+------+----------|
+| Label            |     x | FWHM |     Peak |     Base |   Slope |
+|------------------+-------+------+----------+----------+---------|
+| [O III] $\lambda 5007$ | -32.1 |   45 |   13.059 |   11.642 |   5.605 |
+| [O II] $\lambda 7318$  |  -9.4 |   25 |    0.882 |    0.232 |   0.026 |
+| [O I] $\lambda 6300$   |  -1.7 |    9 |    0.152 |    0.045 |   0.001 |
+| O I $\lambda 8446$     |   0.0 |    8 |    0.226 |    0.071 |   0.000 |
+|------------------+-------+------+----------+----------+---------|
+| B033             |   0.8 |   20 |    0.455 |    0.858 |   0.007 |
+| R040             |   1.8 |   18 |    0.480 |    0.815 |   0.023 |
+| B054             |   5.0 |    9 |    0.233 |    0.641 |   0.009 |
+| R058             |   5.5 |   11 |    0.285 |    0.591 |   0.017 |
+| B080             |   7.1 |   11 |    0.136 |    0.437 |   0.013 |
+| R087             |   7.1 |   15 |    0.178 |    0.393 |   0.017 |
+| B133             |   6.7 |   10 |    0.128 |    0.302 |   0.004 |
+| R136             |   3.1 |   27 |    0.072 |    0.198 |   0.007 |
+|------------------+-------+------+----------+----------+---------|
+| $3.6\, \mu$m       |  11.6 |   21 |    0.200 |    0.182 |   0.018 |
+| $5.8\, \mu$m       |  12.8 |   23 |    1.702 |    0.966 |   0.073 |
+| $8.0\, \mu$m       |  13.9 |   24 |    4.866 |    2.622 |   0.119 |
+|------------------+-------+------+----------+----------+---------|
+| H$_{2}$ 2.21$\,\mu$m  |  23.6 |   19 |    0.169 |    0.997 |   0.002 |
+| $^{12}$CO (19-18)   |  33.8 |   32 |    3.930 |    0.399 |   0.001 |
+| [C I] $\lambda 8727$   |  37.7 |   30 |    0.495 |    0.854 |   0.122 |
+| $^{12}$CO (1-0)     |  41.1 |   44 |    0.472 |    0.746 |   0.173 |
+| $^{13}$CO (1-0)     |  49.8 |   33 |    0.891 |    0.823 |   0.112 |
+|------------------+-------+------+----------+----------+---------|
+| Ne               |  -8.8 |   27 | 1426.813 | 1654.020 | 164.929 |
+| Ne-iii           | -15.0 |   26 | 1990.752 | 3321.364 | 503.448 |
+| Te               |  -2.2 |   15 |  377.649 | 8878.485 |  85.129 |
+| Te-iii           |  -6.6 |   25 |  642.275 | 7983.434 |  59.940 |
+|------------------+-------+------+----------+----------+---------|
 
 **** Graph of structure of the Bar
 
