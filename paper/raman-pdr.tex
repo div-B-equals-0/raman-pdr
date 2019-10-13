@@ -12,10 +12,10 @@
 \usepackage[varg]{newtxmath}
 \usepackage{newtxtext}
 \usepackage{booktabs}
-\usepackage{array}   % for \newcolumntype macro
-\newcolumntype{L}{>{$}l<{$}} % math-mode version of lrc column types
-\newcolumntype{R}{>{$}r<{$}} 
-\newcolumntype{C}{>{$}c<{$}} 
+% \usepackage{array}   % for \newcolumntype macro
+% \newcolumntype{L}{>{$}l<{$}} % math-mode version of lrc column types
+% \newcolumntype{R}{>{$}r<{$}} 
+% \newcolumntype{C}{>{$}c<{$}} 
 
 \bibliographystyle{aasjournal}
 
@@ -479,8 +479,10 @@ weak blended emission lines.
   \caption{Wavelength bands used for Raman wing extraction}
   \label{tab:wav-bands}
   ~\\[-\baselineskip]
+  \centering
   \begin{tabular}{l l R C C C C l}\toprule
     & Band & \langle\Delta\lambda_2\rangle, \si{\angstrom}   & \lambda_{\text{min}}, \si{\angstrom} & \lambda_{\text{max}}, \si{\angstrom} & f_{\mathrm{H\alpha}} & \langle\sigma_\lambda\rangle, \SI{e-21}{cm^2} & Contamination \\
+    & (1) & (2) & (3) & (4) & (5) & (6) & (7) \\
     \midrule
     Blue wing & B133 & -132.8& 6414.85& 6445.45 & 0.180 & 0.144 & \\
     & B080 & -79.5 & 6469.25& 6496.45 & 0.196 & 0.378 & Sky 6471, 6478, \chem{H_2 O}\\
@@ -492,6 +494,9 @@ weak blended emission lines.
     & R087 & 87.1 &  6638.40& 6660.50 & 0.255 & 0.299 & [\ion{Cr}{4}]? 6641\\
     & R136 & 135.7 & 6688.55& 6708.95 & 0.274 & 0.119 & \ion{He}{1} 6699\\
     \bottomrule
+    \multicolumn{8}{p{15cm}}{
+    \textsc{Columns:} (1)~Name of band.  (2)~Mean wavelength displacement from \ha{} rest wavelength. (3, 4)~Upper and lower wavelength limits for the band. (5)~Mean value of the \ha{} branching ratio from virtual \Config{3p} levels (see equation~[\ref{eq:fha-fit}]).  (6)~Mean value of \lyb{} wing cross-section that can feed this band via Raman scattering (see equation~[\ref{eq:total-cross-section-fit}]).  (7)~Nebular and telluric lines that may contaminate the band (see text for details).
+    }
   \end{tabular}
 \end{table*}
 
@@ -663,21 +668,20 @@ ionization front, particularly in the ``SW minibar'' region.
   \centering
   \begin{tabular}{r r R R R R}\toprule
     Emission type and units
-    & Line or Band & x, \si{mpc} & \delta x, \si{mpc} & \text{Peak} & \text{BG} \\
+    & Line or Band & x_0, \si{mpc} & \delta x, \si{mpc} & I(\text{Peak}) & I(\text{BG}) \\
+    (1) & (2) & (3) & (4) & (5) & (6) \\
     \midrule
-    Optical emission lines
+    \hii{} region emission lines
     & [\ion{O}{3}] \(\lambda 5007\) & -32.1 & 45 & 13.059 & 11.642 \pm 5.605 \\
-    Peak and BG: \(\int I_\lambda \, d\lambda\) 
+    Peak and BG: \(\int I_\lambda \, d\lambda\), \SI{e-6}{erg.s^{-1}.cm^{-2}.sr^{-1}}
     & [\ion{O}{2}] \(\lambda 7318\) & -9.4 & 25 & 0.882 & 0.232 \pm 0.026 \\    
-    \SI{e-6}{erg.s^{-1}.cm^{-2}.sr^{-1}}
     & [\ion{O}{1}] \(\lambda 6300\) & -1.7 & 9 & 0.152 & 0.045 \pm 0.001 \\     
     & \ion{O}{1}   \(\lambda 8446\) & 0.0 & 8 & 0.226 & 0.071 \pm 0.000 \\      
     \addlinespace[4pt]
     Raman bands
     & B033 & 0.8 & 20 & 0.455 & 0.858 \pm 0.007 \\
-    Peak and BG: \(I_\lambda\) 
+    Peak and BG: \(I_\lambda\), \SI{e-9}{erg.s^{-1}.cm^{-2}.sr^{-1}.\angstrom^{-1}} 
     & R040 & 1.8 & 18 & 0.480 & 0.815 \pm 0.023 \\
-    \SI{e-9}{erg.s^{-1}.cm^{-2}.sr^{-1}.\angstrom^{-1}}
     & B054 & 5.0 & 9 & 0.233 & 0.641 \pm 0.009 \\
     & R058 & 5.5 & 11 & 0.285 & 0.591 \pm 0.017 \\
     & B080 & 7.1 & 11 & 0.136 & 0.437 \pm 0.013 \\
@@ -687,20 +691,19 @@ ionization front, particularly in the ``SW minibar'' region.
     \addlinespace[4pt]
     IRAC bands
     & \SI{3.6}{\micron} & 11.6 & 21 & 0.200 & 0.182 \pm 0.018 \\
-    Peak and BG: \(I_\nu\) 
+    Peak and BG: \(I_\nu\), \si{GJy.sr^{-1}}
     & \SI{5.8}{\micron} & 12.8 & 23 & 1.702 & 0.966 \pm 0.073 \\
-    \si{GJy.sr^{-1}}
     & \SI{8.0}{\micron} & 13.9 & 24 & 4.866 & 2.622 \pm 0.119 \\
     \addlinespace[4pt]
     PDR emission lines
     & \chem{H_2} \SI{2.21}{\micron} & 23.6 & 19 & 0.169 & 0.997 \pm 0.002 \\
-    Peak and BG: \(\int I_\lambda \, d\lambda\) 
+    Peak and BG: \(\int I_\lambda \, d\lambda\), median normalized
     & \chem{^{12}CO} (19--18) & 33.8 & 32 & 3.930 & 0.399 \pm 0.001 \\
-    Median normalized
     & [\ion{C}{1}] \(\lambda 8727\) & 37.7 & 30 & 0.495 & 0.854 \pm 0.122 \\
     & \chem{^{12}CO} (1--0) & 41.1 & 44 & 0.472 & 0.746 \pm 0.173 \\
     & \chem{^{13}CO} (1--0) & 49.8 & 33 & 0.891 & 0.823 \pm 0.112 \\
     \bottomrule
+    \multicolumn{6}{p{14cm}}{\textsc{Note}---Results of fitting a single Gaussian plus linear background to the brightness profiles shown in Figure~\ref{fig:raman-bar-profile} (see figure caption for references).  Columns: (1)~Type of tracer and surface brightness units for the values given in columns~5 and~6. (2)~Specific emission line or continuum band. (3)~Position of fitted Gaussian relative to ionization front. (4)~FWHM of fitted Gaussian.  (5)~Peak intensity of fitted Gaussian, with brightness units given in column~1. (6)~Intensity of fitted background at position \(x_0 \pm \delta x\).}
   \end{tabular}
 \end{table}
 
@@ -711,27 +714,67 @@ other emission lines and bands (lower panel). In keeping with the
 dominant tradition in the literature \citetext{e.g., Fig.~9 of
   \citealp{van-der-Werf:1996a}, Fig.~2 of \citealp{Goicoechea:2017a}},
 the molecular regions are shown on the left and the ionized regions on
-the right.  The ionization stratification at the edge of the
-\ion{H}{2} region is clearly seen in the distribution of the
-[\ion{O}{3}], [\ion{O}{2}], [\ion{O}{1}], and \ion{O}{1} lines.  The
-peak in [\ion{O}{1}] emissivity (excited by collisions between
-electrons and neutral oxygen atoms) is expected to occur at a hydrogen
-ionization fraction of 50\% \citep{Henney:2005b}, which can be seen to
-be displaced by \(x \approx \SI{-1}{mpc}\) from the peak of the \ion{O}{1}
-fluorescent line.  This latter should correspond to an absorption
-optical depth of approximately unity in the FUV pumping lines, such as
-those listed in Table~\ref{tab:raman-wavelengths} \citetext{see \S~5
-  of \citealp{Walmsley:2000a}}, corresponding to a neutral hydrogen
+the right.  Table~\ref{tab:bar-profile-peaks} shows the positions,
+widths, and intensities of the peaks in each tracer, as determined by
+fitting a single Gaussian plus a linear background.  
+
+The ionization stratification at the edge of the \ion{H}{2} region is
+clearly seen in the distribution of the [\ion{O}{3}], [\ion{O}{2}],
+[\ion{O}{1}], and \ion{O}{1} lines.  The peak in [\ion{O}{1}]
+emissivity (excited by collisions between electrons and neutral oxygen
+atoms) is expected to occur at a hydrogen ionization fraction of 50\%
+\citep{Henney:2005b}, which is displaced by
+\(x_0 \approx \SI{-1.7}{mpc}\) from the peak of the \ion{O}{1} fluorescent
+line.  This latter should correspond to an absorption optical depth of
+approximately unity in the FUV pumping lines, such as those listed in
+Table~\ref{tab:raman-wavelengths} \citetext{see \S~5 of
+  \citealp{Walmsley:2000a}}, corresponding to a neutral hydrogen
 column density of \(N(\chem{H^0}) \approx \SI{1e19}{cm^{-2}}\) and therefore
 an average volume density of
-\(n(\chem{H^0}) = N(\chem{H^0}) / |x| \approx \SI{3000}{cm^{-3}}\).  This
-value is very similar to the peak electron density on the fully
-ionized side of the ionization front:
-\(n_e \approx \SI{3000}{cm^{-3}}\), measured from the [\ion{S}{2}]
-\(6717/6731\) ratio \citep[e.g.][]{ODell:2017b}, which occurs at the
-same position, \(x \approx \SI{-7}{mpc}\), as the peak in the [\ion{O}{2}]
-emission.  so that the \emph{total} hydrogen density in the ionization
-front remains roughly constant over this thin layer.
+\(n(\chem{H^0}) = N(\chem{H^0}) / |x_0| \approx \SI{2000}{cm^{-3}}\).  This
+value is similar to the peak electron density on the fully ionized
+side of the ionization front: \(n_e \approx \SI{3000}{cm^{-3}}\), measured
+from the [\ion{S}{2}] \(6717/6731\) ratio \citep[e.g.][]{ODell:2017b},
+which occurs at \(x \approx \SI{-7}{mpc}\), close to the peak in the
+[\ion{O}{2}] emission. Therefore, the \emph{total} hydrogen density is
+roughly constant over the transition between a predominantly ionized
+state and predominantly neutral state.  Note that the apparent width
+of this transition (for instance, the FWHM of the [\ion{O}{1}] peak
+\(\approx \SI{9}{mpc}\)) is much larger than predicted by atomic physics,
+which is probably due to spatial irregularities in the ionization
+front, as discussed in detail in \S~\ref{sec:structure-orion-bar}
+below.
+
+Unlike the optical emission lines, the Raman wing bands (upper panel
+of Fig.~\ref{fig:raman-bar-profile}) all peak at positive values of
+\(x\), corresponding to fully neutral gas in the PDR.\@ There is a
+very close correspondence between corresponding pairs of blue and red
+bands: B033 with R040, B054 with R058, and B080 with R087.  However,
+there is a systematic tendency for the blue band intensity to be
+slightly higher than its red counterpart on the ionized side (negative
+values of \(x\)), which is probably due to contamination by nebular
+emission lines, as listed in column~7 of
+Table~\ref{tab:wav-bands}. There is a clear tendency for the peak in
+the brightness profile to progress towards greater depths into the
+neutral gas as one moves farther from the \ha{} line center, which is
+quantitatively confirmed by the Gaussian fits in
+Table~\ref{tab:bar-profile-peaks}.  The peak displacement from the
+ionization front varies approximately as 
+\(x_0 \propto 1 / \langle \sigma_\lambda \rangle\), where the \lyb{} wing cross section
+\(\langle \sigma_\lambda \rangle\) that feeds each band is given in column~6 of
+Table~\ref{tab:wav-bands}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth]{figs/raman-band-displacements-plot}
+  \caption{Displacement from the ionization front of Raman emission
+    peak in each band, plotted as a function of the cross-section of
+    the \lyb{} wing.  Color scheme is as in
+    Fig.~\ref{fig:raman-spectra-1d}.  Black lines show a simple model
+    in which the peaks occur at \(\tau = 1\) for 3 different constant
+    neutral hydrogen densities, as indicated in the legend. }
+  \label{fig:raman-band-displacements}
+\end{figure}
 
 MUSE \citep{Bacon:2010a} observations of the Orion Nebula \citep{Weilbacher:2015a, Mc-Leod:2016a}.
 
