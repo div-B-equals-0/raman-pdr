@@ -3062,15 +3062,16 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       """Table of gaussian fit parameters for each line or band"""
       def __init__(self):
           self.table = [["Label", "x", "FWHM", "Peak", "Base", "Slope"], None]
-      def update(self, label, g):
+      def update(self, label, g, xp):
           x = g.mean_0.value
+          dx = np.abs(xp - x)
           w = 2.3*g.stddev_0.value
           Apeak = g.amplitude_0.value
           a, b = g.intercept_1, g.slope_1
           Abase = a + b*x
           Asigma = abs(a + b*(x + w) - Abase)
           self.table.append([label,
-                             f"{x:0.1f}",
+                             f"{x:0.1f} +/- {dx:0.1f}",
                              f"{w:0.0f}",
                              f"{Apeak:0.3f}",
                              f"{Abase:0.3f}",
@@ -3089,7 +3090,8 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       y *= 2.754e-12 / 1e-6
       m = (x < 30) & (x > -100)
       g = fit_gaussian(x[m], y[m])
-      results.update(label, g)
+      xp = x[m][y[m].argmax()]
+      results.update(label, g, xp)
   results.hline()
 
   raman_fmt = "muse-hr-data-ha-raman-{}-cont-sub-multibin-1000-bar-profile.json"
@@ -3101,10 +3103,12 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       yr *= 3.24e-12 / 1e-9
       m = (xb > -90) & (xb < 60)
       g = fit_gaussian(xb[m], yb[m])
-      results.update(blue, g)
+      xp = xb[m][yb[m].argmax()]
+      results.update(blue, g, xp)
       m = (xr > -90) & (xr < 60)
       g = fit_gaussian(xr[m], yr[m])
-      results.update(red, g)
+      xp = xr[m][yr[m].argmax()]
+      results.update(red, g, xp)
   results.hline()
 
   for bandid, scale, label in infrared:
@@ -3112,7 +3116,8 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       y /= 1e3
       m = (x > -10) & (x < 100)
       g = fit_gaussian(x[m], y[m])
-      results.update(label, g)
+      xp = x[m][y[m].argmax()]
+      results.update(label, g, xp)
   results.hline()
 
   for lineid, offset, scale, lw, label in molecules:
@@ -3124,7 +3129,8 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
           m = (x > -10) & (x < 100)
       y /= np.median(y[m])
       g = fit_gaussian(x[m], y[m])
-      results.update(label, g)
+      xp = x[m][y[m].argmax()]
+      results.update(label, g, xp)
   results.hline()
 
   misc = [
@@ -3138,58 +3144,59 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       x, y = load_data(f"muse-derived-{label}-multibin-SN0003-bar-profile.json")
       m = (x > -50) & (x < 50)    
       g = fit_gaussian(x[m], y[m])
-      results.update(label, g)
+      xp = x[m][y[m].argmax()]
+      results.update(label, g, xp)
   results.hline()
 
 #+end_src
 
 #+RESULTS:
-| Label            |     x | FWHM |     Peak |     Base |   Slope |
-|------------------+-------+------+----------+----------+---------|
-| [O III] $\lambda 5007$ | -32.1 |   45 |   13.059 |   11.642 |   5.605 |
-| [O II] $\lambda 7318$  |  -9.4 |   25 |    0.882 |    0.232 |   0.026 |
-| [O I] $\lambda 6300$   |  -1.7 |    9 |    0.152 |    0.045 |   0.001 |
-| O I $\lambda 8446$     |   0.0 |    8 |    0.226 |    0.071 |   0.000 |
-|------------------+-------+------+----------+----------+---------|
-| B033             |   0.8 |   20 |    0.455 |    0.858 |   0.007 |
-| R040             |   1.8 |   18 |    0.480 |    0.815 |   0.023 |
-| B054             |   5.0 |    9 |    0.233 |    0.641 |   0.009 |
-| R058             |   5.5 |   11 |    0.285 |    0.591 |   0.017 |
-| B080             |   7.1 |   11 |    0.136 |    0.437 |   0.013 |
-| R087             |   7.1 |   15 |    0.178 |    0.393 |   0.017 |
-| B133             |   6.7 |   10 |    0.128 |    0.302 |   0.004 |
-| R136             |   3.1 |   27 |    0.072 |    0.198 |   0.007 |
-|------------------+-------+------+----------+----------+---------|
-| $3.6\, \mu$m       |  11.6 |   21 |    0.200 |    0.182 |   0.018 |
-| $5.8\, \mu$m       |  12.8 |   23 |    1.702 |    0.966 |   0.073 |
-| $8.0\, \mu$m       |  13.9 |   24 |    4.866 |    2.622 |   0.119 |
-|------------------+-------+------+----------+----------+---------|
-| H$_{2}$ 2.21$\,\mu$m  |  23.6 |   19 |    0.169 |    0.997 |   0.002 |
-| $^{12}$CO (19-18)   |  33.8 |   32 |    3.930 |    0.399 |   0.001 |
-| [C I] $\lambda 8727$   |  37.7 |   30 |    0.495 |    0.854 |   0.122 |
-| $^{12}$CO (1-0)     |  41.1 |   44 |    0.472 |    0.746 |   0.173 |
-| $^{13}$CO (1-0)     |  49.8 |   33 |    0.891 |    0.823 |   0.112 |
-|------------------+-------+------+----------+----------+---------|
-| Ne               |  -8.8 |   27 | 1426.813 | 1654.020 | 164.929 |
-| Ne-iii           | -15.0 |   26 | 1990.752 | 3321.364 | 503.448 |
-| Te               |  -2.2 |   15 |  377.649 | 8878.485 |  85.129 |
-| Te-iii           |  -6.6 |   25 |  642.275 | 7983.434 |  59.940 |
-|------------------+-------+------+----------+----------+---------|
+| Label            | x             | FWHM |     Peak |     Base |   Slope |
+|------------------+---------------+------+----------+----------+---------|
+| [O III] $\lambda 5007$ | -32.1 +/- 2.6 |   45 |   13.059 |   11.642 |   5.605 |
+| [O II] $\lambda 7318$  | -9.4 +/- 3.6  |   25 |    0.882 |    0.232 |   0.026 |
+| [O I] $\lambda 6300$   | -1.7 +/- 0.1  |    9 |    0.152 |    0.045 |   0.001 |
+| O I $\lambda 8446$     | 0.0 +/- 0.8   |    8 |    0.226 |    0.071 |   0.000 |
+|------------------+---------------+------+----------+----------+---------|
+| B033             | 0.8 +/- 1.5   |   20 |    0.455 |    0.858 |   0.007 |
+| R040             | 1.8 +/- 0.0   |   18 |    0.480 |    0.815 |   0.023 |
+| B054             | 5.0 +/- 2.7   |    9 |    0.233 |    0.641 |   0.009 |
+| R058             | 5.5 +/- 2.8   |   11 |    0.285 |    0.591 |   0.017 |
+| B080             | 7.1 +/- 1.3   |   11 |    0.136 |    0.437 |   0.013 |
+| R087             | 7.1 +/- 0.7   |   15 |    0.178 |    0.393 |   0.017 |
+| B133             | 6.7 +/- 1.1   |   10 |    0.128 |    0.302 |   0.004 |
+| R136             | 3.1 +/- 2.7   |   27 |    0.072 |    0.198 |   0.007 |
+|------------------+---------------+------+----------+----------+---------|
+| $3.6\, \mu$m       | 11.6 +/- 1.1  |   21 |    0.200 |    0.182 |   0.018 |
+| $5.8\, \mu$m       | 12.8 +/- 2.4  |   23 |    1.702 |    0.966 |   0.073 |
+| $8.0\, \mu$m       | 13.9 +/- 3.4  |   24 |    4.866 |    2.622 |   0.119 |
+|------------------+---------------+------+----------+----------+---------|
+| H$_{2}$ 2.21$\,\mu$m  | 23.6 +/- 0.1  |   19 |    0.169 |    0.997 |   0.002 |
+| $^{12}$CO (19-18)   | 33.8 +/- 0.0  |   32 |    3.930 |    0.399 |   0.001 |
+| [C I] $\lambda 8727$   | 37.7 +/- 5.9  |   30 |    0.495 |    0.854 |   0.122 |
+| $^{12}$CO (1-0)     | 41.1 +/- 1.2  |   44 |    0.472 |    0.746 |   0.173 |
+| $^{13}$CO (1-0)     | 49.8 +/- 2.1  |   33 |    0.891 |    0.823 |   0.112 |
+|------------------+---------------+------+----------+----------+---------|
+| Ne               | -8.8 +/- 2.0  |   27 | 1426.813 | 1654.020 | 164.929 |
+| Ne-iii           | -15.0 +/- 4.1 |   26 | 1990.752 | 3321.364 | 503.448 |
+| Te               | -2.2 +/- 0.1  |   15 |  377.649 | 8878.485 |  85.129 |
+| Te-iii           | -6.6 +/- 2.8  |   25 |  642.275 | 7983.434 |  59.940 |
+|------------------+---------------+------+----------+----------+---------|
 
 
 **** Plot peak position against 1/\sigma for Raman bands
 #+name: raman-band-displacements
-| Band |  x0 | sigma | 1/sigma |
-|------+-----+-------+---------|
-| B033 | 0.8 | 2.069 |   0.483 |
-| R040 | 1.8 | 1.451 |   0.689 |
-| B054 | 5.0 | 0.802 |   1.247 |
-| R058 | 5.5 | 0.695 |   1.439 |
-| B080 | 7.1 | 0.378 |   2.646 |
-| R087 | 7.1 | 0.299 |   3.344 |
-| B133 | 6.7 | 0.144 |   6.944 |
-| R136 | 3.1 | 0.119 |   8.403 |
-#+TBLFM: $4=1/$-1;f3
+| Band |  x0 |  W | sigma | 1/sigma |
+|------+-----+----+-------+---------|
+| B033 | 0.8 | 20 | 2.069 |   0.483 |
+| R040 | 1.8 | 18 | 1.451 |   0.689 |
+| B054 | 5.0 |  9 | 0.802 |   1.247 |
+| R058 | 5.5 | 11 | 0.695 |   1.439 |
+| B080 | 7.1 | 11 | 0.378 |   2.646 |
+| R087 | 7.1 | 15 | 0.299 |   3.344 |
+| B133 | 6.7 | 10 | 0.144 |   6.944 |
+| R136 | 3.1 | 27 | 0.119 |   8.403 |
+#+TBLFM: $5=1/$-1;f3
 
 #+begin_src python :results file :return figfile :var INTAB=raman-band-displacements
   import numpy as np
@@ -3201,10 +3208,12 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   colors = iter(["b", "m", "b", "m", "c", "r", "c", "r"])
   alphas = iter([0.6, 0.6, 0.4, 0.4, 0.4, 0.4, 0.3, 0.2])
   x0s, sigmas = [], []
-  for band, x0, sigma, _ in INTAB:
-      ax.scatter(sigma, x0, c=next(colors), alpha=next(alphas), s=200)
+  for band, x0, W, sigma, _ in INTAB:
+      color, alpha = next(colors), next(alphas)
+      ax.scatter(sigma, x0, c=color, alpha=alpha, s=200)
       dy = -14 if band.startswith("R") else -4
       ax.annotate(band, xy=(sigma, x0), xytext=(dy, 8), textcoords="offset points", fontsize="x-small")
+      ax.errorbar(sigma, x0, yerr=0.1*W, fmt="none", c=color, alpha=alpha)
       x0s.append(x0)
       sigmas.append(sigma)
   x0s = np.array(x0s)

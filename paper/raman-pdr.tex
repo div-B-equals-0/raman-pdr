@@ -745,9 +745,25 @@ which is probably due to spatial irregularities in the ionization
 front, as discussed in detail in \S~\ref{sec:structure-orion-bar}
 below.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth]{figs/raman-band-displacements-plot}
+  \caption{Displacement from the ionization front of the emission peak
+    in each Raman band (column 3 of
+    Table~\ref{tab:bar-profile-peaks}), plotted as a function of the
+    cross-section of the \lyb{} wing (column 6 of
+    Table~\ref{tab:wav-bands}).  Color scheme is as in
+    Fig.~\ref{fig:raman-spectra-1d} with error bars showing 10\% of
+    the peak FWHM (column 4 of Table~\ref{tab:bar-profile-peaks}).
+    Black lines show a simple model in which the peaks occur at
+    \(\tau = 1\) for 3 different constant neutral hydrogen densities, as
+    indicated in the legend. }
+  \label{fig:raman-band-displacements}
+\end{figure}
+
 Unlike the optical emission lines, the Raman wing bands (upper panel
-of Fig.~\ref{fig:raman-bar-profile}) all peak at positive values of
-\(x\), corresponding to fully neutral gas in the PDR.\@ There is a
+of Fig.~\ref{fig:raman-bar-profile}) all show peaks at positive values
+of \(x\), corresponding to fully neutral gas in the PDR.\@ There is a
 very close correspondence between corresponding pairs of blue and red
 bands: B033 with R040, B054 with R058, and B080 with R087.  However,
 there is a systematic tendency for the blue band intensity to be
@@ -756,33 +772,36 @@ values of \(x\)), which is probably due to contamination by nebular
 emission lines, as listed in column~7 of
 Table~\ref{tab:wav-bands}. There is a clear tendency for the peak in
 the brightness profile to progress towards greater depths into the
-neutral gas as one moves farther from the \ha{} line center, which is
-quantitatively confirmed by the Gaussian fits in
-Table~\ref{tab:bar-profile-peaks}.  The peak displacement from the
-ionization front varies approximately as 
-\(x_0 \propto 1 / \langle \sigma_\lambda \rangle\), where the \lyb{} wing cross section
-\(\langle \sigma_\lambda \rangle\) that feeds each band is given in column~6 of
-Table~\ref{tab:wav-bands}.
+neutral gas as one moves to wavelengths farther from the \ha{} line
+center, which is quantitatively confirmed by the Gaussian fits in
+Table~\ref{tab:bar-profile-peaks}.  If the peak emission occurs for a
+\lyb{} wing optical depth of \(\tau \approx 1\) for each band, then the
+displacement from the ionization front should vary as
+\(x_0 \approx (n \langle \sigma_\lambda \rangle)^{-1}\), where \(n\) is the neutral hydrogen
+density in the PDR and \(\langle \sigma_\lambda \rangle\) is the \lyb{} wing cross section
+for the FUV wavelengths that pump each band, which is given in
+column~6 of Table~\ref{tab:wav-bands}.  In
+Figure~\ref{fig:raman-band-displacements}, this relationship is tested
+under the assumption that \(n\) is constant over the depth range
+\SIrange{2}{8}{mpc}, where it can be seen that a PDR density of order
+\(n \sim \SI{1e5}{cm^{-3}}\) is required to fit the observations.  A
+systematic uncertainty of 10\% of the width of each emission peak is
+assigned to the \(x_0\) values, which has the largest relative impact
+on the near-wing bands: B033 and R040.  As a result, it is the B054
+and R058 bands that are the most reliable indicators, yielding
+\(n = \SI{8.5e4}{cm^{-3}}\) (dotted line).  The bands in the farther
+wings fall below this curve, significantly so for B133 and R136, but
+this can be understood as due to two factors.  First, the finite total
+\chem{H^0} column through the PDR means that the wings will become
+optically thin for a sufficiently low
+\(\langle \sigma_\lambda \rangle\), in which case \(\tau = 1\) can no longer hold.  Second,
+competition with dust grains for the absorption of FUV photons will
+become significant when
+\(\langle \sigma_\lambda \rangle < \sigma_{\text{dust}}\).  These issues are discussed further in
+\S~\ref{sec:discussion}.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\linewidth]{figs/raman-band-displacements-plot}
-  \caption{Displacement from the ionization front of Raman emission
-    peak in each band, plotted as a function of the cross-section of
-    the \lyb{} wing.  Color scheme is as in
-    Fig.~\ref{fig:raman-spectra-1d}.  Black lines show a simple model
-    in which the peaks occur at \(\tau = 1\) for 3 different constant
-    neutral hydrogen densities, as indicated in the legend. }
-  \label{fig:raman-band-displacements}
-\end{figure}
+In summary, 
 
-MUSE \citep{Bacon:2010a} observations of the Orion Nebula \citep{Weilbacher:2015a, Mc-Leod:2016a}.
-
-
-The bands are chosen to avoid the stronger sky lines (e.g.,
-\SI{6498}{\angstrom}) and nebula lines (e.g., ), but some weak line
-contamination remains, as listed in the last column of
-Table~\ref{tab:wav-bands}.
 
 
 The 21~cm \ion{H}{1} line \citep{van-der-Werf:2013a} probes deeper
