@@ -15,7 +15,7 @@
 % \usepackage{array}   % for \newcolumntype macro
 % \newcolumntype{L}{>{$}l<{$}} % math-mode version of lrc column types
 % \newcolumntype{R}{>{$}r<{$}} 
-% \newcolumntype{C}{>{$}c<{$}} 
+% \newcolumntype{C}{>{$}c<{$}}
 
 \bibliographystyle{aasjournal}
 
@@ -53,6 +53,50 @@
 \newcommand\lyb{\ensuremath{\text{Ly}\beta}}
 \newcommand\Raman{\ensuremath{_{\text{Raman}}}}
 \newcommand\FUV{\ensuremath{_{\text{FUV}}}}
+
+\makeatletter
+\def\@sect#1#2#3#4#5#6[#7]#8%
+{\ifnum#2=1\setbox0=\hbox{\def\label##1{\gdef\templabel{##1}}#7}\fi
+  \@tempskipa #5\relax 
+  \ifdim \@tempskipa >\z@ \begingroup
+  #6\relax 
+  \ifnum #2>\c@secnumdepth \def \@svsec {}\else 
+  \refstepcounter{#1} \edef \@svsec {\ApjSectionMarkInTitle 
+    {\csname the#1\endcsname}}\fi
+  \@hangfrom {\hskip #3\relax 
+    \ifnum #2=1{\secnum@size {\rm\@svsec~}}%
+    \else {\subsecnum@size {\rm\@svsec~}}\fi }%
+  {\interlinepenalty \@M 
+    \ifnum #2=1\sec@upcase{#8}%
+    \else \subsec@upcase{#8}\fi\par}\endgroup 
+  \csname #1mark\endcsname {#7}\addcontentsline{toc}{#1}%
+  {\ifnum #2>\c@secnumdepth \else \protect \numberline 
+    {\csname the#1\endcsname }\fi #7}%
+  \else 
+  \ifnum #2>\c@secnumdepth \def \@svsec {}\else 
+  \refstepcounter{#1} \edef \@svsec {\ApjSectionMarkInTitle 
+    {\csname the#1\endcsname}}\fi
+  \def \@svsechd {#6\hskip #3%
+    \ifnum #2=1{\secnum@size{\rm\@svsec~}}\else{\subsecnum@size{\rm\@svsec~}}\fi%
+    \ifnum #2=1\sec@upcase{#8}\else\subsec@upcase{#8}\fi%
+    \ifnum #2=4\hskip 0.4ex{\rm ---}\fi%
+    \csname #1mark\endcsname {#7}\addcontentsline{toc}{#1}%
+    {\ifnum #2>\c@secnumdepth \else \protect \numberline {\csname
+        the#1\endcsname }\fi #7}}\fi \@xsect {#5}
+  %%% WJH 13 Oct 2019 - comment out this penalty because it causes
+  %%% page breaks after section titles
+  % \penalty \ApjSectionpenalty
+  % -refstepcounter is now within a group. So \@currentlabel, which is normally
+  % -set by \refstepcounter is hidden within a group. Need to set it manually. 
+  \protected@edef\@currentlabel{\csname p@#1\endcsname\csname
+    the#1\endcsname} 
+  \expandafter\ifx\csname templabel\endcsname\relax
+  \let\go\relax
+  \else
+  \def\go{\label{\templabel}}\fi\go
+  \let\templabel\relax
+}
+\makeatother
 
 \begin{document}
 %\title{Raman mapping of atomic hydrogen and oxygen in the Orion Bar and Orion South PDRs}
@@ -718,6 +762,10 @@ the right.  Table~\ref{tab:bar-profile-peaks} shows the positions,
 widths, and intensities of the peaks in each tracer, as determined by
 fitting a single Gaussian plus a linear background.  
 
+\subsubsection{Lines from ionized gas and the ionization front}
+\label{sec:lines-from-ionized}
+
+
 The ionization stratification at the edge of the \ion{H}{2} region is
 clearly seen in the distribution of the [\ion{O}{3}], [\ion{O}{2}],
 [\ion{O}{1}], and \ion{O}{1} lines.  The peak in [\ion{O}{1}]
@@ -761,6 +809,8 @@ below.
   \label{fig:raman-band-displacements}
 \end{figure}
 
+\subsubsection{Spatial profiles of the Raman bands}
+\label{sec:spat-prof-raman}
 Unlike the optical emission lines, the Raman wing bands (upper panel
 of Fig.~\ref{fig:raman-bar-profile}) all show peaks at positive values
 of \(x\), corresponding to fully neutral gas in the PDR.\@ There is a
@@ -799,6 +849,11 @@ competition with dust grains for the absorption of FUV photons will
 become significant when
 \(\langle \sigma_\lambda \rangle < \sigma_{\text{dust}}\).  These issues are discussed further in
 \S~\ref{sec:discussion}.
+
+\subsubsection{Other PDR tracers}
+\label{sec:other-pdr-tracers}
+
+
 
 In summary, 
 
