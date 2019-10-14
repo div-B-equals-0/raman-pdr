@@ -3204,15 +3204,15 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   import seaborn as sns
 
   figfile = "raman-band-displacements-plot.pdf"
-  fig, ax = plt.subplots()
+  fig, ax = plt.subplots(figsize=(5, 3.5))
   colors = iter(["b", "m", "b", "m", "c", "r", "c", "r"])
   alphas = iter([0.6, 0.6, 0.4, 0.4, 0.4, 0.4, 0.3, 0.2])
   x0s, sigmas = [], []
   for band, x0, W, sigma, _ in INTAB:
       color, alpha = next(colors), next(alphas)
       ax.scatter(sigma, x0, c=color, alpha=alpha, s=200)
-      dy = -14 if band.startswith("R") else -4
-      ax.annotate(band, xy=(sigma, x0), xytext=(dy, 8), textcoords="offset points", fontsize="x-small")
+      dx = -14 if band.startswith("R") else -4
+      ax.annotate(band, xy=(sigma, x0), xytext=(dx, 15), textcoords="offset points", fontsize="x-small")
       ax.errorbar(sigma, x0, yerr=0.1*W, fmt="none", c=color, alpha=alpha)
       x0s.append(x0)
       sigmas.append(sigma)
@@ -3226,25 +3226,23 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   sns.set_color_codes()
   ax.plot(sigmagrid, x0model/0.7,
           color="k", ls=":", zorder=-100,
-          label=fr"$n$ = {0.7*nfactor*nmean:.1e}" + r" cm$^{-3}$")
+          label=fr"$n = {0.7*nfactor*nmean:.1e}$".replace("e+0", r"\times 10^") + r" cm$^{-3}$")
   ax.plot(sigmagrid, x0model,
           color="k", ls="-", zorder=-100,
-          label=fr"$n$ = {nfactor*nmean:.1e}" + r" cm$^{-3}$")
+          label=fr"$n = {nfactor*nmean:.1e}$".replace("e+0", r"\times 10^") + r" cm$^{-3}$")
   ax.plot(sigmagrid, x0model/1.4,
           color="k", ls="--", zorder=-100,
-          label=fr"$n$ = {1.4*nfactor*nmean:.1e}" + r" cm$^{-3}$")
+          label=fr"$n = {1.4*nfactor*nmean:.1e}$".replace("e+0", r"\times 10^") + r" cm$^{-3}$")
   ax.legend(title=r"PDR density for $\tau = 1$ at peak")
   ax.set(
       xlim=[0, None],
       ylim=[0, 9],
       xlabel=r"Ly$\beta$ wing cross section: $\langle\sigma_{\lambda} \rangle$, $10^{-21}$ cm$^{-2}$",
-      ylabel=r"Displacement of Raman band peak from i-front: $x_{0}$, mpc",
+      ylabel="Displacement of Raman band peak\nfrom i-front: $x_{0}$, mpc",
   )
   sns.despine()
   fig.tight_layout()
   fig.savefig(figfile)
-
-
 #+end_src
 
 #+RESULTS:
