@@ -267,7 +267,8 @@ Length = 50001 rows
 + 
 
 
-**** TODO [#A] Run more cloudy models
+**** DONE [#A] Run more cloudy models
+CLOSED: [2019-10-19 Sat 10:30]
 + Save fine continuum (see above)
 + Stop at various depths
 + Dig out atmosphere models for Trapezium
@@ -2827,6 +2828,43 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 #+RESULTS:
 [[file:muse-derived-Te-iii-multibin-SN0003-bar-profile.jpg]]
 
+
+***** Herschel line maps
+#+call: bar-profile(INFILE="herschel-bar-oi-63mic-line.fits", HDU=0, NBLOCK=16)
+
+#+RESULTS:
+[[file:herschel-bar-oi-63mic-line-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="herschel-bar-oi-63mic-cont.fits", HDU=0, NBLOCK=16)
+
+#+RESULTS:
+[[file:herschel-bar-oi-63mic-cont-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="herschel-bar-oi-63mic-ew.fits", NORM="NO", HDU=0, NBLOCK=32)
+
+#+RESULTS:
+[[file:herschel-bar-oi-63mic-ew-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="herschel-bar-oi-146mic-line.fits", HDU=0, NBLOCK=32)
+
+#+RESULTS:
+[[file:herschel-bar-oi-146mic-line-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="herschel-bar-oi-146mic-cont.fits", HDU=0, NBLOCK=32)
+
+#+RESULTS:
+[[file:herschel-bar-oi-146mic-cont-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="herschel-bar-co-145mic-line.fits", HDU=0, NBLOCK=32)
+
+#+RESULTS:
+[[file:herschel-bar-co-145mic-line-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="herschel-bar-nii-122mic-line.fits", HDU=0, NBLOCK=64)
+
+#+RESULTS:
+[[file:herschel-bar-nii-122mic-line-bar-profile.jpg]]
+
 **** Combined plot of all the Bar profiles
 
 + Raman wing brightness units
@@ -4360,6 +4398,99 @@ Most of these I found from the intro of the Dopita:2016a paper
     + This is 3 times higher than the apparent diameter
   + 18% of [O I] and 38% of [C II] and [N II] has to come from a larger scale component (not the Bar)
   + [O I] 63 micron dominates the line cooling budget (72%) but what about the dust?
+***** Looking at the Herschel [O I] and [C II] data
++ I have downloaded the dataset 1342191152
++ [[file:~/Work/Herschel-Orion-Data/anonymous1572017505/1342191152/level2/]]
++ There are several different versions of the spectra
+  + Documentation is [[file:~/Work/Herschel-Orion-Data/PPE_HIPE14p2.pdf::13][here]] (see Table 2.2)
+  + I have been looking at the ~hps3deqibs~ and ~hps3deqdrs~
+  + Unfortunately, none are continuum-subtracted so I am going to have to that myself
++ Channels:
+  + Blue 00 : [O I] 63.2 micron line
+  + Blue 01 : 61 +/- 0.5 micron continuum
+  + Red 00 : 189.5 +/- 0.5 micron continuum
+  + Red 01 : [C II] 157.8 micron line
+  + Red 02 : [O I] 145.5 and CO J = 18-17 144.8 (weak) micron lines
+  + Red 03 : [N II] 121.9 micron line
+****** Extract the [O I], [N II], and [C II] lines
+#+begin_src python :return list_of_files :results list
+  from pathlib import Path
+  import numpy as np
+  from astropy.io import fits
+  from astropy.wcs import WCS
+
+  datapath = Path(
+      "~/Work/Herschel-Orion-Data/anonymous1572017505/1342191152/level2"
+  ).expanduser()
+  savedatapath = Path(
+      "../data/orion-muse"
+  )
+
+  list_of_files = []
+
+  for line_id, context, slice_id, krange in [
+          ["oi-63mic", "HPS3DEQIB", "00", [190, 301, 0, 430]],
+          ["cii-158mic", "HPS3DEQDR", "01", [120, 210, 0, 284]],
+          ["oi-146mic", "HPS3DEQDR", "02", [114, 228, 56, 304]],
+          ["co-145mic", "HPS3DEQDR", "02", [19, 58, 19, 112]],
+          ["nii-122mic", "HPS3DEQDR", "03", [140, 240, 40, 358]],
+  ]:
+      pattern = f"{context}/*/*_*_{slice_id}_*.fits"
+      # There should be only one file that fits the pattern
+      fitspath = list(datapath.glob(pattern))[0]
+
+      hdulist = fits.open(fitspath)
+      hdu = hdulist["image"]
+      w = WCS(hdu)
+
+      # z-pixel ranges k1:k2 for line and kmin:kmax for all good data
+      k1, k2, kmin, kmax = krange
+
+      cont_cube = hdu.data.copy()
+      cont_cube[:kmin, :, :] = np.nan
+      cont_cube[kmax:, :, :] = np.nan
+      cont_cube[k1:k2, :, :] = np.nan
+      cont_map = np.nanmean(cont_cube, axis=0)
+      cont_cube[k1:k2, :, :] = cont_map
+      line_window = hdu.data[k1:k2, :, :] - cont_cube[k1:k2, :, :]
+      # Original units of spectral cube are Jy/voxel, so simple sum gives Jy/spaxel
+      line_map = np.nansum(line_window, axis=0)
+      # Equivalent width 
+      # Multiply by delta lambda per pixel to put in microns
+      dlam = w.wcs.cdelt[-1]
+      ew_map =  dlam * line_map / cont_map
+      for band_id, band_map, bunit in [
+              ["line", line_map, "Jy/pixel"],
+              ["cont", cont_map, "Jy/pixel"],
+              ["ew", ew_map, "micron"],
+      ]:
+          savepath = savedatapath / f"herschel-bar-{line_id}-{band_id}.fits"
+          header = w.celestial.to_header()
+          header["BUNIT"] = bunit
+          fits.PrimaryHDU(
+              header=header,
+              data=band_map,
+          ).writeto(savepath, overwrite=True)
+          list_of_files.append(f"[[file:{savepath}]]")
+#+end_src
+
+#+RESULTS:
+- [[file:../data/orion-muse/herschel-bar-oi-63mic-line.fits]]
+- [[file:../data/orion-muse/herschel-bar-oi-63mic-cont.fits]]
+- [[file:../data/orion-muse/herschel-bar-oi-63mic-ew.fits]]
+- [[file:../data/orion-muse/herschel-bar-cii-158mic-line.fits]]
+- [[file:../data/orion-muse/herschel-bar-cii-158mic-cont.fits]]
+- [[file:../data/orion-muse/herschel-bar-cii-158mic-ew.fits]]
+- [[file:../data/orion-muse/herschel-bar-oi-146mic-line.fits]]
+- [[file:../data/orion-muse/herschel-bar-oi-146mic-cont.fits]]
+- [[file:../data/orion-muse/herschel-bar-oi-146mic-ew.fits]]
+- [[file:../data/orion-muse/herschel-bar-co-145mic-line.fits]]
+- [[file:../data/orion-muse/herschel-bar-co-145mic-cont.fits]]
+- [[file:../data/orion-muse/herschel-bar-co-145mic-ew.fits]]
+- [[file:../data/orion-muse/herschel-bar-nii-122mic-line.fits]]
+- [[file:../data/orion-muse/herschel-bar-nii-122mic-cont.fits]]
+- [[file:../data/orion-muse/herschel-bar-nii-122mic-ew.fits]]
+
 **** Dissociation front
 + mmCRLs (Carbon recombination lines) and far-IR [^{13}C II] lines
   + Cuadrado:2019a
@@ -5192,48 +5323,7 @@ That is the best image to contour ~alma-iram-filament-n2hp-C-226-231.fits~
 
 
 ***** TODO New source that Aina has found
-+ First message
-  #+begin_example
-    He estado viendo el ruido en la zona sin emisión cercana a la posición y es de 2 mJy (más del doble del ruido en el centro de la imagen, tal como esperamos). Te adjunto una imagen donde se ve una fuente a 1.3 mm que está muy cerca de la cruz roja (posición que me has pasado), y esa fuente está a 11.1 mJy, con lo cual está a un S/N ~ 5.5 (los contornos en la figura corresponden a 6 y 9 mJy).
-   
-    Espero que esto te sirva :) Cualquier otra cosa en que pueda ayudar me dices…
-  #+end_example
-+ Second message
-  #+begin_example
-    Sí, hay una fuente pero solo se detecta en la configuración compacta+extendida, y no en la extendida. Esto implica que la fuente NO es muy compacta. He revisado y con la config extendida, en la misma zona, tengo un ruido de 1 mJy. Por tanto, si esa fuente fuera muy compacta, la tendría que haber detectado con la configuración extendida con una S/N ~ 11, y no es el caso.
-
-    Tal como se dice en la Sección 2.1 del artículo, con la configuración extendida se cubrieron líneas de base de 33 a 1230 klambda. Esto implica que en esa configuración estamos filtrando estructuras con tamaños >~ 3''. En cambio, con la config compacta filtramos estructuras con tamaños >~ 6''. De ahí se puede decir que la fuente que detectamos con configuración compacta+extendida (y que no se detecta en extendida) ha de tener un tamaño de 3''-6'' aproximadamente (1200-2400 AU). Por tanto, uno podría descartar en principio la presencia de un disco. Suponiendo que la temperatura del polvo es de ~ 20 K, 11 mJy corresponden a una masa de gas y polvo de ~ 40 Mjup. Así que parece que es un objeto de muy baja masa y un poco extendido. En caso de tener un núcleo compacto éste ha de tener menos de 15 Mjup (4 veces el ruido con la config extendida). Como no sabemos si el objeto está gravitacionalmente ligado o no, no sabemos el futuro de este objeto... Si estuviera gravitacionalmente ligado, desde luego que sería super-interesante...
-  #+end_example
-+ Position is roughly
-  + 5:35:14.1500 -5:23:40.000
-  + 141.5-340.0
-+ Nearest sources in Bob's list is
-  + 140.4-338.3
-    + COUP 602, JW 431, MLLA 336, TCC 1, HC 247, HHH 431, LML 152
-  + 137.8-340.0
-    + MAX 46, MLLA 328, SB 1, LM 78, HC 242, LML 144, LR 32, PMF 35
-  + So it seems it is not a protostellar disk/envelope
-    + Taking radius of 2 arcsec = 1.2e16 cm
-    + Mass of 40 Mjup = 7.5944e31 g = 0.038 Msun
-    + Then \rho = M / (4 pi/3) R**3 = 1.05e-17 g/cm^3 = 3e6 H/cm^3
-  + Jeans mass
-    + 2 Msun (c_s/0.2 km/s)**3 / sqrt(n /1000) according to Wikipedia
-    + \rho c_s^2 = n k T => c_s = sqrt(k T / m) = 0.268 km/s
-    + T = 20 K, n = 3e6 => M_J = 0.07 Msun
-+ My reply
-  #+begin_example
-    Muchas gracias por la explicación.  El pico que se ve en el mapa de Hacar también tiene diametro de 4", entonces seguramente están viendo la misma emisión. Todo parece indicar entonces que es solo una nubecita. Si la masa es de 40 Mjup = 0.038 Msun, entonces con un radio de 2" calculo una densidad de 3e6 pcc y una masa de Jeans de 0.07 Msun (si la temperatura es de 20 K), lo cual indica que probablemente no es autogravitante. De hecho, si realmente está asociado con el filamento con el frente de ionización entonces la temperatura podría ser mayor, lo cual va a reducir aun más la masa. 
-  #+end_example
-+ Pressure comparison
-  + Ionization front pressure
-    + n = 2e4 pcc, T = 1e4 K
-    + P/k = 2 n T = 4e8 cm^-3 K
-  + Globule pressure
-    + n = 3e6, T = 20 K
-    + P/k = 0.6e8 cm^-3 K
-  + So thermal pressure of globule is 7 times less than H II region
-
-
++ This has now been moved to [[file:~/Dropbox/OrionMolecular/orion-south-molecular/README.org][orion-south-molecular/README.org]]
 ***** Sources in OOS from ODell:2015a
 + This is a lot of sources
 + Most are optically visible
@@ -5978,6 +6068,9 @@ Now add them all together to make a Trapezium SED
 
 
 
+
+**** Possible bugs in the CLoudy model
++ Need to bear in mind https://www.nublado.org/ticket/78
 
 **** Changing default resolution
 + We need to edit ~continuum_mesh.ini~
