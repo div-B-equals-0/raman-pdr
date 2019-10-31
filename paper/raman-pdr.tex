@@ -506,18 +506,26 @@ ionization front, particularly in the ``SW minibar'' region.
 \label{sec:emiss-prof-across}
 
 \begin{figure*}
-  \includegraphics[width=\linewidth]{figs/raman-bar-multi-profile}
-  \caption{Spatial cut of continuum-subtracted Raman-scattered
-    H\(\alpha\) wing intensity across the Orion Bar (top panel). Matched
-    red and blue wing bands are shown with the same color scheme as in
-    Fig.~\ref{fig:raman-spectra-1d}. Bottom panel shows comparison
-    with a variety of different tracers of molecular, neutral, and
-    ionized material.  Optical lines are from VLT MUSE
-    \citep{Weilbacher:2015a}, infrared continuum bands are from
-    Spitzer IRAC \citep{Megeath:2012a}, CO lines are from Carma-NRO
+  \includegraphics[width=\linewidth]{figs/raman-bar-multi-profile-4part}
+  \caption{(a)~Spatial cut of continuum-subtracted Raman-scattered
+    H\(\alpha\) wing intensity across the Orion Bar. Matched band pairs
+    from the red and blue wings are shown with the same color scheme
+    as in Fig.~\ref{fig:raman-spectra-1d}. (b)~Comparison with
+    far-infrared observations of line and continuum (purple shading)
+    emission from Herschel PACS \citep{Bernard-Salas:2012a}.  The
+    width (FWHM) of the Herschel PSF is shown by horizontal bars for
+    two representative wavelengths. (c)~Comparison with a variety of
+    other tracers of molecular, neutral, and ionized material.
+    Optical lines are from VLT MUSE \citep{Weilbacher:2015a}, infrared
+    continuum bands (green shading) are from Spitzer IRAC
+    \citep{Megeath:2012a}, CO lines are from Carma-NRO
     \citep{Kong:2018a} and Herschel PACS \citep{Parikka:2018a},
     \chem{H_2} near-infrared line is from VLT HAWK-I
-    \citep{Kissler-Patig:2008a}.  Ultraviolet photons are incident
+    \citep{Kissler-Patig:2008a}. (d)~Image of the bar in \ion{O}{1},
+    rotated so the \(x\) axis is along the direction of the spatial
+    cuts (area indicated by dashed rectangle).  Contours of molecular
+    CO emission (red) and ionized [\ion{O}{3}] emission (blue) are
+    also shown.  In all four panels, ultraviolet photons are incident
     from the right hand side and the vertical dotted line indicates
     the ionization front, defined as the peak of the fluorescent
     \ion{O}{1} emission. The profiles are the median values over a
@@ -531,61 +539,98 @@ ionization front, particularly in the ``SW minibar'' region.
 \end{figure*}
 
 \begin{table*}
+  \newlength\tablegap\setlength\tablegap{6pt}
   \caption{Peaks in emission profiles across the Orion Bar}
   \label{tab:bar-profile-peaks}
   ~\\[-\baselineskip]
   \centering
-  \begin{tabular}{r r R R R R}\toprule
+  \begin{tabular}{r r R R R R c }\toprule
     Emission type and units
-    & Line or Band & x_0, \si{mpc} & \delta x, \si{mpc} & I(\text{Peak}) & I(\text{BG}) \\
-    (1) & (2) & (3) & (4) & (5) & (6) \\
+    & Line or Band & x_0, \si{mpc} & \delta x, \si{mpc} & I(\text{Peak}) & I(\text{BG}) & Ref.\\
+    (1) & (2) & (3) & (4) & (5) & (6) & (7)\\
     \midrule
     \hii{} region emission lines
-    & [\ion{O}{3}] \(\lambda 5007\) & -32.1 & 45 & 13.059 & 11.642 \pm 5.605 \\
+    & [\ion{O}{3}] \(\lambda 5007\) & -32.1 \pm 2.6& 45 & 13.059 & 11.642 \pm 5.605 & 1 \\
     Peak and BG: \(\int I_\lambda \, d\lambda\), \SI{e-6}{erg.s^{-1}.cm^{-2}.sr^{-1}}
-    & [\ion{O}{2}] \(\lambda 7318\) & -9.4 & 25 & 0.882 & 0.232 \pm 0.026 \\    
-    & [\ion{O}{1}] \(\lambda 6300\) & -1.7 & 9 & 0.152 & 0.045 \pm 0.001 \\     
-    & \ion{O}{1}   \(\lambda 8446\) & 0.0 & 8 & 0.226 & 0.071 \pm 0.000 \\      
-    \addlinespace[4pt]
-    Raman bands
-    & B033 & 0.8 & 20 & 0.455 & 0.858 \pm 0.007 \\
+    & [\ion{O}{2}] \(\lambda 7318\) & -9.4 \pm 3.6& 25 & 0.882 & 0.232 \pm 0.026 & \\    
+    & [\ion{O}{1}] \(\lambda 6300\) & -1.7 \pm 0.1& 9 & 0.152 & 0.045 \pm 0.001 & \\     
+    & \ion{O}{1}   \(\lambda 8446\) & 0.0 \pm 0.8& 8 & 0.226 & 0.071 \pm 0.000 & \\      
+    \addlinespace[\tablegap]
+    \ha{} Raman bands
+    & B033 & 0.8 \pm 1.5 & 20 & 0.455 & 0.858 \pm 0.007 & 2 \\
     Peak and BG: \(I_\lambda\), \SI{e-9}{erg.s^{-1}.cm^{-2}.sr^{-1}.\angstrom^{-1}} 
-    & R040 & 1.8 & 18 & 0.480 & 0.815 \pm 0.023 \\
-    & B054 & 5.0 & 9 & 0.233 & 0.641 \pm 0.009 \\
-    & R058 & 5.5 & 11 & 0.285 & 0.591 \pm 0.017 \\
-    & B080 & 7.1 & 11 & 0.136 & 0.437 \pm 0.013 \\
-    & R087 & 7.1 & 15 & 0.178 & 0.393 \pm 0.017 \\
-    & B133 & 6.7 & 10 & 0.128 & 0.302 \pm 0.004 \\
-    & R136 & 3.1 & 27 & 0.072 & 0.198 \pm 0.007 \\
-    \addlinespace[4pt]
-    IRAC bands
-    & \SI{3.6}{\micron} & 11.6 & 21 & 0.200 & 0.182 \pm 0.018 \\
-    Peak and BG: \(I_\nu\), \si{GJy.sr^{-1}}
-    & \SI{5.8}{\micron} & 12.8 & 23 & 1.702 & 0.966 \pm 0.073 \\
-    & \SI{8.0}{\micron} & 13.9 & 24 & 4.866 & 2.622 \pm 0.119 \\
-    \addlinespace[4pt]
+    & R040 & 1.8 \pm 0.1 & 18 & 0.480 & 0.815 \pm 0.023 & \\
+    & B054 & 5.0 \pm 2.7 & 9 & 0.233 & 0.641 \pm 0.009  & \\
+    & R058 & 5.5 \pm 2.8 & 11 & 0.285 & 0.591 \pm 0.017 & \\
+    & B080 & 7.1 \pm 1.3 & 11 & 0.136 & 0.437 \pm 0.013 & \\
+    & R087 & 7.1 \pm 0.7 & 15 & 0.178 & 0.393 \pm 0.017 & \\
+    & B133 & 6.7 \pm 1.1 & 10 & 0.128 & 0.302 \pm 0.004 & \\
+    & R136 & 3.1 \pm 2.7 & 27 & 0.072 & 0.198 \pm 0.007 & \\
+    \addlinespace[\tablegap]
+    Spitzer IRAC bands
+    & \SI{3.6}{\micron} & 11.6 \pm 1.1 & 21 & 0.200 & 0.182 \pm 0.018 & 3 \\
+    Peak and BG: \(I_\nu\), \si{GJy.sr^{-1}}                              
+    & \SI{5.8}{\micron} & 12.8 \pm 2.4 & 23 & 1.702 & 0.966 \pm 0.073 & \\
+    & \SI{8.0}{\micron} & 13.9 \pm 3.4 & 24 & 4.866 & 2.622 \pm 0.119 & \\
+    \addlinespace[\tablegap]
+    Herschel PACS continuum
+    & \SI{60}{\micron} &  23.9 \pm 7.0 & 52 & 66.361 & 25.175 \pm 0.261 & 4\\
+    Peak and BG: \(I_\nu\), \si{Jy.pix^{-1}}
+    & \SI{150}{\micron} & 39.2 \pm 4.2& 63 & 7.263 & 2.592 \pm 0.065 & \\
+    \addlinespace[\tablegap]
     PDR emission lines
-    & \chem{H_2} \SI{2.21}{\micron} & 23.6 & 19 & 0.169 & 0.997 \pm 0.002 \\
+    & [\ion{N}{2}] \SI{122}{\micron} & -4.0 \pm 1.7 & 55 & 1.907 & 0.581 \pm 0.181 & 4\\
     Peak and BG: \(\int I_\lambda \, d\lambda\), median normalized
-    & \chem{^{12}CO} (19--18) & 33.8 & 32 & 3.930 & 0.399 \pm 0.001 \\
-    & [\ion{C}{1}] \(\lambda 8727\) & 37.7 & 30 & 0.495 & 0.854 \pm 0.122 \\
-    & \chem{^{12}CO} (1--0) & 41.1 & 44 & 0.472 & 0.746 \pm 0.173 \\
-    & \chem{^{13}CO} (1--0) & 49.8 & 33 & 0.891 & 0.823 \pm 0.112 \\
+    & [\ion{O}{1}] \SI{63}{\micron}  & 21.6 \pm 1.2 & 55 & 1.303 & 0.823 \pm 0.242 & 4\\
+    & \chem{H_2} \SI{2.21}{\micron} & 23.6 \pm 0.1 & 19 & 0.169 & 0.997 \pm 0.002 & 5 \\
+    & [\ion{C}{2}] \SI{158}{\micron} & 24.3 \pm 1.9 & 47 & 0.975 & 0.920 \pm 0.145 & 4\\
+    & [\ion{O}{1}] \SI{146}{\micron} & 26.0 \pm 2.8 & 46 & 2.299 & 0.945 \pm 0.210 & 4\\
+    & \chem{^{12}CO} (19--18) & 33.8 \pm 0.1 & 32 & 3.930 & 0.399 \pm 0.001 & 6 \\
+    & [\ion{C}{1}] \(\lambda 8727\) & 37.7 \pm 5.9 & 30 & 0.495 & 0.854 \pm 0.122 & 1 \\
+    & \chem{^{12}CO} (18--17) \SI{145}{\micron}  & 38.9 \pm 0.5 & 34 & 8.193 & 0.989 \pm 0.154 & 4 \\
+    & \chem{^{12}CO} (1--0) & 41.1 \pm 1.2 & 44 & 0.472 & 0.746 \pm 0.173 & 7 \\
+    & \chem{^{13}CO} (1--0) & 49.8 \pm 2.1 & 33 & 0.891 & 0.823 \pm 0.112 & 7 \\
     \bottomrule
-    \multicolumn{6}{p{14cm}}{\textsc{Note}---Results of fitting a single Gaussian plus linear background to the brightness profiles shown in Figure~\ref{fig:raman-bar-profile} (see figure caption for references).  Columns: (1)~Type of tracer and surface brightness units for the values given in columns~5 and~6. (2)~Specific emission line or continuum band. (3)~Position of fitted Gaussian relative to ionization front. (4)~FWHM of fitted Gaussian.  (5)~Peak intensity of fitted Gaussian, with brightness units given in column~1. (6)~Intensity of fitted background at position \(x_0 \pm \delta x\).}
+    \multicolumn{7}{@{}p{16cm}@{}}{%
+    \textsc{Note}---Results of fitting a single Gaussian plus linear
+    background to the brightness profiles shown in
+    Figure~\ref{fig:raman-bar-profile}.
+    Columns: (1)~Type of tracer and surface brightness units for the values
+    given in columns~5 and~6.
+    (2)~Specific emission line or continuum band.
+    (3)~Position of fitted Gaussian relative to ionization front.
+    The uncertainty is given as the difference between the fitted Gaussian peak
+    and the actual data peak.
+    (4)~FWHM of fitted Gaussian. Note that this is not corrected for
+    the instrumental PSF, which is substantial in the case of the Herschel and CARMA
+    data but negligible in most other cases.
+    (5)~Peak intensity of fitted Gaussian, with brightness units given in column~1.
+    (6)~Intensity of fitted background at position \(x_0 \pm \delta x\).
+    (7)~Data provenance references:
+    1.~VLT--MUSE \citep{Weilbacher:2015a};
+    2.~This paper;
+    3.~Spitzer--IRAC \citep{Megeath:2012a};
+    4.~Herschel--PACS \citep{Bernard-Salas:2012a};
+    5.~VLT--HAWK-I \citep{Kissler-Patig:2008a};
+    6.~Herschel--PACS \citet{Parikka:2018a};
+    7.~Carma--NRO \citet{Kong:2018a}.
+    }
   \end{tabular}
 \end{table*}
 
+
 % 5:35:22.0486,-5:24:40.769
 Figure~\ref{fig:raman-bar-profile} shows spatial profiles across the
-Orion Bar of the Raman-scattered bands (upper panel), together with
-other emission lines and bands (lower panel). In keeping with the
+Orion Bar of the Raman-scattered bands (panel a), together with other
+emission lines and bands (panels b and c). In keeping with the
 dominant tradition in the literature \citetext{e.g., Fig.~9 of
   \citealp{van-der-Werf:1996a}, Fig.~2 of \citealp{Goicoechea:2017a}},
 the molecular regions are shown on the left and the ionized regions on
-the right.  Table~\ref{tab:bar-profile-peaks} shows the positions,
-widths, and intensities of the peaks in each tracer, as determined by
-fitting a single Gaussian plus a linear background.  
+the right.  The profiles are the median values across a slit of width
+\(75''\), as illustrated in Figure\ref{fig:raman-bar-profile}d.
+Table~\ref{tab:bar-profile-peaks} shows the positions, widths, and
+intensities of the peaks in each tracer, as determined by fitting a
+single Gaussian plus a linear background.
 
 \subsubsection{Lines from ionized gas and the ionization front at the Bar}
 \label{sec:lines-from-ionized}
@@ -593,7 +638,8 @@ fitting a single Gaussian plus a linear background.
 
 The ionization stratification at the edge of the \ion{H}{2} region is
 clearly seen in the distribution of the [\ion{O}{3}], [\ion{O}{2}],
-[\ion{O}{1}], and \ion{O}{1} lines.  The peak in [\ion{O}{1}]
+[\ion{O}{1}], and \ion{O}{1} lines
+(Fig.~\ref{fig:raman-bar-profile}c).  The peak in [\ion{O}{1}]
 emissivity (excited by collisions between electrons and neutral oxygen
 atoms) is expected to occur at a hydrogen ionization fraction of 50\%
 \citep{Henney:2005b}, which is displaced by

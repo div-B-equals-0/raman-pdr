@@ -2530,7 +2530,6 @@ CLOSED: [2019-09-07 Sat 09:03]
   for _, ra, dec, size in STARS:
       ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="white", fc="none")
   ny, nx = hdu.data.shape
-  ax.set(xlim=[0, nx+1], ylim=[0, ny+1], xlabel="RA (J2000)", ylabel="Dec (J2000)")
   fig.tight_layout(rect=[0.08, 0.07, 1.0, 1.0])
   fig.savefig(figfile, dpi=200)
 #+end_src
@@ -2830,12 +2829,12 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 
 
 ***** Herschel line maps
-#+call: bar-profile(INFILE="herschel-bar-oi-63mic-line.fits", HDU=0, NBLOCK=16)
+#+call: bar-profile(INFILE="herschel-bar-oi-63mic-line.fits", NORM="no", HDU=0, NBLOCK=16)
 
 #+RESULTS:
 [[file:herschel-bar-oi-63mic-line-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="herschel-bar-oi-63mic-cont.fits", HDU=0, NBLOCK=16)
+#+call: bar-profile(INFILE="herschel-bar-oi-63mic-cont.fits", NORM="no", HDU=0, NBLOCK=16)
 
 #+RESULTS:
 [[file:herschel-bar-oi-63mic-cont-bar-profile.jpg]]
@@ -2845,25 +2844,30 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 #+RESULTS:
 [[file:herschel-bar-oi-63mic-ew-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="herschel-bar-oi-146mic-line.fits", HDU=0, NBLOCK=32)
+#+call: bar-profile(INFILE="herschel-bar-oi-146mic-line.fits", NORM="no", HDU=0, NBLOCK=32)
 
 #+RESULTS:
 [[file:herschel-bar-oi-146mic-line-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="herschel-bar-oi-146mic-cont.fits", HDU=0, NBLOCK=32)
+#+call: bar-profile(INFILE="herschel-bar-oi-146mic-cont.fits", NORM="no", HDU=0, NBLOCK=32)
 
 #+RESULTS:
 [[file:herschel-bar-oi-146mic-cont-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="herschel-bar-co-145mic-line.fits", HDU=0, NBLOCK=32)
+#+call: bar-profile(INFILE="herschel-bar-co-145mic-line.fits", NORM="no", HDU=0, NBLOCK=32)
 
 #+RESULTS:
 [[file:herschel-bar-co-145mic-line-bar-profile.jpg]]
 
-#+call: bar-profile(INFILE="herschel-bar-nii-122mic-line.fits", HDU=0, NBLOCK=64)
+#+call: bar-profile(INFILE="herschel-bar-nii-122mic-line.fits", NORM="no", HDU=0, NBLOCK=64)
 
 #+RESULTS:
 [[file:herschel-bar-nii-122mic-line-bar-profile.jpg]]
+
+#+call: bar-profile(INFILE="herschel-bar-cii-158mic-line.fits", NORM="no", HDU=0, NBLOCK=32)
+
+#+RESULTS:
+[[file:herschel-bar-cii-158mic-line-bar-profile.jpg]]
 
 **** Combined plot of all the Bar profiles
 
@@ -3025,6 +3029,196 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 [[file:raman-bar-multi-profile.pdf]]
 
 
+**** New version with Herschel data too
+#+begin_src python :return figfile :results file
+  import json
+  import numpy as np
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+
+  #sns.set_color_codes("bright")
+
+  PC_PER_ARCSEC = 1.9e-3
+
+  def load_data(jsonfile):
+      "Returns offset(mpc) and brightness"
+      data = json.load(open(jsonfile))
+      return 1000*np.array(data["offset"])*PC_PER_ARCSEC, np.array(data["brightness"])
+
+
+  def xmap(x, scale_pc=0.1):
+      """Map parsecs to scaled asinh"""
+      return np.arcsinh(x/scale_pc)
+
+  figfile = "raman-bar-multi-profile-3-panel.pdf"
+  fig, [ax2, axH, ax] = plt.subplots(3, 1, figsize=(8, 8), sharex=True)
+
+  emlines = [
+      ["O_III-5007", 7, 2.2, 0.5, r"[O III] $\lambda 5007$"], 
+      ["O_II-7318",  2.5, 1.3, 0.7, r"[O II] $\lambda 7318$"], 
+      ["O_I-6300",   1.0, 1.0, 0.9, r"[O I] $\lambda 6300$"], 
+      ["O_I-8446",   0.0, 1.0, 1.1, r"O I $\lambda 8446$"], 
+  ]
+
+  raman_bands = [
+      ["B033", "R040", 0.6, "b", "m", 36],
+      ["B054", "R058", 0.4, "b", "m", 56],
+      ["B080", "R087", 0.4, "c", "r", 83],
+      ["B133", "R136", 0.2, "c", "r", 134],
+  ]
+
+  molecules = [
+      ["mom0_87_109_13co_pix_2_Tmb", 0.0, 5.5, 1.0, "$^{13}$CO (1-0)"],
+      ["mom0_48_57_12co_pix_2_Tmb", 0.0, 4.0, 1.5, "$^{12}$CO (1-0)"],
+      ["linesum-blue-C_I-8727-multibin-500", 0.0, 4.0, 2, r"[C I] $\lambda 8727$"],
+      ["map_CO137_pacsman", 0.0, 0.65, 2.5, "$^{12}$CO (19-18)"],
+      ["Orion-Bar-H2-minus-060-Brg", -12.7, 13.0, 3.0, r"H$_{2}$ 2.21$\,\mu$m"],
+  ]
+
+  infrared = [
+      ["IRAC.1", 0.038, "$3.6\, \mu$m"],
+      ["IRAC.3", 0.0044, "$5.8\, \mu$m"],
+      ["IRAC.4", 0.001, "$8.0\, \mu$m"],
+  ]
+
+  herschel_lines = [
+      ["nii-122mic", 1.3, -100, 50, -50, 0.7, 1.0, "[N II] $122\,\mu$m"],
+      ["oi-146mic", 4.0, -10, 100, 60, 1.0, 0.3, "[O I] $146\,\mu$m"],
+      ["oi-63mic", 3.7, -10, 100, 50, 1.5, 0.3, "[O I] $63\,\mu$m"],
+      ["cii-158mic", 3.5, -10, 100, 60, 2.0, 0.3, "[C II] $158\,\mu$m"],
+      ["co-145mic", 0.5, 10, 100, 60, 2.5, 0.3, "$^{12}$CO (18-17) $145\,\mu$m"],
+  ]
+
+  herschel_cont = [
+      ["oi-146mic", 3.4, "$150\,\mu$m"],
+      ["oi-63mic", 5.0, "$60\,\mu$m"],
+  ]
+
+  whitebox = dict(facecolor="white", edgecolor="none", boxstyle="round,pad=0.2")
+  for lineid, offset, scale, lw, label in emlines:
+      x, y = load_data(f"linesum-{lineid}-bin001-bar-profile.json")
+      m = x < 30
+      y /= np.median(y)
+      ax.plot(x[m], scale*y[m] + offset, color="k", lw=lw)
+      # x0 = -40 - 5*offset
+      x0 = -60
+      i0 = np.sum(x < x0)
+      y0 = y[i0]
+      ax.text(x0, scale*y0 + offset,
+              f"{offset:.1f} + {label}",
+              bbox=whitebox, ha="center", va="center", fontsize="small")
+  ax.text(x0, 15.0, "H II region emission lines", ha="center", fontsize="small")
+
+  for bandid, scale, label in infrared:
+      x, y = load_data(f"40044081.40044081-89-short.{bandid}.mosaic-bar-profile.json")
+      m = x > -10
+      # y /= np.median(y)
+      ax.fill_between(x[m], y[m]*scale, color="k", alpha=0.07, zorder=-100)
+      x0 = 3
+      i0 = np.sum(x < x0)
+      y0 = y[i0]
+      ax.text(x0+2, 0.97*scale*y0,
+              f"{label}",
+              bbox=whitebox, ha="right", va="top", fontsize="small")
+  ax.text(10, 15.0, "MIR continuum", ha="center", bbox=whitebox, fontsize="small")
+
+  for bandid, scale, label in herschel_cont:
+      x, y = load_data(f"herschel-bar-{bandid}-cont-bar-profile.json")
+      m = x > -10
+      # y /= np.median(y)
+      axH.fill_between(x[m], y[m]*scale, color="k", alpha=0.07, zorder=-100)
+      x0 = 15
+      i0 = np.sum(x < x0)
+      y0 = y[i0]
+      axH.text(x0, 0.75*scale*y0,
+              f"{label}",
+              bbox=whitebox, ha="center", va="top", fontsize="small")
+  axH.text(15, 14.0, "FIR continuum", ha="center", bbox=whitebox, fontsize="small")
+
+  offset = 0.0
+  for lineid, scale, x1, x2, x0, lw, alpha, label in herschel_lines:
+      x, y = load_data(f"herschel-bar-{lineid}-line-bar-profile.json")
+      m = (x1 < x) & (x < x2)
+      y /= np.median(y)
+      axH.plot(x[m], y[m]*scale + offset, color="k", lw=lw, alpha=alpha)
+      i0 = np.sum(x < x0)
+      y0 = y[i0]
+      axH.text(x0, scale*y0 + offset,
+              f"{label}",
+              bbox=whitebox, ha="center", va="center", fontsize="small")
+  axH.text(x0, 14, "FIR emission lines", bbox=whitebox, ha="center", fontsize="small")
+
+  for lineid, offset, scale, lw, label in molecules:
+      x, y = load_data(f"{lineid}-bar-profile.json")
+      m = x > 10
+      y /= np.median(y)
+      ax.plot(x[m], y[m]*scale + offset, color="k", lw=lw, alpha=0.3)
+      x0 = 60
+      i0 = np.sum(x < x0)
+      y0 = y[i0]
+      ax.text(x0, scale*y0 + offset,
+              f"{label}",
+              bbox=whitebox, ha="center", va="center", fontsize="small")
+  ax.text(x0, 15.0, "PDR emission lines", bbox=whitebox, ha="center", fontsize="small")
+
+
+  raman_fmt = "muse-hr-data-ha-raman-{}-cont-sub-multibin-1000-bar-profile.json"
+  for blue, red, alpha, cb, cr, wav in raman_bands:
+      xb, yb = load_data(raman_fmt.format(blue)) 
+      xr, yr = load_data(raman_fmt.format(red))
+      # Put in units of 1e-9 erg/s/cm2/sr/AA
+      yb *= 3.24e-12 / 1e-9
+      yr *= 3.24e-12 / 1e-9
+      ax2.plot(xb, yb, color=cb, alpha=alpha, lw=2)
+      ax2.plot(xr, yr, color=cr, alpha=alpha, lw=2)
+      x0 = -40
+      i0 = np.sum(xb < x0)
+      y0 = (yb[i0] + yr[i0])/2
+      ax2.text(x0, y0,
+               fr"$\Delta\lambda \approx \pm{wav}$ Å",
+               bbox=whitebox, ha="center", va="center", fontsize="small")
+      xtext = -75
+      ytext = np.interp([xtext], xb, yb)[0]
+      ax2.text(xtext, ytext, blue, color=cb, alpha=np.sqrt(alpha),
+               bbox=whitebox, ha="center", va="center", fontsize="small")
+      xtext = -90
+      ytext = np.interp([xtext], xr, yr)[0]
+      ax2.text(xtext, ytext, red, color=cr, alpha=np.sqrt(alpha),
+               bbox=whitebox, ha="center", va="center", fontsize="small")
+
+  ax2.text(-40.0, 1.1, r"H$\alpha$ Raman wings", ha="center", fontsize="small")
+
+  ax.text(-50, 16.5, "IONIZED", ha="center")
+  ax.text(15, 16.5, "NEUTRAL", ha="center")
+  ax.text(50, 16.5, "MOLECULAR", ha="center")
+
+  ax.axvline(ls=":")
+  ax2.axvline(ls=":")
+  axH.axvline(ls=":")
+  ax.set(
+      xlim=[95, -95],
+      ylim=[0, None],
+      #yscale="log",
+      xlabel="Depth into Bar: $x$, $10^{-3}$ pc",
+      ylabel="Constant + Intensity (arbitrary units)",
+  )
+  ax.minorticks_on()
+  ax2.set(
+      ylim=[0, None],
+      ylabel="Mean band intensity,\n$10^{-9}$ erg s$^{-1}$ cm$^{-2}$ sr$^{-1}$ Å$^{-1}$"
+  )
+  axH.set(
+      ylabel="Intensity (arbitrary units)",
+      ylim=[0, None],
+  )
+  sns.despine()
+  fig.tight_layout(h_pad=0.0)
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS:
+[[file:raman-bar-multi-profile-3-panel.pdf]]
+
 **** Fit Gaussians to all the profiles
 + Use a linear baseline plus a single gaussian to have a uniform methodology
 + Units of brightness profiles
@@ -3041,6 +3235,10 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
   + IRAC bands
     + Images are in MJy/sr
     + Divide by 1e3 to put in GJy/sr
+  + Herschel maps
+    + Images are in Jy/pixel
+    + Just leave it like that for the continuum
+    + For lines, we can median normalize
 
 #+begin_src python :return results
   import json
@@ -3081,6 +3279,19 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       ["IRAC.1", 0.038, "$3.6\, \mu$m"],
       ["IRAC.3", 0.0044, "$5.8\, \mu$m"],
       ["IRAC.4", 0.001, "$8.0\, \mu$m"],
+  ]
+
+  herschel_lines = [
+      ["nii-122mic", 1.3, -100, 50, -50, 0.7, 1.0, "[N II] $122\,\mu$m"],
+      ["oi-146mic", 4.0, -10, 100, 60, 1.0, 0.3, "[O I] $146\,\mu$m"],
+      ["oi-63mic", 3.7, -10, 100, 50, 1.5, 0.3, "[O I] $63\,\mu$m"],
+      ["cii-158mic", 3.5, -10, 100, 60, 2.0, 0.3, "[C II] $158\,\mu$m"],
+      ["co-145mic", 0.5, 10, 100, 60, 2.5, 0.3, "$^{12}$CO (18-17) $145\,\mu$m"],
+  ]
+
+  herschel_cont = [
+      ["oi-146mic", 3.4, "$150\,\mu$m"],
+      ["oi-63mic", 5.0, "$60\,\mu$m"],
   ]
 
   fit = fitting.LevMarLSQFitter()
@@ -3171,6 +3382,25 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       results.update(label, g, xp)
   results.hline()
 
+  for bandid, scale, label in herschel_cont:
+      x, y = load_data(f"herschel-bar-{bandid}-cont-bar-profile.json")
+      m = x > -50
+      g = fit_gaussian(x[m], y[m])
+      xp = x[m][y[m].argmax()]
+      results.update(label, g, xp)
+  results.hline()
+
+  for lineid, scale, x1, x2, x0, lw, alpha, label in herschel_lines:
+      x, y = load_data(f"herschel-bar-{lineid}-line-bar-profile.json")
+      m = (x1 < x) & (x < x2)
+      m = (x > -100) & (x < 100)
+      y /= np.median(y)
+      g = fit_gaussian(x[m], y[m])
+      xp = x[m][y[m].argmax()]
+      results.update(label, g, xp)
+  results.hline()
+
+
   misc = [
       "Ne",
       "Ne-iii",
@@ -3189,39 +3419,66 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 #+end_src
 
 #+RESULTS:
-| Label            | x             | FWHM |     Peak |     Base |   Slope |
-|------------------+---------------+------+----------+----------+---------|
-| [O III] $\lambda 5007$ | -32.1 +/- 2.6 |   45 |   13.059 |   11.642 |   5.605 |
-| [O II] $\lambda 7318$  | -9.4 +/- 3.6  |   25 |    0.882 |    0.232 |   0.026 |
-| [O I] $\lambda 6300$   | -1.7 +/- 0.1  |    9 |    0.152 |    0.045 |   0.001 |
-| O I $\lambda 8446$     | 0.0 +/- 0.8   |    8 |    0.226 |    0.071 |   0.000 |
-|------------------+---------------+------+----------+----------+---------|
-| B033             | 0.8 +/- 1.5   |   20 |    0.455 |    0.858 |   0.007 |
-| R040             | 1.8 +/- 0.0   |   18 |    0.480 |    0.815 |   0.023 |
-| B054             | 5.0 +/- 2.7   |    9 |    0.233 |    0.641 |   0.009 |
-| R058             | 5.5 +/- 2.8   |   11 |    0.285 |    0.591 |   0.017 |
-| B080             | 7.1 +/- 1.3   |   11 |    0.136 |    0.437 |   0.013 |
-| R087             | 7.1 +/- 0.7   |   15 |    0.178 |    0.393 |   0.017 |
-| B133             | 6.7 +/- 1.1   |   10 |    0.128 |    0.302 |   0.004 |
-| R136             | 3.1 +/- 2.7   |   27 |    0.072 |    0.198 |   0.007 |
-|------------------+---------------+------+----------+----------+---------|
-| $3.6\, \mu$m       | 11.6 +/- 1.1  |   21 |    0.200 |    0.182 |   0.018 |
-| $5.8\, \mu$m       | 12.8 +/- 2.4  |   23 |    1.702 |    0.966 |   0.073 |
-| $8.0\, \mu$m       | 13.9 +/- 3.4  |   24 |    4.866 |    2.622 |   0.119 |
-|------------------+---------------+------+----------+----------+---------|
-| H$_{2}$ 2.21$\,\mu$m  | 23.6 +/- 0.1  |   19 |    0.169 |    0.997 |   0.002 |
-| $^{12}$CO (19-18)   | 33.8 +/- 0.0  |   32 |    3.930 |    0.399 |   0.001 |
-| [C I] $\lambda 8727$   | 37.7 +/- 5.9  |   30 |    0.495 |    0.854 |   0.122 |
-| $^{12}$CO (1-0)     | 41.1 +/- 1.2  |   44 |    0.472 |    0.746 |   0.173 |
-| $^{13}$CO (1-0)     | 49.8 +/- 2.1  |   33 |    0.891 |    0.823 |   0.112 |
-|------------------+---------------+------+----------+----------+---------|
-| Ne               | -8.8 +/- 2.0  |   27 | 1426.813 | 1654.020 | 164.929 |
-| Ne-iii           | -15.0 +/- 4.1 |   26 | 1990.752 | 3321.364 | 503.448 |
-| Te               | -2.2 +/- 0.1  |   15 |  377.649 | 8878.485 |  85.129 |
-| Te-iii           | -6.6 +/- 2.8  |   25 |  642.275 | 7983.434 |  59.940 |
-|------------------+---------------+------+----------+----------+---------|
+| Label                    | x             | FWHM |     Peak |     Base |   Slope |
+|--------------------------+---------------+------+----------+----------+---------|
+| [O III] $\lambda 5007$         | -32.1 +/- 2.6 |   45 |   13.059 |   11.642 |   5.605 |
+| [O II] $\lambda 7318$          | -9.4 +/- 3.6  |   25 |    0.882 |    0.232 |   0.026 |
+| [O I] $\lambda 6300$           | -1.7 +/- 0.1  |    9 |    0.152 |    0.045 |   0.001 |
+| O I $\lambda 8446$             | 0.0 +/- 0.8   |    8 |    0.226 |    0.071 |   0.000 |
+|--------------------------+---------------+------+----------+----------+---------|
+| B033                     | 0.8 +/- 1.5   |   20 |    0.455 |    0.858 |   0.007 |
+| R040                     | 1.8 +/- 0.0   |   18 |    0.480 |    0.815 |   0.023 |
+| B054                     | 5.0 +/- 2.7   |    9 |    0.233 |    0.641 |   0.009 |
+| R058                     | 5.5 +/- 2.8   |   11 |    0.285 |    0.591 |   0.017 |
+| B080                     | 7.1 +/- 1.3   |   11 |    0.136 |    0.437 |   0.013 |
+| R087                     | 7.1 +/- 0.7   |   15 |    0.178 |    0.393 |   0.017 |
+| B133                     | 6.7 +/- 1.1   |   10 |    0.128 |    0.302 |   0.004 |
+| R136                     | 3.1 +/- 2.7   |   27 |    0.072 |    0.198 |   0.007 |
+|--------------------------+---------------+------+----------+----------+---------|
+| $3.6\, \mu$m               | 11.6 +/- 1.1  |   21 |    0.200 |    0.182 |   0.018 |
+| $5.8\, \mu$m               | 12.8 +/- 2.4  |   23 |    1.702 |    0.966 |   0.073 |
+| $8.0\, \mu$m               | 13.9 +/- 3.4  |   24 |    4.866 |    2.622 |   0.119 |
+|--------------------------+---------------+------+----------+----------+---------|
+| H$_{2}$ 2.21$\,\mu$m          | 23.6 +/- 0.1  |   19 |    0.169 |    0.997 |   0.002 |
+| $^{12}$CO (19-18)           | 33.8 +/- 0.0  |   32 |    3.930 |    0.399 |   0.001 |
+| [C I] $\lambda 8727$           | 37.7 +/- 5.9  |   30 |    0.495 |    0.854 |   0.122 |
+| $^{12}$CO (1-0)             | 41.1 +/- 1.2  |   44 |    0.472 |    0.746 |   0.173 |
+| $^{13}$CO (1-0)             | 49.8 +/- 2.1  |   33 |    0.891 |    0.823 |   0.112 |
+|--------------------------+---------------+------+----------+----------+---------|
+| $150\,\mu$m                | 39.2 +/- 4.2  |   63 |    7.263 |    2.592 |   0.065 |
+| $60\,\mu$m                 | 23.9 +/- 7.0  |   52 |   66.361 |   25.175 |   0.261 |
+|--------------------------+---------------+------+----------+----------+---------|
+| [N II] $122\,\mu$m         | -4.0 +/- 1.7  |   55 |    1.907 |    0.581 |   0.181 |
+| [O I] $146\,\mu$m          | 26.0 +/- 2.8  |   46 |    2.299 |    0.945 |   0.210 |
+| [O I] $63\,\mu$m           | 21.6 +/- 1.2  |   55 |    1.303 |    0.823 |   0.242 |
+| [C II] $158\,\mu$m         | 24.3 +/- 1.9  |   47 |    0.975 |    0.920 |   0.145 |
+| $^{12}$CO (18-17) $145\,\mu$m | 38.9 +/- 0.5  |   34 |    8.193 |    0.989 |   0.154 |
+|--------------------------+---------------+------+----------+----------+---------|
+| Ne                       | -8.8 +/- 2.0  |   27 | 1426.813 | 1654.020 | 164.929 |
+| Ne-iii                   | -15.0 +/- 4.1 |   26 | 1990.752 | 3321.364 | 503.448 |
+| Te                       | -2.2 +/- 0.1  |   15 |  377.649 | 8878.485 |  85.129 |
+| Te-iii                   | -6.6 +/- 2.8  |   25 |  642.275 | 7983.434 |  59.940 |
+|--------------------------+---------------+------+----------+----------+---------|
 
 
+
+**** PSF sizes
+| Telescope |         wav | arcsec |   mpc |   mm |
+|-----------+-------------+--------+-------+------|
+| MUSE      | 4500-9200 \AA |      1 |   1.9 |  1.8 |
+| Spitzer   |    8 micron |   2.37 | 4.503 |  4.2 |
+| Herschel  |          63 |    4.5 |  8.55 |  7.9 |
+| Herschel  |         122 |    8.8 | 16.72 | 15.5 |
+| Herschel  |         145 |     10 |   19. | 17.6 |
+| Herschel  |         158 |     11 |  20.9 | 19.4 |
+| CARMA     |      2.6 mm |      8 |  15.2 | 14.1 |
+#+TBLFM: $4=1.9 $3::$5=14.1 $4/15.2;f1
++ Spitzer @ 8 micron: 2.37 arcsec = 4.5 mpc
++ CARMA @ 2.6 mm: 8 arcsec = 15.2 mpc
++ MUSE @ 7000 \AA: 1 arcsec = 1.9 mpc
++ Herschel
+  + @ 60 microns: 4.5 arcsec = 8.6 mpc
+  + @ 150 microns: 11 arcsec = 20.9 mpc
 **** Plot peak position against 1/\sigma for Raman bands
 #+name: raman-band-displacements
 | Band |  x0 |  W | sigma | 1/sigma |
@@ -3286,7 +3543,126 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 #+RESULTS:
 [[file:raman-band-displacements-plot.pdf]]
 
-**** Graph of structure of the Bar
+**** Rotated image to show the Bar cut
+#+begin_src python :return figfile :results file
+  from pathlib import Path
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from matplotlib.patches import Rectangle
+  from matplotlib.ticker import EngFormatter
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from astropy.wcs.utils import celestial_frame_to_wcs
+  from astropy.convolution import convolve_fft, Gaussian2DKernel
+  from astropy.coordinates import SkyCoord
+  import astropy.units as u
+  from reproject import reproject_interp
+  import seaborn as sns
+
+  sns.set_color_codes("bright")
+
+  figfile = "orion-bar-rotated-map-with-profile-box.pdf"
+  datapath = Path("../data/orion-muse")
+  hdu = fits.open(datapath / "linesum-O_I-8446-bin001.fits")["SCALED"]
+  w = WCS(hdu.header)
+
+  COpath = Path("../../OrionMolecular/Carma-NRO-CO/dataverse_files")
+  hdu_redCO = fits.open(COpath / "mom0_48_57_12co_pix_2_Tmb.fits")[0]
+  # Convert from 3D to 2D
+  hdu_redCO.header = WCS(hdu_redCO).celestial.to_header()
+  hdu_redCO.data = hdu_redCO.data[0, :, :]
+  levels_CO = [360, 400, 440]
+
+  hdu_OIII = fits.open(datapath / "linesum-O_III-5007-bin001.fits")["SCALED"]
+  levels_OIII = [7e6, 9e6, 11e6]
+
+  # Origin of Bar offset frame
+  c0 = SkyCoord(83.8418691, -5.4113246, unit=(u.deg, u.deg))
+  # Position angle perp to Bar (away from Trapezium)
+  PA = 141.5*u.deg
+  bar_frame = c0.skyoffset_frame(rotation=PA)
+
+  # WCS for reprojection - start with the original 
+  ww = w.deepcopy()
+  # Shift reference pixel to Bar center
+  ww.wcs.crpix = w.world_to_pixel(c0)
+  ww.wcs.crval = c0.ra.deg, c0.dec.deg
+  # Rotate the frame
+  c, s = np.cos(PA).value, np.sin(PA).value
+  T = np.array([[s, -c], [c, s]])
+  ww.wcs.pc = T @ w.wcs.pc
+  newdata, footprint = reproject_interp(hdu, ww, shape_out=hdu.data.shape)
+  newdata_CO, _ = reproject_interp(hdu_redCO, ww, shape_out=hdu.data.shape)
+  hdu_OIII.data = convolve_fft(hdu_OIII.data, Gaussian2DKernel(stddev=5))
+  newdata_OIII, _ = reproject_interp(hdu_OIII, ww, shape_out=hdu.data.shape)
+
+  # Now switch to frame centered on c0
+  ww.wcs.crval = 0.0, 0.0
+  # in mpc
+  ww.wcs.pc = w.wcs.pc*3600*1.9
+
+  ww.wcs.ctype = ["linear", "linear"]
+
+  # Box for profile integration
+  width, height = 200, 75*1.9
+  xx = np.array([-1, 1, 1, -1])*width/2
+  yy = np.array([-1, -1, 1, 1])*height/2
+  # convert expanded rectangle corners to array indices
+  jj, ii = ww.world_to_array_index_values(1.3*xx, 1.3*yy)
+  # find limits for plot
+  xlim  = ii.min(), ii.max()
+  ylim = jj.min(), jj.max()
+
+  fig, ax = plt.subplots(figsize=(4, 3), subplot_kw=dict(projection=ww))
+  wtrans = ax.get_transform('world')
+
+  # Plot the O I data as image
+  imdata = np.sqrt(newdata/np.nanmax(newdata))
+  ax.imshow(imdata,
+            vmin=0.02, vmax=0.25, origin="lower", cmap="gray_r")
+
+  # Plot the CO and [O III] data as contours
+  ax.contour(newdata_CO,
+             levels=levels_CO, linewidths=[0.5, 1.0, 1.5],
+             colors="r")
+  ax.contour(newdata_OIII,
+             levels=levels_OIII,  linewidths=[0.5, 1.0, 1.5],
+             colors="b")
+
+  # Dashed rectangle for the profile box
+  ax.add_patch(
+      Rectangle(
+          (-width/2, -height/2),
+          width, height,
+          alpha=1.0,
+          transform=wtrans,
+          fill=False,
+          ec="k",
+          ls="--",
+      ),
+  )
+  # Dotted line for the i-front
+  ydots = np.arange(-100, 100, 4)
+  xdots = np.zeros_like(ydots)
+  ax.scatter(
+      xdots, ydots, transform=wtrans,
+      marker='o', c="g", edgecolors="w",
+      s=2, linewidths=0.25, alpha=0.6,
+  )
+
+  eformatter = EngFormatter(usetex=True)
+  ax.set(xlim=xlim, ylim=ylim, xlabel="$x$ (mpc)", ylabel="$y$ (mpc)")
+  ax.xaxis.set_major_formatter(eformatter)
+  ax.yaxis.set_major_formatter(eformatter)
+  ax.minorticks_on()
+  fig.tight_layout(rect=[0.1, 0.1, 1.0, 1.0])
+  fig.savefig(figfile, dpi=200)
+
+
+#+end_src
+
+#+RESULTS:
+[[file:orion-bar-rotated-map-with-profile-box.pdf]]
 
 
 **** Secondary profiles
