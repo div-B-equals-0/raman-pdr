@@ -1,0 +1,1390 @@
+\wavsamp version 5.1 (Wed Apr 20 08:45:04 PDT 2005)
+\processing time 18:54:11 PST 11/05/2008
+\character channelID = 3
+\char HISTORY ========== Parameters supplied to RIDGE program below ==========
+\char HISTORY PROCESS 2010/09/24 19:55:04
+\char HISTORY ridge v1.15  (nl_and_params v1.9)
+\char HISTORY WAVSAMP_FILE = ./cal/wavsamp.tbl
+\char HISTORY PROFILE_FILE = profile.tbl
+\char HISTORY PCT_LO = 25.0, percent
+\char HISTORY PCT_HI = 75.0, percent
+\char HISTORY NAMELIST_FILE = ./cdf/ridge.nl
+\char HISTORY ========== RIDGE processing results summary below ==========
+\char HISTORY FIND PEAKS: YES
+\char HISTORY OVERALL Max DN=46503 at PCT=47.88, found in region 0
+\char HISTORY MEDIAN FILTER not used.
+\char HISTORY PERCENTAGE = 47.88  (cut was performed here)
+\char HISTORY MAX_SIGNAL = 46503  (maximum signal value in DN)
+\char HISTORY CUT_POS = 47.88  (pct at which the max signal was found)
+\char HISTORY MAX_SIGNAL_IN_REGION = 0  (region where max signal was found)
+\COMMENT ========== Keywords from PROFILE table file below ==========
+\char NAXIS   =                    2 / STANDARD FITS FORMAT
+\char NAXIS1  =                  128
+\char NAXIS2  =                  128
+\char ORIGIN  = 'Spitzer Science Center' / Organization generating this FITS file
+\char CREATOR = 'S18.18.0'           / SW version used to create this FITS file
+\char TELESCOP= 'Spitzer '
+\char INSTRUME= 'IRSX    '
+\char CAL_SET = 'C18.18PRE25.A'      / ID for the set of CAL files used
+\char CHNLNUM =                    3 / 0=SL, 1=SH, 2=LL, 3=LH
+\char FILENAME= 'IRSX.3.0006075648.0035.0000.01.mipl.fits' / File name
+\char FILETYPE= 'fits-irs2d-flux'
+\char EXPTYPE = 'sp      '           / Exposure Type
+\char REQTYPE = 'AOR     '           / Request type (AOR,IER, or SER)
+\char AOT_TYPE= 'IrsStare'           / Observation Template Type
+\char AORLABEL= 'Orion Bar IRS'      / AOR Label
+\char FOVNAME = 'IRS_Long-Hi_2nd_Position' / Field of View Name
+\char READMODE= 'RAW     '           / Readout Mode
+\char 
+\char           / PROPOSAL INFORMATION
+\char 
+\char OBSRVR  = 'Francisca Markwick-Kemper' / Observer Name
+\char OBSRVRID=                  143 / Observer ID of Principal Investigator
+\char PROCYCL =                    3 / Proposal Cycle
+\char PROGID  =                 1094 / Program ID
+\char PROTITLE= 'The composition and evolution of dust in astrophysical environments'
+\char PROGCAT =                   31 / Program Category
+\char 
+\char           / TIME AND EXPOSURE INFORMATION
+\char 
+\char DATE_OBS= '2004-03-23T09:39:07.050' / Date & time (UTC) at DCE start
+\char MJD_OBS =        53087.4022438 / Program calkeywords trimmed-average result
+\char UTCS_OBS=       133306753.8665 / Program calkeywords trimmed-average result
+\char SCLK_OBS=       764502023.1815 / Program calkeywords trimmed-average result
+\char SAMPTIME=               1.0486 / [sec] Sample integration time
+\char REQMODE =                    5 / ID for mode or type of request
+\char EXPSTRTC=            764502009 / Exposure Start Timestamp Coarse
+\char EXPSTRTF=                  461 / Exposure Start Timestamp Fine
+\char GRPARVTC=            764502019 / [sec] Coarse Spacecraft Group Time
+\char GRPARVTF=                    0 / [sec] Fine Spacecraft Group Time
+\char AIRSCMDN=                    2 / Commanded number of DCEs for IRS
+\char AIRS_DET=                    3 / Selected IRS detector for exposure command
+\char AIRSEXPM=                    1 / Current Mode of the IRS Exp Manager
+\char GRPTIME =               2.0972 / [sec] Group (w/ spin) integration time
+\char DEADTIME=               6.2916 / [sec] Reset + boost(s) time
+\char RAMPTIME=                 6.29 / [sec] Ramp (total DCE) integration time
+\char EXPTOT_T=                12.58 / [sec] Integr. time for all DCEs in exposure
+\char AIRSERCT=                    0 / Number of IRS exposure errors
+\char 
+\char           / TARGET AND POINTING INFORMATION
+\char 
+\char OBJECT  = 'Orion Bar map'      / Target Name
+\char OBJTYPE = 'TargetFixedCluster' / Target Type
+\char RA_HMS  = '05h35m18.5s'        / [hh:mm:ss.s] RA_SLT or CRVAL1 in sexagesimal
+\char DEC_DMS = '-05d25m17s'         / [dd:mm:ss] DEC_SLT or CRVAL2 in sexagesimal
+\char RA_RQST =     83.8259166666667 / [deg] Commanded RA referenced to commanded FOV
+\char DEC_RQST=    -5.42219444444444 / [deg] Commanded Dec referenced to commanded FOV
+\char PA_RQST =     270.340085530891 / [deg] Requested pos. angle of axis 2 (E of N)
+\char PM_RA   =                   0. / [arcsec/yr] Proper Motion in RA (J2000)
+\char PM_DEC  =                   0. / [arcsec/yr] Proper Motion in Dec (J2000)
+\char CRDER1  = 0.000299559360036012 / Program calkeywords trimmed-average result
+\char CRDER2  = 0.000299695279913563 / Program calkeywords trimmed-average result
+\char SIGRA   =  0.00599809028309215 / [arcsec] RMS dispersion of RA over DCE
+\char SIGDEC  =  0.00946900421459518 / [arcsec] RMS dispersion of DEC over DCE
+\char SIGPA   =   0.0134330995427963 / [arcsec] RMS dispersion of PA over DCE
+\char PTGDIFF =     1.18792375225075 / [arcsec] offset btwn actual and rqsted pntng
+\char PTGDIFFX=    0.872224764721782 / [arcsec] requested - actual pntg along axis 1
+\char PTGDIFFY=    0.806469874438735 / [arcsec] requested - actual pntg along axis 2
+\char RA_REF  =     83.8259166666667 / [deg] Commanded RA (J2000) of ref. position
+\char DEC_REF =    -5.41108333333333 / [deg] Commanded Dec (J2000) of ref. position
+\char USEDBPHF=                    T / T if Boresight Pointing History File was used.
+\char RMS_JIT =  0.00603921479431723 / Program calkeywords trimmed-average result
+\char RMS_JITY=  0.00446125845523051 / Program calkeywords trimmed-average result
+\char RMS_JITZ=  0.00376050198945711 / Program calkeywords trimmed-average result
+\char RA_FOV  =     83.8262481264865 / [deg] RA at FOVID averaged over DCE
+\char DEC_FOV =    -5.42219305151752 / [deg] DEC at FOVID averaged over DCE
+\char PA_FOV  =    -132.998701637798 / [deg] PA at FOVID averaged over DCE
+\char RA_SLT  =     83.8269841264644 / [deg] RA at slit center averaged over DCE
+\char DEC_SLT =    -5.42150985868088 / [deg] DEC at slit center averaged over DCE
+\char PA_SLT  =    -132.998769637796 / [deg] PA at slit center averaged over DCE
+\char CSDRADEC= 7.15124936282427E-06 / [deg] Costandard deviation in RA and Dec
+\char CSD_JTYZ= -0.00139865158897666 / [arcsec] Costandard deviation of jitter in YZ
+\char BPHFNAME= 'BPHF.0764467200.04.pntg' / Boresight Pointing History Filename
+\char FOVVERSN= 'BodyFrames_FTU_13Aa.xls' / FOV/BodyFrames file version used
+\char VHELCORR=                 -26. / [km/sec] Correction to heliocentric velocity
+\char VLSRCORR=                 -44. / [km/sec] Correction to local standard of rest
+\char SPTZR_X =    -149244555.596128 / [km] Heliocentric x position
+\char SPTZR_Y =       4711269.526278 / [km] Heliocentric y position
+\char SPTZR_Z =        -82673.650694 / [km] Heliocentric z position
+\char SPTZR_VX=            -1.057912 / [km/sec] Heliocentric x velocity
+\char SPTZR_VY=           -27.298226 / [km/sec] Heliocentric y velocity
+\char SPTZR_VZ=           -12.325238 / [km/sec] Heliocentric z velocity
+\char ET_OBS  =        133306811.235 / [sec] DCE start time (TDB seconds past J2000)
+\char HMJD_OBS=        53087.4017283 / Corresponding Heliocen. Mod. Julian Date
+\char 
+\char 
+\char           / PHOTOMETRY (IRS IMAGING)
+\char 
+\char BUNIT   = 'e-/sec  '           / Units of image data
+\char 
+\char           / SPECTROPHOTOMETRY IRS SH, LH (CHNLNUM 1, 3)
+\char 
+\char FLXCON11=           316.717896 / [electrons/sec/Jy] Flux conversion Order 11
+\char FLXERR11=                124.5 / Flux conversion uncertainties Order 11
+\char FLXCON12=           310.724548 / [electrons/sec/Jy] Flux conversion Order 12
+\char FLXERR12=                124.5 / Flux conversion uncertainties Order 12
+\char FLXCON13=           305.315063 / [electrons/sec/Jy] Flux conversion Order 13
+\char FLXERR13=                124.5 / Flux conversion uncertainties Order 13
+\char FLXCON14=           296.174011 / [electrons/sec/Jy] Flux conversion Order 14
+\char FLXERR14=                124.5 / Flux conversion uncertainties Order 14
+\char FLXCON15=           283.153503 / [electrons/sec/Jy] Flux conversion Order 15
+\char FLXERR15=                124.5 / Flux conversion uncertainties Order 15
+\char FLXCON16=           278.299713 / [electrons/sec/Jy] Flux conversion Order 16
+\char FLXERR16=                124.5 / Flux conversion uncertainties Order 16
+\char FLXCON17=           270.476624 / [electrons/sec/Jy] Flux conversion Order 17
+\char FLXERR17=                124.5 / Flux conversion uncertainties Order 17
+\char FLXCON18=           272.154449 / [electrons/sec/Jy] Flux conversion Order 18
+\char FLXERR18=                124.5 / Flux conversion uncertainties Order 18
+\char FLXCON19=           268.802551 / [electrons/sec/Jy] Flux conversion Order 19
+\char FLXERR19=                124.5 / Flux conversion uncertainties Order 19
+\char FLXCON20=           272.951813 / [electrons/sec/Jy] Flux conversion Order 20
+\char FLXERR20=                124.5 / Flux conversion uncertainties Order 20
+\char 
+\char           / GENERAL MAPPING KEYWORDS
+\char 
+\char DBEXPOID=              1096939 / Current Exposure ID
+\char 
+\char           / IRS PEAKUP KEYWORDS
+\char 
+\char HP_CENQ =                    0 / Peakup centroid quality code
+\char APKUPCEN=                    1 / Status of the peakup centroid
+\char AXCNTRD1=                10788 / [centipixels] X value of the brightest centroid
+\char AYCNTRD1=                 2798 / [centipixels] Y value of the brightest centroid
+\char AXCNTRD2=                    0 / [centipixels] X value of the second brightest c
+\char AYCNTRD2=                    0 / [centipixels] Y value of the second brightest c
+\char AINTENS1=               361203 / [counts] Intensity value of the brightest centr
+\char AINTENS2=                    0 / [counts] Intensity value of the second brightes
+\char APKUPXCE=                10788 / [centipixels] X value of the centroid to be ret
+\char APKUPYCE=                 2798 / [centipixels] Y value of the centroid to be ret
+\char 
+\char 
+\char           / DATA FLOW KEYWORDS
+\char 
+\char DATE    = '2010-09-25T02:49:38' / file creation date (YYYY-MM-DDThh:mm:ss UT)
+\char AORKEY  = '6075648 '           / AOR or EIR key. Astrnmy Obs Req/Instr Eng Req
+\char EXPID   =                   35 / Exposure ID (0-9999)
+\char DCENUM  =                    0 / DCE number (0-9999)
+\char TLMGRPS =                    4 / Number of expected telemetry groups
+\char FILE_VER=                    1 / Version of the raw file made by SIS
+\char RAWNAME = 'IRSX.3.0006075648.0035.0000.01.mipl.fits' / Raw data file name
+\char SIS_SVER= 'J5.2.3  '           / SIS SW VERsion
+\char CPT_VER = '3.0.95  '           / Channel Param Table FOS version
+\char CTD_VER = '3.0.94S '           / Cmded telemetry data version
+\char EXPDFLAG=                    F / (T/F) expedited DCE
+\char MISS_LCT=                    0 / Total Missed Line Cnt in this FITS
+\char MANCPKT =                    F / T if this FITS is Missing Ancillary Data
+\char MISSDATA=                    F / T if this FITS is Missing Image Data
+\char PAONUM  =                  423 / PAO Number
+\char CAMPAIGN= 'IRSX002900'         / Campaign
+\char DCEID   =             12149138 / Data-Collection-Event ID
+\char DCEINSID=              1821058 / DCE Instance ID
+\char DPID    =            326951336 / Data Product Instance ID
+\char PIPENUM =                  202 / Ensemble-information
+\char SOS_VER =                   1. / Data-Product Version
+\char PLVID   =                   11 / Pipeline Version ID
+\char CALID   =                    5 / CalTrans Version ID
+\char ORIGIN0 = 'JPL_FOS '           / site where RAW FITS files was written
+\char CREATOR0= 'J5.2.3  '           / SW system that created RAW FITS
+\char 
+\char XTCHINSQ=                  128 / Number of rows with poor SH/LH optical crosstal
+\char XTKUNCOR=                    0 / Number of rows with no SH/LH optical crosstalk
+\char GAIN1   =                  4.6 / e/DN conversion (readout channel 1)
+\char GAIN2   =                  4.6 / e/DN conversion (readout channel 2)
+\char GAIN3   =                  4.6 / e/DN conversion (readout channel 3)
+\char GAIN4   =                  4.6 / e/DN conversion (readout channel 4)
+\char BASECH1 =             30288.27 / Trimmed mean channel 1 signal in reference unil
+\char BASECH2 =             30099.03 / Trimmed mean channel 2 signal in reference unil
+\char BASECH3 =              30281.2 / Trimmed mean channel 3 signal in reference unil
+\char BASECH4 =              31453.2 / Trimmed mean channel 4 signal in reference unil
+\char 
+\char FBIDDARK=                  573
+\char FBIDFLAT=                 1083
+\char FBIDLNCR=                   25
+\char FBIDLNMD=                  455
+\char FBIDOMSK=                   49
+\char FBIDPMSK=                  153
+\char FBIDWSMP=                 1074
+\char FBIDUMSK=                   69
+\char FBIDWSOF=                 1211
+\char FBIDWSOM=                 1076
+\char FBIDWSWA=                 1073
+\char FBIDFLXC=                 1205
+\char FBIDFMSK=                   74
+\char FBIDCALS=                 1212
+\char FBIDLNSC=                  509
+\char CKWPROC = 'calkeywords'        / PERFORM CALKEYWORDS OPERATIONS
+\char CKWVERSN=                 3.40 / Version number of calkeywords program
+\char ACTUALN =                    2 / Ensemble-information
+\char EXPECTN =                    2 / Ensemble-information
+\char ENSID   =               182864 / Ensemble-information
+\char EPVERSN =                   13 / Ensemble-information
+\char CALTYPE = 'coadd   '           / Ensemble-information
+\char EPID    =              7229652 / SODB cal-table metadata-record index
+\char CKWCENF1=                  0.9 / Central trim fraction for mean (=0 for median)
+\char CKWCENF2=                  0.9 / Central trim fraction for standard deviation
+\char CKWNLFIL= 'calkeywords.nl'
+\char CKWILIST= 'inputlist_coadd'
+\char CKWKLIST= 'calkeywords_inputlist_coadd2d.dat'
+\char CKWEINFO= 'ensemble_info.txt'
+\char CKWOFIL1= 'coadd2d.fits'
+\char CKWLGFIL= 'stdout  '
+\HISTORY PROCESS 2010/09/24 19:55:03
+\HISTORY profile v3.6  (integrate (library) v1.31, nl_and_params v1.9)
+\HISTORY INFILE = coadd2d.fits
+\HISTORY WAVSAMP_FILE = ./cal/wavsamp.tbl
+\HISTORY N_CUTS = 400,
+\HISTORY BMASKFILE = coadd2d_amask.fits
+\HISTORY BMASKFILE_FATAL = 29056,
+\HISTORY NAMELIST_FILE = ./cdf/profile.nl
+\int CHNLNUM = 3
+\int FOVID   = 57
+\char HISTORY PROCESS 2010/09/24 19:55:04
+\char HISTORY extract v5.6  (integrate (library) v1.31, nl_and_params v1.9)
+\char HISTORY INFILE = coadd2d.fits
+\char HISTORY RIDGE_TABLE = ridge.tbl
+\char HISTORY BMASKFILE = coadd2d_amask.fits
+\char HISTORY UNCERFILE = coadd2d_unc.fits
+\char HISTORY BMASKFATAL = 29056,
+\char HISTORY NORMALIZE = 1,
+\char HISTORY NAMELIST_FILE = ./cdf/extract.nl
+\char HISTORY FULL_SLIT_EXTRACT = 1,
+\char HISTORY FLAG_NAN_DROP = 1
+\float FCON_UNC = 124.500000
+\char HISTORY PROCESS 2010/09/24 19:55:06
+\char HISTORY irs_tune v3.4  (nl_and_params v1.9)
+\char HISTORY INFILE = extract.tbl
+\char HISTORY INFILE = ./cal/fluxcon.tbl
+\char HISTORY UP_DOWN_MODE = tune_down
+\char HISTORY APPLY = 3,
+\char HISTORY NAMELIST_FILE = ./cdf/irs_tune.nl
+|order        |wavelength         |flux_density        |error               |bit-flag            |
+|int          |real               |real                |real                |int                 |
+|             |                   |Jy                  |Jy                  |                    |
+ 20            18.82939            96.760498            4.075497             128                  
+ 20            18.84509            149.733688           4.708348             12416                
+ 20            18.86080            149.968140           4.075774             12416                
+ 20            18.87652            116.657326           2.747850             128                  
+ 20            18.89226            100.310257           2.156000             128                  
+ 20            18.90801            117.633804           2.142185             128                  
+ 20            18.92378            120.633865           1.798759             128                  
+ 20            18.93955            150.296967           1.772864             0                    
+ 20            18.95534            196.194092           1.991740             0                    
+ 20            18.97114            192.981415           1.607988             0                    
+ 20            18.98696            184.590057           1.602271             0                    
+ 20            19.00279            192.653336           1.770120             0                    
+ 20            19.01863            213.810074           1.790818             0                    
+ 20            19.03449            222.437378           NaN                  12288                
+ 20            19.05036            231.677109           NaN                  12288                
+ 20            19.06624            228.070602           1.210254             0                    
+ 20            19.08213            220.669968           1.176304             0                    
+ 20            19.09804            215.047165           1.114933             0                    
+ 20            19.11396            216.513397           1.041327             0                    
+ 20            19.12990            218.285400           1.131275             0                    
+ 20            19.14585            223.942703           NaN                  12288                
+ 20            19.16181            229.026718           NaN                  12288                
+ 20            19.17778            237.837296           NaN                  12288                
+ 20            19.19377            239.099686           NaN                  12288                
+ 20            19.20977            242.252167           NaN                  12288                
+ 20            19.22579            248.968613           0.686537             0                    
+ 20            19.24181            252.892868           NaN                  12288                
+ 20            19.25786            257.850311           NaN                  12288                
+ 20            19.27391            258.341034           0.591495             0                    
+ 20            19.28998            258.460999           0.497012             0                    
+ 20            19.30606            254.566345           0.444356             0                    
+ 20            19.32216            254.748657           0.421370             0                    
+ 20            19.33826            259.581970           0.412431             0                    
+ 20            19.35439            262.525726           0.412031             0                    
+ 20            19.37052            261.371552           0.412610             0                    
+ 20            19.38667            259.662811           NaN                  12288                
+ 20            19.40283            265.063507           NaN                  12288                
+ 20            19.41901            270.048737           NaN                  12288                
+ 20            19.43520            268.732178           NaN                  12288                
+ 20            19.45140            270.750366           0.511386             0                    
+ 20            19.46762            270.031921           0.524607             0                    
+ 20            19.48385            272.065979           0.547274             0                    
+ 20            19.50009            274.880249           0.551320             0                    
+ 20            19.51635            278.005402           0.599130             0                    
+ 20            19.53262            277.575439           0.647427             0                    
+ 20            19.54890            276.968781           NaN                  12288                
+ 20            19.56520            280.320404           NaN                  12288                
+ 20            19.58151            278.428802           NaN                  12288                
+ 20            19.59783            277.654175           0.641984             0                    
+ 20            19.61417            279.178192           0.617178             0                    
+ 20            19.63053            279.513855           0.579207             0                    
+ 20            19.64689            280.258057           0.561837             0                    
+ 20            19.66327            282.655243           0.546318             0                    
+ 20            19.67966            280.564331           0.525609             0                    
+ 20            19.69607            280.648163           NaN                  12288                
+ 20            19.71249            281.607941           NaN                  12288                
+ 20            19.72892            286.910889           0.532773             0                    
+ 20            19.74537            287.627716           0.517425             0                    
+ 20            19.76183            285.332520           0.557278             0                    
+ 20            19.77831            295.904083           0.643988             0                    
+ 20            19.79480            289.831177           0.671781             0                    
+ 20            19.81130            287.896698           0.669728             0                    
+ 20            19.82782            290.728638           0.588777             0                    
+ 20            19.84435            288.349152           0.541510             0                    
+ 20            19.86089            287.350708           0.506311             0                    
+ 20            19.87745            290.008148           0.486603             0                    
+ 20            19.89402            289.187927           0.512542             128                  
+ 20            19.91060            290.402344           0.503073             128                  
+ 20            19.92720            290.976593           0.501929             0                    
+ 20            19.94382            291.843994           0.537821             0                    
+ 20            19.96044            294.525360           0.590270             0                    
+ 20            19.97708            294.649231           0.599336             0                    
+ 20            19.99374            298.208740           0.591077             0                    
+ 20            20.01041            295.578003           0.541660             0                    
+ 20            20.02709            295.615021           0.499223             0                    
+ 20            20.04378            296.876801           0.476665             0                    
+ 20            20.06049            299.557373           0.472787             0                    
+ 20            20.07722            300.365417           0.485154             0                    
+ 20            20.09396            299.387848           0.538864             0                    
+ 20            20.11071            336.456360           NaN                  12288                
+ 20            20.12747            299.969208           NaN                  12288                
+ 20            20.14425            295.378021           0.582625             0                    
+ 20            20.16105            296.692078           0.547606             0                    
+ 20            20.17786            291.449768           0.500717             0                    
+ 20            20.19468            285.881042           0.510166             0                    
+ 20            20.21151            290.467590           0.589217             0                    
+ 20            20.22836            287.934601           0.658014             0                    
+ 20            20.24523            286.572968           0.765087             0                    
+ 20            20.26211            289.950592           0.771140             0                    
+ 20            20.27900            287.912781           0.667414             0                    
+ 20            20.29590            290.416718           0.650563             0                    
+ 20            20.31282            294.347198           0.677223             0                    
+ 20            20.32976            305.406769           0.788194             0                    
+ 20            20.34671            300.119507           NaN                  12288                
+ 20            20.36367            302.399323           NaN                  12288                
+ 20            20.38065            305.892456           1.107873             0                    
+ 20            20.39764            294.092743           1.030426             0                    
+ 20            20.41464            290.619171           0.975079             0                    
+ 20            20.43166            289.605927           1.041065             0                    
+ 20            20.44870            285.510620           1.272270             0                    
+ 20            20.46574            280.300751           1.443182             0                    
+ 20            20.48281            270.163605           NaN                  12288                
+ 20            20.49988            260.996094           NaN                  12288                
+ 20            20.51697            263.167908           NaN                  12288                
+ 20            20.53408            285.080414           NaN                  12288                
+ 20            20.55119            293.032593           2.812966             0                    
+ 20            20.56833            295.404816           3.076792             0                    
+ 20            20.58548            288.112427           3.381780             0                    
+ 20            20.60264            262.700775           4.454354             128                  
+ 20            20.61981            225.856323           NaN                  12416                
+ 20            20.63700            -32.284668           NaN                  12416                
+ 20            20.65421            -6.189965            NaN                  12416                
+ 19            19.79480            124.563766           0.281931             128                  
+ 19            19.81130            280.909729           0.458904             0                    
+ 19            19.82782            282.263916           NaN                  12288                
+ 19            19.84435            284.257843           NaN                  12288                
+ 19            19.86089            288.588165           0.497463             0                    
+ 19            19.87745            301.857452           0.523356             0                    
+ 19            19.89402            313.564850           0.545318             0                    
+ 19            19.91060            316.964844           0.585613             0                    
+ 19            19.92720            304.943817           0.579850             0                    
+ 19            19.94382            307.771484           0.609576             0                    
+ 19            19.96044            295.302917           0.569403             0                    
+ 19            19.97708            295.679291           0.580547             0                    
+ 19            19.99374            298.792786           0.623558             0                    
+ 19            20.01041            301.026184           0.636856             0                    
+ 19            20.02709            305.205261           0.644399             0                    
+ 19            20.04378            307.954132           0.662835             0                    
+ 19            20.06049            310.492371           0.668973             0                    
+ 19            20.07722            310.462372           0.673542             0                    
+ 19            20.09396            306.659790           0.669485             128                  
+ 19            20.11071            311.614410           NaN                  12416                
+ 19            20.12747            314.755249           NaN                  12288                
+ 19            20.14425            322.035370           0.723668             0                    
+ 19            20.16105            319.310242           0.751147             0                    
+ 19            20.17786            317.759857           0.797905             0                    
+ 19            20.19468            316.586823           0.792610             0                    
+ 19            20.21151            319.960419           0.754673             0                    
+ 19            20.22836            318.353729           0.757318             0                    
+ 19            20.24523            320.781036           0.726788             0                    
+ 19            20.26211            324.185089           0.751040             0                    
+ 19            20.27900            330.652130           0.779003             0                    
+ 19            20.29590            327.758698           0.757551             0                    
+ 19            20.31282            329.147125           0.748507             0                    
+ 19            20.32976            332.386414           0.772119             0                    
+ 19            20.34671            330.117065           NaN                  12288                
+ 19            20.36367            333.246094           NaN                  12288                
+ 19            20.38065            333.833557           0.693433             0                    
+ 19            20.39764            337.810181           0.686260             0                    
+ 19            20.41464            340.886078           0.686168             0                    
+ 19            20.43166            342.964691           0.704856             0                    
+ 19            20.44870            346.073395           0.698953             0                    
+ 19            20.46574            347.092102           NaN                  12288                
+ 19            20.48281            341.845428           NaN                  12288                
+ 19            20.49988            338.921661           NaN                  12288                
+ 19            20.51697            341.024597           0.645795             0                    
+ 19            20.53408            344.163330           0.666571             128                  
+ 19            20.55119            347.502197           NaN                  12416                
+ 19            20.56833            341.880493           NaN                  12416                
+ 19            20.58548            340.039948           0.793219             128                  
+ 19            20.60264            334.069885           0.788910             128                  
+ 19            20.61981            349.411865           0.811727             128                  
+ 19            20.63700            351.237244           0.835697             128                  
+ 19            20.65421            355.407440           0.892164             128                  
+ 19            20.67143            356.269043           0.907386             0                    
+ 19            20.68866            362.599426           0.891238             0                    
+ 19            20.70591            365.519806           NaN                  12288                
+ 19            20.72317            368.083130           NaN                  12288                
+ 19            20.74045            362.256042           NaN                  12288                
+ 19            20.75774            362.337128           NaN                  12288                
+ 19            20.77504            360.785339           0.684066             0                    
+ 19            20.79236            359.022430           0.645671             0                    
+ 19            20.80970            361.858948           0.677511             0                    
+ 19            20.82705            366.549896           0.720267             0                    
+ 19            20.84441            369.922241           NaN                  12288                
+ 19            20.86179            373.479126           0.866014             0                    
+ 19            20.87918            374.792145           0.890862             0                    
+ 19            20.89659            376.580170           0.880910             0                    
+ 19            20.91401            367.605011           0.777373             0                    
+ 19            20.93144            369.658234           0.686054             0                    
+ 19            20.94889            371.674927           0.633390             0                    
+ 19            20.96636            374.510468           0.655372             0                    
+ 19            20.98384            373.086304           0.676629             0                    
+ 19            21.00133            373.709473           0.665618             0                    
+ 19            21.01884            367.875122           0.732959             0                    
+ 19            21.03636            368.263214           0.694135             0                    
+ 19            21.05390            367.501251           0.753916             0                    
+ 19            21.07145            364.654602           0.754446             0                    
+ 19            21.08902            355.682098           0.677439             0                    
+ 19            21.10660            372.345062           0.649638             0                    
+ 19            21.12420            378.495270           0.623449             0                    
+ 19            21.14181            385.329468           0.631753             0                    
+ 19            21.15943            385.316101           0.642527             0                    
+ 19            21.17707            377.444092           0.671582             0                    
+ 19            21.19473            368.475372           0.730326             0                    
+ 19            21.21240            369.699860           NaN                  12288                
+ 19            21.23008            366.867676           0.673634             0                    
+ 19            21.24778            368.303101           0.630335             0                    
+ 19            21.26549            386.228943           0.619331             0                    
+ 19            21.28322            390.843109           0.628014             0                    
+ 19            21.30097            377.461243           0.645765             0                    
+ 19            21.31872            375.677246           0.702206             0                    
+ 19            21.33650            372.446503           0.751199             0                    
+ 19            21.35429            376.793365           0.752690             0                    
+ 19            21.37209            376.734741           0.734160             0                    
+ 19            21.38991            381.120514           0.704599             0                    
+ 19            21.40774            382.328461           0.667659             0                    
+ 19            21.42558            382.310425           0.745966             0                    
+ 19            21.44345            380.452118           0.833028             0                    
+ 19            21.46132            372.657501           0.873482             0                    
+ 19            21.47922            371.225494           0.898009             0                    
+ 19            21.49712            368.301819           0.882728             0                    
+ 19            21.51504            371.264557           0.941155             0                    
+ 19            21.53298            381.538086           1.115393             0                    
+ 19            21.55093            355.461670           1.100907             0                    
+ 19            21.56890            350.235626           1.093235             0                    
+ 19            21.58688            369.925385           1.177796             0                    
+ 19            21.60488            364.523804           1.198729             0                    
+ 19            21.62289            356.664001           1.384868             0                    
+ 19            21.64092            369.480377           2.004694             128                  
+ 19            21.65896            357.373474           2.200294             128                  
+ 19            21.67701            342.335724           1.978384             128                  
+ 19            21.69509            370.101837           2.309124             128                  
+ 19            21.71317            345.001984           2.260907             128                  
+ 19            21.73127            348.500366           NaN                  12416                
+ 19            21.74939            39.639877            NaN                  12416                
+ 18            20.89659            337.053802           0.767797             128                  
+ 18            20.91401            383.879059           0.755607             0                    
+ 18            20.93144            378.292450           0.714059             0                    
+ 18            20.94889            380.022461           0.693235             0                    
+ 18            20.96636            379.677979           0.680732             0                    
+ 18            20.98384            379.070496           0.664650             0                    
+ 18            21.00133            382.384644           NaN                  12288                
+ 18            21.01884            382.372009           NaN                  12288                
+ 18            21.03636            381.596313           0.639944             0                    
+ 18            21.05390            388.972168           0.647551             0                    
+ 18            21.07145            392.034210           0.638977             0                    
+ 18            21.08902            399.032990           0.650938             0                    
+ 18            21.10660            402.077728           0.708240             0                    
+ 18            21.12420            397.732605           NaN                  12288                
+ 18            21.14181            395.917938           NaN                  12288                
+ 18            21.15943            400.889893           0.746143             0                    
+ 18            21.17707            402.295013           0.740650             0                    
+ 18            21.19473            396.058655           0.716357             0                    
+ 18            21.21240            398.456818           0.724575             0                    
+ 18            21.23008            409.090546           0.757728             0                    
+ 18            21.24778            414.435455           0.774107             0                    
+ 18            21.26549            416.072144           0.819374             0                    
+ 18            21.28322            426.134460           NaN                  12288                
+ 18            21.30097            427.879761           NaN                  12288                
+ 18            21.31872            420.256439           0.858401             0                    
+ 18            21.33650            417.770477           0.840673             0                    
+ 18            21.35429            421.414337           0.842005             0                    
+ 18            21.37209            427.350403           0.857234             0                    
+ 18            21.38991            434.226349           NaN                  12288                
+ 18            21.40774            439.270264           NaN                  12288                
+ 18            21.42558            378.343750           NaN                  12288                
+ 18            21.44345            342.792389           NaN                  12288                
+ 18            21.46132            343.914337           NaN                  12288                
+ 18            21.47922            411.247040           NaN                  12288                
+ 18            21.49712            449.111725           NaN                  12288                
+ 18            21.51504            452.913330           NaN                  12288                
+ 18            21.53298            453.236877           1.190682             0                    
+ 18            21.55093            452.938873           NaN                  12288                
+ 18            21.56890            452.945312           NaN                  12288                
+ 18            21.58688            182.869659           NaN                  12288                
+ 18            21.60488            238.269394           NaN                  12288                
+ 18            21.62289            251.048981           NaN                  12288                
+ 18            21.64092            243.245575           NaN                  12288                
+ 18            21.65896            246.154846           NaN                  12288                
+ 18            21.67701            247.366455           NaN                  12288                
+ 18            21.69509            250.547897           NaN                  12288                
+ 18            21.71317            254.391464           NaN                  12288                
+ 18            21.73127            224.250076           NaN                  12288                
+ 18            21.74939            152.606552           0.591566             12288                
+ 18            21.76752            288.298035           NaN                  12288                
+ 18            21.78567            489.194702           NaN                  12288                
+ 18            21.80383            484.058350           NaN                  12288                
+ 18            21.82201            492.207794           NaN                  12288                
+ 18            21.84020            512.792419           NaN                  12288                
+ 18            21.85841            258.275818           NaN                  12288                
+ 18            21.87663            149.515747           0.587542             12288                
+ 18            21.89487            234.399948           NaN                  12288                
+ 18            21.91312            262.288788           NaN                  12288                
+ 18            21.93139            268.935944           NaN                  12288                
+ 18            21.94968            477.583588           NaN                  12288                
+ 18            21.96798            489.268494           NaN                  12288                
+ 18            21.98629            486.273132           NaN                  12288                
+ 18            22.00462            498.836578           NaN                  12288                
+ 18            22.02296            389.921997           NaN                  12288                
+ 18            22.04132            262.101959           0.920927             12288                
+ 18            22.05970            413.626251           NaN                  12288                
+ 18            22.07809            500.753815           NaN                  12288                
+ 18            22.09650            484.688782           NaN                  12288                
+ 18            22.11492            490.166534           1.445701             0                    
+ 18            22.13336            490.807495           NaN                  12288                
+ 18            22.15181            487.542236           1.287823             0                    
+ 18            22.17027            489.280609           NaN                  12288                
+ 18            22.18876            506.066803           NaN                  12288                
+ 18            22.20726            509.746277           NaN                  12288                
+ 18            22.22577            493.518860           1.144818             0                    
+ 18            22.24430            488.146912           1.128981             0                    
+ 18            22.26284            475.757843           1.068372             0                    
+ 18            22.28140            475.264404           1.152380             0                    
+ 18            22.29998            469.400146           1.188829             0                    
+ 18            22.31857            474.241119           1.089254             0                    
+ 18            22.33718            484.239990           1.022549             0                    
+ 18            22.35580            479.069580           0.968096             0                    
+ 18            22.37444            481.717896           0.934028             0                    
+ 18            22.39309            477.041077           0.934251             0                    
+ 18            22.41176            473.832428           1.009404             0                    
+ 18            22.43044            471.401123           1.064253             0                    
+ 18            22.44914            477.832611           0.974766             0                    
+ 18            22.46786            483.301819           0.891294             0                    
+ 18            22.48659            478.795380           0.839328             0                    
+ 18            22.50534            472.230743           0.764315             0                    
+ 18            22.52410            465.976166           0.776823             0                    
+ 18            22.54288            468.025146           0.850703             0                    
+ 18            22.56167            462.862427           NaN                  12288                
+ 18            22.58048            455.620758           0.897068             0                    
+ 18            22.59930            462.382690           0.811742             0                    
+ 18            22.61814            458.335876           0.748534             0                    
+ 18            22.63700            467.983337           0.750696             0                    
+ 18            22.65587            471.533875           0.800207             0                    
+ 18            22.67476            462.722443           0.910722             0                    
+ 18            22.69366            456.255127           0.941068             0                    
+ 18            22.71258            453.829803           0.832453             0                    
+ 18            22.73152            454.574768           0.815354             0                    
+ 18            22.75047            471.067474           NaN                  12288                
+ 18            22.76944            479.758911           NaN                  12288                
+ 18            22.78842            479.518463           NaN                  12288                
+ 18            22.80742            483.778778           NaN                  12288                
+ 18            22.82643            469.035645           1.112357             0                    
+ 18            22.84546            465.963470           1.093298             0                    
+ 18            22.86451            452.263519           1.292587             0                    
+ 18            22.88357            448.106445           1.573324             0                    
+ 18            22.90265            436.841064           1.560242             0                    
+ 18            22.92174            437.402740           NaN                  12288                
+ 18            22.94085            228.453568           NaN                  12416                
+ 17            22.11492            380.912018           0.955201             128                  
+ 17            22.13336            458.298462           NaN                  12288                
+ 17            22.15181            462.129730           NaN                  12288                
+ 17            22.17027            469.084198           NaN                  12288                
+ 17            22.18876            475.742645           NaN                  12288                
+ 17            22.20726            478.301270           0.960089             0                    
+ 17            22.22577            485.196259           0.969804             0                    
+ 17            22.24430            486.422333           0.961479             0                    
+ 17            22.26284            488.885193           NaN                  12288                
+ 17            22.28140            499.091675           NaN                  12288                
+ 17            22.29998            503.442291           1.122862             0                    
+ 17            22.31857            507.402222           1.121206             0                    
+ 17            22.33718            514.578918           NaN                  12288                
+ 17            22.35580            514.932678           NaN                  12288                
+ 17            22.37444            452.236633           NaN                  12288                
+ 17            22.39309            397.046753           0.999188             12288                
+ 17            22.41176            404.845215           NaN                  12288                
+ 17            22.43044            400.872711           NaN                  12288                
+ 17            22.44914            407.573273           NaN                  12288                
+ 17            22.46786            416.970306           NaN                  12288                
+ 17            22.48659            361.748352           NaN                  12288                
+ 17            22.50534            238.689407           NaN                  12288                
+ 17            22.52410            170.690079           0.541077             12288                
+ 17            22.54288            171.079391           0.567769             12288                
+ 17            22.56167            175.876816           0.539016             12288                
+ 17            22.58048            177.604034           0.545375             12288                
+ 17            22.59930            173.977127           0.572166             12288                
+ 17            22.61814            176.766083           0.572784             12288                
+ 17            22.63700            181.757553           0.615445             12288                
+ 17            22.65587            178.935074           NaN                  12288                
+ 17            22.67476            174.769547           NaN                  12288                
+ 17            22.69366            174.789917           0.635581             12288                
+ 17            22.71258            177.539536           NaN                  12288                
+ 17            22.73152            191.521698           NaN                  12288                
+ 17            22.75047            184.166046           0.672176             12288                
+ 17            22.76944            188.364975           NaN                  12288                
+ 17            22.78842            179.221313           NaN                  12288                
+ 17            22.80742            97.790154            NaN                  12288                
+ 17            22.82643            189.294647           NaN                  12288                
+ 17            22.84546            194.303009           NaN                  12288                
+ 17            22.86451            185.236679           NaN                  12288                
+ 17            22.88357            188.353958           1.255522             12288                
+ 17            22.90265            186.832779           NaN                  12288                
+ 17            22.92174            183.988586           NaN                  12288                
+ 17            22.94085            81.883018            0.430769             12288                
+ 17            22.95997            80.391396            0.422674             12288                
+ 17            22.97912            77.555901            0.383440             12288                
+ 17            22.99827            107.518051           NaN                  12288                
+ 17            23.01745            194.006683           NaN                  12288                
+ 17            23.03663            191.251389           NaN                  12288                
+ 17            23.05584            189.649933           0.700276             12288                
+ 17            23.07506            191.918655           NaN                  12288                
+ 17            23.09430            194.855042           NaN                  12288                
+ 17            23.11355            191.165329           NaN                  12288                
+ 17            23.13282            193.202133           NaN                  12288                
+ 17            23.15211            194.985947           NaN                  12288                
+ 17            23.17141            193.992905           NaN                  12288                
+ 17            23.19073            187.566025           NaN                  12288                
+ 17            23.21006            190.625381           NaN                  12288                
+ 17            23.22941            209.669067           0.947462             12288                
+ 17            23.24877            187.309967           0.673373             12288                
+ 17            23.26816            190.078369           0.677238             12288                
+ 17            23.28755            193.206055           0.772337             12288                
+ 17            23.30697            189.086243           0.636048             12288                
+ 17            23.32640            190.233597           0.661022             12288                
+ 17            23.34585            194.980301           0.776945             12288                
+ 17            23.36531            192.562943           0.669164             12288                
+ 17            23.38479            186.840668           0.634632             12288                
+ 17            23.40428            426.590118           NaN                  12288                
+ 17            23.42380            465.728119           NaN                  12288                
+ 17            23.44332            453.508087           NaN                  12288                
+ 17            23.46287            458.420776           NaN                  12288                
+ 17            23.48243            414.029022           NaN                  12288                
+ 17            23.50201            320.336823           NaN                  12288                
+ 17            23.52160            484.304688           NaN                  12288                
+ 17            23.54121            602.350403           NaN                  12288                
+ 17            23.56083            588.305115           NaN                  12288                
+ 17            23.58048            584.230103           1.492284             0                    
+ 17            23.60013            587.931458           1.600511             0                    
+ 17            23.61981            586.968933           NaN                  12288                
+ 17            23.63950            567.881165           NaN                  12288                
+ 17            23.65921            575.072083           NaN                  12288                
+ 17            23.67893            576.209717           NaN                  12288                
+ 17            23.69867            569.489563           1.218902             0                    
+ 17            23.71843            570.852844           1.304043             0                    
+ 17            23.73820            557.903931           1.370555             0                    
+ 17            23.75799            544.030518           NaN                  12288                
+ 17            23.77780            568.048828           NaN                  12288                
+ 17            23.79762            558.108643           1.029374             0                    
+ 17            23.81746            553.928101           1.018495             0                    
+ 17            23.83732            558.671326           1.089055             0                    
+ 17            23.85719            562.468445           1.209420             0                    
+ 17            23.87708            553.768433           1.277319             0                    
+ 17            23.89699            541.125061           1.035547             0                    
+ 17            23.91691            552.226135           0.950544             0                    
+ 17            23.93685            546.765564           0.903910             0                    
+ 17            23.95681            549.865173           0.918126             0                    
+ 17            23.97678            556.977173           1.036925             0                    
+ 17            23.99677            558.266357           1.095724             0                    
+ 17            24.01677            525.966431           1.001883             0                    
+ 17            24.03679            530.608765           0.887593             0                    
+ 17            24.05683            544.218628           NaN                  12288                
+ 17            24.07689            544.005249           NaN                  12288                
+ 17            24.09696            548.348206           1.073115             0                    
+ 17            24.11705            560.409302           NaN                  12288                
+ 17            24.13716            567.553711           NaN                  12288                
+ 17            24.15728            562.253906           NaN                  12288                
+ 17            24.17742            567.858948           1.195419             0                    
+ 17            24.19758            574.792358           1.282101             0                    
+ 17            24.21775            540.343872           1.238462             0                    
+ 17            24.23794            542.356934           1.282476             0                    
+ 17            24.25814            561.371704           NaN                  12288                
+ 17            24.27837            240.356171           NaN                  12416                
+ 16            23.48243            469.897705           1.264273             12416                
+ 16            23.50201            580.532349           1.252832             0                    
+ 16            23.52160            587.499207           1.258481             0                    
+ 16            23.54121            589.871643           1.243601             0                    
+ 16            23.56083            581.594971           1.172079             0                    
+ 16            23.58048            582.269409           1.154353             0                    
+ 16            23.60013            588.043640           1.196455             0                    
+ 16            23.61981            586.999084           1.182120             0                    
+ 16            23.63950            597.051819           NaN                  12288                
+ 16            23.65921            618.856750           NaN                  12288                
+ 16            23.67893            627.004761           NaN                  12288                
+ 16            23.69867            552.755554           NaN                  12288                
+ 16            23.71843            563.309448           NaN                  12288                
+ 16            23.73820            631.934448           NaN                  12288                
+ 16            23.75799            624.936340           NaN                  12288                
+ 16            23.77780            626.242004           NaN                  12288                
+ 16            23.79762            630.879395           NaN                  12288                
+ 16            23.81746            495.488739           NaN                  12288                
+ 16            23.83732            278.139130           NaN                  12288                
+ 16            23.85719            210.002304           NaN                  12288                
+ 16            23.87708            209.124680           NaN                  12288                
+ 16            23.89699            204.485092           0.726441             12288                
+ 16            23.91691            201.859726           0.656190             12288                
+ 16            23.93685            204.472000           0.691102             12288                
+ 16            23.95681            200.592194           0.663187             12288                
+ 16            23.97678            200.383148           0.632803             12288                
+ 16            23.99677            206.886642           NaN                  12288                
+ 16            24.01677            210.654205           NaN                  12288                
+ 16            24.03679            213.484985           0.764782             12288                
+ 16            24.05683            218.403458           NaN                  12288                
+ 16            24.07689            217.505753           NaN                  12288                
+ 16            24.09696            211.517944           NaN                  12288                
+ 16            24.11705            210.737152           0.718217             12288                
+ 16            24.13716            214.279846           0.798307             12288                
+ 16            24.15728            210.423203           0.745369             12288                
+ 16            24.17742            208.015381           0.714782             12288                
+ 16            24.19758            226.390106           NaN                  12288                
+ 16            24.21775            42.323940            NaN                  12288                
+ 16            24.23794            213.610153           NaN                  12288                
+ 16            24.25814            229.821533           NaN                  12288                
+ 16            24.27837            17.384455            NaN                  12288                
+ 16            24.29861            220.947433           NaN                  12288                
+ 16            24.31887            214.986801           0.917890             12288                
+ 16            24.33914            216.601501           NaN                  12288                
+ 16            24.35943            229.432327           NaN                  12288                
+ 16            24.37974            227.539490           NaN                  12288                
+ 16            24.40006            234.438614           NaN                  12288                
+ 16            24.42041            156.138092           NaN                  12288                
+ 16            24.44076            33.979263            0.253356             12288                
+ 16            24.46114            101.131210           0.538478             12288                
+ 16            24.48153            174.324036           NaN                  12288                
+ 16            24.50194            232.535858           NaN                  12288                
+ 16            24.52237            227.304382           NaN                  12288                
+ 16            24.54281            233.155441           0.934520             12288                
+ 16            24.56327            229.595322           NaN                  12288                
+ 16            24.58375            234.447495           NaN                  12288                
+ 16            24.60425            100.004128           NaN                  12288                
+ 16            24.62476            94.291458            0.638743             12288                
+ 16            24.64529            7.092864             0.043621             12288                
+ 16            24.66584            93.070221            0.569911             12288                
+ 16            24.68640            136.065643           NaN                  12288                
+ 16            24.70698            230.623917           NaN                  12288                
+ 16            24.72758            225.995895           NaN                  12288                
+ 16            24.74819            227.440887           0.830121             12288                
+ 16            24.76882            225.222626           NaN                  12288                
+ 16            24.78947            234.386353           NaN                  12288                
+ 16            24.81014            112.312630           NaN                  12288                
+ 16            24.83082            87.230972            0.454930             12288                
+ 16            24.85152            106.982353           NaN                  12288                
+ 16            24.87224            233.307556           NaN                  12288                
+ 16            24.89298            229.575684           NaN                  12288                
+ 16            24.91373            227.991180           0.879296             12288                
+ 16            24.93450            226.996902           0.867625             12288                
+ 16            24.95529            226.468658           0.765627             12288                
+ 16            24.97609            237.028732           0.843151             12288                
+ 16            24.99692            220.562408           NaN                  12288                
+ 16            25.01775            224.356064           NaN                  12288                
+ 16            25.03861            231.415482           1.074411             12288                
+ 16            25.05949            328.399689           NaN                  12288                
+ 16            25.08038            713.471863           NaN                  12288                
+ 16            25.10129            694.700562           NaN                  12288                
+ 16            25.12221            694.881104           NaN                  12288                
+ 16            25.14316            705.208740           NaN                  12288                
+ 16            25.16412            695.220459           NaN                  12288                
+ 16            25.18510            681.905945           NaN                  12288                
+ 16            25.20609            698.059509           NaN                  12288                
+ 16            25.22711            681.142761           NaN                  12288                
+ 16            25.24814            698.399109           NaN                  12288                
+ 16            25.26919            706.203003           NaN                  12288                
+ 16            25.29025            695.166565           1.631639             0                    
+ 16            25.31134            669.112061           1.619131             0                    
+ 16            25.33244            658.929443           1.516470             0                    
+ 16            25.35356            659.720398           1.452818             0                    
+ 16            25.37470            662.918762           1.338017             0                    
+ 16            25.39585            656.396973           1.245340             0                    
+ 16            25.41702            659.121521           1.253154             0                    
+ 16            25.43821            665.292480           1.401073             0                    
+ 16            25.45942            663.295410           1.551804             0                    
+ 16            25.48064            655.470886           NaN                  12288                
+ 16            25.50189            687.525818           NaN                  12288                
+ 16            25.52315            702.265808           NaN                  12288                
+ 16            25.54443            660.968628           1.098352             0                    
+ 16            25.56572            650.257690           1.204856             0                    
+ 16            25.58703            658.303040           1.297366             0                    
+ 16            25.60837            659.105408           1.215608             0                    
+ 16            25.62972            650.421509           1.083060             0                    
+ 16            25.65108            649.468323           1.057775             0                    
+ 16            25.67247            632.410217           1.105116             0                    
+ 16            25.69387            612.550537           1.190408             0                    
+ 16            25.71529            625.569580           1.184106             0                    
+ 16            25.73673            637.904724           NaN                  12288                
+ 16            25.75818            636.143555           NaN                  12288                
+ 16            25.77966            197.380035           0.487763             128                  
+ 15            25.01775            254.355011           0.789282             12416                
+ 15            25.03861            688.888611           NaN                  12288                
+ 15            25.05949            691.911438           NaN                  12288                
+ 15            25.08038            689.152344           NaN                  12288                
+ 15            25.10129            686.552368           NaN                  12288                
+ 15            25.12221            691.309753           NaN                  12288                
+ 15            25.14316            696.230103           NaN                  12288                
+ 15            25.16412            646.324341           NaN                  12288                
+ 15            25.18510            526.144653           NaN                  12288                
+ 15            25.20609            385.019043           NaN                  12288                
+ 15            25.22711            381.983978           NaN                  12288                
+ 15            25.24814            233.340271           1.058711             12288                
+ 15            25.26919            231.864944           0.962431             12288                
+ 15            25.29025            231.765106           1.003461             12288                
+ 15            25.31134            228.945358           1.014766             12288                
+ 15            25.33244            225.419907           0.906361             12288                
+ 15            25.35356            231.386826           0.925852             12288                
+ 15            25.37470            226.642532           0.946832             12288                
+ 15            25.39585            233.581253           0.983002             12288                
+ 15            25.41702            238.253616           0.969583             12288                
+ 15            25.43821            230.755295           1.165072             12288                
+ 15            25.45942            24.077444            NaN                  12288                
+ 15            25.48064            229.001663           NaN                  12288                
+ 15            25.50189            127.408066           NaN                  12288                
+ 15            25.52315            250.479065           NaN                  12288                
+ 15            25.54443            257.611603           NaN                  12288                
+ 15            25.56572            250.212524           NaN                  12288                
+ 15            25.58703            252.121613           NaN                  12288                
+ 15            25.60837            212.020676           NaN                  12288                
+ 15            25.62972            87.876709            0.476068             12288                
+ 15            25.65108            89.204681            0.439478             12288                
+ 15            25.67247            91.821114            0.438069             12288                
+ 15            25.69387            90.085052            0.428059             12288                
+ 15            25.71529            88.461548            0.374413             12288                
+ 15            25.73673            87.047653            0.341738             12288                
+ 15            25.75818            84.742538            0.318006             12288                
+ 15            25.77966            82.121742            0.266876             12288                
+ 15            25.80115            91.074509            0.263904             12288                
+ 15            25.82266            91.549446            0.266128             12288                
+ 15            25.84419            91.435326            0.282156             12288                
+ 15            25.86573            91.834564            0.279704             12288                
+ 15            25.88730            93.478073            0.267187             12288                
+ 15            25.90888            93.836533            0.271608             12288                
+ 15            25.93048            93.845947            0.288635             12288                
+ 15            25.95210            96.579956            0.284848             12288                
+ 15            25.97373            101.441139           0.309155             12288                
+ 15            25.99539            106.142342           0.346382             12288                
+ 15            26.01706            94.657402            0.311686             12288                
+ 15            26.03875            94.369080            0.303458             12288                
+ 15            26.06046            109.704773           0.344381             12288                
+ 15            26.08218            95.050072            0.338772             12288                
+ 15            26.10393            101.153328           0.337563             12288                
+ 15            26.12569            120.550819           0.414904             12288                
+ 15            26.14747            122.171333           0.451802             12288                
+ 15            26.16927            101.218391           0.333933             12288                
+ 15            26.19109            97.231689            0.328028             12288                
+ 15            26.21292            96.246864            0.345376             12288                
+ 15            26.23477            98.267784            0.375126             12288                
+ 15            26.25665            97.154175            0.406128             12288                
+ 15            26.27853            100.466202           0.457616             12288                
+ 15            26.30044            105.118462           0.509736             12288                
+ 15            26.32237            107.748413           0.544070             12288                
+ 15            26.34431            106.590050           0.529139             12288                
+ 15            26.36628            109.177910           0.465674             12288                
+ 15            26.38826            118.084000           0.509656             12288                
+ 15            26.41026            153.010483           NaN                  12288                
+ 15            26.43227            261.769409           NaN                  12288                
+ 15            26.45431            263.200897           NaN                  12288                
+ 15            26.47636            267.430176           NaN                  12288                
+ 15            26.49844            267.497345           NaN                  12288                
+ 15            26.52053            261.559814           NaN                  12288                
+ 15            26.54264            265.004578           1.147452             12288                
+ 15            26.56477            272.894989           NaN                  12288                
+ 15            26.58691            269.440491           NaN                  12288                
+ 15            26.60908            262.411377           0.982747             12288                
+ 15            26.63126            261.765106           0.858572             12288                
+ 15            26.65346            262.609772           0.912731             12288                
+ 15            26.67568            261.858215           0.922094             12288                
+ 15            26.69792            260.042114           0.925559             12288                
+ 15            26.72018            262.296844           0.985902             12288                
+ 15            26.74246            260.719238           1.027480             12288                
+ 15            26.76475            258.194275           0.941294             12288                
+ 15            26.78706            255.753128           0.825288             12288                
+ 15            26.80940            257.380157           0.814912             12288                
+ 15            26.83175            470.409637           NaN                  12288                
+ 15            26.85412            606.542419           NaN                  12288                
+ 15            26.87650            630.769104           NaN                  12288                
+ 15            26.89891            649.617126           NaN                  12288                
+ 15            26.92134            787.609436           NaN                  12288                
+ 15            26.94378            814.624634           NaN                  12288                
+ 15            26.96624            803.391052           1.721830             0                    
+ 15            26.98872            811.638733           NaN                  12288                
+ 15            27.01122            802.656372           NaN                  12288                
+ 15            27.03374            779.056091           1.956715             0                    
+ 15            27.05628            793.767761           1.803857             0                    
+ 15            27.07884            790.735352           1.725210             0                    
+ 15            27.10141            788.803406           1.612504             0                    
+ 15            27.12400            775.854309           1.507620             0                    
+ 15            27.14662            782.436157           NaN                  12288                
+ 15            27.16925            762.808167           NaN                  12288                
+ 15            27.19190            766.401245           1.682663             0                    
+ 15            27.21457            763.876526           1.420004             0                    
+ 15            27.23726            775.597717           1.333423             0                    
+ 15            27.25996            771.008606           1.461110             0                    
+ 15            27.28269            764.423767           1.495212             0                    
+ 15            27.30544            761.250427           1.499575             0                    
+ 15            27.32820            764.589966           1.385747             0                    
+ 15            27.35098            768.584045           1.297726             0                    
+ 15            27.37378            775.246338           NaN                  12288                
+ 15            27.39661            796.202332           NaN                  12288                
+ 15            27.41945            783.149475           1.503824             0                    
+ 15            27.44230            773.993591           NaN                  12288                
+ 15            27.46518            440.557739           NaN                  12416                
+ 14            26.76475            19.813950            0.090687             12416                
+ 14            26.78706            770.930115           2.239627             128                  
+ 14            26.80940            821.942444           NaN                  12288                
+ 14            26.83175            884.822571           NaN                  12288                
+ 14            26.85412            653.927979           NaN                  12288                
+ 14            26.87650            446.915405           NaN                  12288                
+ 14            26.89891            442.480988           NaN                  12288                
+ 14            26.92134            428.165344           NaN                  12288                
+ 14            26.94378            431.893768           NaN                  12288                
+ 14            26.96624            439.467438           1.436341             12288                
+ 14            26.98872            433.046936           NaN                  12288                
+ 14            27.01122            435.805786           NaN                  12288                
+ 14            27.03374            301.030487           NaN                  12288                
+ 14            27.05628            277.545013           0.965936             12288                
+ 14            27.07884            279.470947           NaN                  12288                
+ 14            27.10141            273.858917           NaN                  12288                
+ 14            27.12400            275.712189           NaN                  12288                
+ 14            27.14662            285.315308           NaN                  12288                
+ 14            27.16925            278.301544           NaN                  12288                
+ 14            27.19190            273.059937           NaN                  12288                
+ 14            27.21457            275.700897           NaN                  12288                
+ 14            27.23726            280.124756           1.048543             12288                
+ 14            27.25996            302.657532           NaN                  12288                
+ 14            27.28269            293.566742           NaN                  12288                
+ 14            27.30544            278.081879           0.998829             12288                
+ 14            27.32820            284.889587           1.111008             12288                
+ 14            27.35098            269.140350           NaN                  12288                
+ 14            27.37378            285.485870           NaN                  12288                
+ 14            27.39661            289.229584           1.220612             12288                
+ 14            27.41945            280.102722           NaN                  12288                
+ 14            27.44230            302.945465           NaN                  12288                
+ 14            27.46518            124.009644           NaN                  12288                
+ 14            27.48808            115.285950           0.569758             12288                
+ 14            27.51100            110.959091           0.569816             12288                
+ 14            27.53393            107.133530           0.572919             12288                
+ 14            27.55689            103.086250           0.546330             12288                
+ 14            27.57986            102.785667           0.537933             12288                
+ 14            27.60285            103.927292           0.532442             12288                
+ 14            27.62586            102.229507           0.499143             12288                
+ 14            27.64890            103.218895           0.464932             12288                
+ 14            27.67195            107.041557           0.375752             12288                
+ 14            27.69502            107.496361           0.348411             12288                
+ 14            27.71810            104.387444           NaN                  12288                
+ 14            27.74121            101.968681           NaN                  12288                
+ 14            27.76434            105.943680           0.286366             12288                
+ 14            27.78749            109.656998           0.292231             12288                
+ 14            27.81065            110.624023           0.296957             12288                
+ 14            27.83384            112.256493           0.309569             12288                
+ 14            27.85704            108.907745           0.318317             12288                
+ 14            27.88027            103.467880           0.386627             12288                
+ 14            27.90351            111.355942           0.435501             12288                
+ 14            27.92677            118.668480           0.504112             12288                
+ 14            27.95005            115.693550           0.495369             12288                
+ 14            27.97335            118.403030           0.502979             12288                
+ 14            27.99668            297.789459           NaN                  12288                
+ 14            28.02002            273.261292           NaN                  12288                
+ 14            28.04338            303.467773           NaN                  12288                
+ 14            28.06675            328.804443           NaN                  12288                
+ 14            28.09015            298.505402           NaN                  12288                
+ 14            28.11357            289.417206           NaN                  12288                
+ 14            28.13701            305.918335           NaN                  12288                
+ 14            28.16047            107.218193           NaN                  12288                
+ 14            28.20744            252.289322           1.199998             12288                
+ 14            28.23096            300.251160           1.186472             12288                
+ 14            28.25449            306.522247           NaN                  12288                
+ 14            28.27805            305.596558           NaN                  12288                
+ 14            28.30162            297.773376           NaN                  12288                
+ 14            28.32522            300.713043           NaN                  12288                
+ 14            28.34883            314.652802           NaN                  12288                
+ 14            28.37246            313.821686           NaN                  12288                
+ 14            28.39612            330.299835           NaN                  12288                
+ 14            28.41979            319.545044           NaN                  12288                
+ 14            28.44348            347.386597           NaN                  12288                
+ 14            28.46720            506.034821           NaN                  12288                
+ 14            28.49093            705.434448           NaN                  12288                
+ 14            28.51468            709.701843           NaN                  12288                
+ 14            28.53845            731.652954           NaN                  12288                
+ 14            28.56225            728.387817           NaN                  12288                
+ 14            28.58606            732.519226           NaN                  12288                
+ 14            28.60989            712.791565           NaN                  12288                
+ 14            28.63374            721.232727           NaN                  12288                
+ 14            28.65761            688.951538           NaN                  12288                
+ 14            28.68150            470.743652           NaN                  12288                
+ 14            28.70541            304.807465           1.215128             12288                
+ 14            28.72935            313.653870           NaN                  12288                
+ 14            28.75330            719.580383           NaN                  12288                
+ 14            28.77727            923.362732           NaN                  12288                
+ 14            28.80126            919.897827           NaN                  12288                
+ 14            28.82527            932.534851           NaN                  12288                
+ 14            28.84930            927.090942           NaN                  12288                
+ 14            28.87335            942.585693           NaN                  12288                
+ 14            28.89742            947.386963           2.189946             0                    
+ 14            28.92151            978.619141           NaN                  12288                
+ 14            28.94563            951.960266           NaN                  12288                
+ 14            28.96976            957.066467           NaN                  12288                
+ 14            28.99391            936.274170           2.121711             0                    
+ 14            29.01808            937.430481           1.977935             0                    
+ 14            29.04227            919.577698           2.068435             0                    
+ 14            29.06648            898.236572           1.965286             0                    
+ 14            29.09072            866.498291           1.941435             0                    
+ 14            29.11497            909.102173           2.006738             0                    
+ 14            29.13924            907.542297           1.884017             0                    
+ 14            29.16353            912.537537           1.778088             0                    
+ 14            29.18785            941.591858           1.849880             0                    
+ 14            29.21218            934.121765           1.999478             0                    
+ 14            29.23653            907.929077           2.133641             0                    
+ 14            29.26091            905.065247           1.982732             0                    
+ 14            29.28530            873.262329           1.591229             0                    
+ 14            29.30972            860.144592           1.428998             0                    
+ 14            29.33415            870.653259           1.587569             0                    
+ 14            29.35861            881.897644           NaN                  12288                
+ 14            29.38308            684.447571           NaN                  12416                
+ 13            28.77727            38.283039            0.153736             12416                
+ 13            28.80126            855.308899           2.333767             128                  
+ 13            28.82527            913.949158           NaN                  12288                
+ 13            28.84930            920.687134           NaN                  12288                
+ 13            28.87335            909.194885           NaN                  12288                
+ 13            28.89742            936.243530           NaN                  12288                
+ 13            28.92151            923.649902           NaN                  12288                
+ 13            28.94563            1001.349548          NaN                  12288                
+ 13            28.96976            430.405548           NaN                  12288                
+ 13            28.99391            322.896088           1.056459             12288                
+ 13            29.01808            325.830658           1.144588             12288                
+ 13            29.04227            329.057251           NaN                  12288                
+ 13            29.06648            309.087067           NaN                  12288                
+ 13            29.09072            308.506348           1.076325             12288                
+ 13            29.11497            307.039032           1.081170             12288                
+ 13            29.13924            317.209839           1.327720             12288                
+ 13            29.16353            324.992249           1.498961             12288                
+ 13            29.18785            361.714905           1.624125             12288                
+ 13            29.21218            375.690613           NaN                  12288                
+ 13            29.23653            292.056030           NaN                  12288                
+ 13            29.26091            124.422386           NaN                  12288                
+ 13            29.28530            116.073845           0.349916             12288                
+ 13            29.30972            118.387375           0.322818             12288                
+ 13            29.33415            116.830544           0.327335             12288                
+ 13            29.35861            262.187653           NaN                  12288                
+ 13            29.38308            348.236359           NaN                  12288                
+ 13            29.40758            296.124573           NaN                  12288                
+ 13            29.43210            342.989532           NaN                  12288                
+ 13            29.45663            340.412964           NaN                  12288                
+ 13            29.48119            175.559143           NaN                  12288                
+ 13            29.50577            130.582794           0.580446             12288                
+ 13            29.53037            139.416290           NaN                  12288                
+ 13            29.55499            332.941101           NaN                  12288                
+ 13            29.57962            310.371155           NaN                  12288                
+ 13            29.60428            326.510712           NaN                  12288                
+ 13            29.62897            327.072937           NaN                  12288                
+ 13            29.65367            334.421143           NaN                  12288                
+ 13            29.67839            335.497925           NaN                  12288                
+ 13            29.70313            323.676178           1.287145             12288                
+ 13            29.72789            313.253815           NaN                  12288                
+ 13            29.75268            339.603027           NaN                  12288                
+ 13            29.77748            221.106750           NaN                  12288                
+ 13            29.80231            117.238297           0.549471             12288                
+ 13            29.82715            116.352356           0.480776             12288                
+ 13            29.85202            118.403358           0.445473             12288                
+ 13            29.87691            116.776817           0.410024             12288                
+ 13            29.90181            118.112892           0.367946             12288                
+ 13            29.92674            123.913300           0.355062             12288                
+ 13            29.95169            127.374519           0.370688             12288                
+ 13            29.97666            124.414909           0.382481             12288                
+ 13            30.00165            135.302536           0.406659             12288                
+ 13            30.02666            126.403618           0.386911             12288                
+ 13            30.05170            134.549484           0.473143             12288                
+ 13            30.07675            141.335541           0.517912             12288                
+ 13            30.10182            137.053726           0.553552             12288                
+ 13            30.12692            141.683838           0.589833             12288                
+ 13            30.15204            149.682953           0.762888             12288                
+ 13            30.17717            199.221512           NaN                  12288                
+ 13            30.20233            337.690491           NaN                  12288                
+ 13            30.22751            344.438080           NaN                  12288                
+ 13            30.25271            337.183746           1.257123             12288                
+ 13            30.27793            352.191956           NaN                  12288                
+ 13            30.30317            343.599274           NaN                  12288                
+ 13            30.32844            364.830688           NaN                  12288                
+ 13            30.35372            350.595703           NaN                  12288                
+ 13            30.37903            348.155212           NaN                  12288                
+ 13            30.40435            242.785858           NaN                  12288                
+ 13            30.42970            124.629997           0.597335             12288                
+ 13            30.45507            126.021835           0.499547             12288                
+ 13            30.48046            125.185593           0.434298             12288                
+ 13            30.50587            124.798729           0.374384             12288                
+ 13            30.53130            127.689842           0.373129             12288                
+ 13            30.55676            127.942505           0.344022             12288                
+ 13            30.58223            130.865097           0.362369             12288                
+ 13            30.60773            136.647903           0.383009             12288                
+ 13            30.63324            133.310379           0.365017             12288                
+ 13            30.65878            130.474792           0.373260             12288                
+ 13            30.68434            136.344864           0.440105             12288                
+ 13            30.70992            140.626663           0.596615             12288                
+ 13            30.73552            278.418915           NaN                  12288                
+ 13            30.76115            346.852844           NaN                  12288                
+ 13            30.78679            361.298248           NaN                  12288                
+ 13            30.81246            352.602020           1.366910             12288                
+ 13            30.83815            428.007446           NaN                  12288                
+ 13            30.86386            760.296448           NaN                  12288                
+ 13            30.88959            847.942993           NaN                  12288                
+ 13            30.91534            838.919495           NaN                  12288                
+ 13            30.94111            857.235352           NaN                  12288                
+ 13            30.96691            749.453003           NaN                  12288                
+ 13            30.99272            363.329773           1.169750             12288                
+ 13            31.01856            362.287811           1.143128             12288                
+ 13            31.04442            349.658783           1.287104             12288                
+ 13            31.07030            909.664734           NaN                  12288                
+ 13            31.09620            996.962646           NaN                  12288                
+ 13            31.12213            1040.749268          NaN                  12288                
+ 13            31.14808            1035.675659          2.225134             0                    
+ 13            31.17404            1022.243164          2.071627             0                    
+ 13            31.20003            1044.891235          2.104126             0                    
+ 13            31.22604            1040.410889          2.114134             0                    
+ 13            31.25208            1033.576294          2.039688             0                    
+ 13            31.27813            1053.752441          2.164763             0                    
+ 13            31.30421            1055.385986          NaN                  12288                
+ 13            31.33030            1026.952759          NaN                  12288                
+ 13            31.35642            1025.517944          2.065207             0                    
+ 13            31.38256            1032.214844          1.930406             0                    
+ 13            31.40873            1083.297363          2.046885             0                    
+ 13            31.43491            1077.745117          2.183102             0                    
+ 13            31.46112            1021.299255          1.837369             0                    
+ 13            31.48735            1025.416748          1.772835             0                    
+ 13            31.51360            1050.773682          NaN                  12416                
+ 13            31.53987            1069.416748          NaN                  12288                
+ 13            31.56616            1112.427856          1.927351             0                    
+ 13            31.59248            593.990173           1.355074             128                  
+ 12            31.12213            628.323120           1.700336             128                  
+ 12            31.14808            1029.561890          2.023112             0                    
+ 12            31.17404            1024.763184          2.092366             0                    
+ 12            31.20003            1012.770081          1.955002             0                    
+ 12            31.22604            1026.382812          1.913646             0                    
+ 12            31.25208            1060.675659          NaN                  12288                
+ 12            31.27813            1082.285889          NaN                  12288                
+ 12            31.30421            1079.044067          2.327700             0                    
+ 12            31.33030            1074.188599          2.360881             0                    
+ 12            31.35642            1057.090454          2.300728             0                    
+ 12            31.38256            1031.334351          2.083565             0                    
+ 12            31.40873            1040.485474          2.096908             0                    
+ 12            31.43491            1060.496094          NaN                  12288                
+ 12            31.46112            1051.412598          NaN                  12288                
+ 12            31.48735            944.837830           NaN                  12288                
+ 12            31.51360            856.624634           NaN                  12288                
+ 12            31.53987            866.704468           NaN                  12288                
+ 12            31.56616            860.336914           NaN                  12288                
+ 12            31.59248            846.020386           2.135569             12288                
+ 12            31.61882            866.360718           NaN                  12288                
+ 12            31.64518            905.834351           NaN                  12288                
+ 12            31.67156            1000.145569          NaN                  12288                
+ 12            31.69796            1142.712769          NaN                  12288                
+ 12            31.72439            1138.604980          NaN                  12288                
+ 12            31.75084            1064.214478          2.378787             0                    
+ 12            31.77731            1099.251343          2.429168             0                    
+ 12            31.80380            1124.923462          NaN                  12288                
+ 12            31.83031            1138.800293          NaN                  12288                
+ 12            31.85685            1155.792725          NaN                  12288                
+ 12            31.88341            1189.135010          NaN                  12288                
+ 12            31.90999            808.449280           NaN                  12288                
+ 12            31.93659            398.863159           NaN                  12288                
+ 12            31.96322            364.456757           1.283412             12288                
+ 12            31.98986            360.433411           1.279602             12288                
+ 12            32.01653            375.281403           1.425496             12288                
+ 12            32.04323            374.112946           NaN                  12288                
+ 12            32.06994            368.364441           NaN                  12288                
+ 12            32.09668            394.208832           NaN                  12288                
+ 12            32.12343            410.939423           NaN                  12288                
+ 12            32.15021            602.383667           NaN                  12288                
+ 12            32.17702            638.297424           NaN                  12288                
+ 12            32.20384            653.750549           NaN                  12288                
+ 12            32.23069            636.233154           1.991924             12288                
+ 12            32.25756            646.585388           NaN                  12288                
+ 12            32.28445            643.216675           NaN                  12288                
+ 12            32.31137            635.819763           1.915310             12288                
+ 12            32.33831            640.357117           NaN                  12288                
+ 12            32.36527            652.623169           NaN                  12288                
+ 12            32.39225            458.555481           NaN                  12288                
+ 12            32.41925            384.341614           1.326687             12288                
+ 12            32.44628            378.501190           1.319607             12288                
+ 12            32.47333            389.560150           1.363416             12288                
+ 12            32.50040            596.503174           NaN                  12288                
+ 12            32.52750            1146.968262          NaN                  12288                
+ 12            32.55461            1139.932251          NaN                  12288                
+ 12            32.58175            1188.554199          NaN                  12288                
+ 12            32.60892            1187.313965          NaN                  12288                
+ 12            32.63610            1096.231079          NaN                  12288                
+ 12            32.66331            779.702271           NaN                  12288                
+ 12            32.69054            652.561951           1.802691             12288                
+ 12            32.71779            653.261230           1.910331             12288                
+ 12            32.74507            664.468140           2.291178             12288                
+ 12            32.77237            676.782166           NaN                  12288                
+ 12            32.79969            666.516907           NaN                  12288                
+ 12            32.82704            641.110596           NaN                  12288                
+ 12            32.85440            1019.190796          NaN                  12288                
+ 12            32.88179            1220.789307          NaN                  12288                
+ 12            32.90921            1189.843994          NaN                  12288                
+ 12            32.93664            1181.275513          2.474347             0                    
+ 12            32.96410            1222.276978          2.519267             0                    
+ 12            32.99158            1268.562012          2.842484             0                    
+ 12            33.01909            1230.393799          3.160645             0                    
+ 12            33.04661            1202.518555          3.104532             0                    
+ 12            33.07416            1190.633423          2.970034             0                    
+ 12            33.10174            1203.142456          NaN                  12288                
+ 12            33.12933            1215.309692          NaN                  12288                
+ 12            33.15695            1233.848389          NaN                  12288                
+ 12            33.18460            1171.073364          2.560717             0                    
+ 12            33.21226            1178.656006          2.512771             0                    
+ 12            33.23995            1191.800537          2.685895             0                    
+ 12            33.26766            1247.827637          2.881168             0                    
+ 12            33.29540            1245.569214          2.789299             0                    
+ 12            33.32315            1282.282104          NaN                  12288                
+ 12            33.35093            1183.305542          NaN                  12288                
+ 12            33.37874            1184.902954          2.304276             0                    
+ 12            33.40657            1228.825317          2.513558             0                    
+ 12            33.43442            1259.887817          2.689423             0                    
+ 12            33.46229            1812.704102          NaN                  12288                
+ 12            33.49019            2291.274170          NaN                  12288                
+ 12            33.51811            1472.555908          NaN                  12288                
+ 12            33.54605            1221.038940          2.369267             0                    
+ 12            33.57402            1175.096069          2.248654             0                    
+ 12            33.60201            1173.392944          2.226626             0                    
+ 12            33.63002            1220.640625          2.352497             0                    
+ 12            33.65806            1159.958252          2.211032             0                    
+ 12            33.68612            1163.504639          2.042083             0                    
+ 12            33.71420            1125.749390          1.882320             0                    
+ 12            33.74231            1105.109863          1.947503             0                    
+ 12            33.77044            1087.864502          2.062504             0                    
+ 12            33.79859            1154.563599          2.265456             128                  
+ 12            33.82677            1194.560547          2.188299             128                  
+ 12            33.85497            1191.067749          2.054684             128                  
+ 12            33.88319            1183.556519          1.998403             128                  
+ 12            33.91144            1168.807861          2.027260             0                    
+ 12            33.93971            1204.611328          2.189132             0                    
+ 12            33.96801            1195.987793          2.107213             0                    
+ 12            33.99633            1201.300903          2.081816             0                    
+ 12            34.02467            1187.449341          2.120308             0                    
+ 12            34.05303            1204.355469          2.255086             0                    
+ 12            34.08142            1193.838013          2.289325             0                    
+ 12            34.10984            1231.809082          2.447484             0                    
+ 12            34.13827            740.877136           1.943393             12416                
+ 11            33.82677            70.432404            0.230407             128                  
+ 11            33.85497            977.124207           2.115063             128                  
+ 11            33.88319            1090.614136          2.159519             0                    
+ 11            33.91144            1191.542236          2.261641             0                    
+ 11            33.93971            1584.920044          3.739717             0                    
+ 11            33.96801            1109.765503          2.214900             0                    
+ 11            33.99633            1149.322876          NaN                  12288                
+ 11            34.02467            1024.922852          NaN                  12288                
+ 11            34.05303            958.692383           NaN                  12288                
+ 11            34.08142            1004.266968          1.966051             0                    
+ 11            34.10984            1084.458496          2.114484             0                    
+ 11            34.13827            1109.436646          2.124736             0                    
+ 11            34.16673            1118.082397          2.120804             0                    
+ 11            34.19522            1125.825317          2.119185             0                    
+ 11            34.22373            1130.566528          2.176403             0                    
+ 11            34.25226            1163.753662          2.219499             0                    
+ 11            34.28081            1158.792114          2.191661             0                    
+ 11            34.30939            1190.365234          2.269528             0                    
+ 11            34.33799            1184.957153          2.266085             0                    
+ 11            34.36662            1162.262573          2.220852             0                    
+ 11            34.39527            1173.511963          2.251547             0                    
+ 11            34.42395            1180.809448          2.285072             0                    
+ 11            34.45265            1167.016968          2.259446             0                    
+ 11            34.48137            1178.872559          2.302479             0                    
+ 11            34.51011            1259.621094          2.493699             0                    
+ 11            34.53888            1209.211670          2.307903             0                    
+ 11            34.56768            1230.433228          2.385225             0                    
+ 11            34.59650            1228.077637          2.367156             0                    
+ 11            34.62534            1246.731323          2.450971             0                    
+ 11            34.65421            1227.543091          NaN                  12288                
+ 11            34.68310            1225.640991          NaN                  12288                
+ 11            34.71201            1207.568481          2.417293             0                    
+ 11            34.74095            1215.133301          2.410208             0                    
+ 11            34.76991            1246.914673          2.571948             0                    
+ 11            34.79890            1481.878174          3.051215             0                    
+ 11            34.82791            1692.541504          3.661230             0                    
+ 11            34.85695            1350.289429          2.607029             0                    
+ 11            34.88601            1156.142700          2.010640             0                    
+ 11            34.91509            1168.758789          2.053595             0                    
+ 11            34.94420            1171.654663          2.057138             0                    
+ 11            34.97333            1182.500000          2.069864             0                    
+ 11            35.00249            1228.862549          2.172119             0                    
+ 11            35.03167            1252.178955          2.245490             0                    
+ 11            35.06087            1242.886475          2.464745             0                    
+ 11            35.09010            1187.409912          2.461988             0                    
+ 11            35.11936            1204.695190          2.433321             0                    
+ 11            35.14864            1238.302734          2.383265             0                    
+ 11            35.17794            1229.960815          2.454912             0                    
+ 11            35.20727            1196.856201          2.432871             0                    
+ 11            35.23662            1220.685913          2.323501             0                    
+ 11            35.26599            1172.140015          NaN                  12288                
+ 11            35.29539            1165.048218          NaN                  12288                
+ 11            35.32482            1190.491333          2.094801             0                    
+ 11            35.35427            1225.619385          2.088704             0                    
+ 11            35.38374            1232.963257          2.074255             0                    
+ 11            35.41324            1233.928589          2.123120             0                    
+ 11            35.44276            1252.668823          2.299120             0                    
+ 11            35.47231            1256.491333          2.302300             0                    
+ 11            35.50188            1322.156006          2.487445             0                    
+ 11            35.53148            1306.169067          2.471584             0                    
+ 11            35.56110            1265.042480          2.372680             0                    
+ 11            35.59075            1245.158447          2.293558             0                    
+ 11            35.62042            1249.125122          2.284188             0                    
+ 11            35.65012            1161.335693          2.036642             0                    
+ 11            35.67984            1195.162109          2.071191             0                    
+ 11            35.70958            1202.751587          2.078977             0                    
+ 11            35.73935            1209.978516          2.138990             0                    
+ 11            35.76915            1267.373657          2.278662             0                    
+ 11            35.79897            1289.882446          2.362647             0                    
+ 11            35.82881            1278.021729          2.367628             0                    
+ 11            35.85868            1298.890747          NaN                  12416                
+ 11            35.88858            1187.857422          NaN                  12416                
+ 11            35.91850            1019.140991          NaN                  12416                
+ 11            35.94844            983.547119           1.692888             0                    
+ 11            35.97841            1012.762024          1.780174             0                    
+ 11            36.00841            1280.588745          2.324704             0                    
+ 11            36.03843            1321.785400          2.397401             0                    
+ 11            36.06847            1236.332520          2.245359             0                    
+ 11            36.09854            1237.086914          2.226979             128                  
+ 11            36.12864            1163.678101          2.063714             128                  
+ 11            36.15876            1203.305420          2.217799             128                  
+ 11            36.18890            1261.474976          2.368459             128                  
+ 11            36.21907            1332.393188          2.631099             128                  
+ 11            36.24927            1317.319946          2.628672             128                  
+ 11            36.27949            1273.565308          2.528211             128                  
+ 11            36.30973            1297.949829          2.577969             128                  
+ 11            36.34000            1274.862915          NaN                  12288                
+ 11            36.37030            1294.607178          NaN                  12288                
+ 11            36.40062            1319.625732          2.507212             0                    
+ 11            36.43097            1208.562256          2.352281             0                    
+ 11            36.46134            1166.450195          2.495205             128                  
+ 11            36.49173            1178.239990          2.607406             128                  
+ 11            36.52216            1291.809814          2.949143             128                  
+ 11            36.55261            1445.510620          3.764031             128                  
+ 11            36.58308            1439.077393          4.169416             128                  
+ 11            36.61358            1563.485107          9.774605             128                  
+ 11            36.64410            1482.212891          NaN                  12416                
+ 11            36.67465            1534.112915          NaN                  12416                
+ 11            36.70523            1438.002563          3.464075             128                  
+ 11            36.73583            1444.875977          3.526399             0                    
+ 11            36.76645            1348.970947          3.295267             0                    
+ 11            36.79710            1209.018188          2.950111             0                    
+ 11            36.82778            1207.920410          3.295558             128                  
+ 11            36.85848            1293.105103          3.096667             128                  
+ 11            36.88921            1309.370605          2.993719             128                  
+ 11            36.91996            1324.527588          3.540905             128                  
+ 11            36.95074            1219.207764          3.712255             128                  
+ 11            36.98155            1158.608032          3.629066             128                  
+ 11            37.01238            1190.284546          NaN                  12416                
+ 11            37.04324            1231.946411          4.024191             128                  
+ 11            37.07412            1177.865723          NaN                  12416                
+ 11            37.10503            1144.321899          NaN                  12416                
+ 11            37.13596            64.685150            0.521208             12416                

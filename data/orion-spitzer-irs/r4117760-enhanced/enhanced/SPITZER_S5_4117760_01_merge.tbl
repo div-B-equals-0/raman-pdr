@@ -1,0 +1,424 @@
+\AORKEY   = 4117760           / Observation request ID
+\TGT_NUM  = 01                / Nth target observed in this AOR
+\OBJECT   = 'Orion Bar'       / Object name specified by observer
+\AORLABEL = 'IRSS-tlrgto-D2-019'
+\PROTITLE = 'Deuterium Enrichment in PAHs'
+\EXPTYPE  = 'sp'
+\OBJTYPE  = 'TargetFixedSingle'
+\DATE_OBS = '2004-03-23 07:27:40.857' / start of first observation (UTCS)
+\SCLK_OBS = 764494150.595     / time of observation start (spacecraft)
+\CAMPAIGN = 'IRSX002900'      / Spitzer campaign ID
+\OBSRVR   = 'Roellig, Thomas'
+\PROGID   = 45
+\TELESCOP = 'Spitzer'
+\AOT_TYPE = 'IrsStare'
+\READMODE = 'RAW'
+\REQTYPE  = 'AOR'
+
+\ COMMENT A value of -99.0 means 'unknown'.
+\ COMMENT orders:  1=SL2  2=SL1  3=LL2  4=LL1
+
+\ Extraction coordinates - primary (SL if available, otherwise LL)
+\RA       =  83.83821         / (deg J2000)
+\DEC      =  -5.41578         / (deg J2000)
+\CRA      = '05h35m21.17s'    / (J2000)
+\CDEC     = '-05d24m56.8s'    / (J2000)
+\EQUINOX  = 2000              / for ICRF celestial coord. system
+\RADESYS  = 'ICRS'            / International Celestial Ref Sys
+
+\ Synthetic Photometry
+\IRAC8    = 5.162E+00         / Jy at  8.00 um  ( 6.276 to  9.572 = 99%)
+\IRAC8U   = 5.844E-02         / Uncertainty
+\IRAS12   = -9.900E+01        / Jy at 12.00 um  ( 7.516 to 14.229 = 89%)
+\IRAS12U  = -9.900E+01        / Uncertainty
+\IRS16    = -9.900E+01        / Jy at 16.00 um  (12.959 to 14.229 = 20%)
+\IRS16U   = -9.900E+01        / Uncertainty
+\IRS22    = -9.900E+01        / Jy at 22.00 um  (99.000 to  0.000 =  0%)
+\IRS22U   = -9.900E+01        / Uncertainty
+\MIPS24   = -9.900E+01        / Jy at 24.00 um  (99.000 to  0.000 =  0%)
+\MIPS24U  = -9.900E+01        / Uncertainty
+\IRAS25   = -9.900E+01        / Jy at 25.00 um  (99.000 to  0.000 =  0%)
+\IRAS25U  = -9.900E+01        / Uncertainty
+
+\ Wavelength Coverage, Counts, Uncertainties
+\WAVE_MIN =  5.21725          / um  (min wavelength in data)
+\WAVE_MAX = 14.22932          / um  (max wavelength in data)
+\N_IN     = 4                 / number of bksub spectra merged
+\OFLAG    =  3                / orders,sum of: ord1=1 ord2=2 ord3=4 ord4=8
+\N_ORDERS = 2                 / how many orders covered (of the 4)
+\SNR_SL2  =  84.60816         / SL2 mean flux/mean unc
+\SNR_SL1  =  84.85151         / SL1 mean flux/mean unc
+\SNR_LL2  = -99.00000         / LL2 mean flux/mean unc
+\SNR_LL1  = -99.00000         / LL1 mean flux/mean unc
+
+\ Order Overlap Area Flux Ratios
+\RATIO_SL2_SL1 = 0.365        / Order edge ratio EDG_SL2_HI / EDG_SL1_LO
+\RATIO_SL1_LL2 = -99.000      / Order edge ratio EDG_SL1_HI / EDG_LL2_LO
+\RATIO_LL2_LL1 = -99.000      / Order edge ratio EDG_LL2_HI / EDG_LL1_LO
+\EDG_SL2_HI =    5.24734      / Jy (SL2 median flux hi edge:  7.25 to  7.56 um)
+\EDG_SL1_LO =   14.39391      / Jy (SL1 median flux lo edge:  7.56 to  8.15 um)
+\EDG_SL1_HI =    3.15695      / Jy (SL1 median flux hi edge: 13.60 to 14.28 um)
+\EDG_LL2_LO =  -99.00000      / Jy (LL2 median flux lo edge: 14.28 to 15.05 um)
+\EDG_LL2_HI =  -99.00000      / Jy (LL2 median flux hi edge: 19.80 to 20.66 um)
+\EDG_LL1_LO =  -99.00000      / Jy (LL1 median flux lo edge: 20.68 to 22.30 um)
+
+\ Extraction profile mean FWHM (per order)
+\WIDTH_SL2 = 12.73            / (arcsec) for SL2 (order 1)
+\WIDTH_SL1 = 15.25            / (arcsec) for SL1 (order 2)
+\WIDTH_LL2 = -99.00           / (arcsec) for LL2 (order 3)
+\WIDTH_LL1 = -99.00           / (arcsec) for LL1 (order 4)
+
+\ Extraction coordinates for SL2,SL1 (orders 1&2)
+\RA_SL    =  83.83821         / (deg J2000)
+\DEC_SL   =  -5.41578         / (deg J2000)
+\PA_SL    =  -4.73471         / (deg J2000)
+
+\ Extraction coordinates for LL2,LL1 (orders 3&4)
+\RA_LL    = -99.00000         / (deg J2000)
+\DEC_LL   = -99.00000         / (deg J2000)
+\PA_LL    = -99.00000         / (deg J2000)
+
+\ Requested coordinates of observation (by observer)
+\RA_RQST  =  83.83833         / (deg J2000)
+\DEC_RQST =  -5.41575         / (deg J2000)
+\RA_DEL   =  -0.00012         / (deg) delta RA (RA - RQST_RA) *cos(DEC)
+\DEC_DEL  =  -0.00003         / (deg) delta DEC (DEC - RQST_DEC)
+
+\ Info from bksub.tbl files (per input file)
+\ -----     ORDER   EXP    FOV
+\IN_ID1   = ' 1    0000   32 SL2.1'
+\IN_ID2   = ' 1    0001   33 SL2.2'
+\IN_ID3   = ' 2    0002   26 SL1.1'
+\IN_ID4   = ' 2    0003   27 SL1.2'
+
+\ Extraction Info (per input file)
+\ -------  max_flux_at  extraction_at  delta_nominal nominal  flag   peak(dn)
+\IN_XTR1  = '-99.0         33.3           -0.6         33.9    SUSPECT   -99.00'
+\IN_XTR2  = '-99.0         66.7           -0.6         67.3    SUSPECT   -99.00'
+\IN_XTR3  = '-99.0         33.3           -0.6         33.9    SUSPECT   -99.00'
+\IN_XTR4  = '-99.0         66.7           -0.6         67.3    SUSPECT   -99.00'
+
+\ Profile width information (per input file)
+\ ------      WIDTH  FLUX_MAX FLUX_MAX_UNC
+\PROFILE1 = ' 13.79    3274.6   2804.0'
+\PROFILE2 = ' 11.67    3965.6   3377.3'
+\PROFILE3 = ' 20.35    7762.2   3980.3'
+\PROFILE4 = ' 10.15    2149.4   6599.9'
+
+\ Coordinates per input file
+\ ------       RA_XTR     DEC_XTR   RA_FOV     DEC_FOV   RA_SLT     DEC_SLT
+\COORD1   = ' 83.83826   -5.41587   83.83825  -5.41578  83.83804  -5.41322'
+\COORD2   = ' 83.83818   -5.41564   83.83817  -5.41556  83.83839  -5.41812'
+\COORD3   = ' 83.83819   -5.41584   83.83819  -5.41575  83.83796  -5.41306'
+\COORD4   = ' 83.83822   -5.41577   83.83821  -5.41568  83.83844  -5.41838'
+
+\ Extraction 4 corners - Primary (SL, or LL if no SL)
+\RA1      =  83.83892         / deg
+\DEC1     =  -5.41811         / deg
+\RA2      =  83.83790         / deg
+\DEC2     =  -5.41820         / deg
+\RA3      =  83.83750         / deg
+\DEC3     =  -5.41345         / deg
+\RA4      =  83.83853         / deg
+\DEC4     =  -5.41337         / deg
+
+\ Extraction 4 corners for SL (Short Low, orders 1 & 2)
+\RA1_SL   =  83.83892         / deg
+\DEC1_SL  =  -5.41811         / deg
+\RA2_SL   =  83.83790         / deg
+\DEC2_SL  =  -5.41820         / deg
+\RA3_SL   =  83.83750         / deg
+\DEC3_SL  =  -5.41345         / deg
+\RA4_SL   =  83.83853         / deg
+\DEC4_SL  =  -5.41337         / deg
+
+\ Extraction 4 corners for LL (Long Low, orders 3 & 4)
+\RA1_LL   = -99.00000         / deg
+\DEC1_LL  = -99.00000         / deg
+\RA2_LL   = -99.00000         / deg
+\DEC2_LL  = -99.00000         / deg
+\RA3_LL   = -99.00000         / deg
+\DEC3_LL  = -99.00000         / deg
+\RA4_LL   = -99.00000         / deg
+\DEC4_LL  = -99.00000         / deg
+
+\ Heleocentric Info
+\SPTZR_X  = '-149236027.696'  / [km] Heliocentric x position
+\SPTZR_Y  = '4926542.598331'  / [km] Heliocentric y position
+\SPTZR_Z  = '14525.599986'    / [km] Heliocentric z position
+\SPTZR_VX = '-1.104829'       / [km/sec] Heliocentric x velocity
+\SPTZR_VY = '-27.296691'      / [km/sec] Heliocentric y velocity
+\SPTZR_VZ = '-12.325244'      / [km/sec] Heliocentric z velocity
+\VHELCORR = '-26.'            / [km/sec] Correction to heliocentric velocity
+\VLSRCORR = '-44.'            / [km/sec] Correction to local standard of rest
+\ET_OBS   = '133298925.042'   / [sec] DCE start time (TDB seconds past J2000)
+\HMJD_OBS = '53087.3104621'   / Corresponding Heliocen. Mod. Julian Date
+
+\ Processing Constants
+\ PARAM DATA_CLIP_1_MAX = 7.56 (order 1 (SL2) clipped above this)
+\ PARAM DATA_CLIP_1_MIN = 5.21 (order 1 (SL2) clipped below this)
+\ PARAM DATA_CLIP_2_MAX = 14.28 (order 2 (SL1) clipped above this)
+\ PARAM DATA_CLIP_2_MIN = 7.56 (order 2 (SL1) clipped below this)
+\ PARAM DATA_CLIP_3_MAX = 20.66 (order 3 (LL2) clipped above this)
+\ PARAM DATA_CLIP_3_MIN = 14.28 (order 3 (LL2) clipped below this)
+\ PARAM DATA_CLIP_4_MAX = 38 (order 4 (LL1) clipped above this)
+\ PARAM DATA_CLIP_4_MIN = 20.68 (order 4 (LL1) clipped below this)
+\ PARAM DATA_ERROR_MIN = 0.0001 (pedestal for "error" in input data)
+\ PARAM OVR_12_1_MAX = 7.56 (max wave in 1,2 overlap for order 1)
+\ PARAM OVR_12_1_MIN = 7.25 (min wave in 1,2 overlap for order 1)
+\ PARAM OVR_12_2_MAX = 8.15 (max wave in 1,2 overlap for order 2)
+\ PARAM OVR_12_2_MIN = 7.56 (min wave in 1,2 overlap for order 2)
+\ PARAM OVR_23_2_MAX = 14.28 (max wave in 2,3 overlap for order 2)
+\ PARAM OVR_23_2_MIN = 13.6 (min wave in 2,3 overlap for order 2)
+\ PARAM OVR_23_3_MAX = 15.05 (max wave in 2,3 overlap for order 3)
+\ PARAM OVR_23_3_MIN = 14.28 (min wave in 2,3 overlap for order 3)
+\ PARAM OVR_34_3_MAX = 20.66 (max wave in 2,3 overlap for order 3)
+\ PARAM OVR_34_3_MIN = 19.8 (min wave in 2,3 overlap for order 3)
+\ PARAM OVR_34_4_MAX = 22.3 (max wave in 3,4 overlap for order 4)
+\ PARAM OVR_34_4_MIN = 20.68 (min wave in 3,4 overlap for order 4)
+\ PARAM PHOT_COVERAGE_MIN = 0.95 (min coverage to compute photometry)
+\ PARAM PHOT_IRAC8_CONSTANT = 1.00 (correction constant)
+\ PARAM PHOT_IRAC8_DIVBYNU = 1 (response values:  1=divide by nu)
+\ PARAM PHOT_IRAC8_MAX = 9.584890 (Filter clip (highest wavelength to use))
+\ PARAM PHOT_IRAC8_MIN = 6.262590 (Filter clip (lowest wavelength to use))
+\ PARAM PHOT_IRAC8_REFWAV = 8.00 (reference wavelength)
+\ PARAM PHOT_IRAC8_UNC_BOOST = 0.011 (Boost filter unc by this frac of flux)
+\ PARAM PHOT_IRAS12_CONSTANT = 1.00 (correction constant)
+\ PARAM PHOT_IRAS12_DIVBYNU = 1 (response values:  1=divide by nu)
+\ PARAM PHOT_IRAS12_MAX = 15.0 (Filter clip (highest wavelength to use))
+\ PARAM PHOT_IRAS12_MIN = 7.5 (Filter clip (lowest wavelength to use))
+\ PARAM PHOT_IRAS12_REFWAV = 12.00 (reference wavelength)
+\ PARAM PHOT_IRAS12_UNC_BOOST = 0.017 (Boost filter unc by this frac of flux)
+\ PARAM PHOT_IRAS25_CONSTANT = 1.00 (correction constant)
+\ PARAM PHOT_IRAS25_DIVBYNU = 1 (response values:  1=divide by nu)
+\ PARAM PHOT_IRAS25_MAX = 30.5 (Filter clip (highest wavelength to use))
+\ PARAM PHOT_IRAS25_MIN = 16.0 (Filter clip (lowest wavelength to use))
+\ PARAM PHOT_IRAS25_REFWAV = 25.00 (reference wavelength)
+\ PARAM PHOT_IRAS25_UNC_BOOST = 0.017 (Boost filter unc by this frac of flux)
+\ PARAM PHOT_IRS16_CONSTANT = 1.00 (correction constant)
+\ PARAM PHOT_IRS16_DIVBYNU = 1 (response values:  1=divide by nu)
+\ PARAM PHOT_IRS16_MAX = 19.2765 (Filter clip (highest wavelength to use))
+\ PARAM PHOT_IRS16_MIN = 12.932 (Filter clip (lowest wavelength to use))
+\ PARAM PHOT_IRS16_REFWAV = 16.00 (reference wavelength)
+\ PARAM PHOT_IRS16_UNC_BOOST = 0.016 (Boost filter unc by this frac of flux)
+\ PARAM PHOT_IRS22_CONSTANT = 1.00 (correction constant)
+\ PARAM PHOT_IRS22_DIVBYNU = 1 (response values:  1=divide by nu)
+\ PARAM PHOT_IRS22_MAX = 30.8653 (Filter clip (highest wavelength to use))
+\ PARAM PHOT_IRS22_MIN = 18.0048 (Filter clip (lowest wavelength to use))
+\ PARAM PHOT_IRS22_REFWAV = 22.00 (reference wavelength)
+\ PARAM PHOT_IRS22_UNC_BOOST = 0.016 (Boost filter unc by this frac of flux)
+\ PARAM PHOT_MIPS24_CONSTANT = 0.96791614 (correction constant)
+\ PARAM PHOT_MIPS24_DIVBYNU = 0 (response values:  1=divide by nu)
+\ PARAM PHOT_MIPS24_MAX = 30.865 (Filter clip (highest wavelength to use))
+\ PARAM PHOT_MIPS24_MIN = 19.867 (Filter clip (lowest wavelength to use))
+\ PARAM PHOT_MIPS24_REFWAV = 24.00 (reference wavelength)
+\ PARAM PHOT_MIPS24_UNC_BOOST = 0.018 (Boost filter unc by this frac of flux)
+\ PARAM SNR1_BOOST_O1 = 0.011 (boost for SNR1 of order 1)
+\ PARAM SNR1_BOOST_O2 = 0.011 (boost for SNR1 of order 2)
+\ PARAM SNR1_BOOST_O3 = 0.016 (boost for SNR1 of order 3)
+\ PARAM SNR1_BOOST_O4 = 0.018 (boost for SNR1 of order 4)
+\ PARAM SNR_FLUX_CUTOFF = 0.0001 (lowest flux_density used in SNR)
+\ PARAM SNR_UNC_CUTOFF = 0.0001 (lowest "error" (or "stdev") used in SNR)
+\ PARAM XTR_SUSPECT = 10 (tolerance for delta extraction SUSPECT)
+
+\ Processing Info
+\SOFTWARE = 'irs_merge v2.1'  / program that created this file
+\ORIGIN   = 'SSC - Spitzer Science Center' / this file created by
+\CREATOR  = 'S18.18.0'        / pipeline version of 1st merged file
+\DATE     = '2011-12-08 17:16:17' / when this file created (Pacific)
+\ENHID    = 540               / Spitzer database Enhanced Product ID
+\CAMPID   = 717               / Spitzer database Campaign ID
+\FILENAME = 'SPITZER_S5_4117760_01_merge.tbl'
+
+|order|wavelength|flux_density |error      |bit-flag|
+|int  |real      |real         |real       |int     |
+|     |microns   |Jy           |Jy         |        |
+     1    5.21725      0.455293    0.006781        0
+     1    5.24749      0.501547    0.006882        0
+     1    5.27773      0.412162    0.006716        0
+     1    5.30797      0.330735    0.006103        0
+     1    5.33821      0.296967    0.005730        0
+     1    5.36846      0.265446    0.005654        0
+     1    5.39870      0.260464    0.005650        0
+     1    5.42894      0.277483    0.005588        0
+     1    5.45918      0.288758    0.005311        0
+     1    5.48942      0.316516    0.005118        0
+     1    5.51967      0.360800    0.005180        0
+     1    5.54991      0.412354    0.005345        0
+     1    5.58015      0.503961    0.005664        0
+     1    5.61039      0.693396    0.006091        0
+     1    5.64063      0.862748    0.006381        0
+     1    5.67088      0.921524    0.006369        0
+     1    5.70112      0.925040    0.006457        0
+     1    5.73136      0.883029    0.006497        0
+     1    5.76160      0.816623    0.006566        0
+     1    5.79184      0.743751    0.006596        0
+     1    5.82209      0.712967    0.006632        0
+     1    5.85233      0.748460    0.006765        0
+     1    5.88257      0.782935    0.006967        0
+     1    5.91281      0.770027    0.007042        0
+     1    5.94305      0.816092    0.007066        0
+     1    5.97330      0.981541    0.007270        0
+     1    6.00354      1.229899    0.007689        0
+     1    6.03378      1.374642    0.007945        0
+     1    6.06402      1.425365    0.008000        0
+     1    6.09426      1.653951    0.008299        0
+     1    6.12451      2.535362    0.009321        0
+     1    6.15475      4.495798    0.011307        0
+     1    6.18499      6.955763    0.013343        0
+     1    6.21523      8.126056    0.014336        0
+     1    6.24547      7.388066    0.013935        0
+     1    6.27572      5.828003    0.013018        0
+     1    6.30596      4.493842    0.012239        0
+     1    6.33620      3.630502    0.011726        0
+     1    6.36644      3.099855    0.011313        0
+     1    6.39668      2.690620    0.010860        0
+     1    6.42693      2.283803    0.010041        0
+     1    6.45717      1.958130    0.009484        0
+     1    6.48741      1.763949    0.009330        0
+     1    6.51765      1.651472    0.009377        0
+     1    6.54789      1.600988    0.009699        0
+     1    6.57814      1.666284    0.010108        0
+     1    6.60838      1.815247    0.010377        0
+     1    6.63862      1.929058    0.010273        0
+     1    6.66886      1.987265    0.010042        0
+     1    6.69910      2.000215    0.009904        0
+     1    6.72935      1.966941    0.009968        0
+     1    6.75959      1.893612    0.010281        0
+     1    6.78983      1.851248    0.010710        0
+     1    6.82007      1.882328    0.011076        0
+     1    6.85031      1.890386    0.011374        0
+     1    6.88056      1.844570    0.011570        0
+     1    6.91080      1.783537    0.011885        0
+     1    6.94104      1.808137    0.012503        0
+     1    6.97128      1.852226    0.014372        0
+     1    7.00152      1.765484    0.015221        0
+     1    7.03177      1.981303    0.013778        0
+     1    7.06201      2.103469    0.013565        0
+     1    7.09225      2.271705    0.013449        0
+     1    7.12249      2.523862    0.013287        0
+     1    7.15273      2.774827    0.013297        0
+     1    7.18298      2.963959    0.013574        0
+     1    7.21322      3.201887    0.014272        0
+     1    7.24346      3.520953    0.015156        0
+     1    7.27370      3.884800    0.015954        0
+     1    7.30394      4.251412    0.016662        0
+     1    7.33419      4.685346    0.017233        0
+     1    7.36443      5.248228    0.017874        0
+     1    7.39467      5.956373    0.018678        0
+     1    7.42491      6.567083    0.019909        0
+     1    7.45515      7.152627    0.021512        0
+     1    7.48540      8.216703    0.022995        0
+     1    7.51564      9.751247    0.024877        0
+     1    7.54588     11.221077    0.026879        0
+     2    7.57612     12.648794    0.020679        0
+     2    7.63660     13.545603    0.020158        0
+     2    7.69709     12.734853    0.018456        0
+     2    7.75757     12.049670    0.017139        0
+     2    7.81805     11.554078    0.016542        0
+     2    7.87854     10.276654    0.015876        0
+     2    7.93902      8.297960    0.014781        0
+     2    7.99951      6.596834    0.013469        0
+     2    8.05999      5.527655    0.012488        0
+     2    8.12047      4.942868    0.011993        0
+     2    8.18096      4.755721    0.011945        0
+     2    8.24144      4.957396    0.012079        0
+     2    8.30192      5.416123    0.012356        0
+     2    8.36241      5.754043    0.012247        0
+     2    8.42289      6.022913    0.012191        0
+     2    8.48337      6.828345    0.012765        0
+     2    8.54386      7.902865    0.013659        0
+     2    8.60434      8.437378    0.014088        0
+     2    8.66483      7.793805    0.013762        0
+     2    8.72531      6.236079    0.012841        0
+     2    8.78579      4.792930    0.011943        0
+     2    8.84628      3.691797    0.011410        0
+     2    8.90676      2.377096    0.011540        0
+     2    8.96724      0.254462    0.012917        0
+     2    9.02773     -0.401759    0.013141        0
+     2    9.08821      1.507895    0.011380        0
+     2    9.14869      1.750734    0.010986        0
+     2    9.20918      1.648761    0.011056        0
+     2    9.26966      1.522143    0.011145        0
+     2    9.33015      1.370035    0.011386        0
+     2    9.39063      1.244706    0.011617        0
+     2    9.45111      1.204609    0.011726        0
+     2    9.51160      1.191067    0.011724        0
+     2    9.57208      1.110227    0.011572        0
+     2    9.63256      0.934008    0.011342        0
+     2    9.69305      0.817014    0.011063        0
+     2    9.75353      0.778612    0.006136    12288
+     2    9.81401      0.709807    0.006058    12288
+     2    9.87450      0.623594    0.010575        0
+     2    9.93498      0.562451    0.010493        0
+     2    9.99547      0.538934    0.010404        0
+     2   10.05595      0.499602    0.010312        0
+     2   10.11643      0.437194    0.010057        0
+     2   10.17692      0.383373    0.009964        0
+     2   10.23740      0.355876    0.009995        0
+     2   10.29788      0.335365    0.010132        0
+     2   10.35837      0.311491    0.010311        0
+     2   10.41885      0.276482    0.010631        0
+     2   10.47933     -0.153180    0.011368        0
+     2   10.53982      0.021058    0.011609        0
+     2   10.60030      0.632967    0.011270        0
+     2   10.66079      0.958965    0.011264        0
+     2   10.72127      1.071474    0.011527        0
+     2   10.78175      1.200698    0.011980        0
+     2   10.84224      1.367523    0.012523        0
+     2   10.90272      1.873113    0.013215        0
+     2   10.96320      2.991008    0.014214        0
+     2   11.02369      4.089531    0.015134        0
+     2   11.08417      5.068873    0.015821        0
+     2   11.14465      9.486662    0.018140        0
+     2   11.20514     15.606787    0.023806        0
+     2   11.26562     14.970968    0.023838        0
+     2   11.32611     10.503342    0.019999        0
+     2   11.38659      6.920462    0.017553        0
+     2   11.44707      4.716171    0.016652        0
+     2   11.50756      3.537387    0.016348        0
+     2   11.56804      2.966385    0.016329        0
+     2   11.62852      2.580553    0.016401        0
+     2   11.68901      2.377867    0.016617        0
+     2   11.74949      2.343860    0.016936        0
+     2   11.80997      2.369097    0.016967        0
+     2   11.87046      2.538849    0.016952        0
+     2   11.93094      2.809752    0.017332        0
+     2   11.99143      2.987013    0.017416        0
+     2   12.05191      2.906396    0.017526        0
+     2   12.11239      2.787733    0.017519        0
+     2   12.17288      2.738919    0.017484        0
+     2   12.23336      2.859294    0.017547        0
+     2   12.29384      3.146918    0.017695        0
+     2   12.35433      3.295949    0.018111        0
+     2   12.41481      3.899418    0.017999        0
+     2   12.47529      4.961140    0.017957        0
+     2   12.53578      6.238495    0.018326        0
+     2   12.59626      7.394130    0.018834        0
+     2   12.65675      7.759377    0.019582        0
+     2   12.71723      5.823616    0.023392        0
+     2   12.77771     -0.718856    0.018896    12288
+     2   12.83820     -4.887702    0.021860    12288
+     2   12.89868     -1.324616    0.027629        0
+     2   12.95916      2.372318    0.018808        0
+     2   13.01965      2.416374    0.018780        0
+     2   13.08013      2.250031    0.019198        0
+     2   13.14061      2.176585    0.019675        0
+     2   13.20110      2.155502    0.020326        0
+     2   13.26158      2.168482    0.020838        0
+     2   13.32206      2.216079    0.021224        0
+     2   13.38255      2.269828    0.021789        0
+     2   13.44303      2.294650    0.022306        0
+     2   13.50352      2.434055    0.022945        0
+     2   13.56400      2.532903    0.023193        0
+     2   13.62448      2.443196    0.023493        0
+     2   13.68497      2.276498    0.023840        0
+     2   13.74545      2.152566    0.024244        0
+     2   13.80593      2.123239    0.024929        0
+     2   13.86642      2.179080    0.025579        0
+     2   13.92690      2.407109    0.026467        0
+     2   13.98738      2.595933    0.027339        0
+     2   14.04787      2.662437    0.028317        0
+     2   14.10835      2.829963    0.029245        0
+     2   14.16884      3.306074    0.030157        0
+     2   14.22932      3.613357    0.030524      128

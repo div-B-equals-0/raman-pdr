@@ -1,0 +1,81 @@
+Data Summary Page     Spitzer Heritage Archive (SHA)     Date: 2011-11-01 11:17:04.00
+ 
+These Spitzer data were retrieved from the Spitzer Heritage Archive
+housed at the Infrared Science Archive (IRSA) at the Infrared
+Processing and Analysis Center (IPAC), California Institute of
+Technology.  For comprehensive information about the Spitzer mission
+and data reduction (including instrument handbooks and a data analysis
+cookbook), please see our mission website, housed at IRSA.
+ 
+This file provides:
+1. Basic observation information
+2. Results of Spitzer data quality analysis (DQA)
+3. An accounting of the raw data and processed products
+4. Pipeline software version information
+5. List of important Spitzer Heritage Archive filenames
+ 
+List of Acronyms:
+DCE     Data Collection Event (raw-data FITS file)
+        also known as Level 0
+BCD     Basic Calibrated Data (processed-data FITS file)
+        also known as Level 1
+PBCD    Post-BCD (higher-level products, such as mosaics), 
+        also known as Level 2
+AOR     Astronomical Observation Request
+IER     Instrument Engineering Request (a special kind of AOR)
+DQA     Data Quality Analysis
+SHA     Spitzer Heritage Archive
+ 
+ 
+(1) DESCRIPTION OF OBSERVATION REQUEST (AOR or IER)
+Telescope:             Spitzer
+CampaignId:            717 (IRSX002900)
+Request Type:          AOR
+Mode:                  IRS Stare
+AORKEY:                4118272
+Observer:              Thomas Roellig
+Target Name:           Orion BarIonized
+Program Title:         D_ENRICHMENT
+Program ID:            45
+AOR Title:             IRSS-tlrgto-D2-019B
+Observation Start:     2004-03-23 08:00:09.858
+Observation End:       2004-03-23 08:15:14.097
+This request was taken during the cryogenic mission, during a "cold" campaign.
+ 
+(2) DATA-QUALITY-ANALYSIS RESULTS
+Quality status:     Nominal/OK to Release
+ 
+(3) SUMMARY OF REQUEST'S SCIENCE-DATA CONTENT
+Expected number of DCEs (all channels):  56
+Received number of DCEs (all channels):  56
+Number of missing DCEs (all channels):   0
+Number of received DCEs with missing keywords (all channels): 0
+Number of received DCEs with missing image data (all channels): 0
+Number of received channel-0 DCEs:  16
+Number of received channel-1 DCEs:  32
+Number of received channel-2 DCEs:  0
+Number of received channel-3 DCEs:  8
+Number of successfully pipeline-processed channel-0 DCEs:  16
+Number of successfully pipeline-processed channel-1 DCEs:  32
+Number of successfully pipeline-processed channel-3 DCEs:  8
+ 
+(4) PIPELINE SOFTWARE VERSION INFORMATION
+IRS  Channel-0 Software Version:    S18.18.0
+IRS  Channel-1 Software Version:    S18.18.0
+IRS  Channel-2 Software Version:    S18.18.0
+IRS  Channel-3 Software Version:    S18.18.0
+ 
+(5) LIST OF IMPORTANT SPITZER HERITAGE ARCHIVE FILENAMES
+A complete index can be found at our website.
+Suffix      Description
+------------------------------------------------------
+tune.tbl    Spectrum extracted from coadded 2D data
+tune.fits   Extracted spectrum image
+xtrct.tbl   Extracted spectrum from bcd.fits or bksub.fits
+coa2d.fits  Coadded 2-D data
+c2unc.fits  Uncertainties for coa2d.fits
+c2msk.fits  Mask file for coa2d.fits
+bksub.tbl   Coadded, nod-subtracted spectrum
+bksub.fits  Coadded, non-subtracted 2-D data
+Many more are documented in the IRS Instrument Handbook,
+available on Spitzer mission website.

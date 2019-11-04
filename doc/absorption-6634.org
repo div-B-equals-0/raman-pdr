@@ -2925,7 +2925,7 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       ["mom0_48_57_12co_pix_2_Tmb", 0.0, 4.0, 1.5, "$^{12}$CO (1-0)"],
       ["linesum-blue-C_I-8727-multibin-500", 0.0, 4.0, 2, r"[C I] $\lambda 8727$"],
       ["map_CO137_pacsman", 0.0, 0.65, 2.5, "$^{12}$CO (19-18)"],
-      ["Orion-Bar-H2-minus-060-Brg", -12.7, 13.0, 3.0, r"H$_{2}$ 2.21$\,\mu$m"],
+      ["Orion-Bar-H2-minus-060-Brg", -12.7, 13.0, 3.0, r"H$_{2}$ 2.12$\,\mu$m"],
   ]
 
   infrared = [
@@ -3072,7 +3072,7 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       ["mom0_48_57_12co_pix_2_Tmb", 0.0, 4.0, 1.5, "$^{12}$CO (1-0)"],
       ["linesum-blue-C_I-8727-multibin-500", 0.0, 4.0, 2, r"[C I] $\lambda 8727$"],
       ["map_CO137_pacsman", 0.0, 0.65, 2.5, "$^{12}$CO (19-18)"],
-      ["Orion-Bar-H2-minus-060-Brg", -12.7, 13.0, 3.0, r"H$_{2}$ 2.21$\,\mu$m"],
+      ["Orion-Bar-H2-minus-060-Brg", -12.7, 13.0, 3.0, r"H$_{2}$ 2.12$\,\mu$m"],
   ]
 
   infrared = [
@@ -3272,7 +3272,7 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
       ["mom0_48_57_12co_pix_2_Tmb", 0.0, 4.0, 1.5, "$^{12}$CO (1-0)"],
       ["linesum-blue-C_I-8727-multibin-500", 0.0, 4.0, 2, r"[C I] $\lambda 8727$"],
       ["map_CO137_pacsman", 0.0, 0.65, 2.5, "$^{12}$CO (19-18)"],
-      ["Orion-Bar-H2-minus-060-Brg", -14.1, 13.0, 3.0, r"H$_{2}$ 2.21$\,\mu$m"],
+      ["Orion-Bar-H2-minus-060-Brg", -14.1, 13.0, 3.0, r"H$_{2}$ 2.12$\,\mu$m"],
   ][::-1]
 
   infrared = [
@@ -3439,7 +3439,7 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 | $5.8\, \mu$m               | 12.8 +/- 2.4  |   23 |    1.702 |    0.966 |   0.073 |
 | $8.0\, \mu$m               | 13.9 +/- 3.4  |   24 |    4.866 |    2.622 |   0.119 |
 |--------------------------+---------------+------+----------+----------+---------|
-| H$_{2}$ 2.21$\,\mu$m          | 23.6 +/- 0.1  |   19 |    0.169 |    0.997 |   0.002 |
+| H$_{2}$ 2.12$\,\mu$m          | 23.6 +/- 0.1  |   19 |    0.169 |    0.997 |   0.002 |
 | $^{12}$CO (19-18)           | 33.8 +/- 0.0  |   32 |    3.930 |    0.399 |   0.001 |
 | [C I] $\lambda 8727$           | 37.7 +/- 5.9  |   30 |    0.495 |    0.854 |   0.122 |
 | $^{12}$CO (1-0)             | 41.1 +/- 1.2  |   44 |    0.472 |    0.746 |   0.173 |
@@ -4868,6 +4868,7 @@ Most of these I found from the intro of the Dopita:2016a paper
 - [[file:../data/orion-muse/herschel-bar-nii-122mic-ew.fits]]
 
 **** Dissociation front
++ See also [[id:2BFA19A3-2134-4D57-8914-2EE8D56DD0EC][H_2 emission zone]] in the Bar model notes
 + mmCRLs (Carbon recombination lines) and far-IR [^{13}C II] lines
   + Cuadrado:2019a
   + Trace dissociation front
@@ -4875,10 +4876,16 @@ Most of these I found from the intro of the Dopita:2016a paper
   + And n_e = 60 \to 100 pcc
   + Assuming electrons come from C+ gives P_th = 2 \to 4e8 cm^-3 K
 + H_2 2.12 micron line
-  + Walmsley:2010a is what everyone uses, but this is a restricted region
+  + Walmsley:2000a is what everyone uses, but this is a restricted region
   + Very filamentary and morphology changes along bar
     + Regions with curved arcs that look like knots or bow shocks
     + Strangely, they all point away from th1C
++ Other H_2 vibro lines
+  + Kaplan:2017a
+    + Many, many lines in the K-band mainly
+  + Luhman:1998a
+    + Claim that dense PDR (n = 1e5 to 1e6) explains all the line strengths
+    + That is, they disagree with earlier claims that some lines come from low-density fluorescence or shocks 
 + High-J CO emission
   + Parikka:2018a
   + This is almost coincident with the [C I] 8727 and 9850 emission
@@ -5117,9 +5124,65 @@ Most of these I found from the intro of the Dopita:2016a paper
     + z_0 = 52.5 mpc
     + z_1 = 69.5 mpc
   + But they recognize that a convex cylinder would make mean line-of-sight depth L lower for the surface regions, which would help their model to work
++ Other work
+  + Sellgren:1990a 3.3 micron PAH feature
+  + Kassis:2006a have mid-IR slit spectra from 8 to 13 micron
+  + Cesarsky:2000a have spectra from 5 to 17 micron
+    + And maps as well
+    + They say that all the UIB bands have the same distribution, but I suspect that this is not true
+    + I am downloading the data from the archive
+      + Now have the data
+      + [[file:~/Dropbox/dib-scatter-hii/data/orion-iso/cvf82602505.fits]]
+      + Note that the wavelength axis is strange
+        + First, it goes from \lambda = 5 \micro{}m to \lambda = 17.34 \micro{}m, then back to 5 again
+        + Second, there are little discontinuities at 9.6 micron, where the wavelength jumps back to 9.0
+      + The FITS files have two components.  Everything is explained in App A.2 of Boulanger:2005a
+        1. a table of images per wavelength pixel
+           - Several versions: 'CUBE_CAL', 'SIGMA', 'CUBE_CAL_FLAT', 'CUBE_CAL_ZODI', 'CUBE'
+           - These are all described in Boulanger:2005a
+        2. and then an interpolated cube in RA and Dec
+           - The interpolated cube is missing some rows, which is odd since the Cesarsky paper doesn't show any problems there
+           - There was an online viewer in the java app that also showed the cube without interpolation - that was missing one row
+      + In principle, we can use this data to work out what is contributing to the 5.8 ad 8.0 micron IRAC bands
+        + 3.6 micron is 3.15 to 3.9
+        + 4.5 micron is 3.9 to 5.0
+        + 5.8 micron is 5.0 to 6.4
+          + pixels 2-26 in cube
+          + 6.2 micron UIB dominates
+          + continuum probably second
+          + minor contributions from 5.264 and 5.687, which look like UIB too
+        + 8.0 micron is 6.4 to 9.3
+          + pixels 27-80 and 87 to 89
+          + 7.7 and 8.6 UIB dominate
+          + plus continuum
+          + also contribution from [Ar II] 7 micron and [Ar III] 9 micron, but only on the ionized side
+  + Haraguchi:2012a have maps at 3.3 and 3.7 micron
+  + Galliano:2008a analyze the ratios of PAH features in may objects
+    + Including Orion Bar
+    + They find that they are generally correlated and can be calibrated against the local G_0
+      + Main ratio is 6.2/11.3, which varies from about 0.7 \to 3 in M82, and 1.1 \to 2 in Orion
+      + 7.7/6.2 is about 3 or 2 (varies with method: Lorentzian or spline), while 8.6/6.2 is about 0.5 or 0.2 (again varying with method). In both cases, the ratio is roughly constant.
+    + They show that PAH charge variation is the only possible explanation for this.
+      + Other effects (temperature change with very high G_0 or due to size changes, extinction) would produce an anti correlation between 8.6/6.2 and 7.7/11.3, which is *not observed*
+    + They estimate G_0 from the VSG continuum brightness (8 and 14 micron)
+    + This varies from 1e-13 to 1e-12 W/m^2 in the Bar
+    + Then they calibrate 6.2/11.3 against (G_0/n) sqrt(T/1000 K)
+  + Hony:2001a don't do Orion, but find some interesting trends
+    + 3.3/6.2 positively correlates with 11.2/6.2 (other way up from Galliano)
+      + Gives constant value of 11.2/3.3 = 3 to 4
+    + 6.2/11.2 positively correlates with 12.7/11.2
+      + 6.2, 7.7, 8.6, 12.7 all vary together
+    + 12.7/11.2 negatively correlated with PAH/TotalIR
+    + So we have two groups of features
+      1. 3.3 (neutral) and 11.2 (ionized+neutral?)
+      2. 6.2, 7.7, 8.6 (all 3 ionized), 12.7 (this one is strange - should be ionized and neutral)
 **** H_2 emission zone
+:PROPERTIES:
+:ID:       2BFA19A3-2134-4D57-8914-2EE8D56DD0EC
+:END:
 + Kaplan:2017a have the most detailed H_2 observations (many vib-ro lines in near-infrared)
-  + 
+  + Extinction to H_2 emission is measured as A_K = 0.99 mag, which implies A_V = 8 mag for a standard extinction curve
+  + Although Luhman:1998a find A_K = 2.3 to 2.6 for slightly different regions. 
 *** Dynamic models of the Bar
 + Because static models do not seem to explain the coincidence of H_2 and CO dissociation fronts
   + /But do they really?/ Check the implications of the separation that I measured
