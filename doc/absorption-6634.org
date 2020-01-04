@@ -1,7 +1,7 @@
 #+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline
 #+options: author:t broken-links:nil c:nil creator:nil
 #+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
-#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+ #+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
 #+options: timestamp:t title:t toc:t todo:t |:t
 #+language: en
 #+select_tags: export
@@ -7747,6 +7747,21 @@ Ca B 6562.81A
 end of lines
 #+end_example
 
+* Ensenada talk [2019-12-04 Wed]
+
+** Abstract
+Title: Raman scattering in PDRs
+
+Raman scattering is a non-resonant, inelastic scattering by the damping wings of atomic and molecular absorption lines. It is the inelastic analog of Rayleigh scattering.  The broad Raman-scattered wings of the optical H alpha line can be used to map neutral gas that is illuminated by high-mass stars in star forming regions.  The scattering occurs in the photodissociation region (PDR) that surrounds the ionized H II region. Using MUSE observations of the Orion Nebula, I show how this process gives a new diagnostic window into the outer layers of PDRs such as the Orion Bar and Orion South.  I also show that hitherto misterious spatially diffuse absorption features at 6633 and 6664 Angstrom are actually far-ultraviolet neutral oxygen absorption lines (1027.43, 1028.16 A), which have been Raman-scattered into the optical range.  I show examples of how a spectrograph's effective spectral resolution is boosted when observing these Raman-scattered lines, achieving R > 3e5 with Keck HIRES.
+
+** Resumen
+Título: Dispersión Raman en las Regiones Fotodisociadas
+
+La dispersión Raman es una dispersión inelástica no resonante por las alas amortiguadoras de las líneas de absorción atómicas y moleculares. Es el análogo inelástico de la dispersión Rayleigh. Las alas anchas dispersadas por Raman de la línea óptica H alfa se pueden usar para mapear gas neutro que está iluminado por estrellas de alta masa en regiones de formación estelar. La dispersión ocurre en la región fotodisociada (PDR) que rodea la región ionizada H II. Usando observaciones MUSE de la Nebulosa de Orión, muestro cómo este proceso ofrece una nueva ventana de diagnóstico sobre las capas externas de los PDRs, como por ejemplo, la Barra de Orión y Orión Sur. También muestro que las líneas de absorción en 6633 y 6664 Angstrom, hasta ahora de origen misteriosa, son en realidad líneas de oxígeno neutro en el ultravioleta lejano (1027.43, 1028.16 A), que se han dispersado por Raman hasta el rango óptico. Muestro ejemplos de cómo se aumenta la resolución espectral efectiva de un espectrógrafo al observar estas líneas de Raman, logrando R > 3e5 con el echel HIRES de Keck.
+
+** Image
+[[file:~/Dropbox/dib-scatter-hii/talk/wjh-raman-sample-slide/wjh-raman-sample-slide.001.jpeg]]
+
 * Older stuff which is now beside the point 
 
 
@@ -7785,3 +7800,5 @@ end of lines
      #+begin_quote
      The nearly constant positions and nearly unchanged profiles of DIBs, irrespective of the line of sight, point to free gas-phase molecules as the carriers of these bands. [...] 
      #+end_quote
+
+
