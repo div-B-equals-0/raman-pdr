@@ -10,6 +10,28 @@
 * Absorption at 6634 \AA in Orion Nebula
 + [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
 
+
+** Return to this project - 2020 August
+
+*** What remains to do on the paper?
+
+**** TODO Abstract
++ [ ] Needs expanding
+**** TODO Sec 2 - Spectral mapping of Raman wings
++ Looks done
++ [ ] Except for 2.5.3 - Other PDR tracers of the neutral and molecular Bar
+**** TODO Sec 3 - Keck spectra
++ [ ] We have the spectrum, but it needs a better description
+**** TODO Discussion
++ [ ] Very fragmentary - needs some bits cutting and writing the rest
+
+**** DONE Appendix A - Raman scattering theory
+CLOSED: [2020-08-09 Sun 00:44]
++ Looks done
+
+**** TODO Appendix B - 21 cm line
++ Nearly done - needs a figure and that's it
+
 ** Things still to do for paper
 1. [ ] Finish theory of radiative transfer
    - Calculate expected brightness
