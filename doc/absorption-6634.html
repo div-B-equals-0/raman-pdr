@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-04-20 Mon 09:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Plot the spectrum of different regions</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="William Henney" />
+<style type="text/css">
+<!--/*--><![CDATA[/*><!--*/
+/* 18 Jan 2016: Modified from the stylesheet by Zhitao Gong on
+https://github.com/gongzhitaao/orgcss/
+ */
+
+body {
+    max-width: 100%;
+    margin: 1% 1%;
+    font: normal normal normal 16px/1.6em 'Open Sans', sans-serif;
+    color: #333;
+}
+
+@media all and (min-width: 95ex) {
+    body {
+        max-width: 95ex;
+        margin: 1% auto;
+    }
+
+    .creator {
+        float: right;
+    }
+}
+
+@media not all and (min-width: 110ex) {
+
+    .creator {
+        float: left;
+    }
+
+    p img {
+        width: 95%;
+    }
+}
+
+.title {
+    padding: .5em 0;
+    text-align: center;
+    color: black;
+}
+
+.subtitle {
+    font-size: medium;
+    font-weight: bold;
+    margin-top: 0;
+    text-align: center;
+}
+
+.abstract {
+    width: 80%;
+    margin: auto;
+    font-style: italic;
+}
+
+.abstract p:last-of-type:before {
+    content: "    ";
+    white-space: pre;
+}
+
+.status {
+    font-size: 90%;
+    margin: 2em auto;
+}
+
+[class^="section-number-"] {
+    margin-right: .5em;
+}
+
+#footnotes {
+    font-size: 90%;
+}
+
+.footpara {
+    display: inline;
+    margin: .2em auto;
+}
+
+.footdef {
+    margin-bottom: 1em;
+}
+
+.footdef sup {
+    padding-right: .5em;
+}
+
+a {
+    color: #527d9a;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #003355;
+    border-bottom: 1px dotted;
+}
+
+p img {
+    vertical-align: middle;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: #A5573E;
+    line-height: 1.6em;
+    font-family: 'Droid Serif', serif;
+}
+
+h4,h5,h6 {
+    font-size: 1em;
+}
+
+table {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+thead {
+    border-bottom: 2px solid;
+}
+
+table td + td, table th + th {
+    border-left: 1px solid gray;
+}
+
+table tr {
+    border-top: 1px solid lightgray;
+}
+
+td,th {
+    padding: 5px 10px;
+    vertical-align: middle;
+}
+
+code {
+    padding: 2px 5px;
+    margin: auto 1px;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    background-clip: padding-box;
+    color: #333;
+    font-size: 90%;
+}
+
+blockquote {
+    margin: 1em 2em;
+    padding-left: 1em;
+    border-left: 3px solid #ccc;
+}
+
+kbd {
+    background-color: #f7f7f7;
+    font-size: 14px;
+    margin: 0 .1em;
+    padding: .1em .6em;
+}
+
+.figure {
+    padding: 1em;
+}
+
+.figure p {
+    text-align: center;
+}
+
+.todo {
+    color: red;
+    font-family: monospace;
+}
+
+.done {
+    color: green;
+    font-family: monospace;
+}
+
+.priority {
+    color: orange;
+    font-family: monospace;
+}
+
+.tag {
+    background-color: #eee;
+    font-family: monospace;
+    font-size: 80%;
+    font-weight: normal;
+    padding: 2px;
+}
+
+.timestamp {
+    color: #bebebe;
+}
+
+.timestamp-kwd {
+    color: #5f9ea0;
+}
+
+.org-right {
+    margin-left: auto;
+    margin-right: 0px;
+    text-align: right;
+}
+
+.org-left {
+    margin-left: 0px;
+    margin-right: auto;
+    text-align: left;
+}
+
+.org-center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+#postamble p, #preamble p {
+    font-size: 90%;
+    margin: .2em;
+}
+
+p.verse {
+    margin-left: 3%;
+}
+
+pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    font-family: monospace;
+    margin: 1.2em;
+    padding: 8pt;
+}
+
+pre.src {
+    overflow: auto;
+    padding-top: 1.2em;
+    position: relative;
+    font-size: 90%;
+    color: #dcdccc;
+    background-color: #3f3f3f; 
+}
+
+pre.src:before {
+    background-color: gray;
+    border: 1px solid black;
+    display: none;
+    padding: 3px;
+    position: absolute;
+    right: 10px;
+    /* top: -10px; */
+}
+
+pre.src:hover:before {
+    display: inline;
+}
+
+pre.src-sh:before {
+    content: 'sh';
+}
+pre.src-bash:before {
+    content: 'bash';
+}
+pre.src-emacs-lisp:before {
+    content: 'Emacs Lisp';
+}
+pre.src-R:before {
+    content: 'R';
+}
+pre.src-python:before {
+    content: 'Python';
+}
+pre.src-org:before {
+    content: 'Org';
+}
+pre.src-c++:before {
+    content: 'C++';
+}
+pre.src-c:before {
+    content: 'C';
+}
+pre.src-html:before {
+    content: 'HTML'
+}
+
+caption.t-above {
+    caption-side: top;
+}
+
+caption.t-bottom {
+    caption-side: bottom;
+}
+
+th.org-right {
+    text-align: center;
+}
+
+th.org-left {
+    text-align: center;
+}
+
+th.org-center {
+    text-align: center;
+}
+
+td.org-right {
+    text-align: right;
+}
+
+td.org-left {
+    text-align: left;
+}
+
+td.org-center {
+    text-align: center;
+}
+
+dt {
+    font-weight: bold;
+}
+
+.inlinetask {
+    background: #ffffcc;
+    border: 2px solid gray;
+    margin: 10px;
+    padding: 10px;
+}
+
+#org-div-home-and-up {
+    font-size: 70%;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.linenr {
+    font-size: smaller;
+}
+
+.code-highlighted {
+    background-color: #ffff00;
+}
+
+#bibliography {
+    font-size: 90%;
+}
+
+#bibliography table {
+    width: 100%;
+}
+
+/* .org-info-js_info-navigation { */
+/*     border-style: none; */
+/* } */
+/* #org-info-js_console-label { */
+/*     font-size: 10px; */
+/*     font-weight: bold; */
+/*     white-space: nowrap; */
+/* } */
+/* .org-info-js_search-highlight { */
+/*     background-color: #ffff00; */
+/*     color: #000000; */
+/*     font-weight: bold; */
+/* } */
+/*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Plot the spectrum of different regions</h1>
+<ul class="org-ul">
+<li>When did we last use astropy.regions?
+<ul class="org-ul">
+<li>Turns out to be for sigma Ori</li>
+<li>Need to use <code>mask = skyregion.to_pixel(WCS).to_mask().to_image(SHAPE)</code></li>
+</ul></li>
+<li>Use the 5x5 image to make it faster</li>
+<li>Save the cont-subtracted and cont spectra to a json file</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python">import json
+import numpy as np
+import astropy.coordinates as coord
+from astropy.wcs import WCS
+from astropy.io import fits
+import regions as rg
+
+regions = rg.read_ds9("../data/raman-extract-boxes.reg")
+
+hdu = fits.open("../data/orion-muse/muse-hr-data-wavsec23-rebin16x16-cont-sub.fits")["DATA"]
+chdu = fits.open("../data/orion-muse/muse-hr-data-wavsec23-rebin16x16-cont.fits")["DATA"]
+
+spec = {}
+nz, ny, nx = hdu.data.shape
+w = WCS(hdu.header)
+_, _, waves = w.pixel_to_world_values([0], [0], np.arange(nz))
+for region in regions:
+    mask = region.to_pixel(w.celestial).to_mask().to_image((ny, nx))
+    label = region.meta["label"]
+    spec[label] = {
+        "wavelength": (1e10*waves).tolist(),
+        "raman": np.sum(hdu.data*mask[None, :, :], axis=(1, 2)).tolist(),
+        "continuum": np.sum(chdu.data*mask[None, :, :], axis=(1, 2)).tolist(),
+        }
+
+jsonfile = "raman-orion-muse-1d-spectra.json"
+
+with open(jsonfile, "w") as f:
+    json.dump(spec, f, indent=3)
+</pre>
+</div>
+
+<p>
+<a href="raman-orion-muse-1d-spectra.json">raman-orion-muse-1d-spectra.json</a>
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-python">import numpy as np
+import json
+from matplotlib import pyplot as plt
+import seaborn as sns
+from astropy.table import Table
+from astropy.convolution import Gaussian1DKernel, convolve_fft
+
+jsonfile = "raman-orion-muse-1d-spectra.json"
+data = json.load(open(jsonfile))
+figfile = jsonfile.replace(".json", ".pdf")
+
+sky = Table.read("../data/skycalc/skytable.fits")
+
+# Heliocentric correction
+V_HEL = -16.217273731
+# Heliocentric velocity of molecular cloud
+V_OMC = +9.0 + 19.1
+
+region_order = [
+    "SW minibar",
+    "Orion S",
+    "E-W Bar",
+    "Trap W",
+    "Trap SW",
+    "Bar",
+]
+
+bands = {
+    "B133": [6414.85, 6445.45],
+    "B080": [6469.25, 6496.45],
+    "B054": [6499.85, 6517.7],
+    "B033": [6518.55, 6540.65],
+    "R040": [6594.2, 6611.2],
+    "R058": [6612.05, 6628.2],
+    "R087": [6638.4, 6660.5],
+    "R136": [6688.55, 6708.95],
+}
+
+strong_lines = {
+    6562.79: r"H$\alpha$",
+    6548.05: "[N II]",
+    6583.45: "[N II]",
+}
+medium_lines = {
+    6300.30: "[O I]",
+    6312.06: "[S III]",
+    6347.11: "Si II",
+    6363.78: "[O I]",
+    6371.36: "Si II",
+    6578.05: "C II",
+    6678.15: "He I",
+    6716.44: "[S II]",
+    6730.816: "[S II]",
+}
+weak_lines = {
+    6257.18: "C II",
+    6259.56: " ", # no label to avoid overlap
+    6334.35: "N II",
+    6382.8: "N II",
+    6401.5: "[Ni III]",
+    6501.4: "O II",
+    6510.9: "O II",
+    6461.95: "C II",
+    6527.24: "[N II]",
+    6533.8: "[Ni III]",
+    # 6544.3: "?",
+    6641: "[Cr IV]",
+    6666.80: "[Ni II]",
+    6699.39: "He I",
+    6721.39: "O II",
+    6755.02: "He I",
+    6769.59: "N I",
+    6785.81: "O II",
+    6791.48: "[Ni II]",
+    6809.23: "N II",
+    6813.57: "[Ni II]",
+}
+sky_lines = [6235.5, 6287.5, 6306.5, 6329, 6465, 6471, 6478, 6498.15, 6507, 6603]
+absorption_lines = {
+    6633.347: "O I",
+    6663.747: "O I",
+    6362.3446: "Si II",
+    6480.8110: "Si II",
+    6494.0: "?",
+    6708.0: "?",
+    6450.0: "?",
+}
+
+fig, ax = plt.subplots(figsize=(10, 6))
+
+wavmin, wavmax = 6200, 6820
+offset = 0.75
+fc = 0.7
+for region in region_order:
+    spec = data[region]
+    waves = np.array(spec["wavelength"]) 
+    # Put in OMC frame
+    waves *= (1.0 - (V_OMC + V_HEL)/3e5)
+    imin = np.sum(waves &lt; wavmin)
+    imax = np.sum(waves &lt; wavmax)
+    cont = np.array(spec["continuum"])
+    total = cont + np.array(spec["raman"])
+    waves = waves[imin:imax]
+    cont = cont[imin:imax]
+    total = total[imin:imax]
+    norm = cont[0]
+    cont /= norm
+    total /= norm
+    ax.fill_between(waves, cont + offset, total + offset, color=(fc, fc, fc))
+    ax.plot(waves, cont + offset, color="k", lw=0.5, zorder=-100)
+    ax.plot(waves, total + offset, color="k", lw=0.7)
+    ax.annotate(f"{np.round(np.abs(offset), 2):.2f} + {region}",
+                (wavmax, cont[-1] + offset),
+                xytext=(5, 0), textcoords="offset points", ha="left", va="center")
+    offset -= 0.15
+    fc += 0.04
+
+# bandcolors = iter(sns.color_palette("coolwarm", len(bands)))
+# bandcolors = iter(sns.diverging_palette(220, 20, sep=1, n=len(bands), center="dark"))
+alphas = iter([0.2, 0.4, 0.4, 0.6, 0.6, 0.4, 0.4, 0.2])
+bandcolors = iter(["c", "c", "b", "b", "m", "m", "r", "r"])
+for band, [wav1, wav2] in bands.items():
+    ax.axvspan(wav1, wav2, 0.2, 0.95, facecolor=next(bandcolors), alpha=next(alphas), zorder=-10)
+    ax.text((wav1 + wav2)/2, 2.2, band, ha="center", fontsize="xx-small")
+
+sns.set_color_codes("dark")
+for wave, label in strong_lines.items():
+    ax.axvline(wave, 0.22, 0.8, color="k", lw=2, zorder=-5)
+    ax.text(wave, 0.74, label, ha="center", va="top", rotation="vertical", fontsize="small")
+for wave, label in medium_lines.items():
+    ax.axvline(wave, 0.25, 0.8, color="k", lw=1, zorder=-5)
+    ax.text(wave, 0.8, label, ha="center", va="top", rotation="vertical", fontsize="xx-small")
+for wave, label in weak_lines.items():
+    ax.axvline(wave, 0.28, 0.88, color="k", lw=0.5, zorder=-5)
+    ax.text(wave, 2.03, label, ha="center", va="bottom", rotation="vertical", fontsize="xx-small")
+
+for wave, label in absorption_lines.items():
+    lw = 0.5 if "?" in label else 1.0
+    miny = 0.19 if "?" in label else 0.18
+    ytext = 0.69 if "?" in label else 0.65
+    ax.axvline(wave, miny, 0.8, color="r", ls="--", lw=lw, zorder=-5)
+    ax.text(wave, ytext, label, ha="center", rotation="horizontal", fontsize="x-small", color="r", fontweight="bold")
+
+for wave in sky_lines:
+    # Sky line wavelengths need correcting from topocentric to OMC farme
+    wave *= (1.0 - (V_OMC + V_HEL)/3e5)
+    ax.axvline(wave, 0.08, 0.82, color="g", lw=1, ls=":", zorder=-5)
+    #ax.text(wave, 0.7, "sky", ha="center", rotation="vertical", fontsize="xx-small")
+
+
+# Add in sky transmission "trans_ma" and skyglow lines "flux_ael" from skycalc
+skywavs =  10*sky["lam"]*(1.0 - (V_OMC + V_HEL)/3e5)
+smask = (wavmin &lt;= skywavs) &amp; (skywavs &lt;= wavmax) 
+skywavs = skywavs[smask]
+# pixels are 0.1 AA - convolve to give R = 2500 at 6500 AA
+fwhm_pix = 6500.0/(0.1*2500.0)
+gauss = Gaussian1DKernel(stddev=fwhm_pix/2.3)
+skytrans = convolve_fft(sky["trans_ma"], gauss)[smask]
+skyemis = convolve_fft(sky["flux_ael"], gauss)[smask]
+
+sns.set_color_codes("dark")
+
+offset = -0.55
+ax.plot(skywavs, (1.2*skytrans - 0.2) + offset, lw=0.8, color="r")
+ax.annotate(f"${np.round(offset, 2):.2f}$ + Telluric absorption",
+            (wavmax, 1 + offset), color="r",
+            xytext=(5, 0), textcoords="offset points", ha="left", va="center")
+offset = 0.55
+ax.plot(skywavs, offset + skyemis/skyemis.max(), lw=0.8, color="g") 
+ax.annotate(f"{np.round(np.abs(offset), 2):.2f} + Airglow",
+            (wavmax, offset), color="g",
+            xytext=(5, 0), textcoords="offset points", ha="left", va="center")
+
+ax.set(
+    xlabel="STP Wavelength, Å (OMC frame)",
+    ylabel="Relative Flux, $F_{\lambda} / F_{6200}$ + offset",
+    # xlim=[wavmin, wavmax],
+    ylim=[0.35, 2.25],
+)
+ax.minorticks_on()
+sns.despine(fig)
+fig.tight_layout()
+fig.savefig(figfile)
+</pre>
+</div>
+
+<p>
+<a href="raman-orion-muse-1d-spectra.pdf">raman-orion-muse-1d-spectra.pdf</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: William Henney</p>
+<p class="date">Created: 2020-04-20 Mon 09:01</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

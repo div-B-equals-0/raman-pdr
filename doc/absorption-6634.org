@@ -1,7 +1,7 @@
 #+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline
 #+options: author:t broken-links:nil c:nil creator:nil
 #+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
- #+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
 #+options: timestamp:t title:t toc:t todo:t |:t
 #+language: en
 #+select_tags: export
@@ -404,6 +404,9 @@ python ../src/concat-wavsecs.py $DATADIR $SUFFIX $OUTDIR
 CLOSED: [2019-09-04 Wed 12:24]
 
 **** Remove continuum from cube
+:PROPERTIES:
+:ID:       90BA9F0F-DEF4-47FB-AE68-722524E169F1
+:END:
 + [2019-09-01 Sun] This is revisited to use a broader range - see above
 + Also, write scripts to python files and use shell commands to run them
 + Take opportunity to use wavelengths instead of array indices
@@ -5850,6 +5853,9 @@ b Position 5:34:39.89, -5:26:42.1.
 c Fainter companion 0."51 at 47deg.
 * Column densities of O I lines
 ** Relation between Einstein-A and cross section
+:PROPERTIES:
+:ID:       EA7894C6-F3D9-4534-A222-767B47129164
+:END:
 + \sigma_ik = (h\nu/4\pi) B_ik
 + g_k A_ki = (2h\nu^3/c^2) g_k B_ki = (2h\nu^3/c^2) g_i B_ik
 + => \sigma_ik = (h\nu/4\pi) g_k A_ki / [(2h\nu^3/c^2) g_i ] = (g_k/g_i) (c^2 / 8 \pi \nu^2) A_ki 
@@ -5858,7 +5864,7 @@ c Fainter companion 0."51 at 47deg.
   + Because the line-center cross-section does depend on the line width
   + \sigma(\nu_0) = \sigma_jk \phi(\nu_0) cm^2
   + Where \phi(\nu) is the absorption profile
-  + And \phi(\nu_0) ~ 1\Delta\nu/ and \Delta\nu = \nu_0 \Delta{}V/c = \Delta{}V / \lambda_0
+  + And \phi(\nu_0) ~ 1/\Delta\nu and \Delta\nu = \nu_0 \Delta{}V/c = \Delta{}V / \lambda_0
   + => \phi(\nu_0) \approx \lambda_0 / \Delta{}V
 + So, taking the Hilborn version from below, we get
   + \sigma(\nu_0) = 1/4 (g_2/g_1) (\lambda_0^3 / \Delta{}V) A_ki 
@@ -6396,6 +6402,12 @@ Around 920 A, which is where the highest observed ns and nd pumping lines are.  
 
 #+RESULTS:
 [[file:powr-trapezium-fine-fuv-890-940.pdf]]
+
+
+#+call: plot-powr-trapezium-fine-fuv(200, 750)
+
+#+RESULTS:
+[[file:powr-trapezium-fine-fuv-200-750.pdf]]
 
 *** Combine fine and coarse and make them suitable for Cloudy
 Combine fine and coarse:
