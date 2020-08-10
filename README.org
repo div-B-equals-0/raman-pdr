@@ -1,3 +1,5 @@
-DIB-like absorption features in spatially extended continuum from H II regions
+Raman-scattered absorption features in spatially extended continuum from H II regions.  
 
 See notes at [[file:doc/absorption-6634.org]]
+
+Note that the repo name is now a misnomer - I originally thought they might be related to /Diffuse Interstellar Bands/ but it turns out they are not.
