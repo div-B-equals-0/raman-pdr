@@ -777,19 +777,20 @@ become apparent.
 
 
 
-\begin{table}
+\begin{table*}
   \caption{Fit parameters from Gaussian line fits}
   \label{tab:line-fits}
-  \begin{tabular}{l RRR RRR}\toprule
-     & \multicolumn{3}{c}{\ion{O}{1}} & \multicolumn{3}{c}{\ion{Ni}{2}} \\
-    Region & A & V & \sigma & A & V & \sigma \\ \midrule
-    A & & & & & & \\
-    B & & & & & &  \\
-    C & & & & & &  \\
-    D & & & & & &  \\
-    E & & & & & &  \\ \bottomrule
+  \begin{tabular}{l RRR @{\hspace*{1cm}} RRR}\toprule
+     & \multicolumn{3}{c}{\ion{O}{1} absorption} & \multicolumn{3}{c}{[\ion{Ni}{2}] emission} \\
+    Region & A & V & W & A & V & W \\ \midrule
+    A & 0.050 \pm 0.003 & 0.3 \pm 0.4 & 14.5 \pm 0.9 & 0.75 \pm 0.02 & 0.4 \pm 0.1 & 9.7 \pm 0.3\\
+    B & 0.039 \pm 0.004 & -1.6 \pm 0.5 & 9.6 \pm 1.1 & 0.71 \pm 0.02 & 2.7 \pm 0.1 & 9.9 \pm 0.3\\
+    C & 0.030 \pm 0.005 & -1.2 \pm 0.6 & 7.6 \pm 1.5 & 0.60 \pm 0.02 & 2.9 \pm 0.2 & 10.5 \pm 0.4\\
+    D & 0.022 \pm 0.007 & 1.3 \pm 1.0 & 7.2 \pm 2.4 & 0.46 \pm 0.01 & 1.8 \pm 0.2 & 10.4 \pm 0.4\\
+    E &  &  &  & 0.29 \pm 0.01 & 3.6 \pm 0.2 & 9.1 \pm 0.5\\
+    \bottomrule 
   \end{tabular}
-\end{table}
+\end{table*}
 
 \section{Discussion}
 \label{sec:discussion}
