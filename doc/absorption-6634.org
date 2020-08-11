@@ -3878,13 +3878,18 @@ Fit the continuum and remove it
   + The spectral resolution is not very good - we do see the absorption, but only just
 + [X] Manuel PPAK spectra
   + Good example is [[file:~/Dropbox/RubinWFC3/Tsquared/manu-region-specplot-r-6600-6800-x-250-y-350-w0400-h0200.jpg][file:~/Dropbox/RubinWFC3/Tsquared/manu-region-specplot-r-6600-6800-x-250-y-350-w0400-h0200.jpg]]
-+ [ ] STIS
+  + This clearly shows the line and is higher s/n and
++ [X] STIS
   + I don't seem to have the files any more
     + I used to have a ~Work/HST-STIS~ folder, but seems to be missing - maybe on external disk
     + They do seem to be in ~/fs/nil/other0/will/orion-stis~ on linux server
+    + Yes, they are on external disk ~SSD-2TB~
   + Best bet would seem to be from Bally program GO8324
   + There is a 6581 \to 6867 \AA spectrum in a slit from LV2 to LV6, same as for the NUV lines
   + See [[file:~/Dropbox/STIS-LV/stis-lv.org][file:~/Dropbox/STIS-LV/stis-lv.org]]
+  + I have looked at these and they are insufficient S/N
+    + Maybe adding togeter all of them would help
+    + But we would have to eliminate the hot pixels and cosmic rays
 + Herbig's HIRES th1E spectra
   + Has same problem as other Keck data
 ** DONE [4/4] Brightness profiles of PDR emission
