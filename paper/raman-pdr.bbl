@@ -304,6 +304,13 @@ Sausalito, CA: University Science Books
 \bibitem[\protect\citeauthoryear{Van~Hoof}{Van~Hoof}{2018}]{Van-Hoof:2018a}
 Van~Hoof P. A.~M.,  2018, \mn@doi [Galaxies] {10.3390/galaxies6020063}, 6
 
+\bibitem[\protect\citeauthoryear{{Vogt} et~al.,}{{Vogt}
+  et~al.}{1994}]{Vogt:1994a}
+{Vogt} S.~S.,  et~al., 1994, in {Crawford} D.~L.,  {Craine} E.~R.,  eds,
+  Society of Photo-Optical Instrumentation Engineers (SPIE) Conference Series
+  Vol. 2198, Instrumentation in Astronomy VIII. p.~362,
+  \mn@doi{10.1117/12.176725}
+
 \bibitem[\protect\citeauthoryear{{Walmsley}, {Natta}, {Oliva}  \&
   {Testi}}{{Walmsley} et~al.}{2000}]{Walmsley:2000a}
 {Walmsley} C.~M.,  {Natta} A.,  {Oliva} E.,   {Testi} L.,  2000, \aap, \href

@@ -753,14 +753,6 @@ position of the \chem{H_2} emission.
 \section{High-resolution spectroscopy of Raman-scattered \boldmath\ion{O}{1} \SI{1028}{\angstrom}}
 \label{sec:keck-observations}
 
-
-Keck HIRES spectra described in \citet{Henney:1999a} and
-\citet{Bally:2000a}. The spectrum I use is of HH~529 base region in
-Orion~South. Published results from these data have concentrated on
-strong nebular lines, but here I use a small section of the spectrum
-in the range \SIrange{6660}{6670}{\angstrom} for reasons which will
-become apparent.
-
 \begin{figure}
   \includegraphics[width=\linewidth]{figs/raman-zoom-keck-regions}
   \caption{Zoom on Trapezium and Orion South region, showing regions
@@ -791,34 +783,69 @@ become apparent.
   \label{fig:raman-keck}
 \end{figure*}
 
+In order to obtain observations of the Raman-scattered \ion{O}{1} absorption lines
+at high spectral resolution, I have searched through archival spectra
+of the Orion Nebula obtained with the HIRES spectrograph on the Keck~I telescope
+\citep{Vogt:1994a}.
+The observations, obtained in 1997 December~5 and 6,
+were targeted at a small number of proplyds and jets in the nebula
+and are described in detail in \citet{Henney:1999a} and \citet{Bally:2000a}.
+Unfortunately, the stronger \SI{6633}{\angstrom} feature falls in a gap between adjacent spectrograph orders and so was not observed.
+However, the weaker \SI{6664}{\angstrom} feature falls in order~53 and is detected in many of the spectra.
+Results for the proplyds will be presented elsewhere,
+and I concentrate here on 16 slit positions located in the Orion~South region,
+roughly \SI{30}{arcsec} SW of the Trapezium.
+Closely similar slit positions are co-added to improve S/N, 
+forming four groups, A, B, C, and D, with positions shown in Figure~\ref{fig:zoom-keck}.
+Most of the slits are \SI{28}{arcsec} long and \SI{0.574}{arcsec} wide,
+but only the central \SI{11}{arcsec} of order~53 is usable for faint lines
+due to overlap of adjacent orders.\footnote{
+  One slit in Group~A is \SI{14}{arcsec} long and does not suffer any order overlap.
+}
+
+The broad Raman-scattered wings to \ha{} are spread over several spectrograph orders
+and uncertainties in the flat-field correction means that it is impossible to separate the wings from the nebular continuum.
+Therefore, I simply fit a 5th-order polynomial to line-free sections of the spectrum
+over the entire order (\SI{6649}{\angstrom} to \SI{6747}{\angstrom}) and divide
+to give a continuum-normalized spectrum.
+Results for the four groups are shown in Figure~\ref{fig:raman-keck} for the wavelength range of interest.
 
 
-\begin{table*}
-  \caption{Fit parameters from Gaussian line fits to Keck HIRES spectra in Orion South}
+
+
+
+\begin{table}
+  \caption{Parameters from single-Gaussian line fits to Keck HIRES spectra}
   \label{tab:line-fits}
-  \begin{tabular}{l RRR @{\hspace*{1cm}} RRR}\toprule
-     & \multicolumn{3}{c}{\ion{O}{1} Raman absorption \SI{6663.75}{\angstrom}} & \multicolumn{3}{c}{[\ion{Ni}{2}] emission \SI{6666.80}{\angstrom}} \\
-    Region & A & V, \si{km.s^{-1}} & W, \si{km.s^{-1}} & A & V, \si{km.s^{-1}} & W, \si{km.s^{-1}} \\
-    (1) & (2) & (3) & (4) & (5) & (6) & (7) \\
+  \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}} l  RRR}\toprule
+    Region & \text{Relative amplitude},\ A & V,\ \si{km.s^{-1}} & W,\ \si{km.s^{-1}}  \\
+    (1) & (2) & (3) & (4)  \\
     \midrule
-    A & 0.050 \pm 0.003 & 0.3 \pm 0.4 & 14.5 \pm 0.9 & 0.75 \pm 0.02 & 0.4 \pm 0.1 & 9.7 \pm 0.3\\
-    B & 0.039 \pm 0.004 & -1.6 \pm 0.5 & 9.6 \pm 1.1 & 0.71 \pm 0.02 & 2.7 \pm 0.1 & 9.9 \pm 0.3\\
-    C & 0.030 \pm 0.005 & -1.2 \pm 0.6 & 7.6 \pm 1.5 & 0.60 \pm 0.02 & 2.9 \pm 0.2 & 10.5 \pm 0.4\\
-    D & 0.022 \pm 0.007 & 1.3 \pm 1.0 & 7.2 \pm 2.4 & 0.46 \pm 0.01 & 1.8 \pm 0.2 & 10.4 \pm 0.4\\
-    E &  &  &  & 0.29 \pm 0.01 & 3.6 \pm 0.2 & 9.1 \pm 0.5\\
+    & \multicolumn{3}{c}{[\ion{Ni}{2}] emission \SI{6666.80}{\angstrom}} \\[2pt]
+    A &  0.75 \pm 0.02 & 0.4 \pm 0.1 & 9.7 \pm 0.3\\
+    B &  0.71 \pm 0.02 & 2.7 \pm 0.1 & 9.9 \pm 0.3\\
+    C &  0.60 \pm 0.02 & 2.9 \pm 0.2 & 10.5 \pm 0.4\\
+    D & 0.46 \pm 0.01 & 1.8 \pm 0.2 & 10.4 \pm 0.4\\
+    E & 0.29 \pm 0.01 & 3.6 \pm 0.2 & 9.1 \pm 0.5\\
+    \addlinespace[\medskipamount]
+    & \multicolumn{3}{c}{\ion{O}{1} Raman-scattered absorption \SI{6663.75}{\angstrom}} \\[2pt]
+    A & 0.050 \pm 0.003 & 0.3 \pm 0.4 & 14.5 \pm 0.9  \\
+    B & 0.039 \pm 0.004 & -1.6 \pm 0.5 & 9.6 \pm 1.1  \\
+    C & 0.030 \pm 0.005 & -1.2 \pm 0.6 & 7.6 \pm 1.5  \\
+    D & 0.022 \pm 0.007 & 1.3 \pm 1.0 & 7.2 \pm 2.4    \\
     \bottomrule 
-    \multicolumn{7}{@{}p{12cm}@{}}{%
+    \multicolumn{4}{@{}p{\columnwidth}@{}}{%
     \textsc{Columns}:
     (1)~Region of nebula covered by HIRES slits (see Figure~\ref{fig:zoom-keck}).
-    (2, 3, 4)~Parameters of gaussian fit to \ion{O}{1} Raman-scattered absorption line:
-    peak absorption depth relative to continuum, \(A\),
-    centroid velocity, \(V\), and FWHM line width, \(W\).
-    For \(V\) and \(W\), the apparent values have been divided by \num{6.3999329}
+    (2)~Peak emission height or absorption depth relative to continuum.
+    (3)~Centroid velocity in frame of molecular cloud. 
+    (4)~Full-width half-maximum line width.
+    Note that in the case of the \ion{O}{1} Raman-scattered absorption line
+    the centroid velocity and line width have been divided by \num{6.4}
     to account for the stretching of the Doppler scale between the UV and optical frames.
-    (5, 6, 7)~Parameters of gaussian fit to [\ion{Ni}{2}] emission line.
     }
-  \end{tabular}
-\end{table*}
+  \end{tabular*}
+\end{table}
 
 \section{Discussion}
 \label{sec:discussion}
