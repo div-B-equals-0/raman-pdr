@@ -32,6 +32,13 @@
 {Bacon} R.,  et~al., 2014, The Messenger, \href
   {https://ui.adsabs.harvard.edu/abs/2014Msngr.157...13B} {157, 13}
 
+\bibitem[\protect\citeauthoryear{{Baldwin}, {Verner}, {Verner}, {Ferland},
+  {Martin}, {Korista}  \& {Rubin}}{{Baldwin} et~al.}{2000}]{Baldwin:2000a}
+{Baldwin} J.~A.,  {Verner} E.~M.,  {Verner} D.~A.,  {Ferland} G.~J.,  {Martin}
+  P.~G.,  {Korista} K.~T.,   {Rubin} R.~H.,  2000, \mn@doi [\apjs]
+  {10.1086/313416}, \href {http://adsabs.harvard.edu/abs/2000ApJS..129..229B}
+  {129, 229}
+
 \bibitem[\protect\citeauthoryear{{Bally}, {O'Dell}  \& {McCaughrean}}{{Bally}
   et~al.}{2000}]{Bally:2000a}
 {Bally} J.,  {O'Dell} C.~R.,   {McCaughrean} M.~J.,  2000, \mn@doi [\aj]
@@ -89,6 +96,13 @@
 {Escalante} V.,  {Sternberg} A.,   {Dalgarno} A.,  1991, \mn@doi [\apj]
   {10.1086/170225}, \href
   {https://ui.adsabs.harvard.edu/abs/1991ApJ...375..630E} {375, 630}
+
+\bibitem[\protect\citeauthoryear{{Ferland}, {Henney}, {O'Dell}, {Porter}, {van
+  Hoof}  \& {Williams}}{{Ferland} et~al.}{2012}]{Ferland:2012a}
+{Ferland} G.~J.,  {Henney} W.~J.,  {O'Dell} C.~R.,  {Porter} R.~L.,  {van Hoof}
+  P.~A.~M.,   {Williams} R.~J.~R.,  2012, \mn@doi [\apj]
+  {10.1088/0004-637X/757/1/79}, \href
+  {http://adsabs.harvard.edu/abs/2012ApJ...757...79F} {757, 79}
 
 \bibitem[\protect\citeauthoryear{{Foster} \& {Goodman}}{{Foster} \&
   {Goodman}}{2006}]{Foster:2006a}
@@ -273,6 +287,11 @@ Sausalito, CA: University Science Books
 \bibitem[\protect\citeauthoryear{{Schmid}}{{Schmid}}{1989}]{Schmid:1989a}
 {Schmid} H.~M.,  1989, \aap, \href
   {https://ui.adsabs.harvard.edu/abs/1989A&A...211L..31S} {211, L31}
+
+\bibitem[\protect\citeauthoryear{Shenstone}{Shenstone}{1970}]{Shenstone:1970a}
+Shenstone A.~G.,  1970, \mn@doi [Journal of research of the National Bureau of
+  Standards. Section A, Physics and chemistry] {10.6028/jres.074A.067}, 74A,
+  801
 
 \bibitem[\protect\citeauthoryear{{Simón-D{\'{\i}}az}, {Herrero}, {Esteban}  \&
   {Najarro}}{{Simón-D{\'{\i}}az} et~al.}{2006}]{Simon-Diaz:2006b}

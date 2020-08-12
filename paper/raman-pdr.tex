@@ -796,7 +796,7 @@ Results for the proplyds will be presented elsewhere,
 and I concentrate here on 16 slit positions located in the Orion~South region,
 roughly \SI{30}{arcsec} SW of the Trapezium.
 Closely similar slit positions are co-added to improve S/N, 
-forming four groups, A, B, C, and D, with positions shown in Figure~\ref{fig:zoom-keck}.
+forming five groups, A to E, with positions shown in Figure~\ref{fig:zoom-keck}.
 Most of the slits are \SI{28}{arcsec} long and \SI{0.574}{arcsec} wide,
 but only the central \SI{11}{arcsec} of order~53 is usable for faint lines
 due to overlap of adjacent orders.\footnote{
@@ -809,10 +809,16 @@ Therefore, I simply fit a 5th-order polynomial to line-free sections of the spec
 over the entire order (\SI{6649}{\angstrom} to \SI{6747}{\angstrom}) and divide
 to give a continuum-normalized spectrum.
 Results for the four groups are shown in Figure~\ref{fig:raman-keck} for the wavelength range of interest.
-
-
-
-
+A shallow broad absorption feature is clearly seen around \SI{6664}{\angstrom} in regions A, B, and C,
+and arguably in region D also, while no such feature is seen in region~E.\@
+At this high spectral resolution (resolving power \(R \approx \num{50000}\)),
+the absorption line is well-separated from the adjacent [\ion{Ni}{2}] emission line at \SI{6666.8}{\angstrom}.
+From Figure~\ref{fig:zoom-keck} it can be seen that regions A, B, and C overlap with
+contours of strong \ha{} wing emission in the SW minibar,
+while region E lies in a higher ionization part of the nebula, where the \ha{} wing is weak.
+This is consistent with the observed relative absorption depths,
+assuming that the \SI{6664}{\angstrom} feature is due to Raman scattering of the \ion{O}{1} \SI{1028.15729} line
+(see Table~\ref{tab:raman-wavelengths}). 
 
 \begin{table}
   \caption{Parameters from single-Gaussian line fits to Keck HIRES spectra}
@@ -822,30 +828,58 @@ Results for the four groups are shown in Figure~\ref{fig:raman-keck} for the wav
     (1) & (2) & (3) & (4)  \\
     \midrule
     & \multicolumn{3}{c}{[\ion{Ni}{2}] emission \SI{6666.80}{\angstrom}} \\[2pt]
-    A &  0.75 \pm 0.02 & 0.4 \pm 0.1 & 9.7 \pm 0.3\\
-    B &  0.71 \pm 0.02 & 2.7 \pm 0.1 & 9.9 \pm 0.3\\
-    C &  0.60 \pm 0.02 & 2.9 \pm 0.2 & 10.5 \pm 0.4\\
-    D & 0.46 \pm 0.01 & 1.8 \pm 0.2 & 10.4 \pm 0.4\\
-    E & 0.29 \pm 0.01 & 3.6 \pm 0.2 & 9.1 \pm 0.5\\
+    A &  0.75 \pm 0.02 & 0.4 \pm 0.1 & 7.7 \pm 0.4\\
+    B &  0.71 \pm 0.02 & 2.7 \pm 0.1 & 7.9 \pm 0.4\\
+    C &  0.60 \pm 0.02 & 2.9 \pm 0.2 & 8.6 \pm 0.5\\
+    D & 0.46 \pm 0.01 & 1.8 \pm 0.2 & 8.5 \pm 0.4\\
+    E & 0.29 \pm 0.01 & 3.6 \pm 0.2 & 6.8 \pm 0.6\\
     \addlinespace[\medskipamount]
     & \multicolumn{3}{c}{\ion{O}{1} Raman-scattered absorption \SI{6663.75}{\angstrom}} \\[2pt]
-    A & 0.050 \pm 0.003 & 0.3 \pm 0.4 & 14.5 \pm 0.9  \\
+    A & 0.050 \pm 0.003 & 0.3 \pm 0.4 & 14.5 \pm 1.0  \\
     B & 0.039 \pm 0.004 & -1.6 \pm 0.5 & 9.6 \pm 1.1  \\
     C & 0.030 \pm 0.005 & -1.2 \pm 0.6 & 7.6 \pm 1.5  \\
-    D & 0.022 \pm 0.007 & 1.3 \pm 1.0 & 7.2 \pm 2.4    \\
+    D & 0.022 \pm 0.007 & 1.3 \pm 1.0 & 7.2 \pm 2.5    \\
     \bottomrule 
     \multicolumn{4}{@{}p{\columnwidth}@{}}{%
     \textsc{Columns}:
     (1)~Region of nebula covered by HIRES slits (see Figure~\ref{fig:zoom-keck}).
     (2)~Peak emission height or absorption depth relative to continuum.
     (3)~Centroid velocity in frame of molecular cloud. 
-    (4)~Full-width half-maximum line width.
+    (4)~Intrinsic full-width half-maximum line width,
+    after correction for the instrumental width of \SI{6}{km.s^{-1}}.
     Note that in the case of the \ion{O}{1} Raman-scattered absorption line
-    the centroid velocity and line width have been divided by \num{6.4}
+    the centroid velocity and line widths have been divided by \num{6.4}
     to account for the stretching of the Doppler scale between the UV and optical frames.
     }
   \end{tabular*}
 \end{table}
+
+Table~\ref{tab:line-fits} shows results for each slit
+from fitting both the \ion{O}{1} absorption line and the [\ion{Ni}{2}] emission line.
+A single Gaussian component is used for each line
+and the fits are performed with the \texttt{astropy.modeling} package.%
+\footnote{\url{http://docs.astropy.org/en/stable/modeling/}}
+The \ion{O}{1} ultraviolet rest wavelength and its optical counterpart after Raman scattering
+are discussed in Appendix~\ref{sec:raman-theory},
+while the [\ion{Ni}{2}] rest wavelength comes from hollow cathode tube observations \citet{Shenstone:1970a}.
+Velocities are given in the reference frame of molecular gas in the Orion~South region,
+as defined by the centroid of \chem{^{13}CO} emission \citep{Kong:2018a}:
+\(V_{\mathrm{LSR}} = \SI{+9.0 \pm 0.2}{km.s^{-1}}\) or \(V_{\odot} = \SI{+28.1 \pm 0.2}{km.s^{-1}}\).
+Both the emission and absorption lines have velocities that are close to that of the molecular gas,
+as has been previously found for low-ionization lines in the nebula
+\citetext{e.g., Fig.~14 of \citealp{Baldwin:2000a}}.\footnote{
+  Although the [\ion{Ni}{2}] line, which likely arises near the ionization front,
+  seems to show a consistent redshift of order \SI{2}{km.s^{-1}} with respect to CO,
+  this is probably not significant given that the rest wavelength accuracy of \SI{0.03}{\angstrom}
+  corresponds to \SI{1.4}{km.s^{-1}}.
+}
+The line widths are of order \SI{8}{km.s^{-1}} for [\ion{Ni}{2}],
+which is overwhelmingly non-thermal
+since the thermal broadening is only \SI{3}{km.s^{-1}} for \(T = \SI{e4}{K}\).
+This is similar to the width of other collisional lines (e.g., [\ion{O}{1}])
+and fluorescent lines (e.g., [\ion{N}{1}]) that form near the ionization front
+\citetext{see Table~12 of \citealp{Ferland:2012a}}.
+
 
 \section{Discussion}
 \label{sec:discussion}
