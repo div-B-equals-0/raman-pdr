@@ -224,7 +224,7 @@ star formation regions.
 \end{figure}
 The principal observational dataset used in this paper is the imaging
 spectroscopy mosaic of the inner Orion Nebula \citep{Weilbacher:2015a,
-  Mc-Leod:2015b} obtained with the MUSE spectrograph
+  Mc-Leod:2016a} obtained with the MUSE spectrograph
 \citep{Bacon:2010a, Bacon:2014a} on the VLT.  The entire datacube
 covers the wavelength range \num{4595} to \SI{9366}{\angstrom} but we
 concentrate mainly on the range \num{6300} to \SI{6800}{\angstrom},
@@ -873,12 +873,39 @@ as has been previously found for low-ionization lines in the nebula
   this is probably not significant given that the rest wavelength accuracy of \SI{0.03}{\angstrom}
   corresponds to \SI{1.4}{km.s^{-1}}.
 }
-The line widths are of order \SI{8}{km.s^{-1}} for [\ion{Ni}{2}],
-which is overwhelmingly non-thermal
+
+The line width is of order \SI{8}{km.s^{-1}} for [\ion{Ni}{2}],
+which is predominantly non-thermal
 since the thermal broadening is only \SI{3}{km.s^{-1}} for \(T = \SI{e4}{K}\).
-This is similar to the width of other collisional lines (e.g., [\ion{O}{1}])
-and fluorescent lines (e.g., [\ion{N}{1}]) that form near the ionization front
-\citetext{see Table~12 of \citealp{Ferland:2012a}}.
+Compared with other optical emission lines that form near the ionization front,
+the [\ion{Ni}{2}] width is intermediate between the widths of fluorescent lines
+(e.g., [\ion{N}{1}]: \SI{6 \pm 3}{km.s^{-1}} \citealp{Ferland:2012a})
+and collisionally excited lines
+(e.g., [\ion{O}{1}]: \SI{11.5 \pm 2.6}{km.s^{-1}} \citealp{Garcia-Diaz:2008a}).
+The Raman-scattered \ion{O}{1} line shows the greatest width
+(\(W \approx \SI{15}{km.s^{-1}}\))
+in region~A, which is where the absorption is strongest,
+but is significantly narrower (\(W = \num{7}\) to \SI{10}{km.s^{-1}})
+in the other regions.
+
+In principle, the kinematics of Raman-scattered lines should be measurable
+to a higher precision than that of regular lines.
+This is because the stretching of the Doppler scale means that
+the effective spectrograph resolving power is multiplied by \num{6.4} to become \(R' = \num{320000}\).
+However, as can be seen from Table~\ref{tab:line-fits},
+the precision of the centroid velocity and width measurements is actually \emph{lower}
+for \ion{O}{1} than for [\ion{Ni}{2}].\footnote{%
+  The uncertainties are estimated from the parameter covariance array
+  returned by \texttt{astropy.modeling.fitting.LevMarLSQFitter},
+  which uses a least-squares Levenberg-Marquardt algorithm implemented in
+  \texttt{scipy.optimize.leastsq} \citep{Virtanen:2020a},
+  which in turn is based on the \texttt{lmdif} and \texttt{lmder} routines
+  in the MINPACK library \citep{More:1978a}. 
+}
+This is entirely due of the lower signal-to-noise of the absorption line measurements.
+Therefore, much longer total exposure times
+than the \(4 \times \SI{300}{s}\) of the slits that contribute to region~A
+would be necessary to take full advantage of the boost in spectral resolution provided by Raman scattering.
 
 
 \section{Discussion}
@@ -1029,6 +1056,14 @@ roughly cylindrical filament.  Second, they ignore scattering, see
 
 No stellar absorption lines there \citep{Simon-Diaz:2006b}.  Too broad to be atomic or ionic absorption line.  So strong it would have to be a resonance line.  Could be solid-state feature, such as DIBs, but at that wavelength there are only weak features that are seen at very high extinction columns.  Would have to be imprinted during back-scattering so as not to be seen in the stellar spectra. 
 
+\subsection{What high-resolution spectra tell us}
+\label{sec:what-high-resolution}
+
+In addition to the thermal and non-thermal (turbulent) broadening of the
+\ion{O}{1} absorption line itself,
+the Raman-scattered line will be broadened by motions of the \chem{H^0} scatterers.
+
+
 \subsection{Miscellany}
 \label{sec:miscellany}
 
@@ -1178,7 +1213,7 @@ current paper is
   \label{eq:chang-DeltaV1}
   \Delta V_1 = c \left( \frac{\lambda_1}{\lambda(\lyb)} - 1 \right) \ .
 \end{equation}
-The observed Raman-scattered wings of \ha{} that are analyzed below
+The observed Raman-scattered wings of \ha{} that are analyzed in this paper
 are typically within \(\Delta\lambda_2 \sim \pm \SI{100}{\angstrom}\) of the line
 core.  It is therefore convenient to define a dimensionless wavelength
 in the optical domain as

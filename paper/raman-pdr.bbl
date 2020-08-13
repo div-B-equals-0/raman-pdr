@@ -115,6 +115,13 @@
   {10.1086/510621}, \href {http://adsabs.harvard.edu/abs/2007AJ....133..952G}
   {133, 952}
 
+\bibitem[\protect\citeauthoryear{{Garc{\'{\i}}a-D{\'{\i}}az}, {Henney},
+  {López}  \& {Doi}}{{Garc{\'{\i}}a-D{\'{\i}}az}
+  et~al.}{2008}]{Garcia-Diaz:2008a}
+{Garc{\'{\i}}a-D{\'{\i}}az} M.~T.,  {Henney} W.~J.,  {López} J.~A.,   {Doi}
+  T.,  2008, \rmxaa, \href {http://adsabs.harvard.edu/abs/2008RMxAA..44..181G}
+  {44, 181}
+
 \bibitem[\protect\citeauthoryear{{García-Díaz}, {Steffen}, {Henney},
   {López}, {García-López}, {González-Buitrago}  \&
   {Áviles}}{{García-Díaz} et~al.}{2018}]{Garcia-Diaz:2018a}
@@ -208,11 +215,10 @@
   {https://ui.adsabs.harvard.edu/abs/1983JPCRD..12..323M} {12, 323}
 
 \bibitem[\protect\citeauthoryear{{Mc Leod}, {Weilbacher}, {Ginsburg}, {Dale},
-  {Ramsay}  \& {Testi}}{{Mc Leod} et~al.}{2015}]{Mc-Leod:2015b}
+  {Ramsay}  \& {Testi}}{{Mc Leod} et~al.}{2016}]{Mc-Leod:2016a}
 {Mc Leod} A.~F.,  {Weilbacher} P.~M.,  {Ginsburg} A.,  {Dale} J.~E.,  {Ramsay}
-  S.,   {Testi} L.,  2015, preprint, \href
-  {http://adsabs.harvard.edu/abs/2015arXiv151101914M} {} (\mn@eprint {arXiv}
-  {1511.01914})
+  S.,   {Testi} L.,  2016, \mn@doi [\mnras] {10.1093/mnras/stv2617}, \href
+  {http://adsabs.harvard.edu/abs/2016MNRAS.455.4057M} {455, 4057}
 
 \bibitem[\protect\citeauthoryear{{Megeath} et~al.,}{{Megeath}
   et~al.}{2012}]{Megeath:2012a}
@@ -228,6 +234,10 @@
   et~al.}{2008}]{Mohr:2008a}
 Mohr P.~J.,  Taylor B.~N.,   Newell D.~B.,  2008, \mn@doi [Rev. Mod. Phys.]
   {10.1103/RevModPhys.80.633}, 80, 633
+
+\bibitem[\protect\citeauthoryear{Moré}{Moré}{1978}]{More:1978a}
+Moré J.~J.,  1978, in Watson G.~A.,  ed., Numerical Analysis. Springer Berlin
+  Heidelberg, Berlin, Heidelberg, pp 105--116
 
 \bibitem[\protect\citeauthoryear{{Noll}, {Kausch}, {Barden}, {Jones},
   {Szyszka}, {Kimeswenger}  \& {Vinther}}{{Noll} et~al.}{2012}]{Noll:2012a}
@@ -322,6 +332,12 @@ Shenstone A.~G.,  1970, \mn@doi [Journal of research of the National Bureau of
 
 \bibitem[\protect\citeauthoryear{Van~Hoof}{Van~Hoof}{2018}]{Van-Hoof:2018a}
 Van~Hoof P. A.~M.,  2018, \mn@doi [Galaxies] {10.3390/galaxies6020063}, 6
+
+\bibitem[\protect\citeauthoryear{{Virtanen} et~al.,}{{Virtanen}
+  et~al.}{2020}]{Virtanen:2020a}
+{Virtanen} P.,  et~al., 2020, \mn@doi [Nature Methods]
+  {https://doi.org/10.1038/s41592-019-0686-2}, \href {https://rdcu.be/b08Wh}
+  {17, 261}
 
 \bibitem[\protect\citeauthoryear{{Vogt} et~al.,}{{Vogt}
   et~al.}{1994}]{Vogt:1994a}
