@@ -167,6 +167,12 @@
   2005, \mn@doi [\apj] {10.1086/427491}, \href
   {http://adsabs.harvard.edu/abs/2005ApJ...621..328H} {621, 328}
 
+\bibitem[\protect\citeauthoryear{{Hébrard}, {Péquignot}, {Vidal-Madjar},
+  {Walsh}  \& {Ferlet}}{{Hébrard} et~al.}{2000}]{Hebrard:2000a}
+{Hébrard} G.,  {Péquignot} D.,  {Vidal-Madjar} A.,  {Walsh} J.~R.,   {Ferlet}
+  R.,  2000, \aap, \href
+  {https://ui.adsabs.harvard.edu/abs/2000A&A...354L..79H} {354, L79}
+
 \bibitem[\protect\citeauthoryear{{Ivanov}, {Salumbides}, {Vieitez}, {Cacciani},
   {de Lange}  \& {Ubachs}}{{Ivanov} et~al.}{2008}]{Ivanov:2008a}
 {Ivanov} T.~I.,  {Salumbides} E.~J.,  {Vieitez} M.~O.,  {Cacciani} P.~C.,  {de
@@ -263,6 +269,12 @@ Moré J.~J.,  1978, in Watson G.~A.,  ed., Numerical Analysis. Springer Berlin
   {Yusef-Zadeh}}{2000}]{ODell:2000a}
 {O'Dell} C.~R.,  {Yusef-Zadeh} F.,  2000, \mn@doi [\aj] {10.1086/301429}, \href
   {http://adsabs.harvard.edu/abs/2000AJ....120..382O} {120, 382}
+
+\bibitem[\protect\citeauthoryear{{O'Dell}, {Ferland}  \& {Henney}}{{O'Dell}
+  et~al.}{2001}]{ODell:2001a}
+{O'Dell} C.~R.,  {Ferland} G.~J.,   {Henney} W.~J.,  2001, \mn@doi [\apj]
+  {10.1086/321562}, \href {http://adsabs.harvard.edu/abs/2001ApJ...556..203O}
+  {556, 203}
 
 \bibitem[\protect\citeauthoryear{{O'Dell}, {Ferland}  \& {Peimbert}}{{O'Dell}
   et~al.}{2017}]{ODell:2017b}

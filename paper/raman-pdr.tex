@@ -1059,10 +1059,60 @@ No stellar absorption lines there \citep{Simon-Diaz:2006b}.  Too broad to be ato
 \subsection{What high-resolution spectra tell us}
 \label{sec:what-high-resolution}
 
+The observed width of the Raman-scattered \ion{O}{1} line (\S~\ref{sec:keck-observations})
+can be used to derive an upper limit to the gas temperature in the scattering region
+via the following argument.
 In addition to the thermal and non-thermal (turbulent) broadening of the
 \ion{O}{1} absorption line itself,
-the Raman-scattered line will be broadened by motions of the \chem{H^0} scatterers.
+the Raman-scattered line will be further broadened by motions of the \chem{H^0} scatterers.
+Part of this broadening will be due to velocity gradients
+between the line formation region and the scattering region.
+However, the close agreement in centroid velocity (\(< \SI{2}{km.s^{-1}}\))
+between atomic fluorescent lines and \chem{CO} lines \citep{Baldwin:2000a}
+implies that any such gradients are small.
+The other part will be due to thermal motions of the scatterers,
+which will contribute a width (FWHM) of
+\begin{equation}
+  \label{eq:wtherm}
+  W_{\mathrm{therm}} = 0.124 (T/A)^{1/2} \,\si{km.s^{-1}},
+\end{equation}
+where \(T\) is the temperature in \si{K} and \(A\) is the standard relative atomic mass.
+Measured widths of optical \ion{O}{1} fluorescent lines are relatively large
+(\(> \SI{10}{km.s^{-1}}\), \citealp{Baldwin:2000a})
+but this is due to the presence of multiple fine-structure components,
+with splittings of a few \si{km.s^{-1}},
+and so they do not help constrain the Doppler width of the UV \ion{O}{1} \SI{1028}{\angstrom} line.
+Instead we use the \SI{6}{km.s^{-1}} width of the [\ion{N}{1}] \SI{5200}{\angstrom} line
+\citep{Ferland:2012a},
+which is also fluorescently excited and is unaffected by fine-structure broadening.
+The most stringent limit on the temperature is given by the
+smallest observed width of the \SI{6664}{\angstrom} feature,
+for which we take the region~C value of \SI{7.6}{km.s^{-1}}
+(Table~\ref{tab:line-fits}).\footnote{%
+  Although the region~D value is smaller,
+  the signal-to-noise is too small for it to be reliable.
+}
+Subtracting \SI{6}{km.s^-1} in quadrature and substituting into equation~\eqref{eq:wtherm}
+yields an upper limit of \(T \le \SI{480}{K}\) for the Raman-scattering region. 
 
+This is further evidence that Raman scattering by \chem{H^0}
+must be occurring in the fully-neutral PDR,
+rather than the partially ionized ionization front,
+where the temperature is of order \SI{e4}{K}.
+It is interesting to contrast the Raman-scattered lines with the
+case of the deuterium Balmer lines, which are also believed to be excited by fluorescence
+\citep{Hebrard:2000a, ODell:2001a}.
+The minimum width of these lines is observed to be \SI{9}{km.s^{-1}},
+which from equation~\eqref{eq:wtherm} with \(A = 2\) yields \(T = \SI{10500}{K}\)
+if the broadening is purely thermal,
+or \(T = \SI{6000}{K}\) assuming non-thermal broadening of \SI{6}{km.s^{-1}}.
+Either case is consistent with the deuterium lines being formed in the ionization front itself.
+The difference with the Raman scattering can be explained by the magnitudes
+of the relevant cross sections.
+Assuming \(\chem{D/H} = \num{1.5e-5}\),
+the cross section of deuterium Lyman \(\gamma\) is \(\approx \SI{4e-20}{cm^2.(H^0)^{-1}}\),
+which is considerably larger than the Raman wing cross section
+at \SI{1028}{\angstrom}, which is only \(\approx \SI{2e-22}{cm^2.(H^0)^{-1}}\).
 
 \subsection{Miscellany}
 \label{sec:miscellany}

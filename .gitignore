@@ -10,3 +10,4 @@ data/orion-hawki/*.fits.Z
 /paper/auto/raman-pdr.el
 /paper/raman-pdr.out
 doc/ltximg
+/.DS_Store

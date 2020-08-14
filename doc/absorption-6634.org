@@ -7642,6 +7642,172 @@ And finally another version that just does the fine continuum to show the relati
 [[file:cloudy-structure-trap-bar-NH2-22-low-dust-low-PAH.pdf]]
 
 
+
+**** Same but versus electron fraction
+#+name: cloudy-structure-efrac-plot
+#+header: :var MODEL="trap-NH0-21"
+#+begin_src python :return figfile :results file
+  import sys
+  import numpy as np
+  from matplotlib import pyplot as plt
+  from matplotlib.ticker import FixedLocator
+  import seaborn as sns
+  sys.path.append("../../cloudy-dust-charging")
+  from cloudytab import CloudyModel
+
+  sns.set_color_codes()
+
+  figfile = f"cloudy-structure-efrac-{MODEL}.pdf"
+  prefix = f"../cloudy/models/{MODEL}"
+  m = CloudyModel(prefix)
+  # Deal with case where some files are not the full length
+  # Truncate to the shortest
+  savefiles = "ovr", "21cm", "phys", "pdr", "pre", "lya", "linetau", "emis"
+  nzones = min([len(m.data[_]) for _ in savefiles])
+  for s in savefiles:
+      m.data[s] = m.data[s][:nzones]
+
+  depth = m.data["ovr"]["depth"]
+  T = m.data["ovr"]["Te"]
+  Ts = m.data["21cm"]["T(spin)"]
+  ne = m.data["phys"]["n(e)"]
+  nH0 = m.data["ovr"]["hden"]*m.data["ovr"]["HI"]
+  nH2 = m.data["ovr"]["hden"]*m.data["ovr"]["2H_2/H"]
+  efrac = m.data["phys"]["n(e)"] / m.data["ovr"]["hden"]
+  mfrac = m.data["ovr"]["2H_2/H"]
+  NH0 = np.array([np.trapz(nH0[:i], depth[:i]) for i in range(nzones)])
+  NH2 = np.array([np.trapz(nH2[:i], depth[:i]) for i in range(nzones)])
+  NH =  m.data["pdr"]["H colden"]
+  kB = 1.3806503e-16
+  Pgas = m.data["pre"]["Pgas"]/kB
+  Pmag = m.data["pre"]["P(mag)"]/kB
+  Prad = m.data["pre"]["Pinteg"]/kB
+  Pline = m.data["pre"]["Prad(line)"]/kB
+
+  tauV = m.data["pdr"]["TauV(point)"]
+  tau21 = m.data["21cm"]["tau(21cm)"]
+  tauLya = m.data["lya"]["TauIn"]
+  tauLyb = m.data["linetau"]["H  1 1025.72A"]
+  tauOI = m.data["linetau"]["O  1 1028.16A"]
+
+  # kappa1027 = m.data["em1027"]["kappa_abs"]
+  # tau1027 = np.array([np.trapz(kappa1027[:i], depth[:i]) for i in range(nzones)])
+
+  def sigRaman(x):
+      if x > 0.0:
+          sigma = 0.2367/x**2 - 0.0187/x + 0.0041
+      else:
+          sigma = 0.2186/x**2 - 0.0344/x - 0.0054
+      return 1e-21*sigma
+
+  tauR087 = sigRaman(0.87)*NH0
+
+  varsets = {
+      ("Temperature, K", 5.0, 2e4, "log", (10.0, 100.0, 1e3, 1e4)): [
+          ["$T$",  T],
+          [r"$T_{\mathrm{spin}}$", Ts],
+      ],
+      ("Density, cm$^{-3}$", 5.0, 2e6, "log", (100.0, 1e4, 1e6)): [
+          ["$n_e$", ne],
+          [r"$n(\mathrm{H}^0)$", nH0],
+          [r"$2 \times n(\mathrm{H}_2)$", nH2],
+      ],
+      ("Column, cm$^{-2}$", 1e18, 1e23, "log", (1e18, 1e20, 1e22)): [
+          [r"$N(\mathrm{H})$", NH],
+          [r"$N(\mathrm{H}^0)$", NH0],
+          [r"$2 \times N(\mathrm{H}_2)$", NH2],
+      ],
+      ("Pressure, cm$^{-3}$ K", 3000, 0.8e9, "log", (1e4, 1e6, 1e8)): [
+          [r"$P_\mathrm{gas}/k$", Pgas],
+          [r"$P_\mathrm{mag}/k$", Pmag],
+          [r"$P_\mathrm{cont}/k$", Prad],
+          [r"$P_\mathrm{line}/k$", Pline],
+      ],
+      ("Optical depth", 0.002, 15, "log", (0.01, 0.1, 1, 10)): [
+          [r"$\tau_V$", tauV],
+          [r"$\tau_{\mathrm{21\,cm}}$", tau21],
+          [r"$\tau_{\mathrm{Ly\beta}} / 10^6$", tauLyb/1e6],
+          [r"$\tau_{\mathrm{O\,I\,\lambda1028}}$", tauOI],
+          [r"$\tau_{R087}$", tauR087],
+          # [r"$\tau_{1027}$", tau1027],
+      ],
+  }
+
+  nvarsets = len(varsets)
+
+  i0 = np.argmax(m.data["emis"]["BLND 8446.00A"])
+  # Distance from max O I in mpc
+  x = (depth - depth[i0])/(3.085677582e18/1000)
+  # Electron fraction - molecular fraction
+  x = efrac #- mfrac
+
+  fig, axes = plt.subplots(nvarsets, 1, figsize=(6, 6), sharex=True)
+  x1, x2 = x.min(), x.max()
+  x00 = 0.7
+  i1 = np.argmin(np.abs(x - x00))
+  for [(setlabel, y1, y2, yscale, yticks), varset], ax in zip(varsets.items(), axes):
+      for label, plotvar in varset:
+          ax.plot(x, plotvar)
+          if plotvar.max() > y2:
+              xtext = np.max(x[plotvar < y2])
+              ytext = 0.9*y2
+          elif y1 < plotvar[i1] < y2:
+              xtext, ytext = x00, plotvar[i1]
+          else:
+              try:
+                  xtext = np.min(x[plotvar > y1])
+                  ytext = 5*y1
+              except:
+                  xtext, ytext = None, None
+          if xtext:
+              ax.text(xtext, ytext, " " + label, va="center", fontsize="x-small")
+      ax.set(ylabel=setlabel, yscale=yscale, ylim=[y1, y2])
+      yaxis = ax.get_yaxis()
+      yaxis.set_major_locator(FixedLocator(list(yticks)))
+      yvals = list(yticks) + [y2]
+      for ya, yb in zip(yvals[::2], yvals[1::2]):
+          ax.axhspan(ya, yb, fc="k", ec="none", alpha=0.1)
+
+  axes[-1].set(
+      xlim = [x1, x2],
+      xscale = "log",
+      xlabel = "Electron fraction - molecular fraction",
+  )
+  sns.despine()
+  fig.tight_layout()
+  fig.savefig(figfile)
+
+#+end_src
+
+#+RESULTS: cloudy-structure-efrac-plot
+[[file:cloudy-structure-efrac-trap-NH0-21.pdf]]
+
+#+call: cloudy-structure-efrac-plot("trap-bar-NH2-22")
+
+#+RESULTS:
+[[file:cloudy-structure-efrac-trap-bar-NH2-22.pdf]]
+
+#+call: cloudy-structure-efrac-plot("trap-bar-NH2-22-full-dust")
+
+#+RESULTS:
+[[file:cloudy-structure-efrac-trap-bar-NH2-22-full-dust.pdf]]
+
+#+call: cloudy-structure-efrac-plot("trap-bar-NH2-22-low-dust")
+
+#+RESULTS:
+[[file:cloudy-structure-efrac-trap-bar-NH2-22-low-dust.pdf]]
+
+#+call: cloudy-structure-efrac-plot("trap-bar-NH2-22-low-dust-PAH")
+
+#+RESULTS:
+[[file:cloudy-structure-efrac-trap-bar-NH2-22-low-dust-PAH.pdf]]
+
+#+call: cloudy-structure-efrac-plot("trap-bar-NH2-22-low-dust-low-PAH")
+
+#+RESULTS:
+[[file:cloudy-structure-efrac-trap-bar-NH2-22-low-dust-low-PAH.pdf]]
+
+
 **** Plot the pumping line optical depths
 #+name: cloudy-linetau-plot
 #+header: :var MODEL="trap-bar-NH2-22-low-dust"
