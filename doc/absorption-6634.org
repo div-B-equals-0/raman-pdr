@@ -4483,6 +4483,9 @@ O I
 
 
 ***** Spectrum of Trapezium
+      :PROPERTIES:
+      :ID:       D379B5F6-E638-4F59-960B-5D0BA61F3495
+      :END:
 + [[file:~/Work/OrionNI/git-paper/models/individual/th1C.cont][file:~/Work/OrionNI/git-paper/models/individual/th1C.cont]]
 + This was generated for a radius of 1e17 cm
 + Ly\beta is 0.8897 Ryd, where flux is 5.115e3, down from 6.2e3 either side
@@ -6547,7 +6550,7 @@ Now add them all together to make a Trapezium SED
 
 
 
-**** Possible bugs in the CLoudy model
+**** Possible bugs in the Cloudy model
 + Need to bear in mind https://www.nublado.org/ticket/78
 
 **** Changing default resolution
@@ -6606,16 +6609,16 @@ Now add them all together to make a Trapezium SED
 These are some fluorescent O I lines
 #+name: cloudy-blends
 #+begin_src cloudy-input
-set blend 7254 quiet
-"O  1" 7254.15
-"O  1" 7254.45
-"O  1" 7254.53
-end
-set blend 5299 quiet
-"O  1" 5298.89
-"O  1" 5299.04
-"O  1" 5299.09
-end
+  set blend 7254 quiet
+  "O  1" 7254.15
+  "O  1" 7254.45
+  "O  1" 7254.53
+  end
+  set blend 5299 quiet
+  "O  1" 5298.89
+  "O  1" 5299.04
+  "O  1" 5299.09
+  end
 #+end_src
 
 
@@ -6734,6 +6737,20 @@ And even deeper, N(H_0) = 1e21 cm^-2
 + And reduce dust opacity
   + But it turns out that if we reduce opacity by 10, then this also reduces the heating rate
   + Try reducing by 3
+
+#+name: cloudy-trap-bar
+#+begin_src cloudy-input
+  hden 3.60
+  radius 18.11
+  constant pressure
+  magnetic field -5 gauss
+  turbulence 5 km/s no pressure
+  stop temperature off
+  iterate
+  init file="ism.ini"
+  database stout "stout-extra-o1-si2.ini"
+  abundances hii region no grains
+#+end_src
 
 #+name: cloudy-trap-bar
 #+begin_src cloudy-input
@@ -7036,6 +7053,115 @@ And one with 10% normal grains and PAH at 100% instead of 300
   + ~low-dust-PAH~
   + ~low-dust-low-PAH~
 
+
+
+**** Try to get a better bar model [2020-08-14 Fri]
++ None of the extant models have the right offset between the ionization front and dissociation front in the Bar
+  + This is because the density is too high in the PDR
+  + The deduced density from the Raman bands is 8.5e4 pcc @ a H0 column of 1.5e21
+  + For instance, the ~low-dust-low-PAH~ has n = 4.7e5 pcc at that point
+    + Long plateau with T \approx 120 K
+    + n T = 4.7e5 120 = 5.64e7 cm^-3 K
+    + Compare with ionized gas: T = 8900 K, n = 4000 pcc => 2 n T = 7.12e7 cm^-3 K
+    + So not exactly the same, but close enough
+  + From the upper limit on T from the linewidth, we have T <= 480 K
+  + So combining that with the Raman-inferred density of 8.5e4 pcc gives:
+    + n T = 4e7 cm^-3 K
+  + So this is a bit lower than in the ionized gas, but not by much (especially given the uncertainties)
+  + So, if T = 500 K, then the pressure in the PDR *could* be thermal
+    + Although Cloudy models imply that T is less than this
+  + ~full-dust~ has a higher T
++ Current models have B = 10 micro G, n = 4e4 at illuminated face
+  + vA = B / sqrt(1.3 mp n) = 0.34 km/s
+  + if B^{2} \propto \rho^{\gamma} then v_A \propto \rho^{(\gamma - 1) / 2}
+  + Standard (tangled) value is \gamma = 4/3 so v_A ~ \rho^1/6
+  + Density contrast PDR/H II is 8.5e4/4000 = 21.25 => v_A contrast = 1.66
+  + So if we want 4 km/s in PDR, we get 2.41 km/s in H II region
+  + Compared with the previous value, this is an increase by (2.41/0.34) = 7.088
+  + So 71 micro G should do it
+
+
+#+name: cloudy-trap-bar-BB
+#+begin_src cloudy-input
+  hden 3.60
+  radius 18.11
+  constant pressure
+  magnetic field -4.15 gauss
+  turbulence 5 km/s no pressure
+  stop temperature off
+  iterate
+  init file="ism.ini"
+  database stout "stout-extra-o1-si2.ini"
+  abundances hii region no grains
+#+end_src
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-BB-NH2-22-low-dust-low-PAH.in
+  title Orion Bar (enhanced B field) to N(H2) = 10^22 (10% grain opacity and only 30% PAH)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar-BB>>
+  <<cloudy-grains-10-30>>
+  stop H2 column density 22
+  <<cloudy-blends>>
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+#+begin_src cloudy-input :noweb yes :tangle ../cloudy/models/trap-bar-BB-NH2-22-full-dust.in
+  title Orion Bar (enhanced B field) to N(H0) = 10^21.5 (100% grain opacity)
+  <<cloudy-trap-radiation>>
+  <<cloudy-trap-bar-BB>>
+  <<cloudy-grains-100-300>>
+  stop H2 column density 22
+  <<cloudy-blends>>
+  <<cloudy-saves>>
+  <<cloudy-em-saves>>
+#+end_src
+
+
+
+**** Results for offsets i-front to H_2 peak to CO peak
+
++ These mainly depend on the density
++ From Sternberg:2014a, the important parameter is \alpha G
+  + \alpha is H_2 dissoc/formation rate
+  + G is average self-shielding factor
++ For standard value of formation rate (R = 3e-17 cm^3/s), we get
+  + \alpha G = 1.54 (I_{UV} / n_{100}) [\phi_{g} / 1 + sqrt(2.64 \phi_{g} Z\prime)]
+  + Where \sigma_g = 1.9e-21 \phi_{g} Z\prime cm^{2}
+    + Z\prime is the metallicity in solar units
+    + \phi_{g} is the dependence on dust composition and abundance
+    + They are separated because R is also proportional to Z\prime
+  + I_{UV} is the FUV radiation intensity, similar to G_0 and u(MMP83)
+    + Estimates for Bar are given in [[id:D379B5F6-E638-4F59-960B-5D0BA61F3495][Spectrum of Trapezium]]
+      + G_0 \approx 7e4, \chi = 1.6e5
+    + I_{UV} is defined slightly differently, but it should be similar to \chi, except that we need to normalize only on the Lyman-Werner band
+    + From the above,  \lambda F_\lambda = 6.2e3 (1e17 / 0.21 pc)**2 / 0.85 = 174 erg/s/cm^2
+      + \lambda u_\lambda = 174 / c = 5.8e-09 erg/cm^3
+    + Draine normalization is  4e-14 erg/cm^3 at for (\lambda u_{\lambda})_{1000 \AA}
+      + => \chi = 5.8e-09/4e-14 = 1.45e+05
+    + Sternberg say 6.8e-14 erg/cm^3, which is close enough
+    + *Conclusion*: I_{UV} = 1.5e5 for the Bar
+  + Density should be the PDR density, which Raman gives as 8.5e4 pcc => n_{100} = 850
+  + => \alpha G = 1.54 (1.5e5 / 850) A_{dust} where A_{dust} = \phi_{g} / 1 + sqrt(2.64 \phi_{g} Z\prime)
+  + Total optical depth of H I column is \tau_{1,tot} = ln(1 + \alpha G / 2)
+  + This is also \tau_{1,tot} = N_1 \sigma_g
+    - So that N_1 = 5.26e20 \tau_{1,tot} / \phi_{g} Z\prime
+    - And distance to dissociation front is x_D = N_1 / n
+  + Solar abundance is 10**-3.31 for O
+    + 12 + log(O/H) = 8.69
+    + O/H = 4.898e-4
++ 
+
+  |    \phi_{g} |  Z\prime | A_{dust} |   \alpha G | \tau_{1,tot} |    N_1 | x_D, mpc |
+  |-------+-----+-------+-------+--------+--------+----------|
+  |   1.0 | 1.0 |  0.38 | 103.3 |   4.65 | 2.4e21 |      9.2 |
+  |   0.5 | 1.0 |  0.23 |  62.5 |   4.15 | 4.4e21 |     16.8 |
+  | 0.333 | 1.0 |  0.17 |  46.2 |   3.85 | 6.1e21 |     23.3 |
+  |   0.1 | 1.0 |  0.07 |  19.0 |   3.00 | 1.6e22 |     61.0 |
+  |   0.8 | 0.5 |  0.39 | 106.0 |   4.67 | 6.1e21 |     23.3 |
+  |   0.5 | 0.5 |  0.28 |  76.1 |   4.35 | 9.2e21 |     35.1 |
+  |   0.3 | 0.5 |  0.18 |  48.9 |   3.91 | 1.4e22 |     53.4 |
+  #+TBLFM: $3=$1/(1 + sqrt(2.64 $1 $2));f2::$4=1.54 (1.5e5 / 850) $3;f1::$5=log($4 +1);f2::$6=5.26e20 $5 / $1 $2 ;s2::$7=$6 / 8.5e4 0.001 3.085677582e18 ;f1
 
 **** Plot the SED
 #+name: cloudy-fuv-spectrum-plot
@@ -7399,6 +7525,16 @@ And finally another version that just does the fine continuum to show the relati
 #+RESULTS:
 [[file:cloudy-emiss-trap-bar-NH2-22-low-dust-low-PAH.pdf]]
 
+#+call: cloudy-emiss-plot("trap-bar-BB-NH2-22-low-dust-low-PAH")
+
+#+RESULTS:
+[[file:cloudy-emiss-trap-bar-BB-NH2-22-low-dust-low-PAH.pdf]]
+
+#+call: cloudy-emiss-plot("trap-bar-BB-NH2-22-full-dust")
+
+#+RESULTS:
+[[file:cloudy-emiss-trap-bar-BB-NH2-22-full-dust.pdf]]
+
 #+name: cloudy-emiss-vs-NH0-plot
 #+header: :var MODEL="trap-NH0-21"
 #+begin_src python :return figfile :results file
@@ -7480,6 +7616,11 @@ And finally another version that just does the fine continuum to show the relati
 
 #+RESULTS:
 [[file:cloudy-emiss-NH0-trap-bar-NH2-22-low-dust-low-PAH.pdf]]
+
+#+call: cloudy-emiss-vs-NH0-plot("trap-bar-BB-NH2-22-low-dust-low-PAH")
+
+#+RESULTS:
+[[file:cloudy-emiss-NH0-trap-bar-BB-NH2-22-low-dust-low-PAH.pdf]]
 
 **** Plot the model structure
 #+name: cloudy-structure-plot
@@ -7641,7 +7782,15 @@ And finally another version that just does the fine continuum to show the relati
 #+RESULTS:
 [[file:cloudy-structure-trap-bar-NH2-22-low-dust-low-PAH.pdf]]
 
+#+call: cloudy-structure-plot("trap-bar-BB-NH2-22-low-dust-low-PAH")
 
+#+RESULTS:
+[[file:cloudy-structure-trap-bar-BB-NH2-22-low-dust-low-PAH.pdf]]
+
+#+call: cloudy-structure-plot("trap-bar-BB-NH2-22-full-dust")
+
+#+RESULTS:
+[[file:cloudy-structure-trap-bar-BB-NH2-22-full-dust.pdf]]
 
 **** Same but versus electron fraction
 #+name: cloudy-structure-efrac-plot
