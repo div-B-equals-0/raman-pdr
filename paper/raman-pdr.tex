@@ -736,18 +736,49 @@ The left hand side of panels b and c of
 Figure~\ref{fig:raman-bar-profile} show a variety of other emission
 lines and continuum bands, which trace different layers in the PDR.\@
 The near-infrared \chem{H_2} \vibro{1}{0}{S(1)} line marks the
-hydrogen dissociation front \cite{van-der-Werf:1996a, Luhman:1998a, Marconi:1998a}, which provides the outer boundary of the neutral hydrogen layer.e 
+hydrogen dissociation front at \(x_0 \approx \SI{24}{mpc}\)
+\citep{van-der-Werf:1996a, Luhman:1998a, Marconi:1998a},
+which provides the outer boundary of the neutral hydrogen layer.
+Beyond this are are found the high-\(J\) CO lines,
+which trace the \chem{CO} dissociation front at \(x_0 \approx \SI{36}{mpc}\).
+These coincide with near-infrared [\ion{C}{1}] emission,
+which mainly traces the recombination of \chem{C^+} ions
+in cool gas near the dissociation front \citep{Escalante:1991a}.
+The mm-band CO lines trace the deeper, fully molecular regions,
+with the optically thick \chem{^{12}CO\ (1-0)} line at \(x_0 \approx \SI{41}{mpc}\)
+arising outside of the optically thin \chem{^{13}CO\ (1-0)} line
+at  \(x_0 \approx \SI{50}{mpc}\)
+\citep{Kong:2018a}. 
+
+The broad infrared bands are dominated by dust emission.
+For the case of the \num{3.6} to \SI{8.0}{\micro m}
+\textit{Spitzer} bands \citep{Megeath:2012a},
+mid-infrared spectroscopy \citep{Bregman:1989a, Cesarsky:2000a, Kassis:2006a}
+shows that they are mainly due to discrete polycyclic aromatic hydrocarbon (PAH)
+features at \num{3.3}, \num{6.2}, \num{7.7}, and \SI{8.6}{\micro m},
+plus a continuum contribution from very small grains
+(VSGs, with size \(a \sim \SI{0.007}{\micro m}\), \citealp{Desert:1990a})
+and minor contributions from ionized gas lines such as [\ion{Ar}{2}] and [\ion{Ar}{3}].
+The longer wavelength \num{60} and \SI{150}{\micro m} \textit{Herschel} bands
+\citealp{Bernard-Salas:2012a}
+show continuum emission from larger grains (\(a \sim \SI{0.1}{\micro m}\)).
+The peak of the dust emission moves deeper into the PDR with increasing wavelength,
+reflecting the decreasing dust temperature as the stellar radiation field is attenuated
+\citep{Arab:2012a}. 
+
+A complementary view of the Bar is provided by far-infrared emission lines
+of neutral and ionized metals
+observed by \textit{Herschel} \citep{Bernard-Salas:2012a}.
+The [\ion{N}{2}] \SI{122}{\micro m} line comes from the \chem{H^+} region
+and shows a similar distribution to the optical [\ion{O}{2}] line.
+The [\ion{C}{2}] \SI{158}{\micro m} and [\ion{O}{1}] \num{63} and \SI{146}{\micro m} lines,
+on the other hand, come from the \chem{H^0} region of the PDR. 
 
 
-The principal tracers of the
 
-In summary, 
-
-
-
-The 21~cm \ion{H}{1} line \citep{van-der-Werf:2013a} probes deeper
-zones of the PDR than the Raman scattering, since it peaks at the
-position of the \chem{H_2} emission.
+% The 21~cm \ion{H}{1} line \citep{van-der-Werf:2013a} probes deeper
+% zones of the PDR than the Raman scattering, since it peaks at the
+% position of the \chem{H_2} emission.
 
 
 \section{High-resolution spectroscopy of Raman-scattered \boldmath\ion{O}{1} \SI{1028}{\angstrom}}
@@ -810,7 +841,7 @@ over the entire order (\SI{6649}{\angstrom} to \SI{6747}{\angstrom}) and divide
 to give a continuum-normalized spectrum.
 Results for the four groups are shown in Figure~\ref{fig:raman-keck} for the wavelength range of interest.
 A shallow broad absorption feature is clearly seen around \SI{6664}{\angstrom} in regions A, B, and C,
-and arguably in region D also, while no such feature is seen in region~E.\@
+and arguably in region~D, while no such feature is seen in region~E.\@
 At this high spectral resolution (resolving power \(R \approx \num{50000}\)),
 the absorption line is well-separated from the adjacent [\ion{Ni}{2}] emission line at \SI{6666.8}{\angstrom}.
 From Figure~\ref{fig:zoom-keck} it can be seen that regions A, B, and C overlap with
@@ -1141,9 +1172,39 @@ post-scattered photons have insufficient energy to excite any
 transitions from \(1s\).
 
 
-\section*{Acknowledgements}
-This work has made use of the Atomic Line List\footnote{\url{https://www.pa.uky.edu/~peter/newpage/}} \citep{Van-Hoof:2018a}. 
+\section{Conclusions}
+\label{sec:conclusions}
 
+
+
+
+\section*{Acknowledgements}
+Scientific software and databases used in this work include
+SAOImage~DS9\footnote{\url{https://sites.google.com/cfa.harvard.edu/saoimageds9}} \citep{Joye:2003a},
+the Atomic Line List\footnote{\url{https://www.pa.uky.edu/~peter/newpage/}} \citep{Van-Hoof:2018a},
+the Cloudy plasma physics code\footnote{\url{https://nublado.org}}
+\citep{Ferland:2017a},
+SIMBAD and Vizier from Strasbourg Astronomical Data Center (CDS)\footnote{\url{https://cds.u-strasbg.fr}},
+and the following 3rd-party Python packages:
+numpy, astropy, matplotlib, seaborn, scikit-image, reproject.
+
+
+\section*{Data availability}
+\label{sec:data-availability}
+
+The primary data underlying this article are two spectroscopic datasets.
+First, integral field spectral mosaics of the inner Orion Nebula,
+obtained with the MUSE spectrograph on the VLT,
+which are available from \url{http://muse-vlt.eu/science/m42/}.
+Second, longslit spectra of the Orion~S region,
+obtained with the HIRES spectrograph on the Keck~I telescope,
+which are available from the Keck Observatory Archive at
+\url{https://koa.ipac.caltech.edu/cgi-bin/KOA/nph-KOAlogin}.
+Additional supporting data from other observatories and archives
+may be accessed via the references given in the main text.
+All data reduction and analysis programs used in this paper,
+together with documentation and research notes may be found at
+\url{https://github.com/will-henney/dib-scatter-hii}.
 
 \bibliography{BibdeskLibrary}
 

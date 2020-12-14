@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  14 AUG 2020 19:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  14 DEC 2020 13:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1214,7 +1214,7 @@ LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
 (Font)              scaled to size 8.0pt on input line 108.
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
 (Font)              scaled to size 6.2pt on input line 108.
-<figs/raman-cartoon.pdf, id=65, 426.79138pt x 312.9803pt>
+<figs/raman-cartoon.pdf, id=69, 426.79138pt x 312.9803pt>
 File: figs/raman-cartoon.pdf Graphic file (type pdf)
 <use figs/raman-cartoon.pdf>
 Package pdftex.def Info: figs/raman-cartoon.pdf  used on input line 116.
@@ -1250,7 +1250,7 @@ l.197
 
 
  <./figs/raman-cartoon.pdf>]
-<figs/raman-fov-regions.pdf, id=228, 505.89pt x 722.7pt>
+<figs/raman-fov-regions.pdf, id=232, 505.89pt x 722.7pt>
 File: figs/raman-fov-regions.pdf Graphic file (type pdf)
 <use figs/raman-fov-regions.pdf>
 Package pdftex.def Info: figs/raman-fov-regions.pdf  used on input line 202.
@@ -1318,7 +1318,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\alpha' on input line 245.
 
-<figs/raman-orion-muse-1d-spectra.pdf, id=261, 722.7pt x 433.62pt>
+<figs/raman-orion-muse-1d-spectra.pdf, id=265, 722.7pt x 433.62pt>
 File: figs/raman-orion-muse-1d-spectra.pdf Graphic file (type pdf)
 <use figs/raman-orion-muse-1d-spectra.pdf>
 Package pdftex.def Info: figs/raman-orion-muse-1d-spectra.pdf  used on input li
@@ -1356,7 +1356,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
                                                   \fi \fi 
 l.418 
        <./figs/raman-orion-muse-1d-spectra.pdf>]
-<figs/raman-rgb-4-panel.pdf, id=465, 674.49593pt x 554.09407pt>
+<figs/raman-rgb-4-panel.pdf, id=469, 674.49593pt x 554.09407pt>
 File: figs/raman-rgb-4-panel.pdf Graphic file (type pdf)
 <use figs/raman-rgb-4-panel.pdf>
 Package pdftex.def Info: figs/raman-rgb-4-panel.pdf  used on input line 426.
@@ -1365,7 +1365,7 @@ Package pdftex.def Info: figs/raman-rgb-4-panel.pdf  used on input line 426.
 
 pdfTeX warning: pdflatex (file ./figs/raman-bar-multi-profile-4part.pdf): PDF i
 nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figs/raman-bar-multi-profile-4part.pdf, id=474, 580.56903pt x 580.56903pt>
+<figs/raman-bar-multi-profile-4part.pdf, id=478, 580.56903pt x 580.56903pt>
 File: figs/raman-bar-multi-profile-4part.pdf Graphic file (type pdf)
 <use figs/raman-bar-multi-profile-4part.pdf>
 Package pdftex.def Info: figs/raman-bar-multi-profile-4part.pdf  used on input 
@@ -1386,7 +1386,7 @@ l.671
       ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<figs/raman-band-displacements-plot.pdf, id=556, 361.35pt x 252.945pt>
+<figs/raman-band-displacements-plot.pdf, id=560, 361.35pt x 252.945pt>
 File: figs/raman-band-displacements-plot.pdf Graphic file (type pdf)
 <use figs/raman-band-displacements-plot.pdf>
 Package pdftex.def Info: figs/raman-band-displacements-plot.pdf  used on input 
@@ -1418,298 +1418,301 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.742 T
-       he principal tracers of the]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 753.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\fontaxes@edoc' on input line 753.
+l.752 
+      ]
+LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
+(Font)              scaled to size 9.0pt on input line 754.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 753.
+(hyperref)                removing `\<def>-command' on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\fontaxes@last@\math@version' on input line
- 753.
+(hyperref)                removing `\fontaxes@edoc' on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 753.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\fontaxes@math@weight' on input line 753.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 753.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\fontaxes@code' on input line 753.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 753.
+(hyperref)                removing `\<let>-command' on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\fontaxes@last@\math@version' on input line
- 753.
+ 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\global' on input line 753.
+(hyperref)                removing `\<def>-command' on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\c@ionstage' on input line 753.
+(hyperref)                removing `\fontaxes@math@weight' on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 753.
+(hyperref)                removing `\<def>-command' on input line 784.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\fontaxes@code' on input line 784.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 784.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\fontaxes@last@\math@version' on input line
+ 784.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\global' on input line 784.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\c@ionstage' on input line 784.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                \kern 1.50032pt
-(hyperref)                removed on input line 753.
+(hyperref)                removed on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\scriptstyle' on input line 753.
+(hyperref)                removing `\scriptstyle' on input line 784.
 
-<figs/raman-zoom-keck-regions.pdf, id=824, 501.875pt x 365.365pt>
+<figs/raman-zoom-keck-regions.pdf, id=846, 501.875pt x 365.365pt>
 File: figs/raman-zoom-keck-regions.pdf Graphic file (type pdf)
 <use figs/raman-zoom-keck-regions.pdf>
 Package pdftex.def Info: figs/raman-zoom-keck-regions.pdf  used on input line 7
-57.
+88.
 (pdftex.def)             Requested size: 240.0pt x 174.72093pt.
-<figs/order51-absorption-by-group.pdf, id=831, 433.62pt x 289.08pt>
+<figs/order51-absorption-by-group.pdf, id=853, 433.62pt x 289.08pt>
 File: figs/order51-absorption-by-group.pdf Graphic file (type pdf)
 <use figs/order51-absorption-by-group.pdf>
 Package pdftex.def Info: figs/order51-absorption-by-group.pdf  used on input li
-ne 771.
+ne 802.
 (pdftex.def)             Requested size: 504.0pt x 336.01672pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
- has been already used, duplicate ignored
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.890 
+l.907 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.890 
+l.907 
        <./figs/raman-band-displacements-plot.pdf> <./figs/raman-zoom-keck-regio
 ns.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<figs/raman-muse-spectra-times-lambda-squared.pdf, id=1090, 722.7pt x 433.62pt>
-
-File: figs/raman-muse-spectra-times-lambda-squared.pdf Graphic file (type pdf)
-<use figs/raman-muse-spectra-times-lambda-squared.pdf>
-Package pdftex.def Info: figs/raman-muse-spectra-times-lambda-squared.pdf  used
- on input line 916.
-(pdftex.def)             Requested size: 504.0pt x 302.40051pt.
  [9pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.926 \end{figure*}
-                   pdfTeX warning (ext4): destination with the same identifier 
-(name{table.3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.926 \end{figure*}
-                    <./figs/order51-absorption-by-group.pdf>]
-<figs/bar-geometry-options.pdf, id=1177, 1707.16493pt x 853.58266pt>
-File: figs/bar-geometry-options.pdf Graphic file (type pdf)
-<use figs/bar-geometry-options.pdf>
-Package pdftex.def Info: figs/bar-geometry-options.pdf  used on input line 936.
-
-(pdftex.def)             Requested size: 504.0pt x 252.00008pt.
-<figs/cloudy-bar-optical-depths.pdf, id=1186, 578.16pt x 525.965pt>
-File: figs/cloudy-bar-optical-depths.pdf Graphic file (type pdf)
-<use figs/cloudy-bar-optical-depths.pdf>
-Package pdftex.def Info: figs/cloudy-bar-optical-depths.pdf  used on input line
- 967.
-(pdftex.def)             Requested size: 240.0pt x 218.32758pt.
-<figs/stellar-spectrum-fuv.pdf, id=1189, 578.16pt x 552.0625pt>
-File: figs/stellar-spectrum-fuv.pdf Graphic file (type pdf)
-<use figs/stellar-spectrum-fuv.pdf>
-Package pdftex.def Info: figs/stellar-spectrum-fuv.pdf  used on input line 987.
-
-(pdftex.def)             Requested size: 240.0pt x 229.16063pt.
-<figs/orion-bar-oi-hst-zoom.pdf, id=1192, 433.62pt x 361.35pt>
-File: figs/orion-bar-oi-hst-zoom.pdf Graphic file (type pdf)
-<use figs/orion-bar-oi-hst-zoom.pdf>
-Package pdftex.def Info: figs/orion-bar-oi-hst-zoom.pdf  used on input line 100
-8.
-(pdftex.def)             Requested size: 240.0pt x 200.00024pt.
-<figs/alma-co-hcop-h2-dissoc-front.pdf, id=1197, 1244.65pt x 1003.75pt>
-File: figs/alma-co-hcop-h2-dissoc-front.pdf Graphic file (type pdf)
-<use figs/alma-co-hcop-h2-dissoc-front.pdf>
-Package pdftex.def Info: figs/alma-co-hcop-h2-dissoc-front.pdf  used on input l
-ine 1029.
-(pdftex.def)             Requested size: 240.0pt x 193.54793pt.
- (./raman-pdr.bbl
-
-Package hyperref Warning: Suppressing empty link on input line 62.
-
-[10] [11pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.9}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.335 ...{Stoerzer} et~al.}{1997}]{Stoerzer:1997a}
-                                                   <./figs/raman-muse-spectra-t
-imes-lambda-squared.pdf>])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.10
+l.940 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.3
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1244 
-        <./figs/bar-geometry-options.pdf>] [13pdfTeX warning (ext4): destinatio
-n with the same identifier (name{table.A1.1}) has been already used, duplicate 
-ignored
+l.940 
+       <./figs/order51-absorption-by-group.pdf>]
+<figs/raman-muse-spectra-times-lambda-squared.pdf, id=1196, 722.7pt x 433.62pt>
+
+File: figs/raman-muse-spectra-times-lambda-squared.pdf Graphic file (type pdf)
+<use figs/raman-muse-spectra-times-lambda-squared.pdf>
+Package pdftex.def Info: figs/raman-muse-spectra-times-lambda-squared.pdf  used
+ on input line 947.
+(pdftex.def)             Requested size: 504.0pt x 302.40051pt.
+<figs/bar-geometry-options.pdf, id=1201, 1707.16493pt x 853.58266pt>
+File: figs/bar-geometry-options.pdf Graphic file (type pdf)
+<use figs/bar-geometry-options.pdf>
+Package pdftex.def Info: figs/bar-geometry-options.pdf  used on input line 967.
+
+(pdftex.def)             Requested size: 504.0pt x 252.00008pt.
+<figs/cloudy-bar-optical-depths.pdf, id=1210, 578.16pt x 525.965pt>
+File: figs/cloudy-bar-optical-depths.pdf Graphic file (type pdf)
+<use figs/cloudy-bar-optical-depths.pdf>
+Package pdftex.def Info: figs/cloudy-bar-optical-depths.pdf  used on input line
+ 998.
+(pdftex.def)             Requested size: 240.0pt x 218.32758pt.
+<figs/stellar-spectrum-fuv.pdf, id=1213, 578.16pt x 552.0625pt>
+File: figs/stellar-spectrum-fuv.pdf Graphic file (type pdf)
+<use figs/stellar-spectrum-fuv.pdf>
+Package pdftex.def Info: figs/stellar-spectrum-fuv.pdf  used on input line 1018
+.
+(pdftex.def)             Requested size: 240.0pt x 229.16063pt.
+<figs/orion-bar-oi-hst-zoom.pdf, id=1216, 433.62pt x 361.35pt>
+File: figs/orion-bar-oi-hst-zoom.pdf Graphic file (type pdf)
+<use figs/orion-bar-oi-hst-zoom.pdf>
+Package pdftex.def Info: figs/orion-bar-oi-hst-zoom.pdf  used on input line 103
+9.
+(pdftex.def)             Requested size: 240.0pt x 200.00024pt.
+<figs/alma-co-hcop-h2-dissoc-front.pdf, id=1221, 1244.65pt x 1003.75pt>
+File: figs/alma-co-hcop-h2-dissoc-front.pdf Graphic file (type pdf)
+<use figs/alma-co-hcop-h2-dissoc-front.pdf>
+Package pdftex.def Info: figs/alma-co-hcop-h2-dissoc-front.pdf  used on input l
+ine 1060.
+(pdftex.def)             Requested size: 240.0pt x 193.54793pt.
+
+Underfull \vbox (badness 1337) has occurred while \output is active []
+
+ [10]
+(./raman-pdr.bbl
+
+Package hyperref Warning: Suppressing empty link on input line 75.
+
+[11pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1272 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{figure.11}) has been already used, duplicate ignored
+l.112 ...s}}{{Dopita} et~al.}{2016}]{Dopita:2016a}
+                                                   <./figs/raman-muse-spectra-t
+imes-lambda-squared.pdf>] [12pdfTeX warning (ext4): destination with the same i
+dentifier (name{figure.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1272 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{figure.12}) has been already used, duplicate ignored
+l.371   {Hollenbach}}{1998}]{Stoerzer:1998a}
+                                             <./figs/bar-geometry-options.pdf>]
+) [13pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1272 \begin{equation}
-                        <./figs/cloudy-bar-optical-depths.pdf> <./figs/stellar-
-spectrum-fuv.pdf>]
+l.1305 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.12}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1305 
+        <./figs/cloudy-bar-optical-depths.pdf> <./figs/stellar-spectrum-fuv.pdf
+>] [14pdfTeX warning (ext4): destination with the same identifier (name{table.A
+1.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1318 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.13}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1318 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.14}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1318 
+        <./figs/orion-bar-oi-hst-zoom.pdf> <./figs/alma-co-hcop-h2-dissoc-front
+.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 1315.
+(hyperref)                removing `\<def>-command' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\fontaxes@edoc' on input line 1315.
+(hyperref)                removing `\fontaxes@edoc' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 1315.
+(hyperref)                removing `\<let>-command' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\fontaxes@last@\math@version' on input line
- 1315.
+ 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 1315.
+(hyperref)                removing `\<def>-command' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\fontaxes@math@weight' on input line 1315.
+(hyperref)                removing `\fontaxes@math@weight' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 1315.
+(hyperref)                removing `\<def>-command' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\fontaxes@code' on input line 1315.
+(hyperref)                removing `\fontaxes@code' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 1315.
+(hyperref)                removing `\<let>-command' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\fontaxes@last@\math@version' on input line
- 1315.
+ 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\global' on input line 1315.
+(hyperref)                removing `\global' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\c@ionstage' on input line 1315.
+(hyperref)                removing `\c@ionstage' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 1315.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                \kern 1.50032pt
-(hyperref)                removed on input line 1315.
+(hyperref)                removed on input line 1376.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\scriptstyle' on input line 1315.
+(hyperref)                removing `\scriptstyle' on input line 1376.
 
-[14pdfTeX warning (ext4): destination with the same identifier (name{figure.13}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1353 \end{figure}
-                   pdfTeX warning (ext4): destination with the same identifier 
-(name{figure.14}) has been already used, duplicate ignored
+[15pdfTeX warning (ext4): destination with the same identifier (name{figure.A2.
+1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1353 \end{figure}
-                    <./figs/orion-bar-oi-hst-zoom.pdf> <./figs/alma-co-hcop-h2-
-dissoc-front.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1474.
- [15pdfTeX warning (ext4): destination with the same identifier (name{figure.A2
-.1}) has been already used, duplicate ignored
+l.1501 \begin{equation}
+                       ]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1535.
+ [16
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1474 \end{document}
-                     ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1474.
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1535.
  (./raman-pdr.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1474.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1474.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1535.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1535.
 
 Package rerunfilecheck Info: File `raman-pdr.out' has not changed.
-(rerunfilecheck)             Checksum: 4D4815A49C4A0DD5F9462DA69B71CE27;1205.
+(rerunfilecheck)             Checksum: 79F538C63740995233FD23CFB86E6FE9;1252.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 4.247pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1474.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1535.
  ) 
 Here is how much of TeX's memory you used:
- 24081 strings out of 492616
- 433260 string characters out of 6129482
- 549533 words of memory out of 5000000
- 27488 multiletter control sequences out of 15000+600000
- 906596 words of font info for 577 fonts, out of 8000000 for 9000
+ 24124 strings out of 492616
+ 434043 string characters out of 6129482
+ 548956 words of memory out of 5000000
+ 27519 multiletter control sequences out of 15000+600000
+ 908852 words of font info for 583 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,21n,63p,2151b,1070s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
@@ -1736,10 +1739,10 @@ ve/2019/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2019/
 texmf-dist/fonts/type1/public/txfonts/txmia.pfb></usr/local/texlive/2019/texmf-
 dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on raman-pdr.pdf (15 pages, 22614040 bytes).
+Output written on raman-pdr.pdf (16 pages, 22620959 bytes).
 PDF statistics:
- 2377 PDF objects out of 2487 (max. 8388607)
- 1545 compressed objects within 16 object streams
- 138 named destinations out of 1000 (max. 500000)
- 191 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2443 PDF objects out of 2487 (max. 8388607)
+ 1609 compressed objects within 17 object streams
+ 150 named destinations out of 1000 (max. 500000)
+ 199 words of extra memory for PDF output out of 10000 (max. 10000000)
 
