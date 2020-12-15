@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  14 DEC 2020 19:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  14 DEC 2020 22:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1281,10 +1281,6 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 6.2pt on input line 52.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 6.2pt on input line 52.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 66.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 66.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
 (Font)              scaled to size 8.0pt on input line 71.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <8> not available
@@ -1408,28 +1404,28 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 LaTeX Warning: Reference `fig:raman-bar-profile' on page 2 undefined on input l
 ine 216.
 
-<../paper/figs/bar-geometry-options.pdf, id=50, 1707.16493pt x 853.58266pt>
+<../paper/figs/bar-geometry-options.pdf, id=51, 1707.16493pt x 853.58266pt>
 File: ../paper/figs/bar-geometry-options.pdf Graphic file (type pdf)
 <use ../paper/figs/bar-geometry-options.pdf>
 Package pdftex.def Info: ../paper/figs/bar-geometry-options.pdf  used on input 
 line 230.
 (pdftex.def)             Requested size: 513.11743pt x 256.55869pt.
-<../paper/figs/orion-bar-oi-hst-zoom.pdf, id=51, 433.62pt x 361.35pt>
+<../paper/figs/orion-bar-oi-hst-zoom.pdf, id=52, 433.62pt x 361.35pt>
 File: ../paper/figs/orion-bar-oi-hst-zoom.pdf Graphic file (type pdf)
 <use ../paper/figs/orion-bar-oi-hst-zoom.pdf>
 Package pdftex.def Info: ../paper/figs/orion-bar-oi-hst-zoom.pdf  used on input
  line 248.
-(pdftex.def)             Requested size: 242.26653pt x 201.89146pt.
+(pdftex.def)             Requested size: 513.11743pt x 427.65196pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
 (Font)              scaled to size 9.0pt on input line 264.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 5.5pt on input line 264.
-<../paper/figs/alma-co-hcop-h2-dissoc-front.pdf, id=56, 1244.65pt x 1003.75pt>
+<../paper/figs/alma-co-hcop-h2-dissoc-front.pdf, id=57, 1244.65pt x 1003.75pt>
 File: ../paper/figs/alma-co-hcop-h2-dissoc-front.pdf Graphic file (type pdf)
 <use ../paper/figs/alma-co-hcop-h2-dissoc-front.pdf>
 Package pdftex.def Info: ../paper/figs/alma-co-hcop-h2-dissoc-front.pdf  used o
 n input line 269.
-(pdftex.def)             Requested size: 242.26653pt x 195.37053pt.
+(pdftex.def)             Requested size: 513.11743pt x 413.80693pt.
 (./orion-h1-21cm.bbl)
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
 (Font)              scaled to size 10.0pt on input line 296.
@@ -1452,13 +1448,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 24825 strings out of 492616
- 432473 string characters out of 6129482
- 551694 words of memory out of 5000000
- 28393 multiletter control sequences out of 15000+600000
- 690892 words of font info for 291 fonts, out of 8000000 for 9000
+ 24822 strings out of 492616
+ 432429 string characters out of 6129482
+ 549694 words of memory out of 5000000
+ 28390 multiletter control sequences out of 15000+600000
+ 685296 words of font info for 289 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,12n,63p,465b,1072s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,12n,63p,465b,1075s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
 exlive/2019/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive
 /2019/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2019
@@ -1471,7 +1467,7 @@ blic/newtx/rtxmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/tx
 fonts/rtxr.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/newtx/txe
 xs.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/newtx/txsys.pfb><
 /usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on orion-h1-21cm.pdf (5 pages, 10381292 bytes).
+Output written on orion-h1-21cm.pdf (5 pages, 10380736 bytes).
 PDF statistics:
  742 PDF objects out of 1000 (max. 8388607)
  456 compressed objects within 5 object streams

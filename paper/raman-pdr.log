@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  14 DEC 2020 19:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  14 DEC 2020 23:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1548,69 +1548,65 @@ File: figs/stellar-spectrum-fuv.pdf Graphic file (type pdf)
 Package pdftex.def Info: figs/stellar-spectrum-fuv.pdf  used on input line 1005
 .
 (pdftex.def)             Requested size: 240.0pt x 229.16063pt.
-LaTeX Info: Redefining \. on input line 1126.
-LaTeX Info: Redefining \% on input line 1126.
-LaTeX Info: Redefining \. on input line 1130.
-LaTeX Info: Redefining \% on input line 1130.
-
-Underfull \vbox (badness 1337) has occurred while \output is active []
-
  [10]
-(./raman-pdr.bbl
+LaTeX Info: Redefining \. on input line 1144.
+LaTeX Info: Redefining \% on input line 1144.
+LaTeX Info: Redefining \. on input line 1148.
+LaTeX Info: Redefining \% on input line 1148.
+ (./raman-pdr.bbl [11pdfTeX warning (ext4): destination with the same identifie
+r (name{figure.9}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.71 
+      <./figs/raman-muse-spectra-times-lambda-squared.pdf>]
 
 Package hyperref Warning: Suppressing empty link on input line 75.
 
-[11pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
- has been already used, duplicate ignored
+[12pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.102   et~al.}{1990}]{Desert:1990a}
-                                     <./figs/raman-muse-spectra-times-lambda-sq
-uared.pdf>] [12pdfTeX warning (ext4): destination with the same identifier (nam
-e{figure.10}) has been already used, duplicate ignored
+l.303   {Ferland}}{2006}]{Osterbrock:2006a}
+                                           pdfTeX warning (ext4): destination w
+ith the same identifier (name{figure.11}) has been already used, duplicate igno
+red
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.321 ...}{{Salgado} et~al.}{2016}]{Salgado:2016a}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{figure.11}) has been already used, duplica
-te ignored
+l.303   {Ferland}}{2006}]{Osterbrock:2006a}
+                                            <./figs/cloudy-bar-optical-depths.p
+df> <./figs/stellar-spectrum-fuv.pdf>]) [13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1347.
+ [14pdfTeX warning (ext4): destination with the same identifier (name{table.A1.
+1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.321 ...}{{Salgado} et~al.}{2016}]{Salgado:2016a}
-                                                   <./figs/cloudy-bar-optical-d
-epths.pdf> <./figs/stellar-spectrum-fuv.pdf>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1329.
- [13] [14pdfTeX warning (ext4): destination with the same identifier (name{tabl
-e.A1.1}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1329 \end{document}
+l.1347 \end{document}
                      
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1329.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1347.
  (./raman-pdr.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1329.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1329.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1347.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1347.
 
 Package rerunfilecheck Info: File `raman-pdr.out' has not changed.
-(rerunfilecheck)             Checksum: 89C321FA9574F49DAAADDB0BC084D8B5;1150.
+(rerunfilecheck)             Checksum: B6E75ACA75B174263D8AF9FA0DA6AFA7;1166.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 4.247pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1329.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1347.
  ) 
 Here is how much of TeX's memory you used:
- 24054 strings out of 492616
- 432648 string characters out of 6129482
- 540730 words of memory out of 5000000
- 27471 multiletter control sequences out of 15000+600000
+ 24060 strings out of 492616
+ 432768 string characters out of 6129482
+ 541032 words of memory out of 5000000
+ 27474 multiletter control sequences out of 15000+600000
  908268 words of font info for 581 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,21n,63p,2151b,1070s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1638,10 +1634,10 @@ ve/2019/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2019/
 texmf-dist/fonts/type1/public/txfonts/txmia.pfb></usr/local/texlive/2019/texmf-
 dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on raman-pdr.pdf (14 pages, 12358610 bytes).
+Output written on raman-pdr.pdf (14 pages, 12359929 bytes).
 PDF statistics:
- 1769 PDF objects out of 2073 (max. 8388607)
- 1206 compressed objects within 13 object streams
- 133 named destinations out of 1000 (max. 500000)
+ 1773 PDF objects out of 2073 (max. 8388607)
+ 1210 compressed objects within 13 object streams
+ 136 named destinations out of 1000 (max. 500000)
  176 words of extra memory for PDF output out of 10000 (max. 10000000)
 

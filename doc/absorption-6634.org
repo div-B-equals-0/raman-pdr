@@ -24,13 +24,15 @@ CLOSED: [2020-12-14 Mon 12:51]
 **** DONE Sec 3 - Keck spectra
 CLOSED: [2020-12-14 Mon 12:42]
 + [X] We have the spectrum, but it needs a better description
-**** TODO Discussion
+**** TODO [0/5] Discussion
 + [ ] Very fragmentary - needs some bits cutting and writing the rest
-+ [ ] Talk about the inhomogeneities in the Bar
++ [ ] Alternative explanations for the absorption lines
+  + [ ] Add a figure that compares the EW of the 6634 line with the extinction map, to show that they are unrelated.
 + [ ] Talk about the Cloudy models
 + [ ] Remove discussion of Bar models and H I line
   + Keep this for another paper
-+ Could add discussion of other H II regions, such as Carina and Tarantula
+  + [ ] Remove mention of talk about the inhomogeneities in the Bar since this is going to go in the next paper
++ [-] Could add discussion of other H II regions, such as Carina and Tarantula
 **** TODO Conclusions
 **** DONE Acknowledgements
 CLOSED: [2020-12-14 Mon 13:39]
