@@ -1,0 +1,49 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\href{#1}{#1}}
+\providecommand{\dodoi}[1]{doi:~\href{http://doi.org/#1}{\nolinkurl{#1}}}
+\providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
+\providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
+
+\bibitem[{{Bally} {et~al.}(2000){Bally}, {O'Dell}, \&
+  {McCaughrean}}]{Bally:2000a}
+{Bally}, J., {O'Dell}, C.~R., \& {McCaughrean}, M.~J. 2000, \aj, 119, 2919,
+  \dodoi{10.1086/301385}
+
+\bibitem[{{Dicker} {et~al.}(2009){Dicker}, {Mason}, {Korngut}, {Cotton},
+  {Compiègne}, {Devlin}, {Martin}, {Ade}, {Benford}, {Irwin}, {Maddalena},
+  {McMullin}, {Shepherd}, {Sievers}, {Staguhn}, \& {Tucker}}]{Dicker:2009a}
+{Dicker}, S.~R., {Mason}, B.~S., {Korngut}, P.~M., {et~al.} 2009, \apj, 705,
+  226, \dodoi{10.1088/0004-637X/705/1/226}
+
+\bibitem[{{Foster} \& {Goodman}(2006)}]{Foster:2006a}
+{Foster}, J.~B., \& {Goodman}, A.~A. 2006, \apjl, 636, L105,
+  \dodoi{10.1086/500131}
+
+\bibitem[{{Goicoechea} {et~al.}(2016){Goicoechea}, {Pety}, {Cuadrado},
+  {Cernicharo}, {Chapillon}, {Fuente}, {Gerin}, {Joblin}, {Marcelino}, \&
+  {Pilleri}}]{Goicoechea:2016a}
+{Goicoechea}, J.~R., {Pety}, J., {Cuadrado}, S., {et~al.} 2016, \nat, 537, 207,
+  \dodoi{10.1038/nature18957}
+
+\bibitem[{{Green}(1991)}]{Green:1991a}
+{Green}, D.~A. 1991, \mnras, 253, 350, \dodoi{10.1093/mnras/253.2.350}
+
+\bibitem[{{Green} \& {Padman}(1993)}]{Green:1993a}
+{Green}, D.~A., \& {Padman}, R. 1993, \mnras, 263, 535,
+  \dodoi{10.1093/mnras/263.2.535}
+
+\bibitem[{{Kissler-Patig} {et~al.}(2008){Kissler-Patig}, {Pirard}, {Casali},
+  {Moorwood}, {Ageorges}, {Alves de Oliveira}, {Baksai}, {Bedin}, {Bendek},
+  {Biereichel}, {Delabre}, {Dorn}, {Esteves}, {Finger}, {Gojak}, {Huster},
+  {Jung}, {Kiekebush}, {Klein}, {Koch}, {Lizon}, {Mehrgan}, {Petr-Gotzens},
+  {Pritchard}, {Selman}, \& {Stegmeier}}]{Kissler-Patig:2008a}
+{Kissler-Patig}, M., {Pirard}, J.~F., {Casali}, M., {et~al.} 2008, \aap, 491,
+  941, \dodoi{10.1051/0004-6361:200809910}
+
+\bibitem[{{van der Werf} {et~al.}(2013){van der Werf}, {Goss}, \&
+  {O'Dell}}]{van-der-Werf:2013a}
+{van der Werf}, P.~P., {Goss}, W.~M., \& {O'Dell}, C.~R. 2013, \apj, 762, 101,
+  \dodoi{10.1088/0004-637X/762/2/101}
+
+\end{thebibliography}

@@ -173,13 +173,8 @@ order \(0.001\).  A vastly larger column density of neutral hydrogen
 scattering will occur there instead, so long as there is sufficient
 far ultraviolet radiative flux.
 
-This paper is organized as follows. \S~\ref{sec:raman-theory}
-recapitulates the basic theory of Raman scattering, concentrating on
-the wavelength transformation from the FUV domain around \lyb{} to
-optical domain around \ha{}.  In addition, polynomial fits are
-provided to the wavelength dependence of the total (Rayleigh plus
-Raman) scattering cross section and the Raman \ha{} branching
-ratio. \S~\ref{sec:muse-spectr-mapp} then presents archival VLT-MUSE
+This paper is organized as follows.
+\S~\ref{sec:muse-spectr-mapp} presents archival VLT-MUSE
 integral field spectroscopy of the Orion Nebula, which allows the
 broad H\(\alpha\) wings to be spatially mapped in unprecedented detail and
 compared with other tracers of ionized and neutral zones in the
@@ -194,6 +189,14 @@ the implications of these results for the structure and dynamics of
 the PDRs in Orion, together with the prospects for using Raman
 spectral mapping as a diagnostic tool in the study of other high-mass
 star formation regions.
+An appendix 
+recapitulates the basic theory of Raman scattering, concentrating on
+the wavelength transformation from the FUV domain around \lyb{} to
+optical domain around \ha{}.  In addition, polynomial fits are
+provided to the wavelength dependence of the total (Rayleigh plus
+Raman) scattering cross section and the Raman \ha{} branching
+ratio.
+
 
 \section{Spectral mapping of Raman wings}
 \label{sec:muse-spectr-mapp}
@@ -315,7 +318,7 @@ However, taking into account the wavelength transformation during
 Raman scattering (eq.~[\ref{eq:wav-transform}]), the true velocity
 width of the FUV line is \SI{18}{km.s^{-1}}.  The absorption depth of
 the features is roughly 50\% with respect to the Raman-scattered wing
-at adjacent wavelengths, but is much lower with respect to the total
+at adjacent wavelengths, but is much less than this with respect to the total
 continuum emission.  The same spectral features are also visible in
 the \citet{Dopita:2016a} spectra but are not commented on by those
 authors. The \SI{6664}{\angstrom} feature is partially blended with
@@ -760,7 +763,7 @@ plus a continuum contribution from very small grains
 (VSGs, with size \(a \sim \SI{0.007}{\micro m}\), \citealp{Desert:1990a})
 and minor contributions from ionized gas lines such as [\ion{Ar}{2}] and [\ion{Ar}{3}].
 The longer wavelength \num{60} and \SI{150}{\micro m} \textit{Herschel} bands
-\citealp{Bernard-Salas:2012a}
+\citep{Bernard-Salas:2012a}
 show continuum emission from larger grains (\(a \sim \SI{0.1}{\micro m}\)).
 The peak of the dust emission moves deeper into the PDR with increasing wavelength,
 reflecting the decreasing dust temperature as the stellar radiation field is attenuated
@@ -959,27 +962,11 @@ would be necessary to take full advantage of the boost in spectral resolution pr
 
 Location of \chem{H^0}.  Neutral veil in front of nebula has column density of \SI{1.6e21}{cm^{-2}} and \SI{3.2e21}{cm^{-2}} in components A and B \citep{Abel:2006a}. 
 
+
+
+
 \subsection{Structure of the Orion Bar}
 \label{sec:structure-orion-bar}
-
-
-\begin{figure*}
-  \includegraphics[width=\linewidth]{figs/bar-geometry-options}
-  \caption{Different classes of geometrical models that have been
-    proposed for the Orion Bar.  The sequence of models I, II, III, IV
-    are of increasing complexity, but also increasing scope and
-    explanatory power.  Models I\('\), II\('\), III\('\), on the other
-    hand, are disfavored due to either underperformance or
-    falsification (see text for further details).  For all models,
-    dark blue shading represents molecular gas, green shading
-    represents neutral gas, and light orange shading represents
-    ionized gas.  An example emission layer of thickness \(h\) and
-    radius of curvature \(R\) is indicated by thick red lines.  The
-    line-of-sight depth of the emission layer is denoted by \(L\).
-    The direction of illumination and the line of sight are indicated
-    by thin dotted lines.  }
-  \label{fig:bar-geometry}
-\end{figure*}
 
 
 Geometry of bar: in \citet{Henney:2005b} I pointed out that a
@@ -1035,52 +1022,6 @@ roughly cylindrical filament.  Second, they ignore scattering, see
 \end{figure}
 
 
-\begin{figure}
-  \includegraphics[width=\linewidth]{figs/orion-bar-oi-hst-zoom}
-  \caption{Fine-scale structure of the ionization front at the Orion Bar.
-    Grayscale image shows a \(90'' \times 90''\) section of a mosaic of
-    \textit{HST} WFPC2 observations \citep{Bally:2000a} in the F631N filter,
-    which mainly passes the [\ion{O}{1}] \SI{6300}{\angstrom} line.
-    The image has been high-pass filtered to remove large-scale brightness gradients
-    (\(> \SI{16}{arcsec}\)).
-    The principal ionization front of the Bright Bar runs diagonally from top-left to bottom-right.
-    It can be seen that the front is very irregular on scales of \num{1} to \SI{10}{mpc},
-    and even becomes disrupted completely in some segments.
-    Only in a few places is the front straight and regular enough for its true sharpness to be seen,
-    such as the small area shown in a zoomed box, where the width of the [\ion{O}{1}] ridge
-    can be seen to be less than \SI{1}{mpc}.
-    Apart from the Bright Bar ionization front,
-    other fine-scale features visible in the image are associated with
-    Herbig--Haro jets and proplyds.
-  }
-  \label{fig:bar-oi-hst}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\linewidth]{figs/alma-co-hcop-h2-dissoc-front}
-  \caption{Fine-scale structure of the dissociation front in the Orion
-    Bar.  Double white arrows mark out some instances of
-    stratification between emission of \chem{H_2} (blue) and heavier
-    molecules (green/yellow/red). In every instance \chem{H_2} is
-    displaced towards the irradiated side of the filament by \(1''\)
-    to \(2''\) (\(\approx \SI{0.003}{pc}\)).  Background image shows ALMA
-    mosaics \citep{Goicoechea:2016a} of the sub-mm \chem{CO}
-    \(J = 3 \to 2\) \SI{866.96}{\micron} \chem{HCO^+}
-    \SI{840.38}{\micron} emission lines in the red and green color
-    channels, respectively, with the boundary of the ALMA field shown
-    by the gray dashed line. The blue color channel of the background
-    image shows near-infrared vibrationally excited \chem{H_2}
-    \(v = 1 \to 0\ S(1)\) \SI{2.12}{\micron} emission, extracted from
-    narrow-band imaging with ESO's High Acuity Wide-field K-band
-    Imager \citetext{HAWK-I, \citealp{Kissler-Patig:2008a}}. The
-    \chem{H_2} image has been corrected for contamination by ionized
-    emission (mainly hydrogen Br\(\gamma\) recombination line), but has not
-    been continuum-subtracted.  As a result, scattered starlight
-    \citetext{cloudshine, \citealp{Foster:2006a}} is seen as a band
-    of diffuse emission that falls off smoothly behind the ionization
-    front. }
-  \label{fig:alma-dissoc-front}
-\end{figure}
 
 \subsection{Rival explanations for the 6633, 6664 lines}
 \label{sec:rival-expl-6633}
@@ -1179,6 +1120,15 @@ transitions from \(1s\).
 
 
 \section*{Acknowledgements}
+I am grateful for financial support provided by
+\foreignlanguage{spanish}{
+  Dirección General de Asuntos del Personal Académico,
+  Universidad Nacional Autónoma de México},
+through grant
+\foreignlanguage{spanish}{
+  Programa de Apoyo a Proyectos de Investigación
+  e Inovación Tecnológica}
+IN107019.
 Scientific software and databases used in this work include
 SAOImage~DS9\footnote{\url{https://sites.google.com/cfa.harvard.edu/saoimageds9}} \citep{Joye:2003a},
 the Atomic Line List\footnote{\url{https://www.pa.uky.edu/~peter/newpage/}} \citep{Van-Hoof:2018a},
@@ -1262,7 +1212,7 @@ over the \Level{3p}{2}{P}{1/2} and \Level{3p}{2}{P}{3/2} upper levels
 is used, assumed to be populated according to their statistical
 weights, with individual component wavelengths obtained from
 Tab.~XXVIII of \citet{Mohr:2008a}. Note that the electric dipole
-selection rules mean that only \Config{3p \to 2s} transitions contributer
+selection rules mean that only \Config{3p \to 2s} transitions contribute
 to \ha{} in the Raman scattering context.  The wavelength is therefore
 slightly shorter than the value obtained for the \ha{} recombination
 line, which includes additional contributions from \Config{3s \to 2p}
@@ -1371,162 +1321,6 @@ ratio increases with \(x\), which means that the product
 
 
 
-\newcommand\vdw{vdW13}
-\newcommand\vlsr{\ensuremath{v_{\mathrm{lsr}}}}
-\section{\boldmath Reanalysis of \SI{21}{cm} \ion{H}{1} observations of the Orion Bar}
-\label{sec:reanalysis-21-cm}
-
-Karl G.\ Jansky Very Large Array observations of the \ion{H}{1}
-\SI{21}{cm} line from the Orion Nebula and its surroundings at a
-spatial resolution of \(\approx 6''\) and a velocity resolution of
-\SI{0.77}{km.s^{-1}} were presented in \citet[hereafter
-vdW13]{van-der-Werf:2013a}.  The line is seen both in emission and
-absorption of the strong free-free continuum emitted by the ionized
-nebula.  The majority of the absorption arises in the foreground Veil
-at Local Standard of Rest velocities of
-\(\vlsr = \text{\SIrange{-2}{+7}{km.s^{-1}}}\). Emission is seen
-primarily at more redshifted velocities of
-\SIrange{+10}{+15}{km.s^{-1}}, similar to the velocities of the
-molecular gas seen in CO, although at large distances from the center
-of the nebula the Veil is also seen in emission.  The analysis of the
-absorption components by \vdw{} was carried out under the assumptions
-that (i)~all of the continuum emission arises from \emph{behind} the
-absorbing \chem{H^0} column (from the point of view of the Earth), and
-(ii)~line emission is negligible at velocities where absorption is
-detected.  These are both very good assumptions in the case of
-absorption by the foreground Veil, but they break down for the case of
-the Orion Bar, where both emission and absorption are seen at similar
-velocities and in spatially adjacent regions.  Given the wealth of
-information on the physical conditions and geometry that these data
-provide, it is worth reanalyzing them under less restrictive
-assumptions.
-
-\newcommand{\Ttb}{\ensuremath{\tilde{T}_{\mathrm{b}}}}
-\newcommand{\Tb}{\ensuremath{T_{\mathrm{b}}}}
-\newcommand{\Tc}{\ensuremath{{T_{\mathrm{c}}}}}
-\newcommand{\Te}{\ensuremath{T_{\mathrm{e}}}}
-\newcommand{\Ts}{\ensuremath{T_{\mathrm{s}}}}
-
-\begin{figure}
-  \centering
-  \caption{Three-layer sandwich structure for \ion{H}{1} \SI{21}{cm} radiative transfer.}
-  \label{fig:hii-hi-hii-sandwich}
-\end{figure}
-
-In the Rayleigh--Jeans limit, the frequency-dependent surface
-brightness \(I_\nu\) is characterized by the brightness temperature in
-each velocity channel: \(T_{\mathrm{b}}(v) = c^2 I_\nu / 2 k \nu^2\),
-where \(v/c = (\nu/\nu_0) - 1\) and \(\nu_0 = \SI{1.420405}{GHz}\).  The
-radiative transfer equation can be solved for an idealized three-layer
-sandwich structure (see Fig.~\ref{fig:hii-hi-hii-sandwich}),
-consisting of (1)~a background \chem{H^+} region with electron
-temperature \Te{} and free-free continuum optical depth \(\tau'\), (2)~an
-intermediate neutral \chem{H^0} layer with spin temperature \Ts{} and
-line optical depth \(\tau(v)\), and (3)~a foreground \chem{H^+} region
-with the electron temperature \Te{} and free-free continuum optical
-depth \(\tau''\). The continuum source function in regions~1 and~3 is
-\Te{}, whereas the line source function in region~2 is \Ts{}.
-Region~2 is assumed to have zero continuum optical depth.  Following
-\vdw{}, large-scale Milky Way \ion{H}{1} line emission along the line
-of sight through Orion is neglected since it is (a)~very faint
-compared with the nebula, with \(\Tb(v) < \SI{48}{K} \) at
-\(v = \SI{10}{km.s^{-1}}\) \citep{Green:1991a, Green:1993a}, and
-(b)~any emission that is smooth on angular scales below 7 arcminutes
-will be filtered out by the interferometer.
- 
-At continuum frequencies just off the line, \(\tau(v) = 0\) and only
-regions~1 and 3 contribute to the observed brightness, yielding a
-continuum brightness temperature
-\begin{align}
-  \label{eq:Tcont}
-  \Tc & = \Te \biggl( 1 - e^{-(\tau' + \tau'')} \biggr) \\
-  & = \Tc' e^{-\tau''} + \Tc''
-  \ , \nonumber
-\end{align}
-where the second equality gives the decomposition into separate
-contributions from region~1: \(\Tc' = \Te (1 - e^{-\tau'})\), and
-region~3: \(\Tc'' = \Te (1 - e^{-\tau''})\).  At frequencies where the
-line opacity is significant, all three regions contribute, yielding
-\begin{equation}
-  \label{eq:Tline}
-  \Tb(v) =
-    \Tc' e^{-\left(\tau(v) + \tau''\right)} +
-    \Ts \biggl( 1 - e^{-\tau(v)} \biggr) e^{-\tau''} +
-    \Tc''
-  \ .
-\end{equation}
-For practical reasons related to the deconvolution of the
-interferometric data, the results of \vdw{} are presented in
-continuum-free form as \(\Ttb(v) = \Tb(v) - \Tc\).  Combining
-equation~\eqref{eq:Tcont} and \eqref{eq:Tline}, one finds
-\begin{equation}
-  \label{eq:Tb}
-  \Ttb(v) =
-  \bigl[ 1 - e^{-\tau(v)} \bigr] \,
-  \bigl[ 1 - \bigl(\Tc''/\Te\bigr)\bigr] \,
-  \bigl[  \Ts - \Tc' \bigr]  \ .
-\end{equation}
-The relative brightness temperature of the line, \(\Ttb(v)\), is
-therefore seen to be the product of three factors, given by the three
-sets of square brackets in equation~\eqref{eq:Tb}.  The first two
-factors are always positive since \(\tau(v) \ge 0\) and
-\(\Tc'' \le \Te\), but the third factor can take either sign.  When the
-continuum brightness temperature \(\Tc'\) of the background
-photoionized gas in region~1 exceeds the spin temperature \(\Ts\) of
-neutral hydrogen in region~2, then we see an absorption line:
-\(\Ttb(v) < 0\).  On the other hand, when \(\Ts\) is higher than
-\(\Tc'\), then we see an emission line: \(\Ttb(v) > 0\).  In either
-case, the maximum line strength will be found when region~2 is opaque
-(\(\tau(v) \gg 1\)) and region~3 is transparent (\(\Tc'' \ll \Te\)), yielding
-\(\max(|\Ttb(v)|) = |\Ts - \Tc'|\).
-
-\newcommand\fbg{\ensuremath{f_{\mathrm{bg}}}}
-
-The electron temperature in the ionized gas is expected to be roughly
-constant at \(\Te \approx \SI{11 000}{K}\) \citep{Dicker:2009a}, but this
-still leaves 4 unknown quantities, \(\tau(v)\), \(\Ts\), \(\Tc'\), and
-\(\Tc''\), to be determined from 2 observed quantities: \(\Tc\) and
-\(\Ttb(v)\).  Further assumptions must therefore be made in order to
-interpret the observations, but these can be guided by the observed
-spatial trends and simple geometric models.  For instance, in the
-Orion Bar the free-free continuum brightness temperature falls sharply
-across the ionization front from \(\Tc \approx \SI{3000}{K}\) on the ionized
-side, but then levels off to a roughly constant value of
-\(\Tc \approx \SI{600}{K}\) on the neutral side. Assuming that this constant
-value reflects unrelated foreground emission (probably ionized by
-\th2{A}) that overlays the entire Bar (this hypothesis is tested
-below), we have an upper limit to the background emission of
-\(\Tc - \SI{600}{K}\).  It can be further assumed that the emission
-from region~1 is a constant fraction, \fbg{}, of this upper limit:
-\begin{equation}
-  \label{eq:bg-emission}
-  \Tc' = \fbg \bigl( \Tc - \SI{600}{K} \bigr) \ .
-\end{equation}
-If the Bar geometry is a cylinder that is illuminated from the side
-(see Fig.~XXX), then \(\fbg = 0.5\) is appropriate.  If the Bar is
-illuminated from slightly behind, or if it is an escarpment, or if an
-additional background component is present (see
-\S~\ref{sec:structure-orion-bar}), then the fraction will be larger:
-\(0.5 < \fbg < 1.0\).
-
-Further progress can then be made by considering null points in the
-nebula where line emission and absorption cancel out. At such points
-\(\Ttb(v) \approx 0\), so that \(\Ts = \Tc'\) by equation~\eqref{eq:Tb}.
-Absorption component~M is identified by \vdw{} as associated with
-\chem{H^0} in the Bar, due to its velocity and spatial distribution.
-Component~M consists of a string of knots with
-\(\Ttb(v) = \text{\num{-200} to \SI{-400}{K}}\) at
-\(v \approx \SI{11}{km.s^{-1}}\).  They are arranged parallel to the Bar,
-just behind the ionization front at a relative position of roughly
-\SI{+0.006}{pc} (see Fig.~\ref{fig:raman-bar-profile}) and where the
-continuum brightness has fallen to \(\Tc \approx \SI{2200}{K}\). At greater
-distances from the ionization front the \ion{H}{1} at this velocity is
-seen in emission, reaching a peak of \(\Ttb(v) \approx \SI{+250}{K}\) at
-\SI{+0.030}{pc} where \(\Tc \approx \SI{750}{K}\).  The crossover null point
-where \(\Ttb(v) = 0\) occurs between these two at \SI{+0.012}{pc}
-where \(\Tc \approx \SI{1500}{K}\).
-
-\textit{Add a table showing }
 
 % Don't change these lines
 \bsp	% typesetting comment

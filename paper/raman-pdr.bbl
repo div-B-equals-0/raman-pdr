@@ -103,11 +103,6 @@
 {Desert} F.-X.,  {Boulanger} F.,   {Puget} J.~L.,  1990, \aap, \href
   {http://adsabs.harvard.edu/abs/1990A%26A...237..215D} {237, 215}
 
-\bibitem[\protect\citeauthoryear{{Dicker} et~al.,}{{Dicker}
-  et~al.}{2009}]{Dicker:2009a}
-{Dicker} S.~R.,  et~al., 2009, \mn@doi [\apj] {10.1088/0004-637X/705/1/226},
-  \href {http://adsabs.harvard.edu/abs/2009ApJ...705..226D} {705, 226}
-
 \bibitem[\protect\citeauthoryear{{Dopita}, {Nicholls}, {Sutherland }, {Kewley}
   \& {Groves}}{{Dopita} et~al.}{2016}]{Dopita:2016a}
 {Dopita} M.~A.,  {Nicholls} D.~C.,  {Sutherland } R.~S.,  {Kewley} L.~J.,
@@ -132,11 +127,6 @@
 {Ferland} G.~J.,  et~al., 2017, \rmxaa, \href
   {http://adsabs.harvard.edu/abs/2017RMxAA..53..385F} {53, 385}
 
-\bibitem[\protect\citeauthoryear{{Foster} \& {Goodman}}{{Foster} \&
-  {Goodman}}{2006}]{Foster:2006a}
-{Foster} J.~B.,  {Goodman} A.~A.,  2006, \mn@doi [\apjl] {10.1086/500131},
-  \href {http://adsabs.harvard.edu/abs/2006ApJ...636L.105F} {636, L105}
-
 \bibitem[\protect\citeauthoryear{{Garc{\'{\i}}a-D{\'{\i}}az} \&
   {Henney}}{{Garc{\'{\i}}a-D{\'{\i}}az} \& {Henney}}{2007}]{Garcia-Diaz:2007a}
 {Garc{\'{\i}}a-D{\'{\i}}az} M.~T.,  {Henney} W.~J.,  2007, \mn@doi [\aj]
@@ -159,24 +149,10 @@
   {https://ui.adsabs.harvard.edu/abs/2018MNRAS.479.3909G} {479, 3909}
 
 \bibitem[\protect\citeauthoryear{{Goicoechea} et~al.,}{{Goicoechea}
-  et~al.}{2016}]{Goicoechea:2016a}
-{Goicoechea} J.~R.,  et~al., 2016, \mn@doi [\nat] {10.1038/nature18957}, \href
-  {https://ui.adsabs.harvard.edu/abs/2016Natur.537..207G} {537, 207}
-
-\bibitem[\protect\citeauthoryear{{Goicoechea} et~al.,}{{Goicoechea}
   et~al.}{2017}]{Goicoechea:2017a}
 {Goicoechea} J.~R.,  et~al., 2017, \mn@doi [\aap]
   {10.1051/0004-6361/201730716}, \href
   {https://ui.adsabs.harvard.edu/abs/2017A&A...601L...9G} {601, L9}
-
-\bibitem[\protect\citeauthoryear{{Green}}{{Green}}{1991}]{Green:1991a}
-{Green} D.~A.,  1991, \mn@doi [\mnras] {10.1093/mnras/253.2.350}, \href
-  {https://ui.adsabs.harvard.edu/abs/1991MNRAS.253..350G} {253, 350}
-
-\bibitem[\protect\citeauthoryear{{Green} \& {Padman}}{{Green} \&
-  {Padman}}{1993}]{Green:1993a}
-{Green} D.~A.,  {Padman} R.,  1993, \mn@doi [\mnras] {10.1093/mnras/263.2.535},
-  \href {https://ui.adsabs.harvard.edu/abs/1993MNRAS.263..535G} {263, 535}
 
 \bibitem[\protect\citeauthoryear{{Greisen}, {Calabretta}, {Valdes}  \&
   {Allen}}{{Greisen} et~al.}{2006}]{Greisen:2006a}
@@ -419,12 +395,6 @@ Van~Hoof P. A.~M.,  2018, \mn@doi [Galaxies] {10.3390/galaxies6020063}, 6
   {Krabbe}}{{van der Werf} et~al.}{1996}]{van-der-Werf:1996a}
 {van der Werf} P.~P.,  {Stutzki} J.,  {Sternberg} A.,   {Krabbe} A.,  1996,
   \aap, \href {http://adsabs.harvard.edu/abs/1996A%26A...313..633V} {313, 633}
-
-\bibitem[\protect\citeauthoryear{{van der Werf}, {Goss}  \& {O'Dell}}{{van der
-  Werf} et~al.}{2013}]{van-der-Werf:2013a}
-{van der Werf} P.~P.,  {Goss} W.~M.,   {O'Dell} C.~R.,  2013, \mn@doi [\apj]
-  {10.1088/0004-637X/762/2/101}, \href
-  {http://adsabs.harvard.edu/abs/2013ApJ...762..101V} {762, 101}
 
 \makeatother
 \end{thebibliography}

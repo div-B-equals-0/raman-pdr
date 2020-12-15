@@ -26,6 +26,10 @@ CLOSED: [2020-12-14 Mon 12:42]
 + [X] We have the spectrum, but it needs a better description
 **** TODO Discussion
 + [ ] Very fragmentary - needs some bits cutting and writing the rest
++ [ ] Talk about the inhomogeneities in the Bar
++ [ ] Talk about the Cloudy models
++ [ ] Remove discussion of Bar models and H I line
+  + Keep this for another paper
 + Could add discussion of other H II regions, such as Carina and Tarantula
 **** TODO Conclusions
 **** DONE Acknowledgements
