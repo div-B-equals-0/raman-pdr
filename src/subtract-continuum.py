@@ -52,7 +52,7 @@ for j, i in itertools.product(range(ny), range(nx)):
 for suffix, cube in [
         ["cont", bgdata],
         ["cont-sub", hdu.data - bgdata],
-        # ["cont-div", hdu.data/bgdata],
+        ["cont-div", hdu.data/bgdata],
 ]:
     outfile = infile.replace(".fits", f"-{suffix}.fits")
     fits.PrimaryHDU(header=hdu.header, data=cube).writeto(

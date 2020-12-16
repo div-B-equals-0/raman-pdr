@@ -28,6 +28,7 @@ CLOSED: [2020-12-14 Mon 12:42]
 + [ ] Very fragmentary - needs some bits cutting and writing the rest
 + [ ] Alternative explanations for the absorption lines
   + [ ] Add a figure that compares the EW of the 6634 line with the extinction map, to show that they are unrelated.
+  + [ ] Now planning lots of maps of absorption lines, see 
 + [ ] Talk about the Cloudy models
 + [ ] Remove discussion of Bar models and H I line
   + Keep this for another paper
@@ -510,7 +511,7 @@ CLOSED: [2019-09-04 Wed 12:24]
   for suffix, cube in [
           ["cont", bgdata],
           ["cont-sub", hdu.data - bgdata],
-          # ["cont-div", hdu.data/bgdata],
+          ["cont-div", hdu.data/bgdata],
   ]:
       outfile = infile.replace(".fits", f"-{suffix}.fits")
       fits.PrimaryHDU(header=hdu.header, data=cube).writeto(
@@ -529,6 +530,7 @@ python ../src/subtract-continuum.py $DATADIR $SUFFIX $OUTDIR
 #+RESULTS: subtract-cont
 : Written muse-hr-data-wavsec23-rebin16x16-cont.fits
 : Written muse-hr-data-wavsec23-rebin16x16-cont-sub.fits
+: Written muse-hr-data-wavsec23-rebin16x16-cont-div.fits
 
 Now do same for 5x5 cube
 
@@ -3924,6 +3926,40 @@ CLOSED: [2019-09-07 Sat 11:58]
   + Requires better continuum subtraction on the wavsec6 cube but should be doable
   + There is no good continuum range
   + But the single wavelength at 8723.45 (pixel 646) is a local minimum, so as good as any
+* Comparison with other absorption lines
+:PROPERTIES:
+:ID:       BE62EEF0-597D-4953-9C65-2A8A5D1D0566
+:END:
++ See also previous discussion from 2015 in MUSE notes
+  + [[id:29ACCF8C-F49A-4FEB-8374-DC19BB20048E][Using the absorption lines]]
++ We have a variety of behaviors of the different lines
+  + He II 4686
+    + this peaks very clearly around th2A (EW = 0.5 \AA)
+    + but is seen at lower level everywhere (EW = 0.2 \AA)
+      + Note that it is phase-dependent 
+    + Much better s/n from Manu spectra
+    + Note that He II 5411 is hard to use since it is contaminated by [Fe III] 5412
+  + DIB 5781
+    + I had thought this was He II 5785 but the wavelength is way off
+    + Peak in Dark Bay (EW = 0.4 \AA) and SW Cloud (EW = 0.2 \AA)
+    + Correlates very well with the reddening
+    + Note that the He_II-5785 map actually looks better than the DIB-5781 one
+      + Maybe I should try and re-do it, or just average them
+    + There is also a DIB-6278 but the maps are much noisier
+      + This is because it is strongly impacted by the telluric O_2 \gamma band absorption at 6280 \AA
+      + DIB itself is actually closer to 6283
+        + apparent in some of the Manu spectra
+        + such as [[file:/Users/will/Dropbox/RubinWFC3/Tsquared/manu-region-specplot-r-6200-6400-x+600-y+300-w0600-h0600.jpg]]
+        + Also can be seen well in [[file:~/Dropbox/dib-scatter-hii/data/orion-muse/muse-hr-data-wavsec23-rebin16x16-cont-div.fits]]
+    + C IV 5801, 5812
+      + This is quite weak and noisy, but shows broad peak around Trapezium
+      + Maximum is about 0.1 \AA
+      + [X] We should look at how deep they should be in the spectrum of Trapezium - use the POWR models
+        + Not seen in those models, too low resolution
+      + Supposedly, it is seen in spectrum of th1C, but not other stars
+  + Plot of theoretical spectrum of the Trapezium stars
+    + [[file:powr-trapezium-optical.pdf]]
+    + 
 * Absorption at 6634 \AA in other regions
 ** TODO RCW 49
 + Illuminated by the massive cluster Westerlund 2, supposedly second most massive in Milky Way
@@ -5999,7 +6035,7 @@ CLOSED: [2019-08-27 Tue 12:53]
   + When Ly\beta pumping operates, then it is 3d 3D that is populated (via 1026 \AA), and then emits 1.1287 micron as it decays to 3p 3P, followed by the 8446
   + When it is continuum pumping that occurs, then in addition the 4s 3S is pumped by 1039,1041 and all the higher ns 3S and nd 3D levels are pumped by shorter wavelength lines down to 912
   + The 4s 3S \to 3p 3P emits 1.3160 micron, which in Orion is slightly stronger than 1.1287 (Walmsley:2000a, Table 1), which proves it is continuum excitation
-  + Ad do all the other optical O I lines from ns (7254, 6046, 5555, etc) and nd (7002, 5958, 5513, etc)
+  + As do all the other optical O I lines from ns (7254, 6046, 5555, etc) and nd (7002, 5958, 5513, etc)
 ** TODO Do the accounting for the cascades
 + Add up all ns \to 3p and nd \to 3p
   + (converted to photon units)
@@ -6264,6 +6300,8 @@ Ionization limit: 21206.43 cm^-1 = 4715.55 \AA vac
   + th1C2 - 25-38
 + I am not doing th1B since it has T=18000 and all the models have much smaller g
   + They only go down to 25,000 K on MS (8 Msun)
++ What about th2A?
+  + th2A - 35-41
 + I have downloaded two sets of spectra
   + the coarse SEDs in [[file:../seds/powr-ob/coarse/]]
     + first column is log10(wav/angstrom)
@@ -6317,16 +6355,21 @@ Take average to get the 39-41 spectrum
   for template in [
           "../seds/powr-ob/coarse/ob-i_{}_sed.txt",
           "../seds/powr-ob/fine_fuv/ob-i_{}_line_calib.txt",
+          "../seds/powr-ob/fine_vis/ob-i_{}_line_calib.txt",
   ]:
-      sfile1 = template.format("39-40")
-      sfile2 = template.format("39-42")
-      wav1, flam1 = np.genfromtxt(sfile1, unpack=True)
-      wav2, flam2 = np.genfromtxt(sfile2, unpack=True)
-      if ~np.alltrue(wav1 == wav2):
-          flam1 = np.interp(wav2, wav1, flam1)
-      flam = 0.5*(flam1 + flam2)
-      sfile = sfile2.replace("39-42", "39-41")
-      np.savetxt(sfile, list(zip(wav2, flam)), fmt="%10.5f")
+      for Tstring in "35", "39":
+          sfile1 = template.format(f"{Tstring}-40")
+          sfile2 = template.format(f"{Tstring}-42")
+          try:
+              wav1, flam1 = np.genfromtxt(sfile1, unpack=True)
+              wav2, flam2 = np.genfromtxt(sfile2, unpack=True)
+          except:
+              continue
+          if ~np.alltrue(wav1 == wav2):
+              flam1 = np.interp(wav2, wav1, flam1)
+          flam = 0.5*(flam1 + flam2)
+          sfile = sfile2.replace("-42", "-41")
+          np.savetxt(sfile, list(zip(wav2, flam)), fmt="%10.5f")
 
 #+end_src
 
@@ -6379,6 +6422,74 @@ First SEDs
 #+RESULTS: plot-powr-trapezium-seds
 [[file:powr-trapezium-seds.pdf]]
 
+
+Next, look at high-res optical spectra.  Potential absorption lines: He II 4686 to C IV 5801
+#+name: plot-powr-trapezium-optical
+#+begin_src python :results file :return figfile
+  import numpy as np
+  from astropy.convolution import convolve, Gaussian1DKernel
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+
+
+  models = [
+      ["39-41", r"$\theta^1$ C"], 
+      ["35-41", r"$\theta^2$ A"], 
+      ["32-42", r"$\theta^1$ D"], 
+      ["30-40", r"$\theta^1$ A"], 
+      ["25-38", r"$\theta^1$ C$_2$"], 
+  ]
+
+  figfile = "powr-trapezium-optical.pdf"
+  fig, ax = plt.subplots()
+
+  wav1, wav2 = 4500, 7500
+  margin = 10.0
+  dwav = 0.05
+  wav_grid = np.arange(wav1 - margin, wav2 + margin + dwav, dwav)
+  FWHM_AA = 2.5
+  inst_FWHM = FWHM_AA / (2.3 * dwav)
+  inst_profile = Gaussian1DKernel(stddev=inst_FWHM)
+
+  sed0 = None
+  for model, label in models[::-1]:
+      sfile = f"../seds/powr-ob/fine_vis/ob-i_{model}_line_calib.txt"
+      wav, flam = np.genfromtxt(sfile, unpack=True)
+      flam = 10**flam
+      sed = wav**4 * flam
+      # Remap onto uniform grid
+      sed_grid = np.interp(wav_grid, wav, sed)
+      # Smooth to 1 AA resolution
+      sed_obs = convolve(sed_grid, inst_profile)
+      # if sed0 is None:
+      #     sed0 = sed
+      # else:
+      #     sed0 += sed
+      ax.plot(wav_grid, sed_obs, label=label, lw=0.6)
+  #ax.plot(wav, sed0, color="k", lw=0.5, label="TOTAL")
+  ax.axvline(4686, lw=0.4, ls=":")
+  ax.axvline(5801, lw=0.4, ls=":")
+  ax.axvline(5812, lw=0.4, ls=":")
+  ax.axvline(6563, lw=0.4, ls=":", color="r")
+  ax.axvline(6633, lw=0.4, ls=":", color="r")
+  ax.axvline(6664, lw=0.4, ls=":", color="r")
+  ax.axvline(7200, lw=0.4, ls=":", color="r")
+  ax.legend(ncol=5)
+  ax.set(
+      xscale="linear",
+      yscale="linear",
+      xlabel="Wavelength, Å",
+      ylabel="$\lambda^4 F_\lambda$ at 10 pc",
+      xlim=[wav1, wav2],
+      ylim=[0.0, None],
+  )
+  sns.despine()
+  fig.tight_layout()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS: plot-powr-trapezium-optical
+[[file:powr-trapezium-optical.pdf]]
 
 
 Next fine FUV (/now using merged SEDs, see below/) 
