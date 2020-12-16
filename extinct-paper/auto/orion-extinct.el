@@ -5,6 +5,14 @@
                      '(("aastex63" "twocolumn" "times")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("babel" "spanish" "es-minimal" "english") ("inputenc" "utf8") ("newtxmath" "varg")))
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
     "amsmath"
@@ -35,10 +43,17 @@
     "th")
    (LaTeX-add-labels
     "sec:introduction"
-    "fig:3color-extinction")
+    "fig:3color-extinction"
+    "sec:other-meas-extinct"
+    "sec:diff-interst-bands"
+    "sec:forb-metal-doubl")
    (LaTeX-add-bibliographies
     "BibdeskLibrary")
    (LaTeX-add-counters
-    "ionstage"))
+    "ionstage")
+   (LaTeX-add-array-newcolumntypes
+    "L"
+    "R"
+    "C"))
  :latex)
 

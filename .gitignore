@@ -11,3 +11,4 @@ data/orion-hawki/*.fits.Z
 /paper/raman-pdr.out
 doc/ltximg
 /.DS_Store
+extinct-paper/auto/orion-extinct.el
