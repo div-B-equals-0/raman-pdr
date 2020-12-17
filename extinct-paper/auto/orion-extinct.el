@@ -46,7 +46,8 @@
     "fig:3color-extinction"
     "sec:other-meas-extinct"
     "sec:diff-interst-bands"
-    "sec:forb-metal-doubl")
+    "sec:forb-metal-doubl"
+    "sec:continuum-colors")
    (LaTeX-add-bibliographies
     "BibdeskLibrary")
    (LaTeX-add-counters

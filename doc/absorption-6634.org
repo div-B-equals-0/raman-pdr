@@ -2530,6 +2530,11 @@ CLOSED: [2019-09-07 Sat 09:03]
 #+RESULTS:
 [[file:orion-extinction-anomalies-scatter-bin064.jpg]]
 
+***** More details of extinction anomalies
++ I wrote some notes in Craft
+  + [[https://www.craft.do/s/9FOBe6rGJvhlzT][Public link to web page]]
+  + [[shell:open 'craftdocs://open?spaceId=ebf58611-71d2-f72d-500b-350bfc7b0451&blockId=EBF46FD9-2552-4A81-BEE4-D7F7D3876829'][Inline source to open Craft with document on local machine:]]
+
 **** Figure to compare Raman, [O I], and CO
 
 #+name: compare-oi-co-raman
