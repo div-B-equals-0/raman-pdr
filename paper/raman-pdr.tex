@@ -64,10 +64,17 @@
 
 % Emission lines
 \newcommand\ha{\ensuremath{\text{H}\alpha}}
+\newcommand\hb{\ensuremath{\text{H}\beta}}
 \newcommand\lya{\ensuremath{\text{Ly}\alpha}}
 \newcommand\lyb{\ensuremath{\text{Ly}\beta}}
+
 \newcommand\Raman{\ensuremath{_{\text{Raman}}}}
 \newcommand\FUV{\ensuremath{_{\text{FUV}}}}
+\newcommand\lamcont{\ensuremath{_{\lambda, \text{cont}}}}
+\newcommand\observed{\ensuremath{^{\text{obs}}}}
+\newcommand\intrinsic{\ensuremath{^{\text{int}}}}
+  
+
 
 \title[Raman mapping of Orion PDRs]
 {Raman mapping of photodissociation regions in the Orion Nebula}
@@ -784,6 +791,106 @@ on the other hand, come from the \chem{H^0} region of the PDR.
 % position of the \chem{H_2} emission.
 
 
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/raman-multi-absorption-features}
+  \caption{
+    Maps of equivalent widths of different absorption features (grayscale images),
+    compared with maps of other quantities (false color images).
+    (a)~Equivalent width of \SI{6633}{\angstrom} absorption feature.
+    (b)~Equivalent width of \ion{He}{2} \SI{4685.68}{\angstrom} absorption line.
+    (c)~Equivalent width of a solid-state Diffuse Interstellar Band
+    absorption feature at \SI{5781}{\angstrom}.
+    (d)~Ratio of Raman wing intensity (R058 band)
+    to the intensity of the underlying continuum at the same wavelength.
+    (e)~Equivalent width of \ion{C}{4} \num{5801.35}, \SI{5811.97}{\angstrom}
+    absorption lines (average of the two lines).
+    (f)~Foreground dust extinction to the ionized gase,
+    \(C(\hb)\) (base-10 logarithmic extinction at \SI{4861}{\angstrom}),
+    calculated from the Balmer decrement \(\ha{}/\hb{}\),
+    assuming the reddening curve of \citet{Blagrave:2007a}.
+  }
+  \label{fig:raman-multi-absorption-features}
+\end{figure*}
+
+
+\subsection{Equivalent widths of absorption features}
+\label{sec:equiv-widths-absorpt}
+
+Figure~\ref{fig:raman-multi-absorption-features} shows grayscale maps
+of the observed equivalent widths, \(W_\lambda\observed\),
+of various absorption features that are found
+superimposed on the continuous spectrum of the Orion Nebula.
+These are extracted from the MUSE datacubes by integrating over
+a short wavelength interval, \(\Delta\lambda = \pm \SI{8}{\angstrom}\),
+around the central wavelength of the absorption feature:
+\begin{equation}
+  \label{eq:equivalent-width}
+  W_\lambda\observed = \int_{\Delta\lambda}  \frac{I\lamcont - I_\lambda}{I\lamcont} \, d\lambda ,
+\end{equation}
+where \(I\lamcont\) is the continuum intensity,
+which is interpolated from the absorption-free portions of the \(\Delta\lambda\) interval.
+
+\subsubsection{Raman-scattered \ion{O}{1} \SI{1027}{\angstrom}}
+\label{sec:cand-raman-scatt}
+
+Figure~\ref{fig:raman-multi-absorption-features}d shows
+\(W_\lambda\observed\) for the \SI{6633}{\angstrom} absorption feature,
+which is a candidate for being a Raman-scattered FUV absorption line.
+Note that in this case, the ``continuum'' intensity \(I\lamcont\)
+includes a contribution from the broad Raman wing,
+as well as the ``true'' nebular continuum and dust-scattered starlight.
+Due to the weakness of both the continuum and the absorption line,
+it was necessary to aggressively bin the data
+in order to produce an acceptable map.
+The results in Figure\ref{fig:raman-multi-absorption-features}d
+are for a minimum S/N of 7 in \(W_\lambda\observed\), which gives
+the optimum balance between noise and spatial resolution.
+
+The 6633 equivalent width is non-zero across the entire map,
+with a median value of  \(W_\lambda\observed (6633) \approx \SI{0.1}{\angstrom}\). 
+It shows peaks of \(W_\lambda\observed (6633) = \SI{0.3 \pm 0.1}{\angstrom}\)
+in exactly the same areas as the peaks in the Raman band emission
+(see \S~\ref{sec:spat-mapp-raman}).
+For ease of comparison,
+Figure~\ref{fig:raman-multi-absorption-features}a shows a map of
+the wing-to-continuum ratio, \(R_{\text{wing}}\),
+for the R087 red Raman wing band, 
+which is found by dividing 
+the continuum-subtracted intensity in the MUSE data cube
+by the intensity of the interpolated continuum:
+\begin{equation}
+  \label{eq:wing-ratio}
+  R_{\text{wing}} = 
+  \frac{
+    \int_{\lambda_{\text{min}}}^{\lambda_{\text{max}}} \bigl(  I_\lambda - I'\lamcont \bigr) \, d\lambda 
+  }{
+    \int_{\lambda_{\text{min}}}^{\lambda_{\text{max}}}  I'\lamcont \, d\lambda 
+  } , 
+\end{equation}
+where the band limits \(\lambda_{\text{min}}\), \(\lambda_{\text{max}}\)
+are given in Table~\ref{tab:wav-bands}.
+In this case, the continuum intensity \(I'\lamcont\)
+does \emph{not} include the Raman wing emission 
+since it is interpolated across
+a much wider range than in equation~\eqref{eq:equivalent-width}
+by fitting a quadratic function to clean sections of continuum around
+\SI{6150 \pm 80}{\angstrom} and \SI{6790 \pm 30}{\angstrom}.
+Note also that \(R_{\text{wing}}\) is a dimensionless ratio,
+whereas \(W_\lambda\observed\) has dimensions of wavelength.
+The reason for choosing the R087 band for this figure is that it is
+the band that is closest in wavelength to the \SI{6633}{\angstrom} absorption feature.
+It is clear from comparing Figure~\ref{fig:raman-spectra-1d} panels a and d
+that \(R_{\text{wing}}\) and \(W_\lambda\observed (6633)\) closely track one another,
+as would be expected if the absorption feature is the Raman-scattered \ion{O}{1} \SI{1027}{\angstrom} line.
+
+\subsubsection{Stellar absorption lines}
+\label{sec:stell-absorpt-lines}
+
+\subsubsection{Solid-state absorption features}
+\label{sec:solid-state-absorpt}
+
+
+
 \section{High-resolution spectroscopy of Raman-scattered \boldmath\ion{O}{1} \SI{1028}{\angstrom}}
 \label{sec:keck-observations}
 
@@ -945,6 +1052,9 @@ would be necessary to take full advantage of the boost in spectral resolution pr
 \section{Discussion}
 \label{sec:discussion}
 
+
+
+
 \begin{figure*}
   \centering
   \includegraphics[width=\linewidth]{figs/raman-muse-spectra-times-lambda-squared}
@@ -962,6 +1072,8 @@ would be necessary to take full advantage of the boost in spectral resolution pr
 
 Location of \chem{H^0}.  Neutral veil in front of nebula has column density of \SI{1.6e21}{cm^{-2}} and \SI{3.2e21}{cm^{-2}} in components A and B \citep{Abel:2006a}. 
 
+\subsection{Evidence for Raman-scattered absorption lines}
+\label{sec:evidence-that-6633}
 
 
 
@@ -1073,7 +1185,7 @@ The other part will be due to thermal motions of the scatterers,
 which will contribute a width (FWHM) of
 \begin{equation}
   \label{eq:wtherm}
-  W_{\mathrm{therm}} = 0.124\, (T/A)^{1/2} \ \si{km.s^{-1}},
+  \Delta V_{\mathrm{therm}} = 0.124\, (T/A)^{1/2} \ \si{km.s^{-1}},
 \end{equation}
 where \(T\) is the temperature in \si{K} and \(A\) is the standard relative atomic mass.
 Measured widths of optical \ion{O}{1} fluorescent lines are relatively large

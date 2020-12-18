@@ -4022,7 +4022,7 @@ CLOSED: [2019-09-07 Sat 11:58]
   datapath = Path("../data/orion-muse")
   datapath2 = Path("../../OrionMuse/LineMaps")
 
-  # (a) The Raman wing over continuum ratio
+  # (d) The Raman wing over continuum ratio
   hdu = fits.open(datapath / f"ratio-raman-wing-to-continuum-6634.fits")["SCALED"]
   w = WCS(hdu.header)
   fig, axes = plt.subplots(
@@ -4044,62 +4044,34 @@ CLOSED: [2019-09-07 Sat 11:58]
   )
 
   label = "Raman wing / continuum"
-  ax = axes[0, 0]
+  ax = axes[1, 0]
   im = ax.imshow(hdu.data, vmin=0, vmax=0.14,
                  origin="lower", cmap="viridis")
   fig.colorbar(im, ax=ax, label=label, **cbkws)
-  ax.text(20, 1450, "a", **tkws)
+  ax.text(20, 1450, "d", **tkws)
 
-  # ax.contour(hdu_redCO.data[0, :, :],
-  #            levels=levels_CO, linewidths=[0.5, 1.0, 1.5, 2.0],
-  #            transform=ax.get_transform(w_CO),
-  #            colors="red")
-
-  # (d) The 6634 absorption equivalent width
-  label = "6634 Å Absorption Equivalent Width, Å"
-  ax = axes[1, 0]
+  # (a) The 6633 absorption equivalent width
+  label = "6633 Å Absorption Equivalent Width, Å"
+  ax = axes[0, 0]
   hdu = fits.open(datapath / f"ew-N_III-6634-multibin-SN0005.fits")["SCALED"]
   im = ax.imshow(-hdu.data, vmin=0.0, vmax=0.5,
                   origin="lower", cmap="gray_r")
   fig.colorbar(im, ax=ax, label=label, **cbkws)
-  ax.text(20, 1450, "d", **tkws)
+  ax.text(20, 1450, "a", **tkws)
 
-  # (b) The extinction
-  label = r"Dust Extinction, $C(\mathrm{H}\beta)$"
-  ax = axes[0, 1]
-  hdu = fits.open(datapath / f"C_H_beta-bin001.fits")["SCALED"]
-  im = ax.imshow(hdu.data, vmin=0.0, vmax=1.5,
-                 origin="lower", cmap="magma_r")
-  fig.colorbar(im, ax=ax, label=label, **cbkws)
-  ax.text(20, 1450, "b", **tkws)
 
-  # (e) The DIB feature
-  label = r"DIB 5781 Å Absorption Equivalent Width, Å"
-  ax = axes[1, 1]
-  hdua = fits.open(datapath / f"ew-DIB-5781-bin032.fits")["SCALED"]
-  hdub = fits.open(datapath2 / f"ew-He_II-5785-multibin-SN0005.fits")["SCALED"]
-  hduc = fits.open(datapath2 / f"ew-He_II-5785-multibin-SN0007.fits")["SCALED"]
-  data = np.nanmedian(
-      np.stack( (hdua.data, hdub.data, hduc.data) ),
-      axis=0,
-  )
-  im = ax.imshow(-data, vmin=0.0, vmax=0.4,
-                 origin="lower", cmap="gray_r")
-  fig.colorbar(im, ax=ax, label=label, **cbkws)
-  ax.text(20, 1450, "e", **tkws)
-
-  # (c) The He II line
+  # (b) The He II line
   label = r"He II 4686 Å Absorption Equivalent Width, Å"
-  ax = axes[0, 2]
+  ax = axes[0, 1]
   hdu = fits.open(datapath2 / f"ew-He_II-4686-multibin-SN0007.fits")["SCALED"]
   im = ax.imshow(-hdu.data, vmin=0.0, vmax=0.5,
                  origin="lower", cmap="gray_r")
   fig.colorbar(im, ax=ax, label=label, **cbkws)
-  ax.text(20, 1450, "c", **tkws)
+  ax.text(20, 1450, "b", **tkws)
 
-  # (f) The C IV line
+  # (e) The C IV line
   label = r"C IV 5801, 5812 Å Absorption Equivalent Width, Å"
-  ax = axes[1, 2]
+  ax = axes[1, 1]
   hdua = fits.open(datapath2 / f"ew-C_IV-5812-multibin-SN0005.fits")["SCALED"]
   hdub = fits.open(datapath2 / f"ew-C_IV-5812-multibin-SN0007.fits")["SCALED"]
   hduc = fits.open(datapath2 / f"ew-C_IV-5801-multibin-SN0005.fits")["SCALED"]
@@ -4110,7 +4082,33 @@ CLOSED: [2019-09-07 Sat 11:58]
   im = ax.imshow(-data, vmin=0.0, vmax=0.16,
                  origin="lower", cmap="gray_r")
   fig.colorbar(im, ax=ax, label=label, **cbkws)
+  ax.text(20, 1450, "e", **tkws)
+
+
+
+  # (f) The extinction
+  label = r"Dust Extinction, $C(\mathrm{H}\beta)$"
+  ax = axes[1, 2]
+  hdu = fits.open(datapath / f"C_H_beta-bin001.fits")["SCALED"]
+  im = ax.imshow(hdu.data, vmin=0.0, vmax=1.5,
+                 origin="lower", cmap="magma_r")
+  fig.colorbar(im, ax=ax, label=label, **cbkws)
   ax.text(20, 1450, "f", **tkws)
+
+  # (c) The DIB feature
+  label = r"DIB 5781 Å Absorption Equivalent Width, Å"
+  ax = axes[0, 2]
+  hdua = fits.open(datapath / f"ew-DIB-5781-bin032.fits")["SCALED"]
+  hdub = fits.open(datapath2 / f"ew-He_II-5785-multibin-SN0005.fits")["SCALED"]
+  hduc = fits.open(datapath2 / f"ew-He_II-5785-multibin-SN0007.fits")["SCALED"]
+  data = np.nanmedian(
+      np.stack( (hdua.data, hdub.data, hduc.data) ),
+      axis=0,
+  )
+  im = ax.imshow(-data, vmin=0.0, vmax=0.4,
+                 origin="lower", cmap="gray_r")
+  fig.colorbar(im, ax=ax, label=label, **cbkws)
+  ax.text(20, 1450, "c", **tkws)
 
 
   for ax in axes.flat:
