@@ -51,7 +51,7 @@
 \newcommand\hii{\ion{H}{2}}
 
 % Stars in Orion, e.g., \th1C, \th2A
-\def\th#1#2{\(\theta^{#1}\)\,Ori~#2}
+\def\th#1#2{\ensuremath{\theta^{#1}\,\text{Ori~#2}}}
 % Wavenumbers
 \newcommand\wn{\ensuremath{\tilde{\nu}}}
 
@@ -69,6 +69,7 @@
 \newcommand\lyb{\ensuremath{\text{Ly}\beta}}
 
 \newcommand\Raman{\ensuremath{_{\text{Raman}}}}
+\newcommand\scat{\ensuremath{_{\text{scat}}}}
 \newcommand\FUV{\ensuremath{_{\text{FUV}}}}
 \newcommand\lamcont{\ensuremath{_{\lambda, \text{cont}}}}
 \newcommand\observed{\ensuremath{^{\text{obs}}}}
@@ -796,6 +797,8 @@ on the other hand, come from the \chem{H^0} region of the PDR.
   \caption{
     Maps of equivalent widths of different absorption features (grayscale images),
     compared with maps of other quantities (false color images).
+    Red circles show positions of bright stars,
+    from West to East: \th1A, B, C, D, and \th2A, B.\@
     (a)~Equivalent width of \SI{6633}{\angstrom} absorption feature.
     (b)~Equivalent width of \ion{He}{2} \SI{4685.68}{\angstrom} absorption line.
     (c)~Equivalent width of a solid-state Diffuse Interstellar Band
@@ -803,7 +806,7 @@ on the other hand, come from the \chem{H^0} region of the PDR.
     (d)~Ratio of Raman wing intensity (R058 band)
     to the intensity of the underlying continuum at the same wavelength.
     (e)~Equivalent width of \ion{C}{4} \num{5801.35}, \SI{5811.97}{\angstrom}
-    absorption lines (average of the two lines).
+    absorption line doublet (sum of the two lines).
     (f)~Foreground dust extinction to the ionized gase,
     \(C(\hb)\) (base-10 logarithmic extinction at \SI{4861}{\angstrom}),
     calculated from the Balmer decrement \(\ha{}/\hb{}\),
@@ -894,19 +897,104 @@ from the photoionized gas in the nebula due to the high ionization potentials re
 They are therefore well-suited for tracing the diffuse dust-scattered starlight in the nebula.
 It can be seen that the distribution of the two lines is very different.
 For the \ion{He}{2} line, one finds \(W_\lambda\observed (4686) \approx \SI{0.2}{\angstrom}\)
-across most of the nebula, but with much larger values to the SE,
-with a pronounced peak of \(W_\lambda\observed (4686) \approx \SI{0.5}{\angstrom}\)
+across most of the nebula, but with consistently larger values to the SE,
+with a pronounced peak of \(W_\lambda\observed (4686) = \SI{0.4 \pm 0.1}{\angstrom}\)
 around the star \th2A.\@
+In addition, there is a secondary peak of
+\(W_\lambda\observed (4686) = \SI{0.3 \pm 0.05}{\angstrom}\),
+located close to \th1D, the easternmost of the four Trapezium stars. 
 In contrast, the \ion{C}{4} lines show a broad maximum of 
-\(W_\lambda\observed (5801 + 5812) = \SI{0.12 \pm 0.04}{\angstrom}\),
-centered to the SW of the Trapezium. 
-Possible reasons for these differences are discussed below in \S~\ref{sec:cannot-be-stellar}.
+\(W_\lambda\observed (5801 + 5812) = \SI{0.16 \pm 0.04}{\angstrom}\),
+centered to the SW of the Trapezium.
+
+The most straightforward of these to interpret is \ion{C}{4},
+since the 5801,5812 doublet is present in the spectrum of \th1C,
+with a summed equivalent width \(W_\lambda^\star = \SI{0.44 \pm 0.04}{\angstrom}\)
+\citep{Stahl:1996a}\footnote{The 10\% uncertainty is due to variation with rotational phase, see next paragraph.},
+but is absent in all the other OB stars in the nebula
+(as measured from the MUSE datacube).
+The equivalent width observed in the nebula is smaller than this,
+because of dilution by the nebular continuum (recombination plus 2-photon)
+and the starlight from the lower mass members of the Trapezium cluster.
+The fraction of the total observed continuum intensity that is due to
+dust-scattering of \th1C can be estimated as \(f\scat = W_\lambda\observed / W_\lambda^\star\),
+for which we find a maximum value of \(f\scat(\th1C;\,\ion{C}{4}) = 0.4 \pm 0.1\)
+in the region between the Trapezium and Orion~S.\@
+
+Although \th1C (spectral type O7V\,f?p\,var;
+\citealp{Simon-Diaz:2006b, Maiz-Apellaniz:2019a})
+is the hottest and most luminous star in the nebula,
+its \ion{He}{2} 4686 absorption line is anomalously weak 
+and varies markedly on a rotational timescale of \SI{15.4}{days}
+\citep{Conti:1972a, Stahl:1993a}
+because it is partially filled in by emission from the magnetosphere
+and complex magnetically-channeled stellar wind
+\citep{Donati:2002a}.
+From Fig.~5 of \citet{Stahl:1996a}, it can be seen that \(W_\lambda^\star (\th1C;\,4686)\)
+varies systematically from \SI{-0.1}{\angstrom} to \SI{0.4}{\angstrom}
+as a function of rotational phase.%
+\footnote{
+  Negative equivalent widths correspond to net emission, rather than absorption.
+}
+Three-dimensional simulations \citep{ud-Doula:2013a} show that the line profile
+is dominated by emission (\(W_\lambda^\star < 0\))
+for viewing directions along the magnetic pole,
+but by photospheric absorption (\(W_\lambda^\star > 0\))
+for viewing directions in the magnetic equator.
+Comparison with observed phase-dependent line profiles suggests that
+both the line-of-sight from Earth and the magnetic dipole axis are inclined
+at \(\approx \ang{45}\) from the rotation axis.
+This implies that the spectrum seen from Earth,
+integrated over the rotational period,
+is broadly representative of the average stellar spectrum
+seen by the surrounding nebula,
+so that a value of \(W_\lambda^\star (\th1C;\,4686) \approx \SI{0.15}{\angstrom}\)
+is appropriate, albeit with a large uncertainty. 
+
+The second most luminous star in the nebula is the spectroscopic binary \th2A
+(spectral type O9.2V + B0.5:V(n); \citealp{Maiz-Apellaniz:2019a}),
+located to the SE of the nebula, beyond the Bright Bar.
+This shows a much simpler \ion{He}{2} line profile
+with \(W_\lambda^\star (\th2A;\,4686) = \SI{0.53}{\angstrom}\) \citep{Simon-Diaz:2006b},
+which explains why \(W_\lambda\observed (4686)\) is higher around \th2A,
+than around the Trapezium.
+Applying the same argument as above yields a maximum value of
+\(f\scat(\th2A;\,\ion{He}{2}) = 0.75 \pm 0.2\),
+implying that the blue continuum in this area of the nebula is totally dominated
+by scattered light from \th2A, which forms a roughly circular reflection nebula.
+
+The same absorption line is present in the spectra of other Trapezium stars,
+being strongest in the B0.5V star \th1D with \(W_\lambda^\star (\th1D;\,4686) \approx \SI{0.25}{\angstrom}\) \citep{Simon-Diaz:2006b}.
+It is therefore interesting and suggestive
+that the local peak in \(W_\lambda\observed (4686)\)
+is on \th1D's side of the Trapezium.
+This would not be expected if all the Trapezium stars lay
+at the same distance from the scattering grains
+because \th1C is 4 times brighter than \th1D
+at visual wavelengths, so the latter star contributes relatively little
+to the total luminosity of the Trapezium.
+However, it has been suggested \citep{Smith:2005a} that \th1D may lie
+closer to the background molecular gas,
+roughly \SI{0.1}{pc} behind \th1C.
+In such a case, it would be possible for \th1D to dominate the illumination
+of a small reflection nebula around itself,
+and the present results would tend to confirm that. 
+
+% Possible reasons for these differences are discussed below in \S~\ref{sec:cannot-be-stellar}.
 
 
 \subsubsection{Solid-state absorption features}
 \label{sec:solid-state-absorpt}
 
+A third type of absorption feature found in the nebular spectrum
+is what is known as Diffuse Interstellar Bands (DIBs; \citealp{Heger:1922a}),
+which are believed
 
+
+A further DIB feature is seen in the spectra at \SI{6284}{\angstrom}.
+However, it is hard to estimate the equivalent width of this feature
+since it overlaps with telluric \chem{O_2} \(\gamma\)-band absorption
+(see Figure~\ref{fig:raman-spectra-1d}).
 
 \section{High-resolution spectroscopy of Raman-scattered \boldmath\ion{O}{1} \SI{1028}{\angstrom}}
 \label{sec:keck-observations}
@@ -1172,13 +1260,6 @@ in the \hii{} region and surrounding PDR.\@
 These are clearest in the case of high-ionization lines
 that are absent from the emission spectrum of the nebular gas,
 with examples given in panels~b (\ion{He}{2}) and~e (\ion{C}{4}) of Figure~\ref{fig:raman-multi-absorption-features}.
-The most straightforward to interpret is \ion{C}{4},
-since the 5801,5812 doublet is present in the spectrum of \th1C
-with an equivalent width \(W_\lambda\star = \SI{0.30}{\angstrom}\),
-but is absent in all the other OB stars in the nebula.
-The equivalent width observed in the nebula is smaller than this,
-because of dilution by the nebular continuum (recombination plus 2-photon)
-and the starlight from the lower mass members of the Trapezium
 
 
 
@@ -1191,6 +1272,14 @@ The clearest examples from the MUSE datacube are \ion{He}{2} \SI{4685.68}{\angst
 \subsubsection{Why they cannot be solid-state absorption features}
 \label{sec:cannot-be-solid}
 
+There is a DIB at \SI{6632.85}{\angstrom} \citep{Galazutdinov:2000a},
+which is consistent in wavelength with our \SI{6633}{\angstrom} feature.
+However, it is only seen in highly-reddened stars
+and is always at least 10 times weaker than the \SI{5781}{\angstrom} feature.
+This would imply an equivalent width \(W_\lambda < \SI{0.04}{\angstrom}\),
+which is much smaller than we observe (Figure~\ref{fig:raman-multi-absorption-features}a).
+In addition, the \SI{6633}{\angstrom} absorption feature does not correlate
+with foreground reddening at all, as would be expected for a DIB.\@
 
 
 No stellar absorption lines there \citep{Simon-Diaz:2006b}.  Too broad to be atomic or ionic absorption line.  So strong it would have to be a resonance line.  Could be solid-state feature, such as DIBs, but at that wavelength there are only weak features that are seen at very high extinction columns.  Would have to be imprinted during back-scattering so as not to be seen in the stellar spectra. 
@@ -1283,7 +1372,11 @@ transitions from \(1s\).
 \section{Conclusions}
 \label{sec:conclusions}
 
-
+From the spatial distribution of the \ion{He}{2} \SI{4686}{\angstrom}
+absorption line in dust-scattered light,
+we find further evidence that \th1D is situated behind the other Trapezium stars,
+closer to the background cloud,
+as was originally suggested by \citep{Smith:2005a}.
 
 
 \section*{Acknowledgements}

@@ -98,6 +98,10 @@
   \mn@doi [\aaps] {10.1051/aas:1999178}, \href
   {http://adsabs.harvard.edu/abs/1999A%26AS..135..359C} {135, 359}
 
+\bibitem[\protect\citeauthoryear{{Conti}}{{Conti}}{1972}]{Conti:1972a}
+{Conti} P.~S.,  1972, \mn@doi [\apjl] {10.1086/180953}, \href
+  {https://ui.adsabs.harvard.edu/abs/1972ApJ...174L..79C} {174, L79}
+
 \bibitem[\protect\citeauthoryear{{Da Rio}, {Robberto}, {Soderblom}, {Panagia},
   {Hillenbrand}, {Palla}  \& {Stassun}}{{Da Rio} et~al.}{2009}]{Da-Rio:2009a}
 {Da Rio} N.,  {Robberto} M.,  {Soderblom} D.~R.,  {Panagia} N.,  {Hillenbrand}
@@ -109,6 +113,12 @@
   et~al.}{1990}]{Desert:1990a}
 {Desert} F.-X.,  {Boulanger} F.,   {Puget} J.~L.,  1990, \aap, \href
   {http://adsabs.harvard.edu/abs/1990A%26A...237..215D} {237, 215}
+
+\bibitem[\protect\citeauthoryear{{Donati}, {Babel}, {Harries}, {Howarth},
+  {Petit}  \& {Semel}}{{Donati} et~al.}{2002}]{Donati:2002a}
+{Donati} J.-F.,  {Babel} J.,  {Harries} T.~J.,  {Howarth} I.~D.,  {Petit} P.,
+  {Semel} M.,  2002, \mn@doi [\mnras] {10.1046/j.1365-8711.2002.05379.x}, \href
+  {http://adsabs.harvard.edu/abs/2002MNRAS.333...55D} {333, 55}
 
 \bibitem[\protect\citeauthoryear{{Dopita}, {Nicholls}, {Sutherland }, {Kewley}
   \& {Groves}}{{Dopita} et~al.}{2016}]{Dopita:2016a}
@@ -244,6 +254,12 @@
   Reference Data] {10.1063/1.555685}, \href
   {https://ui.adsabs.harvard.edu/abs/1983JPCRD..12..323M} {12, 323}
 
+\bibitem[\protect\citeauthoryear{{Maíz Apellániz} et~al.,}{{Maíz Apellániz}
+  et~al.}{2019}]{Maiz-Apellaniz:2019a}
+{Maíz Apellániz} J.,  et~al., 2019, \mn@doi [\aap]
+  {10.1051/0004-6361/201935359}, \href
+  {https://ui.adsabs.harvard.edu/abs/2019A&A...626A..20M} {626, A20}
+
 \bibitem[\protect\citeauthoryear{{Mc Leod}, {Weilbacher}, {Ginsburg}, {Dale},
   {Ramsay}  \& {Testi}}{{Mc Leod} et~al.}{2016}]{Mc-Leod:2016a}
 {Mc Leod} A.~F.,  {Weilbacher} P.~M.,  {Ginsburg} A.,  {Dale} J.~E.,  {Ramsay}
@@ -350,6 +366,24 @@ Shenstone A.~G.,  1970, \mn@doi [Journal of research of the National Bureau of
 {Smette} A.,  et~al., 2015, \mn@doi [\aap] {10.1051/0004-6361/201423932}, \href
   {https://ui.adsabs.harvard.edu/abs/2015A&A...576A..77S} {576, A77}
 
+\bibitem[\protect\citeauthoryear{{Smith}, {Bally}, {Shuping}, {Morris}  \&
+  {Kassis}}{{Smith} et~al.}{2005}]{Smith:2005a}
+{Smith} N.,  {Bally} J.,  {Shuping} R.~Y.,  {Morris} M.,   {Kassis} M.,  2005,
+  \mn@doi [\aj] {10.1086/432912}, \href
+  {http://adsabs.harvard.edu/abs/2005AJ....130.1763S} {130, 1763}
+
+\bibitem[\protect\citeauthoryear{{Stahl}, {Wolf}, {Gang}, {Gummersbach},
+  {Kaufer}, {Kovacs}, {Mandel}  \& {Szeifert}}{{Stahl}
+  et~al.}{1993}]{Stahl:1993a}
+{Stahl} O.,  {Wolf} B.,  {Gang} T.,  {Gummersbach} C.~A.,  {Kaufer} A.,
+  {Kovacs} J.,  {Mandel} H.,   {Szeifert} T.,  1993, \aap, \href
+  {http://adsabs.harvard.edu/abs/1993A%26A...274L..29S} {274, L29}
+
+\bibitem[\protect\citeauthoryear{{Stahl} et~al.,}{{Stahl}
+  et~al.}{1996}]{Stahl:1996a}
+{Stahl} O.,  et~al., 1996, \aap, \href
+  {http://adsabs.harvard.edu/abs/1996A%26A...312..539S} {312, 539}
+
 \bibitem[\protect\citeauthoryear{{Stoerzer} \& {Hollenbach}}{{Stoerzer} \&
   {Hollenbach}}{1998}]{Stoerzer:1998a}
 {Stoerzer} H.,  {Hollenbach} D.,  1998, \mn@doi [\apj] {10.1086/305315}, \href
@@ -397,6 +431,12 @@ Van~Hoof P. A.~M.,  2018, \mn@doi [Galaxies] {10.3390/galaxies6020063}, 6
 {Weilbacher} P.~M.,  et~al., 2015, \mn@doi [\aap]
   {10.1051/0004-6361/201526529}, \href
   {http://adsabs.harvard.edu/abs/2015A%26A...582A.114W} {582, A114}
+
+\bibitem[\protect\citeauthoryear{{ud-Doula}, {Sundqvist}, {Owocki}, {Petit}  \&
+  {Townsend}}{{ud-Doula} et~al.}{2013}]{ud-Doula:2013a}
+{ud-Doula} A.,  {Sundqvist} J.~O.,  {Owocki} S.~P.,  {Petit} V.,   {Townsend}
+  R.~H.~D.,  2013, \mn@doi [\mnras] {10.1093/mnras/sts246}, \href
+  {http://adsabs.harvard.edu/abs/2013MNRAS.428.2723U} {428, 2723}
 
 \bibitem[\protect\citeauthoryear{{van der Werf}, {Stutzki}, {Sternberg}  \&
   {Krabbe}}{{van der Werf} et~al.}{1996}]{van-der-Werf:1996a}

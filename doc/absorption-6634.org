@@ -3998,33 +3998,50 @@ CLOSED: [2019-09-07 Sat 11:58]
         + apparent in some of the Manu spectra
         + such as [[file:/Users/will/Dropbox/RubinWFC3/Tsquared/manu-region-specplot-r-6200-6400-x+600-y+300-w0600-h0600.jpg]]
         + Also can be seen well in [[file:~/Dropbox/dib-scatter-hii/data/orion-muse/muse-hr-data-wavsec23-rebin16x16-cont-div.fits]]
-    + C IV 5801, 5812
-      + This is quite weak and noisy, but shows broad peak around Trapezium
-      + Maximum is about 0.1 \AA
-      + [X] We should look at how deep they should be in the spectrum of Trapezium - use the POWR models
-        + Better to use observations
-        + From the cont-div datacube, I measure the following
-          | Region, line      |    lam1 |    lam2 | cont1 |   min | cont2 |     W |
-          |-------------------+---------+---------+-------+-------+-------+-------|
-          | Orion S, 5801     |  5798.6 |  5805.4 | 0.986 | 0.975 | 0.991 | 0.046 |
-          | Orion S, 5812     |  5808.1 |  5815.6 | 0.994 | 0.981 | 0.990 | 0.042 |
-          | th1C, 5801        | 5797.75 |  5805.4 | 0.956 | 0.922 | 0.957 | 0.138 |
-          | th1C, 5812        |  5808.8 | 5816.45 | 0.966 | 0.928 | 0.974 | 0.166 |
-          |-------------------+---------+---------+-------+-------+-------+-------|
-          | th2A, 4686        |  4678.3 |  4690.2 | 76724 | 70511 | 76406 | 0.470 |
-          | Around th2A, 4686 |    4680 | 4692.75 |  8676 |  8282 |  8745 | 0.314 |
-          | th1d, 4686        |         |         |       |       |       |       |
-          #+TBLFM: $7=0.5 ($3 - $2) (0.5 ($4 + $6) - $5 ) / 0.5 ($4 + $6);f3
-        + This uses a triangle approximation to the area.
-        + So sum is
-          + W = 0.304 \AA for the star
-          + W = 0.082 \AA for Orion S
-        + This gives a dilution factor of 0.276
+  + C IV 5801, 5812
+    + This is quite weak and noisy, but shows broad peak around Trapezium
+    + Maximum is about 0.1 \AA
+    + [X] We should look at how deep they should be in the spectrum of Trapezium - use the POWR models
+  + Measure line EW from MUSE datacube
+    + From the cont-div datacube, I measure the following
+      | Region, line       |    lam1 |    lam2 |  cont1 |    min |  cont2 |     W |
+      |--------------------+---------+---------+--------+--------+--------+-------|
+      | Orion S, 5801      |  5798.6 |  5805.4 |  0.986 |  0.975 |  0.991 | 0.046 |
+      | Orion S, 5812      |  5808.1 |  5815.6 |  0.994 |  0.981 |  0.990 | 0.042 |
+      | th1C, 5801         | 5797.75 |  5805.4 |  0.956 |  0.922 |  0.957 | 0.138 |
+      | th1C, 5812         |  5808.8 | 5816.45 |  0.966 |  0.928 |  0.974 | 0.166 |
+      |--------------------+---------+---------+--------+--------+--------+-------|
+      | th2A, 4686         |  4678.3 |  4690.2 |  76724 |  70511 |  76406 | 0.470 |
+      | Around th2A, 4686  |    4680 | 4692.75 |   8676 |   8282 |   8745 | 0.314 |
+      | th1d, 4686         |  4681.7 |  4690.2 | 513329 | 478244 | 515699 | 0.300 |
+      | th2A, 4886 Simon-D |  4682.0 |  4689.8 |    1.0 |  0.865 |    1.0 | 0.527 |
+      | th1d, 4686 Simon-D |  4684.0 |  4687.8 |    1.0 |   0.87 |    1.0 | 0.247 |
+      #+TBLFM: $7=0.5 ($3 - $2) (0.5 ($4 + $6) - $5 ) / 0.5 ($4 + $6);f3
+    + This uses a triangle approximation to the area.
+    + So sum is
+      + W = 0.304 \AA for the star
+      + W = 0.082 \AA for Orion S
+    + This gives a dilution factor of 0.276
   + There is also N III 5896.1, which is seen in all the Trapezium stars
-    + But it is affected by a strong sky line to the 
+    + But it is affected by a strong sky line to the blue
   + Plot of theoretical spectrum of the Trapezium stars
     + [[file:powr-trapezium-optical.pdf]]
-    + 
+*** Combining EW from multiple sources
++ The EW, W_\lambda is the \lambda-integral of the absorption depth:
+  + A_\lambda = (F_c - F_\lambda )/ F_c
+  + A_\lambda = 1 - (F_\lambda / F_c)
++ So what happens if we combine with a diluting continuum: F_d?
++ Now we would have
+  + A_\lambda' = (F_c + F_d - (F_\lambda + F_d)) / (F_c + F_d)
+  + A_\lambda' = (F_c - F_\lambda ) / (F_c + F_d)
+  + A_\lambda' = A_\lambda  F_c / (F_c + F_d)
++ The star's EW, W^\star_\lambda is proportional to A_\lambda
++ The observed EW W^obs_\lambda is proportional to A_\lambda
++ The fraction of scattered continuum is f_scat = F_c / (F_c + F_d)
++ So W^obs_\lambda = f_scat W^\star_\lambda
++ If we have multiple stars with W^\star,k_\lambda and f_scat,k:
+  + So W^obs_\lambda = \sum_k f_scat,k W^\star,k_\lambda 
+  
 ** Maps of different absorption features
 #+name: raman-multi-absorption-features
 #+header: :var STARS=star-coords
