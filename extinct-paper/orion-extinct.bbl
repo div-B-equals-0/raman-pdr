@@ -5,4 +5,9 @@
 \providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
 \providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
 
+\bibitem[{{Massa} {et~al.}(2020){Massa}, {Fitzpatrick}, \&
+  {Gordon}}]{Massa:2020a}
+{Massa}, D., {Fitzpatrick}, E.~L., \& {Gordon}, K.~D. 2020, \apj, 891, 67,
+  \dodoi{10.3847/1538-4357/ab6f01}
+
 \end{thebibliography}
