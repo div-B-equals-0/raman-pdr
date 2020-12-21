@@ -795,7 +795,8 @@ on the other hand, come from the \chem{H^0} region of the PDR.
 \begin{figure*}
   \includegraphics[width=\linewidth]{figs/raman-multi-absorption-features}
   \caption{
-    Maps of equivalent widths of different absorption features (grayscale images),
+    Maps of equivalent widths \(W_\lambda\observed\)
+    of different absorption features (grayscale images),
     compared with maps of other quantities (false color images).
     Red circles show positions of bright stars,
     from West to East: \th1A, B, C, D, and \th2A, B.\@
@@ -991,16 +992,16 @@ and the present results would tend to confirm that.
   \centering
   \includegraphics[width=\linewidth]{figs/correlation-DIB-reddening}
   \caption{
-    Correlation between observed equivalent width,
-    \(W_\lambda(5780)\),
-    of Diffuse Interstellar Band and reddening, \(E(B - V)\).
+    Correlation between DIB equivalent width,
+    \(W_\lambda\observed(5780)\), and reddening, \(E(B - V)\).
     False-color image shows histogram of pixels across the face of the nebula,
-    calculated from the MUSE spectral cube
-    (panel c and f from Fig.~\ref{fig:raman-multi-absorption-features},
-    assuming \(E(B - V) = 0.3845 C(\hb)\)).
-    Straight lines shows fits to surveys of DIBs along sight lines
-    to \(\sigma\)-type stars (dotted line, \citealp{Kos:2013a})
-    and galaxies (dashed line, \citealp{Baron:2015a}).
+    calculated from the MUSE spectral cube: 
+    Fig.~\ref{fig:raman-multi-absorption-features} panel~c (\(y\) axis)
+    and panel~f (\(x\) axis), assuming \(E(B - V) = 0.3845\, C(\hb)\).
+    Straight lines shows fits to surveys of DIBs along \(\sigma\)-type sight lines
+    to stars (dotted line, \citealp{Kos:2013a})
+    and high-Galactic-latitude sight lines to external galaxies
+    (dashed line, \citealp{Baron:2015a}).
     Star symbol shows result for \th1C \citep{Friedman:2011a}.
   }
   \label{fig:dib-redden}
@@ -1018,12 +1019,37 @@ associated with atomic gas \citep{Sonnentrucker:2014a}
 but, apart from in a few instances \citep{Cordiner:2019a},
 their exact nature is still uncertain \citep{Tielens:2014a, Omont:2019a, Lai:2020a}.
 The strongest such feature found in the MUSE spectra is the well-known band
-at \SI{5780}{\AA}, which is shown in Figure~\ref{fig:raman-multi-absorption-features}c.
+at \SI{5780}{\angstrom}, which is shown in Figure~\ref{fig:raman-multi-absorption-features}c.
 For comparison, the foreground extinction to the nebula is shown in
 Figure~\ref{fig:raman-multi-absorption-features}f,
 which is calculated from the \ha{}/\hb{} ratio,
 assuming the extinction curve of \citet{Blagrave:2007a}.
 
+It is clear at a glance that the spatial distribution of the
+DIB absorption and the continuum dust absorption are very similar.
+This is not surprising, since many studies have established
+a correlation between DIB equivalent widths and interstellar reddening
+\citep{Friedman:2011a, Kos:2013a, Baron:2015a, Kreowski:2019b}.
+This is tested quantitatively in Figure~\ref{fig:dib-redden},
+which shows the correlation between \(W_\lambda\observed(5780)\)
+and dust reddening \(E(B - V)\).
+The relative weakness of the \SI{5797}{\angstrom} DIB feature in all
+Orion Nebula sight lines is characteristic of \(\sigma\)-type DIBS
+(after the prototype \(\sigma\)~Sco; \citealp{Krelowski:1988a}),
+which tend to be found in atomic diffuse clouds. 
+I therefore compare the results with a fit to 27 \(\sigma\)-type sight lines to
+OB stars from the survey of \citet{Kos:2013a} (dotted line in Figure~\ref{fig:dib-redden}),
+which covers the reddening range \(E(B - V) = 0.1\) to \num{1.2}.
+I also show (dashed line in figure) a fit to over a million stacked external galaxy and quasar sight lines from SDSS \citep{Baron:2015a}, which cover the reddening range
+\(E(B - V) = 0\) to \num{0.11}.
+It can be seen that the nebular values follow the general trend of the fits,
+albeit with considerable dispersion.
+The tail of high \(W_\lambda\) above the fit lines may be due to the fact that
+a significant fraction of the continuum is dust-scattered and those photons
+will have traversed a larger column of dust than is measured by the foreground reddening.
+In addition, the Balmer decrement will saturate at high column densities
+if part of the dust is mixed with the emitting gas, resulting in an underestimate
+of \(E(B - V)\). 
 
 
 A further DIB feature is seen in the spectra at \SI{6284}{\angstrom}.
