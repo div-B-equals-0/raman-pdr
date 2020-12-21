@@ -3889,6 +3889,22 @@ Fit the continuum and remove it
   + Is this caused by dust in ionized gas (will cause big drop in source function)
 *** Correlation between the different reddening measures 
 *** Correlation between reddening and DIB
+:PROPERTIES:
+:ID:       0E12E121-C1E6-453E-ACD5-B7A0BBAD92F6
+:END:
++ The Relation between C(Hb) and E(B-V)
++ Difference of f_\lambda for B and V is 0.076 - -0.091 = 0.167
+  + This is E(B - V) / A(Hb)
+    + A = E(B - V) / 0.167
+  + C(Hb) = -log10(e^{-A}) = A log10(e) = 0.4343 A
+    + C(Hb) = (0.4343 / 0.167)  E(B - V) = 2.6 E(B - V)
+  + Or E(B - V) = 0.3845 C(Hb)
++ So we get C(Hb) going up to about 1.3, which corresponds to E(B - V) of about 0.5
++ The W(5780) goes up to about 400 m\AA
++ Baron:2015a have a fit to lots of sightlines to galaxies, getting
+  + W(5780) = (0.813 ± 0.073) E(B-V) + (-0.0032 ± 0.0034)
+  + This is from their Table 2
+  + They are covering high Galactic latitudes
 ** Stellar absorption lines
 + The low-mass stars have absorption lines too
   + 6663 - Si III
@@ -4171,6 +4187,101 @@ CLOSED: [2019-09-07 Sat 11:58]
 
 #+RESULTS: raman-multi-absorption-features
 [[file:raman-multi-absorption-features.jpg]]
+
+
+** COMMENT Correlation of EW(DIB 5781) with reddening E(B-V)
++ This is discussed in [[id:0E12E121-C1E6-453E-ACD5-B7A0BBAD92F6][Correlation between reddening and DIB]]
++ We found E(B - V) = 0.3845 C(Hb)
++ We will read in the data files the same as when generating the maps
+
+#+begin_src python :return figfile :results file
+  from pathlib import Path
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.io import fits
+  from numpy.random import default_rng
+  import seaborn as sns
+  sns.set_color_codes()
+
+  figfile = "correlation-DIB-reddening.pdf"
+  datapath = Path("../data/orion-muse")
+  datapath2 = Path("../../OrionMuse/LineMaps")
+
+  fig, ax = plt.subplots()
+
+
+
+  # Read in the extinction
+  xlabel = r"Reddening, $E(B - V)$"
+  hdu = fits.open(datapath / f"C_H_beta-bin001.fits")["SCALED"]
+  # Convert from C(Hb) to reddening E(B - V)
+  xdata = 0.3845*hdu.data
+
+  # Read in the DIB equivalent widths
+  ylabel = r"DIB Equivalent Width $W_\lambda(5780)$, Å"
+  hdua = fits.open(datapath / f"ew-DIB-5781-bin032.fits")["SCALED"]
+  hdub = fits.open(datapath2 / f"ew-He_II-5785-multibin-SN0005.fits")["SCALED"]
+  hduc = fits.open(datapath2 / f"ew-He_II-5785-multibin-SN0007.fits")["SCALED"]
+  ydata = -np.nanmedian(
+      np.stack( (hdua.data, hdub.data, hduc.data) ),
+      axis=0,
+  )
+  rng = default_rng()
+  ynoise = 0.02*rng.standard_normal(ydata.shape)
+  ydata += ynoise
+
+  # Calculate joint histogram
+  xmin, xmax = ymin, ymax = 0.0, 0.7
+  m = np.isfinite(xdata) & np.isfinite(ydata)
+  H, xedges, yedges = np.histogram2d(
+      xdata[m],
+      ydata[m],
+      100,
+      [[xmin, xmax], [ymin, ymax]],
+  )
+  gamma = 2.0
+  ax.imshow(H.T**(1/gamma),
+            extent=[xmin, xmax, ymin, ymax],
+            cmap="magma_r",
+            origin="lower",
+            )
+  #ax.scatter(xdata[m], ydata[m], s=2, marker=".", alpha=0.002)
+  xgrid = np.linspace(xmin, xmax)
+  for m, c, dm, dc, ls in [
+          [0.813, -0.0032, 0.073, 0.0034, "--"],
+          [0.5058, -0.0142, 0.0503, 0.0315, ":"],
+  ]:
+      yspread = np.stack(
+          (
+              (m + dm)*xgrid + (c + dc),
+              (m - dm)*xgrid + (c + dc),
+              (m + dm)*xgrid + (c - dc),
+              (m - dm)*xgrid + (c - dc),
+          )
+      )
+      ytop = np.max(yspread, axis=0)
+      ybot = np.min(yspread, axis=0)
+      # ax.fill_between(xgrid, ybot, ytop, color="c", alpha=0.2, lw=0.0)
+      ax.plot(xgrid, ybot, ls=ls, color="0.5")
+      ax.plot(xgrid, ytop, ls=ls, color="0.5")
+      ax.plot(xgrid, m*xgrid + c, ls=ls, color="k")
+
+  # Values for th1B and th1C from Friedman:2011a
+  #ax.errorbar(0.54, 61/1000, 6/1000)
+  ax.scatter(0.34, 76/1000, s=200, marker="*", color="c", ec="k")
+
+  ax.set(
+      xlabel=xlabel,
+      ylabel=ylabel,
+      xlim=[xmin, xmax],
+      ylim=[ymin, ymax],
+  )
+  ax.set_aspect("equal")
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS:
+[[file:correlation-DIB-reddening.pdf]]
 
 * Absorption at 6634 \AA in other regions
 ** TODO RCW 49
