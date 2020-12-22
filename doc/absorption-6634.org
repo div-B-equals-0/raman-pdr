@@ -3918,6 +3918,18 @@ Fit the continuum and remove it
     + 
   + 6496 - shows up nearly everywhere
     + Accompanied by weaker lines: 6483, 6463, 6451, 6440, 6421, 6402, etc
++ Determining EW of stellar absorption lines by triangle approx
+  | star, line   |   wav1 |   wav2 |  cont1 |    min |  cont2 |   EW |
+  |--------------+--------+--------+--------+--------+--------+------|
+  | 159-350 6664 | 6660.5 | 6667.3 | 992651 | 953142 | 987065 | 0.13 |
+  #+TBLFM: $7=0.5 ($3 - $2) (0.5 ($4 + $6) - $5) / 0.5 ($4 + $6); f2
++ Total continuum flux at 6650 (sum in aperture)
+  | Source  |          Star |        BG | Star - BG |
+  |---------+---------------+-----------+-----------|
+  | 159-350 |      3891510. |   420858. |     3.5e6 |
+  | th1C    | 7.5695863e+08 | 5510521.2 |     7.5e8 |
+  | Orion S |     58229011. |         0 |     5.8e7 |
+  #+TBLFM: $4=$2 - $3;s2
 
 ** Comparison with other lines in Orion S
 + CO has peak at around +9 km/s LSR = 28 km/s heliocentric
@@ -4189,7 +4201,7 @@ CLOSED: [2019-09-07 Sat 11:58]
 [[file:raman-multi-absorption-features.jpg]]
 
 
-** COMMENT Correlation of EW(DIB 5781) with reddening E(B-V)
+** Correlation of EW(DIB 5781) with reddening E(B-V)
 + This is discussed in [[id:0E12E121-C1E6-453E-ACD5-B7A0BBAD92F6][Correlation between reddening and DIB]]
 + We found E(B - V) = 0.3845 C(Hb)
 + We will read in the data files the same as when generating the maps

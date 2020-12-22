@@ -42,6 +42,8 @@
   % Make sure to pick up bold font when used in section heading for instance
   detect-weight = true,
 }
+\DeclareSIUnit\msun{\text{M\ensuremath{_\odot}}}
+\DeclareSIUnit\lsun{\text{L\ensuremath{_\odot}}}
 
 % A better \ion command that works in more circumstances
 \newcommand\ION[2]{#1\,\scalebox{0.9}[0.8]{\uppercase{#2}}}
@@ -98,6 +100,12 @@
 \label{firstpage}
 \pagerange{\pageref{firstpage}--\pageref{lastpage}}
 \maketitle
+
+
+%%
+%% Abstract from Ensenada talk
+%%
+% Raman scattering is a non-resonant, inelastic scattering by the damping wings of atomic and molecular absorption lines. It is the inelastic analog of Rayleigh scattering.  The broad Raman-scattered wings of the optical H alpha line can be used to map neutral gas that is illuminated by high-mass stars in star forming regions.  The scattering occurs in the photodissociation region (PDR) that surrounds the ionized H II region. Using MUSE observations of the Orion Nebula, I show how this process gives a new diagnostic window into the outer layers of PDRs such as the Orion Bar and Orion South.  I also show that hitherto misterious spatially diffuse absorption features at 6633 and 6664 Angstrom are actually far-ultraviolet neutral oxygen absorption lines (1027.43, 1028.16 A), which have been Raman-scattered into the optical range.  I show examples of how a spectrograph's effective spectral resolution is boosted when observing these Raman-scattered lines, achieving R > 3e5 with Keck HIRES.
 
 \begin{abstract}
   I show that the broad Raman-scattered wings of H\(\alpha\) can be used to
@@ -808,7 +816,7 @@ on the other hand, come from the \chem{H^0} region of the PDR.
     to the intensity of the underlying continuum at the same wavelength.
     (e)~Equivalent width of \ion{C}{4} \num{5801.35}, \SI{5811.97}{\angstrom}
     absorption line doublet (sum of the two lines).
-    (f)~Foreground dust extinction to the ionized gase,
+    (f)~Foreground dust extinction to the ionized gas,
     \(C(\hb)\) (base-10 logarithmic extinction at \SI{4861}{\angstrom}),
     calculated from the Balmer decrement \(\ha{}/\hb{}\),
     assuming the reddening curve of \citet{Blagrave:2007a}.
@@ -1301,11 +1309,11 @@ roughly cylindrical filament.  Second, they ignore scattering, see
 
 
 
-\subsection{Failure of rival explanations for the 6633, 6664~\AA{} lines}
+\subsection{The failure of rival explanations for the 6633, 6664~\AA{} lines}
 \label{sec:rival-expl-6633}
 
 In this paper, I provide a strong case for identifying the
-absorption features at \num{6663} and \SI{6664}{\angstrom} with
+absorption features at \num{6633} and \SI{6664}{\angstrom} with
 Raman-scattered FUV \ion{O}{1} absorption lines
 (see Appendix~\ref{sec:raman-theory}).
 However, it is important to thoroughly investigate potential competing explanations,
@@ -1314,37 +1322,104 @@ if only to rule them out.
 \subsubsection{Why they cannot be dust-scattered stellar absorption lines}
 \label{sec:cannot-be-stellar}
 
-Some photospheric absorption lines of luminous O~stars
+Various photospheric absorption lines of luminous O~stars
 are visible in the spectrum of the diffuse nebula
 due to scattering of the starlight by dust grains
 in the \hii{} region and surrounding PDR.\@
 These are clearest in the case of high-ionization lines
 that are absent from the emission spectrum of the nebular gas,
-with examples given in panels~b (\ion{He}{2}) and~e (\ion{C}{4}) of Figure~\ref{fig:raman-multi-absorption-features}.
+such as the \ion{He}{2} and \ion{C}{4} lines that were analysed above
+in \S~\ref{sec:stell-absorpt-lines}. 
+At first glance, it might seem that the equivalent width map
+of the \SI{6633}{\angstrom} feature
+(Figure~\ref{fig:raman-multi-absorption-features}a)
+is similar to that of the \ion{C}{4} absorption lines
+(Figure~\ref{fig:raman-multi-absorption-features}e).
+However, there are important differences:
+the ridge of peak \ion{C}{4} absorption lies at about \num{20} to \SI{30}{arcsec}
+from the Trapezium stars, close to the ``Trap SW'' region shown in
+Figure~\ref{fig:raman-fov-regions}b,
+whereas the \SI{6633}{\angstrom} absorption ridges lie farther from the Trapezium
+(\num{50} to \SI{60}{arcsec})
+in the ``SW minibar'' and ``Orion S'' regions.
+This implies that the scatterers are not the same in the two cases,
+and is what would be expected under the Raman-scattering hypothesis
+if a sufficient column of dust is present in the \hii{} region.%
+\footnote{One piece of evidence for the presence of dust
+  inside the \hii{} region is that
+  the gas-phase abundances of nickel and iron are seen to be enhanced
+  in photoionized Herbig-Haro outflows within the nebula \citep{Mesa-Delgado:2009b},
+  consistent with dust destruction in shocks.
+  Indirect evidence also comes from the dust-scattered redshifted wing of
+  nebular emission lines \citep{Henney:1998a}.
+}
+
+An even stronger argument against a visual-band stellar origin is that
+no absorption features at \num{6633} or \SI{6664}{\angstrom} are seen in the
+luminous OB stars of the nebula.
+The closest match is a pair of \ion{Fe}{1} features at \num{6634} and \SI{6664}{\angstrom},
+which are seen in absorption in the photospheres of several K and M-type
+T~Tauri stars in the Orion Nebula cluster.
+One of the brightest and most centrally located examples is
+V2279~Ori (Parenago~1869, JW~499, TCC~52), a visual binary
+(spectral type M0.5 + M2; \citealp{Daemgen:2012a})
+which is the central star of
+the prominent proplyd 159-350 (HST~3; \citealp{ODell:1993a}).
+However, the luminosity of this source is only \(\approx \SI{10}{\lsun}\)
+and its brightness around \SI{6650}{\angstrom} is 200 times smaller than that of \th1C.
+Furthermore, photospheric lines are weak in T~Tauri stars due to accretion veiling
+and the equivalent widths of these absorption features are only
+\(W_\lambda^\star \approx \SI{0.1}{\angstrom}\).
+Therefore, even several such stars would contribute at most
+\SI{0.001}{\angstrom}
+to the equivalent width in the diffuse nebular spectrum,
+which is far less than the observed values of up to
+\(W_\lambda\observed = \SI{0.5}{\angstrom}\) (Figure~\ref{fig:raman-multi-absorption-features}a).
 
 
 
-The clearest examples from the MUSE datacube are \ion{He}{2} \SI{4685.68}{\angstrom} and the \ion{C}{4} \num{5801.35}, \SI{5811.97}{\angstrom} doublet.
 
 
-\subsubsection{Why they cannot be visual-band neutral/molecular absorption lines}
+\subsubsection{Why they cannot be visual-band neutral/molecular absorption lines from the PDR}
 \label{sec:cannot-be-abs}
+
+The fact that the \num{6633} and \SI{6664}{\angstrom} features are not seen
+in the spectra of the luminous stars, such as \th1C,
+means that they cannot arise in the foreground neutral gas of the Orion veil
+\citep{Abel:2004a, Abel:2019a}.
+However, if some neutral or molecular species were abundant in the dense PDR behind the nebula,
+but \emph{not} in the Veil,
+then it is theoretically possible that it might imprint an absorption signature
+on the starlight that initially enters the PDR but is then reflected out again
+by dust scattering.
+On the other hand,
+such a scenario seems very far-fetched and I have been unable to find
+any candidate absorption features at relevant wavelengths.
 
 \subsubsection{Why they cannot be solid-state absorption features}
 \label{sec:cannot-be-solid}
 
+The same argument as in the previous section also rules out any possibility
+that foreground DIB absorption might be responsible for these features,
+with the additional argument that the \SI{6633}{\angstrom}
+equivalent width does not correlate with foreground extinction,
+as the known DIB at \SI{5780}{\angstrom} does.
+However, that leaves open the possibility of the contrived back-scattering scenario discussed above. 
 There is a DIB at \SI{6632.85}{\angstrom} \citep{Galazutdinov:2000a},
-which is consistent in wavelength with our \SI{6633}{\angstrom} feature.
-However, it is only seen in highly-reddened stars
-and is always at least 10 times weaker than the \SI{5781}{\angstrom} feature.
-This would imply an equivalent width \(W_\lambda < \SI{0.04}{\angstrom}\),
-which is much smaller than we observe (Figure~\ref{fig:raman-multi-absorption-features}a).
-In addition, the \SI{6633}{\angstrom} absorption feature does not correlate
-with foreground reddening at all, as would be expected for a DIB.\@
+which is consistent in wavelength with the \SI{6633}{\angstrom} feature
+but it is only seen in highly-reddened stars
+and is always at least 10 times weaker than the \SI{5780}{\angstrom} feature.
+From Figure~\ref{fig:dib-redden} it is conceivable that up to half of the
+\SI{5780}{\angstrom} absorption might arise during back-scattering from the PDR rather than in foreground material for some sight lines. 
+This would imply an equivalent width \(W_\lambda < \SI{0.02}{\angstrom}\)
+for the \SI{6632.85}{\angstrom} DIB,
+which is much smaller than the observed \(W_\lambda\observed(6633) \approx \SI{0.5}{\angstrom}\)
+(Figure~\ref{fig:raman-multi-absorption-features}a).
 
-There is a broader one at \SI{6660}{\angstrom} \citep{Sonnentrucker:2018a}
 
-No stellar absorption lines there \citep{Simon-Diaz:2006b}.  Too broad to be atomic or ionic absorption line.  So strong it would have to be a resonance line.  Could be solid-state feature, such as DIBs, but at that wavelength there are only weak features that are seen at very high extinction columns.  Would have to be imprinted during back-scattering so as not to be seen in the stellar spectra. 
+% There is a broader one at \SI{6660}{\angstrom} \citep{Sonnentrucker:2018a}
+
+% No stellar absorption lines there \citep{Simon-Diaz:2006b}.  Too broad to be atomic or ionic absorption line.  So strong it would have to be a resonance line.  Could be solid-state feature, such as DIBs, but at that wavelength there are only weak features that are seen at very high extinction columns.  Would have to be imprinted during back-scattering so as not to be seen in the stellar spectra. 
 
 \subsection{What high-resolution spectra tell us}
 \label{sec:what-high-resolution}

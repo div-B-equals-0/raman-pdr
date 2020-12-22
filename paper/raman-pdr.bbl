@@ -17,11 +17,22 @@
   {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
   mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
 
+\bibitem[\protect\citeauthoryear{{Abel}, {Brogan}, {Ferland}, {O'Dell}, {Shaw}
+  \& {Troland}}{{Abel} et~al.}{2004}]{Abel:2004a}
+{Abel} N.~P.,  {Brogan} C.~L.,  {Ferland} G.~J.,  {O'Dell} C.~R.,  {Shaw} G.,
+  {Troland} T.~H.,  2004, \mn@doi [\apj] {10.1086/421009}, \href
+  {https://ui.adsabs.harvard.edu/abs/2004ApJ...609..247A} {609, 247}
+
 \bibitem[\protect\citeauthoryear{{Abel}, {Ferland}, {O'Dell}, {Shaw}  \&
   {Troland}}{{Abel} et~al.}{2006}]{Abel:2006a}
 {Abel} N.~P.,  {Ferland} G.~J.,  {O'Dell} C.~R.,  {Shaw} G.,   {Troland} T.~H.,
    2006, \mn@doi [\apj] {10.1086/500819}, \href
   {http://adsabs.harvard.edu/abs/2006ApJ...644..344A} {644, 344}
+
+\bibitem[\protect\citeauthoryear{{Abel}, {Ferland}  \& {O'Dell}}{{Abel}
+  et~al.}{2019}]{Abel:2019a}
+{Abel} N.~P.,  {Ferland} G.~J.,   {O'Dell} C.~R.,  2019, arXiv e-prints, \href
+  {https://ui.adsabs.harvard.edu/abs/2019arXiv190607779A} {p. arXiv:1906.07779}
 
 \bibitem[\protect\citeauthoryear{{Arab}, {Abergel}, {Habart}, {Bernard-Salas},
   {Ayasso}, {Dassas}, {Martin}  \& {White}}{{Arab} et~al.}{2012}]{Arab:2012a}
@@ -120,6 +131,12 @@
   {10.1088/0067-0049/183/2/261}, \href
   {http://adsabs.harvard.edu/abs/2009ApJS..183..261D} {183, 261}
 
+\bibitem[\protect\citeauthoryear{{Daemgen}, {Correia}  \&
+  {Petr-Gotzens}}{{Daemgen} et~al.}{2012}]{Daemgen:2012a}
+{Daemgen} S.,  {Correia} S.,   {Petr-Gotzens} M.~G.,  2012, \mn@doi [\aap]
+  {10.1051/0004-6361/201118314}, \href
+  {https://ui.adsabs.harvard.edu/abs/2012A&A...540A..46D} {540, A46}
+
 \bibitem[\protect\citeauthoryear{{Desert}, {Boulanger}  \& {Puget}}{{Desert}
   et~al.}{1990}]{Desert:1990a}
 {Desert} F.-X.,  {Boulanger} F.,   {Puget} J.~L.,  1990, \aap, \href
@@ -203,6 +220,10 @@
 {Heger} M.~L.,  1922, \mn@doi [Lick Observatory Bulletin]
   {10.5479/ADS/bib/1922LicOB.10.141H}, \href
   {https://ui.adsabs.harvard.edu/abs/1922LicOB..10..141H} {10, 141}
+
+\bibitem[\protect\citeauthoryear{{Henney}}{{Henney}}{1998}]{Henney:1998a}
+{Henney} W.~J.,  1998, \mn@doi [\apj] {10.1086/306007}, \href
+  {http://adsabs.harvard.edu/abs/1998ApJ...503..760H} {503, 760}
 
 \bibitem[\protect\citeauthoryear{{Henney} \& {O'Dell}}{{Henney} \&
   {O'Dell}}{1999}]{Henney:1999a}
@@ -325,6 +346,15 @@
 {Megeath} S.~T.,  et~al., 2012, \mn@doi [\aj] {10.1088/0004-6256/144/6/192},
   \href {https://ui.adsabs.harvard.edu/abs/2012AJ....144..192M} {144, 192}
 
+\bibitem[\protect\citeauthoryear{{Mesa-Delgado}, {Esteban},
+  {Garc{\'{\i}}a-Rojas}, {Luridiana}, {Bautista}, {Rodr{\'{\i}}guez},
+  {López-Mart{\'{\i}}n}  \& {Peimbert}}{{Mesa-Delgado}
+  et~al.}{2009}]{Mesa-Delgado:2009b}
+{Mesa-Delgado} A.,  {Esteban} C.,  {Garc{\'{\i}}a-Rojas} J.,  {Luridiana} V.,
+  {Bautista} M.,  {Rodr{\'{\i}}guez} M.,  {López-Mart{\'{\i}}n} L.,
+  {Peimbert} M.,  2009, \mn@doi [\mnras] {10.1111/j.1365-2966.2009.14554.x},
+  \href {http://adsabs.harvard.edu/abs/2009MNRAS.395..855M} {395, 855}
+
 \bibitem[\protect\citeauthoryear{{Moehler} et~al.,}{{Moehler}
   et~al.}{2014}]{Moehler:2014a}
 {Moehler} S.,  et~al., 2014, \mn@doi [\aap] {10.1051/0004-6361/201423790},
@@ -363,6 +393,11 @@ Moré J.~J.,  1978, in Watson G.~A.,  ed., Numerical Analysis. Springer Berlin
   {Yusef-Zadeh}}{2000}]{ODell:2000a}
 {O'Dell} C.~R.,  {Yusef-Zadeh} F.,  2000, \mn@doi [\aj] {10.1086/301429}, \href
   {http://adsabs.harvard.edu/abs/2000AJ....120..382O} {120, 382}
+
+\bibitem[\protect\citeauthoryear{{O'Dell}, {Wen}  \& {Hu}}{{O'Dell}
+  et~al.}{1993}]{ODell:1993a}
+{O'Dell} C.~R.,  {Wen} Z.,   {Hu} X.,  1993, \mn@doi [\apj] {10.1086/172786},
+  \href {http://adsabs.harvard.edu/abs/1993ApJ...410..696O} {410, 696}
 
 \bibitem[\protect\citeauthoryear{{O'Dell}, {Ferland}  \& {Henney}}{{O'Dell}
   et~al.}{2001}]{ODell:2001a}
@@ -436,14 +471,6 @@ Shenstone A.~G.,  1970, \mn@doi [Journal of research of the National Bureau of
 {Sonnentrucker} P.,  2014, in {Cami} J.,  {Cox} N. L.~J.,  eds,  IAU Symposium
   Vol. 297, The Diffuse Interstellar Bands. pp 13--22,
   \mn@doi{10.1017/S1743921313015524}
-
-\bibitem[\protect\citeauthoryear{{Sonnentrucker}, {York}, {Hobbs}, {Welty},
-  {Friedman}, {Dahlstrom}, {Snow}  \& {York}}{{Sonnentrucker}
-  et~al.}{2018}]{Sonnentrucker:2018a}
-{Sonnentrucker} P.,  {York} B.,  {Hobbs} L.~M.,  {Welty} D.~E.,  {Friedman}
-  S.~D.,  {Dahlstrom} J.,  {Snow} T.~P.,   {York} D.~G.,  2018, \mn@doi [\apjs]
-  {10.3847/1538-4365/aad4a5}, \href
-  {https://ui.adsabs.harvard.edu/abs/2018ApJS..237...40S} {237, 40}
 
 \bibitem[\protect\citeauthoryear{{Stahl}, {Wolf}, {Gang}, {Gummersbach},
   {Kaufer}, {Kovacs}, {Mandel}  \& {Szeifert}}{{Stahl}
