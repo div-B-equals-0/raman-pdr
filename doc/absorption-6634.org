@@ -934,6 +934,7 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
 #+RESULTS:
 [[file:raman-orion-muse-1d-spectra.pdf]]
 
+
 **** Make plot of (\Delta\lambda)^2 F_\lambda for the different regions
 This is just like the previous figure, but with a restricted wavelength range and with the continuum removed
 
@@ -1091,6 +1092,187 @@ This is just like the previous figure, but with a restricted wavelength range an
 
 #+RESULTS:
 [[file:raman-muse-spectra-times-lambda-squared.pdf]]
+
+**** Make plot of F_\lambda / \sigma_Raman f_Ha for the different regions
++ This is just like the previous figure in layout
++ It is an improvement on the (\Delta\lambda)^2 F_\lambda one because it uses the true cross-section
+#+begin_src python :return figfile :results file
+  import numpy as np
+  import json
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+
+  jsonfile = "raman-orion-muse-1d-spectra.json"
+  data = json.load(open(jsonfile))
+  figfile = "raman-muse-spectra-compensated.pdf"
+
+  # Heliocentric correction
+  V_HEL = -16.217273731
+  # Heliocentric velocity of molecular cloud
+  V_OMC = +9.0 + 19.1
+
+  region_order = [
+      "SW minibar",
+      "Orion S",
+      "E-W Bar",
+      "Trap W",
+      "Trap SW",
+      "Bar",
+  ]
+
+  bands = {
+      "B133": [6414.85, 6445.45],
+      "B080": [6469.25, 6496.45],
+      "B054": [6499.85, 6517.7],
+      "B033": [6518.55, 6540.65],
+      "R040": [6594.2, 6611.2],
+      "R058": [6612.05, 6628.2],
+      "R087": [6638.4, 6660.5],
+      "R136": [6688.55, 6708.95],
+  }
+
+  strong_lines = {
+      6562.79: r"H$\alpha$",
+      6548.05: "[N II]",
+      6583.45: "[N II]",
+  }
+  medium_lines = {
+      6578.05: "C II",
+      6678.15: "He I",
+      6716.44: "[S II]",
+      6730.816: "[S II]",
+  }
+  weak_lines = {
+      6401.5: "[Ni III]",
+      6501.4: "O II",
+      6461.95: "C II",
+      6527.24: "[N II]",
+      6533.8: "[Ni III]",
+      # 6544.3: "?",
+      6641: "[Cr IV]",
+      6666.80: "[Ni II]",
+      6699.39: "He I"
+  }
+  sky_lines = [6465, 6471, 6478, 6498.15, 6507, 6603]
+  absorption_lines = {
+      6633.347: "O I",
+      6663.747: "O I",
+      6362.3446: "Si II",
+      6480.8110: "Si II",
+  }
+
+  def sig_fha(dwav):
+      """
+      Raman sigma times Ha conversion fraction
+
+      Argument `dwav` (1d array) is delta lambda from Ha rest wavelength
+      in optical frame
+      """
+      x = np.atleast_1d(dwav)/100.0
+      result = np.where(
+          x >= 0.0,
+          # Red flank
+          0.2367 / x**2 - 0.01866 / x + 0.0004068, 
+          # Blue flank
+          0.2186 / x**2 - 0.03435 / x - 0.005381,
+      )
+      # Normalization of x-section
+      result *= 1e-21
+      # Multiply by Ha conversion fraction
+      result *= 0.2238 + 0.03631 * x + 0.002363 * x**2
+      return result
+
+
+  fig, ax = plt.subplots(figsize=(10, 6))
+
+  wavmin, wavmax = 6410, 6710
+  offset = 2.0
+  fc = 0.7
+  wav0 = 6562.74
+  for region in region_order:
+      spec = data[region]
+      waves = np.array(spec["wavelength"]) 
+      # Put in OMC frame
+      waves *= (1.0 - (V_OMC + V_HEL)/3e5)
+      imin = np.sum(waves < wavmin)
+      imax = np.sum(waves < wavmax)
+      i1 = np.sum(waves < bands["R087"][0])
+      i2 = np.sum(waves < bands["R087"][1])
+      total = np.array(spec["raman"]) / sig_fha(waves - wav0)
+      norm = np.median(total[i1:i2])
+      waves = waves[imin:imax] - wav0
+      total = total[imin:imax]
+      total /= norm
+      ax.fill_between(waves, offset, total + offset, color=(fc, fc, fc))
+      ax.plot(waves, total + offset, color="k", lw=0.7)
+      ax.annotate(f"{offset:.1f} + {region}", (wavmax - wav0, offset + 1.0),
+                  xytext=(5, 0), textcoords="offset points", ha="left", va="center")
+      offset -= 0.4
+      fc += 0.04
+
+  wavmin -= wav0
+  wavmax -= wav0
+  # bandcolors = iter(sns.color_palette("coolwarm", len(bands)))
+  # bandcolors = iter(sns.diverging_palette(220, 20, sep=1, n=len(bands), center="dark"))
+  alphas = iter([0.2, 0.4, 0.4, 0.6, 0.6, 0.4, 0.4, 0.2])
+  bandcolors = iter(["c", "c", "b", "b", "m", "m", "r", "r"])
+  for band, [wav1, wav2] in bands.items():
+      wav1 -= wav0
+      wav2 -= wav0
+      ax.axvspan(wav1, wav2, 0.2, 0.95, facecolor=next(bandcolors), alpha=next(alphas), zorder=-10)
+      ax.text((wav1 + wav2)/2, 5.8, band, ha="center", fontsize="small")
+
+  for wave, label in strong_lines.items():
+      wave -= wav0
+      if not wavmin < wave < wavmax:
+          continue
+      ax.axvline(wave, 0.08, 0.8, color="k", lw=2, zorder=-5)
+      ax.text(wave, -0.6, label, ha="center", va="top", rotation="vertical", fontsize="small")
+  for wave, label in medium_lines.items():
+      wave -= wav0
+      if not wavmin < wave < wavmax:
+          continue
+      ax.axvline(wave, 0.1, 0.8, color="k", lw=1, zorder=-5)
+      ax.text(wave, -0.45, label, ha="center", va="top", rotation="vertical", fontsize="x-small")
+  for wave, label in weak_lines.items():
+      wave -= wav0
+      if not wavmin < wave < wavmax:
+          continue
+      ax.axvline(wave, 0.1, 0.85, color="k", lw=0.5, zorder=-5)
+      ax.text(wave, 5.0, label, ha="center", va="bottom", rotation="vertical", fontsize="xx-small")
+
+  for wave, label in absorption_lines.items():
+      wave -= wav0
+      if not wavmin < wave < wavmax:
+          continue
+      ax.axvline(wave, 0.05, 0.8, color="k", ls="--", lw=1, zorder=-5)
+      ax.text(wave, -0.98, label, ha="center", rotation="vertical", fontsize="xx-small")
+
+  for wave in sky_lines:
+      # Sky line wavelengths need correcting from topocentric to OMC farme
+      wave *= (1.0 - (V_OMC + V_HEL)/3e5)
+      wave -= wav0
+      if not wavmin < wave < wavmax:
+          continue
+      ax.axvline(wave, 0.15, 0.82, color="k", lw=1, ls=":", zorder=-5)
+      ax.text(wave, 4.75, "sky", ha="center", rotation="vertical", fontsize="xx-small")
+
+
+  ax.set(
+      xlabel=r"Wavelength difference from H$\alpha$: $\Delta\lambda_2$, Å",
+      ylabel=r"offset + Compensated flux, $(F_{\lambda}\ - F_{\mathrm{cont}}) \ / \ \sigma_{\mathrm{Ly\beta}}(\Delta\lambda_2)\ f_{\mathrm{H\alpha}}(\Delta\lambda_2)$",
+      # xlim=[wavmin, wavmax],
+      ylim=[-1.1, 6.0],
+  )
+  ax.minorticks_on()
+  sns.despine(fig)
+  fig.tight_layout()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS:
+[[file:raman-muse-spectra-compensated.pdf]]
+
 
 **** Make a cube of (\Delta\lambda)^{2} F_{\lambda}
 + This should give a flat spectrum for Lorentzian wings

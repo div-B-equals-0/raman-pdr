@@ -1268,14 +1268,22 @@ would be necessary to take full advantage of the boost in spectral resolution pr
 \section{Discussion}
 \label{sec:discussion}
 
+In this section, I provide a provisional interpretation
+of the principal observational evidence
+from sections~\ref{sec:muse-spectr-mapp} and~\ref{sec:keck-observations}
+in the light of simple heuristic models of Raman scattering.
+
+
 
 
 
 \begin{figure*}
   \centering
-  \includegraphics[width=\linewidth]{figs/raman-muse-spectra-times-lambda-squared}
+  \includegraphics[width=\linewidth]{figs/raman-muse-spectra-compensated}
   \caption{Same as Fig.~\ref{fig:raman-spectra-1d} but with
-    \(F_\lambda\) multiplied by \((\Delta\lambda_2)^2\) and zoomed in on the Raman wing
+    \(F_\lambda\) divided by the effective cross section to Raman scattering
+    \(\sigma\, f_{\ha}\) (see Appendix~\ref{sec:raman-theory})
+    and zoomed in on the Raman wing
     wavelengths.  The spectrum is normalized by the average flux in
     the R087 band and each region is offset vertically by a constant
     value, as indicated at right.  In this presentation, optically
@@ -1735,7 +1743,7 @@ then be fit as follows:
   \frac{\sigma}{\SI{e-21}{cm^2}} =  
   \begin{cases}
     0.2186 x^{-2} - 0.0344 x^{-1} - 0.0054 & \text{if \(x < 0\)} \\
-    0.2367 x^{-2} - 0.0187 x^{-1} + 0.0041 & \text{if \(x > 0\)} 
+    0.2367 x^{-2} - 0.0187 x^{-1} + 0.0004 & \text{if \(x > 0\)} 
   \end{cases}
 \end{equation}
 Note that separate fits are given for the blue (\(x < 0\)) and red
