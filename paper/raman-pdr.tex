@@ -73,6 +73,7 @@
 \newcommand\Raman{\ensuremath{_{\text{Raman}}}}
 \newcommand\scat{\ensuremath{_{\text{scat}}}}
 \newcommand\FUV{\ensuremath{_{\text{FUV}}}}
+\newcommand\wing{\ensuremath{_{\text{wing}}}}
 \newcommand\lamcont{\ensuremath{_{\lambda, \text{cont}}}}
 \newcommand\observed{\ensuremath{^{\text{obs}}}}
 \newcommand\intrinsic{\ensuremath{^{\text{int}}}}
@@ -812,7 +813,7 @@ on the other hand, come from the \chem{H^0} region of the PDR.
     (b)~Equivalent width of \ion{He}{2} \SI{4685.68}{\angstrom} absorption line.
     (c)~Equivalent width of a solid-state Diffuse Interstellar Band
     absorption feature at \SI{5781}{\angstrom}.
-    (d)~Ratio of Raman wing intensity (R058 band)
+    (d)~Ratio \(R\wing\) of Raman wing intensity (R058 band)
     to the intensity of the underlying continuum at the same wavelength.
     (e)~Equivalent width of \ion{C}{4} \num{5801.35}, \SI{5811.97}{\angstrom}
     absorption line doublet (sum of the two lines).
@@ -865,14 +866,14 @@ in exactly the same areas as the peaks in the Raman band emission
 (see \S~\ref{sec:spat-mapp-raman}).
 For ease of comparison,
 Figure~\ref{fig:raman-multi-absorption-features}d shows a map of
-the wing-to-continuum ratio, \(R_{\text{wing}}\),
+the wing-to-continuum ratio, \(R\wing\),
 for the R087 red Raman wing band, 
 which is found by dividing 
 the continuum-subtracted intensity in the MUSE data cube
 by the intensity of the interpolated continuum:
 \begin{equation}
   \label{eq:wing-ratio}
-  R_{\text{wing}} = 
+  R\wing = 
   \frac{
     \int_{\lambda_{\text{min}}}^{\lambda_{\text{max}}} \bigl(  I_\lambda - I'\lamcont \bigr) \, d\lambda 
   }{
@@ -886,14 +887,55 @@ does \emph{not} include the Raman wing emission
 since it is interpolated across
 a much wider range than in equation~\eqref{eq:equivalent-width}
 by fitting a quadratic function to clean sections of continuum around
-\SI{6150 \pm 80}{\angstrom} and \SI{6790 \pm 30}{\angstrom}.
-Note also that \(R_{\text{wing}}\) is a dimensionless ratio,
+\SI{6150 \pm 80}{\angstrom} and \SI{6790 \pm 30}{\angstrom}
+(see \S~\ref{sec:raman-scattered-ha}).
+Note also that \(R\wing\) is a dimensionless ratio,
 whereas \(W_\lambda\observed\) has dimensions of wavelength.
 The reason for choosing the R087 band for this figure is that it is
 the band that is closest in wavelength to the \SI{6633}{\angstrom} absorption feature.
 It is clear from comparing Figure~\ref{fig:raman-spectra-1d} panels~a and~d
-that \(W_\lambda\observed (6633)\) and \(R_{\text{wing}}\) closely track one another,
+that \(W_\lambda\observed (6633)\) and \(R\wing\) closely track one another,
 as would be expected if the absorption feature is the Raman-scattered \ion{O}{1} \SI{1027}{\angstrom} line.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{figs/correlation-6633-Rwing}
+  \caption{
+    Correlation between \SI{6633}{\angstrom} equivalent width,
+    \(W_\lambda\observed(6633)\), and Raman wing to continuum ratio, \(R\wing\).
+    False-color image shows histogram of pixels across the face of the nebula,
+    calculated from the MUSE spectral cube: 
+    Fig.~\ref{fig:raman-multi-absorption-features} panel~a (\(y\) axis)
+    and panel~d (\(x\) axis).
+    The histogram is  weighted by the \SI{6630}{\angstrom}
+    continuum intensity.
+    The straight dashed line shows the mean relation,
+    \(W_\lambda = 2.27\, R\wing\),
+    while dotted lines show a \(2 \times\) steeper and \(2 \times\) shallower slope.
+    Symbols show average values for each of the extraction regions
+    shown by white boxes in Figure~\ref{fig:raman-fov-regions}b.
+  }
+  \label{fig:6633-Rwing}
+\end{figure}
+
+The relationship is examined more quantitatively in Figure~\ref{fig:6633-Rwing},
+which shows that \(W_\lambda\observed (6633)\) and \(R\wing\) are well-correlated,
+with a mean slope of \(W_\lambda = 2.27\, R\wing\).
+Of the six extraction regions used in Figure~\ref{fig:raman-spectra-1d},
+only the Orion Bar lies on this mean relation.
+The other regions, which are closer to the Trapezium
+(see Figure~\ref{fig:raman-fov-regions}b)
+follow a slope that is roughly 50\% steeper.
+Although this might represent a real physical difference,
+it is also true that the lower-left area of the graph in Figure~\ref{fig:6633-Rwing}
+is more susceptible to systematic errors.
+For instance, in the Orion Bar region much of the continuum comes from
+the blue reflection nebula around \th2A, which causes increased spectral curvature
+(see Figure~\ref{fig:raman-spectra-1d}),
+potentially leading to reduced accuracy in the continuum interpolation,
+which might result in an overestimation of \(R\wing\).
+Higher values of \(R\wing\) and \(W_\lambda\), such as those seen in Orion~S,
+are much less affected by such uncertainties.
 
 \subsubsection{Stellar absorption lines}
 \label{sec:stell-absorpt-lines}
@@ -1342,9 +1384,13 @@ Figure~\ref{fig:raman-fov-regions}b,
 whereas the \SI{6633}{\angstrom} absorption ridges lie farther from the Trapezium
 (\num{50} to \SI{60}{arcsec})
 in the ``SW minibar'' and ``Orion S'' regions.
-This implies that the scatterers are not the same in the two cases,
-and is what would be expected under the Raman-scattering hypothesis
-if a sufficient column of dust is present in the \hii{} region.%
+This implies that the spatial distribution of scatterers is different
+between the two cases.
+This is exactly what would be expected under the Raman-scattering hypothesis
+for \SI{6633}{\angstrom}, since the scatterers are neutral hydrogen atoms,
+located in the PDR outside the \hii{} region,
+whereas the stellar continuum is scattered by dust grains,
+some of which will be inside the \hii{} region.%
 \footnote{One piece of evidence for the presence of dust
   inside the \hii{} region is that
   the gas-phase abundances of nickel and iron are seen to be enhanced

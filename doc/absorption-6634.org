@@ -1650,6 +1650,39 @@ python src/raman-multibin-combine.py data/orion-muse/muse-hr-data-ha-raman-B133-
 
 #+RESULTS:
 : None
+That was good enough for the maps.  But now do another version at fixed bin size for the histograms because that comes out better.  Use bin064
+
+#+begin_src python
+  import numpy as np
+  from astropy.io import fits
+  from pathlib import Path
+
+  datadir = Path("../data/orion-muse")
+  contfile = "continuum-N_III-6634-bin064.fits"
+  conthdu = fits.open(datadir / contfile)["SCALED"]
+
+  #bands = ["R087", "R136"]
+  bands = ["R087", ]
+  wing_data = np.zeros_like(conthdu.data)
+  for band in bands:
+      band_file = f"muse-hr-data-ha-raman-{band}-cont-sub-bin032.fits"
+      band_data = fits.open(datadir / band_file)["SCALED"].data
+      wing_data += band_data
+      wing_data /= len(bands)
+
+  ratio = wing_data / (conthdu.data - wing_data)
+
+  # Mask out areas of weak continuum because noisy
+  mask = conthdu.data < 600.0
+  ratio[mask] = np.nan
+
+  fits.PrimaryHDU(header=conthdu.header, data=ratio).writeto(
+      datadir / "ratio-raman-wing-to-continuum-6634-bin032.fits", overwrite=True)
+#+end_src
+
+#+RESULTS:
+: None
+
 
 **** Make figures of maps
 :PROPERTIES:
@@ -4201,6 +4234,141 @@ CLOSED: [2019-09-07 Sat 11:58]
 [[file:raman-multi-absorption-features.jpg]]
 
 
+** Correlation of EW(6633) with R_wing
+#+begin_src python :return figfile :results file
+  from pathlib import Path
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from astropy.io import fits
+  from astropy.wcs import WCS
+  from numpy.random import default_rng
+  import regions as rg
+  import seaborn as sns
+  sns.set_color_codes()
+
+  figfile = "correlation-6633-Rwing.pdf"
+  datapath = Path("../data/orion-muse")
+  datapath2 = Path("../../OrionMuse/LineMaps")
+
+  fig, ax = plt.subplots(figsize=(5,5))
+
+
+
+  # Read in Rwing
+  xlabel = r"Raman wing to continuum ratio, $R_\mathrm{wing}$"
+  hdu = fits.open(datapath / f"ratio-raman-wing-to-continuum-6634-bin032.fits")["SCALED"]
+  xdata = hdu.data
+
+  # Read in the 6633 equivalent widths
+  ylabel = r"Absorption Equivalent Width, $W_\lambda^\mathrm{obs}(6633)$, Å"
+  hdu = fits.open(datapath / f"ew-N_III-6634-multibin-SN0007.fits")["SCALED"]
+  #hdu = fits.open(datapath / f"ew-N_III-6634-bin064.fits")["SCALED"]
+  ydata = -hdu.data
+
+  #Read in continuum intensity for weights
+  hdu = fits.open(datapath / f"continuum-N_III-6634-bin032.fits")["SCALED"]
+  wdata = hdu.data
+
+  # Calculate mask before adding noise
+  m = np.isfinite(xdata) & np.isfinite(ydata) & (xdata > 0.0) & (ydata > 0.0)
+
+  # Set up regions
+  regions = rg.read_ds9("../data/raman-extract-boxes.reg")
+  ny, nx = hdu.data.shape
+  w = WCS(hdu.header)
+  xreg, yreg, labreg = [], [], []
+  for region in regions:
+      mask = region.to_pixel(w.celestial).to_mask().to_image((ny, nx))
+      labreg.append(region.meta["label"])
+      xreg.append(np.average(xdata[m], weights=wdata[m]*mask[m]))
+      yreg.append(np.average(ydata[m], weights=wdata[m]*mask[m]))
+
+  ymean = np.average(ydata[m], weights=wdata[m])
+  xmean = np.average(xdata[m], weights=wdata[m])
+  gradient = ymean / xmean
+
+  rng = default_rng()
+  ynoise = 0.005*rng.standard_normal(ydata.shape)
+  # ydata += ynoise
+
+  # Calculate joint histogram
+  xmin, xmax = 0.0, 0.15
+  ymin, ymax = 0.0, 0.55
+
+  H, xedges, yedges = np.histogram2d(
+      xdata[m],
+      ydata[m],
+      30,
+      [[xmin, xmax], [ymin, ymax]],
+      weights=wdata[m],
+  )
+  gamma = 1.3
+  ax.imshow(H.T**(1/gamma),
+            extent=[xmin, xmax, ymin, ymax],
+            cmap="magma_r",
+            origin="lower",
+            )
+
+  xgrid = np.linspace(xmin, xmax)
+  ax.plot(xgrid, xgrid * gradient, ls="--", color="k")
+  ax.plot(xgrid, 0.5 * xgrid * gradient, ls=":", color="k")
+  ax.plot(xgrid, 2.0 * xgrid * gradient, ls=":", color="k")
+  angle = np.degrees(np.arctan(gradient * (xmax - xmin) / (ymax - ymin)))
+  ax.text(
+      0.14,
+      0.14*gradient - 0.02,
+      fr"$W_\lambda = {gradient:.2f} \, R_\mathrm{{wing}} $",
+      ha="right",
+      va="top",
+      rotation=angle,
+  )
+  angle = np.degrees(np.arctan(0.5 * gradient * (xmax - xmin) / (ymax - ymin)))
+  ax.text(
+      0.13,
+      0.13*0.5*gradient - 0.01,
+      fr"50%",
+      ha="right",
+      va="top",
+      rotation=angle,
+  )
+  angle = np.degrees(np.arctan(2.0 * gradient * (xmax - xmin) / (ymax - ymin)))
+  ax.text(
+      0.09,
+      0.09*2*gradient - 0.03,
+      fr"200%",
+      ha="right",
+      va="top",
+      rotation=angle,
+  )
+
+
+  # Finally, plot the regions
+  ax.scatter(xreg, yreg, marker="o", color="k", facecolor="w")
+  for x, y, s in zip(xreg, yreg, labreg):
+      color = "w" if s in ["Bar",] else "k"
+      ax.annotate(s, (x, y),
+                  xytext=(3, 3),
+                  textcoords="offset points",
+                  color=color,
+                  fontweight="bold",
+                  )
+
+  ax.set(
+      xlabel=xlabel,
+      ylabel=ylabel,
+      xlim=[xmin, xmax],
+      ylim=[ymin, ymax],
+  )
+  ax.set_aspect( (xmax - xmin) / (ymax - ymin) )
+  fig.tight_layout()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS:
+[[file:correlation-6633-Rwing.pdf]]
+
+
+
 ** Correlation of EW(DIB 5781) with reddening E(B-V)
 + This is discussed in [[id:0E12E121-C1E6-453E-ACD5-B7A0BBAD92F6][Correlation between reddening and DIB]]
 + We found E(B - V) = 0.3845 C(Hb)
@@ -4219,13 +4387,14 @@ CLOSED: [2019-09-07 Sat 11:58]
   datapath = Path("../data/orion-muse")
   datapath2 = Path("../../OrionMuse/LineMaps")
 
-  fig, ax = plt.subplots()
+  fig, ax = plt.subplots(figsize=(5,5))
 
 
 
   # Read in the extinction
   xlabel = r"Reddening, $E(B - V)$"
-  hdu = fits.open(datapath / f"C_H_beta-bin001.fits")["SCALED"]
+  hdu = fits.open(datapath / f"C_H_beta-bin004.fits")["SCALED"]
+  #hdu = fits.open(datapath / f"C_H_beta_9229-bin004.fits")["SCALED"]
   # Convert from C(Hb) to reddening E(B - V)
   xdata = 0.3845*hdu.data
 
@@ -4239,19 +4408,25 @@ CLOSED: [2019-09-07 Sat 11:58]
       axis=0,
   )
   rng = default_rng()
-  ynoise = 0.02*rng.standard_normal(ydata.shape)
+  ynoise = 0.01*rng.standard_normal(ydata.shape)
   ydata += ynoise
 
+  #Read in continuum intensity for weights
+  hdu = fits.open(datapath / f"continuum-DIB-5781-bin032.fits")["SCALED"]
+  wdata = hdu.data
+
+
   # Calculate joint histogram
-  xmin, xmax = ymin, ymax = 0.0, 0.7
+  xmin, xmax = ymin, ymax = 0.0, 0.55
   m = np.isfinite(xdata) & np.isfinite(ydata)
   H, xedges, yedges = np.histogram2d(
       xdata[m],
       ydata[m],
-      100,
+      30,
       [[xmin, xmax], [ymin, ymax]],
+      weights=wdata[m],
   )
-  gamma = 2.0
+  gamma = 1.5
   ax.imshow(H.T**(1/gamma),
             extent=[xmin, xmax, ymin, ymax],
             cmap="magma_r",
@@ -4289,6 +4464,7 @@ CLOSED: [2019-09-07 Sat 11:58]
       ylim=[ymin, ymax],
   )
   ax.set_aspect("equal")
+  fig.tight_layout()
   fig.savefig(figfile)
 #+end_src
 
