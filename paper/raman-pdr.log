@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 DEC 2020 13:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 DEC 2020 20:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1558,30 +1558,39 @@ l.1247
                                                   \fi \fi 
 l.1247 
         <./figs/raman-zoom-keck-regions.pdf>]
-<figs/raman-muse-spectra-compensated.pdf, id=1406, 722.7pt x 433.62pt>
+
+pdfTeX warning: pdflatex (file ./figs/raman-scatter-cloud-schematic.pdf): PDF i
+nclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figs/raman-scatter-cloud-schematic.pdf, id=1404, 240.9pt x 240.9pt>
+File: figs/raman-scatter-cloud-schematic.pdf Graphic file (type pdf)
+<use figs/raman-scatter-cloud-schematic.pdf>
+Package pdftex.def Info: figs/raman-scatter-cloud-schematic.pdf  used on input 
+line 1271.
+(pdftex.def)             Requested size: 240.0pt x 240.00616pt.
+<figs/raman-muse-spectra-compensated.pdf, id=1407, 722.7pt x 433.62pt>
 File: figs/raman-muse-spectra-compensated.pdf Graphic file (type pdf)
 <use figs/raman-muse-spectra-compensated.pdf>
 Package pdftex.def Info: figs/raman-muse-spectra-compensated.pdf  used on input
- line 1282.
+ line 1307.
 (pdftex.def)             Requested size: 504.0pt x 302.40051pt.
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.11
-}) has been already used, duplicate ignored
+[12pdfTeX warning (ext4): destination with the same identifier (name{figure.11}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1314 \citet{Salgado:2016a}
+l.1339 \citet{Salgado:2016a}
                              had found low dust cross-section in Orion Bar <./f
 igs/order51-absorption-by-group.pdf>]
-<figs/cloudy-bar-optical-depths.pdf, id=1505, 578.16pt x 525.965pt>
+<figs/cloudy-bar-optical-depths.pdf, id=1506, 578.16pt x 525.965pt>
 File: figs/cloudy-bar-optical-depths.pdf Graphic file (type pdf)
 <use figs/cloudy-bar-optical-depths.pdf>
 Package pdftex.def Info: figs/cloudy-bar-optical-depths.pdf  used on input line
- 1321.
+ 1346.
 (pdftex.def)             Requested size: 240.0pt x 218.32758pt.
-<figs/stellar-spectrum-fuv.pdf, id=1508, 578.16pt x 552.0625pt>
+<figs/stellar-spectrum-fuv.pdf, id=1509, 578.16pt x 552.0625pt>
 File: figs/stellar-spectrum-fuv.pdf Graphic file (type pdf)
 <use figs/stellar-spectrum-fuv.pdf>
-Package pdftex.def Info: figs/stellar-spectrum-fuv.pdf  used on input line 1341
+Package pdftex.def Info: figs/stellar-spectrum-fuv.pdf  used on input line 1366
 .
 (pdftex.def)             Requested size: 240.0pt x 229.16063pt.
  [13pdfTeX warning (ext4): destination with the same identifier (name{figure.12
@@ -1589,51 +1598,61 @@ Package pdftex.def Info: figs/stellar-spectrum-fuv.pdf  used on input line 1341
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1432 
-        <./figs/raman-muse-spectra-compensated.pdf>] [14pdfTeX warning (ext4): 
-destination with the same identifier (name{figure.13}) has been already used, d
-uplicate ignored
+l.1497 
+        <./figs/raman-scatter-cloud-schematic.pdf>] [14pdfTeX warning (ext4): d
+estination with the same identifier (name{figure.13}) has been already used, du
+plicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1497 \end{equation}
-                     pdfTeX warning (ext4): destination with the same identifie
-r (name{figure.14}) has been already used, duplicate ignored
+l.1562 
+        <./figs/raman-muse-spectra-compensated.pdf>]
+LaTeX Info: Redefining \. on input line 1602.
+LaTeX Info: Redefining \% on input line 1602.
+LaTeX Info: Redefining \. on input line 1606.
+LaTeX Info: Redefining \% on input line 1606.
+ [15pdfTeX warning (ext4): destination with the same identifier (name{figure.14
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1497 \end{equation}
-                      <./figs/cloudy-bar-optical-depths.pdf> <./figs/stellar-sp
-ectrum-fuv.pdf>]
-LaTeX Info: Redefining \. on input line 1577.
-LaTeX Info: Redefining \% on input line 1577.
-LaTeX Info: Redefining \. on input line 1581.
-LaTeX Info: Redefining \% on input line 1581.
- (./raman-pdr.bbl
+l.1634 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.15}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1634 
+        <./figs/cloudy-bar-optical-depths.pdf> <./figs/stellar-spectrum-fuv.pdf
+>] (./raman-pdr.bbl
 
 Package hyperref Warning: Suppressing empty link on input line 99.
 
-[15]
+
 Underfull \hbox (badness 2452) in paragraph at lines 471--474
 \T1/ntxtlf/m/n/8 po-sium Vol. 297, The Dif-fuse In-ter-stel-lar Bands. pp 13--2
 2,
  []
 
-) [16]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1780.
- [17pdfTeX warning (ext4): destination with the same identifier (name{table.A1.
-1}) has been already used, duplicate ignored
+Underfull \vbox (badness 2753) has occurred while \output is active []
+
+ [16])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1805.
+
+[17] [18pdfTeX warning (ext4): destination with the same identifier (name{table
+.A1.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1780 \end{document}
-                     ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1780.
+l.1805 \end{document}
+                     
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1805.
  (./raman-pdr.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1780.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1780.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1805.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1805.
 
 Package rerunfilecheck Info: File `raman-pdr.out' has not changed.
 (rerunfilecheck)             Checksum: 55A2DA35699B9B84FF61C77C6401E974;1355.
@@ -1642,13 +1661,13 @@ Package rerunfilecheck Info: File `raman-pdr.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 4.247pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1780.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1805.
  ) 
 Here is how much of TeX's memory you used:
- 24239 strings out of 492616
- 436378 string characters out of 6129482
- 549422 words of memory out of 5000000
- 27605 multiletter control sequences out of 15000+600000
+ 24247 strings out of 492616
+ 436657 string characters out of 6129482
+ 548459 words of memory out of 5000000
+ 27610 multiletter control sequences out of 15000+600000
  915651 words of font info for 593 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,21n,63p,2151b,1078s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1676,10 +1695,10 @@ ve/2019/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2019/
 texmf-dist/fonts/type1/public/txfonts/txmia.pfb></usr/local/texlive/2019/texmf-
 dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on raman-pdr.pdf (17 pages, 13388869 bytes).
+Output written on raman-pdr.pdf (18 pages, 13451429 bytes).
 PDF statistics:
- 2167 PDF objects out of 2487 (max. 8388607)
- 1481 compressed objects within 15 object streams
- 179 named destinations out of 1000 (max. 500000)
- 207 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2190 PDF objects out of 2487 (max. 8388607)
+ 1498 compressed objects within 15 object streams
+ 181 named destinations out of 1000 (max. 500000)
+ 212 words of extra memory for PDF output out of 10000 (max. 10000000)
 
