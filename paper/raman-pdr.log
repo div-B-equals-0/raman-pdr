@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  24 DEC 2020 09:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  24 DEC 2020 13:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -924,14 +924,17 @@ File: t1ntxtlf.fd 2015/01/17 v1.0 font definition file for T1/ntx/tlf
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 9.0pt on input line 99.
 
-(./raman-pdr.aux)
+(./raman-pdr.aux
+
+LaTeX Warning: Label `eq:tau-visual' multiply defined.
+
+)
 \openout1 = `raman-pdr.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 99.
 LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 99
 .
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/omlntxmi.fd
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
 LaTeX Font Info:    ... okay on input line 99.
@@ -1551,119 +1554,111 @@ line 1233.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1291 
+l.1288 
        pdfTeX warning (ext4): destination with the same identifier (name{table.
 3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1291 
-        <./figs/raman-zoom-keck-regions.pdf>]
-<figs/raman-band-displacements-plot.pdf, id=1357, 361.35pt x 252.945pt>
-File: figs/raman-band-displacements-plot.pdf Graphic file (type pdf)
-<use figs/raman-band-displacements-plot.pdf>
-Package pdftex.def Info: figs/raman-band-displacements-plot.pdf  used on input 
-line 1293.
-(pdftex.def)             Requested size: 240.0pt x 168.00175pt.
-<figs/cloudy-bar-optical-depths.pdf, id=1366, 578.16pt x 525.965pt>
-File: figs/cloudy-bar-optical-depths.pdf Graphic file (type pdf)
-<use figs/cloudy-bar-optical-depths.pdf>
-Package pdftex.def Info: figs/cloudy-bar-optical-depths.pdf  used on input line
- 1308.
-(pdftex.def)             Requested size: 240.0pt x 218.32758pt.
-<figs/raman-muse-spectra-compensated.pdf, id=1371, 722.7pt x 433.62pt>
-File: figs/raman-muse-spectra-compensated.pdf Graphic file (type pdf)
-<use figs/raman-muse-spectra-compensated.pdf>
-Package pdftex.def Info: figs/raman-muse-spectra-compensated.pdf  used on input
- line 1360.
-(pdftex.def)             Requested size: 504.0pt x 302.40051pt.
-<figs/stellar-spectrum-fuv.pdf, id=1386, 578.16pt x 552.0625pt>
-File: figs/stellar-spectrum-fuv.pdf Graphic file (type pdf)
-<use figs/stellar-spectrum-fuv.pdf>
-Package pdftex.def Info: figs/stellar-spectrum-fuv.pdf  used on input line 1400
-.
-(pdftex.def)             Requested size: 240.0pt x 229.16063pt.
-
-Underfull \vbox (badness 2384) has occurred while \output is active []
-
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.10
-}) has been already used, duplicate ignored
+l.1288 
+        <./figs/raman-zoom-keck-regions.pdf>] [12pdfTeX warning (ext4): destina
+tion with the same identifier (name{figure.10}) has been already used, duplicat
+e ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1430 
+l.1364 
         <./figs/order51-absorption-by-group.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+<figs/raman-band-displacements-plot.pdf, id=1446, 361.35pt x 252.945pt>
+File: figs/raman-band-displacements-plot.pdf Graphic file (type pdf)
+<use figs/raman-band-displacements-plot.pdf>
+Package pdftex.def Info: figs/raman-band-displacements-plot.pdf  used on input 
+line 1366.
+(pdftex.def)             Requested size: 240.0pt x 168.00175pt.
+<figs/cloudy-bar-optical-depths.pdf, id=1455, 578.16pt x 525.965pt>
+File: figs/cloudy-bar-optical-depths.pdf Graphic file (type pdf)
+<use figs/cloudy-bar-optical-depths.pdf>
+Package pdftex.def Info: figs/cloudy-bar-optical-depths.pdf  used on input line
+ 1381.
+(pdftex.def)             Requested size: 240.0pt x 218.32758pt.
  [13pdfTeX warning (ext4): destination with the same identifier (name{figure.11
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1470 A
-        n even stronger argument against a visual-band stellar origin is thatpd
-fTeX warning (ext4): destination with the same identifier (name{figure.12}) has
- been already used, duplicate ignored
+l.1427 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1470 A
-        n even stronger argument against a visual-band stellar origin is thatpd
-fTeX warning (ext4): destination with the same identifier (name{figure.13}) has
- been already used, duplicate ignored
+l.1427 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1470 A
-        n even stronger argument against a visual-band stellar origin is that <
-./figs/raman-scatter-cloud-schematic.pdf> <./figs/raman-band-displacements-plot
-.pdf> <./figs/cloudy-bar-optical-depths.pdf>] [14pdfTeX warning (ext4): destina
-tion with the same identifier (name{figure.14}) has been already used, duplicat
-e ignored
+l.1427 
+        <./figs/raman-scatter-cloud-schematic.pdf> <./figs/raman-band-displacem
+ents-plot.pdf> <./figs/cloudy-bar-optical-depths.pdf>]
+<figs/raman-muse-spectra-compensated.pdf, id=1664, 722.7pt x 433.62pt>
+File: figs/raman-muse-spectra-compensated.pdf Graphic file (type pdf)
+<use figs/raman-muse-spectra-compensated.pdf>
+Package pdftex.def Info: figs/raman-muse-spectra-compensated.pdf  used on input
+ line 1433.
+(pdftex.def)             Requested size: 504.0pt x 302.40051pt.
+<figs/stellar-spectrum-fuv.pdf, id=1679, 578.16pt x 552.0625pt>
+File: figs/stellar-spectrum-fuv.pdf Graphic file (type pdf)
+<use figs/stellar-spectrum-fuv.pdf>
+Package pdftex.def Info: figs/stellar-spectrum-fuv.pdf  used on input line 1473
+.
+(pdftex.def)             Requested size: 240.0pt x 229.16063pt.
+ [14] [15pdfTeX warning (ext4): destination with the same identifier (name{figu
+re.14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1531 
+l.1687 
         <./figs/raman-muse-spectra-compensated.pdf>]
-LaTeX Info: Redefining \. on input line 1636.
-LaTeX Info: Redefining \% on input line 1636.
-LaTeX Info: Redefining \. on input line 1640.
-LaTeX Info: Redefining \% on input line 1640.
- [15pdfTeX warning (ext4): destination with the same identifier (name{figure.15
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1650 
-        <./figs/stellar-spectrum-fuv.pdf>] (./raman-pdr.bbl
+LaTeX Info: Redefining \. on input line 1709.
+LaTeX Info: Redefining \% on input line 1709.
+LaTeX Info: Redefining \. on input line 1713.
+LaTeX Info: Redefining \% on input line 1713.
+ (./raman-pdr.bbl
 
 Package hyperref Warning: Suppressing empty link on input line 99.
 
-[16]
+[16pdfTeX warning (ext4): destination with the same identifier (name{figure.15}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.158 ...scalante} et~al.}{1991}]{Escalante:1991a}
+                                                   <./figs/stellar-spectrum-fuv
+.pdf>]
+Underfull \vbox (badness 2253) has occurred while \output is active []
+
+
 Underfull \hbox (badness 2452) in paragraph at lines 471--474
 \T1/ntxtlf/m/n/8 po-sium Vol. 297, The Dif-fuse In-ter-stel-lar Bands. pp 13--2
 2,
  []
 
-)
+) [17]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1839.
-
-[18pdfTeX warning (ext4): destination with the same identifier (name{table.A1.1
-}) has been already used, duplicate ignored
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1912.
+ [18pdfTeX warning (ext4): destination with the same identifier (name{table.A1.
+1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1839 \end{document}
-                     
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1839.
+l.1912 \end{document}
+                     ]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1912.
  (./raman-pdr.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1839.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1839.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1912.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1912.
 
 Package rerunfilecheck Info: File `raman-pdr.out' has not changed.
 (rerunfilecheck)             Checksum: 6411A4E7DD0B5A68EA209DEE10FEAC95;1640.
@@ -1672,13 +1667,16 @@ Package rerunfilecheck Info: File `raman-pdr.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 4.247pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1839.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1912.
  ) 
 Here is how much of TeX's memory you used:
- 24256 strings out of 492616
- 436818 string characters out of 6129482
- 547123 words of memory out of 5000000
- 27616 multiletter control sequences out of 15000+600000
+ 24269 strings out of 492616
+ 437017 string characters out of 6129482
+ 547967 words of memory out of 5000000
+ 27622 multiletter control sequences out of 15000+600000
  915651 words of font info for 593 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,21n,63p,2151b,1078s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1706,10 +1704,10 @@ ve/2019/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2019/
 texmf-dist/fonts/type1/public/txfonts/txmia.pfb></usr/local/texlive/2019/texmf-
 dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on raman-pdr.pdf (18 pages, 13451744 bytes).
+Output written on raman-pdr.pdf (18 pages, 13456263 bytes).
 PDF statistics:
- 2205 PDF objects out of 2487 (max. 8388607)
- 1512 compressed objects within 16 object streams
- 184 named destinations out of 1000 (max. 500000)
+ 2219 PDF objects out of 2487 (max. 8388607)
+ 1526 compressed objects within 16 object streams
+ 191 named destinations out of 1000 (max. 500000)
  236 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1273,6 +1273,79 @@ Raman-scattered wings.
 \subsection{Broad-band Raman scattering}
 \label{sec:broad-band-raman}
 
+The Raman scattering process can be divided conceptually into three steps.
+In step~1, radiative transfer in the FUV band determines the mean FUV intensity,
+\(J_\lambda(\lambda_1)\), at some point in the nebula.
+In step~2, the scattering itself (see Appendix~\ref{sec:raman-theory})
+determines a visual-band emissivity \(j_\lambda(\lambda_2)\)
+that is proportional to \(J_\lambda(\lambda_1)\), where the
+visual wavelength, \(\lambda_2\),
+and FUV wavelength, \(\lambda_1\),
+are related by equation~\eqref{eq:wav-transform}.
+In step~3, radiative transfer in the visual band determines the
+observed intensity of the \ha{} wing, \(I_\lambda (\lambda_2)\).
+I now consider each of these in turn. 
+
+If the FUV radiation field at a point is dominated by a single star
+of luminosity \(L_\lambda^*(\lambda_1)\) at a distance \(R\), then for step~1 we may write
+\begin{equation}
+  \label{eq:fuv-mean-intensity-from-star}
+  4\pi J_\lambda(\lambda_1) = \frac{L_\lambda^*(\lambda_1)}{4 \pi R^2} \, e^{-\tau_1}
+\end{equation}
+where \(\tau_1\) is the FUV optical depth between the point and the star:
+\begin{equation}
+  \label{eq:tau-visual}
+  \tau_2 = \int_0^R k_{\text{total}} (\lambda_1) \, dR'.
+\end{equation}
+The total FUV extinction coefficient can be written as a sum
+over all absorbing species:
+\begin{equation}
+  \label{eq:k-fuv}
+  k_{\text{total}} (\lambda_1) = \sum n_i \sigma_i(\lambda_1) . 
+\end{equation}
+Potentially important broad-band absorbers are dust grains
+and the \chem{H^0} Rayleigh/Raman scattering itself.
+Resonance lines of ions, atoms, and molecules may also be important
+over narrow ranges of \(\lambda_1\).
+More realistically, one would sum over several equations like equation~\eqref{eq:fuv-mean-intensity-from-star} for the different stars,
+and also include the diffuse field due to recombinations, Rayleigh scattering,
+and dust scattering.
+
+For step~2, assuming that the scattering is isotropic, the visual emissivity is simply
+\begin{equation}
+  \label{eq:raman-emissivity}
+  j_\lambda (\lambda_2) = \frac{\lambda_1}{\lambda_2} J_\lambda(\lambda_1) \, n(\chem{H^0}) \, \sigma(\lambda_1) \, f_{\ha}(\lambda_1) ,
+\end{equation}
+where \(n(\chem{H^0})\) is the number density of neutral hydrogen atoms,
+\(\sigma(\lambda_1)\) is the Rayleigh scattering cross section
+in the \lyb{} wing given by
+equation~\eqref{eq:total-cross-section-fit},
+and \(f_{\ha}\) is the branching ratio for Raman conversion given by
+equation~\eqref{eq:fha-fit}.
+The factor \(\lambda_1 / \lambda_2\) accounts in the reduction in energy per photon when passing from
+the FUV to visual bands.
+
+The first question to consider with the Raman scattering is whether it is
+optically thick or optically thin.
+If it is optically thin, then the scattered intensity in the \ha{} wings
+can be approximated as
+\begin{equation}
+  \label{eq:thin-scattered-intensity}
+  I_\lambda (\lambda_2) = \frac{\lambda_1}{\lambda_2} \int_{\text{los}}
+  J_\lambda(\lambda_1) n(\chem{H_0}) \sigma(\lambda_1) f_{\ha}(\lambda_1) \, dz
+\end{equation}
+
+\begin{equation}
+  \label{eq:formal-solution}
+  I_\lambda (\lambda_2) = \int_{\text{los}} j_\lambda(\lambda_2) \, e^{-\tau_2(z)} \, dz
+\end{equation}
+
+\begin{equation}
+  \label{eq:tau-visual}
+  \tau_2(z) = \int_0^z k_{\text{total}} (\lambda_2) \, dz'
+\end{equation}
+
+
 \subsection{Absorption features in the Raman pseudo-continuum}
 \label{sec:absorpt-feat-raman}
 
