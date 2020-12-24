@@ -691,21 +691,6 @@ Figure~\ref{fig:raman-bar-profile}d and is discussed in more detail in
 
 
 
-\begin{figure}
-  \includegraphics[width=\linewidth]{figs/raman-band-displacements-plot}
-  \caption{Displacement from the ionization front of the emission peak
-    in each Raman band (column 3 of
-    Table~\ref{tab:bar-profile-peaks}), plotted as a function of the
-    cross-section of the \lyb{} wing (column 6 of
-    Table~\ref{tab:wav-bands}).  Color scheme is as in
-    Fig.~\ref{fig:raman-spectra-1d} with error bars showing 10\% of
-    the peak FWHM (column 4 of Table~\ref{tab:bar-profile-peaks}).
-    Black lines show a simple model in which the peaks occur at
-    \(\tau = 1\) for 3 different constant neutral hydrogen densities, as
-    indicated in the legend. }
-  \label{fig:raman-band-displacements}
-\end{figure}
-
 \subsubsection{Spatial profiles of the Raman bands in the neutral Bar}
 \label{sec:spat-prof-raman}
 Unlike the optical emission lines, the Raman wing bands (upper panel
@@ -721,31 +706,8 @@ Table~\ref{tab:wav-bands}. There is a clear tendency for the peak in
 the brightness profile to progress towards greater depths into the
 neutral gas as one moves to wavelengths farther from the \ha{} line
 center, which is quantitatively confirmed by the Gaussian fits in
-Table~\ref{tab:bar-profile-peaks}.  If the peak emission occurs for a
-\lyb{} wing optical depth of \(\tau \approx 1\) for each band, then the
-displacement from the ionization front should vary as
-\(x_0 \approx (n \langle \sigma_\lambda \rangle)^{-1}\), where \(n\) is the neutral hydrogen
-density in the PDR and \(\langle \sigma_\lambda \rangle\) is the \lyb{} wing cross section
-for the FUV wavelengths that pump each band, which is given in
-column~6 of Table~\ref{tab:wav-bands}.  In
-Figure~\ref{fig:raman-band-displacements}, this relationship is tested
-under the assumption that \(n\) is constant over the depth range
-\SIrange{2}{8}{mpc}, where it can be seen that a PDR density of order
-\(n \sim \SI{1e5}{cm^{-3}}\) is required to fit the observations.  A
-systematic uncertainty of 10\% of the width of each emission peak is
-assigned to the \(x_0\) values, which has the largest relative impact
-on the near-wing bands: B033 and R040.  As a result, it is the B054
-and R058 bands that are the most reliable indicators, yielding
-\(n = \SI{8.5e4}{cm^{-3}}\) (dotted line).  The bands in the farther
-wings fall below this curve, significantly so for B133 and R136, but
-this can be understood as due to two factors.  First, the finite total
-\chem{H^0} column through the PDR means that the wings will become
-optically thin for a sufficiently low
-\(\langle \sigma_\lambda \rangle\), in which case \(\tau = 1\) can no longer hold.  Second,
-competition with dust grains for the absorption of FUV photons will
-become significant when
-\(\langle \sigma_\lambda \rangle < \sigma_{\text{dust}}\).  These issues are discussed further in
-\S~\ref{sec:discussion}.
+Table~\ref{tab:bar-profile-peaks}.
+This result is used as a diagnostic of the PDR density in \S~\ref{sec:raman-scattering-as} below.
 
 \subsubsection{Other PDR tracers of the neutral and molecular Bar}
 \label{sec:other-pdr-tracers}
@@ -1296,8 +1258,80 @@ would be necessary to take full advantage of the boost in spectral resolution pr
 In this section, I provide a provisional interpretation
 of the principal observational evidence
 from sections~\ref{sec:muse-spectr-mapp} and~\ref{sec:keck-observations}
-in the light of simple heuristic models of Raman scattering.
+in the light of simple heuristic models of Raman scattering,
+such as is illustrated schematically in Figure~\ref{fig:raman-scatter-cloud-schematic}.
+In lieu of solving the full radiative transfer equation,
+I assume that the Rayleigh and Raman-scattering occurs in a region
+where the FUV optical depth from the illuminating star is 
+\(\tau \approx 1\) in the \lyb{} wing.
+I ignore the possibility of multiple Rayleigh scattering
+before Raman conversion. 
+I also disregard dust extinction of the
+post-scattered visual-band photons, although the effects of FUV dust opacity
+are more important and are considered below.
 
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/raman-band-displacements-plot}
+  \caption{Displacement from the ionization front of the emission peak
+    in each Raman band (column 3 of
+    Table~\ref{tab:bar-profile-peaks}), plotted as a function of the
+    cross-section of the \lyb{} wing (column 6 of
+    Table~\ref{tab:wav-bands}).  Color scheme is as in
+    Fig.~\ref{fig:raman-spectra-1d} with error bars showing 10\% of
+    the peak FWHM (column 4 of Table~\ref{tab:bar-profile-peaks}).
+    Black lines show a simple model in which the peaks occur at
+    \(\tau = 1\) for 3 different constant neutral hydrogen densities, as
+    indicated in the legend. }
+  \label{fig:raman-band-displacements}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/cloudy-bar-optical-depths}
+  \caption{Optical depth of select processes as a function of total
+    hydrogen nucleon column density, calculated from static Cloudy
+    simulations of the Orion Bar.  All optical depths and columns are
+    measured with respect to the illuminating Trapezium stars, which
+    are situated to the left in this figure.  Separate panels show two
+    models that differ only in the assumed dust absorption opacity:
+    (a)~low opacity, \(\sigma\FUV \approx \SI{5e-23}{cm^2.H^{-1}}\), and (b)~high
+    opacity, \(\sigma\FUV \approx \SI{5e-22}{cm^2.H^{-1}}\). Optical depths of
+    \chem{O^0} and \chem{Si^+} absorption lines in the \lyb{} wings
+    are shown in blue. Continuum optical depths near \lyb{} (solid
+    line) and \ha{} (dashed line) are shown in black.  The \chem{H^0}
+    \SI{21}{cm} line optical depth is shown in green (long dashed
+    line).  Optical depths to Rayleigh/Raman scattering for 4 observed
+    bands in the red wing of \lyb{} (see Table~\ref{tab:wav-bands})
+    are shown in red.}
+  \label{fig:cloudy-bar-optical-depths}
+\end{figure}
+
+\subsection{Raman scattering as a density diagnostic of the shallow PDR}
+\label{sec:raman-scattering-as}
+
+If the peak emission occurs for a
+\lyb{} wing optical depth of \(\tau \approx 1\) for each band, then the
+displacement from the ionization front should vary as
+\(x_0 \approx (n \langle \sigma_\lambda \rangle)^{-1}\), where \(n\) is the neutral hydrogen
+density in the PDR and \(\langle \sigma_\lambda \rangle\) is the \lyb{} wing cross section
+for the FUV wavelengths that pump each band, which is given in
+column~6 of Table~\ref{tab:wav-bands}.  In
+Figure~\ref{fig:raman-band-displacements}, this relationship is tested
+under the assumption that \(n\) is constant over the depth range
+\SIrange{2}{8}{mpc}, where it can be seen that a PDR density of order
+\(n \sim \SI{1e5}{cm^{-3}}\) is required to fit the observations.  A
+systematic uncertainty of 10\% of the width of each emission peak is
+assigned to the \(x_0\) values, which has the largest relative impact
+on the near-wing bands: B033 and R040.  As a result, it is the B054
+and R058 bands that are the most reliable indicators, yielding
+\(n = \SI{8.5e4}{cm^{-3}}\) (dotted line).  The bands in the farther
+wings fall below this curve, significantly so for B133 and R136, but
+this can be understood as due to two factors.  First, the finite total
+\chem{H^0} column through the PDR means that the wings will become
+optically thin for a sufficiently low
+\(\langle \sigma_\lambda \rangle\), in which case \(\tau = 1\) can no longer hold.  Second,
+competition with dust grains for the absorption of FUV photons will
+become significant when
+\(\langle \sigma_\lambda \rangle < \sigma_{\text{dust}}\).  
 
 
 
@@ -1342,25 +1376,6 @@ geometry with exactly edge-on viewing angle, while in reality it is a
 roughly cylindrical filament.  Second, they ignore scattering, see
 \citet{Watson:1998a}.  Also, density increase with depth
 
-\begin{figure}
-  \includegraphics[width=\linewidth]{figs/cloudy-bar-optical-depths}
-  \caption{Optical depth of select processes as a function of total
-    hydrogen nucleon column density, calculated from static Cloudy
-    simulations of the Orion Bar.  All optical depths and columns are
-    measured with respect to the illuminating Trapezium stars, which
-    are situated to the left in this figure.  Separate panels show two
-    models that differ only in the assumed dust absorption opacity:
-    (a)~low opacity, \(\sigma\FUV \approx \SI{5e-23}{cm^2.H^{-1}}\), and (b)~high
-    opacity, \(\sigma\FUV \approx \SI{5e-22}{cm^2.H^{-1}}\). Optical depths of
-    \chem{O^0} and \chem{Si^+} absorption lines in the \lyb{} wings
-    are shown in blue. Continuum optical depths near \lyb{} (solid
-    line) and \ha{} (dashed line) are shown in black.  The \chem{H^0}
-    \SI{21}{cm} line optical depth is shown in green (long dashed
-    line).  Optical depths to Rayleigh/Raman scattering for 4 observed
-    bands in the red wing of \lyb{} (see Table~\ref{tab:wav-bands})
-    are shown in red.}
-  \label{fig:cloudy-bar-optical-depths}
-\end{figure}
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figs/stellar-spectrum-fuv}
