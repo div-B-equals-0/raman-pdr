@@ -1388,7 +1388,15 @@ There are two optical paths to consider (see previous section):
 the pre-scattered \(\tau_1\) of the FUV photons
 and the post-scattered \(\tau_2\) of the visual-band photons.
 Of these, it is \(\tau_1\) that is most interesting since it is affected
-not only by dust extinction, but also the opacity of the Rayleigh/Raman scattering itself.
+not only by dust extinction, but also by the opacity of the Rayleigh/Raman scattering itself.
+The cross section of the \lyb{} wings varies by more than an order of magnitude
+between the different Raman bands (column~6 of Table~\ref{tab:wav-bands}),
+so it is possible that the nearer wings may be optically thick,
+while the farther wings are optically thin. 
+
+\subsubsection{Optically thin limit}
+\label{sec:optically-thin-limit}
+
 For the totally optically thin case, \(\tau_1, \tau_2 \ll 1\),
 equations~(\ref{eq:fuv-mean-intensity-from-star},
 \ref{eq:raman-emissivity},
@@ -1447,8 +1455,32 @@ for \(\vert \Delta\lambda_2 \vert < \SI{70}{\angstrom}\),
 which might correspond to the photospheric \lyb{} absorption line profile
 in the spectra of the Trapezium stars.
 
-In order to discriminate between these two possibilities,
-it is necessary to look at the spatial distribution of the Raman-scattered intensity.
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/raman-band-displacements-plot}
+  \caption{Displacement from the ionization front of the emission peak
+    in each Raman band (column 3 of
+    Table~\ref{tab:bar-profile-peaks}), plotted as a function of the
+    cross-section of the \lyb{} wing (column 6 of
+    Table~\ref{tab:wav-bands}).  Color scheme is as in
+    Fig.~\ref{fig:raman-spectra-1d} with error bars showing 10\% of
+    the peak FWHM (column 4 of Table~\ref{tab:bar-profile-peaks}).
+    Black lines show a simple model in which the peaks occur at
+    \(\tau = 1\) for 3 different constant neutral hydrogen densities, as
+    indicated in the legend. }
+  \label{fig:raman-band-displacements}
+\end{figure}
+
+
+\subsubsection{Optically thick limit}
+\label{sec:optic-thick-limit}
+
+An independent way of discriminating between optically thick and thin scattering
+is to look at the spatial distribution of the Raman-scattered intensity.
+In the optically thin limit, this will simply track the spatial distribution of scatterers
+and so should not vary between the Raman bands.
+In the optically thick limit, on the other hand, the scattered light will typically
+arise at \(\tau_1 \approx 1\), as I will now demonstrate.
+
 Consider a simplified plane-parallel geometry, as depicted in Figure~\ref{fig:raman-scatter-cloud-schematic}.
 The FUV photons (blue wavy lines) propagate horizontally,
 with \(\tau_1\) increasing towards the right.
@@ -1468,41 +1500,39 @@ If, in addition, \(n(\chem{H^0})\) and the line-of-sight path length are roughly
 then from equations~(\ref{eq:raman-emissivity}, \ref{eq:formal-solution})
 the mean \(\tau_1\) weighted by the observed intensity \(I_\lambda(\lambda_2)\) is also \(\vert \tau_1 \vert \approx 1\).
 
+\subsubsection{Raman scattering as a diagnostic of
+  the neutral hydrogen density in the shallow PDR}
+\label{sec:raman-scattering-as}
 
-
-
-
-
-\subsection{Absorption features in the Raman pseudo-continuum}
-\label{sec:absorpt-feat-raman}
-
-
-
-
-In lieu of solving the full radiative transfer equation,
-I assume that the Rayleigh and Raman-scattering occurs in a region
-where the FUV optical depth from the illuminating star is 
-\(\tau \approx 1\) in the \lyb{} wing.
-I ignore the possibility of multiple Rayleigh scattering
-before Raman conversion. 
-I also disregard dust extinction of the
-post-scattered visual-band photons, although the effects of FUV dust opacity
-are more important and are considered below.
-
-\begin{figure}
-  \includegraphics[width=\linewidth]{figs/raman-band-displacements-plot}
-  \caption{Displacement from the ionization front of the emission peak
-    in each Raman band (column 3 of
-    Table~\ref{tab:bar-profile-peaks}), plotted as a function of the
-    cross-section of the \lyb{} wing (column 6 of
-    Table~\ref{tab:wav-bands}).  Color scheme is as in
-    Fig.~\ref{fig:raman-spectra-1d} with error bars showing 10\% of
-    the peak FWHM (column 4 of Table~\ref{tab:bar-profile-peaks}).
-    Black lines show a simple model in which the peaks occur at
-    \(\tau = 1\) for 3 different constant neutral hydrogen densities, as
-    indicated in the legend. }
-  \label{fig:raman-band-displacements}
-\end{figure}
+Based on the results of the previous section,
+one would expect that the peak Raman emission should occur for a
+\lyb{} wing optical depth of \(\tau_1 \approx 1\) for each band if the scattering is optically thick.
+Disregarding dust opacity for the time being,
+this corresponds to a displacement from the ionization front that varies as
+\(x_0 \approx (n(\chem{H^0}) \langle \sigma_\lambda \rangle)^{-1}\), where \(n(\chem{H^0})\) is the neutral hydrogen
+density in the PDR and \(\langle \sigma_\lambda \rangle\) is the \lyb{} wing cross section
+for the FUV wavelengths that pump each band, which is given in
+column~6 of Table~\ref{tab:wav-bands}.
+In Figure~\ref{fig:raman-band-displacements}, this relationship is
+compared with the measurements of the Orion Bar given in section~\ref{sec:emiss-prof-across}.
+under the assumption that \(n(\chem{H^0})\) is constant over the depth range
+\SIrange{2}{8}{mpc}.
+It can be seen that a PDR density of order
+\(n(\chem{H^0}) \sim \SI{1e5}{cm^{-3}}\) provides a good fit to
+the observations for bands within about \SI{100}{\angstrom} of line center.
+A systematic uncertainty of 10\% of the width of each emission peak is
+assigned to the \(x_0\) values, which has the largest relative impact
+on the near-wing bands: B033 and R040.  As a result, it is the B054
+and R058 bands that are the most reliable indicators, yielding
+\(n(\chem{H^0}) = \SI{8.5e4}{cm^{-3}}\) (dotted line).  The bands in the farther
+wings fall below this curve, significantly so for B133 and R136, but
+this can be understood as due to two factors.  First, the finite total
+\chem{H^0} column through the PDR means that the wings will become
+optically thin for a sufficiently low
+\(\langle \sigma_\lambda \rangle\), in which case \(\tau = 1\) can no longer hold.  Second,
+competition with dust grains for the absorption of FUV photons will
+become significant when
+\(\langle \sigma_\lambda \rangle < \sigma_{\text{dust}}\).  
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figs/cloudy-bar-optical-depths}
@@ -1524,34 +1554,25 @@ are more important and are considered below.
   \label{fig:cloudy-bar-optical-depths}
 \end{figure}
 
-\subsection{Raman scattering as a density diagnostic of the shallow PDR}
-\label{sec:raman-scattering-as}
+\subsubsection{Cloudy model predictions for the optical depths}
+\label{sec:cloudy-model-pred}
 
-If the peak emission occurs for a
-\lyb{} wing optical depth of \(\tau \approx 1\) for each band, then the
-displacement from the ionization front should vary as
-\(x_0 \approx (n \langle \sigma_\lambda \rangle)^{-1}\), where \(n\) is the neutral hydrogen
-density in the PDR and \(\langle \sigma_\lambda \rangle\) is the \lyb{} wing cross section
-for the FUV wavelengths that pump each band, which is given in
-column~6 of Table~\ref{tab:wav-bands}.  In
-Figure~\ref{fig:raman-band-displacements}, this relationship is tested
-under the assumption that \(n\) is constant over the depth range
-\SIrange{2}{8}{mpc}, where it can be seen that a PDR density of order
-\(n \sim \SI{1e5}{cm^{-3}}\) is required to fit the observations.  A
-systematic uncertainty of 10\% of the width of each emission peak is
-assigned to the \(x_0\) values, which has the largest relative impact
-on the near-wing bands: B033 and R040.  As a result, it is the B054
-and R058 bands that are the most reliable indicators, yielding
-\(n = \SI{8.5e4}{cm^{-3}}\) (dotted line).  The bands in the farther
-wings fall below this curve, significantly so for B133 and R136, but
-this can be understood as due to two factors.  First, the finite total
-\chem{H^0} column through the PDR means that the wings will become
-optically thin for a sufficiently low
-\(\langle \sigma_\lambda \rangle\), in which case \(\tau = 1\) can no longer hold.  Second,
-competition with dust grains for the absorption of FUV photons will
-become significant when
-\(\langle \sigma_\lambda \rangle < \sigma_{\text{dust}}\).  
 
+
+ 
+\subsection{Absorption features in the Raman pseudo-continuum}
+\label{sec:absorpt-feat-raman}
+
+
+In lieu of solving the full radiative transfer equation,
+I assume that the Rayleigh and Raman-scattering occurs in a region
+where the FUV optical depth from the illuminating star is 
+\(\tau \approx 1\) in the \lyb{} wing.
+I ignore the possibility of multiple Rayleigh scattering
+before Raman conversion. 
+I also disregard dust extinction of the
+post-scattered visual-band photons, although the effects of FUV dust opacity
+are more important and are considered below.
 
 
 
