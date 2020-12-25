@@ -329,6 +329,12 @@
   Reference Data] {10.1063/1.555685}, \href
   {https://ui.adsabs.harvard.edu/abs/1983JPCRD..12..323M} {12, 323}
 
+\bibitem[\protect\citeauthoryear{{Massa}, {Fitzpatrick}  \& {Gordon}}{{Massa}
+  et~al.}{2020}]{Massa:2020a}
+{Massa} D.,  {Fitzpatrick} E.~L.,   {Gordon} K.~D.,  2020, \mn@doi [\apj]
+  {10.3847/1538-4357/ab6f01}, \href
+  {https://ui.adsabs.harvard.edu/abs/2020ApJ...891...67M} {891, 67}
+
 \bibitem[\protect\citeauthoryear{{Maíz Apellániz} et~al.,}{{Maíz Apellániz}
   et~al.}{2019}]{Maiz-Apellaniz:2019a}
 {Maíz Apellániz} J.,  et~al., 2019, \mn@doi [\aap]
@@ -536,6 +542,10 @@ Van~Hoof P. A.~M.,  2018, \mn@doi [Galaxies] {10.3390/galaxies6020063}, 6
 {Weilbacher} P.~M.,  et~al., 2015, \mn@doi [\aap]
   {10.1051/0004-6361/201526529}, \href
   {http://adsabs.harvard.edu/abs/2015A%26A...582A.114W} {582, A114}
+
+\bibitem[\protect\citeauthoryear{{Whiteoak}}{{Whiteoak}}{1966}]{Whiteoak:1966a}
+{Whiteoak} J.~B.,  1966, \mn@doi [\apj] {10.1086/148605}, \href
+  {https://ui.adsabs.harvard.edu/abs/1966ApJ...144..305W} {144, 305}
 
 \bibitem[\protect\citeauthoryear{{ud-Doula}, {Sundqvist}, {Owocki}, {Petit}  \&
   {Townsend}}{{ud-Doula} et~al.}{2013}]{ud-Doula:2013a}
