@@ -160,6 +160,14 @@
   {10.1086/170225}, \href
   {https://ui.adsabs.harvard.edu/abs/1991ApJ...375..630E} {375, 630}
 
+\bibitem[\protect\citeauthoryear{{Esteban}, {Peimbert}, {Garc{\'{\i}}a-Rojas},
+  {Ruiz}, {Peimbert}  \& {Rodr{\'{\i}}guez}}{{Esteban}
+  et~al.}{2004}]{Esteban:2004a}
+{Esteban} C.,  {Peimbert} M.,  {Garc{\'{\i}}a-Rojas} J.,  {Ruiz} M.~T.,
+  {Peimbert} A.,   {Rodr{\'{\i}}guez} M.,  2004, \mn@doi [\mnras]
+  {10.1111/j.1365-2966.2004.08313.x}, \href
+  {http://adsabs.harvard.edu/abs/2004MNRAS.355..229E} {355, 229}
+
 \bibitem[\protect\citeauthoryear{{Ferland}, {Henney}, {O'Dell}, {Porter}, {van
   Hoof}  \& {Williams}}{{Ferland} et~al.}{2012}]{Ferland:2012a}
 {Ferland} G.~J.,  {Henney} W.~J.,  {O'Dell} C.~R.,  {Porter} R.~L.,  {van Hoof}
@@ -370,6 +378,11 @@
   et~al.}{2008}]{Mohr:2008a}
 Mohr P.~J.,  Taylor B.~N.,   Newell D.~B.,  2008, \mn@doi [Rev. Mod. Phys.]
   {10.1103/RevModPhys.80.633}, 80, 633
+
+\bibitem[\protect\citeauthoryear{Moore}{Moore}{1976}]{Moore:1976a}
+Moore C.~E.,  1976, Nat. Stand. Ref. Data Ser., NBS 3, Section 7, Selected
+  Tables of Atomic Spectra, Atomic Energy Levels and Multiplet Tables – O I.
+Nat. Bur. Stand., US
 
 \bibitem[\protect\citeauthoryear{Moré}{Moré}{1978}]{More:1978a}
 Moré J.~J.,  1978, in Watson G.~A.,  ed., Numerical Analysis. Springer Berlin

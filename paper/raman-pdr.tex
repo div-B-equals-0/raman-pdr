@@ -196,7 +196,7 @@ integral field spectroscopy of the Orion Nebula, which allows the
 broad H\(\alpha\) wings to be spatially mapped in unprecedented detail and
 compared with other tracers of ionized and neutral zones in the
 nebula.  Two components of the \ion{O}{1} UV resonance multiplet
-\(\Term{2p^4}{3}{P} \to \Term{3d}{3}{D^o}\) are detected as absorption
+\(\Term{2s 2p^4}{3}{P} \to \Term{2s 2p^3 3d}{3}{D^o}\) are detected as absorption
 features at \num{6633} and \SI{6664}{\angstrom} against the \ha{}
 Raman wings.  \S~\ref{sec:keck-observations} presents archival
 Keck-HIRES slit spectroscopy, which shows the profile of the
@@ -1543,6 +1543,47 @@ the molecular hydrogen dissociation front.
 
 \subsection{Absorption features in the Raman pseudo-continuum}
 \label{sec:absorpt-feat-raman}
+
+The absorption lines seen in the Raman-scattered wings
+are at visual-band STP wavelengths of \(\lambda_2 = 6633\) and \SI{6664}{\angstrom},
+which correspond to vacuum FUV wavelengths of \(\lambda_1 = 1027\) and \SI{1028}{\angstrom}.
+In Appendix~\ref{sec:raman-theory} it is shown that these can be identified as
+resonant transitions from the ground state of atomic oxygen:
+\(\ion{O}{1}\ \Term{2s 2p^4}{3}{P} \to \Term{2s 2p^3 3d}{3}{D^o}\).
+The implication is that the line absorption occurs \emph{before} the
+photon is Raman-scattered, and therefore contributes to \(\tau_1\)
+(see section~\ref{sec:raman-radi-transf}).
+The physical location of this \ion{O}{1} absorption is very well constrained
+observationally because these very same resonance lines
+(part of the UV~4 multiplet; \citealp{Moore:1976a})
+are responsible for pumping some of the strongest
+visual/IR fluorescent emission lines seen in the nebula.
+Once excited to \Term{3d}{3}{D^o}, the oxygen atom will decay back to the ground level
+with branching ratio 72.5\% via re-emission of an FUV photon,
+or to the \Term{3p}{3}{P} level with branching ratio 27.5\% via emission of a near-infrared
+\SI{1.129}{\micro m} photon (see Fig.~9 of \citealp{Walmsley:2000a}).%
+\footnote{In addition, there are some semi-forbidden intercombination transitions
+  that pump the optical forbidden lines,
+  but their branching ratios sum to only 0.003\%.
+}
+From \Term{3p}{3}{P}, the only option is decay to \Term{3s}{3}{S^o}
+via emission of \SI{8446}{\angstrom} and then back to ground
+via emission of \SI{1304}{\angstrom}.
+The spatial distribution of the \SI{8446}{\angstrom} emission line
+(see Figures~\ref{fig:raman-maps}c and~\ref{fig:raman-bar-profile}c)
+should therefore trace the location of the FUV \ion{O}{1} absorption.%
+\footnote{
+  The \Term{3p}{3}{P} level can also be populated via cascades that originate
+  from pumping of the \(n \mathrm{s}, n \mathrm{p}, n \mathrm{d}\) levels with \(n \ge 4\).
+  Summing the intensities (in photon units) of all the shorter wavelength \ion{O}{1}
+  fluorescent lines that I can find from the observations of
+  \citet{Baldwin:2000a} and \citet{Esteban:2004a} and comparing with \SI{8446}{\angstrom}
+  implies that 60\% of the pumping of \Term{3p}{3}{P} must come via \Term{3d}{3}{D^o}
+  or \Term{4s}{3}{S^o}.  Given that the \SI{1.129}{\micro m} and \SI{1.316}{\micro m}
+  lines have similar intensities \citep{Walmsley:2000a},
+  this means that about 30\% of the \SI{8446}{\angstrom} emission is caused by
+  absorption of the UV~4 multiplet.
+}
 
 
 

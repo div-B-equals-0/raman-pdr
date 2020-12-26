@@ -6878,7 +6878,7 @@ So upper level is ~2s2.2p3.(4So).3p 3So-3P~ term as opposed to the ~3D~ term tha
 **** Civis:2018a has lines from 7700 \AA to 12.5 micron
 Gives best estimate of energy levels.
 
-**** Moore:1973a is a nice compendium
+**** Moore:1976a is a nice compendium
 :PROPERTIES:
 :ID:       AC2BBA8F-4C85-408E-B6B0-F08DFAFB3718
 :END:
