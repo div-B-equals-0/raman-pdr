@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  14 DEC 2020 22:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  25 DEC 2020 19:53
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
 **orion-h1-21cm.tex
 (./orion-h1-21cm.tex
@@ -1085,75 +1085,75 @@ Package array Warning: Column R is already defined on input line 17.
 Package array Warning: Column C is already defined on input line 18.
 
 \c@ionstage=\count362
-LaTeX Font Info:    Try loading font information for T1+ntxtlf on input line 44
+LaTeX Font Info:    Try loading font information for T1+ntxtlf on input line 45
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/t1ntxtlf.fd
 File: t1ntxtlf.fd 2015/01/17 v1.0 font definition file for T1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 44.
+(Font)              scaled to size 10.0pt on input line 45.
 Class revtex4-1 Info: Unrecognized array package. Please update this document c
-lass! (Proceeding with fingers crossed.) on input line 44.
+lass! (Proceeding with fingers crossed.) on input line 45.
 Class revtex4-1 Info: Patching unrecognized longtable package. (Proceeding with
- fingers crossed) on input line 44.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 44.
+ fingers crossed) on input line 45.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 45.
 
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 44.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 44.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 44.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 45.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 45.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 45.
 
 (./orion-h1-21cm.aux)
 \openout1 = `orion-h1-21cm.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 44.
-LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 44
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 45.
+LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 45
 .
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 44.
-LaTeX Font Info:    Try loading font information for U+ntxexa on input line 44.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 45.
+LaTeX Font Info:    Try loading font information for U+ntxexa on input line 45.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 44.
-LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 44
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 45.
+LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 45
 .
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 45.
 LaTeX Font Info:    Try loading font information for LMX+ntxexx on input line 4
-4.
+5.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 44.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 45.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    ... okay on input line 45.
 
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1186,7 +1186,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box90
-Package hyperref Info: Link coloring ON on input line 44.
+Package hyperref Info: Link coloring ON on input line 45.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1196,9 +1196,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count369
 )
-LaTeX Info: Redefining \ref on input line 44.
-LaTeX Info: Redefining \pageref on input line 44.
-LaTeX Info: Redefining \nameref on input line 44.
+LaTeX Info: Redefining \ref on input line 45.
+LaTeX Info: Redefining \pageref on input line 45.
+LaTeX Info: Redefining \nameref on input line 45.
 
 (./orion-h1-21cm.out) (./orion-h1-21cm.out)
 \@outlinefile=\write4
@@ -1215,230 +1215,342 @@ File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 \c@mv@tabular=\count370
 \c@mv@boldtabular=\count371
 LaTeX Font Info:    Try loading font information for OT1+ntxtlf on input line 4
-4.
+5.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 File: ot1ntxtlf.fd 2015/01/17 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 44.
+(Font)              scaled to size 10.0pt on input line 45.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 44.
+(Font)              scaled to size 7.3pt on input line 45.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 44.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 44.
+(Font)              scaled to size 5.5pt on input line 45.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 45.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 44.
+(Font)              size <5> substituted on input line 45.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 44.
+LaTeX Font Info:    Try loading font information for U+msa on input line 45.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 44.
+LaTeX Font Info:    Try loading font information for U+msb on input line 45.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+ntxmia on input line 44.
+LaTeX Font Info:    Try loading font information for U+ntxmia on input line 45.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 44.
+LaTeX Font Info:    Try loading font information for U+ntxsym on input line 45.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 44.
+LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 45.
 
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 44.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 45.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 44.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 45.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 52.
+(Font)              scaled to size 7.3pt on input line 53.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 52.
+(Font)              scaled to size 8.0pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 52.
+(Font)              scaled to size 8.0pt on input line 53.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 52.
+(Font)              scaled to size 6.2pt on input line 53.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 52.
+(Font)              scaled to size 6.2pt on input line 53.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 8.0pt on input line 71.
+(Font)              scaled to size 8.0pt on input line 72.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <8> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 71.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 72.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 71.
+(Font)              scaled to size 8.0pt on input line 72.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <10> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 71.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 72.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.0pt on input line 71.
+(Font)              scaled to size 10.0pt on input line 72.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 71.
+(Font)              scaled to size 9.0pt on input line 72.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 9.0pt on input line 71.
+(Font)              scaled to size 9.0pt on input line 72.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 71.
+(Font)              scaled to size 9.0pt on input line 72.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 7.3pt on input line 71.
+(Font)              scaled to size 7.3pt on input line 72.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 8.0pt on input line 71.
-LaTeX Info: Redefining \. on input line 71.
-LaTeX Info: Redefining \% on input line 71.
+(Font)              scaled to size 8.0pt on input line 72.
+LaTeX Info: Redefining \. on input line 72.
+LaTeX Info: Redefining \% on input line 72.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 10.0pt on input line 71.
+(Font)              scaled to size 10.0pt on input line 72.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\global' on input line 71.
+(hyperref)                removing `\global' on input line 72.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\c@ionstage' on input line 71.
+(hyperref)                removing `\c@ionstage' on input line 72.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 71.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 72.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 71.
+(hyperref)                removed on input line 72.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\scriptstyle' on input line 71.
+(hyperref)                removing `\scriptstyle' on input line 72.
 
-LaTeX Font Info:    Calculating math sizes for size <7.3> on input line 77.
+LaTeX Font Info:    Calculating math sizes for size <7.3> on input line 78.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.32896pt on input line 77.
+(Font)              scaled to size 5.32896pt on input line 78.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 4.01501pt on input line 77.
+(Font)              scaled to size 4.01501pt on input line 78.
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <4.01501> not available
-(Font)              size <5> substituted on input line 77.
+(Font)              size <5> substituted on input line 78.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 4.01501pt on input line 77.
-LaTeX Font Info:    Calculating math sizes for size <4.01501> on input line 77.
+(Font)              scaled to size 4.01501pt on input line 78.
+LaTeX Font Info:    Calculating math sizes for size <4.01501> on input line 78.
 
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 2.93094pt on input line 77.
+(Font)              scaled to size 2.93094pt on input line 78.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 2.20827pt on input line 77.
+(Font)              scaled to size 2.20827pt on input line 78.
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <2.93094> not available
-(Font)              size <5> substituted on input line 77.
+(Font)              size <5> substituted on input line 78.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <2.20827> not available
-(Font)              size <5> substituted on input line 77.
+(Font)              size <5> substituted on input line 78.
+
+
+Package natbib Warning: Citation `van-der-Werf:2013a' on page 1 undefined on in
+put line 79.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.32896pt on input line 82.
-LaTeX Font Info:    Calculating math sizes for size <5.32896> on input line 82.
+(Font)              scaled to size 5.32896pt on input line 83.
+LaTeX Font Info:    Calculating math sizes for size <5.32896> on input line 83.
 
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 3.8901pt on input line 82.
+(Font)              scaled to size 3.8901pt on input line 83.
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <3.8901> not available
-(Font)              size <5> substituted on input line 82.
+(Font)              size <5> substituted on input line 83.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 2.93094pt on input line 82.
-LaTeX Font Info:    Calculating math sizes for size <2.93094> on input line 82.
+(Font)              scaled to size 2.93094pt on input line 83.
+LaTeX Font Info:    Calculating math sizes for size <2.93094> on input line 83.
 
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 2.13957pt on input line 82.
+(Font)              scaled to size 2.13957pt on input line 83.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 1.61201pt on input line 82.
+(Font)              scaled to size 1.61201pt on input line 83.
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <2.13957> not available
-(Font)              size <5> substituted on input line 82.
+(Font)              size <5> substituted on input line 83.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <1.61201> not available
-(Font)              size <5> substituted on input line 82.
+(Font)              size <5> substituted on input line 83.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 1.61201pt on input line 82.
-LaTeX Font Info:    Calculating math sizes for size <1.61201> on input line 82.
+(Font)              scaled to size 1.61201pt on input line 83.
+LaTeX Font Info:    Calculating math sizes for size <1.61201> on input line 83.
 
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 1.17676pt on input line 82.
+(Font)              scaled to size 1.17676pt on input line 83.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 0.88661pt on input line 82.
+(Font)              scaled to size 0.88661pt on input line 83.
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <1.17676> not available
-(Font)              size <5> substituted on input line 82.
+(Font)              size <5> substituted on input line 83.
 
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <0.88661> not available
-(Font)              size <5> substituted on input line 82.
+(Font)              size <5> substituted on input line 83.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <9> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 107.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 108.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 107.
+(Font)              scaled to size 9.0pt on input line 108.
+
+LaTeX Warning: Reference `fig:hii-hi-hii-sandwich' on page 1 undefined on input
+ line 117.
+
+
+Package natbib Warning: Citation `Green:1991a' on page 1 undefined on input lin
+e 129.
+
+
+Package natbib Warning: Citation `Green:1993a' on page 1 undefined on input lin
+e 129.
+
+
+LaTeX Warning: Reference `eq:Tcont' on page 1 undefined on input line 157.
+
+
+LaTeX Warning: Reference `eq:Tline' on page 1 undefined on input line 157.
+
 [1{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
-LaTeX Warning: Reference `fig:raman-bar-profile' on page 2 undefined on input l
-ine 216.
+LaTeX Warning: Reference `eq:Tb' on page 2 undefined on input line 167.
 
-<../paper/figs/bar-geometry-options.pdf, id=51, 1707.16493pt x 853.58266pt>
+
+Package natbib Warning: Citation `Dicker:2009a' on page 2 undefined on input li
+ne 182.
+
+
+LaTeX Warning: Reference `sec:structure-orion-bar' on page 2 undefined on input
+ line 205.
+
+
+LaTeX Warning: Reference `eq:Tb' on page 2 undefined on input line 210.
+
+
+LaTeX Warning: Reference `fig:raman-bar-profile' on page 2 undefined on input l
+ine 217.
+
+<../paper/figs/bar-geometry-options.pdf, id=27, 1707.16493pt x 853.58266pt>
 File: ../paper/figs/bar-geometry-options.pdf Graphic file (type pdf)
 <use ../paper/figs/bar-geometry-options.pdf>
 Package pdftex.def Info: ../paper/figs/bar-geometry-options.pdf  used on input 
-line 230.
+line 231.
 (pdftex.def)             Requested size: 513.11743pt x 256.55869pt.
-<../paper/figs/orion-bar-oi-hst-zoom.pdf, id=52, 433.62pt x 361.35pt>
+<../paper/figs/orion-bar-oi-hst-zoom.pdf, id=28, 433.62pt x 361.35pt>
 File: ../paper/figs/orion-bar-oi-hst-zoom.pdf Graphic file (type pdf)
 <use ../paper/figs/orion-bar-oi-hst-zoom.pdf>
 Package pdftex.def Info: ../paper/figs/orion-bar-oi-hst-zoom.pdf  used on input
- line 248.
+ line 249.
 (pdftex.def)             Requested size: 513.11743pt x 427.65196pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 9.0pt on input line 264.
+(Font)              scaled to size 9.0pt on input line 265.
+
+Package natbib Warning: Citation `Bally:2000a' on page 2 undefined on input lin
+e 265.
+
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 264.
-<../paper/figs/alma-co-hcop-h2-dissoc-front.pdf, id=57, 1244.65pt x 1003.75pt>
+(Font)              scaled to size 5.5pt on input line 265.
+
+Package natbib Warning: Citation `Bally:2000a' on page 2 undefined on input lin
+e 265.
+
+<../paper/figs/alma-co-hcop-h2-dissoc-front.pdf, id=29, 1244.65pt x 1003.75pt>
 File: ../paper/figs/alma-co-hcop-h2-dissoc-front.pdf Graphic file (type pdf)
 <use ../paper/figs/alma-co-hcop-h2-dissoc-front.pdf>
 Package pdftex.def Info: ../paper/figs/alma-co-hcop-h2-dissoc-front.pdf  used o
-n input line 269.
+n input line 270.
 (pdftex.def)             Requested size: 513.11743pt x 413.80693pt.
+
+Package natbib Warning: Citation `Goicoechea:2016a' on page 2 undefined on inpu
+t line 291.
+
+
+Package natbib Warning: Citation `Kissler-Patig:2008a' on page 2 undefined on i
+nput line 291.
+
+
+Package natbib Warning: Citation `Foster:2006a' on page 2 undefined on input li
+ne 291.
+
+
+Package natbib Warning: Citation `Goicoechea:2016a' on page 2 undefined on inpu
+t line 291.
+
+
+Package natbib Warning: Citation `Kissler-Patig:2008a' on page 2 undefined on i
+nput line 291.
+
+
+Package natbib Warning: Citation `Foster:2006a' on page 2 undefined on input li
+ne 291.
+
+<../paper/figs/cloudy-bar-optical-depths.pdf, id=30, 578.16pt x 525.965pt>
+File: ../paper/figs/cloudy-bar-optical-depths.pdf Graphic file (type pdf)
+<use ../paper/figs/cloudy-bar-optical-depths.pdf>
+Package pdftex.def Info: ../paper/figs/cloudy-bar-optical-depths.pdf  used on i
+nput line 296.
+(pdftex.def)             Requested size: 242.26653pt x 220.39015pt.
+
+LaTeX Warning: Reference `tab:wav-bands' on page 2 undefined on input line 311.
+
+
+
+LaTeX Warning: Reference `tab:wav-bands' on page 2 undefined on input line 311.
+
+
+<../paper/figs/stellar-spectrum-fuv.pdf, id=31, 578.16pt x 552.0625pt>
+File: ../paper/figs/stellar-spectrum-fuv.pdf Graphic file (type pdf)
+<use ../paper/figs/stellar-spectrum-fuv.pdf>
+Package pdftex.def Info: ../paper/figs/stellar-spectrum-fuv.pdf  used on input 
+line 315.
+(pdftex.def)             Requested size: 242.26653pt x 231.32555pt.
+
+LaTeX Warning: Reference `fig:raman-compensated' on page 2 undefined on input l
+ine 330.
+
+
+LaTeX Warning: Reference `fig:raman-compensated' on page 2 undefined on input l
+ine 330.
+
 (./orion-h1-21cm.bbl)
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 296.
+(Font)              scaled to size 10.0pt on input line 347.
  [2]
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 298.
- [3 <../paper/figs/bar-geometry-options.pdf>] [4 <../paper/figs/orion-bar-oi-hs
-t-zoom.pdf>] [5 <../paper/figs/alma-co-hcop-h2-dissoc-front.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 298.
- (./orion-h1-21cm.aux)
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 298.
-Package rerunfilecheck Info: File `orion-h1-21cm.out' has not changed.
-(rerunfilecheck)             Checksum: 15145C3D8A8F0B13D0E7629A9ADB8F7E;163.
 
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 349.
+[3 <../paper/figs/bar-geometry-options.pdf>] [4 <../paper/figs/orion-bar-oi-hst
+-zoom.pdf>] [5 <../paper/figs/alma-co-hcop-h2-dissoc-front.pdf>] [6 <../paper/f
+igs/cloudy-bar-optical-depths.pdf>] [7 <../paper/figs/stellar-spectrum-fuv.pdf>
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 349.
+ (./orion-h1-21cm.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 349.
+
+
+Package rerunfilecheck Warning: File `orion-h1-21cm.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `orion-h1-21cm.out':
+(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
+(rerunfilecheck)             After:  6A0ADB343F97BDCB45BFCB25266658FB;269.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 4.11339pt have occured.
@@ -1446,15 +1558,19 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
+
+
  ) 
 Here is how much of TeX's memory you used:
- 24822 strings out of 492616
- 432429 string characters out of 6129482
- 549694 words of memory out of 5000000
- 28390 multiletter control sequences out of 15000+600000
+ 24840 strings out of 492616
+ 433031 string characters out of 6129482
+ 552457 words of memory out of 5000000
+ 28401 multiletter control sequences out of 15000+600000
  685296 words of font info for 289 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,12n,63p,465b,1075s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,13n,63p,465b,1075s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
 exlive/2019/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive
 /2019/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{/usr/local/texlive/2019
@@ -1465,12 +1581,13 @@ ts/type1/public/tex-gyre/qtmri.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
 pe1/public/txfonts/rtxmi.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
 blic/newtx/rtxmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/tx
 fonts/rtxr.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/newtx/txe
-xs.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/newtx/txsys.pfb><
-/usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on orion-h1-21cm.pdf (5 pages, 10380736 bytes).
+xs.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/txfonts/txmia.pfb
+></usr/local/texlive/2019/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on orion-h1-21cm.pdf (7 pages, 11261380 bytes).
 PDF statistics:
- 742 PDF objects out of 1000 (max. 8388607)
- 456 compressed objects within 5 object streams
- 25 named destinations out of 1000 (max. 500000)
- 32 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 867 PDF objects out of 1000 (max. 8388607)
+ 538 compressed objects within 6 object streams
+ 30 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

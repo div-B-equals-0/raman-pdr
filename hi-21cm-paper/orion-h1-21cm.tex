@@ -40,6 +40,7 @@
 \newcommand\ha{\ensuremath{\text{H}\alpha}}
 \newcommand\lya{\ensuremath{\text{Ly}\alpha}}
 \newcommand\lyb{\ensuremath{\text{Ly}\beta}}
+\newcommand\FUV{\ensuremath{_{\text{FUV}}}}
 
 \begin{document}
 \title{On the geometry of the Orion Bar}
@@ -290,6 +291,56 @@ where \(\Tc \approx \SI{1500}{K}\).
     front. }
   \label{fig:alma-dissoc-front}
 \end{figure*}
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/cloudy-bar-optical-depths}
+  \caption{Optical depth of select processes as a function of total
+    hydrogen nucleon column density, calculated from static Cloudy
+    simulations of the Orion Bar.  All optical depths and columns are
+    measured with respect to the illuminating Trapezium stars, which
+    are situated to the left in this figure.  Separate panels show two
+    models that differ only in the assumed dust absorption opacity:
+    (a)~low opacity, \(\sigma\FUV \approx \SI{5e-23}{cm^2.H^{-1}}\), and (b)~high
+    opacity, \(\sigma\FUV \approx \SI{5e-22}{cm^2.H^{-1}}\). Optical depths of
+    \chem{O^0} and \chem{Si^+} absorption lines in the \lyb{} wings
+    are shown in blue. Continuum optical depths near \lyb{} (solid
+    line) and \ha{} (dashed line) are shown in black.  The \chem{H^0}
+    \SI{21}{cm} line optical depth is shown in green (long dashed
+    line).  Optical depths to Rayleigh/Raman scattering for 4 observed
+    bands in the red wing of \lyb{} (see Table~\ref{tab:wav-bands})
+    are shown in red.}
+  \label{fig:cloudy-bar-optical-depths}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/stellar-spectrum-fuv}
+  \caption{(a) Predicted spectrum of Trapezium stars in vicinity of
+    \lyb{} from POWR OB atmosphere models (black line), together with
+    attenuation by Cloudy model of the Orion Bar (red filled shapes),
+    extracted at a series of values of the neutral hydrogen column
+    density, as marked. (b) Relative attenuation of the incident
+    spectrum by line opacity only (that is, neglecting dust continuum
+    opacity) in the Cloudy models, which shows the development of the
+    \lyb{} damping wings as the column density increases.  In this
+    panel, the \(x\) axis is labelled with \(\Delta\lambda_2\) in the optical
+    domain, allowing direct comparison with the observations presented
+    in Figure~\ref{fig:raman-compensated} (observed Raman bands are
+    indicated by colored boxes). Note that the scale is linear in
+    \(\lambda_1\), which is slightly non-linear in
+    \(\Delta\lambda_2\).  Wavelengths of some of the more prominent stellar
+    photospheric lines and nebular absorption lines are marked. }
+  \label{fig:stellar-spectrum-fuv}
+\end{figure}
+
+
+
+\subsubsection{Cloudy model predictions for the optical depths}
+\label{sec:cloudy-model-pred}
+
+In order to investigate the role of dust extinction in greater detail
+in more detail the 
+
+\textbf{Maybe ditch this section}
+ 
 
 
 \bibliography{BibdeskLibrary}

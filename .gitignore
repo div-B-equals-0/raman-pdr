@@ -12,3 +12,5 @@ data/orion-hawki/*.fits.Z
 doc/ltximg
 /.DS_Store
 extinct-paper/auto/orion-extinct.el
+/hi-21cm-paper/orion-h1-21cm.synctex(busy)
+*.el

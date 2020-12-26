@@ -5,13 +5,13 @@
                      '(("aastex63" "twocolumn" "times")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("babel" "spanish" "es-minimal" "english") ("inputenc" "utf8") ("newtxmath" "varg")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "href")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -40,6 +40,7 @@
     "ha"
     "lya"
     "lyb"
+    "FUV"
     "vdw"
     "vlsr"
     "Ttb"
@@ -59,7 +60,10 @@
     "sec:structure-orion-bar"
     "fig:bar-geometry"
     "fig:bar-oi-hst"
-    "fig:alma-dissoc-front")
+    "fig:alma-dissoc-front"
+    "fig:cloudy-bar-optical-depths"
+    "fig:stellar-spectrum-fuv"
+    "sec:cloudy-model-pred")
    (LaTeX-add-bibliographies
     "BibdeskLibrary")
    (LaTeX-add-counters
