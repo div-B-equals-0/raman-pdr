@@ -28,7 +28,7 @@
 \usepackage{etoolbox}
 \robustify\bfseries
 \robustify\itshape
-
+\usepackage{enumerate}
 
 \bibliographystyle{mnras}
 
@@ -686,8 +686,7 @@ of this transition (for instance, the FWHM of the [\ion{O}{1}] peak
 \(\approx \SI{9}{mpc}\)) is much larger than predicted by atomic physics,
 which is probably due to spatial irregularities in the ionization
 front, which can be seen in the inset
-Figure~\ref{fig:raman-bar-profile}d and is discussed in more detail in
-\S~\ref{sec:structure-orion-bar} below.
+Figure~\ref{fig:raman-bar-profile}d.
 
 
 
@@ -1144,7 +1143,7 @@ assuming that the \SI{6664}{\angstrom} feature is due to Raman scattering of the
   \caption{Parameters from single-Gaussian line fits to Keck HIRES spectra}
   \label{tab:line-fits}
   \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}} l  RRR}\toprule
-    Region & \text{Relative amplitude},\ A & V,\ \si{km.s^{-1}} & W,\ \si{km.s^{-1}}  \\
+    Region & \text{Relative amplitude},\ A & V,\ \si{km.s^{-1}} & \Delta V,\ \si{km.s^{-1}}  \\
     (1) & (2) & (3) & (4)  \\
     \midrule
     & \multicolumn{3}{c}{[\ion{Ni}{2}] emission \SI{6666.80}{\angstrom}} \\[2pt]
@@ -1416,7 +1415,6 @@ for the same position on the nebula, then the line-of-sight integral cancels and
   \label{eq:intensity-ratio-optically-thin}
   \frac{I_\lambda (\lambda_2)} {\sigma(\lambda_1) \, f_{\ha}(\lambda_1)} \propto L_\lambda^*(\lambda_1) .
 \end{equation}
-
 The left-hand side of this equation (approximately \((\Delta \lambda_2)^2\, I_\lambda (\lambda_2)\))
 is plotted in Figure~\ref{fig:raman-compensated}
 for the same extraction regions as in Figure~\ref{fig:raman-spectra-1d}. 
@@ -1424,24 +1422,31 @@ For parts of the spectrum where the scattering is optically thin,
 this should be proportional to the incident FUV spectrum,
 \(L_\lambda^*(\lambda_1)\),
 which is dominated by the Trapezium OB stars. 
+
 It can be seen that the red wing of this compensated spectrum
 shows an approximately flat section
 between \num{+80} and \SI{+150}{\angstrom} from \ha{},
 covering the R087 and R136 Raman bands.
 This is consistent with optically thin scattering of a flat FUV spectrum at these wavelengths.
-However, the same is not seen in the blue wing,
+However, the behavior is not so clear-cut in the blue wing,
 where the compensated spectrum continues rising away from line center.
-It is not at all clear why this is the case,
-since in nearly all other respects the red and blue wings are remarkably symmetrical
-(e.g., compare panels a and b of Figure~\ref{fig:raman-maps}).
-Although the blue wing is certainly more contaminated
-by weak telluric and nebular lines, this does not seem to be sufficient
+Although the slope is slightly shallower in the farther wing (B080 and B133 bands),
+it never becomes as clearly flat as on the red side. 
+% It is not at all clear why this is the case,
+% since in nearly all other respects the red and blue wings are remarkably symmetrical
+% (e.g., compare panels a and b of Figure~\ref{fig:raman-maps}).
+The blue wing is noisier and more contaminated
+by weak telluric and nebular lines, but this does not seem to be sufficient
 to explain the discrepancy,
 which can also be seen in Figure~\ref{fig:raman-spectra-1d} as a broad ``shoulder''
 in the blue wing, extending from \num{6300} to \SI{6500}{\angstrom}.
 One possibility is that the quadratic function used for continuum interpolation
 is insufficiently accurate,
-leading to a systematic overestimate of the strength of the blue wing.
+leading to a systematic overestimate of the strength of the far blue wing.
+I have investigated the effect of changing the order of polynomial
+used for the continuum interpolation,
+and find that the intensity of the B080 and B133 bands are quite sensitive to this choice,
+while the other bands are hardly affected.
 This might be a result of intermediate scale structure
 in the dust extinction law \citep{Whiteoak:1966a},
 which has recently been shown to include a broad (\(\approx \SI{1000}{\angstrom}\))
@@ -1541,6 +1546,7 @@ especially since the dust opacity probably plays a role in \emph{determining}
 the size of the \chem{H^0} column via the position of
 the molecular hydrogen dissociation front.
 
+
 \subsection{Absorption features in the Raman pseudo-continuum}
 \label{sec:absorpt-feat-raman}
 
@@ -1553,6 +1559,7 @@ resonant transitions from the ground state of atomic oxygen:
 The implication is that the line absorption occurs \emph{before} the
 photon is Raman-scattered, and therefore contributes to \(\tau_1\)
 (see section~\ref{sec:raman-radi-transf}).
+
 The physical location of this \ion{O}{1} absorption is very well constrained
 observationally because these very same resonance lines
 (part of the UV~4 multiplet; \citealp{Moore:1976a})
@@ -1569,6 +1576,7 @@ or to the \Term{3p}{3}{P} level with branching ratio 27.5\% via emission of a ne
 From \Term{3p}{3}{P}, the only option is decay to \Term{3s}{3}{S^o}
 via emission of \SI{8446}{\angstrom} and then back to ground
 via emission of \SI{1304}{\angstrom}.
+
 The spatial distribution of the \SI{8446}{\angstrom} emission line
 (see Figures~\ref{fig:raman-maps}c and~\ref{fig:raman-bar-profile}c)
 should therefore trace the location of the FUV \ion{O}{1} absorption.%
@@ -1579,105 +1587,132 @@ should therefore trace the location of the FUV \ion{O}{1} absorption.%
   fluorescent lines that I can find from the observations of
   \citet{Baldwin:2000a} and \citet{Esteban:2004a} and comparing with \SI{8446}{\angstrom}
   implies that 60\% of the pumping of \Term{3p}{3}{P} must come via \Term{3d}{3}{D^o}
-  or \Term{4s}{3}{S^o}.  Given that the \SI{1.129}{\micro m} and \SI{1.316}{\micro m}
-  lines have similar intensities \citep{Walmsley:2000a},
-  this means that about 30\% of the \SI{8446}{\angstrom} emission is caused by
+  or \Term{4s}{3}{S^o}.  Given that the \SI{1.129}{\micro m} is slightly weaker than
+  \SI{1.316}{\micro m} \citep{Walmsley:2000a},
+  this means that about 25\% of the \SI{8446}{\angstrom} emission is caused by
   absorption of the UV~4 multiplet.
 }
+It was shown in the section~\ref{sec:muse-spectr-mapp},
+that this fluorescent emission arises very close to the ionization front in all cases
+and tends to be arranged into filamentary structures that criss-cross the nebula
+(red channel in Figure~\ref{fig:raman-maps}c),
+of which the Orion Bar is the most prominent example.
+As discussed in section~\ref{sec:lines-from-ionized},
+the pumping should be most efficient at
+a hydrogen column density of \(\approx \SI{e19}{cm^{-2}}\),
+which is much smaller than the columns of \(> \SI{5e20}{cm^{-2}}\)
+where the Raman scattering occurs. 
+
+Note that it has long been recognised \citep{Grandi:1975a, Bautista:1999a}
+that it is the stellar continuum radiation that excites the fluorescent \ion{O}{1} lines
+in the Orion Nebula.
+To the contrary, \citet{Dopita:2016a} propose that the excitation is due to the
+\lyb{} \SI{1025.72}{\angstrom} emission line via the coincidence in wavelength
+with the \SI{1025.76}{\angstrom} \ion{O}{1} line.
+However, although this ``photoexcitation by accidental resonance'' (PAR) process
+\citep{Kastner:1995a}
+is well attested in novae and Herbig Ae/Be stars \citep{Mathew:2018a},
+it requires the \ha{} transition to be optically thick,
+which is never the case for \hii{} regions.
+Powerful empirical arguments against the PAR process operating in the nebula are
+(1)~that \SI{1.316}{\micro m} is stronger than \SI{1.129}{\micro m} \citep{Walmsley:2000a}
+and (2)~the presence of lines originating from \ion{O}{1} levels as high as \Config{11s},
+such as \SI{4980}{\angstrom} \citep{Esteban:2004a}.
+
+\subsubsection{Absorption equivalent widths in the FUV frame}
+\label{sec:impl-equiv-widths}
+
+The visual-band absorption equivalent width \(W_\lambda\observed(6633)\)
+is tightly correlated with
+the relative brightness \(R\wing\) of the Raman wings (section~\ref{sec:cand-raman-scatt}).
+Taking the ratio of these, one obtains
+\(W_\lambda^{\text{Raman}}(6633) = W_\lambda\observed(6633) / R\wing\),
+which is an equivalent width normalized to only the Raman pseudo-continuum itself,
+rather than the full nebular continuum.
+This is roughly constant across the nebula at
+\(W_\lambda^{\text{Raman}}(6633) = \SI{2.2 \pm 1.0}{\AA}\)
+(see Figure~\ref{fig:6633-Rwing}).
+The equivalent width of the FUV absorption line is then smaller than
+\(W_\lambda^{\text{Raman}}(6633)\) by a factor of
+\((\lambda_2/\lambda_1)^2 \approx 41\), yielding \(W_\lambda^{\text{FUV}}(1027) \approx \SI{0.05}{\angstrom}\).
+If the line profile is Gaussian, then the relation between velocity FWHM,
+\(\Delta V\),
+and equivalent width is \(W_\lambda = 1.064 A_0 \lambda_0 \Delta V / c\),
+where \(A_0\) is the relative absorption depth at line center.
+Assuming complete absorption (\(A_0 = 1\)), then yields \(\Delta V = \SI{15 \pm 6}{km.s^{-1}}\).
+Very similar velocity widths were found for the \SI{6664}{\angstrom} absorption feature
+from the high-resolution Keck spectra (Table~\ref{tab:line-fits}).
+
+% integral exp(-x**2/2) is sqrt(2 pi)
+% Assume A = A0 exp(-x**2/2) with x = (lam - lam0) /  sigma
+% Then FWHM = 2 sqrt(2 ln 2) = 2.35482004504
+% And EW = A0 sqrt(2 pi) = 2.50662827463 A0
+% So EW = 1.064 A0 FWHM
+% Measured width is 6636 - 6632.5 = 3.5 Angstrom, with A = 0.7
+% This implies Delta V = 160 km/s (visual) -> 25 km/s (FUV)
+% And would mean EW = 1.064 0.7 3.5 = 2.6 Ang (visual), which is consistent with Fig 7
 
 
+% \subsubsection{Raman-scattered line width as diagnostic of gas temperature in the PDR}
+% \label{sec:raman-scattered-line}
 
-Where \chem{O}{1} lines are absorbed.  Excitation of optical fluorescence lines. 
+% The observed width of the Raman-scattered \ion{O}{1} line
+% in the high spectral resolution observations (\S~\ref{sec:keck-observations})
+% can be used to derive an upper limit to the gas temperature in the scattering region
+% via the following argument.
+% In addition to the thermal and non-thermal (turbulent) broadening of the
+% \ion{O}{1} absorption line itself,
+% the Raman-scattered line will be further broadened by motions of the \chem{H^0} scatterers.
+% Part of this broadening will be due to velocity gradients
+% between the line formation region and the scattering region.
+% However, the close agreement in centroid velocity (\(< \SI{2}{km.s^{-1}}\))
+% between atomic fluorescent lines and \chem{CO} lines \citep{Baldwin:2000a}
+% implies that any such gradients are small.
+% The other part will be due to thermal motions of the scatterers,
+% which will contribute a width (FWHM) of
+% \begin{equation}
+%   \label{eq:wtherm}
+%   \Delta V_{\mathrm{therm}} = 0.124\, (T/A)^{1/2} \ \si{km.s^{-1}},
+% \end{equation}
+% where \(T\) is the temperature in \si{K} and \(A\) is the standard relative atomic mass.
+% Measured widths of optical \ion{O}{1} fluorescent lines are relatively large
+% (\(> \SI{10}{km.s^{-1}}\), \citealp{Baldwin:2000a})
+% but this is due to the presence of multiple fine-structure components,
+% with splittings of a few \si{km.s^{-1}},
+% and so they do not help constrain the Doppler width of the UV \ion{O}{1} \SI{1028}{\angstrom} line.
+% Instead we use the \SI{6}{km.s^{-1}} width of the [\ion{N}{1}] \SI{5200}{\angstrom} line
+% \citep{Ferland:2012a},
+% which is also fluorescently excited and is unaffected by fine-structure broadening.
+% The most stringent limit on the temperature is given by the
+% smallest observed width of the \SI{6664}{\angstrom} feature,
+% for which we take the region~C value of \SI{7.6}{km.s^{-1}}
+% (Table~\ref{tab:line-fits}).\footnote{%
+%   Although the region~D value is smaller,
+%   the signal-to-noise is too small for it to be reliable.
+% }
+% Subtracting \SI{6}{km.s^{-1}} in quadrature and substituting into equation~\eqref{eq:wtherm}
+% yields an upper limit of \(T \le \SI{480}{K}\) for the Raman-scattering region. 
 
-In lieu of solving the full radiative transfer equation,
-I assume that the Rayleigh and Raman-scattering occurs in a region
-where the FUV optical depth from the illuminating star is 
-\(\tau \approx 1\) in the \lyb{} wing.
-I ignore the possibility of multiple Rayleigh scattering
-before Raman conversion. 
-I also disregard dust extinction of the
-post-scattered visual-band photons, although the effects of FUV dust opacity
-are more important and are considered below.
-
-
-
-
-
-Location of \chem{H^0}.  Neutral veil in front of nebula has column density of \SI{1.6e21}{cm^{-2}} and \SI{3.2e21}{cm^{-2}} in components A and B \citep{Abel:2006a}. 
-
-
-Geometry of bar: in \citet{Henney:2005b} I pointed out that a
-diverging cylindrical geometry is necessary to explain the sharp peak
-in the [\ion{N}{2}] emissivity seen at the ionization front.  It has
-been apparent since \citet{ODell:2000a} that the nebula contains many
-bar-like features.
-
-\citet{Salgado:2016a} had found low dust cross-section in Orion Bar
-PDR, but there are loopholes. First, they assume plane-parallel
-geometry with exactly edge-on viewing angle, while in reality it is a
-roughly cylindrical filament.  Second, they ignore scattering, see
-\citet{Watson:1998a}.  Also, density increase with depth
-
-\subsubsection{Raman-scattered line width as diagnostic of has temperature in the PDR}
-\label{sec:raman-scattered-line}
-
-The observed width of the Raman-scattered \ion{O}{1} line
-in the high spectral resolution observations (\S~\ref{sec:keck-observations})
-can be used to derive an upper limit to the gas temperature in the scattering region
-via the following argument.
-In addition to the thermal and non-thermal (turbulent) broadening of the
-\ion{O}{1} absorption line itself,
-the Raman-scattered line will be further broadened by motions of the \chem{H^0} scatterers.
-Part of this broadening will be due to velocity gradients
-between the line formation region and the scattering region.
-However, the close agreement in centroid velocity (\(< \SI{2}{km.s^{-1}}\))
-between atomic fluorescent lines and \chem{CO} lines \citep{Baldwin:2000a}
-implies that any such gradients are small.
-The other part will be due to thermal motions of the scatterers,
-which will contribute a width (FWHM) of
-\begin{equation}
-  \label{eq:wtherm}
-  \Delta V_{\mathrm{therm}} = 0.124\, (T/A)^{1/2} \ \si{km.s^{-1}},
-\end{equation}
-where \(T\) is the temperature in \si{K} and \(A\) is the standard relative atomic mass.
-Measured widths of optical \ion{O}{1} fluorescent lines are relatively large
-(\(> \SI{10}{km.s^{-1}}\), \citealp{Baldwin:2000a})
-but this is due to the presence of multiple fine-structure components,
-with splittings of a few \si{km.s^{-1}},
-and so they do not help constrain the Doppler width of the UV \ion{O}{1} \SI{1028}{\angstrom} line.
-Instead we use the \SI{6}{km.s^{-1}} width of the [\ion{N}{1}] \SI{5200}{\angstrom} line
-\citep{Ferland:2012a},
-which is also fluorescently excited and is unaffected by fine-structure broadening.
-The most stringent limit on the temperature is given by the
-smallest observed width of the \SI{6664}{\angstrom} feature,
-for which we take the region~C value of \SI{7.6}{km.s^{-1}}
-(Table~\ref{tab:line-fits}).\footnote{%
-  Although the region~D value is smaller,
-  the signal-to-noise is too small for it to be reliable.
-}
-Subtracting \SI{6}{km.s^{-1}} in quadrature and substituting into equation~\eqref{eq:wtherm}
-yields an upper limit of \(T \le \SI{480}{K}\) for the Raman-scattering region. 
-
-This is further evidence that Raman scattering by \chem{H^0}
-must be occurring in the fully-neutral PDR,
-rather than the partially ionized ionization front,
-where the temperature is of order \SI{e4}{K}.
-It is interesting to contrast the Raman-scattered lines with the
-case of the deuterium Balmer lines, which are also believed to be excited by fluorescence
-\citep{Hebrard:2000a, ODell:2001a}.
-The minimum width of these lines is observed to be \SI{9}{km.s^{-1}},
-which from equation~\eqref{eq:wtherm} with \(A = 2\) yields \(T = \SI{10500}{K}\)
-if the broadening is purely thermal,
-or \(T = \SI{6000}{K}\) assuming non-thermal broadening of \SI{6}{km.s^{-1}}.
-Either case is consistent with the deuterium lines being formed in the ionization front itself.
-The difference with the Raman scattering can be explained by the magnitudes
-of the relevant cross sections.
-A typical resonance line that excites the deuterium Balmer lines is deuterium Lyman \(\gamma\),
-which, assuming \(\chem{D/H} = \num{1.5e-5}\),
-has cross section of \(\approx \SI{4e-20}{cm^2.(H^0)^{-1}}\).
-This is considerably larger than the Raman wing cross section
-at \SI{1028}{\angstrom}, which is only \(\approx \SI{2e-22}{cm^2.(H^0)^{-1}}\)
-(see Table~\ref{tab:wav-bands} and Appendix~\ref{sec:raman-theory}).
+% This is further evidence that Raman scattering by \chem{H^0}
+% must be occurring in the fully-neutral PDR,
+% rather than the partially ionized ionization front,
+% where the temperature is of order \SI{e4}{K}.
+% It is interesting to contrast the Raman-scattered lines with the
+% case of the deuterium Balmer lines, which are also believed to be excited by fluorescence
+% \citep{Hebrard:2000a, ODell:2001a}.
+% The minimum width of these lines is observed to be \SI{9}{km.s^{-1}},
+% which from equation~\eqref{eq:wtherm} with \(A = 2\) yields \(T = \SI{10500}{K}\)
+% if the broadening is purely thermal,
+% or \(T = \SI{6000}{K}\) assuming non-thermal broadening of \SI{6}{km.s^{-1}}.
+% Either case is consistent with the deuterium lines being formed in the ionization front itself.
+% The difference with the Raman scattering can be explained by the magnitudes
+% of the relevant cross sections.
+% A typical resonance line that excites the deuterium Balmer lines is deuterium Lyman \(\gamma\),
+% which, assuming \(\chem{D/H} = \num{1.5e-5}\),
+% has cross section of \(\approx \SI{4e-20}{cm^2.(H^0)^{-1}}\).
+% This is considerably larger than the Raman wing cross section
+% at \SI{1028}{\angstrom}, which is only \(\approx \SI{2e-22}{cm^2.(H^0)^{-1}}\)
+% (see Table~\ref{tab:wav-bands} and Appendix~\ref{sec:raman-theory}).
 
 
 \subsubsection{The failure of rival explanations for the 6633, 6664~\AA{} lines}
@@ -1748,14 +1783,14 @@ and the equivalent widths of these absorption features are only
 Therefore, even several such stars would contribute at most
 \SI{0.001}{\angstrom}
 to the equivalent width in the diffuse nebular spectrum,
-which is far less than the observed values of up to
-\(W_\lambda\observed = \SI{0.5}{\angstrom}\) (Figure~\ref{fig:raman-multi-absorption-features}a).
+which is far less than the observed values
+\(W_\lambda\observed = \SI{0.1}{\angstrom}\) to \SI{0.5}{\angstrom}
+(Figure~\ref{fig:6633-Rwing}).
 
 
 
-
-
-\paragraph*{Why they cannot be visual-band neutral/molecular absorption lines from the PDR}
+\paragraph*{Why they are unlikely to be visual-band
+  neutral/molecular absorption lines from the PDR}
 \label{sec:cannot-be-abs}
 
 The fact that the \num{6633} and \SI{6664}{\angstrom} features are not seen
@@ -1788,48 +1823,107 @@ From Figure~\ref{fig:dib-redden} it is conceivable that up to half of the
 \SI{5780}{\angstrom} absorption might arise during back-scattering from the PDR rather than in foreground material for some sight lines. 
 This would imply an equivalent width \(W_\lambda < \SI{0.02}{\angstrom}\)
 for the \SI{6632.85}{\angstrom} DIB,
-which is much smaller than the observed \(W_\lambda\observed(6633) \approx \SI{0.5}{\angstrom}\)
-(Figure~\ref{fig:raman-multi-absorption-features}a).
+which is again much smaller than the observed \(W_\lambda\observed(6633) = 0.1\)
+to \SI{0.5}{\angstrom} (Figure~\ref{fig:6633-Rwing}).
 
 
 % There is a broader one at \SI{6660}{\angstrom} \citep{Sonnentrucker:2018a}
 
 % No stellar absorption lines there \citep{Simon-Diaz:2006b}.  Too broad to be atomic or ionic absorption line.  So strong it would have to be a resonance line.  Could be solid-state feature, such as DIBs, but at that wavelength there are only weak features that are seen at very high extinction columns.  Would have to be imprinted during back-scattering so as not to be seen in the stellar spectra. 
 
+\subsubsection{Possible detection of a \SI{6481}{\angstrom} absorption feature}
+\label{sec:poss-detect-si6481}
 
-\subsection{Miscellany}
-\label{sec:miscellany}
+A further absorption line is tentatively detected at \SI{6481}{\angstrom}
+in the B080 Raman band (see Figure~\ref{fig:raman-spectra-1d}),
+which could correspond to one of the components
+of the \ion{Si}{2} \(\Term{3s^2 3p}{2}{P^o} \to \Term{3s^2 5s}{2}{S}\)
+doublet (the other component, at \SI{6362}{\angstrom} is hidden by a much stronger
+[\ion{O}{1}] emission line at \SI{6363}{\angstrom}).
+This doublet (vacuum FUV wavelengths \num{1020.7} and \SI{1023.7}{\angstrom}) pumps the
+visual-band fluorescent emission lines \num{5957.6} and \SI{5978.9}{\angstrom}.
+The distribution of the \SI{5978.9}{\angstrom} line is significantly different from
+the \ion{O}{1} fluorescent lines, being more similar to singly-ionized forbidden lines
+such as [\ion{S}{2}] and [\ion{N}{2}].%
+\footnote{
+  The \ion{Si}{2} \SI{5957.6}{\angstrom} line is blended with
+  \ion{O}{1} \SI{5958.4}{\angstrom}, so cannot be used.
+}
+This is what would be expected since \chem{Si^+}, unlike \chem{O^0}, has a significant
+column inside the ionized gas.
+
+The \SI{6481}{\angstrom} feature is considerably weaker than the other absorption features
+and is located in a more complicated region of the spectrum,
+which makes it difficult to make quantitative measurements.
+Note that \citet{Dopita:2016a} claim evidence of a broad \emph{emission} bump
+in the blue Raman wing,
+centered on the \ion{Si}{2} \SI{6481}{\angstrom} wavelength.
+However, I find no clear evidence for such a bump in the Orion MUSE or Keck spectra.
 
 
+% \subsection{Miscellany}
+% \label{sec:miscellany}
 
-The effective resolving power of the optical spectrograph is multiplied by 6.4 for the FUV domain.
+% The effective resolving power of the optical spectrograph is multiplied by 6.4 for the FUV domain.
 
-The \ion{O}{1} lines should be in absorption in the spectrum seen by the Raman scatterers. 
+% The \ion{O}{1} lines should be in absorption in the spectrum seen by the Raman scatterers. 
 
-Non-equilibrium PDRs \citep{Stoerzer:1998a, Bertoldi:1996a}.  Recent models from \citet{Bron:2018a}. 
+% Non-equilibrium PDRs \citep{Stoerzer:1998a, Bertoldi:1996a}.  Recent models from \citet{Bron:2018a}. 
 
-\ion{C}{1} emission from non-steady PDRs \citep{Stoerzer:1997a} (fine structure lines, but maybe optical lines would be similar).  \citet{Escalante:1991a} model the far-red [\ion{C}{1}] line as recombination of \chem{C^+}.
-
-
-\ion{O}{6} 1037.62, 1031.93 absorption line in wind. No evidence for
-a blue absorption edge at \(V = \SI{1200}{km.s^{-1}}\), which would be at
-\(\lambda_2 = \SI{6649}{\angstrom}\), right in middle of R087 band.
+% \ion{C}{1} emission from non-steady PDRs \citep{Stoerzer:1997a} (fine structure lines, but maybe optical lines would be similar).  \citet{Escalante:1991a} model the far-red [\ion{C}{1}] line as recombination of \chem{C^+}.
 
 
-Even for high PDR optical depth, no multiple Raman scattering will
-occur since the population of \(2s\) is very small and the
-post-scattered photons have insufficient energy to excite any
-transitions from \(1s\).
+% \ion{O}{6} 1037.62, 1031.93 absorption line in wind. No evidence for
+% a blue absorption edge at \(V = \SI{1200}{km.s^{-1}}\), which would be at
+% \(\lambda_2 = \SI{6649}{\angstrom}\), right in middle of R087 band.
 
 
-\section{Conclusions}
+% Even for high PDR optical depth, no multiple Raman scattering will
+% occur since the population of \(2s\) is very small and the
+% post-scattered photons have insufficient energy to excite any
+% transitions from \(1s\).
+
+
+\section{Summary}
 \label{sec:conclusions}
 
-From the spatial distribution of the \ion{He}{2} \SI{4686}{\angstrom}
-absorption line in dust-scattered light,
-we find further evidence that \th1D is situated behind the other Trapezium stars,
-closer to the background cloud,
-as was originally suggested by \citep{Smith:2005a}.
+By analysing spatially resolved spectroscopic observations  of the Orion Nebula,
+I have demonstrated that the broad Raman-scattered wings
+of the \ha{} \SI{6563}{\angstrom} line
+(\(\delta \lambda = \SI{\pm 150}{\angstrom}\))
+are a useful diagnostic of the interaction of far-ultraviolet radiation with
+atomic hydrogen in the environs of high-mass stars.
+The principal conclusions of this study are:
+\begin{enumerate}[1.]
+\item Hydrogen Raman scattering occurs in the neutral photo-dissociation region (PDR),
+  located between the hydrogen ionization front and dissociation front.  
+\item The inner Raman wings (\(|\delta \lambda | < \SI{80}{\angstrom}\)) of \ha{}
+  are optically thick and allow
+  the density of neutral hydrogen atoms to be determined in edge-on PDRs.
+  For the case of the Orion Bar, I find \(n(\chem{H^0}) \approx \SI{e5}{cm^{-3}}\)
+  for the shallow part of the PDR (depths of up to \SI{10}{mpc}).
+\item The outer Raman wings are either optically thin or are limited by
+  competition with dust absorption.
+  In the first case, the total column density of neutral hydrogen must be 
+  \SI{2e21}{cm^{-2}} in the Orion Bar.
+  In the second case, the FUV dust absorption cross section must be
+  \SI{5e22}{cm^{2}.H^{-1}}.
+\item Far-ultraviolet resonance lines of neutral oxygen imprint their absorption
+  onto the stellar continuum as it passes through the ionization front.
+  The subsequent Raman scattering of this continuum yields absorption features
+  in the red \ha{} wing
+  at transformed wavelengths of \SI{6633}{\angstrom} and \SI{6664}{\angstrom}.
+\item The ``magnification'' of Doppler velocity scales by the Raman scattering process
+  allows spectrographs to operate at a \(6.4\) times higher effective spectral resolution,
+  but observations with better signal-to-noise 
+  than are currently available are required in order to take full advantage of this.
+% \item The spatial distribution of the \ion{He}{2}
+%   \SI{4686}{\angstrom} absorption line in dust-scattered light
+%   provides further evidence that \th1D is situated behind the other
+%   Trapezium stars, closer to the background cloud, as was originally
+%   suggested by \citep{Smith:2005a}.
+\end{enumerate}
+
 
 
 \section*{Acknowledgements}

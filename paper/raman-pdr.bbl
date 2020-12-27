@@ -23,12 +23,6 @@
   {Troland} T.~H.,  2004, \mn@doi [\apj] {10.1086/421009}, \href
   {https://ui.adsabs.harvard.edu/abs/2004ApJ...609..247A} {609, 247}
 
-\bibitem[\protect\citeauthoryear{{Abel}, {Ferland}, {O'Dell}, {Shaw}  \&
-  {Troland}}{{Abel} et~al.}{2006}]{Abel:2006a}
-{Abel} N.~P.,  {Ferland} G.~J.,  {O'Dell} C.~R.,  {Shaw} G.,   {Troland} T.~H.,
-   2006, \mn@doi [\apj] {10.1086/500819}, \href
-  {http://adsabs.harvard.edu/abs/2006ApJ...644..344A} {644, 344}
-
 \bibitem[\protect\citeauthoryear{{Abel}, {Ferland}  \& {O'Dell}}{{Abel}
   et~al.}{2019}]{Abel:2019a}
 {Abel} N.~P.,  {Ferland} G.~J.,   {O'Dell} C.~R.,  2019, arXiv e-prints, \href
@@ -69,16 +63,15 @@
   2015, \mn@doi [\mnras] {10.1093/mnras/stu2448}, \href
   {https://ui.adsabs.harvard.edu/abs/2015MNRAS.447..545B} {447, 545}
 
+\bibitem[\protect\citeauthoryear{{Bautista}}{{Bautista}}{1999}]{Bautista:1999a}
+{Bautista} M.~A.,  1999, \mn@doi [\apj] {10.1086/308086}, \href
+  {http://adsabs.harvard.edu/abs/1999ApJ...527..474B} {527, 474}
+
 \bibitem[\protect\citeauthoryear{{Bernard-Salas} et~al.,}{{Bernard-Salas}
   et~al.}{2012}]{Bernard-Salas:2012a}
 {Bernard-Salas} J.,  et~al., 2012, \mn@doi [\aap]
   {10.1051/0004-6361/201118083}, \href
   {http://adsabs.harvard.edu/abs/2012A%26A...538A..37B} {538, A37}
-
-\bibitem[\protect\citeauthoryear{{Bertoldi} \& {Draine}}{{Bertoldi} \&
-  {Draine}}{1996}]{Bertoldi:1996a}
-{Bertoldi} F.,  {Draine} B.~T.,  1996, \mn@doi [\apj] {10.1086/176805}, \href
-  {http://adsabs.harvard.edu/abs/1996ApJ...458..222B} {458, 222}
 
 \bibitem[\protect\citeauthoryear{{Blagrave}, {Martin}, {Rubin}, {Dufour},
   {Baldwin}, {Hester}  \& {Walter}}{{Blagrave} et~al.}{2007}]{Blagrave:2007a}
@@ -92,11 +85,6 @@
 {Bregman} J.~D.,  {Allamandola} L.~J.,  {Tielens} A.~G.~G.~M.,  {Geballe}
   T.~R.,   {Witteborn} F.~C.,  1989, \mn@doi [\apj] {10.1086/167844}, \href
   {https://ui.adsabs.harvard.edu/abs/1989ApJ...344..791B} {344, 791}
-
-\bibitem[\protect\citeauthoryear{{Bron}, {Agúndez}, {Goicoechea}  \&
-  {Cernicharo}}{{Bron} et~al.}{2018}]{Bron:2018a}
-{Bron} E.,  {Agúndez} M.,  {Goicoechea} J.~R.,   {Cernicharo} J.,  2018, arXiv
-  e-prints, \href {http://adsabs.harvard.edu/abs/2018arXiv180101547B} {}
 
 \bibitem[\protect\citeauthoryear{{Cesarsky}, {Jones}, {Lequeux}  \&
   {Verstraete}}{{Cesarsky} et~al.}{2000}]{Cesarsky:2000a}
@@ -218,6 +206,10 @@
   {10.1051/0004-6361/201730716}, \href
   {https://ui.adsabs.harvard.edu/abs/2017A&A...601L...9G} {601, L9}
 
+\bibitem[\protect\citeauthoryear{{Grandi}}{{Grandi}}{1975}]{Grandi:1975a}
+{Grandi} S.~A.,  1975, \mn@doi [\apjl] {10.1086/181845}, \href
+  {http://adsabs.harvard.edu/abs/1975ApJ...199L..43G} {199, L43+}
+
 \bibitem[\protect\citeauthoryear{{Greisen}, {Calabretta}, {Valdes}  \&
   {Allen}}{{Greisen} et~al.}{2006}]{Greisen:2006a}
 {Greisen} E.~W.,  {Calabretta} M.~R.,  {Valdes} F.~G.,   {Allen} S.~L.,  2006,
@@ -249,12 +241,6 @@
 {Hobbs} L.~M.,  et~al., 2008, \mn@doi [\apj] {10.1086/587930}, \href
   {https://ui.adsabs.harvard.edu/abs/2008ApJ...680.1256H} {680, 1256}
 
-\bibitem[\protect\citeauthoryear{{Hébrard}, {Péquignot}, {Vidal-Madjar},
-  {Walsh}  \& {Ferlet}}{{Hébrard} et~al.}{2000}]{Hebrard:2000a}
-{Hébrard} G.,  {Péquignot} D.,  {Vidal-Madjar} A.,  {Walsh} J.~R.,   {Ferlet}
-  R.,  2000, \aap, \href
-  {https://ui.adsabs.harvard.edu/abs/2000A&A...354L..79H} {354, L79}
-
 \bibitem[\protect\citeauthoryear{{Ivanov}, {Salumbides}, {Vieitez}, {Cacciani},
   {de Lange}  \& {Ubachs}}{{Ivanov} et~al.}{2008}]{Ivanov:2008a}
 {Ivanov} T.~I.,  {Salumbides} E.~J.,  {Vieitez} M.~O.,  {Cacciani} P.~C.,  {de
@@ -274,6 +260,11 @@
   J.~L.,  {Jackson} J.~M.,   {Tollestrup} E.~V.,  2006, \mn@doi [\apj]
   {10.1086/498404}, \href {http://adsabs.harvard.edu/abs/2006ApJ...637..823K}
   {637, 823}
+
+\bibitem[\protect\citeauthoryear{{Kastner} \& {Bhatia}}{{Kastner} \&
+  {Bhatia}}{1995}]{Kastner:1995a}
+{Kastner} S.~O.,  {Bhatia} A.~K.,  1995, \mn@doi [\apj] {10.1086/175178}, \href
+  {https://ui.adsabs.harvard.edu/abs/1995ApJ...439..346K} {439, 346}
 
 \bibitem[\protect\citeauthoryear{{Kissler-Patig} et~al.,}{{Kissler-Patig}
   et~al.}{2008}]{Kissler-Patig:2008a}
@@ -342,6 +333,11 @@
 {Massa} D.,  {Fitzpatrick} E.~L.,   {Gordon} K.~D.,  2020, \mn@doi [\apj]
   {10.3847/1538-4357/ab6f01}, \href
   {https://ui.adsabs.harvard.edu/abs/2020ApJ...891...67M} {891, 67}
+
+\bibitem[\protect\citeauthoryear{{Mathew} et~al.,}{{Mathew}
+  et~al.}{2018}]{Mathew:2018a}
+{Mathew} B.,  et~al., 2018, \mn@doi [\apj] {10.3847/1538-4357/aab3d8}, \href
+  {https://ui.adsabs.harvard.edu/abs/2018ApJ...857...30M} {857, 30}
 
 \bibitem[\protect\citeauthoryear{{Maíz Apellániz} et~al.,}{{Maíz Apellániz}
   et~al.}{2019}]{Maiz-Apellaniz:2019a}
@@ -418,12 +414,6 @@ Moré J.~J.,  1978, in Watson G.~A.,  ed., Numerical Analysis. Springer Berlin
 {O'Dell} C.~R.,  {Wen} Z.,   {Hu} X.,  1993, \mn@doi [\apj] {10.1086/172786},
   \href {http://adsabs.harvard.edu/abs/1993ApJ...410..696O} {410, 696}
 
-\bibitem[\protect\citeauthoryear{{O'Dell}, {Ferland}  \& {Henney}}{{O'Dell}
-  et~al.}{2001}]{ODell:2001a}
-{O'Dell} C.~R.,  {Ferland} G.~J.,   {Henney} W.~J.,  2001, \mn@doi [\apj]
-  {10.1086/321562}, \href {http://adsabs.harvard.edu/abs/2001ApJ...556..203O}
-  {556, 203}
-
 \bibitem[\protect\citeauthoryear{{O'Dell}, {Ferland}  \& {Peimbert}}{{O'Dell}
   et~al.}{2017}]{ODell:2017b}
 {O'Dell} C.~R.,  {Ferland} G.~J.,   {Peimbert} M.,  2017, \mn@doi [\mnras]
@@ -453,12 +443,6 @@ Sausalito, CA: University Science Books
 {Parikka} A.,  {Habart} E.,  {Bernard-Salas} J.,  {Köhler} M.,   {Abergel} A.,
    2018, \mn@doi [\aap] {10.1051/0004-6361/201731975}, \href
   {https://ui.adsabs.harvard.edu/abs/2018A&A...617A..77P} {617, A77}
-
-\bibitem[\protect\citeauthoryear{{Salgado}, {Berné}, {Adams}, {Herter},
-  {Keller}  \& {Tielens}}{{Salgado} et~al.}{2016}]{Salgado:2016a}
-{Salgado} F.,  {Berné} O.,  {Adams} J.~D.,  {Herter} T.~L.,  {Keller} L.~D.,
-  {Tielens} A.~G.~G.~M.,  2016, \mn@doi [\apj] {10.3847/0004-637X/830/2/118},
-  \href {http://adsabs.harvard.edu/abs/2016ApJ...830..118S} {830, 118}
 
 \bibitem[\protect\citeauthoryear{{Schmid}}{{Schmid}}{1989}]{Schmid:1989a}
 {Schmid} H.~M.,  1989, \aap, \href
@@ -503,16 +487,6 @@ Shenstone A.~G.,  1970, \mn@doi [Journal of research of the National Bureau of
 {Stahl} O.,  et~al., 1996, \aap, \href
   {http://adsabs.harvard.edu/abs/1996A%26A...312..539S} {312, 539}
 
-\bibitem[\protect\citeauthoryear{{Stoerzer} \& {Hollenbach}}{{Stoerzer} \&
-  {Hollenbach}}{1998}]{Stoerzer:1998a}
-{Stoerzer} H.,  {Hollenbach} D.,  1998, \mn@doi [\apj] {10.1086/305315}, \href
-  {http://adsabs.harvard.edu/abs/1998ApJ...495..853S} {495, 853}
-
-\bibitem[\protect\citeauthoryear{{Stoerzer}, {Stutzki}  \&
-  {Sternberg}}{{Stoerzer} et~al.}{1997}]{Stoerzer:1997a}
-{Stoerzer} H.,  {Stutzki} J.,   {Sternberg} A.,  1997, \aap, \href
-  {https://ui.adsabs.harvard.edu/abs/1997A&A...323L..13S} {323, L13}
-
 \bibitem[\protect\citeauthoryear{{Subrahmanyan}, {Goss}  \&
   {Malin}}{{Subrahmanyan} et~al.}{2001}]{Subrahmanyan:2001a}
 {Subrahmanyan} R.,  {Goss} W.~M.,   {Malin} D.~F.,  2001, \mn@doi [\aj]
@@ -544,11 +518,6 @@ Van~Hoof P. A.~M.,  2018, \mn@doi [Galaxies] {10.3390/galaxies6020063}, 6
   {Testi}}{{Walmsley} et~al.}{2000}]{Walmsley:2000a}
 {Walmsley} C.~M.,  {Natta} A.,  {Oliva} E.,   {Testi} L.,  2000, \aap, \href
   {http://adsabs.harvard.edu/abs/2000A%26A...364..301W} {364, 301}
-
-\bibitem[\protect\citeauthoryear{{Watson}, {Henney}  \& {Escalante}}{{Watson}
-  et~al.}{1998}]{Watson:1998a}
-{Watson} A.~M.,  {Henney} W.~J.,   {Escalante} V.,  1998, in American
-  Astronomical Society Meeting Abstracts. p. 16.03
 
 \bibitem[\protect\citeauthoryear{{Weilbacher} et~al.,}{{Weilbacher}
   et~al.}{2015}]{Weilbacher:2015a}

@@ -709,6 +709,9 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
   + Need to use ~mask = skyregion.to_pixel(WCS).to_mask().to_image(SHAPE)~
 + Use the 5x5 image to make it faster
 + Save the cont-subtracted and cont spectra to a json file
+  
+#+name: extract-1d-spectra
+#+header: :var WAVSEC="wavsec23"
 #+begin_src python :return jsonfile :results file
   import json
   import numpy as np
@@ -719,8 +722,8 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
 
   regions = rg.read_ds9("../data/raman-extract-boxes.reg")
 
-  hdu = fits.open("../data/orion-muse/muse-hr-data-wavsec23-rebin16x16-cont-sub.fits")["DATA"]
-  chdu = fits.open("../data/orion-muse/muse-hr-data-wavsec23-rebin16x16-cont.fits")["DATA"]
+  hdu = fits.open(f"../data/orion-muse/muse-hr-data-{WAVSEC}-rebin16x16-cont-sub.fits")["DATA"]
+  chdu = fits.open(f"../data/orion-muse/muse-hr-data-{WAVSEC}-rebin16x16-cont.fits")["DATA"]
 
   spec = {}
   nz, ny, nx = hdu.data.shape
@@ -735,14 +738,19 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
           "continuum": np.sum(chdu.data*mask[None, :, :], axis=(1, 2)).tolist(),
           }
 
-  jsonfile = "raman-orion-muse-1d-spectra.json"
+  jsonfile = f"raman-orion-muse-1d-spectra-{WAVSEC}.json"
 
   with open(jsonfile, "w") as f:
       json.dump(spec, f, indent=3)
 #+end_src
 
+#+RESULTS: extract-1d-spectra
+[[file:raman-orion-muse-1d-spectra-wavsec23.json]]
+
+#+call: extract-1d-spectra(WAVSEC="wavsec3")
+
 #+RESULTS:
-[[file:raman-orion-muse-1d-spectra.json]]
+[[file:raman-orion-muse-1d-spectra-wavsec3.json]]
 
 
 #+begin_src python :return figfile :results file
@@ -1096,14 +1104,20 @@ This is just like the previous figure, but with a restricted wavelength range an
 **** Make plot of F_\lambda / \sigma_Raman f_Ha for the different regions
 + This is just like the previous figure in layout
 + It is an improvement on the (\Delta\lambda)^2 F_\lambda one because it uses the true cross-section
++ [2020-12-26 Sat] Note that I now take an average of the results from the wavsec3 and wavsec23 cubes, which were calculated using different orders of polynomials for the continuum fit, which turns out to make quite a difference
+  + See comment after source code in [[id:FBC24354-4D79-4438-8345-C851BA3BD016][Make a cube of (\Delta\lambda)^{2} F_{\lambda}]]
+    
 #+begin_src python :return figfile :results file
   import numpy as np
   import json
   from matplotlib import pyplot as plt
   import seaborn as sns
 
-  jsonfile = "raman-orion-muse-1d-spectra.json"
+  jsonfile = "raman-orion-muse-1d-spectra-wavsec3.json"
   data = json.load(open(jsonfile))
+  jsonfile2 = "raman-orion-muse-1d-spectra-wavsec23.json"
+  data2 = json.load(open(jsonfile2))
+
   figfile = "raman-muse-spectra-compensated.pdf"
 
   # Heliocentric correction
@@ -1191,20 +1205,31 @@ This is just like the previous figure, but with a restricted wavelength range an
   wav0 = 6562.74
   for region in region_order:
       spec = data[region]
+      spec2 = data2[region]
       waves = np.array(spec["wavelength"]) 
+      waves2 = np.array(spec2["wavelength"]) 
       # Put in OMC frame
       waves *= (1.0 - (V_OMC + V_HEL)/3e5)
+      waves2 *= (1.0 - (V_OMC + V_HEL)/3e5)
       imin = np.sum(waves < wavmin)
       imax = np.sum(waves < wavmax)
       i1 = np.sum(waves < bands["R087"][0])
       i2 = np.sum(waves < bands["R087"][1])
       total = np.array(spec["raman"]) / sig_fha(waves - wav0)
+      total2 = np.array(spec2["raman"]) / sig_fha(waves2 - wav0)
       norm = np.median(total[i1:i2])
       waves = waves[imin:imax] - wav0
       total = total[imin:imax]
       total /= norm
+      imin2 = np.sum(waves2 < wavmin)
+      imax2 = np.sum(waves2 < wavmax)
+      waves2 = waves2[imin2:imax2] - wav0
+      total2 = total2[imin2:imax2]
+      total2 /= norm
+      total = 0.5*(total + total2)
       ax.fill_between(waves, offset, total + offset, color=(fc, fc, fc))
       ax.plot(waves, total + offset, color="k", lw=0.7)
+      #ax.plot(waves, total2 + offset, color="r", lw=0.7)
       ax.annotate(f"{offset:.1f} + {region}", (wavmax - wav0, offset + 1.0),
                   xytext=(5, 0), textcoords="offset points", ha="left", va="center")
       offset -= 0.4
@@ -1238,8 +1263,8 @@ This is just like the previous figure, but with a restricted wavelength range an
       wave -= wav0
       if not wavmin < wave < wavmax:
           continue
-      ax.axvline(wave, 0.1, 0.85, color="k", lw=0.5, zorder=-5)
-      ax.text(wave, 5.0, label, ha="center", va="bottom", rotation="vertical", fontsize="xx-small")
+      ax.axvline(wave, 0.1, 0.89, color="k", lw=0.5, zorder=-5)
+      ax.text(wave, 5.3, label, ha="center", va="bottom", rotation="vertical", fontsize="xx-small")
 
   for wave, label in absorption_lines.items():
       wave -= wav0
@@ -1275,6 +1300,9 @@ This is just like the previous figure, but with a restricted wavelength range an
 
 
 **** Make a cube of (\Delta\lambda)^{2} F_{\lambda}
+:PROPERTIES:
+:ID:       FBC24354-4D79-4438-8345-C851BA3BD016
+:END:
 + This should give a flat spectrum for Lorentzian wings
 + Should be able to spot any red-blue asymmetries better
 + And also see where the [N II] lines start to become important
@@ -1314,6 +1342,11 @@ This is just like the previous figure, but with a restricted wavelength range an
 
 #+RESULTS:
 : None
+
++ [X] [2020-12-26 Sat] The ~wavsec3-rebin16x16~ version has an arguably better blue wing than the the ~wavsec23-rebin16x16~ version.
+  + Better in the sense that the B080 band goes flat like R087 does
+  + But worse in that the B133 band drops to essentially zero
+  + This seems to be related to the order of polynomial used for the continuum fitting
 
 **** Calculate EW of 6634
 #+name: ew-6634
@@ -4756,7 +4789,7 @@ CLOSED: [2019-08-24 Sat 22:09]
 * Antecedents for Raman scattering
 ** Raman scattering theory
 + Hubeny & Mihalas book
-+ 
+  + 
 *** Terminology
 + Configuration is n, l for each electron
 + Term is n, S, L
@@ -4959,6 +4992,27 @@ This looks like it is the Si II line, *if* that is really at 1024.03, as Cloudy 
 | 1020.6989 | 97972.086 | 97492.283 | 479.803 | 15233.329 | 15713.132 | 6364.1036 | 1.00027647 | 6362.3446 |
 | 1023.7001 | 97684.859 | 97492.283 | 192.576 | 15233.329 | 15425.905 | 6482.6018 | 1.00027633 | 6480.8110 |
 #+TBLFM: $2=1e8/$-1::$4=$2 - $3::$6=$4 + $5::$7=1e8/$6::$8=1 + 8.06051e-5 + (2.480990e-2 / (132.274 - (1e4/$7)**2)) + (1.74557e-4 / (39.32957 - (1e4/$7)**2)) ;f8::$9=$7/$8;f4
+******* Optical Si II lines that are pumped via 5s
+Vacuum wavelengths
+#+begin_example
+  LAB-WAVL-ANG-VAC-|-SPC--|TT|CONFIGURATION|-TERM--|-J_i-J_k-|--A_ki--|-TPF-|LEVEL-ENERGY--CM^-1|-REF---|
+     1020.6989        Si II E1 3s2.3p-3s2.5s 2Po-2S  1/2 - 1/2 9.67E+07     3     0.00 - 97972.09 029,ASD
+     1023.7001        Si II E1 3s2.3p-3s2.5s 2Po-2S  3/2 - 1/2 1.92E+08     3   287.23 - 97972.09 029,ASD
+     5959.21          Si II E1 3s2.4p-3s2.5s 2Po-2S  1/2 - 1/2 4.31E+07     3 81191.34 - 97972.09 ASD
+     5980.59          Si II E1 3s2.4p-3s2.5s 2Po-2S  3/2 - 1/2 8.52E+07     3 81251.32 - 97972.09 ASD
+#+end_example
+
+Air wavelengths
+#+begin_example
+  -LAB-WAVL-ANG-AIR-|-SPC--|TT|CONFIGURATION|-TERM--|-J_i-J_k-|--A_ki--|-TPF-|LEVEL-ENERGY--CM^-1|-REF---|
+     5957.56          Si II E1 3s2.4p-3s2.5s 2Po-2S  1/2 - 1/2 4.31E+07     3 81191.34 - 97972.09 ASD
+     5978.93          Si II E1 3s2.4p-3s2.5s 2Po-2S  3/2 - 1/2 8.52E+07     3 81251.32 - 97972.09 ASD
+#+end_example
+
+So these are the 5979 and 5958 lines, where the first should be stronger.
+
+The 5958 line is blended with O I 5958.39, which explains why their ratio is not 2!
+
 
 **** DONE Data from Peter's Atomic Line List with energies in wave numbers
 CLOSED: [2019-08-24 Sat 22:12]
