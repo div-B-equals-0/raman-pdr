@@ -1,0 +1,37 @@
+* First submission or Raman paper
+
+** Abstract
+
+*** Latex version
+#+begin_export latex
+  Broad Raman-scattered wings of hydrogen lines can be used to
+  map neutral gas illuminated by high-mass stars in star forming regions.
+  Raman scattering transforms far-ultraviolet starlight
+  from the wings of the \lyb{} line (\SI{1022}{\angstrom} to \SI{1029}{\angstrom})
+  to red visual light in the wings of the \ha{} line
+  (\SI{6400}{\angstrom} to \SI{6700}{\angstrom}).
+  Analysis of spatially resolved spectra of the Orion Bar and other regions
+  in the Orion Nebula shows that this process occurs in
+  the neutral photo-dissociation region between the ionization front and dissociation front.
+  The inner Raman wings are optically thick and allow the neutral hydrogen density
+  to be determined, implying  \(n(\chem{H^0}) \approx \SI{e5}{cm^{-3}}\) for the Orion Bar.
+  Far-ultraviolet resonance lines of neutral oxygen imprint their absorption
+  onto the stellar continuum as it passes through the ionization front,
+  producing characteristic absorption lines
+  at \SI{6633}{\angstrom} and \SI{6664}{\angstrom} with widths of order \SI{2}{\angstrom}.
+  This is a unique signature of Raman scattering, which allows it
+  to be easily distinguished from other processes that might produce broad \ha{} wings,
+  such as electron scattering or high-velocity outflows.
+#+end_export
+
+*** Plain text version
+#+begin_example
+  Broad Raman-scattered wings of hydrogen lines can be used to map neutral gas illuminated by high-mass stars in star forming regions.  Raman scattering transforms far-ultraviolet starlight from the wings of the Lyman β line (1022 Å to 1029 Å) to red visual light in the wings of the Hɑ line (6400 Å to 6700 Å).  Analysis of spatially resolved spectra of the Orion Bar and other regions in the Orion Nebula shows that this process occurs in the neutral photo-dissociation region between the ionization front and dissociation front.  The inner Raman wings are optically thick and allow the neutral hydrogen density to be determined, implying n(H0) ~= 100,000 per cubic cm for the Orion Bar.  Far-ultraviolet resonance lines of neutral oxygen imprint their absorption onto the stellar continuum as it passes through the ionization front, producing characteristic absorption lines at 6633 Å and 6664 Å with widths of order 2 Å.  This is a unique signature of Raman scattering, which allows it to be easily distinguished from other processes that might produce broad Hɑ wings, such as electron scattering or high-velocity outflows.
+#+end_example
+
+
+
+** Figures
++ Initially it is too large (13 MB) - need to slim down some figures
++ Now down to 6MB after turning two figures to jpg
+  + These have a ~-lores~ suffix, although they are plenty high enough resolution really

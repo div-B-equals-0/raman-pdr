@@ -80,8 +80,8 @@
   
 
 
-\title[Raman mapping of Orion PDRs]
-{Raman mapping of photodissociation regions in the Orion Nebula}
+\title[Raman mapping of PDRs]
+{Raman mapping of photodissociation regions}
 
 \author[Henney]{
   William J. Henney\thanks{w.henney@irya.unam.mx}\\
@@ -109,19 +109,30 @@
 % Raman scattering is a non-resonant, inelastic scattering by the damping wings of atomic and molecular absorption lines. It is the inelastic analog of Rayleigh scattering.  The broad Raman-scattered wings of the optical H alpha line can be used to map neutral gas that is illuminated by high-mass stars in star forming regions.  The scattering occurs in the photodissociation region (PDR) that surrounds the ionized H II region. Using MUSE observations of the Orion Nebula, I show how this process gives a new diagnostic window into the outer layers of PDRs such as the Orion Bar and Orion South.  I also show that hitherto misterious spatially diffuse absorption features at 6633 and 6664 Angstrom are actually far-ultraviolet neutral oxygen absorption lines (1027.43, 1028.16 A), which have been Raman-scattered into the optical range.  I show examples of how a spectrograph's effective spectral resolution is boosted when observing these Raman-scattered lines, achieving R > 3e5 with Keck HIRES.
 
 \begin{abstract}
-  I show that the broad Raman-scattered wings of H\(\alpha\) can be used to
-  map neutral gas illuminated by high-mass stars in star forming
-  regions. The near wings
-  (\(\Delta\lambda \approx \pm \SI{10}{\angstrom}\)) trace neutral hydrogen columns of
-  about \SI{5e20}{cm^{-2}}, while the farther wings
-  (\(|\Delta\lambda| > \SI{30}{\angstrom}\)) trace columns of about
-  \SI{5e21}{cm^{-2}}. Absorption features in the pseudo-continuum at
-  6633 and 6664~\AA{} correspond to neutral oxygen far-ultraviolet
-  absorption lines at \SIlist{1027.43;1028.16}{\angstrom}.
-  I apply this technique 
+  Broad Raman-scattered wings of hydrogen lines can be used to
+  map neutral gas illuminated by high-mass stars in star forming regions.
+  Raman scattering transforms far-ultraviolet starlight
+  from the wings of the \lyb{} line (\SI{1022}{\angstrom} to \SI{1029}{\angstrom})
+  to red visual light in the wings of the \ha{} line
+  (\SI{6400}{\angstrom} to \SI{6700}{\angstrom}).
+  Analysis of spatially resolved spectra of the Orion Bar and other regions
+  in the Orion Nebula shows that this process occurs in
+  the neutral photo-dissociation region between the ionization front and dissociation front.
+  The inner Raman wings are optically thick and allow the neutral hydrogen density
+  to be determined, implying  \(n(\chem{H^0}) \approx \SI{e5}{cm^{-3}}\) for the Orion Bar.
+  Far-ultraviolet resonance lines of neutral oxygen imprint their absorption
+  onto the stellar continuum as it passes through the ionization front,
+  producing characteristic absorption lines
+  at \SI{6633}{\angstrom} and \SI{6664}{\angstrom} with widths of order \SI{2}{\angstrom}.
+  This is a unique signature of Raman scattering, which allows it
+  to be easily distinguished from other processes that might produce broad \ha{} wings,
+  such as electron scattering or high-velocity outflows.
 \end{abstract}
 \begin{keywords}
-  Atomic physics -- Radiative transfer -- Photodissociation regions
+  Atomic physics
+  -- ISM: individual objects (Orion Nebula)
+  -- Photodissociation regions
+  -- Radiative transfer
 \end{keywords}
 %\facilities{VLT:Yepun (MUSE); OANSPM:2.1m (Mezcal); Keck (HIRES)}
 %\object{M42}
@@ -191,21 +202,31 @@ scattering will occur there instead, so long as there is sufficient
 far ultraviolet radiative flux.
 
 This paper is organized as follows.
-\S~\ref{sec:muse-spectr-mapp} presents archival VLT-MUSE
-integral field spectroscopy of the Orion Nebula, which allows the
-broad H\(\alpha\) wings to be spatially mapped in unprecedented detail and
-compared with other tracers of ionized and neutral zones in the
-nebula.  Two components of the \ion{O}{1} UV resonance multiplet
+Section~\ref{sec:muse-spectr-mapp} presents archival VLT-MUSE
+integral field spectroscopy of the Orion Nebula.
+Spectra of the broad H\(\alpha\) wings are extracted for key areas of the nebula
+(section~\ref{sec:raman-scattered-ha}).
+Two components of the \ion{O}{1} UV resonance multiplet
 \(\Term{2s 2p^4}{3}{P} \to \Term{2s 2p^3 3d}{3}{D^o}\) are detected as absorption
 features at \num{6633} and \SI{6664}{\angstrom} against the \ha{}
-Raman wings.  \S~\ref{sec:keck-observations} presents archival
+Raman wings (section~\ref{sec:raman-scattered-fuv}).
+Three wavelength bands are defined in each of the red and blue wings
+that avoid contaminating emission and absorption features (section~\ref{sec:defin-observ-bands}).
+The emission bands are spatially mapped and compared with
+other tracers of ionized and neutral zones in the nebula
+(section~\ref{sec:spat-mapp-raman}).
+Particular attention is paid to the edge-on photodissociation region at the Orion Bar
+(section~\ref{sec:emiss-prof-across}).
+Equivalent widths of the Raman-scattered absorption lines are compared with
+the distribution of other absorption features in the nebula
+(section~\ref{sec:equiv-widths-absorpt}).
+Section~\ref{sec:keck-observations} presents archival
 Keck-HIRES slit spectroscopy, which shows the profile of the
 \SI{6664}{\angstrom} absorption line with an effective velocity
-resolution of \SI{1}{km.s^{-1}}.  \S~\ref{sec:discussion} discusses
-the implications of these results for the structure and dynamics of
-the PDRs in Orion, together with the prospects for using Raman
-spectral mapping as a diagnostic tool in the study of other high-mass
-star formation regions.
+resolution of \SI{1}{km.s^{-1}}.
+Section~\ref{sec:discussion} discusses
+the implications of these results for the structure of
+the PDRs in Orion.
 An appendix 
 recapitulates the basic theory of Raman scattering, concentrating on
 the wavelength transformation from the FUV domain around \lyb{} to
@@ -219,7 +240,7 @@ ratio.
 \label{sec:muse-spectr-mapp}
 \begin{figure}
   \centering
-  \includegraphics[width=\linewidth]{figs/raman-fov-regions}
+  \includegraphics[width=\linewidth]{figs/raman-fov-regions-lores}
   \caption{(a)~Panoramic view of the Orion Nebula region on parsec
     scales.  Red channel of background image shows \chem{^{18}CO}
     emission from dense molecular gas \citetext{Carma-NRO Orion
@@ -1073,7 +1094,7 @@ since it overlaps with telluric \chem{O_2} \(\gamma\)-band absorption
 \label{sec:keck-observations}
 
 \begin{figure}
-  \includegraphics[width=\linewidth]{figs/raman-zoom-keck-regions}
+  \includegraphics[width=\linewidth]{figs/raman-zoom-keck-regions-lores}
   \caption{Zoom on Trapezium and Orion South region, showing the locations
     of extracted Keck spectra (red boxes).
     The background color composite image shows \textit{HST} WFPC2 observations
@@ -1296,7 +1317,7 @@ of luminosity \(L_\lambda^*(\lambda_1)\) at a distance \(R\), then for step~1 we
 \end{equation}
 where \(\tau_1\) is the FUV optical depth between the point and the star:
 \begin{equation}
-  \label{eq:tau-visual}
+  \label{eq:tau-fuv}
   \tau_1 = \int_0^R k_{\text{total}} (\lambda_1) \, dR'.
 \end{equation}
 The total FUV extinction coefficient can be written as a sum
@@ -1528,9 +1549,25 @@ A systematic uncertainty of 10\% of the width of each emission peak is
 assigned to the \(x_0\) values, which has the largest relative impact
 on the near-wing bands: B033 and R040.  As a result, it is the B054
 and R058 bands that are the most reliable indicators, yielding
-\(n(\chem{H^0}) = \SI{8.5e4}{cm^{-3}}\) (dotted line).  The bands in the farther
-wings fall below this curve, significantly so for B133 and R136.
+\(n(\chem{H^0}) = \SI{8.5e4}{cm^{-3}}\) (dotted line).
+This density is similar to that derived from the ratio of intensities
+of far-infrared [\ion{C}{2}] \SI{158}{\micro m} and [\ion{O}{1}] \SI{145}{\micro m}
+emission lines \citep{Bernard-Salas:2012a},
+which trace slightly deeper layers of the PDR
+(see Figure~\ref{fig:raman-bar-profile} and Table~\ref{tab:bar-profile-peaks}).
+Densities derived from molecular hydrogen emission lines show a great deal of variation:
+\citet{Luhman:1998a} find densities of \SI{e5}{cm^{-3}} to \SI{e6}{cm^-3},
+whereas \citet{Kaplan:2017a} favor densities lower than \SI{e4}{cm^{-3}}.
+It has been proposed that the Orion Bar PDR is highly inhomogeneous and clumpy
+\citep{Burton:1990a}, but there is little evidence of clumpiness in the distribution
+of Raman-scattered emission (Figure~\ref{fig:raman-maps}),
+nor in the mid-infrared PAH and dust emission \citep{Salgado:2012a}.
+This suggests that the shallow regions of the PDR,
+with column densities up to \SI{e21}{cm^{-2}},
+are relatively smooth.
 
+The displacements of bands in the farther
+wings fall below the predicted curve, significantly so for B133 and R136.
 This is an indication that the farther bands may be optically thin instead of optically thick,
 with the transition occurring near the wavelength of the B080 and R087 bands.
 It is interesting that this is the same conclusion that is suggested
@@ -1544,14 +1581,19 @@ In this scenario, the implication would be that \(\sigma_{\text{dust}} \approx \
 It is difficult to discriminate between these two possibilities,
 especially since the dust opacity probably plays a role in \emph{determining}
 the size of the \chem{H^0} column via the position of
-the molecular hydrogen dissociation front.
-
+the molecular hydrogen dissociation front \citep{Draine:1996a}.
+The FUV dust absorption cross section implied by the Raman scattering is
+within the range predicted for dense clouds \citep{Cardelli:1989a},
+although \citet{Salgado:2016a} find that a lower value of
+\(\sigma_{\text{dust}} \approx \SI{1.6e-22}{cm^2.H^{-1}}\) better reproduces the
+distribution of PAH emission in the Orion Bar.
+More detailed radiative transfer modeling is required to resolve the issue.
 
 \subsection{Absorption features in the Raman pseudo-continuum}
 \label{sec:absorpt-feat-raman}
 
 The absorption lines seen in the Raman-scattered wings
-are at visual-band STP wavelengths of \(\lambda_2 = 6633\) and \SI{6664}{\angstrom},
+are at STP visual-band wavelengths of \(\lambda_2 = 6633\) and \SI{6664}{\angstrom},
 which correspond to vacuum FUV wavelengths of \(\lambda_1 = 1027\) and \SI{1028}{\angstrom}.
 In Appendix~\ref{sec:raman-theory} it is shown that these can be identified as
 resonant transitions from the ground state of atomic oxygen:
@@ -1576,13 +1618,13 @@ or to the \Term{3p}{3}{P} level with branching ratio 27.5\% via emission of a ne
 From \Term{3p}{3}{P}, the only option is decay to \Term{3s}{3}{S^o}
 via emission of \SI{8446}{\angstrom} and then back to ground
 via emission of \SI{1304}{\angstrom}.
-
 The spatial distribution of the \SI{8446}{\angstrom} emission line
 (see Figures~\ref{fig:raman-maps}c and~\ref{fig:raman-bar-profile}c)
 should therefore trace the location of the FUV \ion{O}{1} absorption.%
 \footnote{
   The \Term{3p}{3}{P} level can also be populated via cascades that originate
-  from pumping of the \(n \mathrm{s}, n \mathrm{p}, n \mathrm{d}\) levels with \(n \ge 4\).
+  from pumping of the \(n \mathrm{s}\), \(n \mathrm{p}\), or \(n \mathrm{d}\)
+  levels with \(n \ge 4\).
   Summing the intensities (in photon units) of all the shorter wavelength \ion{O}{1}
   fluorescent lines that I can find from the observations of
   \citet{Baldwin:2000a} and \citet{Esteban:2004a} and comparing with \SI{8446}{\angstrom}
@@ -1590,8 +1632,8 @@ should therefore trace the location of the FUV \ion{O}{1} absorption.%
   or \Term{4s}{3}{S^o}.  Given that the \SI{1.129}{\micro m} is slightly weaker than
   \SI{1.316}{\micro m} \citep{Walmsley:2000a},
   this means that about 25\% of the \SI{8446}{\angstrom} emission is caused by
-  absorption of the UV~4 multiplet.
-}
+  absorption of the UV~4 multiplet.}
+
 It was shown in the section~\ref{sec:muse-spectr-mapp},
 that this fluorescent emission arises very close to the ionization front in all cases
 and tends to be arranged into filamentary structures that criss-cross the nebula
@@ -1630,7 +1672,7 @@ Taking the ratio of these, one obtains
 which is an equivalent width normalized to only the Raman pseudo-continuum itself,
 rather than the full nebular continuum.
 This is roughly constant across the nebula at
-\(W_\lambda^{\text{Raman}}(6633) = \SI{2.2 \pm 1.0}{\AA}\)
+\(W_\lambda^{\text{Raman}}(6633) = \SI{2.2 \pm 1.0}{\angstrom}\)
 (see Figure~\ref{fig:6633-Rwing}).
 The equivalent width of the FUV absorption line is then smaller than
 \(W_\lambda^{\text{Raman}}(6633)\) by a factor of
@@ -1718,12 +1760,11 @@ from the high-resolution Keck spectra (Table~\ref{tab:line-fits}).
 \subsubsection{The failure of rival explanations for the 6633, 6664~\AA{} lines}
 \label{sec:rival-expl-6633}
 
-In this paper, I provide a strong case for identifying the
-absorption features at \num{6633} and \SI{6664}{\angstrom} with
-Raman-scattered FUV \ion{O}{1} absorption lines
-(see Appendix~\ref{sec:raman-theory}).
-However, it is important to thoroughly investigate potential competing explanations,
-if only to rule them out.
+However strong the case for identifying the absorption features at
+\num{6633} and \SI{6664}{\angstrom} with Raman-scattered FUV
+\ion{O}{1} absorption lines, it is nonetheless important to thoroughly
+investigate potential competing explanations, if only to rule them
+out.
 
 \paragraph*{Why they cannot be dust-scattered stellar absorption lines}
 \label{sec:cannot-be-stellar}
@@ -1895,7 +1936,8 @@ are a useful diagnostic of the interaction of far-ultraviolet radiation with
 atomic hydrogen in the environs of high-mass stars.
 The principal conclusions of this study are:
 \begin{enumerate}[1.]
-\item Hydrogen Raman scattering occurs in the neutral photo-dissociation region (PDR),
+\item Hydrogen Raman scattering of starlight from \lyb{} to \ha{} wings
+  occurs in the neutral photo-dissociation region (PDR),
   located between the hydrogen ionization front and dissociation front.  
 \item The inner Raman wings (\(|\delta \lambda | < \SI{80}{\angstrom}\)) of \ha{}
   are optically thick and allow
@@ -1910,10 +1952,17 @@ The principal conclusions of this study are:
   \SI{5e22}{cm^{2}.H^{-1}}.
 \item Far-ultraviolet resonance lines of neutral oxygen imprint their absorption
   onto the stellar continuum as it passes through the ionization front.
-  The subsequent Raman scattering of this continuum yields absorption features
+  The subsequent Raman scattering of this continuum yields absorption lines
   in the red \ha{} wing
   at transformed wavelengths of \SI{6633}{\angstrom} and \SI{6664}{\angstrom}.
-\item The ``magnification'' of Doppler velocity scales by the Raman scattering process
+  This is a unique signature of Raman scattering, which allows it
+  to be easily distinguished from other processes that might produce broad \ha{} wings,
+  such as electron scattering or high-velocity outflows.
+\item
+  The widths of the Raman-scattered absorption lines are of order \SI{2}{\AA},
+  which would correspond to a velocity width of \SI{100}{km.s^{-1}} in the visual band,
+  but only \SI{15}{km.s^{-1}} in the FUV band where the lines were formed.
+  This ``magnification'' of Doppler velocity scales by the Raman scattering process
   allows spectrographs to operate at a \(6.4\) times higher effective spectral resolution,
   but observations with better signal-to-noise 
   than are currently available are required in order to take full advantage of this.

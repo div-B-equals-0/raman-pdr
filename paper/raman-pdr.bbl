@@ -25,8 +25,9 @@
 
 \bibitem[\protect\citeauthoryear{{Abel}, {Ferland}  \& {O'Dell}}{{Abel}
   et~al.}{2019}]{Abel:2019a}
-{Abel} N.~P.,  {Ferland} G.~J.,   {O'Dell} C.~R.,  2019, arXiv e-prints, \href
-  {https://ui.adsabs.harvard.edu/abs/2019arXiv190607779A} {p. arXiv:1906.07779}
+{Abel} N.~P.,  {Ferland} G.~J.,   {O'Dell} C.~R.,  2019, \mn@doi [\apj]
+  {10.3847/1538-4357/ab2a6e}, \href
+  {https://ui.adsabs.harvard.edu/abs/2019ApJ...881..130A} {881, 130}
 
 \bibitem[\protect\citeauthoryear{{Arab}, {Abergel}, {Habart}, {Bernard-Salas},
   {Ayasso}, {Dassas}, {Martin}  \& {White}}{{Arab} et~al.}{2012}]{Arab:2012a}
@@ -86,6 +87,18 @@
   T.~R.,   {Witteborn} F.~C.,  1989, \mn@doi [\apj] {10.1086/167844}, \href
   {https://ui.adsabs.harvard.edu/abs/1989ApJ...344..791B} {344, 791}
 
+\bibitem[\protect\citeauthoryear{{Burton}, {Hollenbach}  \& {Tielens}}{{Burton}
+  et~al.}{1990}]{Burton:1990a}
+{Burton} M.~G.,  {Hollenbach} D.~J.,   {Tielens} A.~G.~G.~M.,  1990, \mn@doi
+  [\apj] {10.1086/169516}, \href
+  {https://ui.adsabs.harvard.edu/abs/1990ApJ...365..620B} {365, 620}
+
+\bibitem[\protect\citeauthoryear{{Cardelli}, {Clayton}  \& {Mathis}}{{Cardelli}
+  et~al.}{1989}]{Cardelli:1989a}
+{Cardelli} J.~A.,  {Clayton} G.~C.,   {Mathis} J.~S.,  1989, \mn@doi [\apj]
+  {10.1086/167900}, \href {http://adsabs.harvard.edu/abs/1989ApJ...345..245C}
+  {345, 245}
+
 \bibitem[\protect\citeauthoryear{{Cesarsky}, {Jones}, {Lequeux}  \&
   {Verstraete}}{{Cesarsky} et~al.}{2000}]{Cesarsky:2000a}
 {Cesarsky} D.,  {Jones} A.~P.,  {Lequeux} J.,   {Verstraete} L.,  2000, \aap,
@@ -141,6 +154,11 @@
 {Dopita} M.~A.,  {Nicholls} D.~C.,  {Sutherland } R.~S.,  {Kewley} L.~J.,
   {Groves} B.~A.,  2016, \mn@doi [\apjl] {10.3847/2041-8205/824/1/L13}, \href
   {https://ui.adsabs.harvard.edu/abs/2016ApJ...824L..13D} {824, L13}
+
+\bibitem[\protect\citeauthoryear{{Draine} \& {Bertoldi}}{{Draine} \&
+  {Bertoldi}}{1996}]{Draine:1996a}
+{Draine} B.~T.,  {Bertoldi} F.,  1996, \mn@doi [\apj] {10.1086/177689}, \href
+  {http://adsabs.harvard.edu/abs/1996ApJ...468..269D} {468, 269}
 
 \bibitem[\protect\citeauthoryear{{Escalante}, {Sternberg}  \&
   {Dalgarno}}{{Escalante} et~al.}{1991}]{Escalante:1991a}
@@ -253,6 +271,11 @@
 {Joye} W.~A.,  {Mandel} E.,  2003, in {Payne} H.~E.,  {Jedrzejewski} R.~I.,
   {Hook} R.~N.,  eds,  Astronomical Society of the Pacific Conference Series
   Vol. 295, Astronomical Data Analysis Software and Systems XII. p.~489
+
+\bibitem[\protect\citeauthoryear{{Kaplan} et~al.,}{{Kaplan}
+  et~al.}{2017}]{Kaplan:2017a}
+{Kaplan} K.~F.,  et~al., 2017, \mn@doi [\apj] {10.3847/1538-4357/aa5b9f}, \href
+  {https://ui.adsabs.harvard.edu/abs/2017ApJ...838..152K} {838, 152}
 
 \bibitem[\protect\citeauthoryear{{Kassis}, {Adams}, {Campbell}, {Deutsch},
   {Hora}, {Jackson}  \& {Tollestrup}}{{Kassis} et~al.}{2006}]{Kassis:2006a}
@@ -443,6 +466,17 @@ Sausalito, CA: University Science Books
 {Parikka} A.,  {Habart} E.,  {Bernard-Salas} J.,  {Köhler} M.,   {Abergel} A.,
    2018, \mn@doi [\aap] {10.1051/0004-6361/201731975}, \href
   {https://ui.adsabs.harvard.edu/abs/2018A&A...617A..77P} {617, A77}
+
+\bibitem[\protect\citeauthoryear{{Salgado} et~al.,}{{Salgado}
+  et~al.}{2012}]{Salgado:2012a}
+{Salgado} F.,  et~al., 2012, \mn@doi [\apjl] {10.1088/2041-8205/749/2/L21},
+  \href {http://adsabs.harvard.edu/abs/2012ApJ...749L..21S} {749, L21}
+
+\bibitem[\protect\citeauthoryear{{Salgado}, {Berné}, {Adams}, {Herter},
+  {Keller}  \& {Tielens}}{{Salgado} et~al.}{2016}]{Salgado:2016a}
+{Salgado} F.,  {Berné} O.,  {Adams} J.~D.,  {Herter} T.~L.,  {Keller} L.~D.,
+  {Tielens} A.~G.~G.~M.,  2016, \mn@doi [\apj] {10.3847/0004-637X/830/2/118},
+  \href {http://adsabs.harvard.edu/abs/2016ApJ...830..118S} {830, 118}
 
 \bibitem[\protect\citeauthoryear{{Schmid}}{{Schmid}}{1989}]{Schmid:1989a}
 {Schmid} H.~M.,  1989, \aap, \href
