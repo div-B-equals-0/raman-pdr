@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  27 DEC 2020 15:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  28 DEC 2020 12:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1600,15 +1600,11 @@ l.1509
 l.1509 
         <./figs/raman-muse-spectra-compensated.pdf> <./figs/raman-band-displace
 ments-plot.pdf>] [15] [16]
-
-LaTeX Warning: Command \r invalid in math mode on input line 1962.
-
-Missing character: There is no Å in font ntx-Regular-tlf-ot1!
 LaTeX Info: Redefining \. on input line 1982.
 LaTeX Info: Redefining \% on input line 1982.
 LaTeX Info: Redefining \. on input line 1986.
 LaTeX Info: Redefining \% on input line 1986.
-(./raman-pdr.bbl [17]
+ (./raman-pdr.bbl [17]
 Underfull \vbox (badness 2111) has occurred while \output is active []
 
 
@@ -1674,7 +1670,7 @@ ve/2019/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2019/
 texmf-dist/fonts/type1/public/txfonts/txmia.pfb></usr/local/texlive/2019/texmf-
 dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on raman-pdr.pdf (19 pages, 5302529 bytes).
+Output written on raman-pdr.pdf (19 pages, 5302521 bytes).
 PDF statistics:
  1965 PDF objects out of 2073 (max. 8388607)
  1386 compressed objects within 14 object streams
