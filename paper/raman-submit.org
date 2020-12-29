@@ -1,3 +1,107 @@
+
+* Publicity
+
+** TODO astro-ph
++ Do I need to make a new version?
+  + Yes
+*** Gather only needed figures
+#+begin_src sh :dir .
+  grep 'Graphic file' raman-pdr.log | cut -d ' ' -f2 |xargs du -sk |sort -nr
+#+end_src
+
+#+RESULTS:
+| 1808 | figs/raman-rgb-4-panel.pdf               |
+|  972 | figs/raman-multi-absorption-features.jpg |
+|  928 | figs/raman-fov-regions-lores.jpg         |
+|  512 | figs/raman-zoom-keck-regions-lores.jpg   |
+|  244 | figs/raman-bar-multi-profile-4part.pdf   |
+|  136 | figs/raman-orion-muse-1d-spectra.pdf     |
+|  116 | figs/raman-cartoon.pdf                   |
+|   68 | figs/raman-muse-spectra-compensated.pdf  |
+|   64 | figs/raman-scatter-cloud-schematic.pdf   |
+|   48 | figs/order51-absorption-by-group.pdf     |
+|   32 | figs/correlation-6633-Rwing.pdf          |
+|   24 | figs/raman-band-displacements-plot.pdf   |
+|   24 | figs/correlation-DIB-reddening.pdf       |
+
+
+#+begin_src sh :results verbatim
+  mkdir -p astro-ph/figs
+  FILES="raman-rgb-4-panel.pdf
+  raman-multi-absorption-features.jpg raman-fov-regions-lores.jpg
+  raman-zoom-keck-regions-lores.jpg raman-bar-multi-profile-4part.pdf
+  raman-orion-muse-1d-spectra.pdf raman-cartoon.pdf
+  raman-muse-spectra-compensated.pdf raman-scatter-cloud-schematic.pdf
+  order51-absorption-by-group.pdf correlation-6633-Rwing.pdf
+  raman-band-displacements-plot.pdf correlation-DIB-reddening.pdf"
+  for f in $FILES; do
+      cp -v figs/$f astro-ph/figs
+  done
+  cp -v raman-pdr.tex astro-ph
+#+end_src
+
+#+RESULTS:
+#+begin_example
+figs/raman-rgb-4-panel.pdf -> astro-ph/figs/raman-rgb-4-panel.pdf
+figs/raman-multi-absorption-features.jpg -> astro-ph/figs/raman-multi-absorption-features.jpg
+figs/raman-fov-regions-lores.jpg -> astro-ph/figs/raman-fov-regions-lores.jpg
+figs/raman-zoom-keck-regions-lores.jpg -> astro-ph/figs/raman-zoom-keck-regions-lores.jpg
+figs/raman-bar-multi-profile-4part.pdf -> astro-ph/figs/raman-bar-multi-profile-4part.pdf
+figs/raman-orion-muse-1d-spectra.pdf -> astro-ph/figs/raman-orion-muse-1d-spectra.pdf
+figs/raman-cartoon.pdf -> astro-ph/figs/raman-cartoon.pdf
+figs/raman-muse-spectra-compensated.pdf -> astro-ph/figs/raman-muse-spectra-compensated.pdf
+figs/raman-scatter-cloud-schematic.pdf -> astro-ph/figs/raman-scatter-cloud-schematic.pdf
+figs/order51-absorption-by-group.pdf -> astro-ph/figs/order51-absorption-by-group.pdf
+figs/correlation-6633-Rwing.pdf -> astro-ph/figs/correlation-6633-Rwing.pdf
+figs/raman-band-displacements-plot.pdf -> astro-ph/figs/raman-band-displacements-plot.pdf
+figs/correlation-DIB-reddening.pdf -> astro-ph/figs/correlation-DIB-reddening.pdf
+raman-pdr.tex -> astro-ph/raman-pdr.tex
+#+end_example
+
+*** Get only the needed references in a bib file
+
+  #+begin_src sh :results verbatim
+    bibexport -o astro-ph/raman-refs.bib raman-pdr
+  #+end_src
+
+  #+RESULTS:
+  : This is BibTeX, Version 0.99d (TeX Live 2019)
+  : The top-level auxiliary file: bibexp.1609189602.aux
+  : The style file: export.bst
+  : Database file #1: BibdeskLibrary.bib
+
+  + Now I edit [[file:astro-ph/raman-pdr.tex]] to use the raman-refs.bib file
+*** Test compilation of astro-ph version
+#+begin_src sh :dir astro-ph :results verbatim
+  latexmk -pdf -silent raman-pdr
+  latexmk -c raman-pdr
+#+end_src
+*** Make a tar ball for submission
+#+begin_src sh
+  tar czf raman-pdr-astro-ph.tgz astro-ph
+#+end_src
+
+#+RESULTS:
+
+** TODO Email people
+
+*** DONE Bob, Gary Manuel
+CLOSED: [2020-12-28 Mon 13:54]
+*** DONE David Nicholls
+CLOSED: [2020-12-28 Mon 13:54]
+*** DONE Grazyna
+CLOSED: [2020-12-28 Mon 14:03]
+*** DONE Mabel
+CLOSED: [2020-12-28 Mon 14:10]
+*** DONE Michael, Beto, Tere
+CLOSED: [2020-12-28 Mon 14:07]
+*** DONE Christophe and Vladimir
+CLOSED: [2020-12-28 Mon 14:15]
+*** DONE Tenerife people
+CLOSED: [2020-12-28 Mon 14:18]
+*** Ana Mac Leod, Adam Ginsburg
+*** Nick Abel
+
 * First submission or Raman paper
 
 ** Abstract
@@ -35,3 +139,5 @@
 + Initially it is too large (13 MB) - need to slim down some figures
 + Now down to 6MB after turning two figures to jpg
   + These have a ~-lores~ suffix, although they are plenty high enough resolution really
+
+
