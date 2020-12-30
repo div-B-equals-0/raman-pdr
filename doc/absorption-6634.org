@@ -7,6 +7,39 @@
 #+select_tags: export
 #+exclude_tags: noexport
 
+
+* New things to check out in 2021
+
+** H beta Raman scattering
++ This is clearly seen in the Orion and Tarantula spectra
++ There is an absorption line at 4849 and 4841, also possibly 4854 and on the other side 4870
+  + Look at the Manu spectra for these
+  + The difficulty here is a pair of [Fe II] emission lines at 4843 and 4873, which might be partially confusing things
+  + However, I think that at least the 4849 and 4841 absorptions are real
+  + Also the Manu green band has worryingly broad wings on the [O III] lines, so there may be some instrumental thing going on there
+  + Maybe look at the Adal blue spectra
+    + These do show it, but they are noisy and there is a weird set of ghosts that are periodically spaced around the bright lines
+    + It should be possible to correct for those however
+
+
+** Tarantula observations
+
++ These show the Ha line wings and the 6633 absorption at 6638 -> 230 km/s, which is about right for LMC
++ They also show an absorption at 6620 that looks like a DIB 6614 maybe
+
+
+** New M17 MUSE observations
++ [2020-12-30 Wed] I have downloaded a sample cube
++ A bit disappointing - no sign of Raman wings
++ And no sign of 6633 absorption, except for a star
++ The O I 8446 line looks good though
+  + Although it is weak and blended with another line
+  + The [N I] lines are not seen at all
+
+
+** Learn to use MPDAF
++ https://mpdaf.readthedocs.io/en/latest/index.html
++ Presumably, this will make various things about MUSE easier
 * Absorption at 6634 \AA in Orion Nebula
 + [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
 
