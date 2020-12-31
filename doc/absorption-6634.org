@@ -10,6 +10,26 @@
 
 * New things to check out in 2021
 
+
+** The surface brightness problem
++ One reason I see nothing much in the other H II regions from MUSE is that the surface brightness is too low
++ So we need to find regions with comparable surface brightness to Orion, so that we get a good enough signal for the Raman scattering
++ The MUSE units are 1e-20 erg/s/cm^2/AA (possibly per pixel)
++ In these units, typical brightnesses are
+  | Region         | Wav       | Bright | t_exp | B x t |
+  |----------------+-----------+--------+-------+-------|
+  | Orion S        | cont 5000 |   7000 |   100 |     1 |
+  | Orion Bar      | cont 5000 |   3000 |   100 | 0.429 |
+  | Tr 14 field 21 | cont 6200 |     60 |  2200 | 0.189 |
+  | 30 Dor         | cont 6200 |    250 |  2200 | 0.786 |
+  | M17            | cont 6200 |    100 |  1100 | 0.157 |
+  #+TBLFM: $5=$3 $4 / @2$3 @2$4 ; f3
++ So, 30 Dor isn't particularly bright really
+  + but it does have a long exposure to make up for that
+  + It has a R_wing ratio of order 0.1, same as in Orion (R058 band)
++ The other regions have much smaller R_wing
+
+
 ** H beta Raman scattering
 + This is clearly seen in the Orion and Tarantula spectra
 + There is an absorption line at 4849 and 4841, also possibly 4854 and on the other side 4870
@@ -22,7 +42,7 @@
     + It should be possible to correct for those however
 
 
-** Tarantula observations
+** Tarantula (30 Dor) observations
 
 + These show the Ha line wings and the 6633 absorption at 6638 -> 230 km/s, which is about right for LMC
 + They also show an absorption at 6620 that looks like a DIB 6614 maybe
@@ -34,6 +54,7 @@
   + Turns out that this is in the fully ionized bit - hence no Raman!
   + A bit disappointing - no sign of Raman wings
   + And no sign of 6633 absorption, except for a star
+    + This is probably Fe I absorption, as seen in 159-350 in Orion
   + The O I 8446 line looks good though
     + Although it is weak and blended with another line
     + The [N I] lines are not seen at all
@@ -57,6 +78,25 @@
     + That puts the separation between [C I] and O I as 12 mpc, which is about half the distance in the Orion Bar
     + So either the column density to DF is smaller, or the density is larger
 
+
+** More Carina MUSE data from ridge near Tr 14
++ This looked like the most promising spot in Carina, but I still don't see anything
++ I have two fields, 21 and 22, that go from ionized to molecular
++ But I think the main problem is just that the surface brightness of everything is too low
++ We don't have a high enough G_0 is probably what it is
++ Another thing is that there might be a pair of emission lines that flank the 6633 absorption feature, just to confuse things
+  + Observed wavelengths: 6628.9 and 6636.4
+  + But in Carina:
+    + C II 6461.9 is at 6461.41
+    + Si II 6371.36 is at 6371.41
+    + Si II 6347.11 is at 6347.01
+    + So, very small velocity correction there
+  + *Conclusion*: lines are at 6629.0 and 6636.4 +/- 1 A
+  + There is a [Cr IV] line at 6641, but that doesn't look likely
+  + Also sky lines around there ...
+    + Could well be it, given the strength relative to the 6500 sky line
++ Another strange thing is that we never see much [Ni II]
+  + [Ni II] 6667 / [Ni III] 6400 is about 0.5, as opposed to 1.5 to 2 in Orion
 
 ** Learn to use MPDAF
 + https://mpdaf.readthedocs.io/en/latest/index.html
@@ -1957,6 +1997,40 @@ That was good enough for the maps.  But now do another version at fixed bin size
 
   fits.PrimaryHDU(header=conthdu.header, data=ratio).writeto(
       datadir / "ratio-raman-wing-to-continuum-6634-bin032.fits", overwrite=True)
+#+end_src
+
+#+RESULTS:
+: None
+
+And also make one for Raman / Ha, just for Bob
+
+#+begin_src python
+  import numpy as np
+  from astropy.io import fits
+  from pathlib import Path
+
+  datadir = Path("../data/orion-muse")
+  contfile = "linesum-H_I-6563-bin001.fits"
+  conthdu = fits.open(datadir / contfile)["SCALED"]
+
+  # bands = ["R040", "R058", "R087", ]
+  # bands = ["R040", "R058", "B054"]
+  bands = ["R040", "R058", ]
+  wing_data = np.zeros_like(conthdu.data)
+  for band in bands:
+      band_file = f"muse-hr-data-ha-raman-{band}-cont-sub-multibin-1000.fits"
+      band_data = fits.open(datadir / band_file)[0].data
+      wing_data += band_data
+      wing_data /= len(bands)
+
+  ratio = wing_data / (conthdu.data - wing_data)
+
+  # Mask out areas of weak continuum because noisy
+  mask = conthdu.data < 600.0
+  ratio[mask] = np.nan
+
+  fits.PrimaryHDU(header=conthdu.header, data=ratio).writeto(
+      datadir / "ratio-raman-wing-to-Halpha.fits", overwrite=True)
 #+end_src
 
 #+RESULTS:
