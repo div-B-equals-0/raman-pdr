@@ -30,16 +30,47 @@
 
 ** New M17 MUSE observations
 + [2020-12-30 Wed] I have downloaded a sample cube
-+ A bit disappointing - no sign of Raman wings
-+ And no sign of 6633 absorption, except for a star
-+ The O I 8446 line looks good though
-  + Although it is weak and blended with another line
-  + The [N I] lines are not seen at all
++ First look - Tile 08
+  + Turns out that this is in the fully ionized bit - hence no Raman!
+  + A bit disappointing - no sign of Raman wings
+  + And no sign of 6633 absorption, except for a star
+  + The O I 8446 line looks good though
+    + Although it is weak and blended with another line
+    + The [N I] lines are not seen at all
++ Second look - Tile 03
+  + Still no clear detection of Raman wings or the 6633 absorption line
+    + /However/ I think we can see the wing around 6400 angstrom
+    + Also possibly in Red wing at 6595
+      + Although there is a line at 6590
+  + There is a beautiful clumpy PDR there, that can be seen in
+    + [C I] 8727
+    + O I 8446
+    + [O I] 6300
+    + [O II] 7318
+    + [O III] 5007
+  + The thickness of the PDR, from [O I] to [C I] is about 1.6 arcsec at its broadest, and even less in some places
+  + RGB images
+    + [[file:M17-Tile03-rgb-oi-oii-oiii.png]] Shows the ionized gas: [O I], [O II], [O III]
+    + [[file:M17-Tile03-rgb-ci-oi_f-oi.png]] Shows the PDR: [C I], O I fluorescent, [O I]
+  + Distance to M17 supposedly is 5000 ly = 1500 pc
+    + So 1 arcsec = 1500 au = 7.27 mpc
+    + That puts the separation between [C I] and O I as 12 mpc, which is about half the distance in the Orion Bar
+    + So either the column density to DF is smaller, or the density is larger
 
 
 ** Learn to use MPDAF
 + https://mpdaf.readthedocs.io/en/latest/index.html
 + Presumably, this will make various things about MUSE easier
+
+
+** How Raman wing luminosity varies with nebula parameters
++ If optically thick:
+  + Surface spectral brightness scales with illuminating FUV flux
+    + I_\lambda_2 \propto L_\lambda_1 / 4 \pi R^2
+  + Spectral luminosity just scales with star luminosity
+    + L_\lambda_2 \propto L_\lambda_1
+    + Flux has an extra factor of 1/D^2
+  + When comparing to local continuum
 * Absorption at 6634 \AA in Orion Nebula
 + [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
 
