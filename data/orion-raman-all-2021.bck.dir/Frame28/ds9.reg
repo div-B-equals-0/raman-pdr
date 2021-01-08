@@ -1,0 +1,10 @@
+# Region file format: DS9 version 4.1
+global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
+fk5
+# projection(83.8358377,-5.3997484,83.8467109,-5.4121188,23.804") color=white
+box(83.8399105,-5.4141918,164.371",10.847",322.30389) # color=red text={Bar}
+box(83.8101384,-5.3993004,34.224",10.714",39.454011) # color=red text={Orion S}
+box(83.8117435,-5.3964613,63.378",7.775",43.398217) # color=red text={SW minibar}
+box(83.8152579,-5.3934377,32.808",11.967",50.659968) # color=red text={Trap SW}
+box(83.8120349,-5.3862533,21.536",15.740",3.1220027e-06) # color=red text={Trap W}
+box(83.8148756,-5.3722318,78.666",17.285",10.312959) # color=red text={E-W Bar}

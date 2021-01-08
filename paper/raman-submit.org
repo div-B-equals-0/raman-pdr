@@ -99,7 +99,11 @@ CLOSED: [2020-12-28 Mon 14:07]
 CLOSED: [2020-12-28 Mon 14:15]
 *** DONE Tenerife people
 CLOSED: [2020-12-28 Mon 14:18]
-*** Ana Mac Leod, Adam Ginsburg
+*** DONE Ana Mac Leod
+CLOSED: [2021-01-02 Sat 21:46]
+*** DONE Ana Monreal-Ibero
+CLOSED: [2021-01-02 Sat 21:46]
+*** Adam Ginsburg
 *** Nick Abel
 
 * First submission or Raman paper

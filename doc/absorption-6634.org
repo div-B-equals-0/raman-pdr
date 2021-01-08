@@ -48,6 +48,26 @@
 + They also show an absorption at 6620 that looks like a DIB 6614 maybe
 
 
+** Other LMC regions
+
+*** N44 and N180 in LMC
++ MUSE observations in McLeod:2019a
+  + [ ] I should grab these data
++ Most seem to big and floppy to have much hope for Raman
++ The best bet is probably N44C,
+  + which has an O5 III star in it
+  + with a total Q of nearly 1e50
+  + but it is 7pc across, which means FUV flux on H0 will be low
+
+** SMC N88A
++ This is one of the Dopita objects
++ It has the deepest absorption lines of any of them
++ [ ] Are there any MUSE observations?
++ Testor:2010a have good IR observations
++ Also Ward:2017a
+  + Note especially their Figure B4, which shows the 6633 and 6664 absorption lines!
+  + It also shows am emission line at 6631 (taking into account +200 km/s velocity)
+
 ** New M17 MUSE observations
 + [2020-12-30 Wed] I have downloaded a sample cube
 + First look - Tile 08
@@ -825,6 +845,7 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
   import regions as rg
 
   regions = rg.read_ds9("../data/raman-extract-boxes.reg")
+  regions += rg.read_ds9("../data/raman-faint-boxes.reg")
 
   hdu = fits.open(f"../data/orion-muse/muse-hr-data-{WAVSEC}-rebin16x16-cont-sub.fits")["DATA"]
   chdu = fits.open(f"../data/orion-muse/muse-hr-data-{WAVSEC}-rebin16x16-cont.fits")["DATA"]
@@ -1046,6 +1067,141 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
 #+RESULTS:
 [[file:raman-orion-muse-1d-spectra.pdf]]
 
+
+
+**** DONE Make files for Bob
+CLOSED: [2021-01-04 Mon 20:40]
+#+begin_src python :results output list
+  import numpy as np
+  import json
+  from astropy.io import fits
+  from astropy.wcs import WCS
+
+
+  jsonfile = "raman-orion-muse-1d-spectra-wavsec23.json"
+  all_data = json.load(open(jsonfile))
+
+
+  for i, [region, data] in enumerate(all_data.items()):
+      s_region = f"{i:02d}_{region.replace(' ', '_')}"
+
+      wavs = data["wavelength"]
+      line = data["raman"]
+      cont = data["continuum"]
+
+      wav0 = wavs[0]
+      dwav = wavs[1] - wavs[0]
+
+      w = WCS(naxis=1)
+      w.wcs.cdelt = [np.round(dwav, 6)]
+      w.wcs.crpix = [0]
+      w.wcs.crval = [np.round(wav0, 6)]
+      w.wcs.ctype = ["LINEAR"]
+
+      fname = f"orion_raman_line_{s_region}.fits"
+      print(fname)
+      fits.PrimaryHDU(
+          header=w.to_header(),
+          data=line,
+      ).writeto(fname, overwrite=True,)
+
+      fname = f"orion_raman_cont_{s_region}.fits"
+      fits.PrimaryHDU(
+          header=w.to_header(),
+          data=cont,
+      ).writeto(fname, overwrite=True,)
+
+
+#+end_src
+
+#+RESULTS:
+: - orion_raman_line_00_Bar.fits
+: - orion_raman_line_01_Orion_S.fits
+: - orion_raman_line_02_SW_minibar.fits
+: - orion_raman_line_03_Trap_SW.fits
+: - orion_raman_line_04_Trap_W.fits
+: - orion_raman_line_05_E-W_Bar.fits
+: - orion_raman_line_06_HH_202.fits
+: - orion_raman_line_07_Big_Arc.fits
+: - orion_raman_line_08_HH_528.fits
+
+Make a zip file for Bob
+
+#+begin_src sh :results verbatim
+zip orion_raman_1d_spectra_for_bob.zip orion_raman_*.fits
+#+end_src
+
+#+RESULTS:
+#+begin_example
+updating: orion_raman_cont_00_Bar.fits (deflated 27%)
+updating: orion_raman_cont_01_Orion_S.fits (deflated 31%)
+updating: orion_raman_cont_02_SW_minibar.fits (deflated 29%)
+updating: orion_raman_cont_03_Trap_SW.fits (deflated 30%)
+updating: orion_raman_cont_04_Trap_W.fits (deflated 30%)
+updating: orion_raman_cont_05_E-W_Bar.fits (deflated 29%)
+updating: orion_raman_cont_06_HH_202.fits (deflated 29%)
+updating: orion_raman_cont_07_Big_Arc.fits (deflated 30%)
+updating: orion_raman_cont_08_HH_528.fits (deflated 30%)
+updating: orion_raman_line_00_Bar.fits (deflated 22%)
+updating: orion_raman_line_01_Orion_S.fits (deflated 22%)
+updating: orion_raman_line_02_SW_minibar.fits (deflated 22%)
+updating: orion_raman_line_03_Trap_SW.fits (deflated 22%)
+updating: orion_raman_line_04_Trap_W.fits (deflated 22%)
+updating: orion_raman_line_05_E-W_Bar.fits (deflated 22%)
+updating: orion_raman_line_06_HH_202.fits (deflated 22%)
+updating: orion_raman_line_07_Big_Arc.fits (deflated 22%)
+updating: orion_raman_line_08_HH_528.fits (deflated 22%)
+#+end_example
+
+
+**** Check Bob's theory about normalizing by H\alpha
+#+begin_src python :return figfile :results file
+  import numpy as np
+  import json
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+
+  figfile = "raman-muse-spectra-normalized-ha.pdf"
+
+  jsonfile = "raman-orion-muse-1d-spectra-wavsec3.json"
+  data = json.load(open(jsonfile))
+
+  region_order = [
+      "SW minibar",
+      "Orion S",
+      "E-W Bar",
+      "Trap W",
+      "Trap SW",
+      "Bar",
+      "Big Arc",
+      "HH 202",
+      "HH 528",
+  ]
+  sns.set_palette("bright")
+  fig, ax = plt.subplots()
+
+  for region in region_order:
+      wavs = np.array(data[region]["wavelength"])
+      flux = np.array(data[region]["raman"])
+      flux /= flux.max()
+      ax.plot(wavs, flux, label=region, alpha=0.7)
+  wav0 = wavs[flux.argmax()]
+  ax.axhline(0.0, lw=0.5, ls="--", c="k")
+  ax.axvline(wav0, lw=0.5, ls="--", c="k")
+  ax.legend(title="Region")
+  ax.set(
+      xlabel="Wavelength, Angstrom",
+      ylabel=r"Flux / Peak H$\alpha$ flux",
+      xlim=[6450, 6700],
+      ylim=[-1e-5, 4e-4],
+  )
+  sns.despine()
+  fig.tight_layout()
+  fig.savefig(figfile)
+  #+end_src
+
+  #+RESULTS:
+  [[file:raman-muse-spectra-normalized-ha.pdf]]
 
 **** Make plot of (\Delta\lambda)^2 F_\lambda for the different regions
 This is just like the previous figure, but with a restricted wavelength range and with the continuum removed
