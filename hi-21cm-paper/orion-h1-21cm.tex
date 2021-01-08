@@ -67,6 +67,144 @@
 %\facilities{VLT:Yepun (MUSE); VLA}
 %\object{M42}
 
+
+\section{Introduction}
+\label{sec:introduction}
+
+
+\section{Structure of the Orion Bar}
+\label{sec:structure-orion-bar}
+
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/bar-geometry-options}
+  \caption{Different classes of geometrical models that have been
+    proposed for the Orion Bar.  The sequence of models I, II, III, IV
+    are of increasing complexity, but also increasing scope and
+    explanatory power.  Models I\('\), II\('\), III\('\), on the other
+    hand, are disfavored due to either underperformance or
+    falsification (see text for further details).  For all models,
+    dark blue shading represents molecular gas, green shading
+    represents neutral gas, and light orange shading represents
+    ionized gas.  An example emission layer of thickness \(h\) and
+    radius of curvature \(R\) is indicated by thick red lines.  The
+    line-of-sight depth of the emission layer is denoted by \(L\).
+    The direction of illumination and the line of sight are indicated
+    by thin dotted lines.  }
+  \label{fig:bar-geometry}
+\end{figure*}
+
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/orion-bar-oi-hst-zoom}
+  \caption{Fine-scale structure of the ionization front at the Orion Bar.
+    Grayscale image shows a \(90'' \times 90''\) section of a mosaic of
+    \textit{HST} WFPC2 observations \citep{Bally:2000a} in the F631N filter,
+    which mainly passes the [\ion{O}{1}] \SI{6300}{\angstrom} line.
+    The image has been high-pass filtered to remove large-scale brightness gradients
+    (\(> \SI{16}{arcsec}\)).
+    The principal ionization front of the Bright Bar runs diagonally from top-left to bottom-right.
+    It can be seen that the front is very irregular on scales of \num{1} to \SI{10}{mpc},
+    and even becomes disrupted completely in some segments.
+    Only in a few places is the front straight and regular enough for its true sharpness to be seen,
+    such as the small area shown in a zoomed box, where the width of the [\ion{O}{1}] ridge
+    can be seen to be less than \SI{1}{mpc}.
+    Apart from the Bright Bar ionization front,
+    other fine-scale features visible in the image are associated with
+    Herbig--Haro jets and proplyds.
+  }
+  \label{fig:bar-oi-hst}
+\end{figure*}
+
+\begin{figure*}
+  \includegraphics[width=\linewidth]{figs/alma-co-hcop-h2-dissoc-front}
+  \caption{Fine-scale structure of the dissociation front in the Orion
+    Bar.  Double white arrows mark out some instances of
+    stratification between emission of \chem{H_2} (blue) and heavier
+    molecules (green/yellow/red). In every instance \chem{H_2} is
+    displaced towards the irradiated side of the filament by \(1''\)
+    to \(2''\) (\(\approx \SI{0.003}{pc}\)).  Background image shows ALMA
+    mosaics \citep{Goicoechea:2016a} of the sub-mm \chem{CO}
+    \(J = 3 \to 2\) \SI{866.96}{\micron} \chem{HCO^+}
+    \SI{840.38}{\micron} emission lines in the red and green color
+    channels, respectively, with the boundary of the ALMA field shown
+    by the gray dashed line. The blue color channel of the background
+    image shows near-infrared vibrationally excited \chem{H_2}
+    \(v = 1 \to 0\ S(1)\) \SI{2.12}{\micron} emission, extracted from
+    narrow-band imaging with ESO's High Acuity Wide-field K-band
+    Imager \citetext{HAWK-I, \citealp{Kissler-Patig:2008a}}. The
+    \chem{H_2} image has been corrected for contamination by ionized
+    emission (mainly hydrogen Br\(\gamma\) recombination line), but has not
+    been continuum-subtracted.  As a result, scattered starlight
+    \citetext{cloudshine, \citealp{Foster:2006a}} is seen as a band
+    of diffuse emission that falls off smoothly behind the ionization
+    front. }
+  \label{fig:alma-dissoc-front}
+\end{figure*}
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/cloudy-bar-optical-depths}
+  \caption{Optical depth of select processes as a function of total
+    hydrogen nucleon column density, calculated from static Cloudy
+    simulations of the Orion Bar.  All optical depths and columns are
+    measured with respect to the illuminating Trapezium stars, which
+    are situated to the left in this figure.  Separate panels show two
+    models that differ only in the assumed dust absorption opacity:
+    (a)~low opacity, \(\sigma\FUV \approx \SI{5e-23}{cm^2.H^{-1}}\), and (b)~high
+    opacity, \(\sigma\FUV \approx \SI{5e-22}{cm^2.H^{-1}}\). Optical depths of
+    \chem{O^0} and \chem{Si^+} absorption lines in the \lyb{} wings
+    are shown in blue. Continuum optical depths near \lyb{} (solid
+    line) and \ha{} (dashed line) are shown in black.  The \chem{H^0}
+    \SI{21}{cm} line optical depth is shown in green (long dashed
+    line).  Optical depths to Rayleigh/Raman scattering for 4 observed
+    bands in the red wing of \lyb{} (see Table~\ref{tab:wav-bands})
+    are shown in red.}
+  \label{fig:cloudy-bar-optical-depths}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figs/stellar-spectrum-fuv}
+  \caption{(a) Predicted spectrum of Trapezium stars in vicinity of
+    \lyb{} from POWR OB atmosphere models (black line), together with
+    attenuation by Cloudy model of the Orion Bar (red filled shapes),
+    extracted at a series of values of the neutral hydrogen column
+    density, as marked. (b) Relative attenuation of the incident
+    spectrum by line opacity only (that is, neglecting dust continuum
+    opacity) in the Cloudy models, which shows the development of the
+    \lyb{} damping wings as the column density increases.  In this
+    panel, the \(x\) axis is labelled with \(\Delta\lambda_2\) in the optical
+    domain, allowing direct comparison with the observations presented
+    in Figure~\ref{fig:raman-compensated} (observed Raman bands are
+    indicated by colored boxes). Note that the scale is linear in
+    \(\lambda_1\), which is slightly non-linear in
+    \(\Delta\lambda_2\).  Wavelengths of some of the more prominent stellar
+    photospheric lines and nebular absorption lines are marked. }
+  \label{fig:stellar-spectrum-fuv}
+\end{figure}
+
+
+
+\subsection{Cloudy model predictions for the optical depths}
+\label{sec:cloudy-model-pred}
+
+In order to investigate the role of dust extinction in greater detail
+in more detail the 
+
+ 
+Location of \chem{H^0}.  Neutral veil in front of nebula has column density of \SI{1.6e21}{cm^{-2}} and \SI{3.2e21}{cm^{-2}} in components A and B \citep{Abel:2006a}. 
+
+
+Geometry of bar: in \citet{Henney:2005b} I pointed out that a
+diverging cylindrical geometry is necessary to explain the sharp peak
+in the [\ion{N}{2}] emissivity seen at the ionization front.  It has
+been apparent since \citet{ODell:2000a} that the nebula contains many
+bar-like features.
+
+\citet{Salgado:2016a} had found low dust cross-section in Orion Bar
+PDR, but there are loopholes. First, they assume plane-parallel
+geometry with exactly edge-on viewing angle, while in reality it is a
+roughly cylindrical filament.  Second, they ignore scattering, see
+\citet{Watson:1998a}.  Also, density increase with depth
+
+\vfill\eject
+
 \newcommand\vdw{vdW13}
 \newcommand\vlsr{\ensuremath{v_{\mathrm{lsr}}}}
 \section{Reanalysis of \SI{21}{cm} \ion{H}{1} observations of the Orion Bar}
@@ -224,136 +362,6 @@ where \(\Tc \approx \SI{1500}{K}\).
 
 \textit{Add a table showing }
 
-\subsection{Structure of the Orion Bar}
-\label{sec:structure-orion-bar}
-
-\begin{figure*}
-  \includegraphics[width=\linewidth]{figs/bar-geometry-options}
-  \caption{Different classes of geometrical models that have been
-    proposed for the Orion Bar.  The sequence of models I, II, III, IV
-    are of increasing complexity, but also increasing scope and
-    explanatory power.  Models I\('\), II\('\), III\('\), on the other
-    hand, are disfavored due to either underperformance or
-    falsification (see text for further details).  For all models,
-    dark blue shading represents molecular gas, green shading
-    represents neutral gas, and light orange shading represents
-    ionized gas.  An example emission layer of thickness \(h\) and
-    radius of curvature \(R\) is indicated by thick red lines.  The
-    line-of-sight depth of the emission layer is denoted by \(L\).
-    The direction of illumination and the line of sight are indicated
-    by thin dotted lines.  }
-  \label{fig:bar-geometry}
-\end{figure*}
-
-\begin{figure*}
-  \includegraphics[width=\linewidth]{figs/orion-bar-oi-hst-zoom}
-  \caption{Fine-scale structure of the ionization front at the Orion Bar.
-    Grayscale image shows a \(90'' \times 90''\) section of a mosaic of
-    \textit{HST} WFPC2 observations \citep{Bally:2000a} in the F631N filter,
-    which mainly passes the [\ion{O}{1}] \SI{6300}{\angstrom} line.
-    The image has been high-pass filtered to remove large-scale brightness gradients
-    (\(> \SI{16}{arcsec}\)).
-    The principal ionization front of the Bright Bar runs diagonally from top-left to bottom-right.
-    It can be seen that the front is very irregular on scales of \num{1} to \SI{10}{mpc},
-    and even becomes disrupted completely in some segments.
-    Only in a few places is the front straight and regular enough for its true sharpness to be seen,
-    such as the small area shown in a zoomed box, where the width of the [\ion{O}{1}] ridge
-    can be seen to be less than \SI{1}{mpc}.
-    Apart from the Bright Bar ionization front,
-    other fine-scale features visible in the image are associated with
-    Herbig--Haro jets and proplyds.
-  }
-  \label{fig:bar-oi-hst}
-\end{figure*}
-
-\begin{figure*}
-  \includegraphics[width=\linewidth]{figs/alma-co-hcop-h2-dissoc-front}
-  \caption{Fine-scale structure of the dissociation front in the Orion
-    Bar.  Double white arrows mark out some instances of
-    stratification between emission of \chem{H_2} (blue) and heavier
-    molecules (green/yellow/red). In every instance \chem{H_2} is
-    displaced towards the irradiated side of the filament by \(1''\)
-    to \(2''\) (\(\approx \SI{0.003}{pc}\)).  Background image shows ALMA
-    mosaics \citep{Goicoechea:2016a} of the sub-mm \chem{CO}
-    \(J = 3 \to 2\) \SI{866.96}{\micron} \chem{HCO^+}
-    \SI{840.38}{\micron} emission lines in the red and green color
-    channels, respectively, with the boundary of the ALMA field shown
-    by the gray dashed line. The blue color channel of the background
-    image shows near-infrared vibrationally excited \chem{H_2}
-    \(v = 1 \to 0\ S(1)\) \SI{2.12}{\micron} emission, extracted from
-    narrow-band imaging with ESO's High Acuity Wide-field K-band
-    Imager \citetext{HAWK-I, \citealp{Kissler-Patig:2008a}}. The
-    \chem{H_2} image has been corrected for contamination by ionized
-    emission (mainly hydrogen Br\(\gamma\) recombination line), but has not
-    been continuum-subtracted.  As a result, scattered starlight
-    \citetext{cloudshine, \citealp{Foster:2006a}} is seen as a band
-    of diffuse emission that falls off smoothly behind the ionization
-    front. }
-  \label{fig:alma-dissoc-front}
-\end{figure*}
-
-\begin{figure}
-  \includegraphics[width=\linewidth]{figs/cloudy-bar-optical-depths}
-  \caption{Optical depth of select processes as a function of total
-    hydrogen nucleon column density, calculated from static Cloudy
-    simulations of the Orion Bar.  All optical depths and columns are
-    measured with respect to the illuminating Trapezium stars, which
-    are situated to the left in this figure.  Separate panels show two
-    models that differ only in the assumed dust absorption opacity:
-    (a)~low opacity, \(\sigma\FUV \approx \SI{5e-23}{cm^2.H^{-1}}\), and (b)~high
-    opacity, \(\sigma\FUV \approx \SI{5e-22}{cm^2.H^{-1}}\). Optical depths of
-    \chem{O^0} and \chem{Si^+} absorption lines in the \lyb{} wings
-    are shown in blue. Continuum optical depths near \lyb{} (solid
-    line) and \ha{} (dashed line) are shown in black.  The \chem{H^0}
-    \SI{21}{cm} line optical depth is shown in green (long dashed
-    line).  Optical depths to Rayleigh/Raman scattering for 4 observed
-    bands in the red wing of \lyb{} (see Table~\ref{tab:wav-bands})
-    are shown in red.}
-  \label{fig:cloudy-bar-optical-depths}
-\end{figure}
-\begin{figure}
-  \includegraphics[width=\linewidth]{figs/stellar-spectrum-fuv}
-  \caption{(a) Predicted spectrum of Trapezium stars in vicinity of
-    \lyb{} from POWR OB atmosphere models (black line), together with
-    attenuation by Cloudy model of the Orion Bar (red filled shapes),
-    extracted at a series of values of the neutral hydrogen column
-    density, as marked. (b) Relative attenuation of the incident
-    spectrum by line opacity only (that is, neglecting dust continuum
-    opacity) in the Cloudy models, which shows the development of the
-    \lyb{} damping wings as the column density increases.  In this
-    panel, the \(x\) axis is labelled with \(\Delta\lambda_2\) in the optical
-    domain, allowing direct comparison with the observations presented
-    in Figure~\ref{fig:raman-compensated} (observed Raman bands are
-    indicated by colored boxes). Note that the scale is linear in
-    \(\lambda_1\), which is slightly non-linear in
-    \(\Delta\lambda_2\).  Wavelengths of some of the more prominent stellar
-    photospheric lines and nebular absorption lines are marked. }
-  \label{fig:stellar-spectrum-fuv}
-\end{figure}
-
-
-
-\subsubsection{Cloudy model predictions for the optical depths}
-\label{sec:cloudy-model-pred}
-
-In order to investigate the role of dust extinction in greater detail
-in more detail the 
-
- 
-Location of \chem{H^0}.  Neutral veil in front of nebula has column density of \SI{1.6e21}{cm^{-2}} and \SI{3.2e21}{cm^{-2}} in components A and B \citep{Abel:2006a}. 
-
-
-Geometry of bar: in \citet{Henney:2005b} I pointed out that a
-diverging cylindrical geometry is necessary to explain the sharp peak
-in the [\ion{N}{2}] emissivity seen at the ionization front.  It has
-been apparent since \citet{ODell:2000a} that the nebula contains many
-bar-like features.
-
-\citet{Salgado:2016a} had found low dust cross-section in Orion Bar
-PDR, but there are loopholes. First, they assume plane-parallel
-geometry with exactly edge-on viewing angle, while in reality it is a
-roughly cylindrical filament.  Second, they ignore scattering, see
-\citet{Watson:1998a}.  Also, density increase with depth
 
 
 \bibliography{BibdeskLibrary}
