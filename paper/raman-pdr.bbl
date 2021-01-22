@@ -36,6 +36,11 @@
   {10.1051/0004-6361/201118537}, \href
   {https://ui.adsabs.harvard.edu/abs/2012A&A...541A..19A} {541, A19}
 
+\bibitem[\protect\citeauthoryear{{Arrieta} \& {Torres-Peimbert}}{{Arrieta} \&
+  {Torres-Peimbert}}{2003}]{Arrieta:2003a}
+{Arrieta} A.,  {Torres-Peimbert} S.,  2003, \mn@doi [\apjs] {10.1086/374922},
+  \href {https://ui.adsabs.harvard.edu/abs/2003ApJS..147...97A} {147, 97}
+
 \bibitem[\protect\citeauthoryear{{Bacon} et~al.,}{{Bacon}
   et~al.}{2010}]{Bacon:2010a}
 {Bacon} R.,  et~al., 2010, in \procspie. p. 773508, \mn@doi{10.1117/12.856027}
@@ -234,6 +239,13 @@
   \mn@doi [\aap] {10.1051/0004-6361:20053818}, \href
   {http://adsabs.harvard.edu/abs/2006A%26A...446..747G} {446, 747}
 
+\bibitem[\protect\citeauthoryear{{Hacar}, {Tafalla}, {Forbrich}, {Alves},
+  {Meingast}, {Grossschedl}  \& {Teixeira}}{{Hacar} et~al.}{2018}]{Hacar:2018a}
+{Hacar} A.,  {Tafalla} M.,  {Forbrich} J.,  {Alves} J.,  {Meingast} S.,
+  {Grossschedl} J.,   {Teixeira} P.~S.,  2018, \mn@doi [\aap]
+  {10.1051/0004-6361/201731894}, \href
+  {http://adsabs.harvard.edu/abs/2018A%26A...610A..77H} {610, A77}
+
 \bibitem[\protect\citeauthoryear{{Heger}}{{Heger}}{1922}]{Heger:1922a}
 {Heger} M.~L.,  1922, \mn@doi [Lick Observatory Bulletin]
   {10.5479/ADS/bib/1922LicOB.10.141H}, \href
@@ -321,11 +333,23 @@
   \mn@doi [\actaa] {10.32023/0001-5237/69.2.4}, \href
   {https://ui.adsabs.harvard.edu/abs/2019AcA....69..159K} {69, 159}
 
+\bibitem[\protect\citeauthoryear{{Lai}, {Witt}  \& {Crawford}}{{Lai}
+  et~al.}{2017}]{Lai:2017a}
+{Lai} T. S.~Y.,  {Witt} A.~N.,   {Crawford} K.,  2017, \mn@doi [\mnras]
+  {10.1093/mnras/stx1124}, \href
+  {https://ui.adsabs.harvard.edu/abs/2017MNRAS.469.4933L} {469, 4933}
+
 \bibitem[\protect\citeauthoryear{{Lai}, {Witt}, {Alvarez}  \& {Cami}}{{Lai}
   et~al.}{2020}]{Lai:2020a}
 {Lai} T. S.~Y.,  {Witt} A.~N.,  {Alvarez} C.,   {Cami} J.,  2020, \mn@doi
   [\mnras] {10.1093/mnras/staa223}, \href
   {https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5853L} {492, 5853}
+
+\bibitem[\protect\citeauthoryear{{Lee}, {Jung}, {Song}  \& {Ahn}}{{Lee}
+  et~al.}{2006}]{Lee:2006a}
+{Lee} H.-W.,  {Jung} Y.-C.,  {Song} I.-O.,   {Ahn} S.-H.,  2006, \mn@doi [\apj]
+  {10.1086/498143}, \href
+  {https://ui.adsabs.harvard.edu/abs/2006ApJ...636.1045L} {636, 1045}
 
 \bibitem[\protect\citeauthoryear{{Luhman}, {Engelbracht}  \& {Luhman}}{{Luhman}
   et~al.}{1998}]{Luhman:1998a}
@@ -427,15 +451,31 @@ Moré J.~J.,  1978, in Watson G.~A.,  ed., Numerical Analysis. Springer Berlin
 {Nussbaumer} H.,  {Schmid} H.~M.,   {Vogel} M.,  1989, \aap, \href
   {https://ui.adsabs.harvard.edu/abs/1989A&A...211L..27N} {211, L27}
 
+\bibitem[\protect\citeauthoryear{{O'Dell}}{{O'Dell}}{2001}]{ODell:2001b}
+{O'Dell} C.~R.,  2001, \mn@doi [\araa] {10.1146/annurev.astro.39.1.99}, \href
+  {http://adsabs.harvard.edu/abs/2001ARA%26A..39...99O} {39, 99}
+
 \bibitem[\protect\citeauthoryear{{O'Dell} \& {Yusef-Zadeh}}{{O'Dell} \&
   {Yusef-Zadeh}}{2000}]{ODell:2000a}
 {O'Dell} C.~R.,  {Yusef-Zadeh} F.,  2000, \mn@doi [\aj] {10.1086/301429}, \href
   {http://adsabs.harvard.edu/abs/2000AJ....120..382O} {120, 382}
 
+\bibitem[\protect\citeauthoryear{{O'Dell}, {Valk}, {Wen}  \& {Meyer}}{{O'Dell}
+  et~al.}{1993a}]{ODell:1993b}
+{O'Dell} C.~R.,  {Valk} J.~H.,  {Wen} Z.,   {Meyer} D.~M.,  1993a, \mn@doi
+  [\apj] {10.1086/172238}, \href
+  {http://adsabs.harvard.edu/abs/1993ApJ...403..678O} {403, 678}
+
 \bibitem[\protect\citeauthoryear{{O'Dell}, {Wen}  \& {Hu}}{{O'Dell}
-  et~al.}{1993}]{ODell:1993a}
-{O'Dell} C.~R.,  {Wen} Z.,   {Hu} X.,  1993, \mn@doi [\apj] {10.1086/172786},
+  et~al.}{1993b}]{ODell:1993a}
+{O'Dell} C.~R.,  {Wen} Z.,   {Hu} X.,  1993b, \mn@doi [\apj] {10.1086/172786},
   \href {http://adsabs.harvard.edu/abs/1993ApJ...410..696O} {410, 696}
+
+\bibitem[\protect\citeauthoryear{{O'Dell}, {Hartigan}, {Lane}, {Wong},
+  {Burton}, {Raymond}  \& {Axon}}{{O'Dell} et~al.}{1997}]{ODell:1997a}
+{O'Dell} C.~R.,  {Hartigan} P.,  {Lane} W.~M.,  {Wong} S.~K.,  {Burton} M.~G.,
+  {Raymond} J.,   {Axon} D.~J.,  1997, \mn@doi [\aj] {10.1086/118507}, \href
+  {http://adsabs.harvard.edu/abs/1997AJ....114..730O} {114, 730}
 
 \bibitem[\protect\citeauthoryear{{O'Dell}, {Ferland}  \& {Peimbert}}{{O'Dell}
   et~al.}{2017}]{ODell:2017b}
@@ -467,6 +507,16 @@ Sausalito, CA: University Science Books
    2018, \mn@doi [\aap] {10.1051/0004-6361/201731975}, \href
   {https://ui.adsabs.harvard.edu/abs/2018A&A...617A..77P} {617, A77}
 
+\bibitem[\protect\citeauthoryear{{Pequignot}, {Baluteau}, {Morisset}  \&
+  {Boisson}}{{Pequignot} et~al.}{1997}]{Pequignot:1997a}
+{Pequignot} D.,  {Baluteau} J.~P.,  {Morisset} C.,   {Boisson} C.,  1997, \aap,
+  \href {https://ui.adsabs.harvard.edu/abs/1997A&A...323..217P} {323, 217}
+
+\bibitem[\protect\citeauthoryear{{Perrin} \& {Sivan}}{{Perrin} \&
+  {Sivan}}{1992}]{Perrin:1992a}
+{Perrin} J.~M.,  {Sivan} J.~P.,  1992, \aap, \href
+  {https://ui.adsabs.harvard.edu/abs/1992A&A...255..271P} {255, 271}
+
 \bibitem[\protect\citeauthoryear{{Salgado} et~al.,}{{Salgado}
   et~al.}{2012}]{Salgado:2012a}
 {Salgado} F.,  et~al., 2012, \mn@doi [\apjl] {10.1088/2041-8205/749/2/L21},
@@ -481,6 +531,12 @@ Sausalito, CA: University Science Books
 \bibitem[\protect\citeauthoryear{{Schmid}}{{Schmid}}{1989}]{Schmid:1989a}
 {Schmid} H.~M.,  1989, \aap, \href
   {https://ui.adsabs.harvard.edu/abs/1989A&A...211L..31S} {211, L31}
+
+\bibitem[\protect\citeauthoryear{{Schmidt}, {Cohen}  \& {Margon}}{{Schmidt}
+  et~al.}{1980}]{Schmidt:1980a}
+{Schmidt} G.~D.,  {Cohen} M.,   {Margon} B.,  1980, \mn@doi [\apjl]
+  {10.1086/183309}, \href
+  {https://ui.adsabs.harvard.edu/abs/1980ApJ...239L.133S} {239, L133}
 
 \bibitem[\protect\citeauthoryear{Shenstone}{Shenstone}{1970}]{Shenstone:1970a}
 Shenstone A.~G.,  1970, \mn@doi [Journal of research of the National Bureau of
@@ -562,6 +618,12 @@ Van~Hoof P. A.~M.,  2018, \mn@doi [Galaxies] {10.3390/galaxies6020063}, 6
 \bibitem[\protect\citeauthoryear{{Whiteoak}}{{Whiteoak}}{1966}]{Whiteoak:1966a}
 {Whiteoak} J.~B.,  1966, \mn@doi [\apj] {10.1086/148605}, \href
   {https://ui.adsabs.harvard.edu/abs/1966ApJ...144..305W} {144, 305}
+
+\bibitem[\protect\citeauthoryear{{Witt} \& {Lai}}{{Witt} \&
+  {Lai}}{2020}]{Witt:2020a}
+{Witt} A.~N.,  {Lai} T. S.~Y.,  2020, \mn@doi [\apss]
+  {10.1007/s10509-020-03766-w}, \href
+  {https://ui.adsabs.harvard.edu/abs/2020Ap&SS.365...58W} {365, 58}
 
 \bibitem[\protect\citeauthoryear{{ud-Doula}, {Sundqvist}, {Owocki}, {Petit}  \&
   {Townsend}}{{ud-Doula} et~al.}{2013}]{ud-Doula:2013a}

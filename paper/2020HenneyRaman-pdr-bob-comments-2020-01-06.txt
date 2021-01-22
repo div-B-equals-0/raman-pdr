@@ -1,0 +1,41 @@
+* Anchored Note, page 1
+Appropriate to mention the earlier study by one of Silvia's PhD students of Raman scattering in PN.A. Arrieta & Torres-Peimbert 2003, ApJSS, 147, 97
+
+* Anchored Note, page 2
+Awkward wording. Threshold of what?
+
+* Anchored Note, page 3
+This is not seen in the WiFeS spectrum, perhaps because it is stepped-on by the 6475 ghost feature.
+
+* Anchored Note, page 4
+The uncertainty of the MUSE corrections for airglow make the use of the [OI] 6300-6364observations very uncertain.
+
+* Anchored Note, page 4
+Better term (than filaments) is Bar. Filament indicates that it the Bar is a 3-D structure.
+
+* Anchored Note, page 4
+This actually depicts the surface brightness
+
+in Ha.
+
+* Anchored Note, page 4
+milliparsec?
+
+* Anchored Note, page 5
+I think it best to use only band R058 as it is the cleanest in terms of potential contaminators . I can use this in regroupingthe samples in yesterday's figure.
+
+* Anchored Note, page 6
+If you take my suggestion to work with the Ha normalized profiles you'll see the two groupings. I made yesterday's figure using the normalized intensity at 6500. I now see that it would have been better to use 6621 (your Band R058). Using the model that the low Wing group is a bunch of edge-on fronts, then it makes sense that the normalized Raman 
+
+component is stronger there, because we are seeing all the Raman emission but not all the Ha emission (because the overlying Ha emission comes from further away than the layer producing the Raman component.
+
+* Anchored Note, page 10
+I first said this on page 12, para.2
+
+of my 2001 AnnRvwAandAp,
+vol.39, p.99; although a full argument 
+is made in Smith et al. 2005.
+
+* Anchored Note, page 11
+This is a velocity difference of 19.1 km/sI think it should be 18.1 km/s.
+

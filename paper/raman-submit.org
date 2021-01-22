@@ -1,7 +1,215 @@
 
+* Revised version
+
+** Other things to fix
+
+*** DONE Data acknowledgment
+CLOSED: [2021-01-19 Tue 13:48]
+: Based on observations collected at the European Southern Observatory under ESO programme(s) TP.C-NNNN(R)1 or PPP.AAAA.nnn2
+
+This is what it says at http://archive.eso.org/cms/eso-data-access-policy.html (can be either footnote to title or in acknowledgments).
+
+Weilbacher paper says ID 60.A-9100(A)
+
+*** Comments from Bob
+
+**** TODO My email to him with answers to first comments
+
+**** TODO [10/11] Second lot of comments
+
+***** DONE Anchored Note, page 1
+CLOSED: [2021-01-20 Wed 13:20]
+: Appropriate to mention the earlier study by one of Silvia's PhD students of Raman scattering in PN.
+A. Arrieta & Torres-Peimbert 2003, ApJSS, 147, 97
+
+Added several citations for Raman in PNe and AGN 
+***** DONE Anchored Note, page 2
+CLOSED: [2021-01-20 Wed 13:22]
+: Awkward wording. Threshold of what?
+
+Changed to Lyman limit
+
+***** DONE Anchored Note, page 3
+CLOSED: [2021-01-20 Wed 13:28]
+: This is not seen in the WiFeS spectrum, perhaps because it is stepped-on by the 6475 ghost feature.
+
+Added comment about lack of spatial variation. 
+
+***** DONE Anchored Note, page 4
+CLOSED: [2021-01-20 Wed 19:00]
+: The uncertainty of the MUSE corrections for airglow make the use of the [OI] 6300-6364
+observations very uncertain.
+
+Added footnote on airglow removal.
+
+***** DONE Anchored Note, page 4
+CLOSED: [2021-01-20 Wed 21:04]
+: Better term (than filaments) is Bar. 
+Filament indicates that it the Bar is a 3-D structure.
+
+Expand discussion of 2d versus 3d structure.
+
+***** DONE Anchored Note, page 4
+CLOSED: [2021-01-20 Wed 21:06]
+: This actually depicts the surface brightness
+: in Ha.
+
+No it doesn't
+
+***** DONE Anchored Note, page 4
+CLOSED: [2021-01-20 Wed 21:10]
+: milliparsec?
+
+Yes. Defined at first use.
+
+***** DONE Anchored Note, page 5
+CLOSED: [2021-01-20 Wed 21:11]
+: I think it best to use only band R058 as it is the cleanest in terms of potential contaminators . I can use this in regrouping
+: the samples in yesterday's figure.
+
+Yeah, but no.
+
+***** TODO Anchored Note, page 6
+: If you take my suggestion to work with the Ha normalized profiles you'll see the two groupings. I made yesterday's figure using the normalized intensity at 6500. I now see that it would have been better to use 6621 (your Band R058). Using the model that the low Wing group is a bunch of edge-on fronts, then it makes sense that the normalized Raman component is stronger there, because we are seeing all the Raman emission but not all the Ha emission (because the overlying Ha emission comes from further away than the layer producing the Raman component.
+
+Maybe add a calculation of the ratio to H alpha for the entire region. 
+
+***** DONE Anchored Note, page 10
+CLOSED: [2021-01-20 Wed 21:23]
+: I first said this on page 12, para.2
+: of my 2001 AnnRvwAandAp,
+: vol.39, p.99; although a full argument 
+: is made in Smith et al. 2005.
+
+Added references
+***** DONE Anchored Note, page 11
+CLOSED: [2021-01-21 Thu 18:50]
+: This is a velocity difference of 19.1 km/s
+: I think it should be 18.1 km/s.
+ Yes, there was an error of 1 km/s in my conversion from LSR to HELIO
+ 
+
+** Referee report
+
+*** Response to referee
+Detailed Comments:
+
+**** 1. Page 2, Column 2:
+: The author appears to be unaware of the fact that the continuum
+: underlying the H-alpha region in the spectrum of the Orion nebula
+: contains a contribution due to extended red emission (ERE).  Perrin &
+: Sivan (1992 A&A 255, 271) published spectra of this emission component
+: for several regions coinciding with those studied by the author. The
+: ERE intensity is comparable to the intensity of dust-scattered
+: starlight, particularly in instances when the dust scattering occurs
+: predominantly at large angles as is the case in edge-on PDRs such as
+: the Orion bar.
+: 
+: Lai et al. (2017 MNRAS 469, 4933) showed that the ERE arises in the
+: same neutral atomic hydrogen domain of PDRs where the Ly-beta Raman
+: scattering occurs.
+: 
+: The ERE spectrum may be quasi-continuous for the purpose of the
+: present study but it has never been examined at comparable spectral
+: resolution. I would not rule out the possibility that some of the
+: unexplained weak spectral features mentioned at the bottom of page 3
+: and some of the problems encountered with the continuum fitting
+: mentioned on page 14 may be a consequence of the ERE and structure
+: within its spectrum.
+
+Indeed. Although I had read the Perrin & Sivan paper at some point in the past, the ERE is not something I had considered while writing this paper.  I am very grateful to the referee for drawing my attention to the omission.  I have added a paragraph to the end of section 2.1 to address this point. 
+
+
+**** 2. Page 8, Column 1, line 9:
+: Typo: are are ----> are
+
+Fixed
+
+**** 3. Page 8, Column 2, line 21:
+: Typo: Figure 3 ----> Figure 6
+
+Fixed
+
+**** 4. Page 10, Sect. 2.6.3:
+: I suggest changing the sub-title “Solid-state absorption features” to “Diffuse interstellar bands”. I suggest the same change in the last portion of Sect. 4.3.2 on Page 16.
+: 
+: While the carriers of the diffuse interstellar bands (DIBs) remain largely unidentified (possible exception: identification of ~4 or 5 near-IR DIBs with absorptions by C60+), there is a near-unanimous agreement within the DIB community that DIBs are not solid-state absorption features. You can find a fairly detailed review of potential DIB carriers in an article by Snow (2001 Spectrochimica Acta A 57, 615). Lai et al. (2020 MNRAS 492, 5853) demonstrated that DIB carriers survive with normal abundances within the neutral hydrogen domain of PDRs and suggested the possibility that carriers of ERE and DIBs are the same.
+
+Yes, this is a good point.  I have made all the suggested changes and additions.
+
+**** 5. Page 10, Sect. 2.6.3:
+It would be helpful if a representative nebular spectrum of the wavelength region that includes the DIBs at 5780 Å and 5797 Å were included in this section.
+
+**** 6. Page 10, Column 2, line 7:
+I suggest changing “dust absorption” to “dust extinction”.
+
+**** 7. Page 15, Column 2, top paragraph:
+The two limiting dust absorption cross-sections being discussed in this section are significantly (factors 3 – 10) lower than the dust absorption cross-sections found in the diffuse ISM for the Ly-beta wavelength for R_v  = 5.5 (Weingartner & Draine 2001 ApJ 548, 296). This suggests to me that dust destruction may have occurred in the Orion bar PDR. The author might want to add a sentence to this effect in this section.
+
+**** 8. Page 17, Summary, point 3:
+Typo: 5 x 10^22 -----> 5 x 10^-22 (This would have been an error of 44 orders of magnitude.)
+
+
+
+*** Original text
+
+**** Assistant Editor's Comments:
+Editor
+Comments to the Author:
+Please ensure that all textual labels in figures are at least as large as the caption text; any smaller and they become too difficult to read.
+
+
+
+**** Reviewer's Comments:
+Reviewer: Witt, Adolf 
+
+Comments to the Author
+Referee Report for Manuscript MN-20-5230-MJ
+Title: “Raman mapping of photodissociation regions”
+Author: W. J. Henney
+
+Summary:
+The author demonstrates conclusively that the broad H-alpha emission wings observed throughout the central portions of the Orion nebula are the product of Raman scattering of far-ultraviolet stellar continuum radiation by the wings of the Lyman-beta line of neutral hydrogen atoms, present in the neutral hydrogen domain of photodissociation regions (PDRs) surrounding the ionized inner regions of the nebula. While Raman scattering has been used as a diagnostic tool rather extensively for the study of symbiotic stars, following the introduction of this concept by Nussbaumer et al. (1998), Henney’s new manuscript is only the second time that Raman scattering has been invoked for the analysis of PDR spectra, the first being the paper by Dopita et al. (2016). However, while Dopita et al. suggested that the Ly-beta Raman scattering occurs at the interface between the ionized and neutral gas of PDRs, Henney shows rather definitively that this process occurs throughout the neutral front layer dominated by atomic hydrogen gas. Consequently, Raman scattering can be used to estimate physical conditions in this layer, e.g. the neutral hydrogen density, as was done convincingly by Henney in the present work.
+
+This paper is excellent in every aspect. I recommend that it be published in the Monthly Notices of the RAS. That said I have a brief list of minor comments and suggestions for the author to consider before a final version is submitted.
+
+
+Detailed Comments:
+
+1. Page 2, Column 2:
+The author appears to be unaware of the fact that the continuum underlying the H-alpha region in the spectrum of the Orion nebula contains a contribution due to extended red emission (ERE).  Perrin & Sivan (1992 A&A 255, 271) published spectra of this emission component for several regions coinciding with those studied by the author. The ERE intensity is comparable to the intensity of dust-scattered starlight, particularly in instances when the dust scattering occurs predominantly at large angles as is the case in edge-on PDRs such as the Orion bar. 
+Lai et al. (2017 MNRAS 469, 4933) showed that the ERE arises in the same neutral atomic hydrogen domain of PDRs where the Ly-beta Raman scattering occurs.
+The ERE spectrum may be quasi-continuous for the purpose of the present study but it has never been examined at comparable spectral resolution. I would not rule out the possibility that some of the unexplained weak spectral features mentioned at the bottom of page 3 and some of the problems encountered with the continuum fitting mentioned on page 14 may be a consequence of the ERE and structure within its spectrum.
+
+
+2. Page 8, Column 1, line 9:
+Typo: are are ----> are
+
+3. Page 8, Column 2, line 21:
+Typo: Figure 3 ----> Figure 6
+
+4. Page 10, Sect. 2.6.3:
+I suggest changing the sub-title “Solid-state absorption features” to “Diffuse interstellar bands”. I suggest the same change in the last portion of Sect. 4.3.2 on Page 16.
+
+While the carriers of the diffuse interstellar bands (DIBs) remain largely unidentified (possible exception: identification of ~4 or 5 near-IR DIBs with absorptions by C60+), there is a near-unanimous agreement within the DIB community that DIBs are not solid-state absorption features. You can find a fairly detailed review of potential DIB carriers in an article by Snow (2001 Spectrochimica Acta A 57, 615). Lai et al. (2020 MNRAS 492, 5853) demonstrated that DIB carriers survive with normal abundances within the neutral hydrogen domain of PDRs and suggested the possibility that carriers of ERE and DIBs are the same.
+
+5. Page 10, Sect. 2.6.3:
+It would be helpful if a representative nebular spectrum of the wavelength region that includes the DIBs at 5780 Å and 5797 Å were included in this section.
+
+6. Page 10, Column 2, line 7:
+I suggest changing “dust absorption” to “dust extinction”.
+
+7. Page 15, Column 2, top paragraph:
+The two limiting dust absorption cross-sections being discussed in this section are significantly (factors 3 – 10) lower than the dust absorption cross-sections found in the diffuse ISM for the Ly-beta wavelength for R_v  = 5.5 (Weingartner & Draine 2001 ApJ 548, 296). This suggests to me that dust destruction may have occurred in the Orion bar PDR. The author might want to add a sentence to this effect in this section.
+
+8. Page 17, Summary, point 3:
+Typo: 5 x 10^22 -----> 5 x 10^-22 (This would have been an error of 44 orders of magnitude.)
+
+
 * Publicity
 
-** TODO astro-ph
+** DONE astro-ph
+CLOSED: [2021-01-13 Wed 19:18]
 + Do I need to make a new version?
   + Yes
 *** Gather only needed figures
@@ -104,6 +312,7 @@ CLOSED: [2021-01-02 Sat 21:46]
 *** DONE Ana Monreal-Ibero
 CLOSED: [2021-01-02 Sat 21:46]
 *** Adam Ginsburg
+*** Peter Weilbacher
 *** Nick Abel
 
 * First submission or Raman paper

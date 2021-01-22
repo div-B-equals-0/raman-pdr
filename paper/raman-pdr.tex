@@ -183,6 +183,9 @@ feature of Raman scattering \citep{Nussbaumer:1989a}: the relative
 width \(\Delta\lambda/\lambda\) of spectral features is amplified by a factor
 \(\lambda(\ha)/\lambda(\lyb) \approx 6.4\) when passing from the FUV to the optical
 domain.
+Further astrophysical applications have included planetary nebulae
+\citep{Pequignot:1997a, Arrieta:2003a, Lee:2006a}
+and active galactic nuclei \citep{Chang:2015a}.
 
 \citet{Dopita:2016a} propose that the Raman wings form at the
 transition zone near the ionization fronts in \hii{} regions.
@@ -190,7 +193,7 @@ However, the total neutral hydrogen column through the ionization
 front can be no more than about
 \(10 / \sigma_0 \approx \SI{2e18}{cm^{-2}}\), where
 \(\sigma_0 \approx \SI{6.3e-18}{cm^2}\) is the ground-state hydrogen
-photoionization cross section at threshold \citep{Osterbrock:2006a}.
+photoionization cross section at the Lyman limit \citep{Osterbrock:2006a}.
 The Raman scattering cross section at wavelengths responsible for the
 observed wings is much lower than this:
 \(\sigma\Raman \sim \SI{e-21}{cm^2}\) \citep{Chang:2015a}, meaning that the
@@ -325,20 +328,32 @@ The continuum is interpolated under the wings by fitting a
 second-order polynomial to clean regions of the spectra in the ranges
 \SIrange{6070}{6225}{\angstrom} and \SIrange{6760}{6820}{\angstrom},
 as shown by the lower edge of the gray shading for each spectrum.  The
-continuum is a combination of Paschen recombination emission from
+continuum is mostly a combination of Paschen recombination emission from
 hydrogen, which increases to the red, and dust-scattered starlight and
 two-photon hydrogen emission, which both increase to the blue.  The
 combined \(F_\lambda\) is approximately flat for all regions except the
 Orion Bar, where dust scattering of the nearby star \th2A{} dominates,
-resulting in a blueward rise.  All of these continuum processes are
-expected to be smooth on a \SI{100}{\angstrom} scale,\footnote{The
-  only exception is the dust-scattered \ha{} line from the stellar
+resulting in a blueward rise.
+All of these continuum processes are
+expected to be smooth on a \SI{100}{\angstrom} scale,%
+\footnote{One exception is the dust-scattered \ha{} line from the stellar
   photospheres and winds, but this is confined within
   \(\pm \SI{30}{\angstrom}\) of the rest wavelength (see Fig.~2 of
   \citealp{Simon-Diaz:2006b}) and so does not affect the Raman wings,
   which are broader than that.}  but nonetheless the systematic
 uncertainties in the continuum interpolation is an important factor
 that limits the precision of the Raman wing measurements.
+
+Another potential contribution to the continuum comes from 
+Extended Red Emission \citetext{ERE; \citealp{Schmidt:1980a}},
+which is likely to be the result of complex fluorescent processes in small carbon-based molecules
+\citep{Witt:2020a} that are located in the neutral hydrogen region
+\citep{Lai:2017a}.
+A broad bump (\(\text{FWHM} \approx \SI{1800}{\angstrom}\)) centered on \(\approx \SI{8200}{\angstrom}\)
+is reported in the spectrum of sections of the Orion Bar by \citet{Perrin:1992a}.
+This ERE may conceivably have sub-structure that affects the extraction of the Raman wing intensities.
+
+
 
 \subsection{Raman scattered FUV absorption lines}
 \label{sec:raman-scattered-fuv}
@@ -381,6 +396,8 @@ and \SI{6708}{\angstrom} (all marked with ``?'' in
 Figure~\ref{fig:raman-spectra-1d}).  It is not clear if these are
 truly absorption features or whether they are simply gaps between very
 weak blended emission lines.
+They show no discernible spatial variation in the MUSE datacube,
+suggesting a likely terrestrial origin. 
 
 
 \subsection{Definition of observational Raman bands in the red and blue wings}
@@ -509,15 +526,32 @@ data cube.  In blue is shown the [\ion{O}{2}]
 10\% of the fully ionized emission.  In green is shown the
 [\ion{O}{1}] \SI{6300.30}{\angstrom} line, which principally traces
 partially ionized gas at the ionization front, but also shocks in
-neutral gas. In red is shown the fluorescent \ion{O}{1}
+neutral gas.%
+\footnote{
+  The [\ion{O}{1}] line is contaminated by airglow emission from the Earth's upper atmosphere,
+  which I have removed by subtracting the surface brightness
+  measured in portions of the map where the nebula emission is expected to be negligible.
+  Although some residual contamination may remain,
+  a comparison with space-based \textit{HST} observations
+  \citep{ODell:1997a} shows a good agreement.
+}
+
+In red is shown the fluorescent \ion{O}{1}
 \SI{8446.36}{\angstrom} line, which traces fully neutral gas that is
 very close behind the ionization front.  This image clearly
-illustrates that the neutral/molecular gas is organized in filaments,
+illustrates that the neutral/molecular gas is organized in linear features,
 with bright ionization fronts on the side facing the high-mass
 Trapezium stars. This is most clearly seen in the Orion Bar, the
 linear emission feature to the south-east of the map, but analogous
-filaments are seen in all directions from the Trapezium (see also
-Figure~\ref{fig:raman-fov-regions}b).  A particularly complex region,
+features are seen in all directions from the Trapezium (see also
+Figure~\ref{fig:raman-fov-regions}b).
+Although the true three-dimensional shape of these bars has not been
+conclusively established, it is reasonable to assume that they may be
+cylindrical filaments in three dimensions,
+possibly related to the ``fibers'' 
+\citep{Hacar:2018a}
+detected in the molecular gas behind the nebula.
+A particularly complex region,
 with several partially overlapping filaments, lies between the
 Trapezium and the Orion~S star formation region.  This region shows
 the brightest Raman wing emission, suggesting that it contains the
@@ -574,7 +608,7 @@ ionization front, particularly in the ``SW minibar'' region.
     slit width of \(75''\), centered on the ICRS equatorial
     coordinates \(\alpha = \ang{83.8419}\), \(\delta = \ang{-5.4113}\) and
     oriented at a position angle of \ang{141.5}.  Distances from the
-    ionization front are given in \si{mpc} where
+    ionization front are given in milliparsec (\si{mpc}) where
     \(1'' \approx \SI{1.9}{mpc}\) for an assumed distance of \SI{388 \pm
       5}{pc} \citep{Kounkel:2017a}.}
   \label{fig:raman-bar-profile}
@@ -688,7 +722,7 @@ clearly seen in the distribution of the [\ion{O}{3}], [\ion{O}{2}],
 emissivity (excited by collisions between electrons and neutral oxygen
 atoms) is expected to occur at a hydrogen ionization fraction of 50\%
 \citep{Henney:2005b}, which is displaced by
-\(x_0 \approx \SI{-1.7}{mpc}\) from the peak of the \ion{O}{1} fluorescent
+\(x_0 \approx \SI{-1.7}{mpc (milliparsec)}\) from the peak of the \ion{O}{1} fluorescent
 line.  This latter should correspond to an absorption optical depth of
 approximately unity in the FUV pumping lines, such as those listed in
 Table~\ref{tab:raman-wavelengths} \citetext{see \S~5 of
@@ -741,7 +775,7 @@ The near-infrared \chem{H_2} \vibro{1}{0}{S(1)} line marks the
 hydrogen dissociation front at \(x_0 \approx \SI{24}{mpc}\)
 \citep{van-der-Werf:1996a, Luhman:1998a, Marconi:1998a},
 which provides the outer boundary of the neutral hydrogen layer.
-Beyond this are are found the high-\(J\) CO lines,
+Beyond this are found the high-\(J\) CO lines,
 which trace the \chem{CO} dissociation front at \(x_0 \approx \SI{36}{mpc}\).
 These coincide with near-infrared [\ion{C}{1}] emission,
 which mainly traces the recombination of \chem{C^+} ions
@@ -838,7 +872,7 @@ as well as the ``true'' nebular continuum and dust-scattered starlight.
 Due to the weakness of both the continuum and the absorption line,
 it was necessary to aggressively bin the data
 in order to produce an acceptable map.
-The results in Figure\ref{fig:raman-multi-absorption-features}d
+The results in Figure~\ref{fig:raman-multi-absorption-features}d
 are for a minimum S/N of 7 in \(W_\lambda\observed\), which gives
 the optimum balance between noise and spatial resolution.
 
@@ -876,7 +910,7 @@ Note also that \(R\wing\) is a dimensionless ratio,
 whereas \(W_\lambda\observed\) has dimensions of wavelength.
 The reason for choosing the R087 band for this figure is that it is
 the band that is closest in wavelength to the \SI{6633}{\angstrom} absorption feature.
-It is clear from comparing Figure~\ref{fig:raman-spectra-1d} panels~a and~d
+It is clear from comparing Figure~\ref{fig:raman-multi-absorption-features} panels~a and~d
 that \(W_\lambda\observed (6633)\) and \(R\wing\) closely track one another,
 as would be expected if the absorption feature is the Raman-scattered \ion{O}{1} \SI{1027}{\angstrom} line.
 
@@ -1007,7 +1041,7 @@ at the same distance from the scattering grains
 because \th1C is 4 times brighter than \th1D
 at visual wavelengths, so the latter star contributes relatively little
 to the total luminosity of the Trapezium.
-However, it has been suggested \citep{Smith:2005a} that \th1D may lie
+However, it has been suggested \citep{ODell:1993b, ODell:2001b, Smith:2005a} that \th1D may lie
 closer to the background molecular gas,
 roughly \SI{0.1}{pc} behind \th1C.
 In such a case, it would be possible for \th1D to dominate the illumination
@@ -1041,7 +1075,7 @@ and the present results would tend to confirm that.
 \end{figure}
 
 
-\subsubsection{Solid-state absorption features}
+\subsubsection{Diffuse interstellar bands}
 \label{sec:solid-state-absorpt}
 
 A third type of absorption feature found in the nebular spectrum
@@ -1168,17 +1202,17 @@ assuming that the \SI{6664}{\angstrom} feature is due to Raman scattering of the
     (1) & (2) & (3) & (4)  \\
     \midrule
     & \multicolumn{3}{c}{[\ion{Ni}{2}] emission \SI{6666.80}{\angstrom}} \\[2pt]
-    A &  0.75 \pm 0.02 & 0.4 \pm 0.1 & 7.7 \pm 0.4\\
-    B &  0.71 \pm 0.02 & 2.7 \pm 0.1 & 7.9 \pm 0.4\\
-    C &  0.60 \pm 0.02 & 2.9 \pm 0.2 & 8.6 \pm 0.5\\
-    D & 0.46 \pm 0.01 & 1.8 \pm 0.2 & 8.5 \pm 0.4\\
-    E & 0.29 \pm 0.01 & 3.6 \pm 0.2 & 6.8 \pm 0.6\\
+    A &  0.75 \pm 0.02 & 1.5 \pm 0.1 & 7.7 \pm 0.4\\
+    B &  0.71 \pm 0.02 & 3.7 \pm 0.1 & 7.9 \pm 0.4\\
+    C &  0.60 \pm 0.02 & 4.0 \pm 0.2 & 8.6 \pm 0.5\\
+    D & 0.46 \pm 0.01 & 2.8 \pm 0.2 & 8.5 \pm 0.4\\
+    E & 0.29 \pm 0.01 & 4.6 \pm 0.2 & 6.8 \pm 0.6\\
     \addlinespace[\medskipamount]
     & \multicolumn{3}{c}{\ion{O}{1} Raman-scattered absorption \SI{6663.75}{\angstrom}} \\[2pt]
-    A & 0.050 \pm 0.003 & 0.3 \pm 0.4 & 14.5 \pm 1.0  \\
-    B & 0.039 \pm 0.004 & -1.6 \pm 0.5 & 9.6 \pm 1.1  \\
-    C & 0.030 \pm 0.005 & -1.2 \pm 0.6 & 7.6 \pm 1.5  \\
-    D & 0.022 \pm 0.007 & 1.3 \pm 1.0 & 7.2 \pm 2.5    \\
+    A & 0.050 \pm 0.003 & 0.4 \pm 0.4 & 14.5 \pm 1.0  \\
+    B & 0.039 \pm 0.004 & -1.4 \pm 0.5 & 9.6 \pm 1.1  \\
+    C & 0.030 \pm 0.005 & -1.0 \pm 0.6 & 7.6 \pm 1.5  \\
+    D & 0.022 \pm 0.007 & 1.5 \pm 1.0 & 7.2 \pm 2.5    \\
     \bottomrule 
     \multicolumn{4}{@{}p{\columnwidth}@{}}{%
     \textsc{Columns}:
@@ -1204,13 +1238,13 @@ are discussed in Appendix~\ref{sec:raman-theory},
 while the [\ion{Ni}{2}] rest wavelength comes from hollow cathode tube observations \citet{Shenstone:1970a}.
 Velocities are given in the reference frame of molecular gas in the Orion~South region,
 as defined by the centroid of \chem{^{13}CO} emission \citep{Kong:2018a}:
-\(V_{\mathrm{LSR}} = \SI{+9.0 \pm 0.2}{km.s^{-1}}\) or \(V_{\odot} = \SI{+28.1 \pm 0.2}{km.s^{-1}}\).
+\(V_{\mathrm{LSR}} = \SI{+9.0 \pm 0.2}{km.s^{-1}}\) or \(V_{\odot} = \SI{+27.1 \pm 0.2}{km.s^{-1}}\).
 Both the emission and absorption lines have velocities that are close to that of the molecular gas,
 as has been previously found for low-ionization lines in the nebula
 \citetext{e.g., Fig.~14 of \citealp{Baldwin:2000a}}.\footnote{
   Although the [\ion{Ni}{2}] line, which likely arises near the ionization front,
-  seems to show a consistent redshift of order \SI{2}{km.s^{-1}} with respect to CO,
-  this is probably not significant given that the rest wavelength accuracy of \SI{0.03}{\angstrom}
+  seems to show a consistent redshift of order \SI{3}{km.s^{-1}} with respect to CO,
+  this is only marginally significant given that the rest wavelength accuracy of \SI{0.03}{\angstrom}
   corresponds to \SI{1.4}{km.s^{-1}}.
 }
 
@@ -1685,6 +1719,8 @@ Assuming complete absorption (\(A_0 = 1\)), then yields \(\Delta V = \SI{15 \pm 
 Very similar velocity widths were found for the \SI{6664}{\angstrom} absorption feature
 from the high-resolution Keck spectra (Table~\ref{tab:line-fits}).
 
+
+
 % integral exp(-x**2/2) is sqrt(2 pi)
 % Assume A = A0 exp(-x**2/2) with x = (lam - lam0) /  sigma
 % Then FWHM = 2 sqrt(2 ln 2) = 2.35482004504
@@ -1847,7 +1883,7 @@ On the other hand,
 such a scenario seems very far-fetched and I have been unable to find
 any candidate absorption features at relevant wavelengths.
 
-\paragraph*{Why they cannot be solid-state absorption features}
+\paragraph*{Why they cannot be Diffuse Interstellar Band features}
 \label{sec:cannot-be-solid}
 
 The same argument as in the previous paragraph also rules out any possibility
@@ -1985,6 +2021,8 @@ through grant
   Programa de Apoyo a Proyectos de Investigación
   e Inovación Tecnológica}
 IN107019.
+Based on observations collected at the European Southern Observatory
+under ESO programme 60.A-9100(A).
 Scientific software and databases used in this work include
 SAOImage~DS9\footnote{\url{https://sites.google.com/cfa.harvard.edu/saoimageds9}} \citep{Joye:2003a},
 the Atomic Line List\footnote{\url{https://www.pa.uky.edu/~peter/newpage/}} \citep{Van-Hoof:2018a},
@@ -1993,6 +2031,8 @@ the Cloudy plasma physics code\footnote{\url{https://nublado.org}}
 SIMBAD and Vizier from Strasbourg Astronomical Data Center (CDS)\footnote{\url{https://cds.u-strasbg.fr}},
 and the following 3rd-party Python packages:
 numpy, astropy, matplotlib, seaborn, scikit-image, reproject.
+I thank Bob O'Dell for detailed comments on an earlier draft of this paper
+and I thank the referee Adolf Witt for a prompt and helpful report.
 
 
 \section*{Data availability}
