@@ -133,7 +133,53 @@
   + When comparing to local continuum
 * Absorption at 6634 \AA in Orion Nebula
 + [[https://www.evernote.com/l/ACSenDsvfD1AsZwl6SJxcieZcyrDhIYlOVw][Public link to Evernote note]]
+** Little things for the revised version of paper
+*** Graph of spectra showing the DIB at 5780 (and lack at 5797)
++ We do masks based on the equivalent widths, or not
++ Base it on the Raman wings graph from here
+  + [[id:000D3CF5-4C2F-429C-A2CE-013C1AA0D40D][Plot the spectrum of different regions]]
++ Use 5800 to 5850 to get an average continuum since there are hardly any lines there
++ Plot from 5650 to 5950
 
+#+name: extract-1d-spectra-DIB
+#+header: :var WAVSEC="wavsec23"
+#+begin_src python :return jsonfile :results file
+  import json
+  import numpy as np
+  import astropy.coordinates as coord
+  from astropy.wcs import WCS
+  from astropy.io import fits
+  import regions as rg
+
+  regions = rg.read_ds9("../data/raman-extract-boxes.reg")
+  regions += rg.read_ds9("../data/raman-faint-boxes.reg")
+
+  hdu = fits.open(f"../../OrionMuse/muse-hr-fullcube-rebin05x05.fits")["DATA"]
+
+  spec = {}
+  nz, ny, nx = hdu.data.shape
+  w = WCS(hdu.header)
+  _, _, waves = w.pixel_to_world_values([0], [0], np.arange(nz))
+  for region in regions:
+      mask = region.to_pixel(w.celestial).to_mask().to_image((ny, nx))
+      label = region.meta["label"]
+      spec[label] = {
+          "wavelength": (1e10*waves).tolist(),
+          "flux": np.sum(hdu.data*mask[None, :, :], axis=(1, 2)).tolist(),
+          }
+
+  jsonfile = f"raw-orion-muse-1d-spectra-full.json"
+
+  with open(jsonfile, "w") as f:
+      json.dump(spec, f, indent=3)
+#+end_src
+
+#+RESULTS: extract-1d-spectra-DIB
+[[file:raw-orion-muse-1d-spectra-full.json]]
+
+Now make a graph. 
+
+*** Something about normalizing to Ha recombination line
 
 ** Return to this project - 2020 August
 
@@ -828,6 +874,9 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
 
 
 **** Plot the spectrum of different regions
+:PROPERTIES:
+:ID:       000D3CF5-4C2F-429C-A2CE-013C1AA0D40D
+:END:
 + When did we last use astropy.regions?
   + Turns out to be for sigma Ori
   + Need to use ~mask = skyregion.to_pixel(WCS).to_mask().to_image(SHAPE)~

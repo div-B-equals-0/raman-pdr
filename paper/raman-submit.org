@@ -135,7 +135,7 @@ Fixed
 : 
 : While the carriers of the diffuse interstellar bands (DIBs) remain largely unidentified (possible exception: identification of ~4 or 5 near-IR DIBs with absorptions by C60+), there is a near-unanimous agreement within the DIB community that DIBs are not solid-state absorption features. You can find a fairly detailed review of potential DIB carriers in an article by Snow (2001 Spectrochimica Acta A 57, 615). Lai et al. (2020 MNRAS 492, 5853) demonstrated that DIB carriers survive with normal abundances within the neutral hydrogen domain of PDRs and suggested the possibility that carriers of ERE and DIBs are the same.
 
-Yes, this is a good point.  I have made all the suggested changes and additions.
+Yes, this is a good point.  I have made the suggested changes.
 
 **** 5. Page 10, Sect. 2.6.3:
 It would be helpful if a representative nebular spectrum of the wavelength region that includes the DIBs at 5780 Å and 5797 Å were included in this section.
