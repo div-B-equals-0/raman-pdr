@@ -204,6 +204,7 @@ Now make a graph.
       "E-W Bar",
       "Trap W",
       "Trap SW",
+      "Big Arc",
       "Bar",
   ]
 
@@ -244,12 +245,12 @@ Now make a graph.
       # 5918.5: "N III",
   }
 
-  fig, ax = plt.subplots(figsize=(8, 6))
+  fig, ax = plt.subplots(figsize=(8, 4))
 
   #wavmin, wavmax = 5650, 6020
   wavmin, wavmax = 5731, 5915
   wavnorm = 5840
-  offset = 0.25
+  offset = 0.30
   fc = 0.7
   for region in region_order:
       spec = data[region]
@@ -275,22 +276,22 @@ Now make a graph.
 
   sns.set_color_codes("dark")
   for wave, label in strong_lines.items():
-      ax.axvline(wave, 0.22, 1.0, color="k", lw=2, zorder=-5)
-      ax.text(wave, 0.79, label, ha="center", va="top", rotation="vertical")
+      ax.axvline(wave, 0.33, 1.0, color="k", lw=2, zorder=-5)
+      ax.text(wave, 0.9, label, ha="center", va="top", rotation="vertical")
   for wave, label in medium_lines.items():
       ax.axvline(wave, 0.25, 0.8, color="k", lw=1, zorder=-5)
       ax.text(wave, 0.82, label, ha="center", va="top", rotation="vertical", fontsize="xx-small")
   for wave, label in weak_lines.items():
-      ax.axvline(wave, 0.28, 0.88, color="k", lw=0.5, zorder=-5)
+      ax.axvline(wave, 0.4, 0.88, color="k", lw=0.5, zorder=-5)
       ax.text(wave, 1.45, label, ha="center", va="bottom", rotation="vertical", fontsize="small")
   for wave, label in absorption_lines.items():
       lw = 0.5 if "DIB" in label else 1.0
-      miny = 0.25 if "DIB" in label else 0.24
-      ytext = 1.38 if "DIB" in label else 0.78
+      miny = 0.30 if "DIB" in label else 0.30
+      ytext = 1.38 if "DIB" in label else 0.82
       if "5801" in label:
-          dwav = -2.0
+          dwav = -1.0
       elif "5812" in label:
-          dwav = 2.0
+          dwav = 1.0
       else:
           dwav = 0.0
       ax.axvline(wave, miny, 0.8, color="r", ls="--", lw=lw, zorder=-5)
@@ -322,10 +323,10 @@ Now make a graph.
 
       offset = -0.35
       ax.plot(skywavs, (1.2*skytrans - 0.2) + offset, lw=0.8, color="r")
-      ax.annotate(f"${np.round(offset, 2):.2f}$ + Telluric absorption",
+      ax.annotate(f"${np.round(offset, 2):.2f}$ + Telluric\n         absorption",
                   (wavmax, 1 + offset), color="r",
                   xytext=(5, 0), textcoords="offset points", ha="left", va="center")
-      offset = 0.7
+      offset = 0.75
       ax.plot(skywavs, offset + 0.03*skyemis/skyemis.max(), lw=0.8, color="g") 
       ax.annotate(f"{np.round(np.abs(offset), 2):.2f} + Airglow",
                   (wavmax, offset), color="g",
@@ -1137,7 +1138,7 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
   import regions as rg
 
   regions = rg.read_ds9("../data/raman-extract-boxes.reg")
-  regions += rg.read_ds9("../data/raman-faint-boxes.reg")
+  regions += rg.read_ds9("../data/raman-faint2-boxes.reg")
 
   hdu = fits.open(f"../data/orion-muse/muse-hr-data-{WAVSEC}-rebin16x16-cont-sub.fits")["DATA"]
   chdu = fits.open(f"../data/orion-muse/muse-hr-data-{WAVSEC}-rebin16x16-cont.fits")["DATA"]
@@ -1178,7 +1179,7 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
   from astropy.table import Table
   from astropy.convolution import Gaussian1DKernel, convolve_fft
 
-  jsonfile = "raman-orion-muse-1d-spectra.json"
+  jsonfile = "raman-orion-muse-1d-spectra-wavsec23.json"
   data = json.load(open(jsonfile))
   figfile = jsonfile.replace(".json", ".pdf")
 
@@ -1195,6 +1196,7 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       "E-W Bar",
       "Trap W",
       "Trap SW",
+      "Big Arc",
       "Bar",
   ]
 
@@ -1248,6 +1250,14 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       6809.23: "N II",
       6813.57: "[Ni II]",
   }
+  label_shifts = {
+      6527.24: -3,
+      6785.81: -2,
+      6791.48: +2,
+      6809.23: -3,
+      6813.57: +3,
+      6371.36: +2,
+  }
   sky_lines = [6235.5, 6287.5, 6306.5, 6329, 6465, 6471, 6478, 6498.15, 6507, 6603]
   absorption_lines = {
       6633.347: "O I",
@@ -1262,9 +1272,11 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
   fig, ax = plt.subplots(figsize=(10, 6))
 
   wavmin, wavmax = 6200, 6820
-  offset = 0.75
+  offset = 0.7
   fc = 0.7
   for region in region_order:
+      if not region in data:
+         continue
       spec = data[region]
       waves = np.array(spec["wavelength"]) 
       # Put in OMC frame
@@ -1285,34 +1297,37 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       ax.annotate(f"{np.round(np.abs(offset), 2):.2f} + {region}",
                   (wavmax, cont[-1] + offset),
                   xytext=(5, 0), textcoords="offset points", ha="left", va="center")
-      offset -= 0.15
+      offset -= 0.1
       fc += 0.04
 
   # bandcolors = iter(sns.color_palette("coolwarm", len(bands)))
   # bandcolors = iter(sns.diverging_palette(220, 20, sep=1, n=len(bands), center="dark"))
   alphas = iter([0.2, 0.4, 0.4, 0.6, 0.6, 0.4, 0.4, 0.2])
   bandcolors = iter(["c", "c", "b", "b", "m", "m", "r", "r"])
-  for band, [wav1, wav2] in bands.items():
+  for i, [band, [wav1, wav2]] in enumerate(bands.items()):
+      ypos = 2.18 if i % 2 == 0 else 2.22
       ax.axvspan(wav1, wav2, 0.2, 0.95, facecolor=next(bandcolors), alpha=next(alphas), zorder=-10)
-      ax.text((wav1 + wav2)/2, 2.2, band, ha="center", fontsize="xx-small")
+      ax.text((wav1 + wav2)/2, ypos, band, ha="center", fontsize="small")
 
   sns.set_color_codes("dark")
   for wave, label in strong_lines.items():
       ax.axvline(wave, 0.22, 0.8, color="k", lw=2, zorder=-5)
       ax.text(wave, 0.74, label, ha="center", va="top", rotation="vertical", fontsize="small")
   for wave, label in medium_lines.items():
-      ax.axvline(wave, 0.25, 0.8, color="k", lw=1, zorder=-5)
-      ax.text(wave, 0.8, label, ha="center", va="top", rotation="vertical", fontsize="xx-small")
+      ax.axvline(wave, 0.28, 0.8, color="k", lw=1, zorder=-5)
+      wavshift = label_shifts.get(wave, 0)
+      ax.text(wave + wavshift, 0.85, label, ha="center", va="top", rotation="vertical", fontsize="small")
   for wave, label in weak_lines.items():
-      ax.axvline(wave, 0.28, 0.88, color="k", lw=0.5, zorder=-5)
-      ax.text(wave, 2.03, label, ha="center", va="bottom", rotation="vertical", fontsize="xx-small")
+      ax.axvline(wave, 0.33, 0.87, color="k", lw=0.5, zorder=-5)
+      wavshift = label_shifts.get(wave, 0)
+      ax.text(wave + wavshift, 2.03, label, ha="center", va="bottom", rotation="vertical", fontsize="small")
 
   for wave, label in absorption_lines.items():
       lw = 0.5 if "?" in label else 1.0
       miny = 0.19 if "?" in label else 0.18
       ytext = 0.69 if "?" in label else 0.65
       ax.axvline(wave, miny, 0.8, color="r", ls="--", lw=lw, zorder=-5)
-      ax.text(wave, ytext, label, ha="center", rotation="horizontal", fontsize="x-small", color="r", fontweight="bold")
+      ax.text(wave, ytext, label, ha="center", rotation="horizontal", fontsize="small", color="r", fontweight="bold")
 
   for wave in sky_lines:
       # Sky line wavelengths need correcting from topocentric to OMC farme
@@ -1328,8 +1343,8 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
   # pixels are 0.1 AA - convolve to give R = 2500 at 6500 AA
   fwhm_pix = 6500.0/(0.1*2500.0)
   gauss = Gaussian1DKernel(stddev=fwhm_pix/2.3)
-  skytrans = convolve_fft(sky["trans_ma"], gauss)[smask]
-  skyemis = convolve_fft(sky["flux_ael"], gauss)[smask]
+  skytrans = convolve_fft(sky["trans_ma"].quantity, gauss)[smask]
+  skyemis = convolve_fft(sky["flux_ael"].quantity, gauss)[smask]
 
   sns.set_color_codes("dark")
 
@@ -1357,7 +1372,7 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
 #+end_src
 
 #+RESULTS:
-[[file:raman-orion-muse-1d-spectra.pdf]]
+[[file:raman-orion-muse-1d-spectra-wavsec23.pdf]]
 
 
 
@@ -2765,6 +2780,12 @@ And try Lupton with hi-res images...
       pixelregion = skyregion.to_pixel(w)
       pixelregion.plot(ax=ax, color="w", lw=1)
 
+  # Regions for weak Raman profile
+  regions = rg.read_ds9("../data/raman-faint2-boxes.reg")
+  for skyregion in regions:
+      pixelregion = skyregion.to_pixel(w)
+      pixelregion.plot(ax=ax, color="w", lw=1, ls=":")
+    
   # Regions for Dopita paper
   regions = rg.read_ds9("../data/raman-dopita-box.reg")
   for skyregion in regions:
@@ -2777,7 +2798,7 @@ And try Lupton with hi-res images...
       pixelregion = skyregion.to_pixel(w)
       pixelregion.plot(ax=ax, color="r", lw=0.7)
 
-    
+
   for _, ra, dec, size in STARS:
       ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="yellow", fc="none")
   ax.set(xlabel="RA (J2000)", ylabel="Dec (J2000)")

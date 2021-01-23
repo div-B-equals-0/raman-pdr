@@ -243,7 +243,8 @@ ratio.
 \label{sec:muse-spectr-mapp}
 \begin{figure}
   \centering
-  \includegraphics[width=\linewidth]{figs/raman-fov-regions-lores}
+%  \includegraphics[width=\linewidth]{figs/raman-fov-regions-lores}
+  \includegraphics[width=\linewidth]{figs/raman-fov-regions}
   \caption{(a)~Panoramic view of the Orion Nebula region on parsec
     scales.  Red channel of background image shows \chem{^{18}CO}
     emission from dense molecular gas \citetext{Carma-NRO Orion
@@ -290,7 +291,7 @@ combines observations from 30 separate pointings, with a pixel size of
 \label{sec:raman-scattered-ha}
 
 \begin{figure*}
-  \includegraphics[width=\linewidth]{figs/raman-orion-muse-1d-spectra}
+  \includegraphics[width=\linewidth]{figs/raman-orion-muse-1d-spectra-wavsec23}
   \caption{MUSE spectra of the Orion Nebula centered on the
     H\(\alpha\) line, showing the broad Raman-scattered wings.  Spectra are
     shown for the regions outlined by white boxes in
@@ -841,6 +842,14 @@ on the other hand, come from the \chem{H^0} region of the PDR.
   \label{fig:raman-multi-absorption-features}
 \end{figure*}
 
+\begin{figure*}
+  \centering
+  \includegraphics[width=\linewidth]{figs/dib-orion-muse-1d-spectra}
+  \caption{
+    MUSE spectra of the Orion Nebula showing absorption features in the green spectral region.
+  }
+  \label{fig:dib-spectra}
+\end{figure*}
 
 \subsection{Equivalent widths of absorption features}
 \label{sec:equiv-widths-absorpt}
@@ -859,6 +868,7 @@ around the central wavelength of the absorption feature:
 \end{equation}
 where \(I\lamcont\) is the continuum intensity,
 which is interpolated from the absorption-free portions of the \(\Delta\lambda\) interval.
+Sample spectra showing some of these absorption features are shown in Figure~\ref{fig:dib-spectra}.
 
 \subsubsection{Raman-scattered \ion{O}{1} \SI{1027}{\angstrom}}
 \label{sec:cand-raman-scatt}
@@ -953,6 +963,9 @@ potentially leading to reduced accuracy in the continuum interpolation,
 which might result in an overestimation of \(R\wing\).
 Higher values of \(R\wing\) and \(W_\lambda\), such as those seen in Orion~S,
 are much less affected by such uncertainties.
+
+
+
 
 \subsubsection{Stellar absorption lines}
 \label{sec:stell-absorpt-lines}
