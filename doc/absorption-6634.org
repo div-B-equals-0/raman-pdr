@@ -177,8 +177,174 @@
 #+RESULTS: extract-1d-spectra-DIB
 [[file:raw-orion-muse-1d-spectra-full.json]]
 
-Now make a graph. 
+Now make a graph.
 
+#+begin_src python :return figfile :results file
+  import numpy as np
+  import json
+  from matplotlib import pyplot as plt
+  import seaborn as sns
+  from astropy.table import Table
+  from astropy.convolution import Gaussian1DKernel, convolve_fft
+
+  jsonfile = "raw-orion-muse-1d-spectra-full.json"
+  data = json.load(open(jsonfile))
+  figfile = "dib-orion-muse-1d-spectra.pdf"
+
+  sky = Table.read("../data/skycalc/skytable.fits")
+
+  # Heliocentric correction
+  V_HEL = -16.217273731
+  # Heliocentric velocity of molecular cloud
+  V_OMC = +9.0 + 18.1
+
+  region_order = [
+      "SW minibar",
+      "Orion S",
+      "E-W Bar",
+      "Trap W",
+      "Trap SW",
+      "Bar",
+  ]
+
+  strong_lines = {
+      5755.08: "[N II]",
+      5875.62: "He I",
+  }
+  medium_lines = {
+      # 5957.56: "Si II",
+      # 5978.93: "Si II",
+  }
+  weak_lines = {
+      # 5666.629: "N II", 
+      # 5676.02: "N II", 
+      # 5679.558: "N II", 
+      # 5686.21: "N II", 
+      # 5711.06: "N II",
+      5739.73: "Si III",
+      5747: "?",
+      5820.09: "[Ni IV] ?",
+      5867.99: "Ni II",
+      5889.78: "C II ?",
+      5905.4: "[Ni IV] ?",
+      # 5927.82: "N II",  
+      # 5931.78: "N II", 
+      # 5941.65: "N II", 
+      # 5952.39: "N II", 
+      # 6000.2: "[Ni III]",
+  }
+  #sky_lines = [6235.5, 6287.5, 6306.5, 6329, 6465, 6471, 6478, 6498.15, 6507, 6603]
+  absorption_lines = {
+      5781: "σ DIB\n5781",
+      5797: "ζ DIB\n5797",
+      5801.35: "C IV\n5801",
+      5812.0: "C IV\n5812",
+      5896.1: "N III\n5896",
+      # 5901.2: "",
+      # 5918.5: "N III",
+  }
+
+  fig, ax = plt.subplots(figsize=(8, 6))
+
+  #wavmin, wavmax = 5650, 6020
+  wavmin, wavmax = 5731, 5915
+  wavnorm = 5840
+  offset = 0.25
+  fc = 0.7
+  for region in region_order:
+      spec = data[region]
+      waves = np.array(spec["wavelength"]) 
+      # Put in OMC frame
+      waves *= (1.0 - (V_OMC + V_HEL)/3e5)
+      imin = np.sum(waves < wavmin)
+      imax = np.sum(waves < wavmax)
+      i0 = np.sum(waves < wavnorm)
+      flux = np.array(spec["flux"])
+      avcont = np.median(flux[i0-10:i0+10])
+      total = flux / avcont
+      waves = waves[imin:imax]
+      total = total[imin:imax]
+      # ax.fill_between(waves, cont + offset, total + offset, color=(fc, fc, fc))
+      # ax.plot(waves, cont + offset, color="k", lw=0.5, zorder=-100)
+      ax.plot(waves, total + offset, color="k", lw=0.7)
+      ax.annotate(f"{np.round(np.abs(offset), 2):.2f} + {region}",
+                  (wavmax, total[-1] + offset),
+                  xytext=(5, 0), textcoords="offset points", ha="left", va="center")
+      offset -= 0.05
+      fc += 0.04
+
+  sns.set_color_codes("dark")
+  for wave, label in strong_lines.items():
+      ax.axvline(wave, 0.22, 1.0, color="k", lw=2, zorder=-5)
+      ax.text(wave, 0.79, label, ha="center", va="top", rotation="vertical")
+  for wave, label in medium_lines.items():
+      ax.axvline(wave, 0.25, 0.8, color="k", lw=1, zorder=-5)
+      ax.text(wave, 0.82, label, ha="center", va="top", rotation="vertical", fontsize="xx-small")
+  for wave, label in weak_lines.items():
+      ax.axvline(wave, 0.28, 0.88, color="k", lw=0.5, zorder=-5)
+      ax.text(wave, 1.45, label, ha="center", va="bottom", rotation="vertical", fontsize="small")
+  for wave, label in absorption_lines.items():
+      lw = 0.5 if "DIB" in label else 1.0
+      miny = 0.25 if "DIB" in label else 0.24
+      ytext = 1.38 if "DIB" in label else 0.78
+      if "5801" in label:
+          dwav = -2.0
+      elif "5812" in label:
+          dwav = 2.0
+      else:
+          dwav = 0.0
+      ax.axvline(wave, miny, 0.8, color="r", ls="--", lw=lw, zorder=-5)
+      ax.text(wave + dwav, ytext, label, ha="center", rotation="horizontal", fontsize="small", color="r", fontweight="bold")
+
+  # for wave in sky_lines:
+  #     # Sky line wavelengths need correcting from topocentric to OMC farme
+  #     wave *= (1.0 - (V_OMC + V_HEL)/3e5)
+  #     ax.axvline(wave, 0.08, 0.82, color="g", lw=1, ls=":", zorder=-5)
+  #     #ax.text(wave, 0.7, "sky", ha="center", rotation="vertical", fontsize="xx-small")
+
+
+  # Add in sky transmission "trans_ma" and skyglow lines "flux_ael" from skycalc
+  skywavs =  10*sky["lam"]*(1.0 - (V_OMC + V_HEL)/3e5)
+  smask = (wavmin <= skywavs) & (skywavs <= wavmax) 
+
+  if np.any(smask):
+  #if False:
+      # Only plot sky if we have the data
+      skywavs = skywavs[smask]
+
+      # pixels are 0.1 AA - convolve to give R = 2500 at 6500 AA
+      fwhm_pix = 6500.0/(0.1*2500.0)
+      gauss = Gaussian1DKernel(stddev=fwhm_pix/2.3)
+      skytrans = convolve_fft(sky["trans_ma"].quantity, gauss)[smask]
+      skyemis = convolve_fft(sky["flux_ael"].quantity, gauss)[smask]
+
+      sns.set_color_codes("dark")
+
+      offset = -0.35
+      ax.plot(skywavs, (1.2*skytrans - 0.2) + offset, lw=0.8, color="r")
+      ax.annotate(f"${np.round(offset, 2):.2f}$ + Telluric absorption",
+                  (wavmax, 1 + offset), color="r",
+                  xytext=(5, 0), textcoords="offset points", ha="left", va="center")
+      offset = 0.7
+      ax.plot(skywavs, offset + 0.03*skyemis/skyemis.max(), lw=0.8, color="g") 
+      ax.annotate(f"{np.round(np.abs(offset), 2):.2f} + Airglow",
+                  (wavmax, offset), color="g",
+                  xytext=(5, 0), textcoords="offset points", ha="left", va="center")
+
+  ax.set(
+      xlabel="STP Wavelength, Å (OMC frame)",
+      ylabel="Relative Flux, $F_{\lambda} / F_{5840}$ + offset",
+      # xlim=[wavmin, wavmax],
+      ylim=[0.61, 1.55],
+  )
+  ax.minorticks_on()
+  sns.despine(fig)
+  fig.tight_layout()
+  fig.savefig(figfile)
+#+end_src
+
+#+RESULTS:
+[[file:dib-orion-muse-1d-spectra.pdf]]
 *** Something about normalizing to Ha recombination line
 
 ** Return to this project - 2020 August
