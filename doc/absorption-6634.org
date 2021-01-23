@@ -345,6 +345,83 @@ Now make a graph.
 
 #+RESULTS:
 [[file:dib-orion-muse-1d-spectra.pdf]]
+**** The [Ni IV] lines
++ We see lines at 5820.09 and 5905.4
++ Eduardo has a line at 5906.37 in HH229, which might be [Ni IV]
+  + He has it as unidentified
++ Look at other datasets
+  + [ ] Look in Manu spectra
+  + [ ] Look in Keck spectra
+  + [ ] Look in 30 Doradus
++ Look at diagnostic potential using pyneb
+  + Should be density sensitive
++ Look for other lines
+  + 5517.66
+    + Swamped by the [Cl III] 5517.71 line, which is 100 times stronger
+  + 5910.0
+    + Marginally detected in wing of 5905.4
+    + 3 to 4 times weaker than 5905.4
+  + 6119.3
+    + Absolutely no sign of this
+  + 6124.1
+    + There is a line at 6125 that is about 0.5 times 5905
+    + Same upper level (J=3/2) as 5820.09
+      + Ratio of A values is (2.00E-02 + 1.80E-03) / 3.50E-02 = 0.62
+      + Roughly consistent with observed ratio, given that 5820 is a bit weaker than 5905
+  + 6218.7
+    + There is a line at 6221 at 0.3 times 5905
+    + Same upper level (J=5/2) as 5905.4
+      + Ratio of A values: (2.70E-03 + 2.00E-03) / (1.50E-02 + 5.30E-03) = 0.23
+      + So that is again roughly consistent with the observed ratio
+  + 6349.2
+    + Swamped by Si II 6347.11, which is 100 times stronger
+  + 6450.9
+    + In the Raman blue wing (between B133 and B080)
+    + Coincides with a possible absorption feature
++ Lines in other multiplets
+  + 4628.26 (wav), so around 4626 air maybe is seen in wing of N II 4631
+    + We should check in Adal spectra
+    + But there is also a [Ni II] line at 4628.05
+    + In fact, it is almost certainly [Ni II] because of the spatial variation in the Adal spectra
+  + 5364.84 (wav), so around 5363 air
+    + This is seen!
+    + 
+    + Stronger component from same upper level at 5042.97 (vac) but that is swamped by Si II 5041.03
+    + 5622.05 (vac) from same upper level is not seen though
+***** Full [Ni IV] multiplet info from Atomic Line List
+#+begin_example
+  Atomic Line List version: 2.05b21   Constructed: 2017-11-07 13:41 GMT
+  Wavelength range: 0 - inf   Unit: Angstrom   Type: Air
+  Radial velocity: 0 km/s
+  Element/Spectrum: Ni IV
+
+  -LAB-WAVL-ANG-AIR-|--SPC--|TT|-CONF--|TERM-|-J_i-J_k-|--A_ki--|-TPF-|----LVL-EN--K-----|-REF---|
+     5517.66         [Ni IV] E2 3d7-3d7 4F-4P 9/2 - 5/2 6.80E-02   ASD    0.00 - 26068.60 ASD
+     5820.09         [Ni IV] E2 3d7-3d7 4F-4P 7/2 - 3/2 3.50E-02   ASD 1711.70 - 26425.70 ASD
+     5905.4          [Ni IV] E2 3d7-3d7 4F-4P 7/2 - 5/2 1.50E-02   ASD 1711.70 - 26068.60 ASD
+     5905.4          [Ni IV] M1 3d7-3d7 4F-4P 7/2 - 5/2 5.30E-03   ASD 1711.70 - 26068.60 ASD
+     5910.0          [Ni IV] E2 3d7-3d7 4F-4P 5/2 - 1/2 2.60E-02   ASD 2938.70 - 27276.90 ASD
+     6119.3          [Ni IV] E2 3d7-3d7 4F-4P 3/2 - 1/2 3.30E-02   ASD 3771.20 - 27276.90 ASD
+     6124.1          [Ni IV] E2 3d7-3d7 4F-4P 5/2 - 3/2 2.00E-02   ASD 2938.70 - 26425.70 ASD
+     6124.1          [Ni IV] M1 3d7-3d7 4F-4P 5/2 - 3/2 1.80E-03   ASD 2938.70 - 26425.70 ASD
+     6218.7          [Ni IV] E2 3d7-3d7 4F-4P 5/2 - 5/2 2.70E-03   ASD 2938.70 - 26068.60 ASD
+     6218.7          [Ni IV] M1 3d7-3d7 4F-4P 5/2 - 5/2 2.00E-03   ASD 2938.70 - 26068.60 ASD
+     6349.2          [Ni IV] E2 3d7-3d7 4F-4P 3/2 - 3/2 5.40E-03   ASD 3771.20 - 26425.70 ASD
+     6349.2          [Ni IV] M1 3d7-3d7 4F-4P 3/2 - 3/2 3.30E-04   ASD 3771.20 - 26425.70 ASD
+     6450.9          [Ni IV] M1 3d7-3d7 4F-4P 3/2 - 5/2 6.90E-04   ASD 3771.20 - 26068.60 ASD
+     6450.9          [Ni IV] E2 3d7-3d7 4F-4P 3/2 - 5/2 2.50E-04   ASD 3771.20 - 26068.60 ASD
+
+  gk*Aki weighted average wavelength:    5782.4         
+#+end_example
+**** Strange line at 5170 
++ Group of 5170 (strongest), 5186, 5235, 5317
++ Seen in proplyds 170-337 and 159-350
+  + 170-337 also shows the Ca II 8495, 8538, 8658 lines
+  + 159-350 does not show 5170 with any strength
+    + But it does show 5317 strongly
++ These seem to be mainly [Fe II] lines, maybe with Ca I too
++ See Fig 1 of Hessman:1997a that shows a similar spectrum for DG Tau
+  
 *** Something about normalizing to Ha recombination line
 
 ** Return to this project - 2020 August
