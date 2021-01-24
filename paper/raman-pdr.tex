@@ -303,8 +303,9 @@ combines observations from 30 separate pointings, with a pixel size of
     stronger lines.  Wavelengths of Raman-scattered \ion{O}{1} and
     \ion{Si}{2} absorption lines from
     Table~\ref{tab:raman-wavelengths} are shown by red dashed vertical
-    lines, labelled in bold font below, together with unidentified
-    candidate absorption features marked with ``?''.  Dotted lines
+    lines, labelled in bold font below,
+    together with candidate DIB and unidentified
+    absorption features marked with ``?''.  Dotted lines
     show night sky lines identified in the Dark Bay region of the
     nebula.  At the bottom of the figure are shown the theoretical
     upper-atmosphere airglow spectrum (green line) and telluric
@@ -325,6 +326,11 @@ the \ha{} line extending from \num{6300} to \SI{6700}{\angstrom},
 which are consistent with the higher spectral resolution
 (\(R = 7000\)) results of \citet{Dopita:2016a} for the region
 indicated by a dashed box in Figure~\ref{fig:raman-fov-regions}(b).
+Two additional extraction regions (dotted boxes in the figure) are chosen
+to cover the blueshifted high-ionization ``Big Arc'' feature
+\citep{Doi:2004a},
+where the extended wings are relatively weak,
+and the highly extinguished ``Dark Bay'' to the NE of the nebula.
 The continuum is interpolated under the wings by fitting a
 second-order polynomial to clean regions of the spectra in the ranges
 \SIrange{6070}{6225}{\angstrom} and \SIrange{6760}{6820}{\angstrom},
@@ -389,16 +395,20 @@ at \SI{6481}{\angstrom}, corresponding to the \ion{Si}{2} absorption
 line at \SI{1024}{\angstrom}.  However, the blue wing is much less
 clean than the red wing, partly due to telluric absorption and airglow
 emission (see below), which makes the identification uncertain.  The
-Raman wings show some other weak features that remain unidentified,
+Raman wings show some other weak features of uncertain origin,
 the strongest of which is an apparent broad
 (\(\approx \SI{5}{\angstrom}\)) absorption feature at \SI{6494}{\angstrom},
-while additional narrower features are seen at \SI{6450}{\angstrom}
-and \SI{6708}{\angstrom} (all marked with ``?'' in
-Figure~\ref{fig:raman-spectra-1d}).  It is not clear if these are
-truly absorption features or whether they are simply gaps between very
-weak blended emission lines.
-They show no discernible spatial variation in the MUSE datacube,
-suggesting a likely terrestrial origin. 
+while additional narrower features are seen at \num{6439},
+\num{6449} and \SI{6708}{\angstrom}
+(all marked in Figure~\ref{fig:raman-spectra-1d}).
+It is likely that at least some of these features may be
+Diffuse Interstellar Bands (see section~\ref{sec:solid-state-absorpt} below),
+as evidenced by their correlation with foreground dust extinction
+(they are strongest in the Dark Bay sample, where the extinction is highest).
+Two definite Diffuse Interstellar Band features are seen at
+\SI{6284}{\angstrom}
+(strong, but superimposed on telluric absorption)
+and \SI{6614}{\angstrom} (weak).
 
 
 \subsection{Definition of observational Raman bands in the red and blue wings}
@@ -846,7 +856,25 @@ on the other hand, come from the \chem{H^0} region of the PDR.
   \centering
   \includegraphics[width=\linewidth]{figs/dib-orion-muse-1d-spectra}
   \caption{
-    MUSE spectra of the Orion Nebula showing absorption features in the green spectral region.
+    MUSE spectra of the Orion Nebula showing absorption features
+    in the green spectral region,
+    labelled in bold-face dark red.
+    Dotted vertical lines indicate the expected wavelengths of
+    Diffuse Interstellar Band features,
+    while dashed vertical lines indicate
+    photospheric lines from OB stars that have been dust-scattered. 
+    Selected emission lines are indicated by continuous vertical lines
+    and vertically oriented labels,
+    with tentative or unknown identifications denoted by question marks.
+    All spectra are normalized to the flux at \SI{5840}{\angstrom},
+    with offsets for each region as indicated at right.
+    The spatial regions are the same as shown in
+    Figures~\ref{fig:raman-fov-regions} and~\ref{fig:raman-spectra-1d}.
+    Predicted emission and absorption spectra of the Terrestrial atmosphere
+    are shown at bottom.
+    Note that due to the normalization of the spectra,
+    the apparent brightness of the airglow lines is higher for
+    low surface brightness regions such as the Dark Bay.
   }
   \label{fig:dib-spectra}
 \end{figure*}
@@ -868,7 +896,8 @@ around the central wavelength of the absorption feature:
 \end{equation}
 where \(I\lamcont\) is the continuum intensity,
 which is interpolated from the absorption-free portions of the \(\Delta\lambda\) interval.
-Sample spectra showing some of these absorption features are shown in Figure~\ref{fig:dib-spectra}.
+Sample spectra that illustrate some of these absorption features
+are shown in Figure~\ref{fig:dib-spectra}.
 
 \subsubsection{Raman-scattered \ion{O}{1} \SI{1027}{\angstrom}}
 \label{sec:cand-raman-scatt}
@@ -973,6 +1002,8 @@ are much less affected by such uncertainties.
 Figure~\ref{fig:raman-multi-absorption-features}b and~e show \(W_\lambda\observed\)
 for the \ion{He}{2} \SI{4685.68}{\angstrom} absorption line
 and the \ion{C}{4} \num{5801.35}, \SI{5811.97}{\angstrom} doublet, respectively.
+Representative spectra that include the \ion{C}{4} doublet
+are shown in Figure~\ref{fig:dib-spectra}. 
 Neither of these lines are expected to be seen in emission
 from the photoionized gas in the nebula due to the high ionization potentials required.
 They are therefore well-suited for tracing the diffuse dust-scattered starlight in the nebula.
@@ -1063,7 +1094,15 @@ and the present results would tend to confirm that.
 
 % Possible reasons for these differences are discussed below in \S~\ref{sec:cannot-be-stellar}.
 
-
+Another stellar absorption line that is visible in the spectra
+is \ion{N}{3} \SI{5896.1}{\angstrom},
+which shows a deeper absorption
+than the \ion{C}{4} doublet in some parts of the nebula,
+see Figure~\ref{fig:dib-spectra}.
+However, its blue flank is badly contaminated by the
+\ion{Na}{1} \SI{5895.923}{\angstrom} airglow line
+\citetext{see Fig.~5 of \citealp{Osterbrock:1996a}},
+so I do not consider it further here.
 
 
 
@@ -1106,15 +1145,18 @@ which is calculated from the \ha{}/\hb{} ratio,
 assuming the extinction curve of \citet{Blagrave:2007a}.
 
 It is clear at a glance that the spatial distribution of the
-DIB absorption and the continuum dust absorption are very similar.
+DIB absorption and the continuum dust extinction are very similar.
 This is not surprising, since many studies have established
 a correlation between DIB equivalent widths and interstellar reddening
 \citep{Friedman:2011a, Kos:2013a, Baron:2015a, Kreowski:2019b}.
+The can also be seen in the sample spectra shown in Figure~\ref{fig:dib-spectra}:
+the deepest DIB absorption is seen for the Dark Bay sample,
+a high-extinction region in the North East of the nebula. 
 This is tested quantitatively in Figure~\ref{fig:dib-redden},
 which shows the correlation between \(W_\lambda\observed(5780)\)
 and dust reddening \(E(B - V)\).
 The relative weakness of the \SI{5797}{\angstrom} DIB feature in all
-Orion Nebula sight lines is characteristic of \(\sigma\)-type DIBS
+Orion Nebula sight lines is characteristic of \(\sigma\)-type DIBs
 (after the prototype \(\sigma\)~Sco; \citealp{Krelowski:1988a}),
 which tend to be found in atomic diffuse clouds. 
 I therefore compare the results with a fit to 27 \(\sigma\)-type sight lines to
@@ -1131,17 +1173,22 @@ In addition, the Balmer decrement will saturate at high column densities
 if part of the dust is mixed with the emitting gas, resulting in an underestimate
 of \(E(B - V)\). 
 
-
-A further DIB feature is seen in the spectra at \SI{6284}{\angstrom}.
-However, it is hard to estimate the equivalent width of this feature
-since it overlaps with telluric \chem{O_2} \(\gamma\)-band absorption
-(see Figure~\ref{fig:raman-spectra-1d}).
+Additional DIB features are seen in the spectral region of the \ha{} Raman wings
+(see Figure~\ref{fig:raman-spectra-1d} and section~\ref{sec:raman-scattered-fuv}).
+The strongest of these is the \SI{6284}{\angstrom} feature,
+but it is difficult to estimate its equivalent width
+since it overlaps with telluric \chem{O_2} \(\gamma\)-band absorption.
+The \SI{6614}{\angstrom} feature \citep{Bernstein:2018a} is much weaker,
+and is only convincingly detected in the Dark Bay sample.
+Several other absorption features in the range \num{6400} to \SI{6500}{\angstrom}
+show correlation with dust extinction and coincide in
+wavelength with DIB features reported in \citet{Galazutdinov:2000a}. 
 
 \section{High-resolution spectroscopy of Raman-scattered \boldmath\ion{O}{1} \SI{1028}{\angstrom}}
 \label{sec:keck-observations}
 
 \begin{figure}
-  \includegraphics[width=\linewidth]{figs/raman-zoom-keck-regions-lores}
+  \includegraphics[width=\linewidth]{figs/raman-zoom-keck-regions}
   \caption{Zoom on Trapezium and Orion South region, showing the locations
     of extracted Keck spectra (red boxes).
     The background color composite image shows \textit{HST} WFPC2 observations
@@ -1311,7 +1358,7 @@ would be necessary to take full advantage of the boost in spectral resolution pr
     Once the FUV photons have traversed a sufficient column,
     they will be non-resonantly scattered by \ion{H}{1} (green circles)
     and a significant fraction will be Raman-converted to visual photons
-    (red wavy arrows).
+    (pink/red wavy arrows).
     For wavelengths farther from line center,
     this Raman scattering occurs deeper in the PDR
     and is eventually limited by competition from dust absorption
@@ -1622,7 +1669,7 @@ from analysis of the red wing of the compensated spectrum shown in Figure~\ref{f
 If this is the case, then it implies that the total \chem{H^0} column density through
 the Orion Bar PDR is \(\approx \SI{2e21}{cm^{-2}}\).
 However, an alternative interpretation could be that in these farther bands
-the \lyb{} wing cross-section falls below the dust extinction cross-section,
+the \lyb{} wing cross-section falls below the dust absorption cross-section,
 so that most FUV photons are absorbed by dust before they can be Raman scattered.
 In this scenario, the implication would be that \(\sigma_{\text{dust}} \approx \SI{5e-22}{cm^2.H^{-1}}\).
 It is difficult to discriminate between these two possibilities,
@@ -1630,8 +1677,16 @@ especially since the dust opacity probably plays a role in \emph{determining}
 the size of the \chem{H^0} column via the position of
 the molecular hydrogen dissociation front \citep{Draine:1996a}.
 The FUV dust absorption cross section implied by the Raman scattering is
-within the range predicted for dense clouds \citep{Cardelli:1989a},
-although \citet{Salgado:2016a} find that a lower value of
+slightly lower than predicted for dense clouds \citep{Cardelli:1989a, Weingartner:2001a},%
+\footnote{
+  For instance, from the modelled extinction cross sections and albedos
+  of dust with total to selective ratios \(R_V = 4.5\) to \(5.5\)
+  \citetext{Figs.~14 amd 15 of \citealp{Weingartner:2001a}},
+  the \emph{absorption} cross section at \lyb{} is predicted to be
+  \num{6.5e-22} to \SI{1.05e-21}{cm^{2}}.
+}
+suggesting that some dust destruction may have occurred in the Orion Bar.
+Note that \citet{Salgado:2016a} find that an even lower value of
 \(\sigma_{\text{dust}} \approx \SI{1.6e-22}{cm^2.H^{-1}}\) better reproduces the
 distribution of PAH emission in the Orion Bar.
 More detailed radiative transfer modeling is required to resolve the issue.
@@ -2045,7 +2100,7 @@ SIMBAD and Vizier from Strasbourg Astronomical Data Center (CDS)\footnote{\url{h
 and the following 3rd-party Python packages:
 numpy, astropy, matplotlib, seaborn, scikit-image, reproject.
 I thank Bob O'Dell for detailed comments on an earlier draft of this paper
-and I thank the referee Adolf Witt for a prompt and helpful report.
+and I thank the referee Adolf Witt for a prompt, helpful, and illuminating report.
 
 
 \section*{Data availability}

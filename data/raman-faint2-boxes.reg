@@ -2,3 +2,4 @@
 global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
 fk5
 box(5:35:18.7054,-5:24:28.343,54.703",25.267",356.16747) # color=white text={Big Arc}
+box(5:35:22.7517,-5:22:36.855,100.203",56.681",0) # color=white text={Dark Bay}

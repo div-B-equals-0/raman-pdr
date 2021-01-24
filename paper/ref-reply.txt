@@ -1,0 +1,184 @@
+			 _____________________
+
+			  RESPONSE TO REFEREE
+
+			     William Henney
+			 _____________________
+
+
+I am most grateful to the referee for a most helpful report and for the
+kind comments about the paper.  I have tried to follow all the
+suggestions as follows:
+
+
+1. Page 2, Column 2:
+====================
+
+  ,----
+  | The author appears to be unaware of the fact that the continuum
+  | underlying the H-alpha region in the spectrum of the Orion nebula
+  | contains a contribution due to extended red emission (ERE).  Perrin &
+  | Sivan (1992 A&A 255, 271) published spectra of this emission component
+  | for several regions coinciding with those studied by the author. The
+  | ERE intensity is comparable to the intensity of dust-scattered
+  | starlight, particularly in instances when the dust scattering occurs
+  | predominantly at large angles as is the case in edge-on PDRs such as
+  | the Orion bar.
+  | 
+  | Lai et al. (2017 MNRAS 469, 4933) showed that the ERE arises in the
+  | same neutral atomic hydrogen domain of PDRs where the Ly-beta Raman
+  | scattering occurs.
+  | 
+  | The ERE spectrum may be quasi-continuous for the purpose of the
+  | present study but it has never been examined at comparable spectral
+  | resolution. I would not rule out the possibility that some of the
+  | unexplained weak spectral features mentioned at the bottom of page 3
+  | and some of the problems encountered with the continuum fitting
+  | mentioned on page 14 may be a consequence of the ERE and structure
+  | within its spectrum.
+  `----
+
+
+  Indeed. Although I had read the Perrin & Sivan paper at some point in
+  the past, the ERE is not something I had considered while writing this
+  paper.  I am very grateful to the referee for drawing my attention to
+  the omission.  I have added a paragraph to the end of section 2.1 to
+  address this point.
+
+
+2. Page 8, Column 1, line 9:
+============================
+
+  ,----
+  | Typo: are are ----> are
+  `----
+
+
+  Fixed
+
+
+3. Page 8, Column 2, line 21:
+=============================
+
+  ,----
+  | Typo: Figure 3 ----> Figure 6
+  `----
+
+
+  Fixed
+
+
+4. Page 10, Sect. 2.6.3:
+========================
+
+  ,----
+  | I suggest changing the sub-title “Solid-state absorption features” to
+  | “Diffuse interstellar bands”. I suggest the same change in the last
+  | portion of Sect. 4.3.2 on Page 16.
+  | 	    									  
+  | While the carriers of the diffuse interstellar bands (DIBs) remain
+  | largely unidentified (possible exception: identification of ~4 or 5
+  | near-IR DIBs with absorptions by C60+), there is a near-unanimous
+  | agreement within the DIB community that DIBs are not solid-state
+  | absorption features. You can find a fairly detailed review of
+  | potential DIB carriers in an article by Snow (2001 Spectrochimica Acta
+  | A 57, 615). Lai et al. (2020 MNRAS 492, 5853) demonstrated that DIB
+  | carriers survive with normal abundances within the neutral hydrogen
+  | domain of PDRs and suggested the possibility that carriers of ERE and
+  | DIBs are the same.
+  `----
+
+
+  Yes, this is a good point.  I have made the suggested changes.
+
+
+5. Page 10, Sect. 2.6.3:
+========================
+
+  ,----
+  | It would be helpful if a representative nebular spectrum of the
+  | wavelength region that includes the DIBs at 5780 Å and 5797 Å were
+  | included in this section.
+  `----
+
+
+  This is a very good idea.  I have added a new figure (Fig 7) that
+  shows sample spectra for the range 5725 to 5925 angstrom, which
+  includes the DIB features and some stellar absorption lines.
+
+
+6. Page 10, Column 2, line 7:
+=============================
+
+  ,----
+  | I suggest changing “dust absorption” to “dust extinction”.
+  `----
+
+
+  Agreed. Fixed.
+
+
+7. Page 15, Column 2, top paragraph:
+====================================
+
+  ,----
+  | The two limiting dust absorption cross-sections being discussed in
+  | this section are significantly (factors 3 – 10) lower than the dust
+  | absorption cross-sections found in the diffuse ISM for the Ly-beta
+  | wavelength for R_v = 5.5 (Weingartner & Draine 2001 ApJ 548,
+  | 296). This suggests to me that dust destruction may have occurred in
+  | the Orion bar PDR. The author might want to add a sentence to this
+  | effect in this section.
+  `----
+
+
+  In the manuscript I did not carefully distinguish between extinction
+  and absorption cross sections here.  It should be the absorption cross
+  section that is important for the case of limiting the Raman-scattered
+  intensity.  Given that, I think that the value of 5e-22 *is*
+  marginally consistent with Weingartner & Draine.  From their Fig 14 I
+  find an extinction cross section of roughly 1e-21 at Ly-beta for
+  RV=5.5.  From their Fig 15, the albedo is about 0.35, yielding an
+  absorption cross section of 6.5e-22.  I have changed the wording to
+  try and clarify this and mention the possibility of dust destruction.
+
+
+8. Page 17, Summary, point 3:
+=============================
+
+  ,----
+  | Typo: 5 x 10^22 -----> 5 x 10^-22 (This would have been an error of 44
+  | orders of magnitude.)
+  `----
+
+
+  Thank you! Fixed.
+
+
+Additional changes
+==================
+
+  As a result of further reflection and comments from colleagues, I have
+  made the following minor additions and changes to the manuscript:
+
+  + Section 1: added more references to previous observations of Raman
+    scattering in different astronomical contexts
+  + Figures 2, 3 and 8: added two additional regions for spectral
+    samples: the Big Arc, which is selected because the Raman scattered
+    wings are relatively weak, and the Dark Bay, which is selected as an
+    example of high foreground extinction.
+  + Section 2.2: by studying the spectrum of the Dark Bay, it becomes
+    apparent that some of the previously mysterious absorption features
+    in the blue wing of H alpha are probably DIB features.  I discuss
+    this here and at the end of section 2.6.3
+  + Section 2.4: try to distinguish more carefully between observed
+    structure in the plane of the sky and inferred 3-dimensional
+    structure.
+  + Section 2.4: added footnote concerning correction of [O I] line for
+    airglow contamination.
+  + Section 2.6.2: added additional references concerning the 3D
+    location of the star theta 1 Ori D
+  + Section 3: correction of 1 km/s to the conversion between
+    heliocentric and LSR frames.
+  + Throughout: Text size of labels has been increased in some figures
+    to improve legibility and satisfy editorial guidelines.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 JAN 2021 00:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 JAN 2021 22:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1221,11 +1221,15 @@ LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
 (Font)              scaled to size 8.0pt on input line 136.
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
 (Font)              scaled to size 6.2pt on input line 136.
-<figs/raman-cartoon.pdf, id=65, 426.79138pt x 312.9803pt>
+
+
+pdfTeX warning: pdflatex (file ./figs/raman-cartoon.pdf): PDF inclusion: found 
+PDF version <1.7>, but at most version <1.5> allowed
+<figs/raman-cartoon.pdf, id=65, 331.2375pt x 248.42813pt>
 File: figs/raman-cartoon.pdf Graphic file (type pdf)
 <use figs/raman-cartoon.pdf>
 Package pdftex.def Info: figs/raman-cartoon.pdf  used on input line 144.
-(pdftex.def)             Requested size: 240.0pt x 176.00322pt.
+(pdftex.def)             Requested size: 240.0pt x 179.99774pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <8> not available
 (Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 160.
 
@@ -1237,7 +1241,6 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 3.41pt on input line 160.
 LaTeX Font Info:    Try loading font information for TS1+ntxtlf on input line 2
 06.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
@@ -1256,7 +1259,7 @@ l.206
 
 pdfTeX warning: pdflatex (file ./figs/raman-fov-regions.pdf): PDF inclusion: fo
 und PDF version <1.7>, but at most version <1.5> allowed
-<figs/raman-fov-regions.pdf, id=244, 379.4175pt x 542.025pt>
+<figs/raman-fov-regions.pdf, id=188, 379.4175pt x 542.025pt>
 File: figs/raman-fov-regions.pdf Graphic file (type pdf)
 <use figs/raman-fov-regions.pdf>
 Package pdftex.def Info: figs/raman-fov-regions.pdf  used on input line 247.
@@ -1323,23 +1326,26 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\alpha' on input line 290.
 
-<figs/raman-orion-muse-1d-spectra-wavsec23.pdf, id=277, 722.7pt x 433.62pt>
+<figs/raman-orion-muse-1d-spectra-wavsec23.pdf, id=221, 722.7pt x 433.62pt>
 File: figs/raman-orion-muse-1d-spectra-wavsec23.pdf Graphic file (type pdf)
 <use figs/raman-orion-muse-1d-spectra-wavsec23.pdf>
 Package pdftex.def Info: figs/raman-orion-muse-1d-spectra-wavsec23.pdf  used on
  input line 294.
 (pdftex.def)             Requested size: 504.0pt x 302.40051pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 347.
+(Font)              scaled to size 12.0pt on input line 353.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 347.
+(Font)              scaled to size 12.0pt on input line 353.
 [2pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.347 
+l.353 
        <./figs/raman-fov-regions.pdf>]
+Underfull \vbox (badness 7540) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
@@ -1347,51 +1353,60 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.402 
+l.412 
        <./figs/raman-orion-muse-1d-spectra-wavsec23.pdf>]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 8.0pt on input line 428.
+(Font)              scaled to size 8.0pt on input line 438.
 
-Underfull \hbox (badness 10000) in paragraph at lines 460--460
+Underfull \hbox (badness 10000) in paragraph at lines 470--470
 $[]$ [][][][]$\T1/ntxtt/m/n/8 http : / / www . eso . org / sci / software / pip
 elines / skytools /
  []
 
-<figs/raman-rgb-4-panel.pdf, id=498, 674.49593pt x 554.09407pt>
+<figs/raman-rgb-4-panel.pdf, id=452, 674.49593pt x 554.09407pt>
 File: figs/raman-rgb-4-panel.pdf Graphic file (type pdf)
 <use figs/raman-rgb-4-panel.pdf>
-Package pdftex.def Info: figs/raman-rgb-4-panel.pdf  used on input line 485.
+Package pdftex.def Info: figs/raman-rgb-4-panel.pdf  used on input line 495.
 (pdftex.def)             Requested size: 504.0pt x 414.04767pt.
 
 
 pdfTeX warning: pdflatex (file ./figs/raman-bar-multi-profile-4part.pdf): PDF i
 nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figs/raman-bar-multi-profile-4part.pdf, id=512, 580.56903pt x 580.56903pt>
+<figs/raman-bar-multi-profile-4part.pdf, id=466, 580.56903pt x 580.56903pt>
 File: figs/raman-bar-multi-profile-4part.pdf Graphic file (type pdf)
 <use figs/raman-bar-multi-profile-4part.pdf>
 Package pdftex.def Info: figs/raman-bar-multi-profile-4part.pdf  used on input 
-line 586.
+line 596.
 (pdftex.def)             Requested size: 504.0pt x 504.00136pt.
+
+Underfull \vbox (badness 1082) has occurred while \output is active []
+
+ [4]
 \tablegap=\skip65
-[4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
-has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.714 
-      pdfTeX warning (ext4): destination with the same identifier (name{table.2
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.714 
-      ]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 9.0pt on input line 715.
+(Font)              scaled to size 9.0pt on input line 725.
+LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
+(Font)              scaled to size 9.0pt on input line 801.
+<figs/raman-multi-absorption-features.jpg, id=577, 867.24pt x 578.16pt>
+File: figs/raman-multi-absorption-features.jpg Graphic file (type jpg)
+<use figs/raman-multi-absorption-features.jpg>
+Package pdftex.def Info: figs/raman-multi-absorption-features.jpg  used on inpu
+t line 832.
+(pdftex.def)             Requested size: 504.0pt x 336.00351pt.
+<figs/dib-orion-muse-1d-spectra.pdf, id=582, 578.16pt x 397.485pt>
+File: figs/dib-orion-muse-1d-spectra.pdf Graphic file (type pdf)
+<use figs/dib-orion-muse-1d-spectra.pdf>
+Package pdftex.def Info: figs/dib-orion-muse-1d-spectra.pdf  used on input line
+ 857.
+(pdftex.def)             Requested size: 504.0pt x 346.50058pt.
 
+[5pdfTeX warning (ext4): destination with the same identifier (name{table.1}) h
+as been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.892 \begin{equation}
+                      ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
@@ -1399,8 +1414,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.746 
-       <./figs/raman-rgb-4-panel.pdf>]
+l.930 \begin{equation}
+                       <./figs/raman-rgb-4-panel.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [7pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
@@ -1408,35 +1423,39 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.746 
-       <./figs/raman-bar-multi-profile-4part.pdf>]
-LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 791.
-<figs/raman-multi-absorption-features.jpg, id=871, 867.24pt x 578.16pt>
-File: figs/raman-multi-absorption-features.jpg Graphic file (type jpg)
-<use figs/raman-multi-absorption-features.jpg>
-Package pdftex.def Info: figs/raman-multi-absorption-features.jpg  used on inpu
-t line 822.
-(pdftex.def)             Requested size: 504.0pt x 336.00351pt.
-<figs/dib-orion-muse-1d-spectra.pdf, id=876, 578.16pt x 289.08pt>
-File: figs/dib-orion-muse-1d-spectra.pdf Graphic file (type pdf)
-<use figs/dib-orion-muse-1d-spectra.pdf>
-Package pdftex.def Info: figs/dib-orion-muse-1d-spectra.pdf  used on input line
- 847.
-(pdftex.def)             Requested size: 504.0pt x 252.00041pt.
-<figs/correlation-6633-Rwing.pdf, id=887, 361.35pt x 361.35pt>
+l.930 \begin{equation}
+                       <./figs/raman-bar-multi-profile-4part.pdf>]
+<figs/correlation-6633-Rwing.pdf, id=860, 361.35pt x 361.35pt>
 File: figs/correlation-6633-Rwing.pdf Graphic file (type pdf)
 <use figs/correlation-6633-Rwing.pdf>
-Package pdftex.def Info: figs/correlation-6633-Rwing.pdf  used on input line 92
-9.
+Package pdftex.def Info: figs/correlation-6633-Rwing.pdf  used on input line 95
+8.
 (pdftex.def)             Requested size: 240.0pt x 240.0025pt.
- [8] [9pdfTeX warning (ext4): destination with the same identifier (name{figure
-.6}) has been already used, duplicate ignored
+
+Underfull \vbox (badness 6188) has occurred while \output is active []
+
+ [8pdfTeX warning (ext4): destination with the same identifier (name{table.2}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1034 
+l.1021 
+       ] [9pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1065 
         <./figs/raman-multi-absorption-features.jpg>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<figs/correlation-DIB-reddening.pdf, id=933, 361.35pt x 361.35pt>
+File: figs/correlation-DIB-reddening.pdf Graphic file (type pdf)
+<use figs/correlation-DIB-reddening.pdf>
+Package pdftex.def Info: figs/correlation-DIB-reddening.pdf  used on input line
+ 1112.
+(pdftex.def)             Requested size: 240.0pt x 240.0025pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [10pdfTeX warning (ext4): destination with the same identifier (name{figure.7}
@@ -1444,191 +1463,194 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1063 
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.8}) has been already used, duplicate ignored
+l.1146 
+        <./figs/dib-orion-muse-1d-spectra.pdf>]
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1063 
-        <./figs/dib-orion-muse-1d-spectra.pdf> <./figs/correlation-6633-Rwing.p
-df>]
-<figs/correlation-DIB-reddening.pdf, id=1144, 361.35pt x 361.35pt>
-File: figs/correlation-DIB-reddening.pdf Graphic file (type pdf)
-<use figs/correlation-DIB-reddening.pdf>
-Package pdftex.def Info: figs/correlation-DIB-reddening.pdf  used on input line
- 1073.
-(pdftex.def)             Requested size: 240.0pt x 240.0025pt.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<def>-command' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 1140.
+(hyperref)                removing `\fontaxes@edoc' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\fontaxes@edoc' on input line 1140.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 1140.
+(hyperref)                removing `\<let>-command' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\fontaxes@last@\math@version' on input line
- 1140.
+ 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 1140.
+(hyperref)                removing `\<def>-command' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\fontaxes@math@weight' on input line 1140.
+(hyperref)                removing `\fontaxes@math@weight' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 1140.
+(hyperref)                removing `\<def>-command' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\fontaxes@code' on input line 1140.
+(hyperref)                removing `\fontaxes@code' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 1140.
+(hyperref)                removing `\<let>-command' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\fontaxes@last@\math@version' on input line
- 1140.
+ 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\global' on input line 1140.
+(hyperref)                removing `\global' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\c@ionstage' on input line 1140.
+(hyperref)                removing `\c@ionstage' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 1140.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                \kern 1.50032pt
-(hyperref)                removed on input line 1140.
+(hyperref)                removed on input line 1187.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\scriptstyle' on input line 1140.
+(hyperref)                removing `\scriptstyle' on input line 1187.
 
-<figs/raman-zoom-keck-regions-lores.jpg, id=1196, 2090.81125pt x 1521.685pt>
-File: figs/raman-zoom-keck-regions-lores.jpg Graphic file (type jpg)
-<use figs/raman-zoom-keck-regions-lores.jpg>
-Package pdftex.def Info: figs/raman-zoom-keck-regions-lores.jpg  used on input 
-line 1144.
-(pdftex.def)             Requested size: 240.0pt x 174.65341pt.
-<figs/order51-absorption-by-group.pdf, id=1203, 433.62pt x 289.08pt>
+
+
+pdfTeX warning: pdflatex (file ./figs/raman-zoom-keck-regions.pdf): PDF inclusi
+on: found PDF version <1.7>, but at most version <1.5> allowed
+<figs/raman-zoom-keck-regions.pdf, id=1096, 376.40625pt x 274.02374pt>
+File: figs/raman-zoom-keck-regions.pdf Graphic file (type pdf)
+<use figs/raman-zoom-keck-regions.pdf>
+Package pdftex.def Info: figs/raman-zoom-keck-regions.pdf  used on input line 1
+191.
+(pdftex.def)             Requested size: 240.0pt x 174.7265pt.
+<figs/order51-absorption-by-group.pdf, id=1103, 433.62pt x 289.08pt>
 File: figs/order51-absorption-by-group.pdf Graphic file (type pdf)
 <use figs/order51-absorption-by-group.pdf>
 Package pdftex.def Info: figs/order51-absorption-by-group.pdf  used on input li
-ne 1158.
+ne 1205.
 (pdftex.def)             Requested size: 504.0pt x 336.01672pt.
-[11pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
+[11pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1192 
+l.1239 
        pdfTeX warning (ext4): destination with the same identifier (name{figure
-.10}) has been already used, duplicate ignored
+.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1192 
-        <./figs/correlation-DIB-reddening.pdf> <./figs/raman-zoom-keck-regions-
-lores.jpg>] [12pdfTeX warning (ext4): destination with the same identifier (nam
-e{figure.11}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1277 
-        <./figs/order51-absorption-by-group.pdf>]
+l.1239 
+        <./figs/correlation-6633-Rwing.pdf> <./figs/correlation-DIB-reddening.p
+df>]
 
 pdfTeX warning: pdflatex (file ./figs/raman-scatter-cloud-schematic.pdf): PDF i
 nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figs/raman-scatter-cloud-schematic.pdf, id=1407, 240.9pt x 240.9pt>
+<figs/raman-scatter-cloud-schematic.pdf, id=1301, 240.9pt x 240.9pt>
 File: figs/raman-scatter-cloud-schematic.pdf Graphic file (type pdf)
 <use figs/raman-scatter-cloud-schematic.pdf>
 Package pdftex.def Info: figs/raman-scatter-cloud-schematic.pdf  used on input 
-line 1301.
+line 1348.
 (pdftex.def)             Requested size: 240.0pt x 240.00616pt.
-[13pdfTeX warning (ext4): destination with the same identifier (name{table.3}) 
-has been already used, duplicate ignored
+[12pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1384 
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.12}) has been already used, duplicate ignored
+l.1368 \end{figure}
+                   pdfTeX warning (ext4): destination with the same identifier 
+(name{table.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1384 
-        <./figs/raman-scatter-cloud-schematic.pdf>]
-<figs/raman-muse-spectra-compensated.pdf, id=1459, 722.7pt x 433.62pt>
+l.1368 \end{figure}
+                    <./figs/raman-zoom-keck-regions.pdf>] [13pdfTeX warning (ex
+t4): destination with the same identifier (name{figure.11}) has been already us
+ed, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1443 \begin{multline}
+                        <./figs/order51-absorption-by-group.pdf>]
+<figs/raman-muse-spectra-compensated.pdf, id=1476, 722.7pt x 433.62pt>
 File: figs/raman-muse-spectra-compensated.pdf Graphic file (type pdf)
 <use figs/raman-muse-spectra-compensated.pdf>
 Package pdftex.def Info: figs/raman-muse-spectra-compensated.pdf  used on input
- line 1435.
+ line 1482.
 (pdftex.def)             Requested size: 504.0pt x 302.40051pt.
-<figs/raman-band-displacements-plot.pdf, id=1475, 361.35pt x 252.945pt>
-File: figs/raman-band-displacements-plot.pdf Graphic file (type pdf)
-<use figs/raman-band-displacements-plot.pdf>
-Package pdftex.def Info: figs/raman-band-displacements-plot.pdf  used on input 
-line 1532.
-(pdftex.def)             Requested size: 240.0pt x 168.00175pt.
- [14]
-Underfull \vbox (badness 1565) has occurred while \output is active []
-
- [15pdfTeX warning (ext4): destination with the same identifier (name{figure.13
+ [14pdfTeX warning (ext4): destination with the same identifier (name{figure.12
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1615 
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.14}) has been already used, duplicate ignored
+l.1570 C
+        loser to the line center, the results from the two wings are more co...
+ <./figs/raman-scatter-cloud-schematic.pdf>]
+<figs/raman-band-displacements-plot.pdf, id=1526, 361.35pt x 252.945pt>
+File: figs/raman-band-displacements-plot.pdf Graphic file (type pdf)
+<use figs/raman-band-displacements-plot.pdf>
+Package pdftex.def Info: figs/raman-band-displacements-plot.pdf  used on input 
+line 1579.
+(pdftex.def)             Requested size: 240.0pt x 168.00175pt.
+
+Overfull \vbox (1.34315pt too high) has occurred while \output is active []
+
+
+[15pdfTeX warning (ext4): destination with the same identifier (name{figure.13}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1615 
-        <./figs/raman-muse-spectra-compensated.pdf> <./figs/raman-band-displace
-ments-plot.pdf>] [16] [17]
-LaTeX Info: Redefining \. on input line 2031.
-LaTeX Info: Redefining \% on input line 2031.
-LaTeX Info: Redefining \. on input line 2035.
-LaTeX Info: Redefining \% on input line 2035.
+l.1616 \end{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{figure.14}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1616 \end{equation}
+                      <./figs/raman-muse-spectra-compensated.pdf> <./figs/raman
+-band-displacements-plot.pdf>] [16] [17]
+LaTeX Info: Redefining \. on input line 2086.
+LaTeX Info: Redefining \% on input line 2086.
+LaTeX Info: Redefining \. on input line 2090.
+LaTeX Info: Redefining \% on input line 2090.
  (./raman-pdr.bbl [18]
-Underfull \hbox (badness 2452) in paragraph at lines 564--567
+Underfull \vbox (badness 2401) has occurred while \output is active []
+
+
+Underfull \hbox (badness 2452) in paragraph at lines 576--579
 \T1/ntxtlf/m/n/8 po-sium Vol. 297, The Dif-fuse In-ter-stel-lar Bands. pp 13--2
 2,
  []
 
 ) [19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2238.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2293.
  [20pdfTeX warning (ext4): destination with the same identifier (name{table.A1.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2238 \end{document}
+l.2293 \end{document}
                      ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2238.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2293.
  (./raman-pdr.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2238.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2238.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2293.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2293.
 
 Package rerunfilecheck Info: File `raman-pdr.out' has not changed.
 (rerunfilecheck)             Checksum: 5B024CCE12BFE0AAEF88FF1B90B0252C;1171.
@@ -1637,13 +1659,13 @@ Package rerunfilecheck Info: File `raman-pdr.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 4.247pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2238.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2293.
  ) 
 Here is how much of TeX's memory you used:
- 24329 strings out of 492616
- 438284 string characters out of 6129482
- 551651 words of memory out of 5000000
- 27678 multiletter control sequences out of 15000+600000
+ 24342 strings out of 492616
+ 438541 string characters out of 6129482
+ 558840 words of memory out of 5000000
+ 27687 multiletter control sequences out of 15000+600000
  907821 words of font info for 571 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,21n,63p,2165b,1078s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1671,10 +1693,10 @@ ve/2019/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2019/
 texmf-dist/fonts/type1/public/txfonts/txmia.pfb></usr/local/texlive/2019/texmf-
 dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on raman-pdr.pdf (20 pages, 5456744 bytes).
+Output written on raman-pdr.pdf (20 pages, 6054820 bytes).
 PDF statistics:
- 2161 PDF objects out of 2487 (max. 8388607)
- 1493 compressed objects within 15 object streams
- 216 named destinations out of 1000 (max. 500000)
+ 2215 PDF objects out of 2487 (max. 8388607)
+ 1541 compressed objects within 16 object streams
+ 220 named destinations out of 1000 (max. 500000)
  191 words of extra memory for PDF output out of 10000 (max. 10000000)
 

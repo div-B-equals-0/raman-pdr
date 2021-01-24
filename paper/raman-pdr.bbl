@@ -79,6 +79,12 @@
   {10.1051/0004-6361/201118083}, \href
   {http://adsabs.harvard.edu/abs/2012A%26A...538A..37B} {538, A37}
 
+\bibitem[\protect\citeauthoryear{{Bernstein}, {Shroll}, {Galazutdinov}  \&
+  {Beletsky}}{{Bernstein} et~al.}{2018}]{Bernstein:2018a}
+{Bernstein} L.~S.,  {Shroll} R.~M.,  {Galazutdinov} G.~A.,   {Beletsky} Y.,
+  2018, \mn@doi [\apj] {10.3847/1538-4357/aabd85}, \href
+  {https://ui.adsabs.harvard.edu/abs/2018ApJ...859..174B} {859, 174}
+
 \bibitem[\protect\citeauthoryear{{Blagrave}, {Martin}, {Rubin}, {Dufour},
   {Baldwin}, {Hester}  \& {Walter}}{{Blagrave} et~al.}{2007}]{Blagrave:2007a}
 {Blagrave} K.~P.~M.,  {Martin} P.~G.,  {Rubin} R.~H.,  {Dufour} R.~J.,
@@ -147,6 +153,12 @@
   et~al.}{1990}]{Desert:1990a}
 {Desert} F.-X.,  {Boulanger} F.,   {Puget} J.~L.,  1990, \aap, \href
   {http://adsabs.harvard.edu/abs/1990A%26A...237..215D} {237, 215}
+
+\bibitem[\protect\citeauthoryear{{Doi}, {O'Dell}  \& {Hartigan}}{{Doi}
+  et~al.}{2004}]{Doi:2004a}
+{Doi} T.,  {O'Dell} C.~R.,   {Hartigan} P.,  2004, \mn@doi [\aj]
+  {10.1086/386351}, \href {http://adsabs.harvard.edu/abs/2004AJ....127.3456D}
+  {127, 3456}
 
 \bibitem[\protect\citeauthoryear{{Donati}, {Babel}, {Harries}, {Howarth},
   {Petit}  \& {Semel}}{{Donati} et~al.}{2002}]{Donati:2002a}
@@ -614,6 +626,11 @@ Van~Hoof P. A.~M.,  2018, \mn@doi [Galaxies] {10.3390/galaxies6020063}, 6
 {Weilbacher} P.~M.,  et~al., 2015, \mn@doi [\aap]
   {10.1051/0004-6361/201526529}, \href
   {http://adsabs.harvard.edu/abs/2015A%26A...582A.114W} {582, A114}
+
+\bibitem[\protect\citeauthoryear{{Weingartner} \& {Draine}}{{Weingartner} \&
+  {Draine}}{2001}]{Weingartner:2001a}
+{Weingartner} J.~C.,  {Draine} B.~T.,  2001, \mn@doi [\apj] {10.1086/318651},
+  \href {http://adsabs.harvard.edu/abs/2001ApJ...548..296W} {548, 296}
 
 \bibitem[\protect\citeauthoryear{{Whiteoak}}{{Whiteoak}}{1966}]{Whiteoak:1966a}
 {Whiteoak} J.~B.,  1966, \mn@doi [\apj] {10.1086/148605}, \href

@@ -152,7 +152,7 @@
   import regions as rg
 
   regions = rg.read_ds9("../data/raman-extract-boxes.reg")
-  regions += rg.read_ds9("../data/raman-faint-boxes.reg")
+  regions += rg.read_ds9("../data/raman-faint2-boxes.reg")
 
   hdu = fits.open(f"../../OrionMuse/muse-hr-fullcube-rebin05x05.fits")["DATA"]
 
@@ -206,6 +206,7 @@ Now make a graph.
       "Trap SW",
       "Big Arc",
       "Bar",
+      "Dark Bay",
   ]
 
   strong_lines = {
@@ -245,12 +246,12 @@ Now make a graph.
       # 5918.5: "N III",
   }
 
-  fig, ax = plt.subplots(figsize=(8, 4))
+  fig, ax = plt.subplots(figsize=(8, 5.5))
 
   #wavmin, wavmax = 5650, 6020
-  wavmin, wavmax = 5731, 5915
+  wavmin, wavmax = 5731, 5919
   wavnorm = 5840
-  offset = 0.30
+  offset = 0.35
   fc = 0.7
   for region in region_order:
       spec = data[region]
@@ -269,7 +270,7 @@ Now make a graph.
       # ax.plot(waves, cont + offset, color="k", lw=0.5, zorder=-100)
       ax.plot(waves, total + offset, color="k", lw=0.7)
       ax.annotate(f"{np.round(np.abs(offset), 2):.2f} + {region}",
-                  (wavmax, total[-1] + offset),
+                  (wavmax, 1.0 + offset),
                   xytext=(5, 0), textcoords="offset points", ha="left", va="center")
       offset -= 0.05
       fc += 0.04
@@ -282,12 +283,12 @@ Now make a graph.
       ax.axvline(wave, 0.25, 0.8, color="k", lw=1, zorder=-5)
       ax.text(wave, 0.82, label, ha="center", va="top", rotation="vertical", fontsize="xx-small")
   for wave, label in weak_lines.items():
-      ax.axvline(wave, 0.4, 0.88, color="k", lw=0.5, zorder=-5)
+      ax.axvline(wave, 0.35, 0.88, color="k", lw=0.5, zorder=-5)
       ax.text(wave, 1.45, label, ha="center", va="bottom", rotation="vertical", fontsize="small")
   for wave, label in absorption_lines.items():
       lw = 0.5 if "DIB" in label else 1.0
-      miny = 0.30 if "DIB" in label else 0.30
-      ytext = 1.38 if "DIB" in label else 0.82
+      miny = 0.28 
+      ytext = 1.38 if "DIB" in label else 0.81
       if "5801" in label:
           dwav = -1.0
       elif "5812" in label:
@@ -326,8 +327,8 @@ Now make a graph.
       ax.annotate(f"${np.round(offset, 2):.2f}$ + Telluric\n         absorption",
                   (wavmax, 1 + offset), color="r",
                   xytext=(5, 0), textcoords="offset points", ha="left", va="center")
-      offset = 0.75
-      ax.plot(skywavs, offset + 0.03*skyemis/skyemis.max(), lw=0.8, color="g") 
+      offset = 0.7
+      ax.plot(skywavs, offset + 0.1*skyemis/skyemis.max(), lw=0.8, color="g") 
       ax.annotate(f"{np.round(np.abs(offset), 2):.2f} + Airglow",
                   (wavmax, offset), color="g",
                   xytext=(5, 0), textcoords="offset points", ha="left", va="center")
@@ -1198,6 +1199,7 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       "Trap SW",
       "Big Arc",
       "Bar",
+      "Dark Bay",
   ]
 
   bands = {
@@ -1257,6 +1259,8 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       6809.23: -3,
       6813.57: +3,
       6371.36: +2,
+      6449.0: -2,
+      6494.0: +2,
   }
   sky_lines = [6235.5, 6287.5, 6306.5, 6329, 6465, 6471, 6478, 6498.15, 6507, 6603]
   absorption_lines = {
@@ -1264,9 +1268,12 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       6663.747: "O I",
       6362.3446: "Si II",
       6480.8110: "Si II",
-      6494.0: "?",
+      6494.0: "DIB?",
       6708.0: "?",
-      6450.0: "?",
+      6438.5: " ",
+      6449.0: "DIBs?",
+      6284.0: "DIB",
+      6614.0: "DIB",
   }
 
   fig, ax = plt.subplots(figsize=(10, 6))
@@ -1323,11 +1330,13 @@ python ../src/extract-ci-8727.py $DATADIR $SUFFIX $OUTDIR
       ax.text(wave + wavshift, 2.03, label, ha="center", va="bottom", rotation="vertical", fontsize="small")
 
   for wave, label in absorption_lines.items():
-      lw = 0.5 if "?" in label else 1.0
-      miny = 0.19 if "?" in label else 0.18
-      ytext = 0.69 if "?" in label else 0.65
-      ax.axvline(wave, miny, 0.8, color="r", ls="--", lw=lw, zorder=-5)
-      ax.text(wave, ytext, label, ha="center", rotation="horizontal", fontsize="small", color="r", fontweight="bold")
+      lw = 1.5 if label[0] in "D? " else 1.5
+      ls = ":" if label[0] in "D? " else "--"
+      miny = 0.21 if label[0] in "D? " else 0.18
+      ytext = 0.7 if label[0] in "D? " else 0.65
+      ax.axvline(wave, miny, 0.8, color="r", ls=ls, lw=lw, zorder=-5)
+      wavshift = label_shifts.get(wave, 0)
+      ax.text(wave + wavshift, ytext, label, ha="center", rotation="horizontal", fontsize="small", color="r", fontweight="bold")
 
   for wave in sky_lines:
       # Sky line wavelengths need correcting from topocentric to OMC farme
@@ -5096,10 +5105,11 @@ CLOSED: [2019-09-07 Sat 11:58]
 
   # Set up regions
   regions = rg.read_ds9("../data/raman-extract-boxes.reg")
+  regions2 = rg.read_ds9("../data/raman-faint2-boxes.reg")
   ny, nx = hdu.data.shape
   w = WCS(hdu.header)
   xreg, yreg, labreg = [], [], []
-  for region in regions:
+  for region in regions + regions2:
       mask = region.to_pixel(w.celestial).to_mask().to_image((ny, nx))
       labreg.append(region.meta["label"])
       xreg.append(np.average(xdata[m], weights=wdata[m]*mask[m]))
@@ -5165,14 +5175,16 @@ CLOSED: [2019-09-07 Sat 11:58]
 
 
   # Finally, plot the regions
-  ax.scatter(xreg, yreg, marker="o", color="k", facecolor="w")
+  ax.scatter(xreg, yreg, marker="o", color="k", facecolor="w", zorder=100)
   for x, y, s in zip(xreg, yreg, labreg):
-      color = "w" if s in ["Bar",] else "k"
+      color = "w" if s in ["Bar", "Big Arc", "Dark Bay"] else "k"
+      ha, sign = ("right", -1) if s in ["Big Arc",] else ("left", 1)
       ax.annotate(s, (x, y),
-                  xytext=(3, 3),
+                  xytext=(sign*3, 3),
                   textcoords="offset points",
                   color=color,
                   fontweight="bold",
+                  ha=ha,
                   )
 
   ax.set(
