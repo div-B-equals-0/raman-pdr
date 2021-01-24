@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 JAN 2021 22:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 JAN 2021 23:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1664,7 +1664,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2293.
 Here is how much of TeX's memory you used:
  24342 strings out of 492616
  438541 string characters out of 6129482
- 558840 words of memory out of 5000000
+ 558844 words of memory out of 5000000
  27687 multiletter control sequences out of 15000+600000
  907821 words of font info for 571 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1693,7 +1693,7 @@ ve/2019/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2019/
 texmf-dist/fonts/type1/public/txfonts/txmia.pfb></usr/local/texlive/2019/texmf-
 dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on raman-pdr.pdf (20 pages, 6054820 bytes).
+Output written on raman-pdr.pdf (20 pages, 6054807 bytes).
 PDF statistics:
  2215 PDF objects out of 2487 (max. 8388607)
  1541 compressed objects within 16 object streams

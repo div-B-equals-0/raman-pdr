@@ -8,7 +8,10 @@
 
 I am most grateful to the referee for a most helpful report and for the
 kind comments about the paper.  I have tried to follow all the
-suggestions as follows:
+suggestions as detailed below.  Note that I provide a version of the
+manuscript with all changes marked in red (appended after the regular
+manuscript in the PDF file), which was prepared using the latexdiff
+tool.
 
 
 1. Page 2, Column 2:

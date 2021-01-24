@@ -1,0 +1,70 @@
+This is LATEXDIFF 1.3.0  (Algorithm::Diff 1.15 so, Perl v5.18.4)
+  (c) 2004-2018 F J Tilmann
+Reading preamble file wjh-latexdiff-preamble.tex
+(0.43 s)
+Splitting into latex tokens 
+Parsing raman-pdr-v0-expand.tex 
+Parsing raman-pdr-v1-expand.tex 
+(0 s)
+Pass 1: Expanding text commands and merging isolated identities with changed blocks  
+  8 matching  tokens in 0 blocks.
+  0 discarded tokens in 0 blocks.
+  0 appended  tokens in 0 blocks.
+(0 s)
+Pass 2: inserting DIF tokens and mark up.  
+  8 matching  tokens. 
+  0 discarded tokens in 0 blocks.
+  0 appended  tokens in 0 blocks.
+(0 s)
+Splitting into latex tokens 
+Parsing raman-pdr-v0-expand.tex 
+Parsing raman-pdr-v1-expand.tex 
+(0 s)
+Pass 1: Expanding text commands and merging isolated identities with changed blocks  
+  1 matching  tokens in 0 blocks.
+  0 discarded tokens in 0 blocks.
+  0 appended  tokens in 0 blocks.
+(0 s)
+Pass 2: inserting DIF tokens and mark up.  
+  1 matching  tokens. 
+  0 discarded tokens in 0 blocks.
+  0 appended  tokens in 0 blocks.
+(0 s)
+Splitting into latex tokens 
+Parsing raman-pdr-v0-expand.tex 
+Parsing raman-pdr-v1-expand.tex 
+(0 s)
+Pass 1: Expanding text commands and merging isolated identities with changed blocks  
+  10 matching  tokens in 0 blocks.
+  0 discarded tokens in 0 blocks.
+  0 appended  tokens in 0 blocks.
+(0 s)
+Pass 2: inserting DIF tokens and mark up.  
+  10 matching  tokens. 
+  0 discarded tokens in 0 blocks.
+  0 appended  tokens in 0 blocks.
+hyperref package detected.
+Preamble Internal Type HYPERREF
+Preamble Internal Type LISTINGS
+Preamble Internal Type DIFCODE_BOLD
+Differencing preamble.
+siunitx package detected.
+amsmath package detected.
+Preprocessing body.  (0.29 s)
+Splitting into latex tokens 
+Parsing raman-pdr-v0-expand.tex 
+Parsing raman-pdr-v1-expand.tex 
+(0.29 s)
+Pass 1: Expanding text commands and merging isolated identities with changed blocks  
+  16326 matching  tokens in 88 blocks.
+  86 discarded tokens in 57 blocks.
+  1058 appended  tokens in 83 blocks.
+(5.1 s)
+Pass 2: inserting DIF tokens and mark up.  
+  17038 matching  tokens. 
+  64 discarded tokens in 47 blocks.
+  405 appended  tokens in 78 blocks.
+(5.59 s)
+Postprocessing body. 
+(0.27 s)
+Done.

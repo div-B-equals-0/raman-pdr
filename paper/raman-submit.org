@@ -1,5 +1,58 @@
 * Revised version
 
+** Version with highlighted changes
++ I got the tar.gz version of the ~submitted-r0~ tag and unpacked it in a temporary directory
+  #+begin_example
+    tmp $ tar xf dib-scatter-hii-submitted-r0.tar
+  #+end_example
++ Then use latexexpand in the paper folder
+  #+begin_src sh :dir /tmp/dib-scatter-hii-submitted-r0/paper :results silent
+    latexpand raman-pdr.tex \
+                --verbose --keep-comments --explain \
+                --expand-bbl raman-pdr.bbl \
+                --show-graphics \
+                -o raman-pdr-v0-expand.tex
+  #+end_src
++ Copy expanded version to this project
+  #+begin_src sh :results none
+    mkdir -p latexdiff
+    cp /tmp/dib-scatter-hii-submitted-r0/paper/raman-pdr-v0-expand.tex latexdiff
+  #+end_src
++ And expand the current version
+  #+begin_src sh :results silent
+    latexpand raman-pdr.tex \
+                --verbose --keep-comments --explain \
+                --expand-bbl raman-pdr.bbl \
+                --show-graphics \
+                -o latexdiff/raman-pdr-v1-expand.tex
+  #+end_src
++ And get the config file from the bow shock projects
+  #+begin_src sh
+    cp -v ~/Work/Bowshocks/Jorge/bowshock-shape/papers/bs-bw-dw-03-submit/latexdiff/wjh-latexdiff-preamble.tex latexdiff
+  #+end_src
+
+  #+RESULTS:
+  : /Users/will/Work/Bowshocks/Jorge/bowshock-shape/papers/bs-bw-dw-03-submit/latexdiff/wjh-latexdiff-preamble.tex -> latexdiff/wjh-latexdiff-preamble.tex
+
+
+*** Performing the diff
+#+name: run-latexdiff
+#+header: :dir latexdiff
+#+header: :var FILE_A="raman-pdr-v0-expand.tex"
+#+header: :var FILE_B="raman-pdr-v1-expand.tex"
+#+header: :var FILE_DIFF="raman-pdr-diff-v0-v1.tex"
+#+header: :var OPTIONS="--preamble=wjh-latexdiff-preamble.tex --append-context2cmd='label' --packages=amsmath,hyperref,siunitx --verbose --ignore-warnings --math-markup=1 --allow-spaces"
+#+BEGIN_SRC sh
+  latexdiff $OPTIONS --verbose $FILE_A $FILE_B > $FILE_DIFF 2> latexdiff.log
+#+END_SRC
+
+#+RESULTS: run-latexdiff
+
+*** Compiling the diffed version
++ First, add ~\graphicspath{{../}}~ to file
++ I had to remove some ~\DIFadd~ commands from around the ~\href~ command in the refernce list, since they caused errors.  But there were only two of those.
++ Final version is [[file:latexdiff/raman-pdr-diff-v0-v1.pdf]]
+
 ** Other things to fix
 
 *** DONE Data acknowledgment
@@ -12,9 +65,11 @@ Weilbacher paper says ID 60.A-9100(A)
 
 *** Comments from Bob
 
-**** TODO My email to him with answers to first comments
+**** DONE My email to him with answers to first comments
+CLOSED: [2021-01-23 Sat 22:34]
 
-**** TODO [11/11] Second lot of comments
+**** DONE [11/11] Second lot of comments
+CLOSED: [2021-01-23 Sat 22:34]
 
 ***** DONE Anchored Note, page 1
 CLOSED: [2021-01-20 Wed 13:20]
@@ -99,7 +154,8 @@ CLOSED: [2021-01-21 Thu 18:50]
 :EXPORT_OPTIONS: num:nil toc:nil
 :END:
 
-I am most grateful to the referee for a most helpful report and for the kind comments about the paper.  I have tried to follow all the suggestions as follows:
+I am most grateful to the referee for a most helpful report and for the kind comments about the paper.  I have tried to follow all the suggestions as detailed below.
+Note that I provide a version of the manuscript with all changes marked in red (appended after the regular manuscript in the PDF file), which was prepared using the latexdiff tool.
 
 **** 1. Page 2, Column 2:
 : The author appears to be unaware of the fact that the continuum
