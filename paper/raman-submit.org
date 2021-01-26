@@ -1,3 +1,84 @@
+
+* Final accepted version
++ No more changes - yay!
+
+
+** Upload source files for production
++ I can use these for astro-ph too, although they want the bbl not the bib
+
+
+*** Sort out smaller bib file
+#+begin_src sh :results verbatim
+  bibexport -o raman-refs.bib raman-pdr
+#+end_src
+
+
+#+RESULTS:
+: This is BibTeX, Version 0.99d (TeX Live 2019)
+: The top-level auxiliary file: bibexp.1611678558.aux
+: The style file: export.bst
+: Database file #1: BibdeskLibrary.bib
+
+Changed raman-pdr.tex to use new file.
+
+
+  
+*** Sort out getting all the figures I need
+
+
+#+begin_src sh :dir . :results verbatim
+  grep 'Graphic file' raman-pdr.log | cut -d ' ' -f2
+#+end_src
+
+#+RESULTS:
+#+begin_example
+figs/raman-cartoon.pdf
+figs/raman-fov-regions.pdf
+figs/raman-orion-muse-1d-spectra-wavsec23.pdf
+figs/raman-rgb-4-panel.pdf
+figs/raman-bar-multi-profile-4part.pdf
+figs/raman-multi-absorption-features.jpg
+figs/dib-orion-muse-1d-spectra.pdf
+figs/correlation-6633-Rwing.pdf
+figs/correlation-DIB-reddening.pdf
+figs/raman-zoom-keck-regions.pdf
+figs/order51-absorption-by-group.pdf
+figs/raman-scatter-cloud-schematic.pdf
+figs/raman-muse-spectra-compensated.pdf
+figs/raman-band-displacements-plot.pdf
+#+end_example
+
+
+
+*** Package everything up
+#+begin_src sh :results verbatim
+  FIGFILES="\
+  figs/raman-cartoon.pdf
+  figs/raman-fov-regions.pdf
+  figs/raman-orion-muse-1d-spectra-wavsec23.pdf
+  figs/raman-rgb-4-panel.pdf
+  figs/raman-bar-multi-profile-4part.pdf
+  figs/raman-multi-absorption-features.jpg
+  figs/dib-orion-muse-1d-spectra.pdf
+  figs/correlation-6633-Rwing.pdf
+  figs/correlation-DIB-reddening.pdf
+  figs/raman-zoom-keck-regions.pdf
+  figs/order51-absorption-by-group.pdf
+  figs/raman-scatter-cloud-schematic.pdf
+  figs/raman-muse-spectra-compensated.pdf
+  figs/raman-band-displacements-plot.pdf\
+  "
+
+  LATEXFILES="raman-pdr.tex raman-pdr.bbl raman-refs.bib"
+
+  tar czf raman-pdr-source.tgz $LATEXFILES $FIGFILES
+
+#+end_src
+
+#+RESULTS:
+
+
+  
 * Revised version
 
 ** Version with highlighted changes

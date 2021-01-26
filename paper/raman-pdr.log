@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 JAN 2021 23:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  26 JAN 2021 10:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1633,7 +1633,7 @@ LaTeX Info: Redefining \% on input line 2090.
 Underfull \vbox (badness 2401) has occurred while \output is active []
 
 
-Underfull \hbox (badness 2452) in paragraph at lines 576--579
+Underfull \hbox (badness 2452) in paragraph at lines 509--512
 \T1/ntxtlf/m/n/8 po-sium Vol. 297, The Dif-fuse In-ter-stel-lar Bands. pp 13--2
 2,
  []
@@ -1693,10 +1693,10 @@ ve/2019/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2019/
 texmf-dist/fonts/type1/public/txfonts/txmia.pfb></usr/local/texlive/2019/texmf-
 dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on raman-pdr.pdf (20 pages, 6054807 bytes).
+Output written on raman-pdr.pdf (20 pages, 6050827 bytes).
 PDF statistics:
- 2215 PDF objects out of 2487 (max. 8388607)
- 1541 compressed objects within 16 object streams
+ 2109 PDF objects out of 2487 (max. 8388607)
+ 1436 compressed objects within 15 object streams
  220 named destinations out of 1000 (max. 500000)
  191 words of extra memory for PDF output out of 10000 (max. 10000000)
 
