@@ -1,5 +1,22 @@
-Raman-scattered absorption features in spatially extended continuum from H II regions.  
+Raman-scattering in neutral gas around H II regions.
 
-See notes at [[file:doc/absorption-6634.org]]
 
-Note that the repo name is now a misnomer - I originally thought they might be related to /Diffuse Interstellar Bands/ but it turns out they are not.
+For the gory technical details, see [[file:doc/absorption-6634.org]]
+
+* Paper 1: Raman mapping of photodissociation regions
+
++ William J. Henney
+  + IRyA, UNAM, Morelia, Mexico
++ MNRAS, in press Jan 2021
+  + Freely available preprint from [[https://arxiv.org/abs/2012.14497][arxiv]]
+  + Official version from journal website (/TODO/)
+
+** Broad wings of the H alpha line due to Raman scattering of FUV starlight
+
+[[file:images/screenshot-paper1-fig03.png]]
+
+** How Raman scattering works
+
+[[file:images/screenshot-paper1-fig01.png]]
+
+
