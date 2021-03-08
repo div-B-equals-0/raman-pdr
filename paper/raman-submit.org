@@ -1,4 +1,20 @@
 
+* Proofs
++ http://powerxeditor.aptaracorp.com/pxestore/assets/pxeoup///MNRAS/proofpdf/stab257.pdf
++ File is [[file:stab257.pdf]]
+
+
+** Responses
++ Most queries are standard.
++ Ones to answer are:
+  + [X] Acronym expansion
+  + [X] Reference details
+
+
+** Other fixes
++ They put "BroadRaman" in abstract
++ Lots of problems with chemical symbols not being upright
+
 * Final accepted version
 + No more changes - yay!
 
