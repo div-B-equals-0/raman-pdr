@@ -40,6 +40,15 @@
   + Maybe look at the Adal blue spectra
     + These do show it, but they are noisy and there is a weird set of ghosts that are periodically spaced around the bright lines
     + It should be possible to correct for those however
+** UVES spectra from the Eduardo project
++ I have been looking at the HH 204 spectra and I think I do see the Raman wings
++ These spectra are very high spectral resolution, but the s/n is not so good
++ I can't see any evidence of the 6633 and 6664 absorption lines
+  + There is a ghost that gets in the way
++ But I can see the excess emission in the closest-in Raman bands for Ha
+  + R040 around 6600 \AA for instance
++ Also, it is possible to see the inner part of the wings between H\alpha 6563 and [N II] 6583, which are impossible to see in the MUSE spectra
++ It is easy to avoid the C II line, since it is so well resolved
 
 
 ** Tarantula (30 Dor) observations
