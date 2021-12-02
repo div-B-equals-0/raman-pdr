@@ -16,3 +16,4 @@ extinct-paper/auto/orion-extinct.el
 *.el
 /paper/bob-comments/
 /paper/2020HenneyRaman-pdr-bob-comments-2020-01-06.pdf
+/.vscode/

@@ -68,10 +68,13 @@
   + with a total Q of nearly 1e50
   + but it is 7pc across, which means FUV flux on H0 will be low
 
+
+** SMC N60
 ** SMC N88A
 + This is one of the Dopita objects
 + It has the deepest absorption lines of any of them
-+ [ ] Are there any MUSE observations?
++ [X] Are there any MUSE observations?
+  + It seems not
 + Testor:2010a have good IR observations
 + Also Ward:2017a
   + Note especially their Figure B4, which shows the 6633 and 6664 absorption lines!
@@ -2803,7 +2806,7 @@ And try Lupton with hi-res images...
   for skyregion in regions:
       pixelregion = skyregion.to_pixel(w)
       pixelregion.plot(ax=ax, color="w", lw=1, ls=":")
-    
+
   # Regions for Dopita paper
   regions = rg.read_ds9("../data/raman-dopita-box.reg")
   for skyregion in regions:
@@ -2826,6 +2829,7 @@ And try Lupton with hi-res images...
 
 #+RESULTS: rgb-lupton-regions
 [[file:rgb-lupton-regions-oi-oii-oiii.jpg]]
+
 
 Re-project the CO, etc all together
 
@@ -2894,9 +2898,11 @@ Do the same, but use the Robberto WFI image instead of radio, and reproject onto
 | orion-spitzer-irac1-full.fits          | 0 | 1000 |
 | orion-wfi-ha-reproject-irac1-full.fits | 0 |  500 |
 
+
 #+name: rgb-lupton-large
 #+header: :var TAB=rgb-limits-co-irac1-ha SUFFIX="co-irac1-ha" DATADIR="../data/orion-muse"
 #+header: :var STRETCH=0.08 Q=10 HDU=0
+#+header: :var X0=2322 Y0=1401 DX=3404 DY=2344
 #+begin_src python :results file :return figfile
   import numpy as np
   import matplotlib.pyplot as plt
@@ -2932,7 +2938,7 @@ Do the same, but use the Robberto WFI image instead of radio, and reproject onto
   #     ax.scatter(ra, dec, transform=ax.get_transform("icrs"), s=0.6*size, ec="yellow", fc="none")
 
   # Window for plotting defined in large-fiv.reg
-  x0, y0, dx, dy = 2322, 1401, 3404, 2344
+  x0, y0, dx, dy = X0, Y0, DX, DY
 
   ax.set(
       xlabel="RA (J2000)",
@@ -2946,6 +2952,13 @@ Do the same, but use the Robberto WFI image instead of radio, and reproject onto
 
 #+RESULTS: rgb-lupton-large
 [[file:rgb-lupton-large-co-irac1-ha.jpg]]
+
+
+#+call: rgb-lupton-large(SUFFIX="co-irac1-ha-tall", DX=3500, DY=3500)
+
+#+RESULTS:
+[[file:rgb-lupton-large-co-irac1-ha-tall.jpg]]
+
 
 #+name: rgb-limits-oi-sii-nii
 | final631-radec.fits |  15 |  250 |
@@ -7957,6 +7970,9 @@ Around 920 A, which is where the highest observed ns and nd pumping lines are.  
 [[file:powr-trapezium-fine-fuv-200-750.pdf]]
 
 *** Combine fine and coarse and make them suitable for Cloudy
+:PROPERTIES:
+:ID:       534BA570-96A5-4014-9FFF-8450B46BFA0A
+:END:
 Combine fine and coarse:
 
 #+name: merge-fine-coarse
