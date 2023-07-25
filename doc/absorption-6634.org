@@ -55,7 +55,7 @@
 
 + These show the Ha line wings and the 6633 absorption at 6638 -> 230 km/s, which is about right for LMC
 + They also show an absorption at 6620 that looks like a DIB 6614 maybe
-
+  
 
 ** Other LMC regions
 
@@ -90,6 +90,7 @@
   + The O I 8446 line looks good though
     + Although it is weak and blended with another line
     + The [N I] lines are not seen at all
+
 + Second look - Tile 03
   + Still no clear detection of Raman wings or the 6633 absorption line
     + /However/ I think we can see the wing around 6400 angstrom
@@ -7672,6 +7673,9 @@ Ionization limit: 21206.43 cm^-1 = 4715.55 \AA vac
 
 
 * Cloudy Models using high-resolution SEDs
+:PROPERTIES:
+:ID:       6F1F18E3-155F-4ABD-B9A8-2840A3FB2D2C
+:END:
 + There are several reasons for these models:
   1. See the stellar spectrum around Ly\beta and how it varies with depth in PDR
   2. Predict the O I fluorescent line emissivity
