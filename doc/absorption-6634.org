@@ -4404,10 +4404,10 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 #+RESULTS:
 | Label                    | x             | FWHM |     Peak |     Base |   Slope |
 |--------------------------+---------------+------+----------+----------+---------|
-| [O III] $\lambda 5007$         | -32.1 +/- 2.6 |   45 |   13.059 |   11.642 |   5.605 |
-| [O II] $\lambda 7318$          | -9.4 +/- 3.6  |   25 |    0.882 |    0.232 |   0.026 |
-| [O I] $\lambda 6300$           | -1.7 +/- 0.1  |    9 |    0.152 |    0.045 |   0.001 |
-| O I $\lambda 8446$             | 0.0 +/- 0.8   |    8 |    0.226 |    0.071 |   0.000 |
+| [O III] $\lambda 5007$          | -32.1 +/- 2.6 |   45 |   13.059 |   11.642 |   5.605 |
+| [O II] $\lambda 7318$           | -9.4 +/- 3.6  |   25 |    0.882 |    0.232 |   0.026 |
+| [O I] $\lambda 6300$            | -1.7 +/- 0.1  |    9 |    0.152 |    0.045 |   0.001 |
+| O I $\lambda 8446$              | 0.0 +/- 0.8   |    8 |    0.226 |    0.071 |   0.000 |
 |--------------------------+---------------+------+----------+----------+---------|
 | B033                     | 0.8 +/- 1.5   |   20 |    0.455 |    0.858 |   0.007 |
 | R040                     | 1.8 +/- 0.0   |   18 |    0.480 |    0.815 |   0.023 |
@@ -4424,7 +4424,7 @@ What is wrong with these IRAC images that we get so many NaNs in the profiles? /
 |--------------------------+---------------+------+----------+----------+---------|
 | H$_{2}$ 2.12$\,\mu$m          | 23.6 +/- 0.1  |   19 |    0.169 |    0.997 |   0.002 |
 | $^{12}$CO (19-18)           | 33.8 +/- 0.0  |   32 |    3.930 |    0.399 |   0.001 |
-| [C I] $\lambda 8727$           | 37.7 +/- 5.9  |   30 |    0.495 |    0.854 |   0.122 |
+| [C I] $\lambda 8727$            | 37.7 +/- 5.9  |   30 |    0.495 |    0.854 |   0.122 |
 | $^{12}$CO (1-0)             | 41.1 +/- 1.2  |   44 |    0.472 |    0.746 |   0.173 |
 | $^{13}$CO (1-0)             | 49.8 +/- 2.1  |   33 |    0.891 |    0.823 |   0.112 |
 |--------------------------+---------------+------+----------+----------+---------|
@@ -5474,7 +5474,7 @@ Comparison with Clegg:1999a
 
 Clegg reference wavelengths
 | Ly\alpha | 1215.6841 | vac |
-| Ly\beta | 1025.7335 |     |
+| Ly\beta  | 1025.7335 |     |
 | H\alpha  | 6562.8812 | air |
 
 Fine-structure components are in his Tab 2a, but he has higher level first.  So for H\alpha fluoresced by Ly\beta, we want 3p \to 2s, which is indices 3 and 4. 
@@ -5482,7 +5482,7 @@ Fine-structure components are in his Tab 2a, but he has higher level first.  So 
 These have \Delta\lambda = -0.110 and -0.157 \AA respectively with respect to the reference wavelength (Tab 3). 
 
 So, we have for H\alpha
-| Index |                     |     \Delta\lambda |        \lambda | g |
+| Index |                     |      \Delta\lambda |         \lambda | g |
 |-------+---------------------+--------+----------+---|
 |     3 | 3p 2P_{1/2} \to 2s 2S_{1/2} | -0.110 | 6562.771 | 2 |
 |     4 | 3p 2P_{3/2} \to 2s 2S_{1/2} | -0.157 | 6562.724 | 4 |
@@ -5504,7 +5504,7 @@ CLOSED: [2019-08-24 Sat 22:12]
 Compare O I lines with Ly \beta (average of doublet)
 | Line                                        |     Wav, \AA | Freq, cm^-1 |   d freq |
 |---------------------------------------------+------------+-------------+----------|
-| H I Ly \beta  1s 2S_{1/2 }\to 3p 2P_{1/2,3/2}           | 1025.72220 |   97492.283 |    0.000 |
+| H I Ly \beta  1s 2S_{1/2 }\to 3p 2P_{1/2,3/2}            | 1025.72220 |   97492.283 |    0.000 |
 |---------------------------------------------+------------+-------------+----------|
 | O I 2s^2 2p^4 3P_0 \to 2s^2 2p^3 (4S) 3d 3D_1 | 1028.15729 |   97261.383 | -230.900 |
 |---------------------------------------------+------------+-------------+----------|
@@ -5574,19 +5574,19 @@ Mean wavelengths of blended components
 
 
 Final table
-| Transition          |        \lambda_1 | \nu_1, cm^-1 |      d \nu |       \nu_2 |       \lambda_2 |     \lambda_air |
-|---------------------+------------+------------+----------+-----------+-----------+-----------|
-| H I {1,2}s \to 3p     | 1025.72220 |  97492.283 |    0.000 | 15233.329 |  6564.553 |  6562.740 |
-|---------------------+------------+------------+----------+-----------+-----------+-----------|
-| O I J = 0 \to 1       | 1028.15729 |  97261.383 | -230.900 | 15002.429 |  6665.587 |  6663.747 |
-| O I J = 1 \to 1       | 1027.43139 |  97330.100 | -162.183 | 15071.146 |  6635.196 |  6633.364 |
-| O I J = 1 \to 2       | 1027.43077 |  97330.159 | -162.124 | 15071.205 |  6635.170 |  6633.338 |
-| O I J = 2 \to 1       | 1025.76339 |  97488.369 |   -3.914 | 15229.415 |  6566.240 |  6564.427 |
-| O I J = 2 \to 2       | 1025.76276 |  97488.429 |   -3.854 | 15229.475 |  6566.215 |  6564.401 |
-| O I J = 2 \to 3       | 1025.76170 |  97488.530 |   -3.753 | 15229.576 |  6566.171 |  6564.358 |
-|---------------------+------------+------------+----------+-----------+-----------+-----------|
-| Si II J = 1/2 \to 1/2 |  1020.6989 |  97972.086 |  479.803 | 15713.132 | 6364.1036 | 6362.3446 |
-| Si II J = 1/2 \to 3/2 |  1023.7001 |  97684.859 |  192.576 | 15425.905 | 6482.6018 | 6480.8110 |
+| Transition          |         \lambda_1 | \nu_1, cm^-1 |       d \nu |        \nu_2 |        \lambda_2 |      \lambda_air |
+|---------------------+------------+-----------+----------+-----------+-----------+-----------|
+| H I {1,2}s \to 3p     | 1025.72220 | 97492.283 |    0.000 | 15233.329 |  6564.553 |  6562.740 |
+|---------------------+------------+-----------+----------+-----------+-----------+-----------|
+| O I J = 0 \to 1       | 1028.15729 | 97261.383 | -230.900 | 15002.429 |  6665.587 |  6663.747 |
+| O I J = 1 \to 1       | 1027.43139 | 97330.100 | -162.183 | 15071.146 |  6635.196 |  6633.364 |
+| O I J = 1 \to 2       | 1027.43077 | 97330.159 | -162.124 | 15071.205 |  6635.170 |  6633.338 |
+| O I J = 2 \to 1       | 1025.76339 | 97488.369 |   -3.914 | 15229.415 |  6566.240 |  6564.427 |
+| O I J = 2 \to 2       | 1025.76276 | 97488.429 |   -3.854 | 15229.475 |  6566.215 |  6564.401 |
+| O I J = 2 \to 3       | 1025.76170 | 97488.530 |   -3.753 | 15229.576 |  6566.171 |  6564.358 |
+|---------------------+------------+-----------+----------+-----------+-----------+-----------|
+| Si II J = 1/2 \to 1/2 |  1020.6989 | 97972.086 |  479.803 | 15713.132 | 6364.1036 | 6362.3446 |
+| Si II J = 1/2 \to 3/2 |  1023.7001 | 97684.859 |  192.576 | 15425.905 | 6482.6018 | 6480.8110 |
 
 Scale factors:
 + \nu_1/\nu_2 = 97492.283/15233.329 = 6.3999329 +/- 0.0000004
@@ -5629,7 +5629,7 @@ This looks like it is the Si II line, *if* that is really at 1024.03, as Cloudy 
   + The gf value of 9.04E-02 is consistent with 1.51E-02 (2 + 4) = 0.0906
   + *This was just a bad wavelength from Opacity Project* I have the line with STOUT now
 
-|       \lambda_1 |       \nu_1 |    \nu(Lyb) |     d \nu |     \nu(Ha) |       \nu_2 |       \lambda_2 |          n |    \lambda(air) |
+|        \lambda_1 |        \nu_1 |     \nu(Lyb) |      d \nu |      \nu(Ha) |        \nu_2 |        \lambda_2 |          n |     \lambda(air) |
 |-----------+-----------+-----------+---------+-----------+-----------+-----------+------------+-----------|
 | 1020.6989 | 97972.086 | 97492.283 | 479.803 | 15233.329 | 15713.132 | 6364.1036 | 1.00027647 | 6362.3446 |
 | 1023.7001 | 97684.859 | 97492.283 | 192.576 | 15233.329 | 15425.905 | 6482.6018 | 1.00027633 | 6480.8110 |
@@ -5819,7 +5819,7 @@ O I
   #+TBLFM: $3=(4.503 - $1)/$2
 + Measurements
   #+name: branch-ratio
-  |  x, in | y, in |  \Delta V_1 |   \Delta\lambda_2 |      f | Model f |     Err | % Rel Err |
+  |  x, in | y, in |  \Delta V_1 |    \Delta\lambda_2 |      f | Model f |     Err | % Rel Err |
   |--------+-------+--------+--------+--------+---------+---------+-----------|
   |  7.528 | 4.291 | -3987. | -558.2 | 0.0907 |  0.0960 | -0.0053 |      -5.5 |
   |  8.007 | 4.247 | -3215. | -450.1 | 0.1096 |  0.1090 |  0.0006 |       0.6 |
@@ -5837,31 +5837,31 @@ O I
   
 + Blue flank Measurements
   #+name: blue-flank
-  | x, in | y, in |  \Delta V_1 |   \Delta\lambda_2 |         \sigma | 1e22 \sigma (\Delta\lambda_2/100)^2 | Model |  error | % Rel Err |
-  |-------+-------+--------+--------+-----------+---------------------+-------+--------+-----------|
-  | 8.996 | 2.280 | -1619. | -226.7 | 5.248e-23 |               2.697 | 2.688 | -0.009 |     -0.33 |
-  | 9.052 | 2.234 | -1529. | -214.1 | 5.834e-23 |               2.674 | 2.675 |  0.001 |      0.04 |
-  | 9.098 | 2.193 | -1455. | -203.7 | 6.412e-23 |               2.661 | 2.663 |  0.002 |      0.08 |
-  | 9.139 | 2.154 | -1389. | -194.5 | 7.015e-23 |               2.654 | 2.651 | -0.003 |     -0.11 |
-  | 9.205 | 2.091 | -1282. | -179.5 | 8.110e-23 |               2.613 | 2.629 |  0.016 |      0.61 |
-  | 9.340 | 1.935 | -1065. | -149.1 | 1.161e-22 |               2.581 | 2.579 | -0.002 |     -0.08 |
-  | 9.392 | 1.869 |  -981. | -137.3 | 1.352e-22 |               2.549 | 2.557 |  0.008 |      0.31 |
-  | 9.430 | 1.813 |  -919. | -128.7 | 1.538e-22 |               2.547 | 2.539 | -0.008 |     -0.32 |
-  | 9.480 | 1.740 |  -839. | -117.5 | 1.820e-22 |               2.513 | 2.516 |  0.003 |      0.12 |
-  | 9.525 | 1.667 |  -766. | -107.2 | 2.153e-22 |               2.474 | 2.493 |  0.019 |      0.76 |
-  | 9.565 | 1.589 |  -702. |  -98.3 | 2.576e-22 |               2.489 | 2.472 | -0.017 |     -0.69 |
-  | 9.607 | 1.509 |  -634. |  -88.8 | 3.097e-22 |               2.442 | 2.449 |  0.007 |      0.29 |
-  | 9.640 | 1.429 |  -581. |  -81.3 | 3.724e-22 |               2.461 | 2.430 | -0.031 |     -1.28 |
-  | 9.684 | 1.326 |  -510. |  -71.4 | 4.721e-22 |               2.407 | 2.404 | -0.003 |     -0.12 |
-  | 9.716 | 1.239 |  -458. |  -64.1 | 5.768e-22 |               2.370 | 2.384 |  0.014 |      0.59 |
-  | 9.747 | 1.134 |  -408. |  -57.1 | 7.345e-22 |               2.395 | 2.365 | -0.030 |     -1.27 |
-  | 9.767 | 1.075 |  -376. |  -52.6 | 8.414e-22 |               2.328 | 2.352 |  0.024 |      1.02 |
-  | 9.782 | 1.015 |  -352. |  -49.3 | 9.661e-22 |               2.348 | 2.342 | -0.006 |     -0.26 |
-  | 9.787 | 1.000 |  -344. |  -48.2 |     1e-21 |               2.323 | 2.339 |  0.016 |      0.68 |
+  | x, in | y, in |  \Delta V_1 |    \Delta\lambda_2 |         \sigma | 1e22 \sigma (\Delta\lambda_2/100)^2 | Model |  error | % Rel Err |
+  |-------+-------+--------+--------+-----------+--------------------+-------+--------+-----------|
+  | 8.996 | 2.280 | -1619. | -226.7 | 5.248e-23 |              2.697 | 2.688 | -0.009 |     -0.33 |
+  | 9.052 | 2.234 | -1529. | -214.1 | 5.834e-23 |              2.674 | 2.675 |  0.001 |      0.04 |
+  | 9.098 | 2.193 | -1455. | -203.7 | 6.412e-23 |              2.661 | 2.663 |  0.002 |      0.08 |
+  | 9.139 | 2.154 | -1389. | -194.5 | 7.015e-23 |              2.654 | 2.651 | -0.003 |     -0.11 |
+  | 9.205 | 2.091 | -1282. | -179.5 | 8.110e-23 |              2.613 | 2.629 |  0.016 |      0.61 |
+  | 9.340 | 1.935 | -1065. | -149.1 | 1.161e-22 |              2.581 | 2.579 | -0.002 |     -0.08 |
+  | 9.392 | 1.869 |  -981. | -137.3 | 1.352e-22 |              2.549 | 2.557 |  0.008 |      0.31 |
+  | 9.430 | 1.813 |  -919. | -128.7 | 1.538e-22 |              2.547 | 2.539 | -0.008 |     -0.32 |
+  | 9.480 | 1.740 |  -839. | -117.5 | 1.820e-22 |              2.513 | 2.516 |  0.003 |      0.12 |
+  | 9.525 | 1.667 |  -766. | -107.2 | 2.153e-22 |              2.474 | 2.493 |  0.019 |      0.76 |
+  | 9.565 | 1.589 |  -702. |  -98.3 | 2.576e-22 |              2.489 | 2.472 | -0.017 |     -0.69 |
+  | 9.607 | 1.509 |  -634. |  -88.8 | 3.097e-22 |              2.442 | 2.449 |  0.007 |      0.29 |
+  | 9.640 | 1.429 |  -581. |  -81.3 | 3.724e-22 |              2.461 | 2.430 | -0.031 |     -1.28 |
+  | 9.684 | 1.326 |  -510. |  -71.4 | 4.721e-22 |              2.407 | 2.404 | -0.003 |     -0.12 |
+  | 9.716 | 1.239 |  -458. |  -64.1 | 5.768e-22 |              2.370 | 2.384 |  0.014 |      0.59 |
+  | 9.747 | 1.134 |  -408. |  -57.1 | 7.345e-22 |              2.395 | 2.365 | -0.030 |     -1.27 |
+  | 9.767 | 1.075 |  -376. |  -52.6 | 8.414e-22 |              2.328 | 2.352 |  0.024 |      1.02 |
+  | 9.782 | 1.015 |  -352. |  -49.3 | 9.661e-22 |              2.348 | 2.342 | -0.006 |     -0.26 |
+  | 9.787 | 1.000 |  -344. |  -48.2 |     1e-21 |              2.323 | 2.339 |  0.016 |      0.68 |
   #+TBLFM: $3=1000 ($1 - 10.0) / 0.62;f0::$4=6562.74 6.4 $3 / 3e5 ;f1::$5=10**(-20 - $2);s4::$6=1e22 ($4/100)**2 $5 ;f3::$7=2.186 - 0.344 ($4/100) - 0.054 ($4/100)**2 ;f3::$8=$-1 - $-2;f3::$9=100 $-1/$-2;f2
 + Red flank measurements
   #+name: red-flank
-  |  x, in | y, in | \Delta V_1 |  \Delta\lambda_2 |         \sigma | Norm \sigma | Model |  Error |       |
+  |  x, in | y, in | \Delta V_1 |   \Delta\lambda_2 |         \sigma | Norm \sigma | Model |  Error |       |
   |--------+-------+-------+-------+-----------+--------+-------+--------+-------|
   | 10.212 | 1.000 |  342. |  47.9 |     1e-21 |  2.294 | 2.278 | -0.016 | -0.70 |
   | 10.229 | 1.071 |  369. |  51.7 | 8.492e-22 |  2.270 | 2.271 |  0.001 |  0.04 |
@@ -5940,7 +5940,7 @@ O I
 + So \nu L_\nu = 4 pi 1e17**2 5.115e3 = 6.42769e38 = 1.68264e5 Lsun
   + That seems about right
 + Adding together the other Trapezium stars
-  |     |     \nu F_\nu | L / Lsun |
+  |     |      \nu F_\nu | L / Lsun |
   |-----+-----------+----------|
   | A   | 7.475e+02 | 10**4.45 |
   | B   | 2.213e+00 | 10**3.25 |
@@ -6729,6 +6729,9 @@ Most of these I found from the intro of the Dopita:2016a paper
 [[file:orion-bar-oi-hst.pdf]]
 
 *** Model for 21 cm continuum and line 
+:PROPERTIES:
+:ID:       2AC0209C-557E-41B4-97C3-6E5D9EF0B103
+:END:
 + Summary
   + Absorption component M shows bar is convex
     + Absorption clumps are seen outside the i-front
@@ -6742,7 +6745,7 @@ Most of these I found from the intro of the Dopita:2016a paper
 + Use T_fg = 600 K, f = 0.8 and \tau = 0.8 everywhere 
 + T_b = (1 - e^-\tau) (T_s - f (T_c - T_fg))
 + => T_s = 0.7 (T_c - 600) + 1.58 T_b
-  |           | vdW, '' | pos, mpc |  T_c |  T_b | T_c/peak |   \tau |   f |  T_s |
+  |           | vdW, '' | pos, mpc |  T_c |  T_b | T_c/peak |    \tau |   f |  T_s |
   |-----------+---------+----------+------+------+----------+-----+-----+------|
   | H II peak |     -12 |      -18 | 3000 |    0 |        1 |   0 | 0.0 |  0/0 |
   | I-front   |      -3 |        0 | 2400 |    0 |     0.80 |   0 | 0.0 |  0/0 |
@@ -6753,7 +6756,7 @@ Most of these I found from the intro of the Dopita:2016a paper
   #+TBLFM: $3=2 ($-1 + 3)::$6=$4/3000;f2::$9=$8 ($4 - 600) + $5 / (1 - exp(-$7)) ;f0
 + Alternatively, we can specify T_s and calculate T_b
   + \tau = 1, f = 0.8 (with new interpolated points)
-    |           | vdW, '' | pos, mpc |  T_c | T_c/peak |   \tau |   f |  T_s |   T_b |
+    |           | vdW, '' | pos, mpc |  T_c | T_c/peak |    \tau |   f |  T_s |   T_b |
     |-----------+---------+----------+------+----------+-----+-----+------+-------|
     | H II peak |     -12 |      -18 | 3000 |        1 |   0 | 0.7 |    0 |   0e0 |
     | I-front   |      -3 |        0 | 2400 |     0.80 |   0 | 0.7 |    0 |   0e0 |
@@ -6765,7 +6768,7 @@ Most of these I found from the intro of the Dopita:2016a paper
     | Mol peak  |      20 |       46 |  600 |     0.20 | 0.3 | 0.8 |  540 |  140. |
     #+TBLFM: $3=2 ($-1 + 3)::$5=$4/3000;f2::$9=(1 - exp(-$6)) ($8 - $7 ($4 - 600));f0
   + \tau = 1, f = 0.5 - has no absorption
-    |           | vdW, '' | pos, mpc |  T_c | T_c/peak |   \tau |   f |  T_s |  T_b |
+    |           | vdW, '' | pos, mpc |  T_c | T_c/peak |    \tau |   f |  T_s |  T_b |
     |-----------+---------+----------+------+----------+-----+-----+------+------|
     | H II peak |     -12 |      -18 | 3000 |        1 |   0 | 0.7 |    0 |  0e0 |
     | I-front   |      -3 |        0 | 2400 |     0.80 |   0 | 0.7 |    0 |  0e0 |
@@ -6775,7 +6778,7 @@ Most of these I found from the intro of the Dopita:2016a paper
     | Mol peak  |      20 |       46 |  600 |     0.20 | 0.3 | 0.5 |  540 | 140. |
     #+TBLFM: $3=2 ($-1 + 3)::$5=$4/3000;f2::$9=(1 - exp(-$6)) ($8 - $7 ($4 - 600));f0
   + \tau = 1, f = 0.5, cooler T_s - does have absorption
-    |           | vdW, '' | pos, mpc |  T_c | T_c/peak |   \tau |   f | T_s |   T_b |
+    |           | vdW, '' | pos, mpc |  T_c | T_c/peak |    \tau |   f | T_s |   T_b |
     |-----------+---------+----------+------+----------+-----+-----+-----+-------|
     | H II peak |     -12 |      -18 | 3000 |        1 |   0 | 0.7 |   0 |   0e0 |
     | I-front   |      -3 |        0 | 2400 |     0.80 |   0 | 0.7 |   0 |   0e0 |
@@ -6821,13 +6824,13 @@ Most of these I found from the intro of the Dopita:2016a paper
 + We need to measure the T_c too, which is given by contours of I_c (50, 100, 200, 300 400 mJy/beam) in vdw fig 9, together with conversion factor of 14.9 K / (mJy/beam)
 + Equation is T_b = -T_c (1 - e^-\tau)
   | Comp  | Naive \tau | I_c |   T_c |   T_b |
-  |-------+---------+-----+-------+-------|
-  | M-I   |     0.3 | 100 | 1490. | -386. |
-  | M-II  |     0.2 | 150 | 2235. | -405. |
-  | M-III |     0.2 | 150 | 2235. | -405. |
-  | M-IV  |     0.1 | 150 | 2235. | -213. |
-  | M-V   |     0.2 |  90 | 1341. | -243. |
-  | M-VI  |     0.2 |  60 |  894. | -162. |
+  |-------+--------+-----+-------+-------|
+  | M-I   |    0.3 | 100 | 1490. | -386. |
+  | M-II  |    0.2 | 150 | 2235. | -405. |
+  | M-III |    0.2 | 150 | 2235. | -405. |
+  | M-IV  |    0.1 | 150 | 2235. | -213. |
+  | M-V   |    0.2 |  90 | 1341. | -243. |
+  | M-VI  |    0.2 |  60 |  894. | -162. |
   #+TBLFM: $4=14.9 $3::$5=-$4 (1 - exp(-$2));f0
 + Then we can make different assumptions about f_BG
   + Just use M-II and M-III since they are at the bright part of bar
@@ -6844,15 +6847,15 @@ Most of these I found from the intro of the Dopita:2016a paper
     2. T_s = 500 K
 + Equation is (1 - e^-\tau) = T_b / (T_s - f_BG T_c)
   |           |  f_BG |  T_s | 1 - e^-\tau |               |
-  |-----------+-------+------+----------+---------------|
-  | Side/cool | 0.366 |  500 |     1.27 | (1.31, -3.14) |
-  | Mid/cool  | 0.548 |  500 |     0.56 |          0.82 |
-  | Back/cool | 0.732 |  500 |     0.36 |          0.45 |
-  | Side/warm | 0.366 | 1000 |    -2.23 |         -1.17 |
-  | Mid/warm  | 0.548 | 1000 |     1.80 | (0.22, -3.14) |
-  | Back/warm | 0.732 | 1000 |     0.64 |          1.02 |
-  | Min/warm  | 0.629 | 1000 |     1.00 |     -ln(0.00) |
-  | Min/cool  | 0.405 |  500 |     1.00 |     -ln(0.00) |
+  |-----------+-------+------+---------+---------------|
+  | Side/cool | 0.366 |  500 |    1.27 | (1.31, -3.14) |
+  | Mid/cool  | 0.548 |  500 |    0.56 |          0.82 |
+  | Back/cool | 0.732 |  500 |    0.36 |          0.45 |
+  | Side/warm | 0.366 | 1000 |   -2.23 |         -1.17 |
+  | Mid/warm  | 0.548 | 1000 |    1.80 | (0.22, -3.14) |
+  | Back/warm | 0.732 | 1000 |    0.64 |          1.02 |
+  | Min/warm  | 0.629 | 1000 |    1.00 |     -ln(0.00) |
+  | Min/cool  | 0.405 |  500 |    1.00 |     -ln(0.00) |
   #+TBLFM: $4=-405 / ($3 - $2 2235);f2::$5=-ln(1 - $-1);f2
   + Only the real positive values in the last column make any sense
 + It might make more sense to assume \tau \to \infty and then find relation between T_s and f_Bg
@@ -7260,78 +7263,78 @@ That is the best image to contour ~alma-iram-filament-n2hp-C-226-231.fits~
 
 Designation in Text	R.A. and Decl. Designation	Spectral Type	Other Designations^a
 
-|---------------+-------------+--------------+-------------------------------------------------------------------------------------|
-| COUP 9        |          ^b | K3III-IVe    | JW 46, 2MASS, H 46                                                                  |
-| V2202 Ori     | 105.4-416.5 | K8-M0        | COUP 385, JW 349, MAX 9, MLLA 220, HC 146, HHH 349, LML 52                          |
-| LQ Ori        | 107.3-344.6 | K2-M1        | COUP 394, DRS 21, HC 224, JW 352, MAX 12, MLLA 316, ZRK 4                           |
-| d109.4-326.7  | 109.4-326.7 | cdots        | HC 286, MLLA 379                                                                    |
-| COUP 419      | 113.1-426.5 | cdots        | HC 127, LML 77, MLLA 194                                                            |
-| COUP 423      | 114.9-351.9 | cdots        | MAX 19, MLLA 289, HC 203, LML 80                                                    |
-| COUP 443      | 117.0-351.3 | M0-M3        | BOM d117-352, COUP 443, JW 368, MLLA 290, HC 205, HHH 368, LML 91                   |
-| V1228 Ori     | 122.8-348.0 | K1-M0        | MAX 27, SB 8, HC 215, HHH378a                                                       |
-| COUP 478      | 123.4-352.4 | cdots        | FBG 291, HC 206, LML 108, LR 3, MLLA 292                                            |
-| COUP 480      | 124.6-404.1 | cdots        | MLLA 245, HC 169, LML 109                                                           |
-| cdots         | 129.9-401.6 | cdots        | 2MASS                                                                               |
-| cdots         | 133.6-359.6 | cdots        | 2MASS                                                                               |
-| V1398 Ori     | 134.4-340.2 | <M0          | COUP 545, JWLR. 409, MAX 41, MLLA 327, HC 240, HHH409                               |
-| COUP 554      | 135.6-355.3 | cdots        | MAX 43, MLLA 276, SB 4, HC 192, LML 139                                             |
-| cdots         | 135.6-402.6 | cdots        | 2MASS                                                                               |
-| EC 13         | 135.7-408.2 | cdots        | ZRK 137-408                                                                         |
-| COUP 555      | 136.0-359.0 | cdots        | MAX 42, MLLA 263, HC 178, LML 138, SB 5, ZRK 136-359                                |
-| COUP 564      | 136.8-345.3 | cdots        | EC-MM8, HC 222, MLLA 313, LML 141, ZRK 137-347                                      |
-| EC 9          | 137.2-350.6 | cdots        | cdots                                                                               |
-| MAX 46        | 137.8-340.0 | cdots        | MLLA 328, SB 1, LM 78, HC 242, LML 144, LR 32, PMF 35                               |
-| COUP 582      | 138.6-407.1 | cdots        | cdots                                                                               |
-| COUP 593      | 139.2-320.3 | cdots        | HC 314, LML 149, MAX 52, MLLA 413, OW 139-320                                       |
-| EC 14         | 139.3-409.4 | cdots        | MM14, ZRK 139-409                                                                   |
-| COUP 602      | 140.4-338.3 | M0-M3        | JW 431, MLLA 336, TCC 1, HC 247, HHH 431, LML 152                                   |
-| cdots         | 140.9-351.2 | cdots        | F 053246.64-052544.72                                                               |
-| COUP 607      | 141.7-357.0 | cdots        | cdots                                                                               |
-| V1328 Ori     | 142.8-424.6 | cdots        | COUP 616, JW 437, MAX 57, MLLA 203, HC 135, LML 156                                 |
-| DR 1186       | 142.9-353.1 | cdots        | ZRK 15                                                                              |
-| EC 16         | 143.6-354.6 | cdots        | cdots                                                                               |
-| COUP 632      | 144.0-350.9 | cdots        | MAX 61, MLLA 293, SB 2, LM 1, LML 162                                               |
-| H 20051       | 144.6-353.8 | cdots        | 2MASS                                                                               |
-| HC193         | 145.3-355.1 | cdots        | MLLA 273B                                                                           |
-| H 20045       | 145.6-349.4 | cdots        | cdots                                                                               |
-| HC 209        | 145.7-350.8 | cdots        | FBG 421, LML 170, MLLA 295, ZRK 141-351                                             |
-| H 20044       | 147.7-352.0 | cdots        | cdots                                                                               |
+|---------------+-------------+--------------+----------------------------------------------------------------------------------|
+| COUP 9        |          ^b | K3III-IVe    | JW 46, 2MASS, H 46                                                               |
+| V2202 Ori     | 105.4-416.5 | K8-M0        | COUP 385, JW 349, MAX 9, MLLA 220, HC 146, HHH 349, LML 52                       |
+| LQ Ori        | 107.3-344.6 | K2-M1        | COUP 394, DRS 21, HC 224, JW 352, MAX 12, MLLA 316, ZRK 4                        |
+| d109.4-326.7  | 109.4-326.7 | cdots        | HC 286, MLLA 379                                                                 |
+| COUP 419      | 113.1-426.5 | cdots        | HC 127, LML 77, MLLA 194                                                         |
+| COUP 423      | 114.9-351.9 | cdots        | MAX 19, MLLA 289, HC 203, LML 80                                                 |
+| COUP 443      | 117.0-351.3 | M0-M3        | BOM d117-352, COUP 443, JW 368, MLLA 290, HC 205, HHH 368, LML 91                |
+| V1228 Ori     | 122.8-348.0 | K1-M0        | MAX 27, SB 8, HC 215, HHH378a                                                    |
+| COUP 478      | 123.4-352.4 | cdots        | FBG 291, HC 206, LML 108, LR 3, MLLA 292                                         |
+| COUP 480      | 124.6-404.1 | cdots        | MLLA 245, HC 169, LML 109                                                        |
+| cdots         | 129.9-401.6 | cdots        | 2MASS                                                                            |
+| cdots         | 133.6-359.6 | cdots        | 2MASS                                                                            |
+| V1398 Ori     | 134.4-340.2 | <M0          | COUP 545, JWLR. 409, MAX 41, MLLA 327, HC 240, HHH409                            |
+| COUP 554      | 135.6-355.3 | cdots        | MAX 43, MLLA 276, SB 4, HC 192, LML 139                                          |
+| cdots         | 135.6-402.6 | cdots        | 2MASS                                                                            |
+| EC 13         | 135.7-408.2 | cdots        | ZRK 137-408                                                                      |
+| COUP 555      | 136.0-359.0 | cdots        | MAX 42, MLLA 263, HC 178, LML 138, SB 5, ZRK 136-359                             |
+| COUP 564      | 136.8-345.3 | cdots        | EC-MM8, HC 222, MLLA 313, LML 141, ZRK 137-347                                   |
+| EC 9          | 137.2-350.6 | cdots        | cdots                                                                            |
+| MAX 46        | 137.8-340.0 | cdots        | MLLA 328, SB 1, LM 78, HC 242, LML 144, LR 32, PMF 35                            |
+| COUP 582      | 138.6-407.1 | cdots        | cdots                                                                            |
+| COUP 593      | 139.2-320.3 | cdots        | HC 314, LML 149, MAX 52, MLLA 413, OW 139-320                                    |
+| EC 14         | 139.3-409.4 | cdots        | MM14, ZRK 139-409                                                                |
+| COUP 602      | 140.4-338.3 | M0-M3        | JW 431, MLLA 336, TCC 1, HC 247, HHH 431, LML 152                                |
+| cdots         | 140.9-351.2 | cdots        | F 053246.64-052544.72                                                            |
+| COUP 607      | 141.7-357.0 | cdots        | cdots                                                                            |
+| V1328 Ori     | 142.8-424.6 | cdots        | COUP 616, JW 437, MAX 57, MLLA 203, HC 135, LML 156                              |
+| DR 1186       | 142.9-353.1 | cdots        | ZRK 15                                                                           |
+| EC 16         | 143.6-354.6 | cdots        | cdots                                                                            |
+| COUP 632      | 144.0-350.9 | cdots        | MAX 61, MLLA 293, SB 2, LM 1, LML 162                                            |
+| H 20051       | 144.6-353.8 | cdots        | 2MASS                                                                            |
+| HC193         | 145.3-355.1 | cdots        | MLLA 273B                                                                        |
+| H 20045       | 145.6-349.4 | cdots        | cdots                                                                            |
+| HC 209        | 145.7-350.8 | cdots        | FBG 421, LML 170, MLLA 295, ZRK 141-351                                          |
+| H 20044       | 147.7-352.0 | cdots        | cdots                                                                            |
 | COUP 666      | 148.0-346.0 | K6-M4        | HBJ 20030, JW 453, HHH 453, MLLA 306, TCC 14, DR 623, HC 220, LML 181, LR 72, SI 47 |
-| H 20041/2     | 148.3-351.3 | cdots        | cdots                                                                               |
-| H 20036       | 148.6-350.1 | cdots        | cdots                                                                               |
-| COUP 679      | 150.1-354.0 | cdots        | HC 195, LML 193, LR 83, MLLA 280, MC 20                                             |
-| H 20018       | 150.7-341.0 | cdots        | cdots                                                                               |
-| ZRK 24        | 150.8-353.0 | cdots        | cdots                                                                               |
-| H 20027       | 151.3-349.7 | cdots        | cdots                                                                               |
-| ZRK 25        | 151.5-353.6 | cdots        | cdots                                                                               |
-| EC 17         | 151.6-340.6 | cdots        | cdots                                                                               |
-| cdots         | 152.3-340.4 | cdots        | H 20014                                                                             |
-| COUP 691      | 152.5-349.9 | cdots        | MLLA 297, HC 211, LML 204, LR 92                                                    |
-| DR 769        | 153.0-355.8 | cdots        | cdots                                                                               |
-| MAX 77        | 154.9-352.3 | cdots        | cdots                                                                               |
-| COUP 717      | 155.1-337.2 | K            | BOM d155-338, HC 251, MAX 79, LML 212, ZRK 34                                       |
-| COUP 725      | 156.8-339.0 | cdots        | MLLA 334, TCC 37, HC 246, LM 49, LML 221, LR 114                                    |
-| COUP 728      | 156.8-533.2 | K8e          | 2MASS, DR 241, JW 482, MLLA 56, V2274                                               |
-| HC 236        | 157.0-341.9 | cdots        | LML 222, MLLA 38, LR 115                                                            |
-| COUP 734      | 157.3-337.9 | cdots        | HC 248, LML 224, TCC 41                                                             |
-| cdots         | 157.6-338.4 | cdots        | Discovered in this study.                                                           |
-| theta^1 Ori E | 157.7-310.0 | mid-G giants | COUP 732, HC 344, MLLA 48, TCC 40                                                   |
-| LV 6          | 157.9-326.7 | G4-K5        | HC 287, HHH 489, JW 489, MAX 86, MLLA 381, TCC 42, ZRK 40                           |
-| COUP 747      | 158.5-325.5 | cdots        | MLLA 385, TCC 47, HC 291, LML 232, ZRK 43                                           |
-| COUP 757      | 158.7-337.6 | cdots        | DR 1007, HC 250, LML 237, LR 128, MLLA 339, TCC 50, ZRK 44                          |
-| V2279 Ori^c   | 159.3-349.9 | G4-M2        | COUP 758, HC 455, JW 499, HHH 499, MAX 92, MLLA 296                                 |
-| AC Ori        | 159.8-352.7 | F2-K7        | COUP 768, JW 503, HC 202, HHH 503, MAX 94, MLLA 288, ZRK 47                         |
-| LV 4          | 160.5-324.4 | cdots        | HC 296, LML 245, LR 134, MAX 98, MLLA 389, TCC 54, ZRK 48                           |
-| COUP 769      | 160.7-353.3 | cdots        | LML 248                                                                             |
-| LV 3          | 162.8-316.5 | cdots        | COUP 787, JW 512, MAX 105, MLLA 422, TCC 63, HC 322, OW 163-317, ZRK 52             |
-| HC 292        | 163.2-325.3 | cdots        | LML 269, LR 154, MLL 386, TCC 66                                                    |
-| HC 341        | 164.0-311.3 | cdots        | DOH 5, MLLA 445, TCC 67                                                             |
-| COUP 820      | 166.1-316.1 | cdots        | MLLA 426, TCC 70, HC 325, OW 166-316, ZRK 58                                        |
-| LV 2          | 167.2-316.6 | G5-K5        | theta^1 Ori G, COUP 826, JW 524, MAX 116, MLLA 424, HC 323, HHH 524                 |
-| COUP 827      | 167.6-328.0 | cdots        | MLLA 375, HC 284, OW 168-328, TCC 74, ZRK 60                                        |
-| COUP 900      | 175.7-324.7 | >G6          | HC 295, LML 325, LR 207, MAX 131, MLLA 387, TCC 95                                  |
-| HC 271        | 180.4-330.9 | cdots        | LML 347, LR 234, MLLA 363, TCC 106, ZRK 74                                          |
-| COUP 943      | 180.5-401.0 | cdots        | DR 458, JW 575, HC 177, LM 350, LR 235                                              |
+| H 20041/2     | 148.3-351.3 | cdots        | cdots                                                                            |
+| H 20036       | 148.6-350.1 | cdots        | cdots                                                                            |
+| COUP 679      | 150.1-354.0 | cdots        | HC 195, LML 193, LR 83, MLLA 280, MC 20                                          |
+| H 20018       | 150.7-341.0 | cdots        | cdots                                                                            |
+| ZRK 24        | 150.8-353.0 | cdots        | cdots                                                                            |
+| H 20027       | 151.3-349.7 | cdots        | cdots                                                                            |
+| ZRK 25        | 151.5-353.6 | cdots        | cdots                                                                            |
+| EC 17         | 151.6-340.6 | cdots        | cdots                                                                            |
+| cdots         | 152.3-340.4 | cdots        | H 20014                                                                          |
+| COUP 691      | 152.5-349.9 | cdots        | MLLA 297, HC 211, LML 204, LR 92                                                 |
+| DR 769        | 153.0-355.8 | cdots        | cdots                                                                            |
+| MAX 77        | 154.9-352.3 | cdots        | cdots                                                                            |
+| COUP 717      | 155.1-337.2 | K            | BOM d155-338, HC 251, MAX 79, LML 212, ZRK 34                                    |
+| COUP 725      | 156.8-339.0 | cdots        | MLLA 334, TCC 37, HC 246, LM 49, LML 221, LR 114                                 |
+| COUP 728      | 156.8-533.2 | K8e          | 2MASS, DR 241, JW 482, MLLA 56, V2274                                            |
+| HC 236        | 157.0-341.9 | cdots        | LML 222, MLLA 38, LR 115                                                         |
+| COUP 734      | 157.3-337.9 | cdots        | HC 248, LML 224, TCC 41                                                          |
+| cdots         | 157.6-338.4 | cdots        | Discovered in this study.                                                        |
+| theta^1 Ori E | 157.7-310.0 | mid-G giants | COUP 732, HC 344, MLLA 48, TCC 40                                                |
+| LV 6          | 157.9-326.7 | G4-K5        | HC 287, HHH 489, JW 489, MAX 86, MLLA 381, TCC 42, ZRK 40                        |
+| COUP 747      | 158.5-325.5 | cdots        | MLLA 385, TCC 47, HC 291, LML 232, ZRK 43                                        |
+| COUP 757      | 158.7-337.6 | cdots        | DR 1007, HC 250, LML 237, LR 128, MLLA 339, TCC 50, ZRK 44                       |
+| V2279 Ori^c   | 159.3-349.9 | G4-M2        | COUP 758, HC 455, JW 499, HHH 499, MAX 92, MLLA 296                              |
+| AC Ori        | 159.8-352.7 | F2-K7        | COUP 768, JW 503, HC 202, HHH 503, MAX 94, MLLA 288, ZRK 47                      |
+| LV 4          | 160.5-324.4 | cdots        | HC 296, LML 245, LR 134, MAX 98, MLLA 389, TCC 54, ZRK 48                        |
+| COUP 769      | 160.7-353.3 | cdots        | LML 248                                                                          |
+| LV 3          | 162.8-316.5 | cdots        | COUP 787, JW 512, MAX 105, MLLA 422, TCC 63, HC 322, OW 163-317, ZRK 52          |
+| HC 292        | 163.2-325.3 | cdots        | LML 269, LR 154, MLL 386, TCC 66                                                 |
+| HC 341        | 164.0-311.3 | cdots        | DOH 5, MLLA 445, TCC 67                                                          |
+| COUP 820      | 166.1-316.1 | cdots        | MLLA 426, TCC 70, HC 325, OW 166-316, ZRK 58                                     |
+| LV 2          | 167.2-316.6 | G5-K5        | theta^1 Ori G, COUP 826, JW 524, MAX 116, MLLA 424, HC 323, HHH 524              |
+| COUP 827      | 167.6-328.0 | cdots        | MLLA 375, HC 284, OW 168-328, TCC 74, ZRK 60                                     |
+| COUP 900      | 175.7-324.7 | >G6          | HC 295, LML 325, LR 207, MAX 131, MLLA 387, TCC 95                               |
+| HC 271        | 180.4-330.9 | cdots        | LML 347, LR 234, MLLA 363, TCC 106, ZRK 74                                       |
+| COUP 943      | 180.5-401.0 | cdots        | DR 458, JW 575, HC 177, LM 350, LR 235                                           |
 
 Notes.
 a Other Designations: 2MASS, Cutri et al. (2003); BOM, Bally et al. (2000); COUP, Getman et al. (2005); DOH, Doi et al. (2004); EC, Eisner & Carpenter (2006); DR, Da Rio et al. (2009); FBG, Feigelson et al. (2002); F, Felli et al. (1993); H, Rodriguez-Ledesma et al. (2009); HBJ, Herbst et al. (2002); HC, Hillenbrand & Carpenter (2000); HHH, Hillenbrand et al. (2013); JW, Jones & Walker (1988); LM, Lada et al. (2000); LML, Lada et al. (2004); LR, Luhman et al. (2000); LV, Laques & Vidal (1979); MAX, Robberto et al. (2005); MC, McCaughrean & Stauffer (1994); MLLA, Muench et al. (2002); NW, Nutter & Ward-Thompson (2006); OW, O'Dell & Wen (1994); SB, Smith et al. (2004); SI, Simon et al. (1999); PMF, Prisinzano et al. (2008); TCC, McCaughrean & Stauffer (1994); ZRK, Zapata et al. (2004a).
@@ -8690,14 +8693,14 @@ And one with 10% normal grains and PAH at 100% instead of 300
     + Orion has O/H = 4e-4, so Z\prime = 0.82
 + Table of offset x_D to H I/H_2 interface as function of dust parameters
   |    \phi_{g} |   Z\prime | A_{dust} |   \alpha G | \tau_{1,tot} |    N_1 | x_D, mpc |
-  |-------+------+-------+-------+--------+--------+----------|
-  |   1.0 |  1.0 |  0.38 | 103.3 |   4.65 | 2.4e21 |      9.2 |
-  |   0.5 |  1.0 |  0.23 |  62.5 |   4.15 | 4.4e21 |     16.8 |
-  | 0.333 |  1.0 |  0.17 |  46.2 |   3.85 | 6.1e21 |     23.3 |
-  |   0.1 |  1.0 |  0.07 |  19.0 |   3.00 | 1.6e22 |     61.0 |
-  |   0.5 | 0.82 |  0.25 |  67.9 |   4.23 | 5.4e21 |     20.6 |
-  |  0.41 | 0.82 |  0.21 |  57.1 |   4.06 | 6.4e21 |     24.4 |
-  |   0.2 | 0.82 |  0.12 |  32.6 |   3.51 | 1.1e22 |     41.9 |
+  |-------+------+-------+-------+-------+--------+----------|
+  |   1.0 |  1.0 |  0.38 | 103.3 |  4.65 | 2.4e21 |      9.2 |
+  |   0.5 |  1.0 |  0.23 |  62.5 |  4.15 | 4.4e21 |     16.8 |
+  | 0.333 |  1.0 |  0.17 |  46.2 |  3.85 | 6.1e21 |     23.3 |
+  |   0.1 |  1.0 |  0.07 |  19.0 |  3.00 | 1.6e22 |     61.0 |
+  |   0.5 | 0.82 |  0.25 |  67.9 |  4.23 | 5.4e21 |     20.6 |
+  |  0.41 | 0.82 |  0.21 |  57.1 |  4.06 | 6.4e21 |     24.4 |
+  |   0.2 | 0.82 |  0.12 |  32.6 |  3.51 | 1.1e22 |     41.9 |
   #+TBLFM: $3=$1/(1 + sqrt(2.64 $1 $2));f2::$4=1.54 (1.5e5 / 850) $3;f1::$5=log($4 +1);f2::$6=5.26e20 $5 / $1 $2 ;s2::$7=$6 / 8.5e4 0.001 3.085677582e18 ;f1
   + The Z\prime = 0.82 column values are appropriate for Orion
 + The observed value is 24 mpc, at least from 2.12 micron peak

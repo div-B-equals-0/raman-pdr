@@ -1,0 +1,12 @@
+* Geometry of the Orion Bar
+This is somewhere to organize my thoughts, which are currently spread out over too many places
+
+
+** Evidence that the Bar i-front is convex cylindrical
+1. Profile of the PAH emission, for instance JWST F335M
+   - This is much steeper on the illuminated side than on the neutral side
+   - To first order it looks like the "horn" profile that you get from a homogeneous optically thin emitting shell
+   - Really, the emissivity should be proportional to \(n exp(-\tau)\) where n is local density and \tau is FUV optical depth from star.
+2. The 21 cm absorption components
+   - These have positions behind the i-front, which only makes sense in the surface is convex
+   - See [[id:2AC0209C-557E-41B4-97C3-6E5D9EF0B103][Model for 21 cm continuum and line]] in [[file:absorption-6634.org]]
