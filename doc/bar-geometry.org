@@ -10,3 +10,45 @@ This is somewhere to organize my thoughts, which are currently spread out over t
 2. The 21 cm absorption components
    - These have positions behind the i-front, which only makes sense in the surface is convex
    - See [[id:2AC0209C-557E-41B4-97C3-6E5D9EF0B103][Model for 21 cm continuum and line]] in [[file:absorption-6634.org]]
+
+
+** What is radius of curvature of i-front
+- Can we get a consistent value from different tracers?
+- And is it consistent with the radius from 13CO peak (0.05 pc)?
+- [O I] has width of about 0.001, so factor of 50
+** Relation between the i-front and the d-front
+- Odd that they are both so straight and parallel to one another, given that they are quite separated
+- This is an argument for an overarching global geometry
+  - Possibly a cylinder with center at the 13CO peak
+** What is happening with the sharpest bits of the i-front?
+- There are some sections 
+** What is going on with the gap between the ionized emission and the neutral emission?
+- This is most obvious in the NIR broad bands
+  - There is a component from the H lines and atomic continuum that peaks on the ionized side
+  - And there is a component from the PAH and/or scattered continuum, which peaks on the neutral side
+  - And there is a gap between them
+  - Is this a natural prediction of ionization front models?
+    - See for instance Henney:2005b
+  - And what does the size of the gap depend on?
+  - It seems a bit large to be due to the partially ionized zone at the i-front
+  - We could look at how the gap size is correlated with, for instance, the width of the [O I] emission layer
+    - It looks like it correlates very well
+    - Around 5:35:22.8938 -5:24:32.072 we have a large separation and a very fat [O I] peak
+    - Both of order 10 arcsec = 20 mpc, whereas typically it is 4 times less
+    - With electron density of 5000, and ion faction of 0.5, then ionizing photon mean free path at threshold is 0.01 mpc, which is tiny
+    - Conclusion is that there must be an extended partially ionized zone, which is not predicted for ionization fronts!
+  - *Is it maybe a recombination front instead?*
+** What causes the disruption of the Bar due S of the Trapezium?
+- This seems to be cased by the HH528 bowshock, which traps the ionization front
+- The original ionization front can be seen to ruin on in a straight(ish) line behind
+  - This can be seen in the O I and [O I] lines for instance
+- The PAH emission does not have such a clear structure here, with no sharp edges
+- There is a nostril region between the original and current i-front
+** Why is there no sharp H_2 emission around th2A and farther NE? :ATTACH:
+:PROPERTIES:
+:ATTACH_DIR: /Users/will/Dropbox/dib-scatter-hii/doc/bar-geometry_att
+:END:
+- Around HH 204 and to the SW, the H_2 emission is very sharp and filamentary
+- But in NE portion, it is much more diffuse
+- [[attachment:CleanShot 2023-11-12 at 21.02.20.jpg][H2 distribution]]
+- 
