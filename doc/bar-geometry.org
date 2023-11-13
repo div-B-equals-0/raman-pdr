@@ -1,4 +1,7 @@
-* Geometry of the Orion Bar
+* Geometry of the Orion Bar :ATTACH:
+:PROPERTIES:
+:ATTACH_DIR: /Users/will/Dropbox/dib-scatter-hii/doc/bar-geometry_att
+:END:
 This is somewhere to organize my thoughts, which are currently spread out over too many places
 
 
@@ -38,16 +41,24 @@ This is somewhere to organize my thoughts, which are currently spread out over t
     - With electron density of 5000, and ion faction of 0.5, then ionizing photon mean free path at threshold is 0.01 mpc, which is tiny
     - Conclusion is that there must be an extended partially ionized zone, which is not predicted for ionization fronts!
   - *Is it maybe a recombination front instead?*
+*** Compare gap with the giant proplyd 244-440
+- That has higher density, so the gap should be 10 times smaller
+- But we see no gap at all, which is what we expect from the predicted small i-front width
+- So on the one hand, this is good that the photoionization theory is vindicated in this case
+- But why is the Bar different then?
+*** We can do a simple model of emission versus electron fraction
+- As in the 2005 paper
+- Consider 3 emission processes:
+  - Ionized line = n^2 x^2
+  - Neutral line = n^2 x (1 - x)
+  - Neutral continuum: n x F
 ** What causes the disruption of the Bar due S of the Trapezium?
 - This seems to be cased by the HH528 bowshock, which traps the ionization front
 - The original ionization front can be seen to ruin on in a straight(ish) line behind
   - This can be seen in the O I and [O I] lines for instance
 - The PAH emission does not have such a clear structure here, with no sharp edges
 - There is a nostril region between the original and current i-front
-** Why is there no sharp H_2 emission around th2A and farther NE? :ATTACH:
-:PROPERTIES:
-:ATTACH_DIR: /Users/will/Dropbox/dib-scatter-hii/doc/bar-geometry_att
-:END:
+** Why is there no sharp H_2 emission around th2A and farther NE?
 - Around HH 204 and to the SW, the H_2 emission is very sharp and filamentary
 - But in NE portion, it is much more diffuse
 - [[attachment:CleanShot 2023-11-12 at 21.02.20.jpg][H2 distribution]]
