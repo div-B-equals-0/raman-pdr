@@ -1,0 +1,31 @@
+New MUSE datacube of Orion Bar with two proplyds from Tom Haworth (data reduction by Peter Zeidler)
+* Log
+- [2024-09-19 Thu] Came across the Tom paper while working on my PAPIIT renewal. E-mailed him to ask for the datacube
+- [2024-09-20 Fri] Tom sent me the datacube. Had a first look at it
+  - The H alpha wings and the O I absorption lines are clearly visible
+  - There seem to be very few H_2 lines, possibly none
+    - 9113.6, which I thought I had seen in the wide field Orion muse data is seen, but I do not believe that it is an H_2 line
+      - wave is more like 9112.6
+      - comes from neutral envelope of larger proplyd
+      - other theoretically brighter nearby lines are not seen, such as 9029 and 9099
+    - 9029.2 is not seen at all
+  - 6814 line is very weak, but is well detected everywhere
+    - I have my doubts whether it is an H_2 line
+  - 
+- [2024-09-22 Sun] Fit and remove continuum
+- [2024-09-22 Sun] Get annoyed with Appendix C of the Tom paper, which seems completely mistaken. It is not Lyman beta that excjites the O I lines, but rather is the continuum. 
+
+
+* Remove continuum
+
+#+begin_src sh :dir /Users/will/Work/MUSE-Orion-Tom :results output verbatim :eval yes
+  D=/Users/will/Dropbox/muse-hii-regions/lib
+  time python $D/median_continuum.py\
+       --two-pass \
+       --data-path . \
+       --out-prefix muse-orion-tom \
+       --cube-name DATACUBE_FINAL.fits \
+       11
+#+end_src
+
+#+RESULTS:
